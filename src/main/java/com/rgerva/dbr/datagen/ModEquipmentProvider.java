@@ -12,6 +12,10 @@
 package com.rgerva.dbr.datagen;
 
 import com.rgerva.dbr.DragonBlockReborn;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 import net.minecraft.client.data.models.EquipmentAssetProvider;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.data.CachedOutput;
@@ -21,50 +25,45 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-
 public class ModEquipmentProvider extends EquipmentAssetProvider {
-    protected final PackOutput.PathProvider pathProvider;
+  protected final PackOutput.PathProvider pathProvider;
 
-    public ModEquipmentProvider(PackOutput output) {
-        super(output);
-        this.pathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "equipment");
-    }
+  public ModEquipmentProvider(PackOutput output) {
+    super(output);
+    this.pathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "equipment");
+  }
 
-    @Override
-    public CompletableFuture<?> run(CachedOutput output) {
-        Map<ResourceKey<EquipmentAsset>, EquipmentClientInfo> map = new HashMap<>();
-        bootstrap(
-                (key, model) -> {
-                    if (map.putIfAbsent(key, model) != null) {
-                        throw new IllegalStateException(
-                                "Duplicate equipment asset for id: " + key.location().toString());
-                    }
-                });
-        return DataProvider.saveAll(output, EquipmentClientInfo.CODEC, this.pathProvider::json, map);
-    }
+  @Override
+  public CompletableFuture<?> run(CachedOutput output) {
+    Map<ResourceKey<EquipmentAsset>, EquipmentClientInfo> map = new HashMap<>();
+    bootstrap(
+        (key, model) -> {
+          if (map.putIfAbsent(key, model) != null) {
+            throw new IllegalStateException(
+                "Duplicate equipment asset for id: " + key.location().toString());
+          }
+        });
+    return DataProvider.saveAll(output, EquipmentClientInfo.CODEC, this.pathProvider::json, map);
+  }
 
-    public static void bootstrap(
-            BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> consumer) {}
+  public static void bootstrap(
+      BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> consumer) {}
 
-    public static EquipmentClientInfo humanoidAndHorse(String name) {
-        return EquipmentClientInfo.builder()
-                .addHumanoidLayers(ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, name))
-                .addLayers(
-                        EquipmentClientInfo.LayerType.HORSE_BODY,
-                        new EquipmentClientInfo.Layer[] {
-                                EquipmentClientInfo.Layer.leatherDyeable(
-                                        ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, name), false)
-                        })
-                .build();
-    }
+  public static EquipmentClientInfo humanoidAndHorse(String name) {
+    return EquipmentClientInfo.builder()
+        .addHumanoidLayers(ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, name))
+        .addLayers(
+            EquipmentClientInfo.LayerType.HORSE_BODY,
+            new EquipmentClientInfo.Layer[] {
+              EquipmentClientInfo.Layer.leatherDyeable(
+                  ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, name), false)
+            })
+        .build();
+  }
 
-    public static EquipmentClientInfo onlyHumanoid(String name) {
-        return EquipmentClientInfo.builder()
-                .addHumanoidLayers(ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, name))
-                .build();
-    }
+  public static EquipmentClientInfo onlyHumanoid(String name) {
+    return EquipmentClientInfo.builder()
+        .addHumanoidLayers(ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, name))
+        .build();
+  }
 }

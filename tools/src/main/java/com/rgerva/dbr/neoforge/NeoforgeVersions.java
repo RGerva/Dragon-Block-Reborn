@@ -19,6 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -37,6 +38,7 @@ public class NeoforgeVersions {
     private static final String NEOFORGE_URL =
             "https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml";
     private static final Path GRADLE_PROPERTIES_PATH = Path.of("gradle.properties");
+    private static final Path README_PATH = Path.of("README.md");
 
     private final String localVersion;
     private final String releaseVersion;
@@ -78,8 +80,31 @@ public class NeoforgeVersions {
 
         if (input.equals("y") || input.equals("yes")) {
             updateGradlePropertiesVersion(getReleaseVersion());
+            updateReadmeVersion(getReleaseVersion());
         } else {
             Main.LOGGER.warn("Update canceled by user.");
+        }
+    }
+
+    protected static void updateReadmeVersion(String newVersion){
+        try{
+            Path path = README_PATH;
+            List<String> lines = Files.readAllLines(path);
+
+            for(int i = 0; i < lines.size(); i++){
+                if(lines.get(i).trim().startsWith("- **NeoForge Version:**")){
+                    lines.set(i, "- **NeoForge Version:** " + newVersion);
+                    break;
+                }
+            }
+
+            String contentWithLf = String.join("\n", lines) + "\n";
+            Files.writeString(path, contentWithLf, StandardOpenOption.TRUNCATE_EXISTING);
+
+            Main.LOGGER.success("neo_version updated in readme to: {}", newVersion);
+
+        } catch (IOException e) {
+            Main.LOGGER.error("Failed to update readme.md: {}", e.getMessage());
         }
     }
 
