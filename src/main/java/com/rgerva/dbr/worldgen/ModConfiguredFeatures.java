@@ -30,12 +30,14 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.neoforged.neoforge.server.command.ModIdArgument;
 
 public class ModConfiguredFeatures {
 
   public static List<ResourceKey<ConfiguredFeature<?, ?>>> ORE_KEY = new ArrayList<>();
 
   public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+    assert !ModOresUtils.getOres().isEmpty();
     ModOresUtils.setOresProperties();
     registerAllKey();
 

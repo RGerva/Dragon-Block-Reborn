@@ -11,6 +11,7 @@
  */
 package com.rgerva.dbr.util;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,18 +38,18 @@ public class ModOresUtils {
   public static void setOresProperties() {}
 
   public static List<Block> getOres() {
-    return null;
+    return Collections.emptyList();
   }
 
   public static List<Block> getDeepslateOre() {
-    return null;
+    return Collections.emptyList();
   }
 
   public static List<Block> getNetherOre() {
-    return null;
+    return Collections.emptyList();
   }
 
   public static List<Block> getEndOre() {
-    return null;
+    return Collections.emptyList();
   }
 }

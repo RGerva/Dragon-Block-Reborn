@@ -11,4 +11,19 @@
  */
 package com.rgerva.dbr.datagen;
 
-public class ModSpriteProvider {}
+import com.rgerva.dbr.DragonBlockReborn;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.client.data.SpriteSourceProvider;
+
+import java.util.concurrent.CompletableFuture;
+
+public class ModSpriteProvider extends SpriteSourceProvider {
+    public ModSpriteProvider(
+            PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, DragonBlockReborn.MOD_ID);
+    }
+
+    @Override
+    protected void gather() {}
+}
