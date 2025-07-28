@@ -28,11 +28,11 @@ public class ModCreativeTab {
 
   public static final Supplier<CreativeModeTab> CREATIVE_TAB =
       CREATIVE_MODE_TAB.register(
-          "tab_dragon_block_reborn",
+          "itemGroup.dragon_block_reborn",
           () ->
               CreativeModeTab.builder()
                   .icon(() -> new ItemStack(Items.ACACIA_PLANKS))
-                  .title(Component.translatable("tab_dragon_block_reborn"))
+                  .title(Component.translatable("itemGroup.dragon_block_reborn"))
                   .displayItems(((itemDisplayParameters, output) -> {}))
                   .build());
 
