@@ -153,10 +153,10 @@ jobs:
           build-mode: manual
 
       - name: Run Spotless
-        run: ./gradlew build --no-daemon
+        run: ./gradlew :spotlessApply --no-daemon
 
       - name: Build the project (manual build)
-        run: ./gradlew :spotlessApply --no-daemon
+        run: ./gradlew build --no-daemon
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
