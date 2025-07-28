@@ -1,17 +1,14 @@
 /**
- * Generic Class: ModEntities <T>
- * A generic structure that works with type parameters.
- * <p>
- * Created by: rgerv
- * On: 2025/jul.
- * <p>
- * GitHub: https://github.com/RGerva
- * <p>
- * Copyright (c) 2025 @RGerva. All Rights Reserved.
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Generic Class: ModEntities <T> A generic structure that works with type parameters.
+ *
+ * <p>Created by: rgerv On: 2025/jul.
+ *
+ * <p>GitHub: https://github.com/RGerva
+ *
+ * <p>Copyright (c) 2025 @RGerva. All Rights Reserved.
+ *
+ * <p>Licensed under the Apache License, Version 2.0 (the "License");
  */
-
 package com.rgerva.dbr.entity;
 
 import com.rgerva.dbr.DragonBlockReborn;
@@ -21,10 +18,10 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModEntities {
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, DragonBlockReborn.MOD_ID);
+  public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
+      DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, DragonBlockReborn.MOD_ID);
 
-    public static void register(IEventBus eventBus) {
-        ENTITY_TYPES.register(eventBus);
-    }
+  public static void register(IEventBus eventBus) {
+    ENTITY_TYPES.register(eventBus);
+  }
 }

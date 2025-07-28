@@ -1,25 +1,22 @@
 /**
- * Generic Class: ModBiomeModifiers <T> A generic structure that works with type parameters.
- * A generic structure that works with type parameters.
- * <p>
- * Created by: rgerv
- * On: 2025/jul.
- * <p>
- * GitHub: https://github.com/RGerva
- * <p>
- * Copyright (c) 2025 @RGerva. All Rights Reserved.
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Generic Class: ModBiomeModifiers <T> A generic structure that works with type parameters. A
+ * generic structure that works with type parameters.
+ *
+ * <p>Created by: rgerv On: 2025/jul.
+ *
+ * <p>GitHub: https://github.com/RGerva
+ *
+ * <p>Copyright (c) 2025 @RGerva. All Rights Reserved.
+ *
+ * <p>Licensed under the Apache License, Version 2.0 (the "License");
  */
 package com.rgerva.dbr.worldgen;
 
 import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.util.ModOresUtils;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.rgerva.dbr.util.ModOresUtils;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -71,9 +68,7 @@ public class ModBiomeModifiers {
     }
   }
 
-  private static void registerAllKey() {
-
-  }
+  private static void registerAllKey() {}
 
   private static ResourceKey<BiomeModifier> registerKey(String name) {
     return ResourceKey.create(

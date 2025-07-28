@@ -32,53 +32,53 @@ import org.slf4j.Logger;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(DragonBlockReborn.MOD_ID)
 public class DragonBlockReborn {
-    public static final String MOD_ID = "dragon_block_reborn";
-    public static final Logger LOGGER = LogUtils.getLogger();
+  public static final String MOD_ID = "dragon_block_reborn";
+  public static final Logger LOGGER = LogUtils.getLogger();
 
-    public DragonBlockReborn(IEventBus modEventBus, ModContainer modContainer) {
-        modEventBus.addListener(this::commonSetup);
-        NeoForge.EVENT_BUS.register(this);
+  public DragonBlockReborn(IEventBus modEventBus, ModContainer modContainer) {
+    modEventBus.addListener(this::commonSetup);
+    NeoForge.EVENT_BUS.register(this);
 
-        ModCreativeTab.register(modEventBus);
+    ModCreativeTab.register(modEventBus);
 
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
+    ModItems.register(modEventBus);
+    ModBlocks.register(modEventBus);
 
-        ModDataComponents.register(modEventBus);
-        ModSounds.register(modEventBus);
+    ModDataComponents.register(modEventBus);
+    ModSounds.register(modEventBus);
 
-        ModEffects.register(modEventBus);
-        ModPotions.register(modEventBus);
+    ModEffects.register(modEventBus);
+    ModPotions.register(modEventBus);
 
-        ModEnchantmentEffects.register(modEventBus);
-        ModEntities.register(modEventBus);
+    ModEnchantmentEffects.register(modEventBus);
+    ModEntities.register(modEventBus);
 
-        ModVillagers.register(modEventBus);
-        ModParticles.register(modEventBus);
+    ModVillagers.register(modEventBus);
+    ModParticles.register(modEventBus);
 
-        ModLootModifiers.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
+    ModLootModifiers.register(modEventBus);
+    ModBlockEntities.register(modEventBus);
 
-        ModGUI.register(modEventBus);
-        ModRecipes.register(modEventBus);
+    ModGUI.register(modEventBus);
+    ModRecipes.register(modEventBus);
 
-        ModFluids.register(modEventBus);
+    ModFluids.register(modEventBus);
 
-        modEventBus.addListener(ModCreativeTab::addCreative);
-        modEventBus.addListener(ModCapabilities::registerCapabilities);
-        modEventBus.addListener(ModMessages::register);
+    modEventBus.addListener(ModCreativeTab::addCreative);
+    modEventBus.addListener(ModCapabilities::registerCapabilities);
+    modEventBus.addListener(ModMessages::register);
 
-        modContainer.registerConfig(net.neoforged.fml.config.ModConfig.Type.COMMON, ModConfig.SPEC);
-    }
+    modContainer.registerConfig(net.neoforged.fml.config.ModConfig.Type.COMMON, ModConfig.SPEC);
+  }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("HELLO FROM COMMON SETUP");
-    }
+  private void commonSetup(final FMLCommonSetupEvent event) {
+    LOGGER.info("HELLO FROM COMMON SETUP");
+  }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
+  // You can use SubscribeEvent and let the Event Bus discover methods to call
+  @SubscribeEvent
+  public void onServerStarting(ServerStartingEvent event) {
+    // Do something when the server starts
+    LOGGER.info("HELLO from server starting");
+  }
 }

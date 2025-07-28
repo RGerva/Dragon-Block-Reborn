@@ -1,17 +1,14 @@
 /**
- * Generic Class: ModMessages <T>
- * A generic structure that works with type parameters.
- * <p>
- * Created by: rgerv
- * On: 2025/jul.
- * <p>
- * GitHub: https://github.com/RGerva
- * <p>
- * Copyright (c) 2025 @RGerva. All Rights Reserved.
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Generic Class: ModMessages <T> A generic structure that works with type parameters.
+ *
+ * <p>Created by: rgerv On: 2025/jul.
+ *
+ * <p>GitHub: https://github.com/RGerva
+ *
+ * <p>Copyright (c) 2025 @RGerva. All Rights Reserved.
+ *
+ * <p>Licensed under the Apache License, Version 2.0 (the "License");
  */
-
 package com.rgerva.dbr.network;
 
 import net.minecraft.core.BlockPos;
@@ -24,22 +21,21 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 public class ModMessages {
-    public static void register(final RegisterPayloadHandlersEvent event) {
-        final PayloadRegistrar registrar = event.registrar("1.0");
+  public static void register(final RegisterPayloadHandlersEvent event) {
+    final PayloadRegistrar registrar = event.registrar("1.0");
+  }
 
-    }
+  public static void sendToServer(CustomPacketPayload message) {
+    ClientPacketDistributor.sendToServer(message);
+  }
 
-    public static void sendToServer(CustomPacketPayload message) {
-        ClientPacketDistributor.sendToServer(message);
-    }
+  public static void sendToPlayer(CustomPacketPayload message, ServerPlayer player) {
+    PacketDistributor.sendToPlayer(player, message);
+  }
 
-    public static void sendToPlayer(CustomPacketPayload message, ServerPlayer player) {
-        PacketDistributor.sendToPlayer(player, message);
-    }
-
-    public static void sendToPlayersWithinXBlocks(
-            CustomPacketPayload message, BlockPos pos, ServerLevel level, int distance) {
-        PacketDistributor.sendToPlayersNear(
-                level, null, pos.getX(), pos.getY(), pos.getZ(), distance, message);
-    }
+  public static void sendToPlayersWithinXBlocks(
+      CustomPacketPayload message, BlockPos pos, ServerLevel level, int distance) {
+    PacketDistributor.sendToPlayersNear(
+        level, null, pos.getX(), pos.getY(), pos.getZ(), distance, message);
+  }
 }

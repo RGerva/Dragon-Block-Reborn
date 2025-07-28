@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.iml" filepath="$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tools/Dragon-Block-Reborn.tools.iml" filepath="$PROJECT_DIR$/.idea/modules/tools/Dragon-Block-Reborn.tools.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tools/Dragon-Block-Reborn.tools.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tools/Dragon-Block-Reborn.tools.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tools/Dragon-Block-Reborn.tools.test.iml" filepath="$PROJECT_DIR$/.idea/modules/tools/Dragon-Block-Reborn.tools.test.iml" />
     </modules>
   </component>
 </project>
