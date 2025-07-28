@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: net.neoforged.fancymodloader:bootstraplauncher:9.0.16" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="net.neoforged.fancymodloader" artifactId="bootstraplauncher" version="9.0.16" baseVersion="9.0.16" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/bootstraplauncher/9.0.16/703417f9ccbdb2c69ba9b25b04458b0803987a0b/bootstraplauncher-9.0.16.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/bootstraplauncher/9.0.16/b53aa1681eba7ee137b4cf47c24b8900699e49f5/bootstraplauncher-9.0.16-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
