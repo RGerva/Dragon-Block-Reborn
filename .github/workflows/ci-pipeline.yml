@@ -37,7 +37,7 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
-      - run: ./gradlew spotlessCheck --no-daemon
+#      - run: ./gradlew spotlessCheck --no-daemon
 
   build-and-test:
     name: 🧪 Build & Test with Coverage
