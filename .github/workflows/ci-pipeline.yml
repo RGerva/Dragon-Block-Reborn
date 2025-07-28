@@ -36,6 +36,7 @@ jobs:
           java-version: '23'
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew
       - run: ./gradlew spotlessCheck --no-daemon
 
   build-and-test:
