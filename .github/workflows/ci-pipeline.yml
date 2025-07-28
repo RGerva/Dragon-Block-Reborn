@@ -152,8 +152,11 @@ jobs:
           languages: java-kotlin
           build-mode: manual
 
-      - name: Build the project (manual build)
+      - name: Run Spotless
         run: ./gradlew build --no-daemon
+
+      - name: Build the project (manual build)
+        run: ./gradlew :spotlessApply --no-daemon
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
