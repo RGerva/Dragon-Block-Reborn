@@ -28,7 +28,7 @@ public class ModCreativeTab {
 
   public static final Supplier<CreativeModeTab> CREATIVE_TAB =
       CREATIVE_MODE_TAB.register(
-          "itemGroup.dragon_block_reborn",
+          "tab_dragon_block_reborn",
           () ->
               CreativeModeTab.builder()
                   .icon(() -> new ItemStack(Items.ACACIA_PLANKS))
