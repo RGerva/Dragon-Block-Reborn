@@ -156,6 +156,8 @@ jobs:
     name: 🎮 Launch Minecraft Client
     runs-on: ubuntu-latest
     needs: generate-data
+    permissions:
+      contents: read
     if: github.ref == 'refs/heads/main'  # ou limitar a branches específicas
     steps:
       - uses: actions/checkout@v4
