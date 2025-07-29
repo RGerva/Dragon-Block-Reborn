@@ -122,10 +122,11 @@ jobs:
           flags: unittests
           name: codecov-report
 
-  generate-javadoc:
-    name: 📚 Generate Javadoc
+  publish-javadoc:
+    name: 🚀 Publish Javadoc to GitHub Pages
     runs-on: ubuntu-latest
-    needs: [compile, test]
+    needs: generate-javadoc
+    if: github.ref == 'refs/heads/master'
     permissions:
       contents: write
     steps:
@@ -142,16 +143,14 @@ jobs:
       - name: Grant execute permission to Gradlew
         run: chmod +x gradlew
 
-      - name: Generate Javadoc into /docs
+      - name: Generate Javadoc
         run: ./gradlew javadoc --no-daemon
 
-      - name: Commit Javadoc to docs/
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
-          git add docs
-          git commit -m "📚 Atualiza Javadoc automático [skip ci]" || echo "Sem mudanças"
-          git push origin master
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/docs/javadoc
 
   generate-data:
     name: 📄 Generate Data
