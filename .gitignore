@@ -119,3 +119,5 @@ runs/
 
 # Avoid Data Generation
 src/generated
+
+docs/
