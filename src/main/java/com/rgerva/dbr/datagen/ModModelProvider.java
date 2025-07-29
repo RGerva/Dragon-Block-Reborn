@@ -13,6 +13,8 @@ package com.rgerva.dbr.datagen;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import java.util.function.BiConsumer;
+
+import com.rgerva.dbr.block.ModBlocks;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -48,7 +50,10 @@ public class ModModelProvider extends ModelProvider {
 
   protected void registerItem(ItemModelGenerators itemModels) {}
 
-  protected void registerBlock(BlockModelGenerators blockModels) {}
+  protected void registerBlock(BlockModelGenerators blockModels) {
+    blockModels.createTrivialCube(ModBlocks.DRAGON_BALL_BLOCK.get());
+    blockModels.createTrivialCube(ModBlocks.DRAGON_BALL_STONE.get());
+  }
 
   private void horizontalBlockWithItem(
       Holder<Block> block, boolean uniqueBottomTexture, boolean uniqueFrontTexture) {

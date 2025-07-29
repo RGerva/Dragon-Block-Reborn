@@ -12,12 +12,14 @@
 package com.rgerva.dbr.block;
 
 import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.block.custom.DragonBallBlock;
 import com.rgerva.dbr.item.ModItems;
 import java.util.function.Function;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
@@ -29,6 +31,17 @@ public class ModBlocks {
 
   public static final DeferredRegister.Blocks BLOCKS =
       DeferredRegister.createBlocks(DragonBlockReborn.MOD_ID);
+
+  public static final DeferredBlock<Block> DRAGON_BALL_BLOCK = registerBlock("dragon_ball",
+          (properties -> new DragonBallBlock(BlockBehaviour.Properties.of()
+                  .setId(id("dragon_ball")))),
+          new Item.Properties()
+                  .setId(ModItems.id("dragon_ball"))
+                  .stacksTo(7));
+
+  public static final DeferredBlock<Block> DRAGON_BALL_STONE = registerBlock("dragon_ball_stone",
+          (properties -> new DragonBallBlock(BlockBehaviour.Properties.of()
+                  .setId(id("dragon_ball_stone")))));
 
   protected static ResourceKey<Block> id(@NotNull String path) {
     return ResourceKey.create(
@@ -42,9 +55,21 @@ public class ModBlocks {
     return toReturn;
   }
 
+  private static <T extends Block> DeferredBlock<T> registerBlock(
+          String name, Function<BlockBehaviour.Properties, T> function, Item.Properties itemProperties) {
+    DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, function);
+    registerBlockItem(name, toReturn, itemProperties);
+    return toReturn;
+  }
+
   private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
     ModItems.ITEMS.registerItem(
         name, (properties) -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
+  }
+
+  private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block, Item.Properties itemProperties) {
+    ModItems.ITEMS.registerItem(
+            name, (properties) -> new BlockItem(block.get(), itemProperties.useBlockDescriptionPrefix()));
   }
 
   public static void register(IEventBus eventBus) {

@@ -13,11 +13,12 @@ package com.rgerva.dbr.creative;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import java.util.function.Supplier;
+
+import com.rgerva.dbr.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -31,9 +32,11 @@ public class ModCreativeTab {
           "tab_dragon_block_reborn",
           () ->
               CreativeModeTab.builder()
-                  .icon(() -> new ItemStack(Items.ACACIA_PLANKS))
+                  .icon(() -> new ItemStack(ModBlocks.DRAGON_BALL_BLOCK.get()))
                   .title(Component.translatable("itemGroup.dragon_block_reborn"))
-                  .displayItems(((itemDisplayParameters, output) -> {}))
+                  .displayItems(((itemDisplayParameters, output) -> {
+                    output.accept(ModBlocks.DRAGON_BALL_BLOCK.get());
+                  }))
                   .build());
 
   public static void addCreative(BuildCreativeModeTabContentsEvent event) {}

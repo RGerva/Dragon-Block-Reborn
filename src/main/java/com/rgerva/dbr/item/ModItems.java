@@ -25,7 +25,7 @@ public class ModItems {
   public static final DeferredRegister.Items ITEMS =
       DeferredRegister.createItems(DragonBlockReborn.MOD_ID);
 
-  protected static ResourceKey<Item> id(@NotNull String path) {
+  public static ResourceKey<Item> id(@NotNull String path) {
     return ResourceKey.create(
         Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, path));
   }
