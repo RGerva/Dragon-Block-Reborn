@@ -227,8 +227,28 @@ jobs:
       - name: Grant execute permission to Gradlew
         run: chmod +x gradlew
 
-      - name: Run Client in headless mode
-        run: xvfb-run ./gradlew runClient --no-daemon
+      - name: Run Client in headless mode (max 90s)
+        run: timeout 90s xvfb-run ./gradlew runClient --no-daemon || echo "Client finish for timeout"
+
+      - name: Wait for latest.log
+        run: |
+          for i in {1..30}; do
+          if [[ -f run/logs/latest.log ]]; then
+           echo "Log found!"
+           break
+          fi
+          echo "Waiting for log..."
+          sleep 2
+          done
+
+      - name: Check for 'Loaded 0 entity animations'
+        run: |
+          if grep -q "Loaded 0 entity animations" run/logs/latest.log; then
+            echo "✅ Client correctly loaded."
+          else
+            echo "❌ Not found on log!"
+            exit 1
+          fi
 
   release-build:
     name: 🚀 Release Build
