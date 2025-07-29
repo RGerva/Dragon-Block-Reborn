@@ -31,6 +31,6 @@ Minecraft Mod based on Goku's adventures
 
 The documentation is available hire:
 
-🔗 [Javadoc](https://rgerva.github.io/Dragon-Block-Reborn/)
+🔗 [Access to Javadoc](https://rgerva.github.io/Dragon-Block-Reborn/)
 
 > Auto updated by GitHub Actions on every push on branch `master`.
