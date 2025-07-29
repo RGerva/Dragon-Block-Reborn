@@ -222,6 +222,15 @@ tasks.register("customUnitTest") {
     dependsOn   'spotlessCheck', 'spotlessApply', 'test', 'jacocoTestReport', 'jacocoTestCoverageVerification'
 }
 
+tasks.named('jar') {
+    exclude 'com/rgerva/dbr/datagen/**'
+    exclude 'references'
+}
+
+javadoc {
+    destinationDir = file("${rootProject.projectDir}/docs")
+}
+
 // Example configuration to allow publishing using the maven-publish plugin
 publishing {
     publications {
@@ -235,6 +244,7 @@ publishing {
         }
     }
 }
+
 
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {
