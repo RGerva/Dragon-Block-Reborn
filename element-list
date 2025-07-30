@@ -10,6 +10,7 @@ com.rgerva.dbr.component
 com.rgerva.dbr.config
 com.rgerva.dbr.creative
 com.rgerva.dbr.datagen
+com.rgerva.dbr.datagen.model
 com.rgerva.dbr.effect
 com.rgerva.dbr.enchantment
 com.rgerva.dbr.entity
