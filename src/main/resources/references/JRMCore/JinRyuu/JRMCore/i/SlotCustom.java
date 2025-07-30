@@ -1,45 +1,27 @@
-/*    */ package JinRyuu.JRMCore.i;
-/*    */ 
-/*    */ import net.minecraft.inventory.IInventory;
-/*    */ import net.minecraft.inventory.Slot;
-/*    */ import net.minecraft.item.ItemStack;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ public class SlotCustom
-/*    */   extends Slot
-/*    */ {
-/*    */   public SlotCustom(IInventory inventory, int slotIndex, int x, int y) {
-/* 15 */     super(inventory, slotIndex, x, y);
-/*    */   }
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public boolean func_75214_a(ItemStack stack) {
-/* 25 */     if (getSlotIndex() == 0) {
-/* 26 */       return stack.func_77973_b() instanceof JinRyuu.JRMCore.items.ItemWeight;
-/*    */     }
-/* 28 */     if (getSlotIndex() == 1) {
-/* 29 */       return stack.func_77973_b() instanceof JinRyuu.JRMCore.items.ItemBodysuit;
-/*    */     }
-/* 31 */     if (getSlotIndex() == 2) {
-/* 32 */       return stack.func_77973_b() instanceof JinRyuu.JRMCore.items.ItemHeadwear;
-/*    */     }
-/* 34 */     if (getSlotIndex() >= 3 && getSlotIndex() <= 10) {
-/* 35 */       return stack.func_77973_b() instanceof JinRyuu.JRMCore.items.ItemVanity;
-/*    */     }
-/* 37 */     return false;
-/*    */   }
-/*    */ }
+package JinRyuu.JRMCore.i;
 
+import JinRyuu.JRMCore.items.ItemBodysuit;
+import JinRyuu.JRMCore.items.ItemHeadwear;
+import JinRyuu.JRMCore.items.ItemVanity;
+import JinRyuu.JRMCore.items.ItemWeight;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\.\JRMCore-v1.3.51.jar!\JinRyuu\JRMCore\i\SlotCustom.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class SlotCustom extends Slot {
+   public SlotCustom(IInventory inventory, int slotIndex, int x, int y) {
+      super(inventory, slotIndex, x, y);
+   }
+
+   public boolean func_75214_a(ItemStack stack) {
+      if (this.getSlotIndex() == 0) {
+         return stack.func_77973_b() instanceof ItemWeight;
+      } else if (this.getSlotIndex() == 1) {
+         return stack.func_77973_b() instanceof ItemBodysuit;
+      } else if (this.getSlotIndex() == 2) {
+         return stack.func_77973_b() instanceof ItemHeadwear;
+      } else {
+         return this.getSlotIndex() >= 3 && this.getSlotIndex() <= 10 ? stack.func_77973_b() instanceof ItemVanity : false;
+      }
+   }
+}

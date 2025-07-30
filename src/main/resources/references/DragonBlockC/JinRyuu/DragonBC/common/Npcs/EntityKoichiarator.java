@@ -1,37 +1,29 @@
-/*    */ package JinRyuu.DragonBC.common.Npcs;
-/*    */ 
-/*    */ import net.minecraft.entity.SharedMonsterAttributes;
-/*    */ import net.minecraft.world.World;
-/*    */ 
-/*    */ public class EntityKoichiarator
-/*    */   extends EntityDBCBasicEvil {
-/*  8 */   public final int AttPow = 14000;
-/*  9 */   public final int HePo = 60000;
-/*    */   
-/*    */   public EntityKoichiarator(World world) {
-/* 12 */     super(world);
-/* 13 */     this.tex = "koichiarator";
-/* 14 */     func_70105_a(1.6F, 5.4F);
-/* 15 */     setHardDifficulty();
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   protected void func_110147_ax() {
-/* 20 */     super.func_110147_ax();
-/* 21 */     func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(60000.0D);
-/* 22 */     func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(14000.0D);
-/*    */   }
-/*    */   
-/*    */   public long BattlePowerOld() {
-/* 26 */     int BP = 496275456;
-/* 27 */     int exp = this.field_70728_aV * 100;
-/* 28 */     long BattlePower = (BP + this.field_70146_Z.nextInt((int)Math.pow(10.0D, ((BP + "").length() - 2))));
-/* 29 */     return BattlePower;
-/*    */   }
-/*    */ }
+package JinRyuu.DragonBC.common.Npcs;
 
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.world.World;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\DragonBlockC-v1.4.85.jar!\JinRyuu\DragonBC\common\Npcs\EntityKoichiarator.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class EntityKoichiarator extends EntityDBCBasicEvil {
+   public final int AttPow = 14000;
+   public final int HePo = 60000;
+
+   public EntityKoichiarator(World world) {
+      super(world);
+      this.tex = "koichiarator";
+      this.func_70105_a(1.6F, 5.4F);
+      this.setHardDifficulty();
+   }
+
+   protected void func_110147_ax() {
+      super.func_110147_ax();
+      this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(60000.0D);
+      this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(14000.0D);
+   }
+
+   public long BattlePowerOld() {
+      int BP = 496275456;
+      int exp = this.field_70728_aV * 100;
+      long BattlePower = (long)(BP + this.field_70146_Z.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
+      return BattlePower;
+   }
+}

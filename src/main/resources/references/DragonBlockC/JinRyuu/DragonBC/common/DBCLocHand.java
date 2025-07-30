@@ -1,18 +1,17 @@
-/*   */ package JinRyuu.DragonBC.common;
-/*   */ 
-/*   */ import cpw.mods.fml.common.registry.LanguageRegistry;
-/*   */ 
-/*   */ public class DBCLocHand {
-/*   */   public static void LangLod() {
-/* 7 */     for (String LocFile : DBCLoc.localFiles) {
-/* 8 */       String File = LocFile.replace("es_AR", "es_ES").replace("es_MX", "es_ES").replace("pt_BR", "pt_PT");
-/* 9 */       LanguageRegistry.instance().loadLocalization(File, DBCLocHlp.getLocFrmName(LocFile), DBCLocHlp.isXMLLangFil(File));
-/*   */     } 
-/*   */   }
-/*   */ }
+package JinRyuu.DragonBC.common;
 
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\DragonBlockC-v1.4.85.jar!\JinRyuu\DragonBC\common\DBCLocHand.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class DBCLocHand {
+   public static void LangLod() {
+      String[] var0 = DBCLoc.localFiles;
+      int var1 = var0.length;
+
+      for(int var2 = 0; var2 < var1; ++var2) {
+         String LocFile = var0[var2];
+         String File = LocFile.replace("es_AR", "es_ES").replace("es_MX", "es_ES").replace("pt_BR", "pt_PT");
+         LanguageRegistry.instance().loadLocalization(File, DBCLocHlp.getLocFrmName(LocFile), DBCLocHlp.isXMLLangFil(File));
+      }
+
+   }
+}

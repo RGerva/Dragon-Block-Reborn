@@ -19,15 +19,14 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.phys.Vec3;
 
 public class DragonBallEntityRenderer implements BlockEntityRenderer<DragonBallEntity> {
-  public DragonBallEntityRenderer(BlockEntityRendererProvider.Context context) {}
+
+  private final BlockEntityRendererProvider.Context context;
+
+  public DragonBallEntityRenderer(BlockEntityRendererProvider.Context context) {
+    this.context = context;
+  }
 
   @Override
-  public void render(
-      DragonBallEntity dragonBallEntity,
-      float v,
-      PoseStack poseStack,
-      MultiBufferSource multiBufferSource,
-      int i,
-      int i1,
-      Vec3 vec3) {}
+  public void render(DragonBallEntity dragonBallEntity,float v,PoseStack poseStack,MultiBufferSource multiBufferSource,int i,int i1,Vec3 vec3) {}
+
 }

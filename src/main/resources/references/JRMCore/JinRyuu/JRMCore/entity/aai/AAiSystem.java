@@ -1,40 +1,44 @@
-/*    */ package JinRyuu.JRMCore.entity.aai;
-/*    */ 
-/*    */ import java.util.ArrayList;
-/*    */ import java.util.Arrays;
-/*    */ import net.minecraft.entity.Entity;
-/*    */ 
-/*    */ 
-/*    */ public class AAiSystem
-/*    */ {
-/*    */   public Entity entity;
-/*    */   public ArrayList<AAi> aais;
-/*    */   
-/*    */   public AAiSystem(Entity entity, AAi... aais) {
-/* 14 */     this.entity = entity;
-/* 15 */     this.aais = new ArrayList<AAi>();
-/* 16 */     addAAis(aais);
-/*    */   }
-/*    */   
-/*    */   public void addAAis(AAi... aais) {
-/* 20 */     this.aais.addAll(Arrays.asList(aais));
-/* 21 */     for (AAi aai : aais)
-/* 22 */       aai.aaiSystem = this; 
-/*    */   }
-/*    */   
-/*    */   public void addAAi(AAi aai) {
-/* 26 */     this.aais.add(aai);
-/* 27 */     aai.aaiSystem = this;
-/*    */   }
-/*    */   
-/*    */   public void update() {
-/* 31 */     for (AAi aai : this.aais)
-/* 32 */       aai.update(); 
-/*    */   }
-/*    */ }
+package JinRyuu.JRMCore.entity.aai;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import net.minecraft.entity.Entity;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\.\JRMCore-v1.3.51.jar!\JinRyuu\JRMCore\entity\aai\AAiSystem.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class AAiSystem {
+   public Entity entity;
+   public ArrayList<AAi> aais;
+
+   public AAiSystem(Entity entity, AAi... aais) {
+      this.entity = entity;
+      this.aais = new ArrayList();
+      this.addAAis(aais);
+   }
+
+   public void addAAis(AAi... aais) {
+      this.aais.addAll(Arrays.asList(aais));
+      AAi[] var2 = aais;
+      int var3 = aais.length;
+
+      for(int var4 = 0; var4 < var3; ++var4) {
+         AAi aai = var2[var4];
+         aai.aaiSystem = this;
+      }
+
+   }
+
+   public void addAAi(AAi aai) {
+      this.aais.add(aai);
+      aai.aaiSystem = this;
+   }
+
+   public void update() {
+      Iterator var1 = this.aais.iterator();
+
+      while(var1.hasNext()) {
+         AAi aai = (AAi)var1.next();
+         aai.update();
+      }
+
+   }
+}

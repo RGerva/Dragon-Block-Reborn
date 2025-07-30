@@ -1,29 +1,18 @@
-/*    */ package JinRyuu.JRMCore.blocks;
-/*    */ 
-/*    */ import net.minecraft.nbt.NBTTagCompound;
-/*    */ import net.minecraft.tileentity.TileEntity;
-/*    */ 
-/*    */ public class BlockBorderTileEntity
-/*    */   extends TileEntity
-/*    */ {
-/*    */   public void func_145839_a(NBTTagCompound par1NBTTagCompound) {
-/* 10 */     super.func_145839_a(par1NBTTagCompound);
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public void func_145841_b(NBTTagCompound par1NBTTagCompound) {
-/* 15 */     super.func_145841_b(par1NBTTagCompound);
-/*    */   }
-/*    */ 
-/*    */ 
-/*    */   
-/*    */   public void func_145845_h() {
-/* 21 */     super.func_145845_h();
-/*    */   }
-/*    */ }
+package JinRyuu.JRMCore.blocks;
 
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\.\JRMCore-v1.3.51.jar!\JinRyuu\JRMCore\blocks\BlockBorderTileEntity.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class BlockBorderTileEntity extends TileEntity {
+   public void func_145839_a(NBTTagCompound par1NBTTagCompound) {
+      super.func_145839_a(par1NBTTagCompound);
+   }
+
+   public void func_145841_b(NBTTagCompound par1NBTTagCompound) {
+      super.func_145841_b(par1NBTTagCompound);
+   }
+
+   public void func_145845_h() {
+      super.func_145845_h();
+   }
+}

@@ -13,7 +13,12 @@ package com.rgerva.dbr.datagen;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.block.ModBlocks;
+
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.BiConsumer;
+
+import com.rgerva.dbr.datagen.model.ModTexturedModel;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -50,8 +55,19 @@ public class ModModelProvider extends ModelProvider {
   protected void registerItem(ItemModelGenerators itemModels) {}
 
   protected void registerBlock(BlockModelGenerators blockModels) {
-    blockModels.createTrivialCube(ModBlocks.DRAGON_BALL_BLOCK.get());
-    blockModels.createTrivialCube(ModBlocks.DRAGON_BALL_STONE.get());
+    createCutoutBlockWithItem(ModBlocks.DRAGON_BALL_BLOCK);
+    createCutoutBlockWithItem(ModBlocks.DRAGON_BALL_STONE);
+  }
+
+  protected void createCutoutBlockWithItem(Holder<Block> block){
+    ResourceLocation model =
+            ModTexturedModel.DRAGON_BALL_MODEL.get(block.value()).create(block.value(), modelOutput);
+
+    blockModelGenerator.blockStateOutput.accept(
+            MultiVariantGenerator.dispatch(
+                    block.value(), new MultiVariant(WeightedList.of(new Variant(model)))));
+
+    blockModelGenerator.registerSimpleItemModel(block.value(), model);
   }
 
   private void horizontalBlockWithItem(
@@ -95,4 +111,5 @@ public class ModModelProvider extends ModelProvider {
 
     blockModelGenerator.registerSimpleItemModel(block.value(), model);
   }
+
 }

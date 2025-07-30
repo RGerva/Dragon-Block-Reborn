@@ -1,3 +1,24 @@
+/**
+ * Generic class {@code DragonBlockReborn<T>} – A generic structure that works with type parameters.
+ *
+ * <p>Created by: RGerva, July 2025.<br>
+ * GitHub: <a href="https://github.com/RGerva">https://github.com/RGerva</a>
+ *
+ * <p>Copyright © 2025 RGerva. All rights reserved.
+ *
+ * <p>Licensed under the Apache License, Version 2.0 (the "License");<br>
+ * you may not use this file except in compliance with the License.<br>
+ * You may obtain a copy of the License at:
+ *
+ * <p><a href="http://www.apache.org/licenses/LICENSE-2.0">
+ * http://www.apache.org/licenses/LICENSE-2.0 </a>
+ *
+ * <p>Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS,<br>
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br>
+ * See the License for the specific language governing permissions and limitations under the
+ * License.
+ */
 package com.rgerva.dbr;
 
 import com.mojang.logging.LogUtils;

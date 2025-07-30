@@ -1,186 +1,186 @@
-/*     */ package JinRyuu.DragonBC.common.Villages;
-/*     */ 
-/*     */ import JinRyuu.JRMCore.blocks.BlocksJRMC;
-/*     */ import java.util.Random;
-/*     */ import net.minecraft.block.Block;
-/*     */ import net.minecraft.init.Blocks;
-/*     */ import net.minecraft.world.World;
-/*     */ import net.minecraft.world.gen.feature.WorldGenerator;
-/*     */ 
-/*     */ public class builds
-/*     */   extends WorldGenerator
-/*     */ {
-/*     */   public void b(int par2, int par3, int par4, Block par5) {
-/*  14 */     b(par2, par3, par4, par5, 0);
-/*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
-/*     */   protected void b(int par2, int par3, int par4, Block par5, int par6) {
-/*  57 */     func_150516_a(this.w, par2, par3, par4, par5, par6);
-/*     */   }
-/*     */   protected boolean notComplete = false;
-/*     */   public boolean getNotComplete() {
-/*  61 */     return this.notComplete;
-/*  62 */   } protected int x = 0;
-/*  63 */   protected int y = 0;
-/*  64 */   protected int z = 0;
-/*  65 */   protected int r = 0;
-/*  66 */   protected int flp = 0;
-/*     */   protected boolean check = false;
-/*  68 */   public static int SizeX = 0;
-/*  69 */   public static int SizeZ = 0;
-/*  70 */   public static int SizeY = 0;
-/*  71 */   public static int MidPointX = 0;
-/*  72 */   public static int MidPointZ = 0;
-/*  73 */   public void setR(int i) { this.r = i; }
-/*  74 */   public void setFlp(int i) { this.flp = i; } public void setCheck(boolean b) {
-/*  75 */     this.check = b;
-/*     */   }
-/*  77 */   protected Block air = Blocks.field_150350_a;
-/*  78 */   protected Block b56 = (Block)BlocksJRMC.stoneSingleSlab2;
-/*  79 */   protected Block b97 = Blocks.field_150344_f;
-/*  80 */   protected Block c = BlocksJRMC.BlockColoredStone2;
-/*  81 */   protected Block c2 = BlocksJRMC.BlockColoredStone2;
-/*  82 */   protected Block s = (Block)BlocksJRMC.stoneSingleSlab2;
-/*  83 */   protected Block f = BlocksJRMC.BlockFence2;
-/*  84 */   protected Block stairCompactCobblestone = Blocks.field_150446_ar;
-/*  85 */   protected Block stairCompactPlanks = Blocks.field_150476_ad;
-/*  86 */   protected Block stoneSingleSlab = (Block)Blocks.field_150333_U;
-/*  87 */   protected Block woodSingleSlab = (Block)Blocks.field_150376_bx;
-/*  88 */   protected Block fence = Blocks.field_150422_aJ;
-/*  89 */   protected Block planks = Blocks.field_150344_f;
-/*  90 */   protected Block leaves = (Block)Blocks.field_150362_t;
-/*  91 */   protected Block glass = Blocks.field_150359_w;
-/*  92 */   protected Block wood = Blocks.field_150364_r;
-/*  93 */   protected Block stone = Blocks.field_150348_b;
-/*  94 */   protected Block sand = (Block)Blocks.field_150354_m;
-/*  95 */   protected Block sandstone = Blocks.field_150322_A;
-/*  96 */   protected Block grass = (Block)Blocks.field_150349_c;
-/*  97 */   protected Block dirt = Blocks.field_150346_d;
-/*  98 */   protected Block oak_stairs = Blocks.field_150476_ad;
-/*  99 */   protected Block doorWood = Blocks.field_150466_ao;
-/* 100 */   protected Block iron_door = Blocks.field_150454_av;
-/* 101 */   protected Block iron_block = Blocks.field_150339_S;
-/* 102 */   protected Block torchWood = Blocks.field_150350_a;
-/* 103 */   protected Block glowStone = Blocks.field_150426_aN;
-/* 104 */   protected Block bookShelf = Blocks.field_150342_X;
-/* 105 */   protected Block stoneDoubleSlab = Blocks.field_150417_aV;
-/* 106 */   protected Block signWall = Blocks.field_150444_as;
-/* 107 */   protected Block blockSteel = Blocks.field_150339_S;
-/* 108 */   protected Block ladder = Blocks.field_150468_ap;
-/* 109 */   protected Block stoneBrick = Blocks.field_150417_aV;
-/* 110 */   protected Block woodDoubleSlab = Blocks.field_150344_f;
-/* 111 */   protected Block sandStone = Blocks.field_150322_A;
-/* 112 */   protected Block b116 = Blocks.field_150457_bL;
-/* 113 */   protected Block b121 = BlocksJRMC.BlockStairs2;
-/* 114 */   protected Block b113 = Blocks.field_150467_bQ;
-/*     */   
-/*     */   protected World w;
-/*     */   protected boolean respawn = false;
-/*     */   
-/*     */   protected Block[] GetValidSpawnBlocks() {
-/* 120 */     return new Block[] { (Block)Blocks.field_150349_c };
-/*     */   }
-/*     */ 
-/*     */ 
-/*     */   
-/*     */   public boolean LocationIsValidSpawn(World world, int i, int j, int k) {
-/* 126 */     this.w = world;
-/*     */ 
-/*     */ 
-/*     */     
-/* 130 */     int distanceToAir = 0;
-/* 131 */     Block checkID = world.func_147439_a(i, j, k);
-/*     */     
-/* 133 */     while (checkID != Blocks.field_150350_a) {
-/* 134 */       distanceToAir++;
-/* 135 */       checkID = world.func_147439_a(i, j + distanceToAir, k);
-/*     */     } 
-/*     */     
-/* 138 */     if (distanceToAir > 6) {
-/* 139 */       return false;
-/*     */     }
-/* 141 */     j += distanceToAir - 1;
-/*     */     
-/* 143 */     Block blockID = world.func_147439_a(i, j, k);
-/* 144 */     Block blockIDAbove = world.func_147439_a(i, j + 1, k);
-/* 145 */     Block blockIDBelow = world.func_147439_a(i, j - 1, k);
-/* 146 */     for (Block x : GetValidSpawnBlocks()) {
-/* 147 */       if (blockIDAbove != Blocks.field_150350_a) {
-/* 148 */         return false;
-/*     */       }
-/* 150 */       if (blockID == x)
-/* 151 */         return true; 
-/* 152 */       if (blockID == Blocks.field_150433_aE && blockIDBelow == x) {
-/* 153 */         return true;
-/*     */       }
-/*     */     } 
-/* 156 */     return false;
-/*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
-/*     */   public boolean func_76484_a(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
-/* 164 */     return false;
-/*     */   }
-/*     */   
-/*     */   public void setWorld(World world) {
-/* 168 */     this.w = world;
-/*     */   }
-/*     */ 
-/*     */ 
-/*     */   
-/*     */   public boolean generateBuilding(World world, Random random, int i, int j, int k) {
-/* 174 */     return false;
-/*     */   }
-/*     */   
-/*     */   public void setRespawn(boolean b) {
-/* 178 */     this.respawn = b;
-/*     */   }
-/*     */ }
+package JinRyuu.DragonBC.common.Villages;
 
+import JinRyuu.JRMCore.blocks.BlocksJRMC;
+import java.util.Random;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\DragonBlockC-v1.4.85.jar!\JinRyuu\DragonBC\common\Villages\builds.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class builds extends WorldGenerator {
+   protected boolean notComplete = false;
+   protected int x = 0;
+   protected int y = 0;
+   protected int z = 0;
+   protected int r = 0;
+   protected int flp = 0;
+   protected boolean check = false;
+   public static int SizeX = 0;
+   public static int SizeZ = 0;
+   public static int SizeY = 0;
+   public static int MidPointX = 0;
+   public static int MidPointZ = 0;
+   protected Block air;
+   protected Block b56;
+   protected Block b97;
+   protected Block c;
+   protected Block c2;
+   protected Block s;
+   protected Block f;
+   protected Block stairCompactCobblestone;
+   protected Block stairCompactPlanks;
+   protected Block stoneSingleSlab;
+   protected Block woodSingleSlab;
+   protected Block fence;
+   protected Block planks;
+   protected Block leaves;
+   protected Block glass;
+   protected Block wood;
+   protected Block stone;
+   protected Block sand;
+   protected Block sandstone;
+   protected Block grass;
+   protected Block dirt;
+   protected Block oak_stairs;
+   protected Block doorWood;
+   protected Block iron_door;
+   protected Block iron_block;
+   protected Block torchWood;
+   protected Block glowStone;
+   protected Block bookShelf;
+   protected Block stoneDoubleSlab;
+   protected Block signWall;
+   protected Block blockSteel;
+   protected Block ladder;
+   protected Block stoneBrick;
+   protected Block woodDoubleSlab;
+   protected Block sandStone;
+   protected Block b116;
+   protected Block b121;
+   protected Block b113;
+   protected World w;
+   protected boolean respawn;
+
+   public void b(int par2, int par3, int par4, Block par5) {
+      this.b(par2, par3, par4, par5, 0);
+   }
+
+   protected void b(int par2, int par3, int par4, Block par5, int par6) {
+      this.func_150516_a(this.w, par2, par3, par4, par5, par6);
+   }
+
+   public boolean getNotComplete() {
+      return this.notComplete;
+   }
+
+   public void setR(int i) {
+      this.r = i;
+   }
+
+   public void setFlp(int i) {
+      this.flp = i;
+   }
+
+   public void setCheck(boolean b) {
+      this.check = b;
+   }
+
+   protected Block[] GetValidSpawnBlocks() {
+      return new Block[]{Blocks.field_150349_c};
+   }
+
+   public boolean LocationIsValidSpawn(World world, int i, int j, int k) {
+      this.w = world;
+      int distanceToAir = 0;
+
+      for(Block checkID = world.func_147439_a(i, j, k); checkID != Blocks.field_150350_a; checkID = world.func_147439_a(i, j + distanceToAir, k)) {
+         ++distanceToAir;
+      }
+
+      if (distanceToAir > 6) {
+         return false;
+      } else {
+         j += distanceToAir - 1;
+         Block blockID = world.func_147439_a(i, j, k);
+         Block blockIDAbove = world.func_147439_a(i, j + 1, k);
+         Block blockIDBelow = world.func_147439_a(i, j - 1, k);
+         Block[] var10 = this.GetValidSpawnBlocks();
+         int var11 = var10.length;
+
+         for(int var12 = 0; var12 < var11; ++var12) {
+            Block x = var10[var12];
+            if (blockIDAbove != Blocks.field_150350_a) {
+               return false;
+            }
+
+            if (blockID == x) {
+               return true;
+            }
+
+            if (blockID == Blocks.field_150433_aE && blockIDBelow == x) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public builds() {
+      this.air = Blocks.field_150350_a;
+      this.b56 = BlocksJRMC.stoneSingleSlab2;
+      this.b97 = Blocks.field_150344_f;
+      this.c = BlocksJRMC.BlockColoredStone2;
+      this.c2 = BlocksJRMC.BlockColoredStone2;
+      this.s = BlocksJRMC.stoneSingleSlab2;
+      this.f = BlocksJRMC.BlockFence2;
+      this.stairCompactCobblestone = Blocks.field_150446_ar;
+      this.stairCompactPlanks = Blocks.field_150476_ad;
+      this.stoneSingleSlab = Blocks.field_150333_U;
+      this.woodSingleSlab = Blocks.field_150376_bx;
+      this.fence = Blocks.field_150422_aJ;
+      this.planks = Blocks.field_150344_f;
+      this.leaves = Blocks.field_150362_t;
+      this.glass = Blocks.field_150359_w;
+      this.wood = Blocks.field_150364_r;
+      this.stone = Blocks.field_150348_b;
+      this.sand = Blocks.field_150354_m;
+      this.sandstone = Blocks.field_150322_A;
+      this.grass = Blocks.field_150349_c;
+      this.dirt = Blocks.field_150346_d;
+      this.oak_stairs = Blocks.field_150476_ad;
+      this.doorWood = Blocks.field_150466_ao;
+      this.iron_door = Blocks.field_150454_av;
+      this.iron_block = Blocks.field_150339_S;
+      this.torchWood = Blocks.field_150350_a;
+      this.glowStone = Blocks.field_150426_aN;
+      this.bookShelf = Blocks.field_150342_X;
+      this.stoneDoubleSlab = Blocks.field_150417_aV;
+      this.signWall = Blocks.field_150444_as;
+      this.blockSteel = Blocks.field_150339_S;
+      this.ladder = Blocks.field_150468_ap;
+      this.stoneBrick = Blocks.field_150417_aV;
+      this.woodDoubleSlab = Blocks.field_150344_f;
+      this.sandStone = Blocks.field_150322_A;
+      this.b116 = Blocks.field_150457_bL;
+      this.b121 = BlocksJRMC.BlockStairs2;
+      this.b113 = Blocks.field_150467_bQ;
+      this.respawn = false;
+   }
+
+   public boolean func_76484_a(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
+      return false;
+   }
+
+   public void setWorld(World world) {
+      this.w = world;
+   }
+
+   public boolean generateBuilding(World world, Random random, int i, int j, int k) {
+      return false;
+   }
+
+   public void setRespawn(boolean b) {
+      this.respawn = b;
+   }
+}

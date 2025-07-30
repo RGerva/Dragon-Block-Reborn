@@ -17,6 +17,8 @@ import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.renderer.DragonBallEntityRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -36,8 +38,8 @@ public class ModBusEvents {
     DragonBlockReborn.LOGGER.info(
         "MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
-    ItemBlockRenderTypes.setRenderLayer(
-        ModBlocks.DRAGON_BALL_BLOCK.get(), ChunkSectionLayer.CUTOUT);
+    BlockEntityRenderers.register(ModBlockEntities.DRAGON_BALL_ENTITY.get(),
+            DragonBallEntityRenderer::new);
   }
 
   @SubscribeEvent
@@ -46,9 +48,4 @@ public class ModBusEvents {
   @SubscribeEvent
   public static void registerParticleFactories(RegisterParticleProvidersEvent event) {}
 
-  @SubscribeEvent
-  public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-    event.registerBlockEntityRenderer(
-        ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
-  }
 }

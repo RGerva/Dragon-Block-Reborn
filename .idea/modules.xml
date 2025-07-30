@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.rgerva.dbr.Dragon-Block-Reborn.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.rgerva.dbr.Dragon-Block-Reborn.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Dragon-Block-Reborn.main.iml" />
     </modules>
   </component>
 </project>

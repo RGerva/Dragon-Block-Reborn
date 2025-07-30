@@ -1,52 +1,40 @@
-/*    */ package JinRyuu.JRMCore.p.DBC;
-/*    */ 
-/*    */ import JinRyuu.DragonBC.common.DBC;
-/*    */ import JinRyuu.DragonBC.common.DBCClient;
-/*    */ import JinRyuu.JRMCore.p.BAmh;
-/*    */ import cpw.mods.fml.common.network.simpleimpl.IMessage;
-/*    */ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-/*    */ import io.netty.buffer.ByteBuf;
-/*    */ import net.minecraft.entity.player.EntityPlayer;
-/*    */ 
-/*    */ public class DBCPascendsound
-/*    */   implements IMessage {
-/*    */   int i;
-/*    */   
-/*    */   public DBCPascendsound(int i) {
-/* 16 */     this.i = i;
-/*    */   }
-/*    */   public DBCPascendsound() {}
-/*    */   
-/*    */   public void toBytes(ByteBuf buffer) {
-/* 21 */     buffer.writeInt(this.i);
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public void fromBytes(ByteBuf buffer) {
-/* 26 */     this.i = buffer.readInt();
-/*    */   }
-/*    */   
-/*    */   public static class Handler
-/*    */     extends BAmh<DBCPascendsound> {
-/*    */     public IMessage handleClientMessage(EntityPlayer p, DBCPascendsound m, MessageContext ctx) {
-/* 32 */       DBCClient.phc.handleDBCascendsound(m.i, p);
-/*    */ 
-/*    */       
-/* 35 */       return null;
-/*    */     }
-/*    */ 
-/*    */     
-/*    */     public IMessage handleServerMessage(EntityPlayer p, DBCPascendsound m, MessageContext ctx) {
-/* 40 */       DBC.phs.handleDBCascendsound(m.i, p);
-/*    */ 
-/*    */       
-/* 43 */       return null;
-/*    */     }
-/*    */   }
-/*    */ }
+package JinRyuu.JRMCore.p.DBC;
 
+import JinRyuu.DragonBC.common.DBC;
+import JinRyuu.DragonBC.common.DBCClient;
+import JinRyuu.JRMCore.p.BAmh;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\.\JRMCore-v1.3.51.jar!\JinRyuu\JRMCore\p\DBC\DBCPascendsound.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class DBCPascendsound implements IMessage {
+   int i;
+
+   public DBCPascendsound() {
+   }
+
+   public DBCPascendsound(int i) {
+      this.i = i;
+   }
+
+   public void toBytes(ByteBuf buffer) {
+      buffer.writeInt(this.i);
+   }
+
+   public void fromBytes(ByteBuf buffer) {
+      this.i = buffer.readInt();
+   }
+
+   public static class Handler extends BAmh<DBCPascendsound> {
+      public IMessage handleClientMessage(EntityPlayer p, DBCPascendsound m, MessageContext ctx) {
+         DBCClient.phc.handleDBCascendsound(m.i, p);
+         return null;
+      }
+
+      public IMessage handleServerMessage(EntityPlayer p, DBCPascendsound m, MessageContext ctx) {
+         DBC.phs.handleDBCascendsound(m.i, p);
+         return null;
+      }
+   }
+}

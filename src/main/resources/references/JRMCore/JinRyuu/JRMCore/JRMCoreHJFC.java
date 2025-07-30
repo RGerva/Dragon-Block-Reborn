@@ -1,76 +1,78 @@
-/*    */ package JinRyuu.JRMCore;
-/*    */ import JinRyuu.FamilyC.EntityNPC;
-/*    */ import JinRyuu.FamilyC.FamilyCConfig;
-/*    */ import JinRyuu.FamilyC.mod_FamilyC;
-/*    */ import JinRyuu.JRMCore.entity.ModelBipedBody;
-/*    */ import net.minecraft.entity.Entity;
-/*    */ import net.minecraft.entity.EntityLivingBase;
-/*    */ import net.minecraft.entity.player.EntityPlayer;
-/*    */ 
-/*    */ public class JRMCoreHJFC {
-/*    */   public static int getConfigcpt() {
-/* 12 */     return FamilyCConfig.cpt;
-/*    */   }
-/*    */   public static void setConfigpt(int value) {
-/* 15 */     FamilyCConfig.pt = value;
-/*    */   }
-/*    */   public static void openGui(int id, EntityPlayer pl) {
-/* 18 */     pl.openGui(mod_FamilyC.instance, id, pl.field_70170_p, (int)pl.field_70165_t, (int)pl.field_70163_u, (int)pl.field_70161_v);
-/*    */   }
-/*    */   
-/*    */   public static boolean isChildNPC(Entity entity) {
-/* 22 */     return entity instanceof EntityNPC;
-/*    */   }
-/*    */   public static String childDNS(Entity entity) {
-/* 25 */     if (entity instanceof EntityNPC) {
-/* 26 */       EntityNPC e = (EntityNPC)entity;
-/* 27 */       return e.getDNS();
-/*    */     } 
-/* 29 */     return "";
-/*    */   }
-/*    */   public static String childDNSH(Entity entity) {
-/* 32 */     if (entity instanceof EntityNPC) {
-/* 33 */       EntityNPC e = (EntityNPC)entity;
-/* 34 */       return e.getDNSH();
-/*    */     } 
-/* 36 */     return "";
-/*    */   }
-/*    */   public static void childDNSset(Entity entity, String w) {
-/* 39 */     if (entity instanceof EntityNPC) {
-/* 40 */       EntityNPC e = (EntityNPC)entity;
-/* 41 */       e.setDNS(w);
-/* 42 */       FamilyCH.jfcd(23, entity.func_145782_y() + ":dns:" + w);
-/*    */     } 
-/*    */   }
-/*    */   public static void childDNSHset(Entity entity, String w) {
-/* 46 */     if (entity instanceof EntityNPC) {
-/* 47 */       EntityNPC e = (EntityNPC)entity;
-/* 48 */       e.setDNSH(w);
-/* 49 */       FamilyCH.jfcd(23, entity.func_145782_y() + ":dnsH:" + w);
-/*    */     } 
-/*    */   }
-/*    */   public static void modelHelper(EntityLivingBase entityLiving, ModelBipedBody mdl) {
-/* 53 */     if (entityLiving instanceof EntityNPC) {
-/* 54 */       EntityNPC e = (EntityNPC)entityLiving;
-/* 55 */       String dns = e.getDNS();
-/* 56 */       mdl.b = JRMCoreH.dnsBreast(dns);
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */       
-/* 63 */       if (dns.length() > 5) {
-/* 64 */         ModelBipedBody.g = JRMCoreH.dnsGender(dns) + 1;
-/*    */       }
-/* 66 */       ModelBipedBody.f = e.getNPCgrw();
-/* 67 */       mdl.b = JRMCoreH.dnsBreast(dns);
-/*    */     } 
-/*    */   }
-/*    */ }
+package JinRyuu.JRMCore;
 
+import JinRyuu.FamilyC.EntityNPC;
+import JinRyuu.FamilyC.FamilyCConfig;
+import JinRyuu.FamilyC.mod_FamilyC;
+import JinRyuu.JRMCore.entity.ModelBipedBody;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 
-/* Location:              D:\Projetos\Dragon-Block-Reborn\src\main\resources\references\.\JRMCore-v1.3.51.jar!\JinRyuu\JRMCore\JRMCoreHJFC.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       1.1.3
- */
+public class JRMCoreHJFC {
+   public static int getConfigcpt() {
+      return FamilyCConfig.cpt;
+   }
+
+   public static void setConfigpt(int value) {
+      FamilyCConfig.pt = value;
+   }
+
+   public static void openGui(int id, EntityPlayer pl) {
+      pl.openGui(mod_FamilyC.instance, id, pl.field_70170_p, (int)pl.field_70165_t, (int)pl.field_70163_u, (int)pl.field_70161_v);
+   }
+
+   public static boolean isChildNPC(Entity entity) {
+      return entity instanceof EntityNPC;
+   }
+
+   public static String childDNS(Entity entity) {
+      if (entity instanceof EntityNPC) {
+         EntityNPC e = (EntityNPC)entity;
+         return e.getDNS();
+      } else {
+         return "";
+      }
+   }
+
+   public static String childDNSH(Entity entity) {
+      if (entity instanceof EntityNPC) {
+         EntityNPC e = (EntityNPC)entity;
+         return e.getDNSH();
+      } else {
+         return "";
+      }
+   }
+
+   public static void childDNSset(Entity entity, String w) {
+      if (entity instanceof EntityNPC) {
+         EntityNPC e = (EntityNPC)entity;
+         e.setDNS(w);
+         FamilyCH.jfcd(23, entity.func_145782_y() + ":dns:" + w);
+      }
+
+   }
+
+   public static void childDNSHset(Entity entity, String w) {
+      if (entity instanceof EntityNPC) {
+         EntityNPC e = (EntityNPC)entity;
+         e.setDNSH(w);
+         FamilyCH.jfcd(23, entity.func_145782_y() + ":dnsH:" + w);
+      }
+
+   }
+
+   public static void modelHelper(EntityLivingBase entityLiving, ModelBipedBody mdl) {
+      if (entityLiving instanceof EntityNPC) {
+         EntityNPC e = (EntityNPC)entityLiving;
+         String dns = e.getDNS();
+         mdl.b = JRMCoreH.dnsBreast(dns);
+         if (dns.length() > 5) {
+            ModelBipedBody.g = JRMCoreH.dnsGender(dns) + 1;
+         }
+
+         ModelBipedBody.f = e.getNPCgrw();
+         mdl.b = JRMCoreH.dnsBreast(dns);
+      }
+
+   }
+}
