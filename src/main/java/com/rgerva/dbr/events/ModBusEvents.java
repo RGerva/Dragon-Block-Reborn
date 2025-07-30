@@ -36,21 +36,19 @@ public class ModBusEvents {
     DragonBlockReborn.LOGGER.info(
         "MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
-    ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRAGON_BALL_BLOCK.get(), ChunkSectionLayer.CUTOUT);
+    ItemBlockRenderTypes.setRenderLayer(
+        ModBlocks.DRAGON_BALL_BLOCK.get(), ChunkSectionLayer.CUTOUT);
   }
 
   @SubscribeEvent
-  public static void registerScreens(RegisterMenuScreensEvent event) {
-
-  }
+  public static void registerScreens(RegisterMenuScreensEvent event) {}
 
   @SubscribeEvent
-  public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-
-  }
+  public static void registerParticleFactories(RegisterParticleProvidersEvent event) {}
 
   @SubscribeEvent
-  public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
-    event.registerBlockEntityRenderer(ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
+  public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+    event.registerBlockEntityRenderer(
+        ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
   }
 }

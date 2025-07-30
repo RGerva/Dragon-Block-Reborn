@@ -12,9 +12,8 @@
 package com.rgerva.dbr.datagen;
 
 import com.rgerva.dbr.DragonBlockReborn;
-import java.util.function.BiConsumer;
-
 import com.rgerva.dbr.block.ModBlocks;
+import java.util.function.BiConsumer;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;

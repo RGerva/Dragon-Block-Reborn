@@ -12,9 +12,8 @@
 package com.rgerva.dbr.creative;
 
 import com.rgerva.dbr.DragonBlockReborn;
-import java.util.function.Supplier;
-
 import com.rgerva.dbr.block.ModBlocks;
+import java.util.function.Supplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -34,9 +33,10 @@ public class ModCreativeTab {
               CreativeModeTab.builder()
                   .icon(() -> new ItemStack(ModBlocks.DRAGON_BALL_BLOCK.get()))
                   .title(Component.translatable("itemGroup.dragon_block_reborn"))
-                  .displayItems(((itemDisplayParameters, output) -> {
-                    output.accept(ModBlocks.DRAGON_BALL_BLOCK.get());
-                  }))
+                  .displayItems(
+                      ((itemDisplayParameters, output) -> {
+                        output.accept(ModBlocks.DRAGON_BALL_BLOCK.get());
+                      }))
                   .build());
 
   public static void addCreative(BuildCreativeModeTabContentsEvent event) {}

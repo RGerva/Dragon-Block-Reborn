@@ -14,19 +14,19 @@ package com.rgerva.dbr.block.entity;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.custom.DragonBallEntity;
+import java.util.function.Supplier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.Locale;
-import java.util.function.Supplier;
-
 public class ModBlockEntities {
   public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
       DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, DragonBlockReborn.MOD_ID);
 
-  public static final Supplier<BlockEntityType<DragonBallEntity>> DRAGON_BALL_ENTITY = BLOCK_ENTITIES.register("dragon_ball",
+  public static final Supplier<BlockEntityType<DragonBallEntity>> DRAGON_BALL_ENTITY =
+      BLOCK_ENTITIES.register(
+          "dragon_ball",
           () -> new BlockEntityType<>(DragonBallEntity::new, ModBlocks.DRAGON_BALL_BLOCK.get()));
 
   public static void register(IEventBus eventBus) {
