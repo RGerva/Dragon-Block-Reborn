@@ -1,5 +1,9 @@
 {
   "itemGroup.dragon_block_reborn": "Dragon Block Reborn",
   "block.dragon_block_reborn.dragon_ball": "Dragon Ball",
-  "item.dragon_block_reborn.example_item": "Example Item"
+  "item.dragon_block_reborn.example_item": "Example Item",
+  "sound.dragon_block_reborn.dragon_fly": "Dragon Fly",
+  "sound.dragon_block_reborn.dragon_glow": "Dragon Ball Glow",
+  "sound.dragon_block_reborn.dragon_grant": "Dragon Grant",
+  "sound.dragon_block_reborn.dragon_makeone": "Dragon Appear"
 }

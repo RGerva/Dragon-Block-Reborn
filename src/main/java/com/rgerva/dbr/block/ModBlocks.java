@@ -37,13 +37,7 @@ public class ModBlocks {
           "dragon_ball",
           (properties ->
               new DragonBallBlock(BlockBehaviour.Properties.of().setId(id("dragon_ball")))),
-          new Item.Properties().setId(ModItems.id("dragon_ball")).stacksTo(7));
-
-  public static final DeferredBlock<Block> DRAGON_BALL_STONE =
-      registerBlock(
-          "dragon_ball_stone",
-          (properties ->
-              new DragonBallBlock(BlockBehaviour.Properties.of().setId(id("dragon_ball_stone")))));
+              new Item.Properties().setId(ModItems.id("dragon_ball")).stacksTo(7));
 
   protected static ResourceKey<Block> id(@NotNull String path) {
     return ResourceKey.create(

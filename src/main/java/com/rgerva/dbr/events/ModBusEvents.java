@@ -12,14 +12,11 @@
 package com.rgerva.dbr.events;
 
 import com.rgerva.dbr.DragonBlockReborn;
-import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.renderer.DragonBallEntityRenderer;
+import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -38,8 +35,19 @@ public class ModBusEvents {
     DragonBlockReborn.LOGGER.info(
         "MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
-    BlockEntityRenderers.register(ModBlockEntities.DRAGON_BALL_ENTITY.get(),
+    BlockEntityRenderers.register(
+        ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
+  }
+
+  @SubscribeEvent
+  public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+    event.registerBlockEntityRenderer(ModBlockEntities.DRAGON_BALL_ENTITY.get(),
             DragonBallEntityRenderer::new);
+  }
+
+  @SubscribeEvent
+  public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+    event.registerLayerDefinition(DragonBallModel.LAYER_LOCATION, DragonBallModel::createBodyLayer);
   }
 
   @SubscribeEvent
@@ -47,5 +55,4 @@ public class ModBusEvents {
 
   @SubscribeEvent
   public static void registerParticleFactories(RegisterParticleProvidersEvent event) {}
-
 }

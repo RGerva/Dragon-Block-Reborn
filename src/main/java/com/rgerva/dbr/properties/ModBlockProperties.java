@@ -11,4 +11,8 @@
  */
 package com.rgerva.dbr.properties;
 
-public class ModBlockProperties {}
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+
+public class ModBlockProperties {
+    public static final BooleanProperty DRAGON_BALL_IS_STONE = BooleanProperty.create("is_stone");
+}

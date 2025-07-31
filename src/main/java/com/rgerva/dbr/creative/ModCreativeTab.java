@@ -36,7 +36,6 @@ public class ModCreativeTab {
                   .displayItems(
                       ((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.DRAGON_BALL_BLOCK.get());
-                        output.accept(ModBlocks.DRAGON_BALL_STONE.get());
                       }))
                   .build());
 

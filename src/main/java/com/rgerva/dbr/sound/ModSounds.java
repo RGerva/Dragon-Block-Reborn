@@ -26,6 +26,11 @@ public class ModSounds {
   public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
       DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, DragonBlockReborn.MOD_ID);
 
+  public static final Supplier<SoundEvent> DRAGON_GLOW = registerSoundEvent("dragon_glow");
+  public static final Supplier<SoundEvent> DRAGON_FLY = registerSoundEvent("dragon_fly");
+  public static final Supplier<SoundEvent> DRAGON_GRANT = registerSoundEvent("dragon_grant");
+  public static final Supplier<SoundEvent> DRAGON_MAKEONE = registerSoundEvent("dragon_makeone");
+
   private static ResourceKey<JukeboxSong> createSong(String name) {
     return ResourceKey.create(
         Registries.JUKEBOX_SONG,

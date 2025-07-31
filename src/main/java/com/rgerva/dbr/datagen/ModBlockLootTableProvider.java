@@ -36,7 +36,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
   @Override
   protected void generate() {
     dropSelf(ModBlocks.DRAGON_BALL_BLOCK.get());
-    dropSelf(ModBlocks.DRAGON_BALL_STONE.get());
   }
 
   protected void LootTableOre(Block pInput, Item pOutput, float minDrops, float maxDrops) {
