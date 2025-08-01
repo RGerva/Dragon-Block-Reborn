@@ -16,6 +16,7 @@ import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.custom.DragonBallEntity;
+import com.rgerva.dbr.block.entity.data.DragonBallData;
 import com.rgerva.dbr.properties.ModBlockProperties;
 import com.rgerva.dbr.sound.ModSounds;
 import java.util.List;
@@ -25,9 +26,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -89,58 +94,48 @@ public class DragonBallBlock extends BaseEntityBlock {
 
   @Override
   protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-    level.setBlock(pos, ModBlocks.DRAGON_BALL_BLOCK.get().defaultBlockState(), 3);
+    if (state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE)) {
+      level.setBlock(pos, state.setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, false), 3);
+    }
+  }
+
+  @Override
+  public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
+      DragonBallData data = DragonBallData.get(serverLevel);
+      if (data.canAddMore()) {
+        data.addDragonBall(pos);
+      }else {
+        level.removeBlock(pos, false);
+      }
+    }
   }
 
   @Override
   protected InteractionResult useWithoutItem(
       BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+
     if (!player.isCrouching()) {
       BlockEntity entity = level.getBlockEntity(pos);
-      if (entity instanceof DragonBallEntity) {
+      if (entity instanceof DragonBallEntity dragonBallEntity) {
         if (!level.isClientSide && checkStructure(level, pos, state)) {
-          spawnDragon(level, pos, player);
+          spawnDragon(level, pos, player, dragonBallEntity);
+          return InteractionResult.SUCCESS;
         }
-        return InteractionResult.SUCCESS;
       }
     }
     return InteractionResult.PASS;
   }
 
-  private void spawnDragon(Level level, BlockPos pos, Player player) {
-    //      EntityDragon dragon = new EntityDragon(level);
-    //      dragon.moveTo(pos.getX(), pos.getY(), pos.getZ(), player.getYRot(), 0.0F);
-    //      level.addFreshEntity(dragon);
+  private void spawnDragon(Level level, BlockPos pos, Player player, DragonBallEntity entity) {
+//    EntityDragon dragon = new EntityDragon(level);
+//    dragon.moveTo(pos.getX(), pos.getY(), pos.getZ(), player.getYRot(), 0.0F);
+//    level.addFreshEntity(dragon);
     DragonBlockReborn.LOGGER.info("SPAWN DRAGON");
     level.playSound(null, pos, ModSounds.DRAGON_MAKEONE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-    //    destroyStructure(level, pos);
+//    destroyStructure(level, pos);
 
-    turnStructureToStone(level, pos);
-  }
-
-  private void turnStructureToStone(Level level, BlockPos centerPos) {
-    List<BlockPos> structure =
-        List.of(
-            centerPos,
-            centerPos.east(),
-            centerPos.west(),
-            centerPos.east().north(),
-            centerPos.east().south(),
-            centerPos.west().north(),
-            centerPos.west().south(),
-            centerPos.north(),
-            centerPos.south(),
-            centerPos.north().east(),
-            centerPos.north().west(),
-            centerPos.south().east(),
-            centerPos.south().west());
-
-    for (BlockPos pos : structure) {
-      BlockState state = level.getBlockState(pos);
-      if (state.getBlock() == ModBlocks.DRAGON_BALL_BLOCK.get()) {
-        level.setBlock(pos, state.setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, true), 3);
-      }
-    }
+    entity.triggerAnimation();
   }
 
   private boolean checkStructure(Level level, BlockPos pos, BlockState state) {
@@ -192,6 +187,11 @@ public class DragonBallBlock extends BaseEntityBlock {
       level.setBlockAndUpdate(up_left, Blocks.AIR.defaultBlockState());
       level.setBlockAndUpdate(down_right, Blocks.AIR.defaultBlockState());
       level.setBlockAndUpdate(down_left, Blocks.AIR.defaultBlockState());
+    }
+
+    if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
+      DragonBallData data = DragonBallData.get(serverLevel);
+      data.removeDragonBall(pos);
     }
   }
 }
