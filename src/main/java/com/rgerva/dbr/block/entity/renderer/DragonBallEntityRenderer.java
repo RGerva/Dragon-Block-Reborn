@@ -19,44 +19,45 @@ import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.custom.DragonBallEntity;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import com.rgerva.dbr.properties.ModBlockProperties;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.Model;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.util.Mth;
 
 public class DragonBallEntityRenderer implements BlockEntityRenderer<DragonBallEntity> {
 
   private final DragonBallModel model;
 
   private static final ResourceLocation TEXTURE =
-          ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID,
-                  "textures/entity/dragon_block/dragon_ball.png");
+      ResourceLocation.fromNamespaceAndPath(
+          DragonBlockReborn.MOD_ID, "textures/entity/dragon_block/dragon_ball.png");
 
   private static final ResourceLocation STONE_TEXTURE =
-          ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID,
-                  "textures/entity/dragon_block/dragon_ball_stone.png");
+      ResourceLocation.fromNamespaceAndPath(
+          DragonBlockReborn.MOD_ID, "textures/entity/dragon_block/dragon_ball_stone.png");
 
   public DragonBallEntityRenderer(BlockEntityRendererProvider.Context context) {
     this.model = new DragonBallModel(context.bakeLayer(DragonBallModel.LAYER_LOCATION));
   }
 
   @Override
-  public void render(DragonBallEntity blockEntity, float v, PoseStack poseStack,
-                     MultiBufferSource bufferSource, int packedLight, int packedOverlay, Vec3 vec3) {
+  public void render(
+      DragonBallEntity blockEntity,
+      float v,
+      PoseStack poseStack,
+      MultiBufferSource bufferSource,
+      int packedLight,
+      int packedOverlay,
+      Vec3 vec3) {
 
     BlockState state = blockEntity.getBlockState();
-    boolean isStone = state.hasProperty(ModBlockProperties.DRAGON_BALL_IS_STONE) &&
-            state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE);
+    boolean isStone =
+        state.hasProperty(ModBlockProperties.DRAGON_BALL_IS_STONE)
+            && state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE);
 
     ResourceLocation texture = isStone ? STONE_TEXTURE : TEXTURE;
     Block block = state.getBlock();
@@ -76,6 +77,5 @@ public class DragonBallEntityRenderer implements BlockEntityRenderer<DragonBallE
     model.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, 1F, 1F, 1F, 1F);
 
     poseStack.popPose();
-
   }
 }

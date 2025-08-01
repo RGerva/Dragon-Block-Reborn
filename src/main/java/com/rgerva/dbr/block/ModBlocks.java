@@ -37,7 +37,7 @@ public class ModBlocks {
           "dragon_ball",
           (properties ->
               new DragonBallBlock(BlockBehaviour.Properties.of().setId(id("dragon_ball")))),
-              new Item.Properties().setId(ModItems.id("dragon_ball")).stacksTo(7));
+          new Item.Properties().setId(ModItems.id("dragon_ball")).stacksTo(7));
 
   protected static ResourceKey<Block> id(@NotNull String path) {
     return ResourceKey.create(

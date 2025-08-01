@@ -14,8 +14,6 @@ package com.rgerva.dbr.block.entity;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.custom.DragonBallEntity;
-
-import java.util.Set;
 import java.util.function.Supplier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -30,7 +28,6 @@ public class ModBlockEntities {
       BLOCK_ENTITIES.register(
           "dragon_ball",
           () -> new BlockEntityType<>(DragonBallEntity::new, ModBlocks.DRAGON_BALL_BLOCK.get()));
-
 
   public static void register(IEventBus eventBus) {
     BLOCK_ENTITIES.register(eventBus);

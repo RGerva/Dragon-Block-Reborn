@@ -41,8 +41,8 @@ public class ModBusEvents {
 
   @SubscribeEvent
   public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-    event.registerBlockEntityRenderer(ModBlockEntities.DRAGON_BALL_ENTITY.get(),
-            DragonBallEntityRenderer::new);
+    event.registerBlockEntityRenderer(
+        ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
   }
 
   @SubscribeEvent

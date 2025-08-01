@@ -14,8 +14,7 @@ public class ModModelTemplates {
   private static ModelTemplate block(String parent, TextureSlot... requiredTextureSlots) {
     return new ModelTemplate(
         Optional.of(
-            ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID,
-                    "block/" + parent)),
+            ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, "block/" + parent)),
         Optional.empty(),
         requiredTextureSlots);
   }

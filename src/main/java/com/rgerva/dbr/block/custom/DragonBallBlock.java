@@ -18,25 +18,16 @@ import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.custom.DragonBallEntity;
 import com.rgerva.dbr.properties.ModBlockProperties;
 import com.rgerva.dbr.sound.ModSounds;
+import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -46,17 +37,11 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-import java.util.stream.Stream;
 
 public class DragonBallBlock extends BaseEntityBlock {
   private static final VoxelShape SHAPE = Block.box(5, 0, 5, 11, 6, 11);
@@ -65,7 +50,8 @@ public class DragonBallBlock extends BaseEntityBlock {
 
   public DragonBallBlock(Properties properties) {
     super(properties.mapColor(MapColor.COLOR_CYAN).strength(0.1F).noCollission());
-    this.registerDefaultState(this.defaultBlockState().setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, false));
+    this.registerDefaultState(
+        this.defaultBlockState().setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, false));
   }
 
   @Override
@@ -74,9 +60,10 @@ public class DragonBallBlock extends BaseEntityBlock {
   }
 
   @Override
-  public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-    return createTickerHelper(blockEntityType, ModBlockEntities.DRAGON_BALL_ENTITY.get(),
-            DragonBallEntity::tick);
+  public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(
+      Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+    return createTickerHelper(
+        blockEntityType, ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntity::tick);
   }
 
   @Override
@@ -105,9 +92,9 @@ public class DragonBallBlock extends BaseEntityBlock {
     level.setBlock(pos, ModBlocks.DRAGON_BALL_BLOCK.get().defaultBlockState(), 3);
   }
 
-
   @Override
-  protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+  protected InteractionResult useWithoutItem(
+      BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
     if (!player.isCrouching()) {
       BlockEntity entity = level.getBlockEntity(pos);
       if (entity instanceof DragonBallEntity) {
@@ -120,28 +107,33 @@ public class DragonBallBlock extends BaseEntityBlock {
     return InteractionResult.PASS;
   }
 
-  private void spawnDragon(Level level, BlockPos pos, Player player){
-//      EntityDragon dragon = new EntityDragon(level);
-//      dragon.moveTo(pos.getX(), pos.getY(), pos.getZ(), player.getYRot(), 0.0F);
-//      level.addFreshEntity(dragon);
+  private void spawnDragon(Level level, BlockPos pos, Player player) {
+    //      EntityDragon dragon = new EntityDragon(level);
+    //      dragon.moveTo(pos.getX(), pos.getY(), pos.getZ(), player.getYRot(), 0.0F);
+    //      level.addFreshEntity(dragon);
     DragonBlockReborn.LOGGER.info("SPAWN DRAGON");
     level.playSound(null, pos, ModSounds.DRAGON_MAKEONE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-//    destroyStructure(level, pos);
+    //    destroyStructure(level, pos);
 
     turnStructureToStone(level, pos);
-
   }
 
   private void turnStructureToStone(Level level, BlockPos centerPos) {
-    List<BlockPos> structure = List.of(
+    List<BlockPos> structure =
+        List.of(
             centerPos,
-            centerPos.east(), centerPos.west(),
-            centerPos.east().north(), centerPos.east().south(),
-            centerPos.west().north(), centerPos.west().south(),
-            centerPos.north(), centerPos.south(),
-            centerPos.north().east(), centerPos.north().west(),
-            centerPos.south().east(), centerPos.south().west()
-    );
+            centerPos.east(),
+            centerPos.west(),
+            centerPos.east().north(),
+            centerPos.east().south(),
+            centerPos.west().north(),
+            centerPos.west().south(),
+            centerPos.north(),
+            centerPos.south(),
+            centerPos.north().east(),
+            centerPos.north().west(),
+            centerPos.south().east(),
+            centerPos.south().west());
 
     for (BlockPos pos : structure) {
       BlockState state = level.getBlockState(pos);
@@ -150,7 +142,6 @@ public class DragonBallBlock extends BaseEntityBlock {
       }
     }
   }
-
 
   private boolean checkStructure(Level level, BlockPos pos, BlockState state) {
     BlockPos left_z = pos.relative(Direction.Axis.Z, -1);
@@ -164,11 +155,18 @@ public class DragonBallBlock extends BaseEntityBlock {
     BlockPos down_right = pos.west().south();
     BlockPos down_left = pos.east().south();
 
-    return (level.getBlockState(left_z).getBlock() == state.getBlock() && level.getBlockState(right_z).getBlock() == state.getBlock() && level.getBlockState(up_right).getBlock() == state.getBlock() &&
-            level.getBlockState(up_left).getBlock() == state.getBlock()) && level.getBlockState(down_right).getBlock() == state.getBlock() && level.getBlockState(down_left).getBlock() == state.getBlock() ||
-
-            (level.getBlockState(left_x).getBlock() == state.getBlock() && level.getBlockState(right_x).getBlock() == state.getBlock() && level.getBlockState(up_right).getBlock() == state.getBlock() &&
-                    level.getBlockState(up_left).getBlock() == state.getBlock() && level.getBlockState(down_right).getBlock() == state.getBlock() && level.getBlockState(down_left).getBlock() == state.getBlock());
+    return (level.getBlockState(left_z).getBlock() == state.getBlock()
+                && level.getBlockState(right_z).getBlock() == state.getBlock()
+                && level.getBlockState(up_right).getBlock() == state.getBlock()
+                && level.getBlockState(up_left).getBlock() == state.getBlock())
+            && level.getBlockState(down_right).getBlock() == state.getBlock()
+            && level.getBlockState(down_left).getBlock() == state.getBlock()
+        || (level.getBlockState(left_x).getBlock() == state.getBlock()
+            && level.getBlockState(right_x).getBlock() == state.getBlock()
+            && level.getBlockState(up_right).getBlock() == state.getBlock()
+            && level.getBlockState(up_left).getBlock() == state.getBlock()
+            && level.getBlockState(down_right).getBlock() == state.getBlock()
+            && level.getBlockState(down_left).getBlock() == state.getBlock());
   }
 
   private void destroyStructure(Level level, BlockPos pos) {
@@ -182,7 +180,6 @@ public class DragonBallBlock extends BaseEntityBlock {
 
     BlockPos down_right = pos.west().south();
     BlockPos down_left = pos.east().south();
-
 
     BlockState blockStateToDestroy = level.getBlockState(pos);
     if (blockStateToDestroy.is(ModBlocks.DRAGON_BALL_BLOCK.get())) {

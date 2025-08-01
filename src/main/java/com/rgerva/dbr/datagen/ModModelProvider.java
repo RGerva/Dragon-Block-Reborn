@@ -13,16 +13,8 @@ package com.rgerva.dbr.datagen;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.block.ModBlocks;
-import com.rgerva.dbr.datagen.model.ModModelTemplates;
 import com.rgerva.dbr.datagen.model.ModTexturedModel;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.stream.Stream;
-
-import com.rgerva.dbr.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -31,20 +23,14 @@ import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.model.Variant;
-import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RespawnAnchorBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ModModelProvider extends ModelProvider {
   static BlockModelGenerators blockModelGenerator;
@@ -73,15 +59,15 @@ public class ModModelProvider extends ModelProvider {
   }
 
   /* CUSTOM BLOCK METHOD */
-  protected void createModelParticleOnly(Holder<Block> block){
+  protected void createModelParticleOnly(Holder<Block> block) {
     generateBasicItem(block.value().asItem());
 
-    ResourceLocation model = ModTexturedModel.DRAGON_BALL.get(block.value())
-            .create(block.value(), modelOutput);
+    ResourceLocation model =
+        ModTexturedModel.DRAGON_BALL.get(block.value()).create(block.value(), modelOutput);
 
     blockModelGenerator.blockStateOutput.accept(
-        MultiVariantGenerator.dispatch(block.value(),
-                new MultiVariant(WeightedList.of(new Variant(model)))));
+        MultiVariantGenerator.dispatch(
+            block.value(), new MultiVariant(WeightedList.of(new Variant(model)))));
   }
 
   private void horizontalBlockWithItem(
@@ -127,7 +113,7 @@ public class ModModelProvider extends ModelProvider {
   }
 
   /* CUSTOM ITEM METHOD */
-  private static void generateBasicItem(Item item){
+  private static void generateBasicItem(Item item) {
     itemModel.generateFlatItem(item, ModelTemplates.FLAT_ITEM);
   }
 }

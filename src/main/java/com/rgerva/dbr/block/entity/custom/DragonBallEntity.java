@@ -15,7 +15,6 @@ import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.properties.ModBlockProperties;
 import com.rgerva.dbr.sound.ModSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -32,7 +31,8 @@ public class DragonBallEntity extends BlockEntity {
     super(ModBlockEntities.DRAGON_BALL_ENTITY.get(), pos, blockState);
   }
 
-  public static void tick(Level level, BlockPos blockPos, BlockState blockState, DragonBallEntity entity) {
+  public static void tick(
+      Level level, BlockPos blockPos, BlockState blockState, DragonBallEntity entity) {
     entity.updateSound(level, blockPos, blockState);
   }
 
@@ -40,7 +40,8 @@ public class DragonBallEntity extends BlockEntity {
     if (--this.cb <= 0) {
       this.cb = 100;
 
-      boolean isStone = state.hasProperty(ModBlockProperties.DRAGON_BALL_IS_STONE)
+      boolean isStone =
+          state.hasProperty(ModBlockProperties.DRAGON_BALL_IS_STONE)
               && state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE);
 
       if (!isStone) {
@@ -50,29 +51,26 @@ public class DragonBallEntity extends BlockEntity {
           level.playSound(null, pos, ModSounds.DRAGON_GLOW.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         }
       }
-
     }
-
   }
 
   private boolean isFormationEastWest(Level level, BlockPos pos, Block block) {
     return level.getBlockState(pos.east()).is(block)
-            && level.getBlockState(pos.east().north()).is(block)
-            && level.getBlockState(pos.east().south()).is(block)
-            && level.getBlockState(pos.west()).is(block)
-            && level.getBlockState(pos.west().north()).is(block)
-            && level.getBlockState(pos.west().south()).is(block);
+        && level.getBlockState(pos.east().north()).is(block)
+        && level.getBlockState(pos.east().south()).is(block)
+        && level.getBlockState(pos.west()).is(block)
+        && level.getBlockState(pos.west().north()).is(block)
+        && level.getBlockState(pos.west().south()).is(block);
   }
 
   private boolean isFormationNorthSouth(Level level, BlockPos pos, Block block) {
     return level.getBlockState(pos.north()).is(block)
-            && level.getBlockState(pos.north().east()).is(block)
-            && level.getBlockState(pos.north().west()).is(block)
-            && level.getBlockState(pos.south()).is(block)
-            && level.getBlockState(pos.south().east()).is(block)
-            && level.getBlockState(pos.south().west()).is(block);
+        && level.getBlockState(pos.north().east()).is(block)
+        && level.getBlockState(pos.north().west()).is(block)
+        && level.getBlockState(pos.south()).is(block)
+        && level.getBlockState(pos.south().east()).is(block)
+        && level.getBlockState(pos.south().west()).is(block);
   }
-
 
   @Override
   protected void saveAdditional(ValueOutput output) {
