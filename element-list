@@ -3,6 +3,7 @@ com.rgerva.dbr.block
 com.rgerva.dbr.block.custom
 com.rgerva.dbr.block.entity
 com.rgerva.dbr.block.entity.custom
+com.rgerva.dbr.block.entity.data
 com.rgerva.dbr.block.entity.renderer
 com.rgerva.dbr.capabilities
 com.rgerva.dbr.command

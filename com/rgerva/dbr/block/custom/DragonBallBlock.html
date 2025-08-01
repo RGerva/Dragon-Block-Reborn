@@ -78,6 +78,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#getRenderShape(net.minecraft.world.level.block.state.BlockState)" tabindex="0">getRenderShape(BlockState)</a></li>
 <li><a href="#getShape(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.level.BlockGetter,net.minecraft.core.BlockPos,net.minecraft.world.phys.shapes.CollisionContext)" tabindex="0">getShape(BlockState, BlockGetter, BlockPos, CollisionContext)</a></li>
 <li><a href="#tick(net.minecraft.world.level.block.state.BlockState,net.minecraft.server.level.ServerLevel,net.minecraft.core.BlockPos,net.minecraft.util.RandomSource)" tabindex="0">tick(BlockState, ServerLevel, BlockPos, RandomSource)</a></li>
+<li><a href="#setPlacedBy(net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState,net.minecraft.world.entity.LivingEntity,net.minecraft.world.item.ItemStack)" tabindex="0">setPlacedBy(Level, BlockPos, BlockState, LivingEntity, ItemStack)</a></li>
 <li><a href="#useWithoutItem(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.entity.player.Player,net.minecraft.world.phys.BlockHitResult)" tabindex="0">useWithoutItem(BlockState, Level, BlockPos, Player, BlockHitResult)</a></li>
 </ol>
 </li>
@@ -182,19 +183,26 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#newBlockEntity(net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState)" class="member-name-link">newBlockEntity</a><wbr>(net.minecraft.core.BlockPos&nbsp;blockPos,
  net.minecraft.world.level.block.state.BlockState&nbsp;blockState)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tick(net.minecraft.world.level.block.state.BlockState,net.minecraft.server.level.ServerLevel,net.minecraft.core.BlockPos,net.minecraft.util.RandomSource)" class="member-name-link">tick</a><wbr>(net.minecraft.world.level.block.state.BlockState&nbsp;state,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPlacedBy(net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState,net.minecraft.world.entity.LivingEntity,net.minecraft.world.item.ItemStack)" class="member-name-link">setPlacedBy</a><wbr>(net.minecraft.world.level.Level&nbsp;level,
+ net.minecraft.core.BlockPos&nbsp;pos,
+ net.minecraft.world.level.block.state.BlockState&nbsp;state,
+ @Nullable net.minecraft.world.entity.LivingEntity&nbsp;placer,
+ net.minecraft.world.item.ItemStack&nbsp;stack)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tick(net.minecraft.world.level.block.state.BlockState,net.minecraft.server.level.ServerLevel,net.minecraft.core.BlockPos,net.minecraft.util.RandomSource)" class="member-name-link">tick</a><wbr>(net.minecraft.world.level.block.state.BlockState&nbsp;state,
  net.minecraft.server.level.ServerLevel&nbsp;level,
  net.minecraft.core.BlockPos&nbsp;pos,
  net.minecraft.util.RandomSource&nbsp;random)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected net.minecraft.world.InteractionResult</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#useWithoutItem(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.entity.player.Player,net.minecraft.world.phys.BlockHitResult)" class="member-name-link">useWithoutItem</a><wbr>(net.minecraft.world.level.block.state.BlockState&nbsp;state,
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected net.minecraft.world.InteractionResult</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#useWithoutItem(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.entity.player.Player,net.minecraft.world.phys.BlockHitResult)" class="member-name-link">useWithoutItem</a><wbr>(net.minecraft.world.level.block.state.BlockState&nbsp;state,
  net.minecraft.world.level.Level&nbsp;level,
  net.minecraft.core.BlockPos&nbsp;pos,
  net.minecraft.world.entity.player.Player&nbsp;player,
  net.minecraft.world.phys.BlockHitResult&nbsp;hitResult)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -203,7 +211,7 @@ loadScripts(document, 'script');</script>
 <code>createTickerHelper, getMenuProvider, triggerEvent</code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.minecraft.world.level.block.Block">Methods inherited from class&nbsp;net.minecraft.world.level.block.Block</h3>
-<code>animateTick, asBlock, asItem, box, boxes, boxZ, boxZ, boxZ, builtInRegistryHolder, byItem, canSupportCenter, canSupportRigidBlock, column, column, cube, cube, defaultBlockState, destroy, dropFromExplosion, dropResources, dropResources, dropResources, fallOn, getDrops, getDrops, getExplosionResistance, getFriction, getId, getJumpFactor, getName, getShapeForEachState, getShapeForEachState, getSpeedFactor, getStateDefinition, getStateForPlacement, handlePrecipitation, hasDynamicShape, isExceptionForConnection, isFaceFull, isPossibleToRespawnInThis, isShapeFullBlock, playerDestroy, playerWillDestroy, popExperience, popResource, popResourceFromFace, pushEntitiesUp, registerDefaultState, setPlacedBy, shouldRenderFace, shouldRenderFace, spawnDestroyParticles, stateById, stepOn, toString, tryDropExperience, updateEntityMovementAfterFallOn, updateFromNeighbourShapes, updateOrDestroy, updateOrDestroy, wasExploded, withPropertiesOf</code></div>
+<code>animateTick, asBlock, asItem, box, boxes, boxZ, boxZ, boxZ, builtInRegistryHolder, byItem, canSupportCenter, canSupportRigidBlock, column, column, cube, cube, defaultBlockState, destroy, dropFromExplosion, dropResources, dropResources, dropResources, fallOn, getDrops, getDrops, getExplosionResistance, getFriction, getId, getJumpFactor, getName, getShapeForEachState, getShapeForEachState, getSpeedFactor, getStateDefinition, getStateForPlacement, handlePrecipitation, hasDynamicShape, isExceptionForConnection, isFaceFull, isPossibleToRespawnInThis, isShapeFullBlock, playerDestroy, playerWillDestroy, popExperience, popResource, popResourceFromFace, pushEntitiesUp, registerDefaultState, shouldRenderFace, shouldRenderFace, spawnDestroyParticles, stateById, stepOn, toString, tryDropExperience, updateEntityMovementAfterFallOn, updateFromNeighbourShapes, updateOrDestroy, updateOrDestroy, wasExploded, withPropertiesOf</code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.minecraft.world.level.block.state.BlockBehaviour">Methods inherited from class&nbsp;net.minecraft.world.level.block.state.BlockBehaviour</h3>
 <code>affectNeighborsAfterRemoval, attack, canBeReplaced, canBeReplaced, canSurvive, defaultDestroyTime, defaultMapColor, entityInside, getAnalogOutputSignal, getBlockSupportShape, getCloneItemStack, getCollisionShape, getDescriptionId, getDestroyProgress, getDirectSignal, getDrops, getEntityInsideCollisionShape, getFluidState, getInteractionShape, getLightBlock, getLootTable, getMaxHorizontalOffset, getMaxVerticalOffset, getOcclusionShape, getSeed, getShadeBrightness, getSignal, getSoundType, getVisualShape, hasAnalogOutputSignal, isAir, isCollisionShapeFullBlock, isPathfindable, isRandomlyTicking, isSignalSource, mirror, neighborChanged, onExplosionHit, onPlace, onProjectileHit, propagatesSkylightDown, properties, propertiesCodec, randomTick, requiredFeatures, rotate, simpleCodec, skipRendering, spawnAfterBreak, updateIndirectNeighbourShapes, updateShape, useItemOn, useShapeForLightOcclusion</code></div>
@@ -330,6 +338,23 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code>tick</code>&nbsp;in class&nbsp;<code>net.minecraft.world.level.block.state.BlockBehaviour</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setPlacedBy(net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState,net.minecraft.world.entity.LivingEntity,net.minecraft.world.item.ItemStack)">
+<h3>setPlacedBy</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPlacedBy</span><wbr><span class="parameters">(net.minecraft.world.level.Level&nbsp;level,
+ net.minecraft.core.BlockPos&nbsp;pos,
+ net.minecraft.world.level.block.state.BlockState&nbsp;state,
+ @Nullable
+ @Nullable net.minecraft.world.entity.LivingEntity&nbsp;placer,
+ net.minecraft.world.item.ItemStack&nbsp;stack)</span></div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>setPlacedBy</code>&nbsp;in class&nbsp;<code>net.minecraft.world.level.block.Block</code></dd>
 </dl>
 </div>
 </section>

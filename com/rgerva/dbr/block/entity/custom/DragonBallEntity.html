@@ -64,6 +64,11 @@ loadScripts(document, 'script');</script>
 <li><a href="#field-summary" tabindex="0">Field Summary</a></li>
 <li><a href="#constructor-summary" tabindex="0">Constructor Summary</a></li>
 <li><a href="#method-summary" tabindex="0">Method Summary</a></li>
+<li><a href="#field-detail" tabindex="0">Field Details</a>
+<ol class="toc-list">
+<li><a href="#MAX_ANIMATION_TICKS" tabindex="0">MAX_ANIMATION_TICKS</a></li>
+</ol>
+</li>
 <li><a href="#constructor-detail" tabindex="0">Constructor Details</a>
 <ol class="toc-list">
 <li><a href="#%3Cinit%3E(net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState)" tabindex="0">DragonBallEntity(BlockPos, BlockState)</a></li>
@@ -72,8 +77,16 @@ loadScripts(document, 'script');</script>
 <li><a href="#method-detail" tabindex="0">Method Details</a>
 <ol class="toc-list">
 <li><a href="#tick(net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState,com.rgerva.dbr.block.entity.custom.DragonBallEntity)" tabindex="0">tick(Level, BlockPos, BlockState, DragonBallEntity)</a></li>
+<li><a href="#triggerAnimation()" tabindex="0">triggerAnimation()</a></li>
 <li><a href="#saveAdditional(net.minecraft.world.level.storage.ValueOutput)" tabindex="0">saveAdditional(ValueOutput)</a></li>
 <li><a href="#loadAdditional(net.minecraft.world.level.storage.ValueInput)" tabindex="0">loadAdditional(ValueInput)</a></li>
+<li><a href="#getUpdateTag(net.minecraft.core.HolderLookup.Provider)" tabindex="0">getUpdateTag(HolderLookup.Provider)</a></li>
+<li><a href="#handleUpdateTag(net.minecraft.world.level.storage.ValueInput)" tabindex="0">handleUpdateTag(ValueInput)</a></li>
+<li><a href="#getUpdatePacket()" tabindex="0">getUpdatePacket()</a></li>
+<li><a href="#getAnimationProgress()" tabindex="0">getAnimationProgress()</a></li>
+<li><a href="#isAnimating()" tabindex="0">isAnimating()</a></li>
+<li><a href="#getGlowSoundCooldown()" tabindex="0">getGlowSoundCooldown()</a></li>
+<li><a href="#setGlowSoundCooldown(int)" tabindex="0">setGlowSoundCooldown(int)</a></li>
 </ol>
 </li>
 </ol>
@@ -116,6 +129,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="field-summary" id="field-summary">
 <h2>Field Summary</h2>
+<div class="caption"><span>Fields</span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Field</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>static final int</code></div>
+<div class="col-second even-row-color"><code><a href="#MAX_ANIMATION_TICKS" class="member-name-link">MAX_ANIMATION_TICKS</a></code></div>
+<div class="col-last even-row-color">&nbsp;</div>
+</div>
 <div class="inherited-list">
 <h3 id="fields-inherited-from-class-net.minecraft.world.level.block.entity.BlockEntity">Fields inherited from class&nbsp;net.minecraft.world.level.block.entity.BlockEntity</h3>
 <code>level, remove, worldPosition</code></div>
@@ -149,24 +171,48 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAnimationProgress()" class="member-name-link">getAnimationProgress</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getGlowSoundCooldown()" class="member-name-link">getGlowSoundCooldown</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>@Nullable net.minecraft.network.protocol.Packet<wbr>&lt;net.minecraft.network.protocol.game.ClientGamePacketListener&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUpdatePacket()" class="member-name-link">getUpdatePacket</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>net.minecraft.nbt.CompoundTag</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUpdateTag(net.minecraft.core.HolderLookup.Provider)" class="member-name-link">getUpdateTag</a><wbr>(net.minecraft.core.HolderLookup.Provider&nbsp;registries)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleUpdateTag(net.minecraft.world.level.storage.ValueInput)" class="member-name-link">handleUpdateTag</a><wbr>(net.minecraft.world.level.storage.ValueInput&nbsp;input)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isAnimating()" class="member-name-link">isAnimating</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#loadAdditional(net.minecraft.world.level.storage.ValueInput)" class="member-name-link">loadAdditional</a><wbr>(net.minecraft.world.level.storage.ValueInput&nbsp;input)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#saveAdditional(net.minecraft.world.level.storage.ValueOutput)" class="member-name-link">saveAdditional</a><wbr>(net.minecraft.world.level.storage.ValueOutput&nbsp;output)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#tick(net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState,com.rgerva.dbr.block.entity.custom.DragonBallEntity)" class="member-name-link">tick</a><wbr>(net.minecraft.world.level.Level&nbsp;level,
- net.minecraft.core.BlockPos&nbsp;blockPos,
- net.minecraft.world.level.block.state.BlockState&nbsp;blockState,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setGlowSoundCooldown(int)" class="member-name-link">setGlowSoundCooldown</a><wbr>(int&nbsp;ticks)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#tick(net.minecraft.world.level.Level,net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState,com.rgerva.dbr.block.entity.custom.DragonBallEntity)" class="member-name-link">tick</a><wbr>(net.minecraft.world.level.Level&nbsp;level,
+ net.minecraft.core.BlockPos&nbsp;pos,
+ net.minecraft.world.level.block.state.BlockState&nbsp;state,
  <a href="DragonBallEntity.html" title="class in com.rgerva.dbr.block.entity.custom">DragonBallEntity</a>&nbsp;entity)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#triggerAnimation()" class="member-name-link">triggerAnimation</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.minecraft.world.level.block.entity.BlockEntity">Methods inherited from class&nbsp;net.minecraft.world.level.block.entity.BlockEntity</h3>
-<code>addEntityType, applyComponents, applyComponentsFromItemStack, applyImplicitComponents, clearRemoved, collectComponents, collectImplicitComponents, components, fillCrashReportCategory, getBlockPos, getBlockState, getLevel, getNameForReporting, getPersistentData, getPosFromTag, getType, getUpdatePacket, getUpdateTag, hasLevel, isRemoved, isValidBlockState, loadCustomOnly, loadStatic, loadWithComponents, parseCustomNameSafe, preRemoveSideEffects, problemPath, removeComponentsFromTag, removeData, saveCustomOnly, saveCustomOnly, saveWithFullMetadata, saveWithFullMetadata, saveWithId, saveWithoutMetadata, saveWithoutMetadata, setBlockState, setChanged, setChanged, setComponents, setData, setLevel, setRemoved, syncData, triggerEvent</code></div>
+<code>addEntityType, applyComponents, applyComponentsFromItemStack, applyImplicitComponents, clearRemoved, collectComponents, collectImplicitComponents, components, fillCrashReportCategory, getBlockPos, getBlockState, getLevel, getNameForReporting, getPersistentData, getPosFromTag, getType, hasLevel, isRemoved, isValidBlockState, loadCustomOnly, loadStatic, loadWithComponents, parseCustomNameSafe, preRemoveSideEffects, problemPath, removeComponentsFromTag, removeData, saveCustomOnly, saveCustomOnly, saveWithFullMetadata, saveWithFullMetadata, saveWithId, saveWithoutMetadata, saveWithoutMetadata, setBlockState, setChanged, setChanged, setComponents, setData, setLevel, setRemoved, syncData, triggerEvent</code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.neoforged.neoforge.attachment.AttachmentHolder">Methods inherited from class&nbsp;net.neoforged.neoforge.attachment.AttachmentHolder</h3>
 <code>deserializeAttachments, getData, getExistingDataOrNull, hasAttachments, hasData, serializeAttachments</code></div>
@@ -178,13 +224,37 @@ loadScripts(document, 'script');</script>
 <code>getData, getExistingData, getExistingData, getExistingDataOrNull, hasData, removeData, setData, syncData</code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.neoforged.neoforge.common.extensions.IBlockEntityExtension">Methods inherited from interface&nbsp;net.neoforged.neoforge.common.extensions.IBlockEntityExtension</h3>
-<code>getModelData, handleUpdateTag, invalidateCapabilities, onChunkUnloaded, onDataPacket, onLoad, requestModelDataUpdate</code></div>
+<code>getModelData, invalidateCapabilities, onChunkUnloaded, onDataPacket, onLoad, requestModelDataUpdate</code></div>
 </section>
 </li>
 </ul>
 </section>
 <section class="details">
 <ul class="details-list">
+<!-- ============ FIELD DETAIL =========== -->
+<li>
+<section class="field-details" id="field-detail">
+<h2>Field Details</h2>
+<ul class="member-list">
+<li>
+<section class="detail" id="MAX_ANIMATION_TICKS">
+<h3>MAX_ANIMATION_TICKS</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">MAX_ANIMATION_TICKS</span></div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list">
+<li><a href="../../../../../../constant-values.html#com.rgerva.dbr.block.entity.custom.DragonBallEntity.MAX_ANIMATION_TICKS">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+</section>
+</li>
+</ul>
+</section>
+</li>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <li>
 <section class="constructor-details" id="constructor-detail">
@@ -212,9 +282,17 @@ loadScripts(document, 'script');</script>
 <h3>tick</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">tick</span><wbr><span class="parameters">(net.minecraft.world.level.Level&nbsp;level,
- net.minecraft.core.BlockPos&nbsp;blockPos,
- net.minecraft.world.level.block.state.BlockState&nbsp;blockState,
+ net.minecraft.core.BlockPos&nbsp;pos,
+ net.minecraft.world.level.block.state.BlockState&nbsp;state,
  <a href="DragonBallEntity.html" title="class in com.rgerva.dbr.block.entity.custom">DragonBallEntity</a>&nbsp;entity)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="triggerAnimation()">
+<h3>triggerAnimation</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">triggerAnimation</span>()</div>
 </div>
 </section>
 </li>
@@ -239,6 +317,71 @@ loadScripts(document, 'script');</script>
 <dt>Overrides:</dt>
 <dd><code>loadAdditional</code>&nbsp;in class&nbsp;<code>net.minecraft.world.level.block.entity.BlockEntity</code></dd>
 </dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getUpdateTag(net.minecraft.core.HolderLookup.Provider)">
+<h3>getUpdateTag</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">net.minecraft.nbt.CompoundTag</span>&nbsp;<span class="element-name">getUpdateTag</span><wbr><span class="parameters">(net.minecraft.core.HolderLookup.Provider&nbsp;registries)</span></div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>getUpdateTag</code>&nbsp;in class&nbsp;<code>net.minecraft.world.level.block.entity.BlockEntity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="handleUpdateTag(net.minecraft.world.level.storage.ValueInput)">
+<h3>handleUpdateTag</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handleUpdateTag</span><wbr><span class="parameters">(net.minecraft.world.level.storage.ValueInput&nbsp;input)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getUpdatePacket()">
+<h3>getUpdatePacket</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="annotations">@Nullable
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">@Nullable net.minecraft.network.protocol.Packet&lt;net.minecraft.network.protocol.game.ClientGamePacketListener&gt;</span>&nbsp;<span class="element-name">getUpdatePacket</span>()</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>getUpdatePacket</code>&nbsp;in class&nbsp;<code>net.minecraft.world.level.block.entity.BlockEntity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getAnimationProgress()">
+<h3>getAnimationProgress</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">getAnimationProgress</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isAnimating()">
+<h3>isAnimating</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isAnimating</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getGlowSoundCooldown()">
+<h3>getGlowSoundCooldown</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getGlowSoundCooldown</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setGlowSoundCooldown(int)">
+<h3>setGlowSoundCooldown</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setGlowSoundCooldown</span><wbr><span class="parameters">(int&nbsp;ticks)</span></div>
 </div>
 </section>
 </li>
