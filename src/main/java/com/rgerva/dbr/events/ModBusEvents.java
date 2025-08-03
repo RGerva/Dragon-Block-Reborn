@@ -14,16 +14,27 @@ package com.rgerva.dbr.events;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.renderer.DragonBallEntityRenderer;
+import com.rgerva.dbr.command.ModCommands;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
+import com.rgerva.dbr.mechanics.PlayerStatCapability;
+import com.rgerva.dbr.network.ModMessages;
+import com.rgerva.dbr.network.packages.OpenScreenSyncS2CPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.network.event.RegisterClientPayloadHandlersEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.server.command.ConfigCommand;
 
 @EventBusSubscriber(modid = DragonBlockReborn.MOD_ID, value = Dist.CLIENT)
 public class ModBusEvents {
@@ -37,6 +48,21 @@ public class ModBusEvents {
 
     BlockEntityRenderers.register(
         ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
+  }
+
+  @SubscribeEvent
+  public static void onPLayerLogin(PlayerEvent.PlayerLoggedInEvent event){
+
+  }
+
+  @SubscribeEvent
+  public static void onPlayerLogout(PlayerEvent.PlayerLoggedInEvent event){
+
+  }
+
+  @SubscribeEvent
+  public static void onModAttack(LivingDeathEvent event){
+
   }
 
   @SubscribeEvent
@@ -55,4 +81,10 @@ public class ModBusEvents {
 
   @SubscribeEvent
   public static void registerParticleFactories(RegisterParticleProvidersEvent event) {}
+
+  @SubscribeEvent(priority = EventPriority.HIGHEST)
+  public static void onCommandsRegister(RegisterCommandsEvent event) {
+    ConfigCommand.register(event.getDispatcher());
+    ModCommands.statsCommand(event.getDispatcher());
+  }
 }

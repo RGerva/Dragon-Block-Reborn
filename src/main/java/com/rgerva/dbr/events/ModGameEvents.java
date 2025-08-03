@@ -12,17 +12,20 @@
 package com.rgerva.dbr.events;
 
 import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.command.ModCommands;
 import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
-@EventBusSubscriber(modid = DragonBlockReborn.MOD_ID, value = Dist.DEDICATED_SERVER)
+@EventBusSubscriber(modid = DragonBlockReborn.MOD_ID)
 public class ModGameEvents {
 
-  @SubscribeEvent
+  @SubscribeEvent(priority = EventPriority.HIGHEST)
   public static void onCommandsRegister(RegisterCommandsEvent event) {
     ConfigCommand.register(event.getDispatcher());
+//    ModCommands.statsCommand(event.getDispatcher());
   }
 }

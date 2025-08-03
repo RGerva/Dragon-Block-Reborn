@@ -11,18 +11,42 @@
  */
 package com.rgerva.dbr.network;
 
+import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.gui.screen.ModStartScreen;
+import com.rgerva.dbr.network.packages.OpenScreenSyncS2CPacket;
+import com.rgerva.dbr.network.packages.UpgradeAttributePacket;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 public class ModMessages {
+
   public static void register(final RegisterPayloadHandlersEvent event) {
     final PayloadRegistrar registrar = event.registrar("1.0");
+
+    registrar.playToClient(
+            OpenScreenSyncS2CPacket.TYPE,
+            OpenScreenSyncS2CPacket.STREAM_CODEC,
+            OpenScreenSyncS2CPacket::handle
+    );
+
+//    registrar.playToServer(
+//            UpgradeAttributePacket.ID,
+//            UpgradeAttributePacket::read,
+//            UpgradeAttributePacket::write,
+//            UpgradeAttributePacket::handle
+//    );
+
   }
 
   public static void sendToServer(CustomPacketPayload message) {

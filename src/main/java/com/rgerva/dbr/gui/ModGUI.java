@@ -21,6 +21,8 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.Supplier;
+
 public class ModGUI {
   public static final DeferredRegister<MenuType<?>> MENUS =
       DeferredRegister.create(BuiltInRegistries.MENU, DragonBlockReborn.MOD_ID);
