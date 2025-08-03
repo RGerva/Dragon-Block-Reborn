@@ -19,10 +19,13 @@ com.rgerva.dbr.entity
 com.rgerva.dbr.events
 com.rgerva.dbr.fluid
 com.rgerva.dbr.gui
+com.rgerva.dbr.gui.screen
 com.rgerva.dbr.item
 com.rgerva.dbr.loot
+com.rgerva.dbr.mechanics
 com.rgerva.dbr.mixin
 com.rgerva.dbr.network
+com.rgerva.dbr.network.packages
 com.rgerva.dbr.particles
 com.rgerva.dbr.potion
 com.rgerva.dbr.properties

@@ -70,10 +70,14 @@ loadScripts(document, 'script');</script>
 <li><a href="#method-detail" tabindex="0">Method Details</a>
 <ol class="toc-list">
 <li><a href="#onClientSetup(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent)" tabindex="0">onClientSetup(FMLClientSetupEvent)</a></li>
+<li><a href="#onPLayerLogin(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent)" tabindex="0">onPLayerLogin(PlayerEvent.PlayerLoggedInEvent)</a></li>
+<li><a href="#onPlayerLogout(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent)" tabindex="0">onPlayerLogout(PlayerEvent.PlayerLoggedInEvent)</a></li>
+<li><a href="#onModAttack(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)" tabindex="0">onModAttack(LivingDeathEvent)</a></li>
 <li><a href="#registerBER(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers)" tabindex="0">registerBER(EntityRenderersEvent.RegisterRenderers)</a></li>
 <li><a href="#registerLayerDefinitions(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions)" tabindex="0">registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions)</a></li>
 <li><a href="#registerScreens(net.neoforged.neoforge.client.event.RegisterMenuScreensEvent)" tabindex="0">registerScreens(RegisterMenuScreensEvent)</a></li>
 <li><a href="#registerParticleFactories(net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent)" tabindex="0">registerParticleFactories(RegisterParticleProvidersEvent)</a></li>
+<li><a href="#onCommandsRegister(net.neoforged.neoforge.event.RegisterCommandsEvent)" tabindex="0">onCommandsRegister(RegisterCommandsEvent)</a></li>
 </ol>
 </li>
 </ol>
@@ -121,6 +125,18 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#onClientSetup(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent)" class="member-name-link">onClientSetup</a><wbr>(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent&nbsp;event)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#onCommandsRegister(net.neoforged.neoforge.event.RegisterCommandsEvent)" class="member-name-link">onCommandsRegister</a><wbr>(net.neoforged.neoforge.event.RegisterCommandsEvent&nbsp;event)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#onModAttack(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)" class="member-name-link">onModAttack</a><wbr>(net.neoforged.neoforge.event.entity.living.LivingDeathEvent&nbsp;event)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#onPLayerLogin(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent)" class="member-name-link">onPLayerLogin</a><wbr>(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent&nbsp;event)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#onPlayerLogout(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent)" class="member-name-link">onPlayerLogout</a><wbr>(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent&nbsp;event)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#registerBER(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers)" class="member-name-link">registerBER</a><wbr>(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers&nbsp;event)</code></div>
@@ -176,6 +192,30 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="onPLayerLogin(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent)">
+<h3>onPLayerLogin</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onPLayerLogin</span><wbr><span class="parameters">(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent&nbsp;event)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="onPlayerLogout(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent)">
+<h3>onPlayerLogout</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onPlayerLogout</span><wbr><span class="parameters">(net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent&nbsp;event)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="onModAttack(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)">
+<h3>onModAttack</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onModAttack</span><wbr><span class="parameters">(net.neoforged.neoforge.event.entity.living.LivingDeathEvent&nbsp;event)</span></div>
+</div>
+</section>
+</li>
+<li>
 <section class="detail" id="registerBER(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers)">
 <h3>registerBER</h3>
 <div class="horizontal-scroll">
@@ -204,6 +244,14 @@ loadScripts(document, 'script');</script>
 <h3>registerParticleFactories</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">registerParticleFactories</span><wbr><span class="parameters">(net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent&nbsp;event)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="onCommandsRegister(net.neoforged.neoforge.event.RegisterCommandsEvent)">
+<h3>onCommandsRegister</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onCommandsRegister</span><wbr><span class="parameters">(net.neoforged.neoforge.event.RegisterCommandsEvent&nbsp;event)</span></div>
 </div>
 </section>
 </li>
