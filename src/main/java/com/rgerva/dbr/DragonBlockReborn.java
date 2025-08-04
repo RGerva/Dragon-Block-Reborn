@@ -35,7 +35,7 @@ import com.rgerva.dbr.fluid.ModFluids;
 import com.rgerva.dbr.gui.ModGUI;
 import com.rgerva.dbr.item.ModItems;
 import com.rgerva.dbr.loot.ModLootModifiers;
-import com.rgerva.dbr.network.ModMessages;
+import com.rgerva.dbr.network.ModNetwork;
 import com.rgerva.dbr.particles.ModParticles;
 import com.rgerva.dbr.potion.ModPotions;
 import com.rgerva.dbr.recipe.ModRecipes;
@@ -87,7 +87,7 @@ public class DragonBlockReborn {
 
     modEventBus.addListener(ModCreativeTab::addCreative);
     modEventBus.addListener(ModCapabilities::registerCapabilities);
-    modEventBus.addListener(ModMessages::register);
+    modEventBus.addListener(ModNetwork::register);
 
     modContainer.registerConfig(net.neoforged.fml.config.ModConfig.Type.COMMON, ModConfig.SPEC);
   }

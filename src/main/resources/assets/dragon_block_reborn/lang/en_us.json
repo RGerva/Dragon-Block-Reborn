@@ -1,9 +1,38 @@
 {
   "itemGroup.dragon_block_reborn": "Dragon Block Reborn",
+
   "block.dragon_block_reborn.dragon_ball": "Dragon Ball",
+
   "item.dragon_block_reborn.example_item": "Example Item",
+
   "sound.dragon_block_reborn.dragon_fly": "Dragon Fly",
   "sound.dragon_block_reborn.dragon_glow": "Dragon Ball Glow",
   "sound.dragon_block_reborn.dragon_grant": "Dragon Grant",
-  "sound.dragon_block_reborn.dragon_makeone": "Dragon Appear"
+  "sound.dragon_block_reborn.dragon_makeone": "Dragon Appear",
+
+  "mechanic.dragon_block_reborn.human": "Human",
+  "mechanic.dragon_block_reborn.saiyan": "Saiyan",
+  "mechanic.dragon_block_reborn.half_saiyan": "Half Saiyan",
+  "mechanic.dragon_block_reborn.namekian": "Namekian",
+  "mechanic.dragon_block_reborn.majin": "Majin",
+  "mechanic.dragon_block_reborn.arcosian": "Arcosian",
+
+  "mechanic.dragon_block_reborn.martial_artist": "Martial Artist",
+  "mechanic.dragon_block_reborn.spiritualist": "Spiritualist",
+  "mechanic.dragon_block_reborn.warrior": "Warrior",
+
+  "mechanic.dragon_block_reborn.str": "Strength",
+  "mechanic.dragon_block_reborn.dex": "Dexterity",
+  "mechanic.dragon_block_reborn.con": "Constitution",
+  "mechanic.dragon_block_reborn.wil": "Willpower",
+  "mechanic.dragon_block_reborn.mnd": "Mind",
+  "mechanic.dragon_block_reborn.spi": "Spirit",
+
+  "tooltip.dragon_block_reborn.str": "Determines the damage which physical attacks deal.",
+  "tooltip.dragon_block_reborn.dex": "Determines movement speed and ability to resist incoming damage.",
+  "tooltip.dragon_block_reborn.con": "Determines health and stamina.",
+  "tooltip.dragon_block_reborn.wil": "Determines the strength of Ki-based attacks.",
+  "tooltip.dragon_block_reborn.mnd": "Determines the ability to learn skills and to benefit from training.",
+  "tooltip.dragon_block_reborn.spi": "Determines the maximum capacity of Ki.",
+  "": ""
 }

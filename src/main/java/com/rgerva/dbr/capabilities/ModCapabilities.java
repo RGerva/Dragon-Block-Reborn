@@ -13,7 +13,6 @@ package com.rgerva.dbr.capabilities;
 
 import java.util.Optional;
 
-import com.rgerva.dbr.mechanics.IPlayerStatCapability;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.capabilities.Capabilities;
