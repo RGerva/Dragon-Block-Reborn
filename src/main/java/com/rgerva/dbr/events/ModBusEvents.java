@@ -18,6 +18,8 @@ import com.rgerva.dbr.block.entity.renderer.DragonBallEntityRenderer;
 import com.rgerva.dbr.command.ModCommands;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
+import com.rgerva.dbr.mechanics.data.ModPlayerData;
+import com.rgerva.dbr.mechanics.stats.ModStats;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.entity.player.Player;
@@ -50,7 +52,13 @@ public class ModBusEvents {
   }
 
   @SubscribeEvent
-  public static void onPlayerTick(PlayerTickEvent.Post event) {}
+  public static void onPlayerTick(PlayerTickEvent.Post event) {
+      if(event.getEntity().isLocalPlayer()){
+          ModPlayerData playerData = new ModPlayerData(event.getEntity());
+          float type = playerData.getStats(ModStats.Stats.MELEE_DAMAGE);
+          DragonBlockReborn.LOGGER.info("See Type MELEE:{}", type);
+      }
+  }
 
   @SubscribeEvent
   public static void onClone(PlayerEvent.Clone event) {

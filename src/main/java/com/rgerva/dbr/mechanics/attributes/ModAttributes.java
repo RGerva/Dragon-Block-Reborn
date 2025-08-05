@@ -91,7 +91,7 @@ public class ModAttributes {
 
         for (Attributes attr : Attributes.values()) {
             float valorBase = ModAttributes.getModifier(attr, modifiers);
-            result.put(attr, (float) Math.round(valorBase * attr.getDefaultValue()));
+            result.put(attr, (float) Math.round(valorBase * Attributes.getDefaultValue()));
         }
         return result;
     }

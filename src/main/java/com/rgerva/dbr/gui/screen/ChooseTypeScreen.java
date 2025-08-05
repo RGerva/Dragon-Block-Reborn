@@ -13,8 +13,11 @@ package com.rgerva.dbr.gui.screen;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
+import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
 import com.rgerva.dbr.network.interfaces.IModAttributesSync;
+import com.rgerva.dbr.network.interfaces.IModStatsSync;
+import com.rgerva.dbr.network.interfaces.IModSyncPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -27,7 +30,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChooseTypeScreen extends Screen implements IModAttributesSync {
+public class ChooseTypeScreen extends Screen implements IModSyncPlayer {
     private static final ModTypes.RaceType[] ALL_RACES = ModTypes.RaceType.values();
     private static final ModTypes.ClassType[] ALL_CLASS = ModTypes.ClassType.values();
 
@@ -41,6 +44,7 @@ public class ChooseTypeScreen extends Screen implements IModAttributesSync {
 
     Map<ModAttributes.Attributes, Float> visualAttributes = new HashMap<>();
     private final Map<String, EditBox> attributesTxtBox = new HashMap<>();
+    Map<ModStats.Stats, Float> visualStats = new HashMap<>();
 
     Player player;
 
@@ -58,7 +62,7 @@ public class ChooseTypeScreen extends Screen implements IModAttributesSync {
     protected void init() {
         super.init();
 
-        int centerX = this.width / 2;
+        int centerX = this.width / 2 - 100;
         int centerY = this.height / 2 - 100;
 
         raceBar(centerX, centerY);
@@ -91,6 +95,7 @@ public class ChooseTypeScreen extends Screen implements IModAttributesSync {
               updateAttributesDisplay();
 
               DragonBlockReborn.LOGGER.info("attributes {}", visualAttributes.values());
+              DragonBlockReborn.LOGGER.info("attributes {}", visualStats.values());
 
               syncToServer();
               Minecraft.getInstance().setScreen(null);
@@ -110,6 +115,39 @@ public class ChooseTypeScreen extends Screen implements IModAttributesSync {
         int centerX = this.width / 2;
         int centerY = this.height / 2 - 100 + 75;
         showAttributes(centerX, centerY, visualAttributes);
+
+        showStats(centerX + 100, centerY - 100, visualAttributes);
+    }
+
+    protected void showStats(int centerX, int centerY,
+                             Map<ModAttributes.Attributes, Float> visualAttributes){
+
+        ModStats stats = new ModStats();
+        visualStats = stats.calculateStats(visualAttributes);
+
+        int i = 0;
+        for(Map.Entry<ModStats.Stats, Float> entry : visualStats.entrySet()){
+            int y = centerY + i * 24;
+
+            String txtAttr = entry.getKey().getFullName().getString() + ": " + entry.getValue();
+
+            int boxWidth = this.font.width(txtAttr) + 20;
+            int boxHeight = 20;
+            int boxX = centerX - (boxWidth / 2);
+
+            EditBox txtBox = ModUIComponents.createReadOnlyTextBox(
+                    this.font,
+                    boxX,
+                    y,
+                    boxWidth,
+                    boxHeight,
+                    txtAttr
+            );
+
+            this.attributesTxtBox.put(txtAttr, txtBox);
+            this.addRenderableWidget(txtBox);
+            i++;
+        }
     }
 
 
@@ -232,5 +270,10 @@ public class ChooseTypeScreen extends Screen implements IModAttributesSync {
     @Override
     public Map<ModAttributes.Attributes, Float> getInterfaceAttributes() {
         return visualAttributes;
+    }
+
+    @Override
+    public Map<ModStats.Stats, Float> getInterfaceStats() {
+        return visualStats;
     }
 }

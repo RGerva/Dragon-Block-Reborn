@@ -14,6 +14,7 @@ package com.rgerva.dbr.attachment;
 import com.mojang.serialization.Codec;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
+import com.rgerva.dbr.mechanics.stats.ModStats;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -42,6 +43,18 @@ public class ModAttachments {
             ATTRIBUTES.put(attr, ATTACHMENT_TYPES.register(attr.name().toLowerCase(), () ->
                     AttachmentType.builder(ModAttributes.Attributes::getDefaultValue)
                             .serialize(Codec.FLOAT.fieldOf(attr.name()))
+                            .build()));
+        }
+    }
+
+    public static final Map<ModStats.Stats, Supplier<AttachmentType<Float>>> STATS =
+            new EnumMap<>(ModStats.Stats.class);
+
+    static {
+        for (ModStats.Stats stats : ModStats.Stats.values()) {
+            STATS.put(stats, ATTACHMENT_TYPES.register(stats.name().toLowerCase(), () ->
+                    AttachmentType.builder(() -> 0F)
+                            .serialize(Codec.FLOAT.fieldOf(stats.name()))
                             .build()));
         }
     }

@@ -11,11 +11,14 @@
  */
 package com.rgerva.dbr.mechanics.data;
 
+import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.network.interfaces.IModChooseTypes;
 import net.minecraft.world.entity.player.Player;
 import com.rgerva.dbr.attachment.ModAttachments;
+
+import java.util.Map;
 
 public record ModPlayerData(Player player) implements IModChooseTypes {
 
@@ -27,10 +30,22 @@ public record ModPlayerData(Player player) implements IModChooseTypes {
     player.setData(ModAttachments.ATTRIBUTES.get(attr).get(), value);
   }
 
+  public float getStats(ModStats.Stats stats){
+      return player.getData(ModAttachments.STATS.get(stats).get());
+  }
+
+  public void setStats(ModStats.Stats stats, float value){
+      player.setData(ModAttachments.STATS.get(stats).get(), value);
+  }
+
   public void restAttributes(){
       for(ModAttributes.Attributes attr : ModAttributes.Attributes.values()){
           player.setData(ModAttachments.ATTRIBUTES.get(attr),
                   ModAttributes.Attributes.getDefaultValue());
+      }
+
+      for(ModStats.Stats stats : ModStats.Stats.values()){
+          player.setData(ModAttachments.STATS.get(stats), 0F);
       }
       syncTypesToPlayer(player);
   }
