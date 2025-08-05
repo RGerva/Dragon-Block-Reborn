@@ -55,6 +55,7 @@ loadScripts(document, 'script');</script>
 <span class="package-hierarchy-label">Package Hierarchies:</span>
 <ul class="horizontal contents-list">
 <li><a href="com/rgerva/dbr/package-tree.html">com.rgerva.dbr</a>, </li>
+<li><a href="com/rgerva/dbr/attachment/package-tree.html">com.rgerva.dbr.attachment</a>, </li>
 <li><a href="com/rgerva/dbr/block/package-tree.html">com.rgerva.dbr.block</a>, </li>
 <li><a href="com/rgerva/dbr/block/custom/package-tree.html">com.rgerva.dbr.block.custom</a>, </li>
 <li><a href="com/rgerva/dbr/block/entity/package-tree.html">com.rgerva.dbr.block.entity</a>, </li>
@@ -78,7 +79,10 @@ loadScripts(document, 'script');</script>
 <li><a href="com/rgerva/dbr/gui/screen/package-tree.html">com.rgerva.dbr.gui.screen</a>, </li>
 <li><a href="com/rgerva/dbr/item/package-tree.html">com.rgerva.dbr.item</a>, </li>
 <li><a href="com/rgerva/dbr/loot/package-tree.html">com.rgerva.dbr.loot</a>, </li>
-<li><a href="com/rgerva/dbr/mechanics/package-tree.html">com.rgerva.dbr.mechanics</a>, </li>
+<li><a href="com/rgerva/dbr/mechanics/attributes/package-tree.html">com.rgerva.dbr.mechanics.attributes</a>, </li>
+<li><a href="com/rgerva/dbr/mechanics/data/package-tree.html">com.rgerva.dbr.mechanics.data</a>, </li>
+<li><a href="com/rgerva/dbr/mechanics/stats/package-tree.html">com.rgerva.dbr.mechanics.stats</a>, </li>
+<li><a href="com/rgerva/dbr/mechanics/types/package-tree.html">com.rgerva.dbr.mechanics.types</a>, </li>
 <li><a href="com/rgerva/dbr/mixin/package-tree.html">com.rgerva.dbr.mixin</a>, </li>
 <li><a href="com/rgerva/dbr/network/package-tree.html">com.rgerva.dbr.network</a>, </li>
 <li><a href="com/rgerva/dbr/network/interfaces/package-tree.html">com.rgerva.dbr.network.interfaces</a>, </li>
@@ -103,7 +107,7 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">net.minecraft.client.gui.screens.Screen (implements net.minecraft.client.gui.components.Renderable)
 <ul>
-<li class="circle">com.rgerva.dbr.gui.screen.<a href="com/rgerva/dbr/gui/screen/ChooseTypeScreen.html" class="type-name-link" title="class in com.rgerva.dbr.gui.screen">ChooseTypeScreen</a></li>
+<li class="circle">com.rgerva.dbr.gui.screen.<a href="com/rgerva/dbr/gui/screen/ChooseTypeScreen.html" class="type-name-link" title="class in com.rgerva.dbr.gui.screen">ChooseTypeScreen</a> (implements com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a>)</li>
 </ul>
 </li>
 </ul>
@@ -168,7 +172,8 @@ loadScripts(document, 'script');</script>
 <li class="circle">com.rgerva.dbr.loot.<a href="com/rgerva/dbr/loot/ModLootModifiers.AddItemModifier.html" class="type-name-link" title="class in com.rgerva.dbr.loot">ModLootModifiers.AddItemModifier</a></li>
 </ul>
 </li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModAttributes.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModAttributes</a></li>
+<li class="circle">com.rgerva.dbr.attachment.<a href="com/rgerva/dbr/attachment/ModAttachments.html" class="type-name-link" title="class in com.rgerva.dbr.attachment">ModAttachments</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.attributes.<a href="com/rgerva/dbr/mechanics/attributes/ModAttributes.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.attributes">ModAttributes</a></li>
 <li class="circle">com.rgerva.dbr.worldgen.<a href="com/rgerva/dbr/worldgen/ModBiomeModifiers.html" class="type-name-link" title="class in com.rgerva.dbr.worldgen">ModBiomeModifiers</a></li>
 <li class="circle">com.rgerva.dbr.block.entity.<a href="com/rgerva/dbr/block/entity/ModBlockEntities.html" class="type-name-link" title="class in com.rgerva.dbr.block.entity">ModBlockEntities</a></li>
 <li class="circle">com.rgerva.dbr.properties.<a href="com/rgerva/dbr/properties/ModBlockProperties.html" class="type-name-link" title="class in com.rgerva.dbr.properties">ModBlockProperties</a></li>
@@ -203,19 +208,17 @@ loadScripts(document, 'script');</script>
 <li class="circle">com.rgerva.dbr.util.<a href="com/rgerva/dbr/util/ModOresUtils.html" class="type-name-link" title="class in com.rgerva.dbr.util">ModOresUtils</a></li>
 <li class="circle">com.rgerva.dbr.particles.<a href="com/rgerva/dbr/particles/ModParticles.html" class="type-name-link" title="class in com.rgerva.dbr.particles">ModParticles</a></li>
 <li class="circle">com.rgerva.dbr.worldgen.<a href="com/rgerva/dbr/worldgen/ModPlacedFeatures.html" class="type-name-link" title="class in com.rgerva.dbr.worldgen">ModPlacedFeatures</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModPlayerData.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModPlayerData</a></li>
 <li class="circle">com.rgerva.dbr.potion.<a href="com/rgerva/dbr/potion/ModPotions.html" class="type-name-link" title="class in com.rgerva.dbr.potion">ModPotions</a></li>
 <li class="circle">com.rgerva.dbr.recipe.<a href="com/rgerva/dbr/recipe/ModRecipes.html" class="type-name-link" title="class in com.rgerva.dbr.recipe">ModRecipes</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModRestPlayer.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModRestPlayer</a> (implements com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModChooseTypes.html" title="interface in com.rgerva.dbr.network.interfaces">IModChooseTypes</a>)</li>
 <li class="circle">com.rgerva.dbr.sound.<a href="com/rgerva/dbr/sound/ModSounds.html" class="type-name-link" title="class in com.rgerva.dbr.sound">ModSounds</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModStats.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModStats</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.stats.<a href="com/rgerva/dbr/mechanics/stats/ModStats.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.stats">ModStats</a></li>
 <li class="circle">com.rgerva.dbr.tags.<a href="com/rgerva/dbr/tags/ModTags.html" class="type-name-link" title="class in com.rgerva.dbr.tags">ModTags</a></li>
 <li class="circle">com.rgerva.dbr.tags.<a href="com/rgerva/dbr/tags/ModTags.Blocks.html" class="type-name-link" title="class in com.rgerva.dbr.tags">ModTags.Blocks</a></li>
 <li class="circle">com.rgerva.dbr.tags.<a href="com/rgerva/dbr/tags/ModTags.Items.html" class="type-name-link" title="class in com.rgerva.dbr.tags">ModTags.Items</a></li>
 <li class="circle">com.rgerva.dbr.datagen.model.<a href="com/rgerva/dbr/datagen/model/ModTexturedModel.html" class="type-name-link" title="class in com.rgerva.dbr.datagen.model">ModTexturedModel</a></li>
 <li class="circle">com.rgerva.dbr.trim.<a href="com/rgerva/dbr/trim/ModTrimMaterials.html" class="type-name-link" title="class in com.rgerva.dbr.trim">ModTrimMaterials</a></li>
 <li class="circle">com.rgerva.dbr.trim.<a href="com/rgerva/dbr/trim/ModTrimPatterns.html" class="type-name-link" title="class in com.rgerva.dbr.trim">ModTrimPatterns</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModTypes.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModTypes</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.types.<a href="com/rgerva/dbr/mechanics/types/ModTypes.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.types">ModTypes</a></li>
 <li class="circle">com.rgerva.dbr.gui.screen.<a href="com/rgerva/dbr/gui/screen/ModUIComponents.html" class="type-name-link" title="class in com.rgerva.dbr.gui.screen">ModUIComponents</a></li>
 <li class="circle">com.rgerva.dbr.util.<a href="com/rgerva/dbr/util/ModUtils.html" class="type-name-link" title="class in com.rgerva.dbr.util">ModUtils</a></li>
 <li class="circle">com.rgerva.dbr.villager.<a href="com/rgerva/dbr/villager/ModVillagers.html" class="type-name-link" title="class in com.rgerva.dbr.villager">ModVillagers</a></li>
@@ -273,7 +276,7 @@ loadScripts(document, 'script');</script>
 <section class="hierarchy">
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
-<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModAttributes.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModAttributes</a></li>
+<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModAttributesSync.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a></li>
 <li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModChooseTypes.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModChooseTypes</a></li>
 <li class="circle">net.minecraft.world.item.crafting.Recipe&lt;T&gt;
 <ul>
@@ -289,9 +292,9 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Enum.html" class="type-name-link external-link" title="class or interface in java.lang">Enum</a>&lt;E&gt; (implements java.lang.<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link">Comparable</a>&lt;T&gt;, java.lang.constant.<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/constant/Constable.html" title="class or interface in java.lang.constant" class="external-link">Constable</a>, java.io.<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)
 <ul>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModTypes.Attributes.html" class="type-name-link" title="enum class in com.rgerva.dbr.mechanics">ModTypes.Attributes</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModTypes.ClassType.html" class="type-name-link" title="enum class in com.rgerva.dbr.mechanics">ModTypes.ClassType</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModTypes.RaceType.html" class="type-name-link" title="enum class in com.rgerva.dbr.mechanics">ModTypes.RaceType</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.attributes.<a href="com/rgerva/dbr/mechanics/attributes/ModAttributes.Attributes.html" class="type-name-link" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.types.<a href="com/rgerva/dbr/mechanics/types/ModTypes.ClassType.html" class="type-name-link" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.ClassType</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.types.<a href="com/rgerva/dbr/mechanics/types/ModTypes.RaceType.html" class="type-name-link" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a></li>
 </ul>
 </li>
 </ul>
@@ -305,12 +308,14 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Record.html" class="type-name-link external-link" title="class or interface in java.lang">Record</a>
 <ul>
+<li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/AttributesSyncC2SPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">AttributesSyncC2SPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
 <li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/AttributesSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">AttributesSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
 <li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/ChooseTypeScreenSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">ChooseTypeScreenSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModAttributes.AttributeModifiers.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModAttributes.AttributeModifiers</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.attributes.<a href="com/rgerva/dbr/mechanics/attributes/ModAttributes.AttributeModifiers.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.attributes">ModAttributes.AttributeModifiers</a></li>
 <li class="circle">com.rgerva.dbr.util.<a href="com/rgerva/dbr/util/ModOresUtils.ModBlockVeinProperties.html" class="type-name-link" title="class in com.rgerva.dbr.util">ModOresUtils.ModBlockVeinProperties</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModStats.DerivedStats.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModStats.DerivedStats</a></li>
-<li class="circle">com.rgerva.dbr.mechanics.<a href="com/rgerva/dbr/mechanics/ModTypes.RaceClassKey.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics">ModTypes.RaceClassKey</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.data.<a href="com/rgerva/dbr/mechanics/data/ModPlayerData.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.data">ModPlayerData</a> (implements com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModChooseTypes.html" title="interface in com.rgerva.dbr.network.interfaces">IModChooseTypes</a>)</li>
+<li class="circle">com.rgerva.dbr.mechanics.stats.<a href="com/rgerva/dbr/mechanics/stats/ModStats.DerivedStats.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.stats">ModStats.DerivedStats</a></li>
+<li class="circle">com.rgerva.dbr.mechanics.types.<a href="com/rgerva/dbr/mechanics/types/ModTypes.RaceClassKey.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.types">ModTypes.RaceClassKey</a></li>
 </ul>
 </li>
 </ul>

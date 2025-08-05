@@ -73,6 +73,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#sendToServer(net.minecraft.network.protocol.common.custom.CustomPacketPayload)" tabindex="0">sendToServer(CustomPacketPayload)</a></li>
 <li><a href="#sendToPlayer(net.minecraft.network.protocol.common.custom.CustomPacketPayload,net.minecraft.server.level.ServerPlayer)" tabindex="0">sendToPlayer(CustomPacketPayload, ServerPlayer)</a></li>
 <li><a href="#sendToPlayersWithinXBlocks(net.minecraft.network.protocol.common.custom.CustomPacketPayload,net.minecraft.core.BlockPos,net.minecraft.server.level.ServerLevel,int)" tabindex="0">sendToPlayersWithinXBlocks(CustomPacketPayload, BlockPos, ServerLevel, int)</a></li>
+<li><a href="#sendToAllPlayers(net.minecraft.network.protocol.common.custom.CustomPacketPayload)" tabindex="0">sendToAllPlayers(CustomPacketPayload)</a></li>
 </ol>
 </li>
 </ol>
@@ -122,18 +123,21 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#register(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent)" class="member-name-link">register</a><wbr>(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent&nbsp;event)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendToPlayer(net.minecraft.network.protocol.common.custom.CustomPacketPayload,net.minecraft.server.level.ServerPlayer)" class="member-name-link">sendToPlayer</a><wbr>(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message,
- net.minecraft.server.level.ServerPlayer&nbsp;player)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendToAllPlayers(net.minecraft.network.protocol.common.custom.CustomPacketPayload)" class="member-name-link">sendToAllPlayers</a><wbr>(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendToPlayersWithinXBlocks(net.minecraft.network.protocol.common.custom.CustomPacketPayload,net.minecraft.core.BlockPos,net.minecraft.server.level.ServerLevel,int)" class="member-name-link">sendToPlayersWithinXBlocks</a><wbr>(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendToPlayer(net.minecraft.network.protocol.common.custom.CustomPacketPayload,net.minecraft.server.level.ServerPlayer)" class="member-name-link">sendToPlayer</a><wbr>(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message,
+ net.minecraft.server.level.ServerPlayer&nbsp;player)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendToPlayersWithinXBlocks(net.minecraft.network.protocol.common.custom.CustomPacketPayload,net.minecraft.core.BlockPos,net.minecraft.server.level.ServerLevel,int)" class="member-name-link">sendToPlayersWithinXBlocks</a><wbr>(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message,
  net.minecraft.core.BlockPos&nbsp;pos,
  net.minecraft.server.level.ServerLevel&nbsp;level,
  int&nbsp;distance)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendToServer(net.minecraft.network.protocol.common.custom.CustomPacketPayload)" class="member-name-link">sendToServer</a><wbr>(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendToServer(net.minecraft.network.protocol.common.custom.CustomPacketPayload)" class="member-name-link">sendToServer</a><wbr>(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -200,6 +204,14 @@ loadScripts(document, 'script');</script>
  net.minecraft.core.BlockPos&nbsp;pos,
  net.minecraft.server.level.ServerLevel&nbsp;level,
  int&nbsp;distance)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="sendToAllPlayers(net.minecraft.network.protocol.common.custom.CustomPacketPayload)">
+<h3>sendToAllPlayers</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">sendToAllPlayers</span><wbr><span class="parameters">(net.minecraft.network.protocol.common.custom.CustomPacketPayload&nbsp;message)</span></div>
 </div>
 </section>
 </li>
