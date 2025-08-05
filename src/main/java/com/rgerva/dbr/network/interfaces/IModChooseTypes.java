@@ -11,7 +11,7 @@
  */
 package com.rgerva.dbr.network.interfaces;
 
-import com.rgerva.dbr.mechanics.ModTypes;
+import com.rgerva.dbr.mechanics.types.ModTypes;
 import com.rgerva.dbr.network.ModNetwork;
 import com.rgerva.dbr.network.packages.ChooseTypeScreenSyncS2CPacket;
 import net.minecraft.server.level.ServerPlayer;

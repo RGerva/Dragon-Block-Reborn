@@ -1,5 +1,5 @@
 /**
- * Record: AttributesSyncS2CPacket Immutable data structure for simplified object representation.
+ * Record: AttributesSyncC2SPacket Immutable data structure for simplified object representation.
  *
  * <p>Created by: D56V1OK On: 2025/ago.
  *
@@ -18,25 +18,19 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.EnumMap;
 import java.util.Map;
 
-public record AttributesSyncS2CPacket(Map<ModAttributes.Attributes, Float> attributes) implements CustomPacketPayload {
+public record AttributesSyncC2SPacket(Map<ModAttributes.Attributes, Float> attributes) implements CustomPacketPayload {
+    public static final Type<AttributesSyncC2SPacket> ID =
+            new Type<>(ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, "client_attributes"));
 
-    public static final Type<AttributesSyncS2CPacket> ID =
-            new Type<>(ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID,
-                    "sync_attributes"));
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, AttributesSyncS2CPacket> STREAM_CODEC =
-            StreamCodec.ofMember(AttributesSyncS2CPacket::write, AttributesSyncS2CPacket::new);
-
-    @Override
-    public Type<? extends CustomPacketPayload> type() {
-        return ID;
-    }
+    public static final StreamCodec<RegistryFriendlyByteBuf, AttributesSyncC2SPacket> STREAM_CODEC =
+            StreamCodec.ofMember(AttributesSyncC2SPacket::write, AttributesSyncC2SPacket::new);
 
     private static Map<ModAttributes.Attributes, Float> readMap(RegistryFriendlyByteBuf buf) {
         int size = buf.readVarInt();
@@ -49,8 +43,8 @@ public record AttributesSyncS2CPacket(Map<ModAttributes.Attributes, Float> attri
         return map;
     }
 
-    public AttributesSyncS2CPacket(RegistryFriendlyByteBuf buffer){
-        this(readMap(buffer));
+    public AttributesSyncC2SPacket(RegistryFriendlyByteBuf buf) {
+        this(readMap(buf));
     }
 
     public void write(RegistryFriendlyByteBuf buf) {
@@ -60,16 +54,22 @@ public record AttributesSyncS2CPacket(Map<ModAttributes.Attributes, Float> attri
             buf.writeFloat(entry.getValue());
         }
     }
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return ID;
+    }
 
-    public static void handle(AttributesSyncS2CPacket data, IPayloadContext context){
-        context.enqueueWork(() -> {
-            Player player = context.player();
-            if (player == null || player.level().isClientSide()) return;
+    public static void handle(AttributesSyncC2SPacket data, IPayloadContext context) {
+    context.enqueueWork(
+        () -> {
+            if(!(context.player().level() instanceof ServerLevel level) || !(context.player() instanceof ServerPlayer player))
+                return;
 
-            data.attributes.forEach((attr, value) -> {
+          data.attributes.forEach(
+              (attr, value) -> {
                 ModPlayerData playerData = new ModPlayerData(player);
                 playerData.setAttribute(attr, value);
-            });
+              });
         });
     }
 }

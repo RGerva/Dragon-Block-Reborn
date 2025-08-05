@@ -1,0 +1,52 @@
+/**
+ * Generic Class: ModAttachments <T> A generic structure that works with type parameters.
+ *
+ * <p>Created by: D56V1OK On: 2025/ago.
+ *
+ * <p>GitHub: https://github.com/RGerva
+ *
+ * <p>Copyright (c) 2025 @RGerva. All Rights Reserved.
+ *
+ * <p>Licensed under the Apache License, Version 2.0 (the "License");
+ */
+package com.rgerva.dbr.attachment;
+
+import com.mojang.serialization.Codec;
+import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.mechanics.attributes.ModAttributes;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
+public class ModAttachments {
+    private static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES =
+            DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES,
+                    DragonBlockReborn.MOD_ID);
+
+    public static final Supplier<AttachmentType<Float>> TP = ATTACHMENT_TYPES.register("tp",
+            () -> AttachmentType.builder(() -> 0F).serialize(Codec.FLOAT.fieldOf("tp")).copyOnDeath().build());
+
+    public static final Supplier<AttachmentType<Integer>> LVL = ATTACHMENT_TYPES.register("lvl",
+            () -> AttachmentType.builder(() -> 0).serialize(Codec.INT.fieldOf("lvl")).copyOnDeath().build());
+
+    public static final Map<ModAttributes.Attributes, Supplier<AttachmentType<Float>>> ATTRIBUTES =
+            new EnumMap<>(ModAttributes.Attributes.class);
+
+    static {
+        for (ModAttributes.Attributes attr : ModAttributes.Attributes.values()) {
+            ATTRIBUTES.put(attr, ATTACHMENT_TYPES.register(attr.name().toLowerCase(), () ->
+                    AttachmentType.builder(ModAttributes.Attributes::getDefaultValue)
+                            .serialize(Codec.FLOAT.fieldOf(attr.name()))
+                            .build()));
+        }
+    }
+
+    public static void register(IEventBus eventBus) {
+        ATTACHMENT_TYPES.register(eventBus);
+    }
+}

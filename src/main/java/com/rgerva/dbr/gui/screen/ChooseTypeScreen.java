@@ -12,15 +12,10 @@
 package com.rgerva.dbr.gui.screen;
 
 import com.rgerva.dbr.DragonBlockReborn;
-import com.rgerva.dbr.mechanics.ModAttributes;
-import com.rgerva.dbr.mechanics.ModPlayerData;
-import com.rgerva.dbr.mechanics.ModTypes;
-import com.rgerva.dbr.network.ModNetwork;
-import com.rgerva.dbr.network.interfaces.IModAttributes;
-import com.rgerva.dbr.network.interfaces.IModChooseTypes;
-import com.rgerva.dbr.network.packages.AttributesSyncS2CPacket;
+import com.rgerva.dbr.mechanics.attributes.ModAttributes;
+import com.rgerva.dbr.mechanics.types.ModTypes;
+import com.rgerva.dbr.network.interfaces.IModAttributesSync;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
@@ -29,11 +24,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChooseTypeScreen extends Screen {
+public class ChooseTypeScreen extends Screen implements IModAttributesSync {
     private static final ModTypes.RaceType[] ALL_RACES = ModTypes.RaceType.values();
     private static final ModTypes.ClassType[] ALL_CLASS = ModTypes.ClassType.values();
 
@@ -45,7 +39,7 @@ public class ChooseTypeScreen extends Screen {
     ModTypes.RaceClassKey key;
     ModAttributes.AttributeModifiers modifiers;
 
-    Map<ModTypes.Attributes, Float> visualAttributes = new HashMap<>();
+    Map<ModAttributes.Attributes, Float> visualAttributes = new HashMap<>();
     private final Map<String, EditBox> attributesTxtBox = new HashMap<>();
 
     Player player;
@@ -95,8 +89,10 @@ public class ChooseTypeScreen extends Screen {
             "DONE",
             (btn) -> {
               updateAttributesDisplay();
-              ModNetwork.sendToServer(new AttributesSyncS2CPacket(visualAttributes));
 
+              DragonBlockReborn.LOGGER.info("attributes {}", visualAttributes.values());
+
+              syncToServer();
               Minecraft.getInstance().setScreen(null);
             });
 
@@ -118,9 +114,9 @@ public class ChooseTypeScreen extends Screen {
 
 
     protected void showAttributes(int centerX, int centerY,
-                                  Map<ModTypes.Attributes, Float> visualAttributes){
+                                  Map<ModAttributes.Attributes, Float> visualAttributes){
         int i = 0;
-        for (Map.Entry<ModTypes.Attributes, Float> entry : visualAttributes.entrySet()) {
+        for (Map.Entry<ModAttributes.Attributes, Float> entry : visualAttributes.entrySet()) {
             int y = centerY + i * 24;
 
             String txtAttr = entry.getKey().name() + ": " + entry.getValue();
@@ -231,5 +227,10 @@ public class ChooseTypeScreen extends Screen {
         this.addRenderableWidget(txtBox);
         this.addRenderableWidget(btnPlus);
         this.addRenderableWidget(btnMinus);
+    }
+
+    @Override
+    public Map<ModAttributes.Attributes, Float> getInterfaceAttributes() {
+        return visualAttributes;
     }
 }

@@ -22,6 +22,7 @@
 package com.rgerva.dbr;
 
 import com.mojang.logging.LogUtils;
+import com.rgerva.dbr.attachment.ModAttachments;
 import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.capabilities.ModCapabilities;
@@ -84,6 +85,7 @@ public class DragonBlockReborn {
     ModRecipes.register(modEventBus);
 
     ModFluids.register(modEventBus);
+    ModAttachments.register(modEventBus);
 
     modEventBus.addListener(ModCreativeTab::addCreative);
     modEventBus.addListener(ModCapabilities::registerCapabilities);

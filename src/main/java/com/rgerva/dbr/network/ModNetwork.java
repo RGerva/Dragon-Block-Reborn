@@ -11,6 +11,7 @@
  */
 package com.rgerva.dbr.network;
 
+import com.rgerva.dbr.network.packages.AttributesSyncC2SPacket;
 import com.rgerva.dbr.network.packages.AttributesSyncS2CPacket;
 import com.rgerva.dbr.network.packages.ChooseTypeScreenSyncS2CPacket;
 import net.minecraft.core.BlockPos;
@@ -27,13 +28,19 @@ public class ModNetwork {
   public static void register(final RegisterPayloadHandlersEvent event) {
     final PayloadRegistrar registrar = event.registrar("1.0");
 
+    //Server -> Client
     registrar.playToClient(ChooseTypeScreenSyncS2CPacket.ID,
             ChooseTypeScreenSyncS2CPacket.STREAM_CODEC,
             ChooseTypeScreenSyncS2CPacket::handle);
 
     registrar.playToClient(AttributesSyncS2CPacket.ID,
-            AttributesSyncS2CPacket.STREAM_CODEC,
-            AttributesSyncS2CPacket::handle);
+          AttributesSyncS2CPacket.STREAM_CODEC,
+          AttributesSyncS2CPacket::handle);
+
+    //Client -> Server
+    registrar.playToServer(AttributesSyncC2SPacket.ID,
+          AttributesSyncC2SPacket.STREAM_CODEC,
+          AttributesSyncC2SPacket::handle);
   }
 
   public static void sendToServer(CustomPacketPayload message) {
@@ -48,5 +55,9 @@ public class ModNetwork {
       CustomPacketPayload message, BlockPos pos, ServerLevel level, int distance) {
     PacketDistributor.sendToPlayersNear(
         level, null, pos.getX(), pos.getY(), pos.getZ(), distance, message);
+  }
+
+  public static void sendToAllPlayers(CustomPacketPayload message) {
+    PacketDistributor.sendToAllPlayers(message);
   }
 }

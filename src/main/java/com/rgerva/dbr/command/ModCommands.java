@@ -13,14 +13,9 @@ package com.rgerva.dbr.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
-import com.rgerva.dbr.mechanics.ModRestPlayer;
-import com.rgerva.dbr.mechanics.ModStats;
-import com.rgerva.dbr.network.ModNetwork;
-import com.rgerva.dbr.network.interfaces.IModChooseTypes;
+import com.rgerva.dbr.mechanics.data.ModPlayerData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
 public class ModCommands {
@@ -32,7 +27,9 @@ public class ModCommands {
                                 .requires(ctx -> ctx.hasPermission(0))
                                 .executes(context -> {
                                     ServerPlayer player = context.getSource().getPlayerOrException();
-                                    ModRestPlayer.Rest(player);
+
+                                    ModPlayerData playerData = new ModPlayerData(player);
+                                    playerData.restAttributes();
                                     return Command.SINGLE_SUCCESS;
                                 })
                         )

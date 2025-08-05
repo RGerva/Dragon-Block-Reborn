@@ -9,16 +9,39 @@
  *
  * <p>Licensed under the Apache License, Version 2.0 (the "License");
  */
-package com.rgerva.dbr.mechanics;
+package com.rgerva.dbr.mechanics.attributes;
 
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import com.rgerva.dbr.mechanics.ModTypes.*;
+import com.rgerva.dbr.mechanics.types.ModTypes;
+import com.rgerva.dbr.mechanics.types.ModTypes.*;
+import net.minecraft.network.chat.Component;
 
 public class ModAttributes {
+    public enum Attributes {
+        STR,
+        DEX,
+        CON,
+        WIL,
+        MND,
+        SPI;
+
+        public String getName() {
+            return name();
+        }
+
+        public Component getFullName() {
+            return Component.translatable("mechanic.dragon_block_reborn." + getName().toLowerCase());
+        }
+
+        public static float getDefaultValue() {
+            return 10;
+        }
+    }
+
     public record AttributeModifiers(float str, float dex, float con, float wil, float mnd,
                                      float spi){}
 

@@ -12,13 +12,12 @@
 package com.rgerva.dbr.events;
 
 import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.attachment.ModAttachments;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.renderer.DragonBallEntityRenderer;
 import com.rgerva.dbr.command.ModCommands;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
-import com.rgerva.dbr.mechanics.ModAttributes;
-import com.rgerva.dbr.mechanics.ModPlayerData;
-import com.rgerva.dbr.mechanics.ModTypes;
+import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.entity.player.Player;
@@ -27,12 +26,11 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
@@ -52,26 +50,23 @@ public class ModBusEvents {
   }
 
   @SubscribeEvent
-  public static void onPLayerLogin(PlayerEvent.PlayerLoggedInEvent event){
+  public static void onPlayerTick(PlayerTickEvent.Post event) {}
 
+  @SubscribeEvent
+  public static void onClone(PlayerEvent.Clone event) {
+      if (event.isWasDeath()) {
+          Player original = event.getOriginal();
+          Player clone = event.getEntity();
+
+          for (ModAttributes.Attributes attr : ModAttributes.Attributes.values()) {
+              AttachmentType<Float> attachmentType = ModAttachments.ATTRIBUTES.get(attr).get();
+              Float originalValue = original.getData(attachmentType);
+              clone.setData(attachmentType, originalValue);
+          }
+      }
   }
 
   @SubscribeEvent
-  public static void onPlayerLogout(PlayerEvent.PlayerLoggedInEvent event){}
-
-  @SubscribeEvent
-  public static void onModAttack(LivingDeathEvent event){}
-
-  @SubscribeEvent
-  public static void onPlayerTick(PlayerTickEvent.Post event) {
-    Player player = event.getEntity();
-    if (!player.level().isClientSide) {
-      float str = ModPlayerData.get(player, ModTypes.Attributes.STR);
-      DragonBlockReborn.LOGGER.info("Hire STR: {}", str);
-    }
-  }
-
-    @SubscribeEvent
   public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
     event.registerBlockEntityRenderer(
         ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);

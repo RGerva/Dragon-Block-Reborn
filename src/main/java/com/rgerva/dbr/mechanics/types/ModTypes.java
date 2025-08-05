@@ -9,7 +9,7 @@
  *
  * <p>Licensed under the Apache License, Version 2.0 (the "License");
  */
-package com.rgerva.dbr.mechanics;
+package com.rgerva.dbr.mechanics.types;
 
 import net.minecraft.network.chat.Component;
 
@@ -46,25 +46,4 @@ public class ModTypes {
     }
 
     public record RaceClassKey(RaceType race, ClassType clazz) {}
-
-    public enum Attributes {
-        STR,
-        DEX,
-        CON,
-        WIL,
-        MND,
-        SPI;
-
-        public String getName() {
-            return name();
-        }
-
-        public Component getFullName() {
-            return Component.translatable("mechanic.dragon_block_reborn." + getName().toLowerCase());
-        }
-
-        public float getDefaultValue() {
-            return 10;
-        }
-    }
 }

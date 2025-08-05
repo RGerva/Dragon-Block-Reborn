@@ -16,8 +16,7 @@ package com.rgerva.dbr.network.packages;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.gui.screen.ChooseTypeScreen;
-import com.rgerva.dbr.mechanics.ModAttributes;
-import com.rgerva.dbr.mechanics.ModTypes;
+import com.rgerva.dbr.mechanics.types.ModTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;

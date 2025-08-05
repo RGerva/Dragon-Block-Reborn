@@ -1,14 +1,4 @@
-package com.rgerva.dbr.mechanics;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-import java.lang.reflect.Modifier;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.rgerva.dbr.mechanics.ModTypes.*;
+package com.rgerva.dbr.mechanics.stats;
 
 public class ModStats {
 
