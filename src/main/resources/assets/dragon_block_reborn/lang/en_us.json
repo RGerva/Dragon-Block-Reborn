@@ -41,6 +41,10 @@
   "mechanic.dragon_block_reborn.regen_energy": "Regen Energy",
   "mechanic.dragon_block_reborn.mind_value": "Mind",
   "mechanic.dragon_block_reborn.training_bonus": "Training Bonus",
+  "mechanic.dragon_block_reborn.easy": "Easy Mode",
+  "mechanic.dragon_block_reborn.normal": "Normal Mode",
+  "mechanic.dragon_block_reborn.hard": "Hard Mode",
+  "mechanic.dragon_block_reborn.insane": "Insane Mode",
 
   "tooltip.dragon_block_reborn.str": "Determines the damage which physical attacks deal.",
   "tooltip.dragon_block_reborn.dex": "Determines movement speed and ability to resist incoming damage.",

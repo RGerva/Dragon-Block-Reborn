@@ -93,10 +93,6 @@ public class ChooseTypeScreen extends Screen implements IModSyncPlayer {
             "DONE",
             (btn) -> {
               updateAttributesDisplay();
-
-              DragonBlockReborn.LOGGER.info("attributes {}", visualAttributes.values());
-              DragonBlockReborn.LOGGER.info("attributes {}", visualStats.values());
-
               syncToServer();
               Minecraft.getInstance().setScreen(null);
             });

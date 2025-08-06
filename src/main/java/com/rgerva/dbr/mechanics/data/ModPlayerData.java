@@ -11,18 +11,27 @@
  */
 package com.rgerva.dbr.mechanics.data;
 
+import com.rgerva.dbr.attachment.ModAttachments;
+import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
-import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.network.interfaces.IModChooseTypes;
-import net.minecraft.world.entity.player.Player;
-import com.rgerva.dbr.attachment.ModAttachments;
 
+import java.util.HashMap;
 import java.util.Map;
+import net.minecraft.world.entity.player.Player;
 
 public record ModPlayerData(Player player) implements IModChooseTypes {
 
-  public float getAttribute(ModAttributes.Attributes attr) {
+	public static Map<ModAttributes.Attributes, Float> getMapAttributes(Player player){
+		Map<ModAttributes.Attributes, Float> attributes = new HashMap<>();
+		for(ModAttributes.Attributes attr : ModAttributes.Attributes.values()){
+			attributes.put(attr, getAttribute(player, attr));
+		}
+		return attributes;
+	}
+
+  public static float getAttribute(Player player, ModAttributes.Attributes attr) {
     return player.getData(ModAttachments.ATTRIBUTES.get(attr).get());
   }
 
@@ -30,33 +39,45 @@ public record ModPlayerData(Player player) implements IModChooseTypes {
     player.setData(ModAttachments.ATTRIBUTES.get(attr).get(), value);
   }
 
-  public float getStats(ModStats.Stats stats){
-      return player.getData(ModAttachments.STATS.get(stats).get());
+  /*====*/
+
+	public static Map<ModStats.Stats, Float> getMapStats(Player player){
+		Map<ModStats.Stats, Float> stats = new HashMap<>();
+		for(ModStats.Stats str : ModStats.Stats.values()){
+			stats.put(str , getStats(player, str));
+		}
+		return stats;
+	}
+
+  public static float getStats(Player player, ModStats.Stats stats) {
+    return player.getData(ModAttachments.STATS.get(stats).get());
   }
 
-  public void setStats(ModStats.Stats stats, float value){
-      player.setData(ModAttachments.STATS.get(stats).get(), value);
+  public void setStats(ModStats.Stats stats, float value) {
+    player.setData(ModAttachments.STATS.get(stats).get(), value);
   }
 
-  public void restAttributes(){
-      for(ModAttributes.Attributes attr : ModAttributes.Attributes.values()){
-          player.setData(ModAttachments.ATTRIBUTES.get(attr),
-                  ModAttributes.Attributes.getDefaultValue());
-      }
+  /*====*/
 
-      for(ModStats.Stats stats : ModStats.Stats.values()){
-          player.setData(ModAttachments.STATS.get(stats), 0F);
-      }
-      syncTypesToPlayer(player);
-  }
-
-    @Override
-    public ModTypes.RaceType getInterfaceSyncRaceType() {
-        return ModTypes.RaceType.SAIYAN;
+  public void restAttributes() {
+    for (ModAttributes.Attributes attr : ModAttributes.Attributes.values()) {
+      player.setData(
+          ModAttachments.ATTRIBUTES.get(attr), ModAttributes.Attributes.getDefaultValue());
     }
 
-    @Override
-    public ModTypes.ClassType getInterfaceSyncClassType() {
-        return ModTypes.ClassType.MARTIAL_ARTIST;
+    for (ModStats.Stats stats : ModStats.Stats.values()) {
+      player.setData(ModAttachments.STATS.get(stats), 0F);
     }
+    syncTypesToPlayer(player);
+  }
+
+  @Override
+  public ModTypes.RaceType getInterfaceSyncRaceType() {
+    return ModTypes.RaceType.SAIYAN;
+  }
+
+  @Override
+  public ModTypes.ClassType getInterfaceSyncClassType() {
+    return ModTypes.ClassType.MARTIAL_ARTIST;
+  }
 }

@@ -20,8 +20,10 @@ import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
 import com.rgerva.dbr.mechanics.stats.ModStats;
+import com.rgerva.dbr.mechanics.types.ModTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
@@ -33,9 +35,13 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
+
+import java.security.PublicKey;
+import java.util.Map;
 
 @EventBusSubscriber(modid = DragonBlockReborn.MOD_ID, value = Dist.CLIENT)
 public class ModBusEvents {
@@ -52,13 +58,21 @@ public class ModBusEvents {
   }
 
   @SubscribeEvent
-  public static void onPlayerTick(PlayerTickEvent.Post event) {
-      if(event.getEntity().isLocalPlayer()){
-          ModPlayerData playerData = new ModPlayerData(event.getEntity());
-          float type = playerData.getStats(ModStats.Stats.MELEE_DAMAGE);
-          DragonBlockReborn.LOGGER.info("See Type MELEE:{}", type);
-      }
+  private static void onLivingJump(LivingEvent.LivingJumpEvent event) {
+	  LivingEntity entity = event.getEntity();
+	  if(!entity.level().isClientSide()){
+		Player player = (Player) entity;
+
+		  Map<ModAttributes.Attributes, Float> attr = ModPlayerData.getMapAttributes(player);
+		  DragonBlockReborn.LOGGER.info("Hire ATTR: {}", attr);
+
+		  Map<ModStats.Stats, Float> stats = ModPlayerData.getMapStats(player);
+		  DragonBlockReborn.LOGGER.info("Hire STATS: {}", stats);
+	  }
   }
+
+  @SubscribeEvent
+  public static void onPlayerTick(PlayerTickEvent.Post event) {}
 
   @SubscribeEvent
   public static void onClone(PlayerEvent.Clone event) {
