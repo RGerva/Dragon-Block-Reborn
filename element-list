@@ -25,6 +25,7 @@ com.rgerva.dbr.item
 com.rgerva.dbr.loot
 com.rgerva.dbr.mechanics.attributes
 com.rgerva.dbr.mechanics.data
+com.rgerva.dbr.mechanics.level
 com.rgerva.dbr.mechanics.stats
 com.rgerva.dbr.mechanics.types
 com.rgerva.dbr.mixin
