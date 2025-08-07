@@ -21,6 +21,7 @@ import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
 import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
+import java.util.Map;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.entity.LivingEntity;
@@ -40,9 +41,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
-import java.security.PublicKey;
-import java.util.Map;
-
 @EventBusSubscriber(modid = DragonBlockReborn.MOD_ID, value = Dist.CLIENT)
 public class ModBusEvents {
 
@@ -59,16 +57,22 @@ public class ModBusEvents {
 
   @SubscribeEvent
   private static void onLivingJump(LivingEvent.LivingJumpEvent event) {
-	  LivingEntity entity = event.getEntity();
-	  if(!entity.level().isClientSide()){
-		Player player = (Player) entity;
+    LivingEntity entity = event.getEntity();
+    if (!entity.level().isClientSide()) {
+      Player player = (Player) entity;
 
-		  Map<ModAttributes.Attributes, Float> attr = ModPlayerData.getMapAttributes(player);
-		  DragonBlockReborn.LOGGER.info("Hire ATTR: {}", attr);
+      ModTypes.RaceType race = ModPlayerData.getRace(player);
+      DragonBlockReborn.LOGGER.info("RACE: {}", race);
 
-		  Map<ModStats.Stats, Float> stats = ModPlayerData.getMapStats(player);
-		  DragonBlockReborn.LOGGER.info("Hire STATS: {}", stats);
-	  }
+      ModTypes.ClassType clazz = ModPlayerData.getClass(player);
+      DragonBlockReborn.LOGGER.info("CLASS: {}", clazz);
+
+      Map<ModAttributes.Attributes, Float> attr = ModPlayerData.getMapAttributes(player);
+      DragonBlockReborn.LOGGER.info("ATTR: {}", attr);
+
+      Map<ModStats.Stats, Float> stats = ModPlayerData.getMapStats(player);
+      DragonBlockReborn.LOGGER.info("STATS: {}", stats);
+    }
   }
 
   @SubscribeEvent
@@ -76,16 +80,16 @@ public class ModBusEvents {
 
   @SubscribeEvent
   public static void onClone(PlayerEvent.Clone event) {
-      if (event.isWasDeath()) {
-          Player original = event.getOriginal();
-          Player clone = event.getEntity();
+    if (event.isWasDeath()) {
+      Player original = event.getOriginal();
+      Player clone = event.getEntity();
 
-          for (ModAttributes.Attributes attr : ModAttributes.Attributes.values()) {
-              AttachmentType<Float> attachmentType = ModAttachments.ATTRIBUTES.get(attr).get();
-              Float originalValue = original.getData(attachmentType);
-              clone.setData(attachmentType, originalValue);
-          }
+      for (ModAttributes.Attributes attr : ModAttributes.Attributes.values()) {
+        AttachmentType<Float> attachmentType = ModAttachments.ATTRIBUTES.get(attr).get();
+        Float originalValue = original.getData(attachmentType);
+        clone.setData(attachmentType, originalValue);
       }
+    }
   }
 
   @SubscribeEvent

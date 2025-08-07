@@ -13,15 +13,17 @@ package com.rgerva.dbr.network.interfaces;
 
 import net.minecraft.world.entity.player.Player;
 
-public interface IModSyncPlayer extends IModAttributesSync, IModStatsSync{
+public interface IModSyncPlayer extends IModAttributesSync, IModStatsSync, IModRaceClassSync {
 
-    default void syncToClient(Player player){
-        syncAttrToClient(player);
-        syncStatToClient(player);
-    }
+  default void syncToClient(Player player) {
+    syncRaceClassToClient(player);
+    syncAttrToClient(player);
+    syncStatToClient(player);
+  }
 
-    default void syncToServer(){
-        syncAttrToServer();
-        syncStatToServer();
-    }
+  default void syncToServer() {
+    syncRaceClassToServer();
+    syncAttrToServer();
+    syncStatToServer();
+  }
 }

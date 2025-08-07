@@ -11,39 +11,41 @@
  */
 package com.rgerva.dbr.mechanics.types;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.chat.Component;
 
 public class ModTypes {
-    public enum RaceType {
-        HUMAN,
-        SAIYAN,
-        HALF_SAIYAN,
-        NAMEKIAN,
-        MAJIN,
-        ARCOSIAN;
+  public enum RaceType {
+    HUMAN,
+    SAIYAN,
+    HALF_SAIYAN,
+    NAMEKIAN,
+    MAJIN,
+    ARCOSIAN;
 
-        public String getName(){
-            return name();
-        }
-
-        public Component getFullName() {
-            return Component.translatable("mechanic.dragon_block_reborn." + getName().toLowerCase());
-        }
+    public String getName() {
+      return name();
     }
 
-    public enum ClassType {
-        MARTIAL_ARTIST,
-        SPIRITUALIST,
-        WARRIOR;
+    public Component getFullName() {
+      return Component.translatable("mechanic.dragon_block_reborn." + getName().toLowerCase());
+    }
+  }
 
-        public String getName(){
-            return name();
-        }
+  public enum ClassType {
+    MARTIAL_ARTIST,
+    SPIRITUALIST,
+    WARRIOR;
 
-        public Component getFullName() {
-            return Component.translatable("mechanic.dragon_block_reborn." + getName().toLowerCase());
-        }
+    public String getName() {
+      return name();
     }
 
-    public record RaceClassKey(RaceType race, ClassType clazz) {}
+    public Component getFullName() {
+      return Component.translatable("mechanic.dragon_block_reborn." + getName().toLowerCase());
+    }
+  }
+
+  public record RaceClassKey(RaceType race, ClassType clazz) {}
 }

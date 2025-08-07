@@ -15,18 +15,15 @@ import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.properties.ModBlockProperties;
 import com.rgerva.dbr.sound.ModSounds;
-import net.minecraft.client.Minecraft;
+import java.util.Random;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -36,8 +33,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class DragonBallEntity extends BlockEntity {
   private int animationTick = 0;
@@ -53,21 +48,21 @@ public class DragonBallEntity extends BlockEntity {
   }
 
   public static void tick(Level level, BlockPos pos, BlockState state, DragonBallEntity entity) {
-    if(level.isClientSide){
-      if(entity.animating){
+    if (level.isClientSide) {
+      if (entity.animating) {
         entity.animationTick++;
       }
       return;
     }
 
-    if (!state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE) && entity.shouldEmitGlow(level, pos)) {
+    if (!state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE)
+        && entity.shouldEmitGlow(level, pos)) {
       entity.particlesEffects((ServerLevel) level, pos, state, entity);
     }
-
   }
 
-  private void animationEffects(ServerLevel level, BlockPos pos, BlockState state,
-                          DragonBallEntity entity){
+  private void animationEffects(
+      ServerLevel level, BlockPos pos, BlockState state, DragonBallEntity entity) {
     if (entity.animating) {
       entity.animationTick++;
       if (entity.animationTick >= MAX_ANIMATION_TICKS) {
@@ -80,7 +75,7 @@ public class DragonBallEntity extends BlockEntity {
     }
   }
 
-  private void setRespawnEntity(ServerLevel level, BlockPos pos, DragonBallEntity entity){
+  private void setRespawnEntity(ServerLevel level, BlockPos pos, DragonBallEntity entity) {
     if (entity.respawnTimer > 0) {
       entity.respawnTimer--;
       if (entity.respawnTimer == 0) {
@@ -89,15 +84,18 @@ public class DragonBallEntity extends BlockEntity {
     }
   }
 
-  private void particlesEffects(ServerLevel level, BlockPos pos, BlockState state, DragonBallEntity entity){
+  private void particlesEffects(
+      ServerLevel level, BlockPos pos, BlockState state, DragonBallEntity entity) {
     if (entity.glowSoundCooldown > 0) entity.glowSoundCooldown--;
 
-    if (!state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE) && entity.shouldEmitGlow(level, pos)) {
+    if (!state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE)
+        && entity.shouldEmitGlow(level, pos)) {
       if (entity.getGlowSoundCooldown() <= 0) {
         level.playSound(null, pos, ModSounds.DRAGON_GLOW.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         entity.setGlowSoundCooldown(MAX_ANIMATION_TICKS);
       }
-      ((ServerLevel) level).sendParticles(
+      ((ServerLevel) level)
+          .sendParticles(
               ParticleTypes.END_ROD,
               pos.getX() + 0.5,
               pos.getY() + 0.7,
@@ -110,7 +108,8 @@ public class DragonBallEntity extends BlockEntity {
     }
   }
 
-  private void afterDragon(ServerLevel level, BlockPos pos, BlockState state, DragonBallEntity entity){
+  private void afterDragon(
+      ServerLevel level, BlockPos pos, BlockState state, DragonBallEntity entity) {
     entity.spawnScatteredBalls(level, pos);
     level.setBlock(pos, state.setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, true), 3);
     entity.respawnTimer = RESPAWN_TICKS;
@@ -136,18 +135,26 @@ public class DragonBallEntity extends BlockEntity {
       int dz = random.nextInt(129) - 64;
       BlockPos newPos = center.offset(dx, 0, dz);
       BlockPos validPos = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, newPos);
-      level.setBlock(validPos, ModBlocks.DRAGON_BALL_BLOCK.get().defaultBlockState().setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, true), 3);
+      level.setBlock(
+          validPos,
+          ModBlocks.DRAGON_BALL_BLOCK
+              .get()
+              .defaultBlockState()
+              .setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, true),
+          3);
     }
   }
 
   private void restoreNearbyStones(Level level, BlockPos center) {
-    BlockPos.betweenClosedStream(center.offset(-64, -10, -64), center.offset(64, 10, 64)).forEach(pos -> {
-      BlockState bs = level.getBlockState(pos);
-      if (bs.getBlock() == ModBlocks.DRAGON_BALL_BLOCK.get()
-              && bs.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE)) {
-        level.setBlock(pos, bs.setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, false), 3);
-      }
-    });
+    BlockPos.betweenClosedStream(center.offset(-64, -10, -64), center.offset(64, 10, 64))
+        .forEach(
+            pos -> {
+              BlockState bs = level.getBlockState(pos);
+              if (bs.getBlock() == ModBlocks.DRAGON_BALL_BLOCK.get()
+                  && bs.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE)) {
+                level.setBlock(pos, bs.setValue(ModBlockProperties.DRAGON_BALL_IS_STONE, false), 3);
+              }
+            });
   }
 
   private boolean shouldEmitGlow(Level level, BlockPos pos) {
@@ -157,20 +164,20 @@ public class DragonBallEntity extends BlockEntity {
 
   private boolean isFormationEastWest(Level level, BlockPos pos, Block block) {
     return level.getBlockState(pos.east()).is(block)
-            && level.getBlockState(pos.west()).is(block)
-            && level.getBlockState(pos.east().north()).is(block)
-            && level.getBlockState(pos.east().south()).is(block)
-            && level.getBlockState(pos.west().north()).is(block)
-            && level.getBlockState(pos.west().south()).is(block);
+        && level.getBlockState(pos.west()).is(block)
+        && level.getBlockState(pos.east().north()).is(block)
+        && level.getBlockState(pos.east().south()).is(block)
+        && level.getBlockState(pos.west().north()).is(block)
+        && level.getBlockState(pos.west().south()).is(block);
   }
 
   private boolean isFormationNorthSouth(Level level, BlockPos pos, Block block) {
     return level.getBlockState(pos.north()).is(block)
-            && level.getBlockState(pos.south()).is(block)
-            && level.getBlockState(pos.north().east()).is(block)
-            && level.getBlockState(pos.north().west()).is(block)
-            && level.getBlockState(pos.south().east()).is(block)
-            && level.getBlockState(pos.south().west()).is(block);
+        && level.getBlockState(pos.south()).is(block)
+        && level.getBlockState(pos.north().east()).is(block)
+        && level.getBlockState(pos.north().west()).is(block)
+        && level.getBlockState(pos.south().east()).is(block)
+        && level.getBlockState(pos.south().west()).is(block);
   }
 
   @Override
@@ -232,5 +239,4 @@ public class DragonBallEntity extends BlockEntity {
   public void setGlowSoundCooldown(int ticks) {
     this.glowSoundCooldown = ticks;
   }
-
 }

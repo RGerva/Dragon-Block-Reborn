@@ -13,24 +13,23 @@ package com.rgerva.dbr.network.interfaces;
 
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.network.ModNetwork;
-import com.rgerva.dbr.network.packages.AttributesSyncC2SPacket;
-import com.rgerva.dbr.network.packages.AttributesSyncS2CPacket;
+import com.rgerva.dbr.network.packages.ClientToServer.AttributesSyncC2SPacket;
+import com.rgerva.dbr.network.packages.ServertToClient.AttributesSyncS2CPacket;
+import java.util.Map;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.Map;
-
 public interface IModAttributesSync {
 
-    Map<ModAttributes.Attributes, Float> getInterfaceAttributes();
+  Map<ModAttributes.Attributes, Float> getInterfaceAttributes();
 
-    default void syncAttrToServer() {
-        ModNetwork.sendToServer(new AttributesSyncC2SPacket(getInterfaceAttributes()));
-    }
+  default void syncAttrToServer() {
+    ModNetwork.sendToServer(new AttributesSyncC2SPacket(getInterfaceAttributes()));
+  }
 
-    default void syncAttrToClient(Player player) {
-        if (player instanceof ServerPlayer serverPlayer) {
-            ModNetwork.sendToPlayer(new AttributesSyncS2CPacket(getInterfaceAttributes()), serverPlayer);
-        }
+  default void syncAttrToClient(Player player) {
+    if (player instanceof ServerPlayer serverPlayer) {
+      ModNetwork.sendToPlayer(new AttributesSyncS2CPacket(getInterfaceAttributes()), serverPlayer);
     }
+  }
 }

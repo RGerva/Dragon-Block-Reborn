@@ -12,8 +12,6 @@
 package com.rgerva.dbr.events;
 
 import com.rgerva.dbr.DragonBlockReborn;
-import com.rgerva.dbr.command.ModCommands;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -26,6 +24,6 @@ public class ModGameEvents {
   @SubscribeEvent(priority = EventPriority.HIGHEST)
   public static void onCommandsRegister(RegisterCommandsEvent event) {
     ConfigCommand.register(event.getDispatcher());
-//    ModCommands.statsCommand(event.getDispatcher());
+    //    ModCommands.statsCommand(event.getDispatcher());
   }
 }

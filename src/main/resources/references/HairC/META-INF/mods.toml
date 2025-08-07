@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="All rights reserved"
+[[mods]]
+modId="jrhc" 
+version="1.4.1"
+displayName="Jingames Hair C" 
+displayURL="https://hairsalon.jingames.net/"
+credits="" 
+authors="JinRyuu Nagy, Jingames_Ben, YourDailyModder" 
+
+description='''
+Hair C is a Custom Hair Creator where you have so called hair blocks on your head that you can customize to an extend.
+It is based on the 1.7.10 JRMCore mod's Custom Hair system from JinRyuu.
+
+More information on homepage.
+Share your hairstyles on 
+https://hairsalon.jingames.net/
+
+Thanks for downloading this mod!
+'''

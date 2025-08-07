@@ -16,20 +16,66 @@ import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
 import com.rgerva.dbr.network.interfaces.IModChooseTypes;
-
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.world.entity.player.Player;
 
 public record ModPlayerData(Player player) implements IModChooseTypes {
 
-	public static Map<ModAttributes.Attributes, Float> getMapAttributes(Player player){
-		Map<ModAttributes.Attributes, Float> attributes = new HashMap<>();
-		for(ModAttributes.Attributes attr : ModAttributes.Attributes.values()){
-			attributes.put(attr, getAttribute(player, attr));
-		}
-		return attributes;
+  public static ModTypes.RaceType getRace(Player player) {
+    String race = player.getData(ModAttachments.RACE_TYPE.get());
+	return switch (race){
+		case "HUMAN" -> ModTypes.RaceType.HUMAN;
+		case "SAIYAN" -> ModTypes.RaceType.SAIYAN;
+		case "HALF_SAIYAN" -> ModTypes.RaceType.HALF_SAIYAN;
+		case "NAMEKIAN" -> ModTypes.RaceType.NAMEKIAN;
+		case "MAJIN" -> ModTypes.RaceType.MAJIN;
+		case "ARCOSIAN" -> ModTypes.RaceType.ARCOSIAN;
+
+		default -> throw new IllegalStateException("Unexpected value: " + race);
+	};
+  }
+
+  public void setRace(ModTypes.RaceType race) {
+	  switch (race){
+		  case HUMAN ->  player.setData(ModAttachments.RACE_TYPE.get(), "HUMAN");
+		  case SAIYAN -> player.setData(ModAttachments.RACE_TYPE.get(), "SAIYAN");
+		  case HALF_SAIYAN -> player.setData(ModAttachments.RACE_TYPE.get(), "HALF_SAIYAN");
+		  case NAMEKIAN -> player.setData(ModAttachments.RACE_TYPE.get(), "NAMEKIAN");
+		  case MAJIN -> player.setData(ModAttachments.RACE_TYPE.get(), "MAJIN");
+		  case ARCOSIAN -> player.setData(ModAttachments.RACE_TYPE.get(), "ARCOSIAN");
+	  }
+  }
+
+  /*====*/
+
+  public static ModTypes.ClassType getClass(Player player) {
+	return switch (player.getData(ModAttachments.CLASS_TYPE.get())){
+		case "MARTIAL_ARTIST" -> 	ModTypes.ClassType.MARTIAL_ARTIST;
+		case "SPIRITUALIST" -> 	ModTypes.ClassType.SPIRITUALIST;
+		case "WARRIOR" -> 	ModTypes.ClassType.WARRIOR;
+		default ->
+				throw new IllegalStateException("Unexpected value: " + player.getData(ModAttachments.CLASS_TYPE.get()));
+	};
+  }
+
+  public void setClass(ModTypes.ClassType clazz) {
+	switch (clazz){
+		case MARTIAL_ARTIST -> player.setData(ModAttachments.CLASS_TYPE.get(), "MARTIAL_ARTIST");
+		case SPIRITUALIST -> player.setData(ModAttachments.CLASS_TYPE.get(), "SPIRITUALIST");
+		case WARRIOR -> player.setData(ModAttachments.CLASS_TYPE.get(), "WARRIOR");
 	}
+  }
+
+  /*====*/
+
+  public static Map<ModAttributes.Attributes, Float> getMapAttributes(Player player) {
+    Map<ModAttributes.Attributes, Float> attributes = new HashMap<>();
+    for (ModAttributes.Attributes attr : ModAttributes.Attributes.values()) {
+      attributes.put(attr, getAttribute(player, attr));
+    }
+    return attributes;
+  }
 
   public static float getAttribute(Player player, ModAttributes.Attributes attr) {
     return player.getData(ModAttachments.ATTRIBUTES.get(attr).get());
@@ -41,13 +87,13 @@ public record ModPlayerData(Player player) implements IModChooseTypes {
 
   /*====*/
 
-	public static Map<ModStats.Stats, Float> getMapStats(Player player){
-		Map<ModStats.Stats, Float> stats = new HashMap<>();
-		for(ModStats.Stats str : ModStats.Stats.values()){
-			stats.put(str , getStats(player, str));
-		}
-		return stats;
-	}
+  public static Map<ModStats.Stats, Float> getMapStats(Player player) {
+    Map<ModStats.Stats, Float> stats = new HashMap<>();
+    for (ModStats.Stats str : ModStats.Stats.values()) {
+      stats.put(str, getStats(player, str));
+    }
+    return stats;
+  }
 
   public static float getStats(Player player, ModStats.Stats stats) {
     return player.getData(ModAttachments.STATS.get(stats).get());

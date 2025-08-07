@@ -12,7 +12,6 @@
 package com.rgerva.dbr.capabilities;
 
 import java.util.Optional;
-
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -21,9 +20,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 
 public class ModCapabilities {
 
-  public static void registerCapabilities(final RegisterCapabilitiesEvent event) {
-
-  }
+  public static void registerCapabilities(final RegisterCapabilitiesEvent event) {}
 
   public static Optional<IItemHandler> getCapabilityItemHandler(
       Level level, BlockEntity blockEntity) {

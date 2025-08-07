@@ -17,22 +17,21 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
 
 public class ModUIComponents {
-    public static Button createButton(int x, int y, int width, int height, String text,
-                                      Button.OnPress onPress) {
+  public static Button createButton(
+      int x, int y, int width, int height, String text, Button.OnPress onPress) {
 
-        return Button.builder(Component.literal(text), onPress)
-                .bounds(x, y, width, height).build();
-    }
+    return Button.builder(Component.literal(text), onPress).bounds(x, y, width, height).build();
+  }
 
-    public static EditBox createReadOnlyTextBox(Font font, int x, int y, int width, int height,
-                                                String txt) {
+  public static EditBox createReadOnlyTextBox(
+      Font font, int x, int y, int width, int height, String txt) {
 
-        EditBox box = new EditBox(font, x, y, width, height, Component.literal(txt));
-        box.setValue(txt);
-        box.setEditable(false);
-        box.setFocused(false);
-        box.setBordered(true);
-        box.setCentered(true);
-        return box;
-    }
+    EditBox box = new EditBox(font, x, y, width, height, Component.literal(txt));
+    box.setValue(txt);
+    box.setEditable(false);
+    box.setFocused(false);
+    box.setBordered(true);
+    box.setCentered(true);
+    return box;
+  }
 }

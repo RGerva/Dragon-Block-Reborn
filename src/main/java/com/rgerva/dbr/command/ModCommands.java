@@ -20,19 +20,19 @@ import net.minecraft.server.level.ServerPlayer;
 
 public class ModCommands {
 
-    public static void statsCommand(CommandDispatcher<CommandSourceStack> dispatcher){
-        dispatcher.register(
-                Commands.literal("dbr")
-                        .then(Commands.literal("restALL")
-                                .requires(ctx -> ctx.hasPermission(0))
-                                .executes(context -> {
-                                    ServerPlayer player = context.getSource().getPlayerOrException();
+  public static void statsCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
+    dispatcher.register(
+        Commands.literal("dbr")
+            .then(
+                Commands.literal("restALL")
+                    .requires(ctx -> ctx.hasPermission(0))
+                    .executes(
+                        context -> {
+                          ServerPlayer player = context.getSource().getPlayerOrException();
 
-                                    ModPlayerData playerData = new ModPlayerData(player);
-                                    playerData.restAttributes();
-                                    return Command.SINGLE_SUCCESS;
-                                })
-                        )
-        );
-    }
+                          ModPlayerData playerData = new ModPlayerData(player);
+                          playerData.restAttributes();
+                          return Command.SINGLE_SUCCESS;
+                        })));
+  }
 }

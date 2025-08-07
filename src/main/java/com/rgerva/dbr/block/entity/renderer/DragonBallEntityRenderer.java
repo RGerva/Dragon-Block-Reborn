@@ -19,14 +19,11 @@ import com.rgerva.dbr.block.ModBlocks;
 import com.rgerva.dbr.block.entity.custom.DragonBallEntity;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import com.rgerva.dbr.properties.ModBlockProperties;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -48,13 +45,13 @@ public class DragonBallEntityRenderer implements BlockEntityRenderer<DragonBallE
 
   @Override
   public void render(
-          DragonBallEntity entity,
-          float partialTick,
-          PoseStack poseStack,
-          MultiBufferSource bufferSource,
-          int packedLight,
-          int packedOverlay,
-          Vec3 vec3) {
+      DragonBallEntity entity,
+      float partialTick,
+      PoseStack poseStack,
+      MultiBufferSource bufferSource,
+      int packedLight,
+      int packedOverlay,
+      Vec3 vec3) {
 
     poseStack.pushPose();
 
@@ -62,13 +59,16 @@ public class DragonBallEntityRenderer implements BlockEntityRenderer<DragonBallE
     float zOffset = 0.0F;
 
     if (entity.isAnimating()) {
-      float progress = entity.getAnimationProgress() + partialTick / (float) DragonBallEntity.MAX_ANIMATION_TICKS;
+      float progress =
+          entity.getAnimationProgress()
+              + partialTick / (float) DragonBallEntity.MAX_ANIMATION_TICKS;
       yOffset = progress * 5.0F;
       zOffset = (float) Math.sin(progress * Math.PI) * 0.25F;
     }
 
     BlockState state = entity.getBlockState();
-    boolean isStone = state.hasProperty(ModBlockProperties.DRAGON_BALL_IS_STONE)
+    boolean isStone =
+        state.hasProperty(ModBlockProperties.DRAGON_BALL_IS_STONE)
             && state.getValue(ModBlockProperties.DRAGON_BALL_IS_STONE);
     ResourceLocation texture = isStone ? STONE_TEXTURE : TEXTURE;
 
@@ -81,8 +81,7 @@ public class DragonBallEntityRenderer implements BlockEntityRenderer<DragonBallE
 
     poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
 
-    VertexConsumer vertexConsumer =
-            bufferSource.getBuffer(RenderType.entityTranslucent(texture));
+    VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityTranslucent(texture));
     model.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, 1F, 1F, 1F, 1F);
 
     poseStack.popPose();

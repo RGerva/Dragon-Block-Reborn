@@ -19,20 +19,17 @@ import com.rgerva.dbr.block.entity.custom.DragonBallEntity;
 import com.rgerva.dbr.block.entity.data.DragonBallData;
 import com.rgerva.dbr.properties.ModBlockProperties;
 import com.rgerva.dbr.sound.ModSounds;
-import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -100,12 +97,13 @@ public class DragonBallBlock extends BaseEntityBlock {
   }
 
   @Override
-  public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+  public void setPlacedBy(
+      Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
     if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
       DragonBallData data = DragonBallData.get(serverLevel);
       if (data.canAddMore()) {
         data.addDragonBall(pos);
-      }else {
+      } else {
         level.removeBlock(pos, false);
       }
     }
@@ -128,12 +126,12 @@ public class DragonBallBlock extends BaseEntityBlock {
   }
 
   private void spawnDragon(Level level, BlockPos pos, Player player, DragonBallEntity entity) {
-//    EntityDragon dragon = new EntityDragon(level);
-//    dragon.moveTo(pos.getX(), pos.getY(), pos.getZ(), player.getYRot(), 0.0F);
-//    level.addFreshEntity(dragon);
+    //    EntityDragon dragon = new EntityDragon(level);
+    //    dragon.moveTo(pos.getX(), pos.getY(), pos.getZ(), player.getYRot(), 0.0F);
+    //    level.addFreshEntity(dragon);
     DragonBlockReborn.LOGGER.info("SPAWN DRAGON");
     level.playSound(null, pos, ModSounds.DRAGON_MAKEONE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-//    destroyStructure(level, pos);
+    //    destroyStructure(level, pos);
 
     entity.triggerAnimation();
   }
