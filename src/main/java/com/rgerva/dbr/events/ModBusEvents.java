@@ -19,6 +19,7 @@ import com.rgerva.dbr.command.ModCommands;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
+import com.rgerva.dbr.mechanics.level.ModLevel;
 import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
 import java.util.Map;
@@ -76,7 +77,12 @@ public class ModBusEvents {
   }
 
   @SubscribeEvent
-  public static void onPlayerTick(PlayerTickEvent.Post event) {}
+  public static void onPlayerTick(PlayerTickEvent.Post event) {
+      Player player = event.getEntity();
+      if(ModLevel.hasAvailableFreePoints(player)){
+          DragonBlockReborn.LOGGER.info("HAS POINTS: {}", ModLevel.getAvailableFreePoints(player));
+      }
+  }
 
   @SubscribeEvent
   public static void onClone(PlayerEvent.Clone event) {
@@ -113,5 +119,7 @@ public class ModBusEvents {
   public static void onCommandsRegister(RegisterCommandsEvent event) {
     ConfigCommand.register(event.getDispatcher());
     ModCommands.statsCommand(event.getDispatcher());
+	ModCommands.getLevel(event.getDispatcher());
+    ModCommands.setLevel(event.getDispatcher());
   }
 }

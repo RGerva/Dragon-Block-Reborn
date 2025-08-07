@@ -16,6 +16,8 @@ import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
 import java.util.EnumMap;
 import java.util.Map;
+
+import com.rgerva.dbr.mechanics.level.ModLevel;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -72,6 +74,7 @@ public record AttributesSyncS2CPacket(Map<ModAttributes.Attributes, Float> attri
                 ModPlayerData playerData = new ModPlayerData(player);
                 playerData.setAttribute(attr, value);
               });
+          ModPlayerData.setLevel(player, ModLevel.calculateLevel(player));
         });
   }
 }

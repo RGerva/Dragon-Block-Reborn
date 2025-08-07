@@ -14,6 +14,7 @@ package com.rgerva.dbr.network.packages.ClientToServer;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
+import com.rgerva.dbr.mechanics.level.ModLevel;
 import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -72,6 +73,7 @@ public record AttributesSyncC2SPacket(Map<ModAttributes.Attributes, Float> attri
                 ModPlayerData playerData = new ModPlayerData(player);
                 playerData.setAttribute(attr, value);
               });
+          ModPlayerData.setLevel(player, ModLevel.calculateLevel(player));
         });
   }
 }

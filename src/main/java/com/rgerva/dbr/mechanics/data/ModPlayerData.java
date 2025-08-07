@@ -22,49 +22,76 @@ import net.minecraft.world.entity.player.Player;
 
 public record ModPlayerData(Player player) implements IModChooseTypes {
 
+  public static int getLevel(Player player) {
+    return player.getData(ModAttachments.LVL.get());
+  }
+
+  public static void setLevel(Player player, int level) {
+    player.setData(ModAttachments.LVL.get(), level);
+  }
+
+  public void setLevel(int level) {
+    player.setData(ModAttachments.LVL.get(), level);
+  }
+
+  public static int getSpentPoints(Player player) {
+    return player.getData(ModAttachments.SPENT_POINTS.get());
+  }
+
+  public static void setSpentPoints(Player player, int spent) {
+    player.setData(ModAttachments.SPENT_POINTS.get(), spent);
+  }
+
+  public void setSpentPoints(int spent) {
+    player.setData(ModAttachments.SPENT_POINTS.get(), spent);
+  }
+
+  /*====*/
+
   public static ModTypes.RaceType getRace(Player player) {
     String race = player.getData(ModAttachments.RACE_TYPE.get());
-	return switch (race){
-		case "HUMAN" -> ModTypes.RaceType.HUMAN;
-		case "SAIYAN" -> ModTypes.RaceType.SAIYAN;
-		case "HALF_SAIYAN" -> ModTypes.RaceType.HALF_SAIYAN;
-		case "NAMEKIAN" -> ModTypes.RaceType.NAMEKIAN;
-		case "MAJIN" -> ModTypes.RaceType.MAJIN;
-		case "ARCOSIAN" -> ModTypes.RaceType.ARCOSIAN;
+    return switch (race) {
+      case "HUMAN" -> ModTypes.RaceType.HUMAN;
+      case "SAIYAN" -> ModTypes.RaceType.SAIYAN;
+      case "HALF_SAIYAN" -> ModTypes.RaceType.HALF_SAIYAN;
+      case "NAMEKIAN" -> ModTypes.RaceType.NAMEKIAN;
+      case "MAJIN" -> ModTypes.RaceType.MAJIN;
+      case "ARCOSIAN" -> ModTypes.RaceType.ARCOSIAN;
 
-		default -> throw new IllegalStateException("Unexpected value: " + race);
-	};
+      default -> throw new IllegalStateException("Unexpected value: " + race);
+    };
   }
 
   public void setRace(ModTypes.RaceType race) {
-	  switch (race){
-		  case HUMAN ->  player.setData(ModAttachments.RACE_TYPE.get(), "HUMAN");
-		  case SAIYAN -> player.setData(ModAttachments.RACE_TYPE.get(), "SAIYAN");
-		  case HALF_SAIYAN -> player.setData(ModAttachments.RACE_TYPE.get(), "HALF_SAIYAN");
-		  case NAMEKIAN -> player.setData(ModAttachments.RACE_TYPE.get(), "NAMEKIAN");
-		  case MAJIN -> player.setData(ModAttachments.RACE_TYPE.get(), "MAJIN");
-		  case ARCOSIAN -> player.setData(ModAttachments.RACE_TYPE.get(), "ARCOSIAN");
-	  }
+    switch (race) {
+      case HUMAN -> player.setData(ModAttachments.RACE_TYPE.get(), "HUMAN");
+      case SAIYAN -> player.setData(ModAttachments.RACE_TYPE.get(), "SAIYAN");
+      case HALF_SAIYAN -> player.setData(ModAttachments.RACE_TYPE.get(), "HALF_SAIYAN");
+      case NAMEKIAN -> player.setData(ModAttachments.RACE_TYPE.get(), "NAMEKIAN");
+      case MAJIN -> player.setData(ModAttachments.RACE_TYPE.get(), "MAJIN");
+      case ARCOSIAN -> player.setData(ModAttachments.RACE_TYPE.get(), "ARCOSIAN");
+    }
   }
 
   /*====*/
 
   public static ModTypes.ClassType getClass(Player player) {
-	return switch (player.getData(ModAttachments.CLASS_TYPE.get())){
-		case "MARTIAL_ARTIST" -> 	ModTypes.ClassType.MARTIAL_ARTIST;
-		case "SPIRITUALIST" -> 	ModTypes.ClassType.SPIRITUALIST;
-		case "WARRIOR" -> 	ModTypes.ClassType.WARRIOR;
-		default ->
-				throw new IllegalStateException("Unexpected value: " + player.getData(ModAttachments.CLASS_TYPE.get()));
-	};
+    return switch (player.getData(ModAttachments.CLASS_TYPE.get())) {
+      case "MARTIAL_ARTIST" -> ModTypes.ClassType.MARTIAL_ARTIST;
+      case "SPIRITUALIST" -> ModTypes.ClassType.SPIRITUALIST;
+      case "WARRIOR" -> ModTypes.ClassType.WARRIOR;
+      default ->
+          throw new IllegalStateException(
+              "Unexpected value: " + player.getData(ModAttachments.CLASS_TYPE.get()));
+    };
   }
 
   public void setClass(ModTypes.ClassType clazz) {
-	switch (clazz){
-		case MARTIAL_ARTIST -> player.setData(ModAttachments.CLASS_TYPE.get(), "MARTIAL_ARTIST");
-		case SPIRITUALIST -> player.setData(ModAttachments.CLASS_TYPE.get(), "SPIRITUALIST");
-		case WARRIOR -> player.setData(ModAttachments.CLASS_TYPE.get(), "WARRIOR");
-	}
+    switch (clazz) {
+      case MARTIAL_ARTIST -> player.setData(ModAttachments.CLASS_TYPE.get(), "MARTIAL_ARTIST");
+      case SPIRITUALIST -> player.setData(ModAttachments.CLASS_TYPE.get(), "SPIRITUALIST");
+      case WARRIOR -> player.setData(ModAttachments.CLASS_TYPE.get(), "WARRIOR");
+    }
   }
 
   /*====*/
@@ -79,6 +106,10 @@ public record ModPlayerData(Player player) implements IModChooseTypes {
 
   public static float getAttribute(Player player, ModAttributes.Attributes attr) {
     return player.getData(ModAttachments.ATTRIBUTES.get(attr).get());
+  }
+
+  public static void setAttribute(Player player, ModAttributes.Attributes attr, float value) {
+    player.setData(ModAttachments.ATTRIBUTES.get(attr).get(), value);
   }
 
   public void setAttribute(ModAttributes.Attributes attr, float value) {

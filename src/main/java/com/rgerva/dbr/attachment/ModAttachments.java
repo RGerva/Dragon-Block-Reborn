@@ -93,6 +93,15 @@ public class ModAttachments {
                   .copyOnDeath()
                   .build());
 
+    public static final Supplier<AttachmentType<Integer>> SPENT_POINTS =
+            ATTACHMENT_TYPES.register(
+                    "spent_points",
+                    () ->
+                            AttachmentType.builder(() -> 0)
+                                    .serialize(Codec.INT.fieldOf("spent_points"))
+                                    .copyOnDeath()
+                                    .build());
+
   public static void register(IEventBus eventBus) {
     ATTACHMENT_TYPES.register(eventBus);
   }
