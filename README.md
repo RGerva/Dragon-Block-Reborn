@@ -22,7 +22,7 @@ Minecraft Mod based on Goku's adventures
 
 <!--version-info-start-->
 - **Minecraft Version:** 1.21.8
-- **NeoForge Version:** 21.8.26
+- **NeoForge Version:** 21.8.29
 <!--version-info-end-->
 
 ---
