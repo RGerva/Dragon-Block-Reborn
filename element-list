@@ -31,7 +31,8 @@ com.rgerva.dbr.mechanics.types
 com.rgerva.dbr.mixin
 com.rgerva.dbr.network
 com.rgerva.dbr.network.interfaces
-com.rgerva.dbr.network.packages
+com.rgerva.dbr.network.packages.ClientToServer
+com.rgerva.dbr.network.packages.ServertToClient
 com.rgerva.dbr.particles
 com.rgerva.dbr.potion
 com.rgerva.dbr.properties

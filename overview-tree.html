@@ -87,7 +87,8 @@ loadScripts(document, 'script');</script>
 <li><a href="com/rgerva/dbr/mixin/package-tree.html">com.rgerva.dbr.mixin</a>, </li>
 <li><a href="com/rgerva/dbr/network/package-tree.html">com.rgerva.dbr.network</a>, </li>
 <li><a href="com/rgerva/dbr/network/interfaces/package-tree.html">com.rgerva.dbr.network.interfaces</a>, </li>
-<li><a href="com/rgerva/dbr/network/packages/package-tree.html">com.rgerva.dbr.network.packages</a>, </li>
+<li><a href="com/rgerva/dbr/network/packages/ClientToServer/package-tree.html">com.rgerva.dbr.network.packages.ClientToServer</a>, </li>
+<li><a href="com/rgerva/dbr/network/packages/ServertToClient/package-tree.html">com.rgerva.dbr.network.packages.ServertToClient</a>, </li>
 <li><a href="com/rgerva/dbr/particles/package-tree.html">com.rgerva.dbr.particles</a>, </li>
 <li><a href="com/rgerva/dbr/potion/package-tree.html">com.rgerva.dbr.potion</a>, </li>
 <li><a href="com/rgerva/dbr/properties/package-tree.html">com.rgerva.dbr.properties</a>, </li>
@@ -280,13 +281,18 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModAttributesSync.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a>
 <ul>
-<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModSyncPlayer.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModSyncPlayer</a> (also extends com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a>)</li>
+<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModSyncPlayer.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModSyncPlayer</a> (also extends com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a>, com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a>)</li>
 </ul>
 </li>
 <li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModChooseTypes.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModChooseTypes</a></li>
+<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModRaceClassSync.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a>
+<ul>
+<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModSyncPlayer.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModSyncPlayer</a> (also extends com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a>, com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a>)</li>
+</ul>
+</li>
 <li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModStatsSync.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a>
 <ul>
-<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModSyncPlayer.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModSyncPlayer</a> (also extends com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a>)</li>
+<li class="circle">com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModSyncPlayer.html" class="type-name-link" title="interface in com.rgerva.dbr.network.interfaces">IModSyncPlayer</a> (also extends com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a>, com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a>)</li>
 </ul>
 </li>
 <li class="circle">net.minecraft.world.item.crafting.Recipe&lt;T&gt;
@@ -321,15 +327,17 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Record.html" class="type-name-link external-link" title="class or interface in java.lang">Record</a>
 <ul>
-<li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/AttributesSyncC2SPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">AttributesSyncC2SPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
-<li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/AttributesSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">AttributesSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
-<li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/ChooseTypeScreenSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">ChooseTypeScreenSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
+<li class="circle">com.rgerva.dbr.network.packages.ClientToServer.<a href="com/rgerva/dbr/network/packages/ClientToServer/AttributesSyncC2SPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages.ClientToServer">AttributesSyncC2SPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
+<li class="circle">com.rgerva.dbr.network.packages.ServertToClient.<a href="com/rgerva/dbr/network/packages/ServertToClient/AttributesSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages.ServertToClient">AttributesSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
+<li class="circle">com.rgerva.dbr.network.packages.ServertToClient.<a href="com/rgerva/dbr/network/packages/ServertToClient/ChooseTypeScreenSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages.ServertToClient">ChooseTypeScreenSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
 <li class="circle">com.rgerva.dbr.mechanics.attributes.<a href="com/rgerva/dbr/mechanics/attributes/ModAttributes.AttributeModifiers.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.attributes">ModAttributes.AttributeModifiers</a></li>
 <li class="circle">com.rgerva.dbr.util.<a href="com/rgerva/dbr/util/ModOresUtils.ModBlockVeinProperties.html" class="type-name-link" title="class in com.rgerva.dbr.util">ModOresUtils.ModBlockVeinProperties</a></li>
 <li class="circle">com.rgerva.dbr.mechanics.data.<a href="com/rgerva/dbr/mechanics/data/ModPlayerData.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.data">ModPlayerData</a> (implements com.rgerva.dbr.network.interfaces.<a href="com/rgerva/dbr/network/interfaces/IModChooseTypes.html" title="interface in com.rgerva.dbr.network.interfaces">IModChooseTypes</a>)</li>
 <li class="circle">com.rgerva.dbr.mechanics.types.<a href="com/rgerva/dbr/mechanics/types/ModTypes.RaceClassKey.html" class="type-name-link" title="class in com.rgerva.dbr.mechanics.types">ModTypes.RaceClassKey</a></li>
-<li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/StatsSyncC2SPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">StatsSyncC2SPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
-<li class="circle">com.rgerva.dbr.network.packages.<a href="com/rgerva/dbr/network/packages/StatsSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages">StatsSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
+<li class="circle">com.rgerva.dbr.network.packages.ClientToServer.<a href="com/rgerva/dbr/network/packages/ClientToServer/RaceClassSyncC2SPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages.ClientToServer">RaceClassSyncC2SPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
+<li class="circle">com.rgerva.dbr.network.packages.ServertToClient.<a href="com/rgerva/dbr/network/packages/ServertToClient/RaceClassSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages.ServertToClient">RaceClassSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
+<li class="circle">com.rgerva.dbr.network.packages.ClientToServer.<a href="com/rgerva/dbr/network/packages/ClientToServer/StatsSyncC2SPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages.ClientToServer">StatsSyncC2SPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
+<li class="circle">com.rgerva.dbr.network.packages.ServertToClient.<a href="com/rgerva/dbr/network/packages/ServertToClient/StatsSyncS2CPacket.html" class="type-name-link" title="class in com.rgerva.dbr.network.packages.ServertToClient">StatsSyncS2CPacket</a> (implements net.minecraft.network.protocol.common.custom.CustomPacketPayload)</li>
 </ul>
 </li>
 </ul>

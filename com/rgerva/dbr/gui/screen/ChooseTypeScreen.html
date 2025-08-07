@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <li><a href="#raceBar(int,int)" tabindex="0">raceBar(int, int)</a></li>
 <li><a href="#getInterfaceAttributes()" tabindex="0">getInterfaceAttributes()</a></li>
 <li><a href="#getInterfaceStats()" tabindex="0">getInterfaceStats()</a></li>
+<li><a href="#getRaceType()" tabindex="0">getRaceType()</a></li>
+<li><a href="#getClassType()" tabindex="0">getClassType()</a></li>
 </ol>
 </li>
 </ol>
@@ -102,7 +104,7 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../../network/interfaces/IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a></code>, <code><a href="../../network/interfaces/IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></code>, <code><a href="../../network/interfaces/IModSyncPlayer.html" title="interface in com.rgerva.dbr.network.interfaces">IModSyncPlayer</a></code>, <code>net.minecraft.client.gui.components.events.ContainerEventHandler</code>, <code>net.minecraft.client.gui.components.events.GuiEventListener</code>, <code>net.minecraft.client.gui.components.Renderable</code>, <code>net.minecraft.client.gui.components.TabOrderedElement</code></dd>
+<dd><code><a href="../../network/interfaces/IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a></code>, <code><a href="../../network/interfaces/IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a></code>, <code><a href="../../network/interfaces/IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></code>, <code><a href="../../network/interfaces/IModSyncPlayer.html" title="interface in com.rgerva.dbr.network.interfaces">IModSyncPlayer</a></code>, <code>net.minecraft.client.gui.components.events.ContainerEventHandler</code>, <code>net.minecraft.client.gui.components.events.GuiEventListener</code>, <code>net.minecraft.client.gui.components.Renderable</code>, <code>net.minecraft.client.gui.components.TabOrderedElement</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ChooseTypeScreen</span>
@@ -167,11 +169,17 @@ implements <a href="../../network/interfaces/IModSyncPlayer.html" title="interfa
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#classBar(int,int)" class="member-name-link">classBar</a><wbr>(int&nbsp;centerX,
  int&nbsp;centerY)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../../mechanics/attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInterfaceAttributes()" class="member-name-link">getInterfaceAttributes</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../mechanics/types/ModTypes.ClassType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.ClassType</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getClassType()" class="member-name-link">getClassType</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../../mechanics/stats/ModStats.Stats.html" title="enum class in com.rgerva.dbr.mechanics.stats">ModStats.Stats</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInterfaceStats()" class="member-name-link">getInterfaceStats</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../../mechanics/attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInterfaceAttributes()" class="member-name-link">getInterfaceAttributes</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../../mechanics/stats/ModStats.Stats.html" title="enum class in com.rgerva.dbr.mechanics.stats">ModStats.Stats</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInterfaceStats()" class="member-name-link">getInterfaceStats</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../mechanics/types/ModTypes.RaceType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRaceType()" class="member-name-link">getRaceType</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#init()" class="member-name-link">init</a>()</code></div>
@@ -223,6 +231,9 @@ implements <a href="../../network/interfaces/IModSyncPlayer.html" title="interfa
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModAttributesSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="../../network/interfaces/IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a></h3>
 <code><a href="../../network/interfaces/IModAttributesSync.html#syncAttrToClient(net.minecraft.world.entity.player.Player)">syncAttrToClient</a>, <a href="../../network/interfaces/IModAttributesSync.html#syncAttrToServer()">syncAttrToServer</a></code></div>
+<div class="inherited-list">
+<h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModRaceClassSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="../../network/interfaces/IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a></h3>
+<code><a href="../../network/interfaces/IModRaceClassSync.html#syncRaceClassToClient(net.minecraft.world.entity.player.Player)">syncRaceClassToClient</a>, <a href="../../network/interfaces/IModRaceClassSync.html#syncRaceClassToServer()">syncRaceClassToServer</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModStatsSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="../../network/interfaces/IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></h3>
 <code><a href="../../network/interfaces/IModStatsSync.html#syncStatToClient(net.minecraft.world.entity.player.Player)">syncStatToClient</a>, <a href="../../network/interfaces/IModStatsSync.html#syncStatToServer()">syncStatToServer</a></code></div>
@@ -377,6 +388,30 @@ implements <a href="../../network/interfaces/IModSyncPlayer.html" title="interfa
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../../network/interfaces/IModStatsSync.html#getInterfaceStats()">getInterfaceStats</a></code>&nbsp;in interface&nbsp;<code><a href="../../network/interfaces/IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getRaceType()">
+<h3>getRaceType</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../mechanics/types/ModTypes.RaceType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a></span>&nbsp;<span class="element-name">getRaceType</span>()</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../../network/interfaces/IModRaceClassSync.html#getRaceType()">getRaceType</a></code>&nbsp;in interface&nbsp;<code><a href="../../network/interfaces/IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getClassType()">
+<h3>getClassType</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../mechanics/types/ModTypes.ClassType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.ClassType</a></span>&nbsp;<span class="element-name">getClassType</span>()</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../../network/interfaces/IModRaceClassSync.html#getClassType()">getClassType</a></code>&nbsp;in interface&nbsp;<code><a href="../../network/interfaces/IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a></code></dd>
 </dl>
 </div>
 </section>

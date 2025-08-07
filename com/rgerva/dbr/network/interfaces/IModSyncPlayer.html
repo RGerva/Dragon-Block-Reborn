@@ -78,7 +78,7 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <dl class="notes">
 <dt>All Superinterfaces:</dt>
-<dd><code><a href="IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a></code>, <code><a href="IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></code></dd>
+<dd><code><a href="IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a></code>, <code><a href="IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a></code>, <code><a href="IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></code></dd>
 </dl>
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
@@ -86,7 +86,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">IModSyncPlayer</span><span class="extends-implements">
-extends <a href="IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a>, <a href="IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></span></div>
+extends <a href="IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a>, <a href="IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a>, <a href="IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a></span></div>
 </div>
 </section>
 <section class="summary">
@@ -114,6 +114,9 @@ extends <a href="IModAttributesSync.html" title="interface in com.rgerva.dbr.net
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModAttributesSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="IModAttributesSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAttributesSync</a></h3>
 <code><a href="IModAttributesSync.html#getInterfaceAttributes()">getInterfaceAttributes</a>, <a href="IModAttributesSync.html#syncAttrToClient(net.minecraft.world.entity.player.Player)">syncAttrToClient</a>, <a href="IModAttributesSync.html#syncAttrToServer()">syncAttrToServer</a></code></div>
+<div class="inherited-list">
+<h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModRaceClassSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="IModRaceClassSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModRaceClassSync</a></h3>
+<code><a href="IModRaceClassSync.html#getClassType()">getClassType</a>, <a href="IModRaceClassSync.html#getRaceType()">getRaceType</a>, <a href="IModRaceClassSync.html#syncRaceClassToClient(net.minecraft.world.entity.player.Player)">syncRaceClassToClient</a>, <a href="IModRaceClassSync.html#syncRaceClassToServer()">syncRaceClassToServer</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModStatsSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="IModStatsSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModStatsSync</a></h3>
 <code><a href="IModStatsSync.html#getInterfaceStats()">getInterfaceStats</a>, <a href="IModStatsSync.html#syncStatToClient(net.minecraft.world.entity.player.Player)">syncStatToClient</a>, <a href="IModStatsSync.html#syncStatToServer()">syncStatToServer</a></code></div>
