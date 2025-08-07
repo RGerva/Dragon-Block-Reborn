@@ -69,12 +69,19 @@ loadScripts(document, 'script');</script>
 </li>
 <li><a href="#method-detail" tabindex="0">Method Details</a>
 <ol class="toc-list">
+<li><a href="#getLevel(net.minecraft.world.entity.player.Player)" tabindex="0">getLevel(Player)</a></li>
+<li><a href="#setLevel(net.minecraft.world.entity.player.Player,int)" tabindex="0">setLevel(Player, int)</a></li>
+<li><a href="#setLevel(int)" tabindex="0">setLevel(int)</a></li>
+<li><a href="#getSpentPoints(net.minecraft.world.entity.player.Player)" tabindex="0">getSpentPoints(Player)</a></li>
+<li><a href="#setSpentPoints(net.minecraft.world.entity.player.Player,int)" tabindex="0">setSpentPoints(Player, int)</a></li>
+<li><a href="#setSpentPoints(int)" tabindex="0">setSpentPoints(int)</a></li>
 <li><a href="#getRace(net.minecraft.world.entity.player.Player)" tabindex="0">getRace(Player)</a></li>
 <li><a href="#setRace(com.rgerva.dbr.mechanics.types.ModTypes.RaceType)" tabindex="0">setRace(ModTypes.RaceType)</a></li>
 <li><a href="#getClass(net.minecraft.world.entity.player.Player)" tabindex="0">getClass(Player)</a></li>
 <li><a href="#setClass(com.rgerva.dbr.mechanics.types.ModTypes.ClassType)" tabindex="0">setClass(ModTypes.ClassType)</a></li>
 <li><a href="#getMapAttributes(net.minecraft.world.entity.player.Player)" tabindex="0">getMapAttributes(Player)</a></li>
 <li><a href="#getAttribute(net.minecraft.world.entity.player.Player,com.rgerva.dbr.mechanics.attributes.ModAttributes.Attributes)" tabindex="0">getAttribute(Player, ModAttributes.Attributes)</a></li>
+<li><a href="#setAttribute(net.minecraft.world.entity.player.Player,com.rgerva.dbr.mechanics.attributes.ModAttributes.Attributes,float)" tabindex="0">setAttribute(Player, ModAttributes.Attributes, float)</a></li>
 <li><a href="#setAttribute(com.rgerva.dbr.mechanics.attributes.ModAttributes.Attributes,float)" tabindex="0">setAttribute(ModAttributes.Attributes, float)</a></li>
 <li><a href="#getMapStats(net.minecraft.world.entity.player.Player)" tabindex="0">getMapStats(Player)</a></li>
 <li><a href="#getStats(net.minecraft.world.entity.player.Player,com.rgerva.dbr.mechanics.stats.ModStats.Stats)" tabindex="0">getStats(Player, ModStats.Stats)</a></li>
@@ -158,14 +165,20 @@ implements <a href="../../network/interfaces/IModChooseTypes.html" title="interf
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../types/ModTypes.RaceType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInterfaceSyncRaceType()" class="member-name-link">getInterfaceSyncRaceType</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getMapAttributes(net.minecraft.world.entity.player.Player)" class="member-name-link">getMapAttributes</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getLevel(net.minecraft.world.entity.player.Player)" class="member-name-link">getLevel</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../stats/ModStats.Stats.html" title="enum class in com.rgerva.dbr.mechanics.stats">ModStats.Stats</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getMapStats(net.minecraft.world.entity.player.Player)" class="member-name-link">getMapStats</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getMapAttributes(net.minecraft.world.entity.player.Player)" class="member-name-link">getMapAttributes</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../types/ModTypes.RaceType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getRace(net.minecraft.world.entity.player.Player)" class="member-name-link">getRace</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a><wbr>&lt;<a href="../stats/ModStats.Stats.html" title="enum class in com.rgerva.dbr.mechanics.stats">ModStats.Stats</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link">Float</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getMapStats(net.minecraft.world.entity.player.Player)" class="member-name-link">getMapStats</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../types/ModTypes.RaceType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getRace(net.minecraft.world.entity.player.Player)" class="member-name-link">getRace</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getSpentPoints(net.minecraft.world.entity.player.Player)" class="member-name-link">getSpentPoints</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static float</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getStats(net.minecraft.world.entity.player.Player,com.rgerva.dbr.mechanics.stats.ModStats.Stats)" class="member-name-link">getStats</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player,
@@ -188,19 +201,38 @@ implements <a href="../../network/interfaces/IModChooseTypes.html" title="interf
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAttribute(com.rgerva.dbr.mechanics.attributes.ModAttributes.Attributes,float)" class="member-name-link">setAttribute</a><wbr>(<a href="../attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>&nbsp;attr,
  float&nbsp;value)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setClass(com.rgerva.dbr.mechanics.types.ModTypes.ClassType)" class="member-name-link">setClass</a><wbr>(<a href="../types/ModTypes.ClassType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.ClassType</a>&nbsp;clazz)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setAttribute(net.minecraft.world.entity.player.Player,com.rgerva.dbr.mechanics.attributes.ModAttributes.Attributes,float)" class="member-name-link">setAttribute</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player,
+ <a href="../attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>&nbsp;attr,
+ float&nbsp;value)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setRace(com.rgerva.dbr.mechanics.types.ModTypes.RaceType)" class="member-name-link">setRace</a><wbr>(<a href="../types/ModTypes.RaceType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a>&nbsp;race)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setClass(com.rgerva.dbr.mechanics.types.ModTypes.ClassType)" class="member-name-link">setClass</a><wbr>(<a href="../types/ModTypes.ClassType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.ClassType</a>&nbsp;clazz)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStats(com.rgerva.dbr.mechanics.stats.ModStats.Stats,float)" class="member-name-link">setStats</a><wbr>(<a href="../stats/ModStats.Stats.html" title="enum class in com.rgerva.dbr.mechanics.stats">ModStats.Stats</a>&nbsp;stats,
- float&nbsp;value)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLevel(int)" class="member-name-link">setLevel</a><wbr>(int&nbsp;level)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setLevel(net.minecraft.world.entity.player.Player,int)" class="member-name-link">setLevel</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player,
+ int&nbsp;level)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setRace(com.rgerva.dbr.mechanics.types.ModTypes.RaceType)" class="member-name-link">setRace</a><wbr>(<a href="../types/ModTypes.RaceType.html" title="enum class in com.rgerva.dbr.mechanics.types">ModTypes.RaceType</a>&nbsp;race)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setSpentPoints(int)" class="member-name-link">setSpentPoints</a><wbr>(int&nbsp;spent)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setSpentPoints(net.minecraft.world.entity.player.Player,int)" class="member-name-link">setSpentPoints</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player,
+ int&nbsp;spent)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStats(com.rgerva.dbr.mechanics.stats.ModStats.Stats,float)" class="member-name-link">setStats</a><wbr>(<a href="../stats/ModStats.Stats.html" title="enum class in com.rgerva.dbr.mechanics.stats">ModStats.Stats</a>&nbsp;stats,
+ float&nbsp;value)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns a string representation of this record class.</div>
 </div>
 </div>
@@ -244,6 +276,56 @@ implements <a href="../../network/interfaces/IModChooseTypes.html" title="interf
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="getLevel(net.minecraft.world.entity.player.Player)">
+<h3>getLevel</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getLevel</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setLevel(net.minecraft.world.entity.player.Player,int)">
+<h3>setLevel</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLevel</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player,
+ int&nbsp;level)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setLevel(int)">
+<h3>setLevel</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLevel</span><wbr><span class="parameters">(int&nbsp;level)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getSpentPoints(net.minecraft.world.entity.player.Player)">
+<h3>getSpentPoints</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getSpentPoints</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setSpentPoints(net.minecraft.world.entity.player.Player,int)">
+<h3>setSpentPoints</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setSpentPoints</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player,
+ int&nbsp;spent)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setSpentPoints(int)">
+<h3>setSpentPoints</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setSpentPoints</span><wbr><span class="parameters">(int&nbsp;spent)</span></div>
+</div>
+</section>
+</li>
 <li>
 <section class="detail" id="getRace(net.minecraft.world.entity.player.Player)">
 <h3>getRace</h3>
@@ -290,6 +372,16 @@ implements <a href="../../network/interfaces/IModChooseTypes.html" title="interf
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">getAttribute</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player,
  <a href="../attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>&nbsp;attr)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setAttribute(net.minecraft.world.entity.player.Player,com.rgerva.dbr.mechanics.attributes.ModAttributes.Attributes,float)">
+<h3>setAttribute</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAttribute</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player,
+ <a href="../attributes/ModAttributes.Attributes.html" title="enum class in com.rgerva.dbr.mechanics.attributes">ModAttributes.Attributes</a>&nbsp;attr,
+ float&nbsp;value)</span></div>
 </div>
 </section>
 </li>
