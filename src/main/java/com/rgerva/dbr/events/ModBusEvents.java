@@ -16,15 +16,29 @@ import com.rgerva.dbr.attachment.ModAttachments;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.renderer.DragonBallEntityRenderer;
 import com.rgerva.dbr.command.ModCommands;
+import com.rgerva.dbr.datagen.model.custom.AuraModel;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
+import com.rgerva.dbr.entity.AuraEntity;
+import com.rgerva.dbr.entity.ModEntities;
+import com.rgerva.dbr.entity.renderer.AuraEntityRenderer;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
 import com.rgerva.dbr.mechanics.level.ModLevel;
 import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
 import java.util.Map;
+
+import com.rgerva.dbr.network.ModNetwork;
+import com.rgerva.dbr.network.interfaces.IModAuraSync;
+import com.rgerva.dbr.network.packages.ClientToServer.AuraSyncC2SPackage;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
@@ -34,6 +48,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -41,6 +56,9 @@ import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
+import org.lwjgl.glfw.GLFW;
+
+import static com.rgerva.dbr.entity.ModEntities.AURA_ENTITY;
 
 @EventBusSubscriber(modid = DragonBlockReborn.MOD_ID, value = Dist.CLIENT)
 public class ModBusEvents {
@@ -54,6 +72,8 @@ public class ModBusEvents {
 
     BlockEntityRenderers.register(
         ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
+
+			EntityRenderers.register(AURA_ENTITY.get(), AuraEntityRenderer::new);
   }
 
   @SubscribeEvent
@@ -82,6 +102,9 @@ public class ModBusEvents {
       if(ModLevel.hasAvailableFreePoints(player)){
           DragonBlockReborn.LOGGER.info("HAS POINTS: {}", ModLevel.getAvailableFreePoints(player));
       }
+			while(toggleAura.consumeClick()){
+					spawnAuraOnServer();
+			}
   }
 
   @SubscribeEvent
@@ -107,6 +130,7 @@ public class ModBusEvents {
   @SubscribeEvent
   public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
     event.registerLayerDefinition(DragonBallModel.LAYER_LOCATION, DragonBallModel::createBodyLayer);
+    event.registerLayerDefinition(AuraModel.LAYER_LOCATION, AuraModel::createBodyLayer);
   }
 
   @SubscribeEvent
@@ -119,7 +143,21 @@ public class ModBusEvents {
   public static void onCommandsRegister(RegisterCommandsEvent event) {
     ConfigCommand.register(event.getDispatcher());
     ModCommands.statsCommand(event.getDispatcher());
-	ModCommands.getLevel(event.getDispatcher());
+		ModCommands.getLevel(event.getDispatcher());
     ModCommands.setLevel(event.getDispatcher());
   }
+
+	public static KeyMapping toggleAura;
+	@SubscribeEvent
+		public static void registerKeyBindings(RegisterKeyMappingsEvent event){
+			toggleAura = new KeyMapping(Component.literal("Aura").toString(), GLFW.GLFW_KEY_TAB, "key.categories.creative");
+			event.register(toggleAura);
+	}
+
+		private static void spawnAuraOnServer() {
+				var player = Minecraft.getInstance().player;
+				if (player != null) {
+						ModNetwork.sendToServer(new AuraSyncC2SPackage());
+				}
+		}
 }

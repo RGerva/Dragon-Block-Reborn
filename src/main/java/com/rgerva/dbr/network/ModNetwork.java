@@ -12,12 +12,10 @@
 package com.rgerva.dbr.network;
 
 import com.rgerva.dbr.network.packages.ClientToServer.AttributesSyncC2SPacket;
+import com.rgerva.dbr.network.packages.ClientToServer.AuraSyncC2SPackage;
 import com.rgerva.dbr.network.packages.ClientToServer.RaceClassSyncC2SPacket;
 import com.rgerva.dbr.network.packages.ClientToServer.StatsSyncC2SPacket;
-import com.rgerva.dbr.network.packages.ServertToClient.AttributesSyncS2CPacket;
-import com.rgerva.dbr.network.packages.ServertToClient.ChooseTypeScreenSyncS2CPacket;
-import com.rgerva.dbr.network.packages.ServertToClient.RaceClassSyncS2CPacket;
-import com.rgerva.dbr.network.packages.ServertToClient.StatsSyncS2CPacket;
+import com.rgerva.dbr.network.packages.ServertToClient.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerLevel;
@@ -51,6 +49,10 @@ public class ModNetwork {
         RaceClassSyncS2CPacket.STREAM_CODEC,
         RaceClassSyncS2CPacket::handle);
 
+			registrar.playToServer(AuraSyncS2CPackage.ID,
+							AuraSyncS2CPackage.STREAM_CODEC,
+							AuraSyncS2CPackage::handle);
+
     // Client -> Server
     registrar.playToServer(
         AttributesSyncC2SPacket.ID,
@@ -64,6 +66,10 @@ public class ModNetwork {
         RaceClassSyncC2SPacket.ID,
         RaceClassSyncC2SPacket.STREAM_CODEC,
         RaceClassSyncC2SPacket::handle);
+
+		registrar.playToServer(AuraSyncC2SPackage.ID,
+						AuraSyncC2SPackage.STREAM_CODEC,
+						AuraSyncC2SPackage::handle);
   }
 
   public static void sendToServer(CustomPacketPayload message) {
