@@ -17,6 +17,8 @@ com.rgerva.dbr.datagen.model.custom
 com.rgerva.dbr.effect
 com.rgerva.dbr.enchantment
 com.rgerva.dbr.entity
+com.rgerva.dbr.entity.animations
+com.rgerva.dbr.entity.renderer
 com.rgerva.dbr.events
 com.rgerva.dbr.fluid
 com.rgerva.dbr.gui
