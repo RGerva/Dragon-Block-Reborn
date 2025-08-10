@@ -19,6 +19,7 @@ import com.rgerva.dbr.command.ModCommands;
 import com.rgerva.dbr.datagen.model.custom.AuraModel;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import com.rgerva.dbr.entity.AuraEntity;
+import com.rgerva.dbr.entity.AuraVariant;
 import com.rgerva.dbr.entity.ModEntities;
 import com.rgerva.dbr.entity.renderer.AuraEntityRenderer;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
@@ -29,16 +30,13 @@ import com.rgerva.dbr.mechanics.types.ModTypes;
 import java.util.Map;
 
 import com.rgerva.dbr.network.ModNetwork;
-import com.rgerva.dbr.network.interfaces.IModAuraSync;
 import com.rgerva.dbr.network.packages.ClientToServer.AuraSyncC2SPackage;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
@@ -102,9 +100,13 @@ public class ModBusEvents {
       if(ModLevel.hasAvailableFreePoints(player)){
           DragonBlockReborn.LOGGER.info("HAS POINTS: {}", ModLevel.getAvailableFreePoints(player));
       }
-			while(toggleAura.consumeClick()){
-					spawnAuraOnServer();
+			AuraEntity entity = new AuraEntity(AURA_ENTITY.get(), event.getEntity().level());
+			if(toggleAura.isDown()){
+					entity.setActiveAndSync(true);
+			}else {
+					entity.setActiveAndSync(false);
 			}
+
   }
 
   @SubscribeEvent
@@ -125,6 +127,8 @@ public class ModBusEvents {
   public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
     event.registerBlockEntityRenderer(
         ModBlockEntities.DRAGON_BALL_ENTITY.get(), DragonBallEntityRenderer::new);
+
+			event.registerEntityRenderer(ModEntities.AURA_ENTITY.get(), AuraEntityRenderer::new);
   }
 
   @SubscribeEvent
@@ -153,11 +157,4 @@ public class ModBusEvents {
 			toggleAura = new KeyMapping(Component.literal("Aura").toString(), GLFW.GLFW_KEY_TAB, "key.categories.creative");
 			event.register(toggleAura);
 	}
-
-		private static void spawnAuraOnServer() {
-				var player = Minecraft.getInstance().player;
-				if (player != null) {
-						ModNetwork.sendToServer(new AuraSyncC2SPackage());
-				}
-		}
 }

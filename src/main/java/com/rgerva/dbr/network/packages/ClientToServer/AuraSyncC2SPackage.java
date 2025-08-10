@@ -23,24 +23,29 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record AuraSyncC2SPackage() implements CustomPacketPayload {
+import java.util.List;
+
+public record AuraSyncC2SPackage(boolean activate) implements CustomPacketPayload {
 
 		public static final Type<AuraSyncC2SPackage> ID =
 						new Type<>(
 										ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, "client_aura"));
 
 		public static final StreamCodec<RegistryFriendlyByteBuf, AuraSyncC2SPackage> STREAM_CODEC =
-						StreamCodec.ofMember(AuraSyncC2SPackage::write, AuraSyncC2SPackage::read);
+						StreamCodec.ofMember(AuraSyncC2SPackage::write, AuraSyncC2SPackage::new);
 
-		public static AuraSyncC2SPackage read(RegistryFriendlyByteBuf buf){
-				return new AuraSyncC2SPackage();
+		public AuraSyncC2SPackage(RegistryFriendlyByteBuf buf){
+				this(buf.readBoolean());
 		}
 
-		public void write(RegistryFriendlyByteBuf buf) {}
+		public void write(RegistryFriendlyByteBuf buf) {
+				buf.writeBoolean(activate);
+		}
 
 		@Override
 		public Type<? extends CustomPacketPayload> type() {
@@ -53,11 +58,17 @@ public record AuraSyncC2SPackage() implements CustomPacketPayload {
 										if (!(context.player().level() instanceof ServerLevel level)
 														|| !(context.player() instanceof ServerPlayer player)) return;
 
-										AuraEntity aura = ModEntities.AURA_ENTITY.get().create(level, EntitySpawnReason.EVENT);
-										if(aura != null){
-												Vec3 pos = player.position();
-												aura.setPos(pos.x, pos.y, pos.z);
-												player.level().getLevel().addFreshEntity(aura);
+
+										if (data.activate) {
+												AuraEntity.spawnAura(level, player);
+										}else{
+												List<AuraEntity> nearbyAuras = level.getEntitiesOfClass(AuraEntity.class,
+																player.getBoundingBox().inflate(4.0),
+																aura -> aura.isOwnedBy(player));
+
+												for (AuraEntity aura : nearbyAuras) {
+														aura.setActive(false);
+												}
 										}
 								}
 				);

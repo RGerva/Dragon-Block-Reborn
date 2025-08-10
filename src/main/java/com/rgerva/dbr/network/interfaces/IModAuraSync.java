@@ -25,13 +25,15 @@ import net.minecraft.world.entity.player.Player;
 
 public interface IModAuraSync {
 
+		boolean activateAura();
+
 		default void syncAuraToServer() {
-				ModNetwork.sendToServer(new AuraSyncC2SPackage());
+				ModNetwork.sendToServer(new AuraSyncC2SPackage(activateAura()));
 		}
 
 		default void syncAuraToClient(Player player) {
 				if (player instanceof ServerPlayer serverPlayer) {
-						ModNetwork.sendToPlayer(new AuraSyncS2CPackage(), serverPlayer);
+						ModNetwork.sendToPlayer(new AuraSyncS2CPackage(activateAura()), serverPlayer);
 				}
 		}
 }

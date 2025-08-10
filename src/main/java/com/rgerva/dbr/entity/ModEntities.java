@@ -16,9 +16,11 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -31,10 +33,10 @@ public class ModEntities {
 
 		public static final Supplier<EntityType<AuraEntity>> AURA_ENTITY =
 						ENTITY_TYPES.register("aura_entity", () -> EntityType.Builder.of(AuraEntity::new, MobCategory.MISC)
-										.sized(0.5f, 0.5f).build(AURA_KEY));
+										.sized(0.5f, 0.5f).clientTrackingRange(64).updateInterval(1).build(AURA_KEY));
 
 
-  public static void register(IEventBus eventBus) {
+		public static void register(IEventBus eventBus) {
     ENTITY_TYPES.register(eventBus);
   }
 }

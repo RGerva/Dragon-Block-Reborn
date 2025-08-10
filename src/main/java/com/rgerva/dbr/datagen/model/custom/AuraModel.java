@@ -30,6 +30,8 @@ import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.AnimationState;
 
+import java.awt.*;
+
 
 public class AuraModel extends EntityModel<AuraEntityRenderState> {
 
@@ -332,25 +334,33 @@ public class AuraModel extends EntityModel<AuraEntityRenderState> {
             float green,
             float blue,
             float alpha) {
-        auraRoot.render(poseStack, buffer, packedLight, packedOverlay);
-        auraBody.render(poseStack, buffer, packedLight, packedOverlay);
-        auraOutline.render(poseStack, buffer, packedLight, packedOverlay);
-        bone18.render(poseStack, buffer, packedLight, packedOverlay);
-        bone19.render(poseStack, buffer, packedLight, packedOverlay);
-        bone20.render(poseStack, buffer, packedLight, packedOverlay);
-        bone21.render(poseStack, buffer, packedLight, packedOverlay);
-        bone22.render(poseStack, buffer, packedLight, packedOverlay);
-        bone23.render(poseStack, buffer, packedLight, packedOverlay);
-        bone24.render(poseStack, buffer, packedLight, packedOverlay);
-        bone25.render(poseStack, buffer, packedLight, packedOverlay);
-        auraCore.render(poseStack, buffer, packedLight, packedOverlay);
-        bone26.render(poseStack, buffer, packedLight, packedOverlay);
-        bone27.render(poseStack, buffer, packedLight, packedOverlay);
-        bone28.render(poseStack, buffer, packedLight, packedOverlay);
-        bone29.render(poseStack, buffer, packedLight, packedOverlay);
-        bone30.render(poseStack, buffer, packedLight, packedOverlay);
-        bone31.render(poseStack, buffer, packedLight, packedOverlay);
-        bone32.render(poseStack, buffer, packedLight, packedOverlay);
-        bone33.render(poseStack, buffer, packedLight, packedOverlay);
+
+				int a = (int)(alpha * 255) << 24;
+				int r = (int)(red * 255) << 16;
+				int g = (int)(green * 255) << 8;
+				int b = (int)(blue * 255);
+
+				int color = a | r | g | b;
+				
+        auraRoot.render(poseStack, buffer, packedLight, packedOverlay, color);
+        auraBody.render(poseStack, buffer, packedLight, packedOverlay, color);
+        auraOutline.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone18.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone19.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone20.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone21.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone22.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone23.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone24.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone25.render(poseStack, buffer, packedLight, packedOverlay, color);
+        auraCore.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone26.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone27.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone28.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone29.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone30.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone31.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone32.render(poseStack, buffer, packedLight, packedOverlay, color);
+        bone33.render(poseStack, buffer, packedLight, packedOverlay, color);
     }
 }

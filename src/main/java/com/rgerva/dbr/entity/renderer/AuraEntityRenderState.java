@@ -14,7 +14,9 @@
 
 package com.rgerva.dbr.entity.renderer;
 
+import com.rgerva.dbr.entity.AuraEntity;
 import com.rgerva.dbr.entity.AuraVariant;
+import com.rgerva.dbr.entity.ModEntities;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 
@@ -36,5 +38,4 @@ public class AuraEntityRenderState extends EntityRenderState {
 		public final AnimationState deactivateAnimationState = new AnimationState();
 
 		public AuraVariant variant;
-
 }

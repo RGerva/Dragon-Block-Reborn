@@ -23,24 +23,27 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record AuraSyncS2CPackage() implements CustomPacketPayload {
+public record AuraSyncS2CPackage(boolean activate) implements CustomPacketPayload {
 
 		public static final Type<AuraSyncS2CPackage> ID =
 						new Type<>(
 										ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, "sync_aura"));
 
 		public static final StreamCodec<RegistryFriendlyByteBuf, AuraSyncS2CPackage> STREAM_CODEC =
-						StreamCodec.ofMember(AuraSyncS2CPackage::write, AuraSyncS2CPackage::read);
+						StreamCodec.ofMember(AuraSyncS2CPackage::write, AuraSyncS2CPackage::new);
 
-		public static AuraSyncS2CPackage read(RegistryFriendlyByteBuf buf){
-				return new AuraSyncS2CPackage();
+		public AuraSyncS2CPackage(RegistryFriendlyByteBuf buf){
+				this(buf.readBoolean());
 		}
 
-		public void write(RegistryFriendlyByteBuf buf) {}
+		public void write(RegistryFriendlyByteBuf buf) {
+				buf.writeBoolean(activate);
+		}
 
 		@Override
 		public Type<? extends CustomPacketPayload> type() {
@@ -53,11 +56,8 @@ public record AuraSyncS2CPackage() implements CustomPacketPayload {
 										if (!(context.player().level() instanceof ServerLevel level)
 														|| !(context.player() instanceof ServerPlayer player)) return;
 
-										AuraEntity aura = ModEntities.AURA_ENTITY.get().create(level, EntitySpawnReason.EVENT);
-										if(aura != null){
-												Vec3 pos = player.position();
-												aura.setPos(pos.x, pos.y, pos.z);
-												player.level().getLevel().addFreshEntity(aura);
+										if (data.activate) {
+												AuraEntity.spawnAura(level, player);
 										}
 								}
 				);

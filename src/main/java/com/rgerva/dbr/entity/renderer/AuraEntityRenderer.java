@@ -18,6 +18,7 @@ import com.google.common.collect.Maps;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.datagen.model.custom.AuraModel;
 import com.rgerva.dbr.entity.AuraEntity;
@@ -42,6 +43,7 @@ import java.util.Map;
 public class AuraEntityRenderer extends EntityRenderer<AuraEntity, AuraEntityRenderState> {
 
 		private AuraModel model;
+		private AuraEntity entity;
 
 		private static final Map<AuraVariant, ResourceLocation> LOCATION_BY_VARIANT =
 						Util.make(Maps.newEnumMap(AuraVariant.class), map -> {
@@ -65,13 +67,44 @@ public class AuraEntityRenderer extends EntityRenderer<AuraEntity, AuraEntityRen
 
 		@Override
 		public void render(AuraEntityRenderState renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
-				poseStack.scale(1f, 1f, 1f);
+				poseStack.pushPose();
 
-				super.render(renderState, poseStack, bufferSource, packedLight);
+				poseStack.translate(0D, 1.5D, 0D);
+				poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
+
+				AuraVariant variant = AuraVariant.AURA;
+				ResourceLocation texture = LOCATION_BY_VARIANT.getOrDefault(variant,
+								LOCATION_BY_VARIANT.get(AuraVariant.AURA));
+
+				// Determinar cor com base no estado
+				int r, g, b;
+				if (entity.isKaiokenEnabled()) {
+						r = 1;
+						g = 0;
+						b = 0;
+				} else {
+						r = entity.getAuraColorR() / 255;
+						g = entity.getAuraColorG() / 255;
+						b = entity.getAuraColorB() / 255;
+				}
+
+				// Renderizar a aura com cor
+				VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityTranslucent(texture));
+				model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, r, g, b, 1.0f);
+
+				poseStack.popPose();
 		}
 
 		@Override
 		public AuraEntityRenderState createRenderState() {
 				return new AuraEntityRenderState();
+		}
+
+		@Override
+		public void extractRenderState(AuraEntity entity, AuraEntityRenderState reusedState, float partialTick) {
+				super.extractRenderState(entity, reusedState, partialTick);
+				reusedState.idleAnimationState.copyFrom(entity.idleAnimationState);
+				reusedState.variant = entity.getVariant();
+				this.entity = entity;
 		}
 }
