@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:template_pool": {
+        "description": {
+            "identifier": "dbe:namekian_house"
+        },
+        "elements": [
+            {
+                "element": {
+                    "element_type": "minecraft:single_pool_element",
+                    "location": "dbe/small_namekian_house_1",
+                    "processors": "dbe:namekian_house_loot_table"
+                },
+                "weight": 1
+            },
+            {
+                "element": {
+                    "element_type": "minecraft:single_pool_element",
+                    "location": "dbe/medium_namekian_house_1",
+                    "processors": "dbe:namekian_house_loot_table"
+                },
+                "weight": 1
+            }
+        ]
+    }
+}

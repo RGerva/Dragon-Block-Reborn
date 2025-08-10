@@ -1,0 +1,626 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minecraft:player",
+			"materials": {
+				"default": "entity_alphatest",
+				"cape": "entity_alphatest",
+				"animated": "player_animated",
+				"spectator": "player_spectator",
+				// dragon evolution
+				"alphablend": "entity_alphablend",
+				"aura": "aura",
+				"charged": "charged_creeper",
+				"entity_emissive": "entity_emissive_alpha",
+				"masked": "entity_multitexture_alpha_test",
+				"outline": "outline"
+			},
+			"textures": {
+				"default": "textures/entity/steve",
+				// dragon evolution
+				"aura": "textures/models/aura",
+				"aura_low": "textures/models/aura_low",
+				"brave_sword_sheath": "textures/models/brave_sword_sheath",
+				"empty": "textures/empty",
+				"halo": "textures/models/halo",
+				"ki_attack": "textures/entity/ki_attack",
+				"ki_scythe": "textures/entity/ki_scythe",
+				"metamoran_clothes_1": "textures/models/armor/metamoran_clothes_1",
+				"metamoran_clothes_2": "textures/models/armor/metamoran_clothes_2",
+				"metamoran_clothes_3": "textures/models/armor/metamoran_clothes_3",
+				"power_pole_sheath": "textures/models/power_pole_sheath",
+				"vegetto_clothes": "textures/models/armor/vegetto_clothes",
+				// saiyan
+				"saiyan_eyes_ssj3": "textures/entity/saiyan/eyes/ssj3",
+				"saiyan_eyes_ssj4": "textures/entity/saiyan/eyes/ssj4",
+				"saiyan_eyes_metamoran_ssj4": "textures/entity/saiyan/eyes/metamoran_ssj4",
+				"saiyan_eyes_ssj5": "textures/entity/saiyan/eyes/ssj5",
+				"saiyan_eyes_ultra_ego": "textures/entity/saiyan/eyes/ultra_ego",
+				"saiyan_eyes_male_1": "textures/entity/saiyan/eyes/male_saiyan_base_1",
+				"saiyan_eyes_male_2": "textures/entity/saiyan/eyes/male_saiyan_base_2",
+				"saiyan_eyes_male_3": "textures/entity/saiyan/eyes/male_saiyan_base_3",
+				"saiyan_eyes_male_4": "textures/entity/saiyan/eyes/male_saiyan_base_4",
+				"saiyan_eyes_male_5": "textures/entity/saiyan/eyes/male_saiyan_base_5",
+				"saiyan_eyes_male_ssj": "textures/entity/saiyan/eyes/male_ssj",
+				"saiyan_eyes_male_ssjg": "textures/entity/saiyan/eyes/male_ssjg",
+				"saiyan_eyes_male_ssjb": "textures/entity/saiyan/eyes/male_ssjb",
+				"saiyan_eyes_male_ssjr": "textures/entity/saiyan/eyes/male_ssjr",
+				"saiyan_eyes_male_ssjbe": "textures/entity/saiyan/eyes/male_ssjbe",
+				"saiyan_eyes_male_ssjre": "textures/entity/saiyan/eyes/male_ssjre",
+				"saiyan_eyes_male_beast": "textures/entity/saiyan/eyes/male_beast",
+				"saiyan_eyes_male_lssj": "textures/entity/saiyan/eyes/male_lssj",
+				"saiyan_eyes_male_incomplete_ultra_instinct": "textures/entity/saiyan/eyes/male_incomplete_ultra_instinct",
+				"saiyan_eyes_male_ultra_instinct": "textures/entity/saiyan/eyes/male_ultra_instinct",
+				"saiyan_eyes_female_1": "textures/entity/saiyan/eyes/female_saiyan_base_1",
+				"saiyan_eyes_female_2": "textures/entity/saiyan/eyes/female_saiyan_base_2",
+				"saiyan_eyes_female_3": "textures/entity/saiyan/eyes/female_saiyan_base_3",
+				"saiyan_eyes_female_4": "textures/entity/saiyan/eyes/female_saiyan_base_4",
+				"saiyan_eyes_female_5": "textures/entity/saiyan/eyes/female_saiyan_base_5",
+				"saiyan_eyes_female_ssj": "textures/entity/saiyan/eyes/female_ssj",
+				"saiyan_eyes_female_ssjg": "textures/entity/saiyan/eyes/female_ssjg",
+				"saiyan_eyes_female_ssjb": "textures/entity/saiyan/eyes/female_ssjb",
+				"saiyan_eyes_female_ssjr": "textures/entity/saiyan/eyes/female_ssjr",
+				"saiyan_eyes_female_ssjbe": "textures/entity/saiyan/eyes/female_ssjbe",
+				"saiyan_eyes_female_ssjre": "textures/entity/saiyan/eyes/female_ssjre",
+				"saiyan_eyes_female_beast": "textures/entity/saiyan/eyes/female_beast",
+				"saiyan_eyes_female_lssj": "textures/entity/saiyan/eyes/female_lssj",
+				"saiyan_eyes_female_incomplete_ultra_instinct": "textures/entity/saiyan/eyes/female_incomplete_ultra_instinct",
+				"saiyan_eyes_female_ultra_instinct": "textures/entity/saiyan/eyes/female_ultra_instinct",
+				"saiyan_hair_1": "textures/entity/saiyan/hairs/saiyan_base_1",
+				"saiyan_hair_2": "textures/entity/saiyan/hairs/saiyan_base_2",
+				"saiyan_hair_3": "textures/entity/saiyan/hairs/saiyan_base_3",
+				"saiyan_hair_4": "textures/entity/saiyan/hairs/saiyan_base_4",
+				"saiyan_hair_5": "textures/entity/saiyan/hairs/saiyan_base_5",
+				"saiyan_hair_ssj": "textures/entity/saiyan/hairs/ssj",
+				"saiyan_hair_ssj3": "textures/entity/saiyan/hairs/ssj3",
+				"saiyan_hair_ssj4": "textures/entity/saiyan/hairs/ssj4",
+				"saiyan_hair_metamoran_ssj4": "textures/entity/saiyan/hairs/metamoran_ssj4",
+				"saiyan_hair_ssjg": "textures/entity/saiyan/hairs/ssjg",
+				"saiyan_hair_ssjb": "textures/entity/saiyan/hairs/ssjb",
+				"saiyan_hair_ssjr": "textures/entity/saiyan/hairs/ssjr",
+				"saiyan_hair_ssjbe": "textures/entity/saiyan/hairs/ssjbe",
+				"saiyan_hair_ssjre": "textures/entity/saiyan/hairs/ssjre",
+				"saiyan_hair_beast": "textures/entity/saiyan/hairs/beast",
+				"saiyan_hair_ultra_ego": "textures/entity/saiyan/hairs/ultra_ego",
+				"saiyan_hair_lssj": "textures/entity/saiyan/hairs/lssj",
+				"saiyan_hair_ultra_instinct": "textures/entity/saiyan/hairs/ultra_instinct",
+				"saiyan_skin_1": "textures/entity/saiyan/saiyan_base_1",
+				"saiyan_skin_2": "textures/entity/saiyan/saiyan_base_2",
+				"saiyan_skin_3": "textures/entity/saiyan/saiyan_base_3",
+				"saiyan_skin_4": "textures/entity/saiyan/saiyan_base_4",
+				"saiyan_skin_5": "textures/entity/saiyan/saiyan_base_5",
+				"saiyan_skin_ssj4": "textures/entity/saiyan/ssj4",
+				"saiyan_skin_metamoran_ssj4": "textures/entity/saiyan/metamoran_ssj4",
+				"saiyan_skin_ssj5": "textures/entity/saiyan/ssj5",
+				"saiyan_tail": "textures/entity/saiyan/saiyan_tail",
+				"saiyan_tail_ssj4": "textures/entity/saiyan/ssj4_tail",
+				"saiyan_tail_metamoran_ssj4": "textures/entity/saiyan/metamoran_ssj4_tail",
+				"saiyan_tail_ssj5": "textures/entity/saiyan/ssj5_tail",
+				"oozaru": "textures/entity/saiyan/oozaru",
+				"golden_oozaru": "textures/entity/saiyan/golden_oozaru",
+				// namekian
+				"namekian_eyes": "textures/entity/namekian/eyes/namekian_base",
+				"namekian_eyes_potential_unleashed": "textures/entity/namekian/eyes/namekian_potential_unleashed",
+				"namekian_eyes_orange_form": "textures/entity/namekian/eyes/namekian_orange_form",
+				"namekian_skin_1": "textures/entity/namekian/namekian_base_1",
+				"namekian_skin_2": "textures/entity/namekian/namekian_base_2",
+				"namekian_skin_3": "textures/entity/namekian/namekian_base_3",
+				"namekian_skin_4": "textures/entity/namekian/namekian_base_4",
+				"namekian_skin_potential_unleashed": "textures/entity/namekian/namekian_potential_unleashed",
+				"namekian_skin_orange_form": "textures/entity/namekian/namekian_orange_form",
+				"namekian_skin_detail": "textures/entity/namekian/namekian_base_detail",
+				"namekian_skin_potential_unleashed_detail": "textures/entity/namekian/namekian_potential_unleashed_detail",
+				// frost demon
+				"frost_demon_eyes": "textures/entity/frost_demon/eyes/frost_demon_base",
+				"frost_demon_eyes_fourth_form": "textures/entity/frost_demon/eyes/frost_demon_fourth_form",
+				"frost_demon_eyes_frost_demon_golden_form": "textures/entity/frost_demon/eyes/frost_demon_golden_form",
+				"frost_demon_eyes_frost_demon_black_form": "textures/entity/frost_demon/eyes/frost_demon_black_form",
+				"frost_demon_skin_1": "textures/entity/frost_demon/frost_demon_base_1",
+				"frost_demon_skin_third_form_1": "textures/entity/frost_demon/frost_demon_third_form_1",
+				"frost_demon_skin_fourth_form_1": "textures/entity/frost_demon/frost_demon_fourth_form_1",
+				"frost_demon_skin_frost_demon_golden_form_1": "textures/entity/frost_demon/frost_demon_golden_form_1",
+				"frost_demon_skin_frost_demon_black_form_1": "textures/entity/frost_demon/frost_demon_black_form_1",
+				"frost_demon_skin_2": "textures/entity/frost_demon/frost_demon_base_2",
+				"frost_demon_skin_third_form_2": "textures/entity/frost_demon/frost_demon_third_form_2",
+				"frost_demon_skin_fourth_form_2": "textures/entity/frost_demon/frost_demon_fourth_form_2",
+				"frost_demon_skin_frost_demon_golden_form_2": "textures/entity/frost_demon/frost_demon_golden_form_2",
+				"frost_demon_skin_frost_demon_black_form_2": "textures/entity/frost_demon/frost_demon_black_form_2",
+				"frost_demon_skin_3": "textures/entity/frost_demon/frost_demon_base_3",
+				"frost_demon_skin_third_form_3": "textures/entity/frost_demon/frost_demon_third_form_3",
+				"frost_demon_skin_fourth_form_3": "textures/entity/frost_demon/frost_demon_fourth_form_3",
+				"frost_demon_skin_frost_demon_golden_form_3": "textures/entity/frost_demon/frost_demon_golden_form_3",
+				"frost_demon_skin_frost_demon_black_form_3": "textures/entity/frost_demon/frost_demon_black_form_3",
+				"frost_demon_skin_4": "textures/entity/frost_demon/frost_demon_base_4",
+				"frost_demon_skin_third_form_4": "textures/entity/frost_demon/frost_demon_third_form_4",
+				"frost_demon_skin_fourth_form_4": "textures/entity/frost_demon/frost_demon_fourth_form_4",
+				"frost_demon_skin_frost_demon_golden_form_4": "textures/entity/frost_demon/frost_demon_golden_form_4",
+				"frost_demon_skin_frost_demon_black_form_4": "textures/entity/frost_demon/frost_demon_black_form_4",
+				// majin
+				"majin_eyes": "textures/entity/majin/eyes/majin_base",
+				"majin_skin_1": "textures/entity/majin/majin_base_1",
+				"majin_skin_2": "textures/entity/majin/majin_base_2",
+				"majin_skin_3": "textures/entity/majin/majin_base_3",
+				"majin_skin_4": "textures/entity/majin/majin_base_4",
+				"majin_skin_5": "textures/entity/majin/majin_base_5",
+				// bio android
+				"bio_android_eyes_imperfect_form": "textures/entity/bio_android/eyes/imperfect_form",
+				"bio_android_eyes_semi_perfect_form": "textures/entity/bio_android/eyes/semi_perfect_form",
+				"bio_android_eyes_perfect_form": "textures/entity/bio_android/eyes/perfect_form",
+				"bio_android_skin_imperfect_form_1": "textures/entity/bio_android/bio_android_imperfect_form_1",
+				"bio_android_skin_semi_perfect_form_1": "textures/entity/bio_android/bio_android_semi_perfect_form_1",
+				"bio_android_skin_perfect_form_1": "textures/entity/bio_android/bio_android_perfect_form_1",
+				"bio_android_skin_imperfect_form_2": "textures/entity/bio_android/bio_android_imperfect_form_2",
+				"bio_android_skin_semi_perfect_form_2": "textures/entity/bio_android/bio_android_semi_perfect_form_2",
+				"bio_android_skin_perfect_form_2": "textures/entity/bio_android/bio_android_perfect_form_2",
+				"bio_android_skin_imperfect_form_3": "textures/entity/bio_android/bio_android_imperfect_form_3",
+				"bio_android_skin_semi_perfect_form_3": "textures/entity/bio_android/bio_android_semi_perfect_form_3",
+				"bio_android_skin_perfect_form_3": "textures/entity/bio_android/bio_android_perfect_form_3",
+				"bio_android_skin_imperfect_form_4": "textures/entity/bio_android/bio_android_imperfect_form_4",
+				"bio_android_skin_semi_perfect_form_4": "textures/entity/bio_android/bio_android_semi_perfect_form_4",
+				"bio_android_skin_perfect_form_4": "textures/entity/bio_android/bio_android_perfect_form_4",
+				"bio_android_skin_imperfect_form_5": "textures/entity/bio_android/bio_android_imperfect_form_5",
+				"bio_android_skin_semi_perfect_form_5": "textures/entity/bio_android/bio_android_semi_perfect_form_5",
+				"bio_android_skin_perfect_form_5": "textures/entity/bio_android/bio_android_perfect_form_5",
+				"bio_android_skin_imperfect_form_6": "textures/entity/bio_android/bio_android_imperfect_form_6",
+				"bio_android_skin_semi_perfect_form_6": "textures/entity/bio_android/bio_android_semi_perfect_form_6",
+				"bio_android_skin_perfect_form_6": "textures/entity/bio_android/bio_android_perfect_form_6"
+			},
+			"geometry": {
+				"default": "geometry.humanoid.custom",
+				"cape": "geometry.cape",
+				// dragon evolution
+				"bio_android": "geometry.bio_android",
+				"frost_demon": "geometry.frost_demon",
+				"aura": "geometry.aura",
+				"brave_sword_sheath": "geometry.brave_sword_sheath",
+				"clothes": "geometry.clothes",
+				"eyes": "geometry.eyes",
+				"halo": "geometry.halo",
+				"human": "geometry.human",
+				"ki_manipulation": "geometry.ki_manipulation",
+				"ki_manipulation_outline": "geometry.ki_manipulation_outline",
+				"ki_scythe": "geometry.ki_scythe",
+				"ki_scythe_outline": "geometry.ki_scythe_outline",
+				"locators": "geometry.locators",
+				"majin": "geometry.majin",
+				"metamoran_clothes": "geometry.metamoran_clothes",
+				"namekian": "geometry.namekian",
+				"oozaru": "geometry.oozaru",
+				"saiyan_tail": "geometry.saiyan_tail",
+				"power_pole_sheath": "geometry.power_pole_sheath",
+				// gohan hairs
+				"gohan_hair": "geometry.gohan_hair",
+				"gohan_ssj_hair": "geometry.gohan_ssj_hair",
+				"gohan_ssj4_hair": "geometry.gohan_ssj4_hair",
+				"gohan_beast_hair": "geometry.gohan_beast_hair",
+				// goku hairs
+				"goku_hair": "geometry.goku_hair",
+				"goku_ssj_hair": "geometry.goku_ssj_hair",
+				"goku_ssj2_hair": "geometry.goku_ssj2_hair",
+				"goku_ssj3_hair": "geometry.goku_ssj3_hair",
+				"goku_ssj4_hair": "geometry.goku_ssj4_hair",
+				"goku_ssj5_hair": "geometry.goku_ssj5_hair",
+				// trunks hairs
+				"trunks_hair": "geometry.trunks_hair",
+				"trunks_ssj_hair": "geometry.trunks_ssj_hair",
+				"trunks_ssj2_hair": "geometry.trunks_ssj2_hair",
+				"trunks_ssj3_hair": "geometry.trunks_ssj3_hair",
+				"trunks_ssj4_hair": "geometry.trunks_ssj4_hair",
+				// vegeta hairs
+				"vegeta_hair": "geometry.vegeta_hair",
+				"vegeta_ssj_hair": "geometry.vegeta_ssj_hair",
+				"vegeta_ssj2_hair": "geometry.vegeta_ssj2_hair",
+				"vegeta_ssj3_hair": "geometry.vegeta_ssj3_hair",
+				"vegeta_ssj4_hair": "geometry.vegeta_ssj4_hair",
+				// broly_z hairs
+				"broly_z_hair": "geometry.broly_z_hair",
+				"broly_z_ssj_hair": "geometry.broly_z_ssj_hair",
+				"broly_z_ssj2_hair": "geometry.broly_z_ssj2_hair",
+				"broly_z_ssj3_hair": "geometry.broly_z_ssj3_hair",
+				"broly_z_ssj4_hair": "geometry.broly_z_ssj4_hair",
+				// caulifla hairs
+				"caulifla_hair": "geometry.caulifla_hair",
+				"caulifla_ssj_hair": "geometry.caulifla_ssj_hair",
+				"caulifla_ssj2_hair": "geometry.caulifla_ssj2_hair",
+				"caulifla_ssj3_hair": "geometry.caulifla_ssj3_hair",
+				"caulifla_ssj4_hair": "geometry.caulifla_ssj4_hair",
+				// gine hairs
+				"gine_hair": "geometry.gine_hair",
+				"gine_ssj_hair": "geometry.gine_ssj_hair",
+				"gine_ssj2_hair": "geometry.gine_ssj2_hair",
+				"gine_ssj3_hair": "geometry.gine_ssj3_hair",
+				"gine_ssj4_hair": "geometry.gine_ssj4_hair",
+				// videl hairs
+				"videl_short_hair": "geometry.videl_short_hair",
+				"videl_short_ssj_hair": "geometry.videl_short_ssj_hair",
+				"videl_short_ssj2_hair": "geometry.videl_short_ssj2_hair",
+				"videl_short_ssj4_hair": "geometry.videl_short_ssj4_hair"
+			},
+			"particle_effects": {
+				"aura_god": "dbe:aura_god",
+				"beam": "dbe:beam",
+				"kaioken_aura": "dbe:kaioken_aura",
+				"ultra_instinct_aura": "dbe:ultra_instinct_aura"
+			},
+			"sound_effects": {
+				"charge_god_loop": "aura.charge_god_loop",
+				"charge_loop": "aura.charge_loop",
+				"bukujyutsu_end": "common.bukujyutsu_end",
+				"dodge": "common.dodge",
+				"kamehameha_attack": "common.kamehameha_attack",
+				"kamehameha_beam": "common.kamehameha_beam",
+				"metamoran_finish": "metamoran.finish",
+				"metamoran_foot": "metamoran.foot",
+				"swing": "common.swing",
+				"teleport1": "common.teleport1",
+				"teleport2": "common.teleport2",
+				"kienzan_loop": "skill.kienzan_loop"
+			},
+			"scripts": {
+				"scale": "0.9375",
+				"initialize": [
+					"variable.is_holding_right = 0.0;",
+					"variable.is_blinking = 0.0;",
+					"variable.last_blink_time = 0.0;",
+					"variable.hand_bob = 0.0;",
+
+					// dragon evolution
+					"v.aura_enabled = 0.0;",
+					"v.aura_boost_enabled = 0.0;",
+					"v.aura_color_b = 0.0;",
+					"v.aura_color_g = 0.0;",
+					"v.aura_color_r = 0.0;",
+					"v.aura_sound = 0.0;",
+					"v.aura_type = 0.0;",
+					"v.brave_sword_sheath = 0.0;",
+					"v.empty_hand = 0.0;",
+					"v.eyes_size = 0.0;",
+					"v.fusion_type = 0.0;",
+					"v.is_flying = 0.0;",
+					"v.is_female = 0.0;",
+					"v.kaioken_enabled = 0.0;",
+					"v.transformation = 0.0;",
+					"v.hair = 0.0;",
+					"v.hair_color = 0.0;",
+					"v.has_slim_body = 0.0;",
+					"v.has_tail = 0.0;",
+					"v.hold = 0.0;",
+					"v.is_idle = 0.0;",
+					"v.is_death = 0.0;",
+					"v.is_knocked_out = 0.0;",
+					"v.is_legendary = 0.0;",
+					"v.is_loading_attack = 0.0;",
+					"v.is_muscular = 0.0;",
+					"v.ki_scythe_enabled = 0.0;",
+					"v.leftarm_visible = 0.0;",
+					"v.is_lssj = 0.0;",
+					"v.is_ssj4 = 0.0;",
+					"v.is_oozaru = 0.0;",
+					"v.is_using_helmet = 0.0;",
+					"v.power_pole_sheath = 0.0;",
+					"v.race = '';",
+					"v.rightarm_visible = 0.0;",
+					"v.skin = 0.0;",
+					"v.tail_curled = 0.0;",
+					"v.selected_ki_attack = 0.0;",
+					"v.ultra_instinct = 0.0;"
+				],
+				"pre_animation": [
+					"variable.helmet_layer_visible = !query.has_head_gear;",
+					"variable.leg_layer_visible = 1.0;",
+					"variable.boot_layer_visible = 1.0;",
+					"variable.chest_layer_visible = 1.0;",
+					"variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+					"variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+					"variable.first_person_rotation_factor = math.sin((1 - variable.attack_time) * 180.0);",
+					"variable.hand_bob = query.life_time < 0.01 ? 0.0 : variable.hand_bob + ((query.is_on_ground && query.is_alive ? math.clamp(math.sqrt(math.pow(query.position_delta(0), 2.0) + math.pow(query.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;",
+					"variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);",
+					"variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
+					"variable.riding_y_offset = query.is_riding_any_entity_of_type('minecraft:minecart', 'minecraft:boat', 'minecraft:chest_boat', 'minecraft:strider') ? -3.0 : 0.0;",
+
+					// dragon evolution
+					"v.aura_boost_enabled = v.is_paperdoll ? 0.0 : q.property('dbe:aura_boost');",
+					"v.aura_color_b = v.is_paperdoll ? 0.0 : q.property('dbe:aura_color_b');",
+					"v.aura_color_g = v.is_paperdoll ? 0.0 : q.property('dbe:aura_color_g');",
+					"v.aura_color_r = v.is_paperdoll ? 0.0 : q.property('dbe:aura_color_r');",
+					"v.aura_enabled = v.is_paperdoll ? 0.0 : (q.is_sneaking || v.aura_boost_enabled) && !q.is_sleeping;",
+					"v.aura_sound = v.is_paperdoll ? 0.0 : q.property('dbe:aura_sound');",
+					"v.aura_type = v.is_paperdoll ? 0.0 : q.property('dbe:aura_type');",
+					"v.brave_sword_sheath = v.is_paperdoll ? 0.0 : (q.is_item_name_any('slot.hotbar', 0, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 1, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 2, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 3, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 4, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 5, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 6, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 7, 'dbe:brave_sword') || q.is_item_name_any('slot.hotbar', 8, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 0, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 1, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 2, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 3, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 4, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 5, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 6, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 7, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 8, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 9, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 10, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 11, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 12, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 13, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 14, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 15, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 16, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 17, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 18, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 19, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 20, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 21, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 22, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 23, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 24, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 25, 'dbe:brave_sword') || q.is_item_name_any('slot.inventory', 26, 'dbe:brave_sword'));",
+					"v.empty_hand = v.is_paperdoll ? 0.0 : q.is_item_name_any('slot.weapon.mainhand', '');",
+					"v.eye_size = v.race == 'bio_android' && v.transformation == 0 ? 3 : 2;",
+					"v.fusion_type = v.is_paperdoll ? 0.0 : q.property('dbe:fusion_type');",
+					"v.is_charging_ki = q.get_equipped_item_name('main_hand') == 'functions' && !q.is_moving;",
+					"v.is_falling = q.vertical_speed < -0.2;",
+					"v.is_female = v.is_paperdoll ? 0.0 : q.property('dbe:gender');",
+					"v.is_flying = v.is_paperdoll ? 0.0 : q.property('dbe:is_flying');",
+					"v.transformation = v.is_paperdoll ? 0.0 : q.property('dbe:transformation');",
+					"v.hair = v.is_paperdoll ? 0.0 : q.property('dbe:hair_variant');",
+					"v.hair_color = v.is_paperdoll ? 0.0 : q.property('dbe:hair_color_variant');",
+					"v.has_slim_body = v.is_paperdoll ? 0.0 : q.property('dbe:has_slim_body');",
+					"v.has_tail = v.is_paperdoll ? 0.0 : q.property('dbe:has_tail');",
+					"v.is_loading_attack = v.is_paperdoll ? 0.0 : q.property('dbe:is_loading_attack');",
+					"v.hold = v.is_paperdoll ? 0.0 : !v.aura_enabled && q.is_on_ground && !q.is_riding && !q.is_in_water && q.equipped_item_any_tag('slot.weapon.mainhand','hold') || v.is_loading_attack || v.ki_scythe_enabled;",
+					"v.is_idle = v.is_paperdoll ? 0.0 : !q.is_jumping && !q.is_moving && !q.is_riding && !q.is_sneaking && !q.is_sleeping;",
+					"v.is_death = v.is_paperdoll ? 0.0 : q.property('dbe:is_death');",
+					"v.is_knocked_out = v.is_paperdoll ? 0.0 : q.property('dbe:is_knocked_out');",
+					"v.is_legendary = v.is_paperdoll ? 0.0 : q.property('dbe:is_legendary');",
+					"v.is_muscular = v.is_paperdoll ? 0.0 : q.property('dbe:is_muscular');",
+					"v.is_ssj4 = v.transformation == 8;",
+					"v.is_using_helmet = q.equipped_item_any_tag('slot.armor.head','minecraft:is_armor') && v.fusion_type == 'none';",
+					"v.kaioken_enabled = v.is_paperdoll ? 0.0 : q.property('dbe:kaioken');",
+					"v.ki_scythe_enabled = v.is_paperdoll ? 0.0 : q.property('dbe:ki_scythe');",
+					"v.leftarm_visible = v.is_paperdoll ? 0.0 : v.is_loading_attack && v.selected_ki_attack == 'genki_dama';",
+					"v.is_lssj = v.is_paperdoll ? 0.0 : q.property('dbe:is_legendary') && v.race == 'saiyan' && q.property('dbe:transformation') > 1 && q.property('dbe:transformation') < 6;",
+					"v.is_oozaru = v.is_paperdoll ? 0.0 : v.race == 'saiyan' && (q.property('dbe:transformation') == 1 || q.property('dbe:transformation') == 7);",
+					"v.power_pole_sheath = v.is_paperdoll ? 0.0 : (q.is_item_name_any('slot.hotbar', 0, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 1, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 2, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 3, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 4, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 5, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 6, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 7, 'dbe:power_pole') || q.is_item_name_any('slot.hotbar', 8, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 0, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 1, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 2, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 3, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 4, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 5, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 6, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 7, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 8, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 9, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 10, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 11, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 12, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 13, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 14, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 15, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 16, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 17, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 18, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 19, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 20, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 21, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 22, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 23, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 24, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 25, 'dbe:power_pole') || q.is_item_name_any('slot.inventory', 26, 'dbe:power_pole'));",
+					"v.race = v.is_paperdoll ? 'human' : q.property('dbe:race');",
+					"v.rightarm_visible = v.is_paperdoll ? 0.0 : q.equipped_item_any_tag('slot.weapon.mainhand', 'invisible_item') || q.equipped_item_any_tag('slot.weapon.mainhand', 'hold');",
+					"v.selected_ki_attack = v.is_paperdoll ? 0.0 : q.property('dbe:selected_ki_attack');",
+					"v.skin = v.is_paperdoll ? 0.0 : q.property('dbe:skin_variant');",
+					"v.tail_curled = v.is_paperdoll ? 0.0 : q.property('dbe:tail_curled') || q.equipped_item_any_tag('slot.armor.chest','tail_curled') || q.equipped_item_any_tag('slot.weapon.offhand','tail_curled');",
+					"v.ultra_instinct = v.is_paperdoll ? 0.0 : q.property('dbe:ultra_instinct');",
+					"v.is_walking = q.modified_move_speed >= 0.1;"
+				],
+				"animate": [
+					"root",
+					"dbe_general",
+					{
+						"item_fix": "v.is_first_person"
+					}
+				]
+			},
+			"animations": {
+				"root": "controller.animation.player.root",
+				"base_controller": "controller.animation.player.base",
+				"hudplayer": "controller.animation.player.hudplayer",
+				"humanoid_base_pose": "animation.humanoid.base_pose",
+				"look_at_target": "controller.animation.humanoid.look_at_target",
+				"look_at_target_ui": "animation.player.look_at_target.ui",
+				"look_at_target_default": "animation.humanoid.look_at_target.default",
+				"look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+				"look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+				"look_at_target_inverted": "animation.player.look_at_target.inverted",
+				"cape": "animation.player.cape",
+				"move.arms": "animation.player.move.arms",
+				"move.legs": "animation.player.move.legs",
+				"swimming": "animation.player.swim",
+				"swimming.legs": "animation.player.swim.legs",
+				"riding.arms": "animation.player.riding.arms",
+				"riding.legs": "animation.player.riding.legs",
+				"holding": "animation.player.holding",
+				"brandish_spear": "animation.humanoid.brandish_spear",
+				"charging": "animation.humanoid.charging",
+				"attack.positions": "animation.player.attack.positions",
+				"attack.rotations": "animation.player.attack.rotations",
+				"sneaking": "animation.player.sneaking",
+				"bob": "animation.player.bob",
+				"damage_nearby_mobs": "animation.humanoid.damage_nearby_mobs",
+				"bow_and_arrow": "animation.humanoid.bow_and_arrow",
+				"use_item_progress": "animation.humanoid.use_item_progress",
+				"skeleton_attack": "animation.skeleton.attack",
+				"sleeping": "animation.player.sleeping",
+				"first_person_base_pose": "animation.player.first_person.base_pose",
+				"first_person_empty_hand": "animation.player.first_person.empty_hand",
+				"first_person_swap_item": "animation.player.first_person.swap_item",
+				"first_person_attack_controller": "controller.animation.player.first_person_attack",
+				"first_person_attack_rotation": "animation.player.first_person.attack_rotation",
+				"first_person_attack_rotation_item": "animation.player.first_person.attack_rotation_item",
+				"first_person_vr_attack_rotation": "animation.player.first_person.vr_attack_rotation",
+				"first_person_walk": "animation.player.first_person.walk",
+				"first_person_map_controller": "controller.animation.player.first_person_map",
+				"first_person_map_hold": "animation.player.first_person.map_hold",
+				"first_person_map_hold_attack": "animation.player.first_person.map_hold_attack",
+				"first_person_map_hold_off_hand": "animation.player.first_person.map_hold_off_hand",
+				"first_person_map_hold_main_hand": "animation.player.first_person.map_hold_main_hand",
+				"first_person_crossbow_equipped": "animation.player.first_person.crossbow_equipped",
+				"first_person_crossbow_hold": "animation.player.first_person.crossbow_hold",
+				"first_person_breathing_bob": "animation.player.first_person.breathing_bob",
+				"third_person_crossbow_equipped": "animation.player.crossbow_equipped",
+				"third_person_bow_equipped": "animation.player.bow_equipped",
+				"crossbow_hold": "animation.player.crossbow_hold",
+				"crossbow_controller": "controller.animation.player.crossbow",
+				"shield_block_main_hand": "animation.player.shield_block_main_hand",
+				"shield_block_off_hand": "animation.player.shield_block_off_hand",
+				"blink": "controller.animation.persona.blink",
+				"fishing_rod": "animation.humanoid.fishing_rod",
+				"holding_spyglass": "animation.humanoid.holding_spyglass",
+				"first_person_shield_block": "animation.player.first_person.shield_block",
+				"tooting_goat_horn": "animation.humanoid.tooting_goat_horn",
+				"holding_brush": "animation.humanoid.holding_brush",
+				"brushing": "animation.humanoid.brushing",
+				"crawling": "animation.player.crawl",
+				"crawling.legs": "animation.player.crawl.legs",
+				"holding_heavy_core": "animation.player.holding_heavy_core",
+				"riding.root": "animation.player.riding.root",
+
+				// dragon evolution
+				"dbe_general": "controller.animation.player.dbe.general",
+				"attack_controller": "controller.animation.player.attack",
+				"aura_controller": "controller.animation.player.aura",
+				"aura_off": "animation.aura.off",
+				"aura_move": "animation.aura.move",
+				"aura_on": "animation.aura.on",
+				"bio_android_wings": "animation.player.bio_android.wings",
+				"charge_ki": "animation.player.charge_ki",
+				"charge_ki_controller": "controller.animation.player.charge_ki",
+				"empty_lefthand": "animation.player.empty_lefthand",
+				"eyes": "animation.humanoid.eyes",
+				"eyes_controller": "controller.animation.humanoid.eyes",
+				"fall": "animation.player.fall",
+				"female_setup": "animation.player.female_setup",
+				"first_person_genki_dama": "animation.player.first_person.genki_dama",
+				"first_person_kamehameha_beam": "animation.player.first_person.kamehameha_beam",
+				"first_person_ki_blast": "animation.player.first_person.ki_blast",
+				"fly_controller": "controller.animation.player.fly",
+				"fly_idle": "animation.player.fly.idle",
+				"fly_sprinting": "animation.player.fly.sprinting",
+				"fly_walking": "animation.player.fly.walking",
+				"genki_dama": "animation.player.genki_dama",
+				"genki_dama_controller": "controller.animation.player.genki_dama",
+				"hair_move": "animation.player.hair.move",
+				"holding_attachable": "animation.player.holding_attachable",
+				"holding_ki_scythe": "animation.player.holding_ki_scythe",
+				"holding_z_sword": "animation.player.holding_z_sword",
+				"idle": "animation.player.idle",
+				"idle_controller": "controller.animation.player.idle",
+				"item_fix": "animation.player.item_fix",
+				"jump": "animation.player.jump",
+				"jump_controller": "controller.animation.player.jump",
+				"kamehameha_attack": "animation.player.kamehameha_attack",
+				"kamehameha_beam": "animation.player.kamehameha_beam",
+				"kamehameha_controller": "controller.animation.player.kamehameha",
+				"ki_attacks_controller": "controller.animation.player.ki_attacks",
+				"ki_blast_controller": "controller.animation.player.ki_blast",
+				"ki_scythe_attack": "animation.player.ki_scythe.attack",
+				"ki_scythe_controller": "controller.animation.player.ki_scythe",
+				"kienzan": "animation.player.kienzan",
+				"kienzan_controller": "controller.animation.player.kienzan",
+				"knocked_out": "animation.humanoid.knocked_out",
+				"land": "animation.player.land",
+				"power_pole_controller": "controller.animation.player.power_pole",
+				"power_pole_jump": "animation.player.power_pole.jump",
+				"melee_attack_1": "animation.player.melee.attack_1",
+				"melee_attack_2": "animation.player.melee.attack_2",
+				"melee_attack_3": "animation.player.melee.attack_3",
+				"melee_attack_4": "animation.player.melee.attack_4",
+				"melee_attack_5": "animation.player.melee.attack_5",
+				"melee_attack_6": "animation.player.melee.attack_6",
+				"muscular": "animation.player.muscular",
+				"sfx_charge_god_loop": "animation.sfx.charge_god_loop",
+				"sfx_charge_loop": "animation.sfx.charge_loop",
+				"slim_body": "animation.player.slim_body",
+				"sneak": "animation.player.sneak",
+				"sneak_controller": "controller.animation.player.sneak",
+				"sneak_walk": "animation.player.sneak.walk",
+				"sprint": "animation.player.sprint",
+				"tail_controller": "controller.animation.player.tail",
+				"tail_curled": "animation.player.tail.curled",
+				"tail_move": "animation.player.tail.move",
+				"third_person_ki_blast": "animation.player.third_person.ki_blast",
+				"walk": "animation.player.walk",
+				"walk_controller": "controller.animation.player.walk",
+				"weapons_controller": "controller.animation.player.weapons",
+				"z_sword_controller": "controller.animation.player.z_sword"
+			},
+			"render_controllers": [
+				// vanilla
+				{
+					"controller.render.player.first_person_spectator": "variable.is_first_person && query.is_spectator"
+				},
+				{
+					"controller.render.player.third_person_spectator": "!variable.is_first_person && !variable.map_face_icon && query.is_spectator"
+				},
+				{
+					"controller.render.player.first_person": "variable.is_first_person && !query.is_spectator"
+				},
+				{
+					"controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon && !query.is_spectator"
+				},
+				{
+					"controller.render.player.map": "variable.map_face_icon"
+				},
+				// human
+				{
+					"controller.render.player.human.first_person": "v.is_first_person && !q.is_spectator && v.race == 'human'"
+				},
+				{
+					"controller.render.player.human.third_person": "!v.is_first_person && !v.map_face_icon && v.race == 'human'"
+				},
+				// saiyan
+				{
+					"controller.render.oozaru": "!v.is_first_person && !q.is_spectator && v.is_oozaru"
+				},
+				{
+					"controller.render.player.saiyan.eyes": "!v.is_first_person && !q.is_spectator && v.race == 'saiyan' && v.skin"
+				},
+				{
+					"controller.render.player.saiyan.first_person": "v.is_first_person && !q.is_spectator && v.race == 'saiyan' && !v.is_oozaru"
+				},
+				{
+					"controller.render.player.saiyan.hair": "!v.is_first_person && !q.is_spectator && v.race == 'saiyan' && !v.is_oozaru"
+				},
+				{
+					"controller.render.player.saiyan.tail": "!v.is_first_person && !q.is_spectator && v.race == 'saiyan' && !v.is_oozaru && v.has_tail"
+				},
+				{
+					"controller.render.player.saiyan.third_person": "!v.is_first_person && !q.is_spectator && !v.map_face_icon && v.race == 'saiyan' && !v.is_oozaru"
+				},
+				// namekian
+				{
+					"controller.render.player.namekian.eyes": "!v.is_first_person && !q.is_spectator && v.race == 'namekian'"
+				},
+				{
+					"controller.render.player.namekian.first_person": "v.is_first_person && !q.is_spectator && v.race == 'namekian'"
+				},
+				{
+					"controller.render.player.namekian.third_person": "!v.is_first_person && !q.is_spectator && !v.map_face_icon && v.race == 'namekian'"
+				},
+				// frost demon
+				{
+					"controller.render.player.frost_demon.eyes": "!v.is_first_person && !q.is_spectator && v.race == 'frost_demon'"
+				},
+				{
+					"controller.render.player.frost_demon.first_person": "v.is_first_person && !q.is_spectator && v.race == 'frost_demon'"
+				},
+				{
+					"controller.render.player.frost_demon.third_person": "!v.is_first_person && !q.is_spectator && !v.map_face_icon && v.race == 'frost_demon'"
+				},
+				// majin
+				{
+					"controller.render.player.majin.eyes": "!v.is_first_person && !q.is_spectator && v.race == 'majin'"
+				},
+				{
+					"controller.render.player.majin.first_person": "v.is_first_person && !q.is_spectator && v.race == 'majin'"
+				},
+				{
+					"controller.render.player.majin.third_person": "!v.is_first_person && !q.is_spectator && !v.map_face_icon && v.race == 'majin'"
+				},
+				// bio android
+				{
+					"controller.render.player.bio_android.eyes": "!v.is_first_person && !q.is_spectator && v.race == 'bio_android'"
+				},
+				{
+					"controller.render.player.bio_android.first_person": "v.is_first_person && !q.is_spectator && v.race == 'bio_android'"
+				},
+				{
+					"controller.render.player.bio_android.third_person": "!v.is_first_person && !q.is_spectator && !v.map_face_icon && v.race == 'bio_android'"
+				},
+				// fusion
+				{
+					"controller.render.player.fusion_clothes.first_person": "v.is_first_person && !q.is_spectator && v.fusion_type != 'none'"
+				},
+				{
+					"controller.render.player.fusion_clothes.third_person": "!v.is_first_person && !v.is_paperdoll && !q.is_spectator && !v.map_face_icon && v.fusion_type != 'none'"
+				},
+				// geral
+				{
+					"controller.render.player.aura": "v.aura_type == 'normal' && v.aura_enabled && !v.ultra_instinct"
+				},
+				{
+					"controller.render.player.halo": "!v.is_first_person && v.is_death"
+				},
+				{
+					"controller.render.player.ki_scythe": "v.ki_scythe_enabled && v.empty_hand"
+				},
+				{
+					"controller.render.player.ki_scythe.outline": "v.ki_scythe_enabled && v.empty_hand"
+				},
+				{
+					"controller.render.player.ki_manipulation": "v.is_loading_attack"
+				},
+				{
+					"controller.render.player.ki_manipulation.outline": "v.is_loading_attack"
+				},
+				{
+					"controller.render.player.brave_sword_sheath": "!v.is_first_person && v.brave_sword_sheath"
+				},
+				{
+					"controller.render.player.power_pole_sheath": "!v.is_first_person && !v.brave_sword_sheath && v.power_pole_sheath"
+				}
+			],
+			"enable_attachables": true
+		}
+	}
+}

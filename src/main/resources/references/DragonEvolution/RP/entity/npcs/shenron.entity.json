@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:shenron",
+            "materials": {
+                "default": "entity_emissive_alpha"
+            },
+            "textures": {
+                "default": "textures/entity/npcs/shenron"
+            },
+            "geometry": {
+                "default": "geometry.shenron"
+            },
+            "scripts": {
+                "animate": [
+                    "base_pose",
+                    "look_at_target"
+                ]
+            },
+            "animations": {
+                "base_pose": "animation.shenron.base_pose",
+                "look_at_target": "animation.shenron.look_at_target"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

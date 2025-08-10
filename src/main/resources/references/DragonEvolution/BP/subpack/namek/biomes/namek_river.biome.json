@@ -1,0 +1,32 @@
+{
+    "format_version": "1.20.60",
+    "minecraft:biome": {
+        "description": {
+            "identifier": "dbe:namek_river"
+        },
+        "components": {
+            "minecraft:climate": {
+                "downfall": 0,
+                "snow_accumulation": [ 0, 0.125 ],
+                "temperature": 1
+            },
+            "minecraft:overworld_height": {
+                "noise_type": "river"
+            },
+            "minecraft:surface_parameters": {
+                "sea_floor_depth": 7,
+                "sea_floor_material": "dbe:namek_stone",
+                "foundation_material": "dbe:namek_stone",
+                "mid_material": "dbe:namek_stone",
+                "top_material": "dbe:namek_grass",
+                "sea_material": "minecraft:water"
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "animal",
+                    "namek"
+                ]
+            }
+        }
+    }
+}

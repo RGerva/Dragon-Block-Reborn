@@ -1,0 +1,18 @@
+{
+    "format_version": "1.21.20",
+    "minecraft:template_pool": {
+        "description": {
+            "identifier": "dbe:master_roshi_house"
+        },
+        "elements": [
+            {
+                "element": {
+                    "element_type": "minecraft:single_pool_element",
+                    "location": "dbe/master_roshi_house",
+                    "processors": "dbe:master_roshi_house_loot_table"
+                },
+                "weight": 1
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "dbe:force_explosion",
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+
+        "components": {
+            "minecraft:collision_box": {
+                "width": 16,
+                "height": 16
+            },
+            "minecraft:instant_despawn": { }
+        }
+    }
+}

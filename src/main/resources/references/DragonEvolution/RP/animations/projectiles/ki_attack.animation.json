@@ -1,0 +1,19 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.ki_attack.flying": {
+			"loop": true,
+			"bones": {
+				"kiAttackRoot": {
+					"rotation": ["-q.target_x_rotation", "-q.body_y_rotation", 0]
+				},
+				"ballShape": {
+					"rotation": ["q.anim_time * 1000", "q.anim_time * 1000", 0]
+				},
+				"discShape": {
+					"rotation": [0, "q.anim_time * 1000", 0]
+				}
+			}
+		}
+	}
+}

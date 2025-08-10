@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:item": {
+        "description": {
+            "identifier": "dbe:power_fruit"
+        },
+
+        "components": {
+            "minecraft:icon": "power_fruit",
+            "minecraft:rarity": "rare",
+            "minecraft:use_modifiers": {
+                "movement_modifier": 1,
+                "use_duration": 1
+            },
+            "minecraft:compostable": {
+                "composting_chance": 100
+            },
+            "minecraft:use_animation": {
+                "value": "eat"
+            },
+            "minecraft:tags": {
+                "tags": [ "minecraft:is_food" ]
+            }
+        }
+    }
+}

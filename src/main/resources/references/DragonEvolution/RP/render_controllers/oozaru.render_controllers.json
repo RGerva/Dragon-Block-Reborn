@@ -1,0 +1,16 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.oozaru": {
+            "geometry": "Geometry.oozaru",
+            "materials": [ { "*": "Material.spectator" } ],
+            "textures": [ "v.transformation == 7 ? Texture.golden_oozaru : Texture.oozaru" ],
+            "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": "math.clamp(query.distance_from_camera / 8, 0, 1)"
+            }
+        }
+    }
+}

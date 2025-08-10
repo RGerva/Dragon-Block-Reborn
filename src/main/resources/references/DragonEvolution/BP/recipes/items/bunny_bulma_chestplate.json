@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:bunny_costume_chestplate"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "A A",
+      "AAA",
+      " A "
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:gray_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:bunny_costume_chestplate"
+    }
+  }
+}

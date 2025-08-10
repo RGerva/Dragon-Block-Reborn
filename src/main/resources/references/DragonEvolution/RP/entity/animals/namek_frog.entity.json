@@ -1,0 +1,48 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:namek_frog",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/animals/namek_frog/namek_frog_green",
+                "pink": "textures/entity/animals/namek_frog/namek_frog_pink",
+                "yellow": "textures/entity/animals/namek_frog/namek_frog_yellow"
+            },
+            "geometry": {
+                "default": "geometry.namek_frog"
+            },
+            "spawn_egg": {
+                "base_color": "#2ab6a5",
+                "overlay_color": "#1a877a"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "v.moving = q.ground_speed > 0 || q.vertical_speed > 0;"
+                ],
+                "animate": [
+                    "general",
+                    "croaking",
+                    "eat_mob"
+                ]
+            },
+            "animations": {
+                "general": "controller.animation.frog.general",
+                "croaking": "controller.animation.frog.croaking",
+                "eat_mob": "controller.animation.frog.eat_mob",
+                "croak": "animation.frog.croak",
+                "jump": "animation.frog.jump",
+                "tongue": "animation.frog.tongue",
+                "walk": "animation.frog.walk",
+                "swim": "animation.frog.swim",
+                "idle_water": "animation.frog.idle.water",
+                "look_at_target": "animation.common.look_at_target"
+            },
+            "render_controllers": [
+                "controller.render.namek_frog"
+            ]
+        }
+    }
+}

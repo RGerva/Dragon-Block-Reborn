@@ -1,0 +1,15 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbe:medical_moss"
+    },
+
+    "components": {
+      "minecraft:icon": "medical_moss",
+      "minecraft:compostable": {
+        "composting_chance": 30
+      }
+    }
+  }
+}

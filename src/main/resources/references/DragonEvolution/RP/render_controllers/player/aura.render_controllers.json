@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.player.aura": {
+            "geometry": "Geometry.aura",
+            "materials": [ { "*": "Material.aura" } ],
+            "textures": [ "v.is_first_person ? Texture.aura_low : Texture.aura" ],
+            "overlay_color": {
+                "r": "v.kaioken_enabled ? 1 : v.aura_color_r / 255",
+                "g": "v.kaioken_enabled ? 0 : v.aura_color_g / 255",
+                "b": "v.kaioken_enabled ? 0 : v.aura_color_b / 255",
+                "a": 1
+            },
+            "ignore_lighting": true,
+            "is_hurt_color": { },
+            "on_fire_color": { }
+        }
+    }
+}

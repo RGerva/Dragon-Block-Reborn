@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:akira_toriyama",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/npcs/akira_toriyama"
+            },
+            "geometry": {
+                "default": "geometry.akira_toriyama"
+            },
+            "scripts": {
+                "animate": [
+                    "root"
+                ]
+            },
+            "animations": {
+                "root": "animation.akira_toriyama.root"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

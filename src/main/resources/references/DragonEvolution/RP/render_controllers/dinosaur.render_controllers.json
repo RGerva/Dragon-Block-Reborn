@@ -1,0 +1,23 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.dinosaur": {
+            "arrays": {
+                "textures": {
+                    "Array.colors": [
+                        "Texture.default",
+                        "Texture.brown_dinosaur",
+                        "Texture.yellow_dinosaur"
+                    ]
+                }
+            },
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.colors[q.variant]" ],
+            "part_visibility": [
+                { "bodySpike": "!q.is_saddled" },
+                { "saddle": "q.is_saddled" }
+            ]
+        }
+    }
+}

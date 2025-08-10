@@ -1,0 +1,43 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:piccolo",
+            "materials": {
+                "default": "entity_alphatest",
+                "entity_emissive": "entity_emissive_alpha",
+                "masked": "tropicalfish"
+            },
+            "textures": {
+                "default": "textures/entity/namekian/namekian_base_2",
+                "armor": "textures/models/armor/piccolo_clothes",
+                "cape": "textures/models/piccolo_cape",
+                "eyes": "textures/entity/namekian/eyes/namekian_base",
+                "skin_detail": "textures/entity/namekian/namekian_base_detail"
+            },
+            "geometry": {
+                "default": "geometry.namekian",
+                "armor": "geometry.clothes",
+                "cape": "geometry.piccolo_cape",
+                "eyes": "geometry.eyes"
+            },
+            "scripts": {
+                "animate": [
+                    "root"
+                ]
+            },
+            "animations": {
+                "root": "controller.animation.npc.root",
+                "blink": "animation.humanoid.blink",
+                "bob": "animation.player.bob",
+                "look_at_target": "animation.humanoid.look_at_target.default"
+            },
+            "render_controllers": [
+                "controller.render.piccolo",
+                "controller.render.piccolo.cape",
+                "controller.render.entity_armor",
+                "controller.render.entity_eyes"
+            ]
+        }
+    }
+}

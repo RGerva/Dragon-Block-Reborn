@@ -1,0 +1,299 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.common_enemy.root": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"animations": [
+						"attack_controller",
+						"blink",
+						"fly_controller",
+						"idle_controller",
+						"jump_controller",
+						"ki_attack_controller",
+						{
+							"knocked_out": "v.is_knocked_out"
+						},
+						"walk_controller"
+					]
+				}
+			}
+		},
+		"controller.animation.common_enemy.attack": {
+			"states": {
+				"default": {
+					"blend_transition": 0.1,
+					"transitions": [
+						{
+							"attack": "v.attack_time"
+						}
+					]
+				},
+				"attack": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"default": "q.any_animation_finished"
+						}
+					],
+					"animations": [
+						{ "melee_attack_1": "v.random_attack == 0" },
+						{ "melee_attack_2": "v.random_attack == 1" },
+						{ "melee_attack_4": "v.random_attack == 2" },
+						{ "melee_attack_3": "v.random_attack == 3" },
+						{ "melee_attack_5": "v.random_attack == 4" },
+						{ "melee_attack_6": "v.random_attack == 5" }
+					],
+					"on_entry": [
+						"v.random_attack = math.random_integer(0, 5);"
+					]
+				}
+			}
+		},
+		"controller.animation.common_enemy.fly": {
+			"states": {
+				"default": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"fly_walking": "v.is_flying && !v.is_sprinting"
+						},
+						{
+							"fly_sprinting": "v.is_flying && v.is_sprinting"
+						}
+					]
+				},
+				"fly_walking": {
+					"blend_transition": 0.2,
+					"animations": [ "fly_walking" ],
+					"transitions": [
+						{
+							"fly_sprinting": "v.is_flying && v.is_sprinting"
+						},
+						{
+							"default": "!v.is_flying"
+						}
+					]
+				},
+				"fly_sprinting": {
+					"blend_transition": 0.2,
+					"animations": [ "fly_sprinting" ],
+					"transitions": [
+						{
+							"fly_walking": "v.is_flying && !v.is_sprinting"
+						},
+						{
+							"default": "!v.is_flying"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.common_enemy.idle": {
+			"states": {
+				"default": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"idle": "v.is_idle && !v.is_flying"
+						},
+						{
+							"fly_idle": "v.is_idle && v.is_flying"
+						}
+					]
+				},
+				"idle": {
+					"blend_transition": 0.2,
+					"animations": [ "idle" ],
+					"transitions": [
+						{
+							"fly_idle": "v.is_idle && v.is_flying"
+						},
+						{
+							"default": "!v.is_idle"
+						}
+					]
+				},
+				"fly_idle": {
+					"blend_transition": 0.2,
+					"animations": [ "fly_idle" ],
+					"transitions": [
+						{
+							"idle": "v.is_idle && !v.is_flying"
+						},
+						{
+							"default": "!v.is_idle"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.common_enemy.jump": {
+			"states": {
+				"default": {
+					"blend_transition": 0.1,
+					"transitions": [
+						{
+							"jump": "!q.is_on_ground && !v.is_flying"
+						}
+					]
+				},
+				"jump": {
+					"blend_transition": 0.1,
+					"animations": [ "jump" ],
+					"transitions": [
+						{
+							"fall": "q.any_animation_finished"
+						},
+						{
+							"default": "q.is_on_ground"
+						}
+					]
+				},
+				"fall": {
+					"blend_transition": 0.1,
+					"animations": [ "fall" ],
+					"transitions": [
+						{
+							"air": "!q.is_on_ground && !v.is_falling"
+						},
+						{
+							"land": "q.is_on_ground"
+						}
+					]
+				},
+				"air": {
+					"blend_transition": 0.1,
+					"transitions": [
+						{
+							"fall": "v.is_falling"
+						},
+						{
+							"land": "q.is_on_ground"
+						}
+					]
+				},
+				"land": {
+					"blend_transition": 0.1,
+					"animations": [ "land" ],
+					"transitions": [
+						{
+							"jump": "!q.is_on_ground"
+						},
+						{
+							"default": "q.any_animation_finished"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.common_enemy.ki_attack": {
+			"states": {
+				"default": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"genki_dama": "v.is_loading_attack && v.selected_ki_attack == 'genki_dama'"
+						},
+						{
+							"kamehameha": "v.is_loading_attack && v.selected_ki_attack == 'kamehameha'"
+						},
+						{
+							"kienzan": "v.is_loading_attack && v.selected_ki_attack == 'kienzan'"
+						},
+						{
+							"ki_blast": "v.is_loading_attack && v.selected_ki_attack == 'ki_blast'"
+						}
+					]
+				},
+				"genki_dama": {
+					"blend_transition": 0.2,
+					"animations": [ "genki_dama" ],
+					"transitions": [
+						{
+							"default": "!v.is_loading_attack || v.selected_ki_attack != 'genki_dama'"
+						}
+					]
+				},
+				"kamehameha": {
+					"blend_transition": 0.2,
+					"animations": [ "kamehameha_beam" ],
+					"particle_effects": [
+						{
+							"effect": "beam",
+							"locator": "rightkiball",
+							"pre_effect_script": "v.r = q.property('dbe:aura_color_r'); v.g = q.property('dbe:aura_color_g'); v.b = q.property('dbe:aura_color_b');"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!v.is_loading_attack || v.selected_ki_attack != 'kamehameha'"
+						}
+					]
+				},
+				"kienzan": {
+					"blend_transition": 0.2,
+					"animations": [ "kienzan" ],
+					"transitions": [
+						{
+							"default": "!v.is_loading_attack || v.selected_ki_attack != 'kienzan'"
+						}
+					]
+				},
+				"ki_blast": {
+					"blend_transition": 0.2,
+					"animations": [ "ki_blast" ],
+					"particle_effects": [
+						{
+							"effect": "beam",
+							"locator": "rightkiball",
+							"pre_effect_script": "v.r = q.property('dbe:aura_color_r'); v.g = q.property('dbe:aura_color_g'); v.b = q.property('dbe:aura_color_b');"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!v.is_loading_attack || v.selected_ki_attack != 'ki_blast'"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.common_enemy.walk": {
+			"states": {
+				"default": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"walk": "v.is_walking && !v.is_flying"
+						}
+					]
+				},
+				"walk": {
+					"blend_transition": 0.2,
+					"animations": [ "walk" ],
+					"transitions": [
+						{
+							"sprint": "v.is_sprinting"
+						},
+						{
+							"default": "!v.is_walking || v.is_flying"
+						}
+					]
+				},
+				"sprint": {
+					"blend_transition": 0.2,
+					"animations": [ "sprint" ],
+					"transitions": [
+						{
+							"walk": "v.is_walking && !v.is_sprinting"
+						},
+						{
+							"default": "!v.is_walking || v.is_flying"
+						}
+					]
+				}
+			}
+		}
+	}
+}

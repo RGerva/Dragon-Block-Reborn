@@ -1,0 +1,143 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "dbe:ki_attack",
+            "runtime_identifier": "minecraft:snowball",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "properties": {
+                "dbe:attack_type": {
+                    "type": "enum",
+                    "values": [
+                        "beam",
+                        "blast",
+                        "disc"
+                    ],
+                    "default": "blast",
+                    "client_sync": true
+                },
+                "dbe:color_r": {
+                    "type": "int",
+                    "range": [ 0, 255 ],
+                    "default": 0,
+                    "client_sync": true
+                },
+                "dbe:color_g": {
+                    "type": "int",
+                    "range": [ 0, 255 ],
+                    "default": 0,
+                    "client_sync": true
+                },
+                "dbe:color_b": {
+                    "type": "int",
+                    "range": [ 0, 255 ],
+                    "default": 0,
+                    "client_sync": true
+                }
+            }
+        },
+
+        "component_groups": {
+            "dbe:scale_1": { "minecraft:scale": { "value": 1 } },
+            "dbe:scale_2": { "minecraft:scale": { "value": 2 } },
+            "dbe:scale_3": { "minecraft:scale": { "value": 3 } },
+            "dbe:scale_4": { "minecraft:scale": { "value": 4 } },
+            "dbe:scale_5": { "minecraft:scale": { "value": 5 } },
+            "dbe:scale_6": { "minecraft:scale": { "value": 6 } },
+            "dbe:scale_7": { "minecraft:scale": { "value": 7 } },
+            "dbe:scale_8": { "minecraft:scale": { "value": 8 } },
+            "dbe:scale_9": { "minecraft:scale": { "value": 9 } },
+            "dbe:scale_10": { "minecraft:scale": { "value": 10 } },
+            "dbe:beam": {
+                "minecraft:collision_box": {
+                    "width": 0.64,
+                    "height": 0.64
+                }
+            },
+            "dbe:blast": {
+                "minecraft:collision_box": {
+                    "width": 0.64,
+                    "height": 0.64
+                }
+            },
+            "dbe:disc": {
+                "minecraft:collision_box": {
+                    "height": 0.1,
+                    "width": 1.1
+                }
+            },
+            "dbe:despawn": {
+                "minecraft:instant_despawn": { }
+            }
+        },
+
+        "components": {
+            "minecraft:type_family": {
+                "family": [ "ki_attack" ]
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:timer": {
+                "time": 5,
+                "time_down_event": {
+                    "event": "dbe:despawn"
+                }
+            },
+            "minecraft:spawn_entity": {
+                "entities": [
+                    {
+                        "min_wait_time": 5,
+                        "max_wait_time": 5,
+                        "spawn_entity": "dbe:force_explosion"
+                    }
+                ]
+            },
+            "minecraft:projectile": {
+                "gravity": 0,
+                "liquid_inertia": 1
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 0
+                }
+            },
+            "minecraft:tick_world": { },
+            "minecraft:physics": { }
+        },
+
+        "events": {
+            "dbe:scale_1": { "add": { "component_groups": [ "dbe:scale_1" ] } },
+            "dbe:scale_2": { "add": { "component_groups": [ "dbe:scale_2" ] } },
+            "dbe:scale_3": { "add": { "component_groups": [ "dbe:scale_3" ] } },
+            "dbe:scale_4": { "add": { "component_groups": [ "dbe:scale_4" ] } },
+            "dbe:scale_5": { "add": { "component_groups": [ "dbe:scale_5" ] } },
+            "dbe:scale_6": { "add": { "component_groups": [ "dbe:scale_6" ] } },
+            "dbe:scale_7": { "add": { "component_groups": [ "dbe:scale_7" ] } },
+            "dbe:scale_8": { "add": { "component_groups": [ "dbe:scale_8" ] } },
+            "dbe:scale_9": { "add": { "component_groups": [ "dbe:scale_9" ] } },
+            "dbe:scale_10": { "add": { "component_groups": [ "dbe:scale_10" ] } },
+            "dbe:become_beam": {
+                "add": {
+                    "component_groups": [ "dbe:beam" ]
+                }
+            },
+            "dbe:become_blast": {
+                "add": {
+                    "component_groups": [ "dbe:blast" ]
+                }
+            },
+            "dbe:become_disc": {
+                "add": {
+                    "component_groups": [ "dbe:disc" ]
+                }
+            },
+            "dbe:despawn": {
+                "add": {
+                    "component_groups": [ "dbe:despawn" ]
+                }
+            }
+        }
+    }
+}

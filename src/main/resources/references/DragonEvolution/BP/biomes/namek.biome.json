@@ -1,0 +1,43 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:biome": {
+        "description": {
+            "identifier": "dbe:namek"
+        },
+
+        "components": {
+            "minecraft:climate": {
+                "downfall": 0,
+                "snow_accumulation": [ 0, 0.125 ],
+                "temperature": 1
+            },
+            "minecraft:overworld_height": {
+                "noise_type": "highlands"
+            },
+            "minecraft:surface_parameters": {
+                "sea_floor_depth": 7,
+                "sea_floor_material": "dbe:namek_stone",
+                "foundation_material": "dbe:namek_stone",
+                "mid_material": "dbe:namek_stone",
+                "top_material": "dbe:namek_grass",
+                "sea_material": "minecraft:water"
+            },
+            "minecraft:replace_biomes": {
+                "replacements": [
+                    {
+                        "dimension": "minecraft:overworld",
+                        "noise_frequency_scale": 0.3,
+                        "amount": 0.4,
+                        "targets": [ "forest" ]
+                    }
+                ]
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "animal",
+                    "namek"
+                ]
+            }
+        }
+    }
+}

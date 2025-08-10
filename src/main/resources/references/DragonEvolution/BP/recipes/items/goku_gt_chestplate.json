@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "dbe:goku_gt_chestplate"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "dbe:goku_chestplate"
+      },
+      {
+        "item": "minecraft:light_blue_dye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "dbe:goku_chestplate"
+      }
+    ],
+    "result": {
+      "item": "dbe:goku_gt_chestplate"
+    }
+  }
+}

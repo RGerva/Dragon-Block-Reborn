@@ -1,0 +1,53 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.ki_attack": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [
+                { "*": true },
+                { "ballShape": "v.attack_type == 'beam' || v.attack_type == 'blast'" },
+                { "discShape": "v.attack_type == 'disc'" }
+            ],
+            "light_color_multiplier": 10,
+            "ignore_lighting": true
+        },
+        "controller.render.ki_attack.armor": {
+            "geometry": "Geometry.outline",
+            "materials": [ { "*": "Material.outline" } ],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [
+                { "*": true },
+                { "ballShape": "v.attack_type == 'beam' || v.attack_type == 'blast'" },
+                { "discShape": "v.attack_type == 'disc'" }
+            ],
+            "overlay_color": {
+                "r": "q.property('dbe:color_r') / 255",
+                "g": "q.property('dbe:color_g') / 255",
+                "b": "q.property('dbe:color_b') / 255",
+                "a": 1
+            },
+            "ignore_lighting": true
+        },
+        "controller.render.ki_beam": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.default" ],
+            "light_color_multiplier": 10,
+            "ignore_lighting": true
+        },
+        "controller.render.ki_beam.armor": {
+            "geometry": "Geometry.outline",
+            "materials": [ { "*": "Material.outline" } ],
+            "textures": [ "Texture.default" ],
+            "overlay_color": {
+                "r": "q.property('dbe:color_r') / 255",
+                "g": "q.property('dbe:color_g') / 255",
+                "b": "q.property('dbe:color_b') / 255",
+                "a": 1
+            },
+            "ignore_lighting": true
+        }
+    }
+}

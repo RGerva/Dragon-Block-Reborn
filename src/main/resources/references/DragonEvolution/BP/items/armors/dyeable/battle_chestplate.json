@@ -1,0 +1,37 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbe:battle_chestplate"
+    },
+
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "battle_chestplate",
+          "dyed": "battle_chestplate_gray"
+        }
+      },
+      "minecraft:durability": {
+        "max_durability": 1200,
+        "damage_chance": {
+          "min": 0,
+          "max": 5
+        }
+      },
+      "minecraft:wearable": {
+        "protection": 6,
+        "slot": "slot.armor.chest"
+      },
+      "minecraft:dyeable": {
+        "default_color": "#FFFFFF"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:tags": {
+        "tags": [
+          "keep_on_death"
+        ]
+      }
+    }
+  }
+}

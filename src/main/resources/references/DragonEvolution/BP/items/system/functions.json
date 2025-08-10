@@ -1,0 +1,17 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbe:functions"
+    },
+
+    "components": {
+      "minecraft:icon": "functions",
+      "minecraft:max_stack_size": 1,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:tags": {
+        "tags": [ "invisible_item" ]
+      }
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+    "resource_pack_name": "dbe",
+    "texture_name": "atlas.terrain",
+    "padding": 8,
+    "num_mip_levels": 4,
+    "texture_data": {
+        "ajisa_door_lower": {
+            "textures": "textures/blocks/ajisa_door_lower"
+        },
+        "ajisa_door_upper": {
+            "textures": "textures/blocks/ajisa_door_upper"
+        },
+        "ajisa_leaves": {
+            "textures": [
+                "textures/blocks/ajisa_leaves",
+                "textures/blocks/ajisa_leaves_opaque"
+            ]
+        },
+        "ajisa_log_side": {
+            "textures": "textures/blocks/ajisa_log_side"
+        },
+        "ajisa_log_top": {
+            "textures": "textures/blocks/ajisa_log_top"
+        },
+        "ajisa_planks": {
+            "textures": "textures/blocks/ajisa_planks"
+        },
+        "ajisa_sapling": {
+            "textures": "textures/blocks/ajisa_sapling"
+        },
+        "deepslate_evolitium_ore": {
+            "textures": "textures/blocks/deepslate_evolitium_ore"
+        },
+        "dirtstone": {
+            "textures": [
+                {
+                    "variations": [
+                        {
+                            "path": "textures/blocks/dirtstone",
+                            "weight": 20
+                        },
+                        {
+                            "path": "textures/blocks/dirtstone_2",
+                            "weight": 5
+                        },
+                        {
+                            "path": "textures/blocks/dirtstone_3",
+                            "weight": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        "dirtstone_tall_grass": {
+            "textures": "textures/blocks/dirtstone_tall_grass"
+        },
+        "dirtstone_grass_side": {
+            "textures": "textures/blocks/dirtstone_grass_side"
+        },
+        "dirtstone_grass_top": {
+            "textures": "textures/blocks/dirtstone_grass_top"
+        },
+        "dragon_ball": {
+            "textures": "textures/blocks/dragon_ball"
+        },
+        "dragon_ball_activated": {
+            "textures": "textures/blocks/dragon_ball_activated"
+        },
+        "empty": {
+            "textures": "textures/empty"
+        },
+        "evolitium_ore": {
+            "textures": "textures/blocks/evolitium_ore"
+        },
+        "gravity_machine_activated_top": {
+            "textures": "textures/blocks/gravity_machine_activated_top"
+        },
+        "gravity_machine_bottom": {
+            "textures": "textures/blocks/gravity_machine_bottom"
+        },
+        "gravity_machine_side": {
+            "textures": "textures/blocks/gravity_machine_side"
+        },
+        "gravity_machine_top": {
+            "textures": "textures/blocks/gravity_machine_top"
+        },
+        "hyperbolic_time_chamber_door": {
+            "textures": "textures/blocks/hyperbolic_time_chamber_door"
+        },
+        "hyperbolic_time_chamber_door_lock_block": {
+            "textures": "textures/blocks/hyperbolic_time_chamber_door_lock_block"
+        },
+        "kame_house_sign": {
+            "textures": "textures/blocks/decor/kame_house_sign"
+        },
+        "katchin_block": {
+            "textures": "textures/blocks/katchin_block"
+        },
+        "medical_moss_stage_0": {
+            "textures": "textures/blocks/medical_moss_stage_0"
+        },
+        "medical_moss_stage_1": {
+            "textures": "textures/blocks/medical_moss_stage_1"
+        },
+        "medical_moss_stage_2": {
+            "textures": "textures/blocks/medical_moss_stage_2"
+        },
+        "medical_moss_stage_3": {
+            "textures": "textures/blocks/medical_moss_stage_3"
+        },
+        "namek_dragon_ball": {
+            "textures": "textures/blocks/namek_dragon_ball"
+        },
+        "namek_dragon_ball_activated": {
+            "textures": "textures/blocks/namek_dragon_ball_activated"
+        },
+        "namek_grass_side": {
+            "textures": "textures/blocks/namek_grass_side"
+        },
+        "namek_grass_top": {
+            "textures": "textures/blocks/namek_grass_top"
+        },
+        "namek_stone": {
+            "textures": "textures/blocks/namek_stone"
+        },
+        "namek_stone_evolitium_ore": {
+            "textures": "textures/blocks/namek_stone_evolitium_ore"
+        },
+        "namek_tall_grass": {
+            "textures": "textures/blocks/namek_tall_grass"
+        },
+        "petrified_dragon_ball": {
+            "textures": "textures/blocks/petrified_dragon_ball"
+        },
+        "petrified_namek_dragon_ball": {
+            "textures": "textures/blocks/petrified_namek_dragon_ball"
+        },
+        "purple_tile": {
+            "textures": "textures/blocks/decor/purple_tile"
+        },
+        "senzu_beans_stage_0": {
+            "textures": "textures/blocks/senzu_beans_stage_0"
+        },
+        "senzu_beans_stage_1": {
+            "textures": "textures/blocks/senzu_beans_stage_1"
+        },
+        "senzu_beans_stage_2": {
+            "textures": "textures/blocks/senzu_beans_stage_2"
+        },
+        "senzu_beans_stage_3": {
+            "textures": "textures/blocks/senzu_beans_stage_3"
+        },
+        "white_tile": {
+            "textures": "textures/blocks/decor/white_tile"
+        },
+        "red_tile": {
+            "textures": "textures/blocks/decor/red_tile"
+        },
+        "yellow_cloud_block": {
+            "textures": "textures/blocks/decor/yellow_cloud_block"
+        },
+        "yellow_tile": {
+            "textures": "textures/blocks/decor/yellow_tile"
+        },
+        "blue_tile": {
+            "textures": "textures/blocks/decor/blue_tile"
+        }
+    }
+}

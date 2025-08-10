@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbe:xeno_goku_black_mask"
+    },
+
+    "components": {
+      "minecraft:icon": "xeno_goku_black_mask",
+      "minecraft:rarity": "epic",
+      "minecraft:wearable": {
+        "protection": 0,
+        "slot": "slot.armor.head"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:tags": {
+        "tags": [
+          "keep_on_death"
+        ]
+      }
+    }
+  }
+}

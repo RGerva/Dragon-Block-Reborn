@@ -1,0 +1,39 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.kid_buu": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [
+                { "*": true },
+                { "*antenna*": true },
+                { "*bigAntenna*": false }
+            ]
+        },
+        "controller.render.super_buu": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [
+                { "*": true },
+                { "*antenna*": false },
+                { "*bigAntenna*": true }
+            ]
+        },
+        "controller.render.super_buu_clothes": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.clothes",
+                        "Texture.gohan_clothes",
+                        "Texture.gotenks_clothes"
+                    ]
+                }
+            },
+            "geometry": "Geometry.clothes",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.textures[v.transformation]" ]
+        }
+    }
+}

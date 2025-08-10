@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dbe:flying_nimbus",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/empty"
+      },
+      "geometry": {
+        "default": "geometry.none"
+      },
+      "particle_effects": {
+        "flying_nimbus": "dbe:flying_nimbus",
+        "flying_nimbus_trail": "dbe:flying_nimbus_trail"
+      },
+      "scripts": {
+        "animate": [
+          "flying_nimbus"
+        ]
+      },
+      "animations": {
+        "flying_nimbus": "controller.animation.flying_nimbus"
+      },
+      "render_controllers": [ "controller.render.default" ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbe:android_13_hat"
+    },
+
+    "components": {
+      "minecraft:icon": "android_13_hat",
+      "minecraft:wearable": {
+        "protection": 1,
+        "slot": "slot.armor.head"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_armor",
+          "keep_on_death"
+        ]
+      }
+    }
+  }
+}

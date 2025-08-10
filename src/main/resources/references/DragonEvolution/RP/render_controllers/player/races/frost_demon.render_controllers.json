@@ -1,0 +1,156 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.player.frost_demon.eyes": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.frost_demon_eyes",
+                        "Texture.frost_demon_eyes",
+                        "Texture.frost_demon_eyes",
+                        "Texture.frost_demon_eyes_fourth_form",
+                        "Texture.frost_demon_eyes_fourth_form",
+                        "Texture.frost_demon_eyes_frost_demon_golden_form",
+                        "Texture.frost_demon_eyes_frost_demon_black_form"
+                    ]
+                }
+            },
+            "geometry": "Geometry.eyes",
+            "materials": [
+                { "*": "Material.default" },
+                { "leftEye": "Material.entity_emissive" },
+                { "rightEye": "Material.entity_emissive" }
+            ],
+            "textures": [ "Array.textures[v.transformation]" ],
+            "overlay_color": {
+                "r": "v.kaioken_enabled ? 1 : 0",
+                "g": 0,
+                "b": 0,
+                "a": "v.kaioken_enabled ? 0.2 : 0"
+            }
+        },
+        "controller.render.player.frost_demon.first_person": {
+            "arrays": {
+                "textures": {
+                    "Array.skin_1": [
+                        "Texture.frost_demon_skin_1",
+                        "Texture.frost_demon_skin_1",
+                        "Texture.frost_demon_skin_third_form_1",
+                        "Texture.frost_demon_skin_fourth_form_1",
+                        "Texture.frost_demon_skin_fourth_form_1",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_1",
+                        "Texture.frost_demon_skin_frost_demon_black_form_1"
+                    ],
+                    "Array.skin_2": [
+                        "Texture.frost_demon_skin_2",
+                        "Texture.frost_demon_skin_2",
+                        "Texture.frost_demon_skin_third_form_2",
+                        "Texture.frost_demon_skin_fourth_form_2",
+                        "Texture.frost_demon_skin_fourth_form_2",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_2",
+                        "Texture.frost_demon_skin_frost_demon_black_form_2"
+                    ],
+                    "Array.skin_3": [
+                        "Texture.frost_demon_skin_3",
+                        "Texture.frost_demon_skin_3",
+                        "Texture.frost_demon_skin_third_form_3",
+                        "Texture.frost_demon_skin_fourth_form_3",
+                        "Texture.frost_demon_skin_fourth_form_3",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_3",
+                        "Texture.frost_demon_skin_frost_demon_black_form_3"
+                    ],
+                    "Array.skin_4": [
+                        "Texture.frost_demon_skin_4",
+                        "Texture.frost_demon_skin_4",
+                        "Texture.frost_demon_skin_third_form_4",
+                        "Texture.frost_demon_skin_fourth_form_4",
+                        "Texture.frost_demon_skin_fourth_form_4",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_4",
+                        "Texture.frost_demon_skin_frost_demon_black_form_4"
+                    ]
+                }
+            },
+            "geometry": "Geometry.frost_demon",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "v.skin == 0 ? Array.skin_1[v.transformation] : v.skin == 1 ? Array.skin_2[v.transformation] : v.skin == 2 ? Array.skin_3[v.transformation] : Array.skin_4[v.transformation]" ],
+            "part_visibility": [
+                { "*": false },
+                { "rightArm": "v.rightarm_visible || q.get_equipped_item_name(0, 1) == '' || q.get_equipped_item_name(0, 1) == 'filled_map'" },
+                { "rightSleeve": "v.rightarm_visible || q.get_equipped_item_name(0, 1) == '' || q.get_equipped_item_name(0, 1) == 'filled_map'" },
+                { "leftArm": "v.leftarm_visible || (q.get_equipped_item_name(0, 1) == 'filled_map' && q.get_equipped_item_name('off_hand') != 'shield') || (q.get_equipped_item_name('off_hand') == 'filled_map' && !q.item_is_charged) || (!q.item_is_charged && (v.item_use_normalized > 0 && v.item_use_normalized < 1.0))" },
+                { "leftSleeve": "v.leftarm_visible || (q.get_equipped_item_name(0, 1) == 'filled_map' && q.get_equipped_item_name('off_hand') != 'shield') || (q.get_equipped_item_name('off_hand') == 'filled_map' && !q.item_is_charged) || (!q.item_is_charged && (v.item_use_normalized > 0 && v.item_use_normalized < 1.0))" }
+            ],
+            "overlay_color": {
+                "r": "v.kaioken_enabled ? 1 : 0",
+                "g": 0,
+                "b": 0,
+                "a": "v.kaioken_enabled ? 0.2 : 0"
+            }
+        },
+        "controller.render.player.frost_demon.third_person": {
+            "arrays": {
+                "textures": {
+                    "Array.skin_1": [
+                        "Texture.frost_demon_skin_1",
+                        "Texture.frost_demon_skin_1",
+                        "Texture.frost_demon_skin_third_form_1",
+                        "Texture.frost_demon_skin_fourth_form_1",
+                        "Texture.frost_demon_skin_fourth_form_1",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_1",
+                        "Texture.frost_demon_skin_frost_demon_black_form_1"
+                    ],
+                    "Array.skin_2": [
+                        "Texture.frost_demon_skin_2",
+                        "Texture.frost_demon_skin_2",
+                        "Texture.frost_demon_skin_third_form_2",
+                        "Texture.frost_demon_skin_fourth_form_2",
+                        "Texture.frost_demon_skin_fourth_form_2",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_2",
+                        "Texture.frost_demon_skin_frost_demon_black_form_2"
+                    ],
+                    "Array.skin_3": [
+                        "Texture.frost_demon_skin_3",
+                        "Texture.frost_demon_skin_3",
+                        "Texture.frost_demon_skin_third_form_3",
+                        "Texture.frost_demon_skin_fourth_form_3",
+                        "Texture.frost_demon_skin_fourth_form_3",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_3",
+                        "Texture.frost_demon_skin_frost_demon_black_form_3"
+                    ],
+                    "Array.skin_4": [
+                        "Texture.frost_demon_skin_4",
+                        "Texture.frost_demon_skin_4",
+                        "Texture.frost_demon_skin_third_form_4",
+                        "Texture.frost_demon_skin_fourth_form_4",
+                        "Texture.frost_demon_skin_fourth_form_4",
+                        "Texture.frost_demon_skin_frost_demon_golden_form_4",
+                        "Texture.frost_demon_skin_frost_demon_black_form_4"
+                    ]
+                }
+            },
+            "geometry": "Geometry.frost_demon",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "v.skin == 0 ? Array.skin_1[v.transformation] : v.skin == 1 ? Array.skin_2[v.transformation] : v.skin == 2 ? Array.skin_3[v.transformation] : Array.skin_4[v.transformation]" ],
+            "part_visibility": [
+                { "*": true },
+                { "headExtension": "v.transformation == 2" },
+                { "leftEar": "!q.is_item_name_any('slot.armor.head', 'dbe:scouter')" },
+                { "leftFrontHorn": "v.transformation < 3" },
+                { "rightFrontHorn": "v.transformation < 3" },
+                { "leftFrontHorn2": "v.transformation == 1 || v.transformation == 2" },
+                { "rightFrontHorn2": "v.transformation == 1 || v.transformation == 2" },
+                { "*leftBackHorn*": "v.transformation == 2" },
+                { "*rightBackHorn*": "v.transformation == 2" },
+                { "leftShoulderPad": "v.transformation == 2" },
+                { "rightShoulderPad": "v.transformation == 2" },
+                { "*tail*": "!v.tail_curled" }
+            ],
+            "overlay_color": {
+                "r": "v.kaioken_enabled ? 1 : 0",
+                "g": 0,
+                "b": 0,
+                "a": "v.kaioken_enabled ? 0.2 : 0"
+            }
+        }
+    }
+}

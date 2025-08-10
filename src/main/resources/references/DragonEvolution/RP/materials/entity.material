@@ -1,0 +1,25 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    "aura:entity_alphablend": {
+    "+states": [
+        "EnableAlphaToCoverage",
+        "DisableDepthWrite",
+        "DisableCulling"
+      ],
+      "+defines": [
+        "USE_UV_ANIM",
+        "USE_COLOR_MULTIPLY"
+      ],
+      "blend": "add",
+      "renderQueue": 1
+    },
+    "dragon_radar:entity_alphatest": {
+      "+defines": [ "USE_UV_ANIM" ]
+    },
+    "outline:entity_static": {
+      "+states": [ "InvertCulling" ],
+      "+defines": [ "ALPHA_TEST", "USE_OVERLAY" ]
+    }
+  }
+}

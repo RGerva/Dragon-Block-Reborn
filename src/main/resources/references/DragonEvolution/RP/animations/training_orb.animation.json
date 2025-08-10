@@ -1,0 +1,14 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.training_orb.levitate": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": ["math.cos(q.anim_time * 250) * 5", 0, 0],
+					"scale": "math.sin(q.anim_time * 250) * 0.1 + 1"
+				}
+			}
+		}
+	}
+}

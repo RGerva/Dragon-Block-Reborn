@@ -1,0 +1,95 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:cell",
+            "materials": {
+                "default": "entity_alphatest",
+                "outline": "outline"
+            },
+            "textures": {
+                "eyes_imperfect_cell": "textures/entity/bio_android/eyes/imperfect_form",
+                "eyes_semi_perfect_cell": "textures/entity/bio_android/eyes/semi_perfect_form",
+                "eyes_perfect_cell": "textures/entity/bio_android/eyes/perfect_form",
+                "skin_imperfect_cell": "textures/entity/bio_android/bio_android_imperfect_form_1",
+                "skin_semi_perfect_cell": "textures/entity/bio_android/bio_android_semi_perfect_form_1",
+                "skin_perfect_cell": "textures/entity/bio_android/bio_android_perfect_form_1",
+                "ki_attack": "textures/entity/ki_attack"
+            },
+            "geometry": {
+                "default": "geometry.bio_android",
+                "eyes": "geometry.eyes",
+                "ki_manipulation": "geometry.ki_manipulation",
+                "ki_manipulation_outline": "geometry.ki_manipulation_outline"
+            },
+            "particle_effects": {
+                "beam": "dbe:beam"
+            },
+            "sound_effects": {
+                "kamehameha_attack": "common.kamehameha_attack",
+                "kamehameha_beam": "common.kamehameha_beam",
+				"kienzan_loop": "skill.kienzan_loop"
+            },
+            "scripts": {
+                "scale": "0.9375",
+                "pre_animation": [
+                    "v.is_falling = q.vertical_speed < -0.2;",
+                    "v.is_loading_attack = q.property('dbe:is_loading_attack');",
+                    "v.is_flying = q.property('dbe:is_flying') && !v.is_loading_attack;",
+                    "v.is_idle = !q.ground_speed && !v.is_loading_attack;",
+                    "v.selected_ki_attack = q.property('dbe:selected_ki_attack');",
+                    "v.is_knocked_out = q.property('dbe:is_knocked_out');",
+                    "v.is_sprinting = q.property('dbe:aura_boost') && !v.is_loading_attack;",
+                    "v.is_walking = q.ground_speed && !v.is_loading_attack;",
+                    "v.transformation = q.property('dbe:transformation');"
+                ],
+                "animate": [
+                    "root",
+                    "tail_move"
+                ]
+            },
+            "animations": {
+                "root": "controller.animation.common_enemy.root",
+                "attack_controller": "controller.animation.common_enemy.attack",
+                "blink": "animation.humanoid.blink",
+                "fall": "animation.player.fall",
+                "fly_controller": "controller.animation.common_enemy.fly",
+                "fly_idle": "animation.player.fly.idle",
+                "fly_sprinting": "animation.player.fly.sprinting",
+                "fly_walking": "animation.player.fly.walking",
+				"genki_dama": "animation.player.genki_dama",
+                "idle": "animation.player.idle",
+                "idle_controller": "controller.animation.common_enemy.idle",
+                "jump": "animation.player.jump",
+                "jump_controller": "controller.animation.common_enemy.jump",
+				"kienzan": "animation.player.kienzan",
+				"kamehameha_attack": "animation.player.kamehameha_attack",
+				"kamehameha_beam": "animation.player.kamehameha_beam",
+                "ki_attack_controller": "controller.animation.common_enemy.ki_attack",
+                "ki_blast": "animation.player.third_person.ki_blast",
+				"knocked_out": "animation.humanoid.knocked_out",
+                "land": "animation.player.land",
+                "melee_attack_1": "animation.player.melee.attack_1",
+                "melee_attack_2": "animation.player.melee.attack_2",
+                "melee_attack_3": "animation.player.melee.attack_3",
+                "melee_attack_4": "animation.player.melee.attack_4",
+                "melee_attack_5": "animation.player.melee.attack_5",
+                "melee_attack_6": "animation.player.melee.attack_6",
+                "sprint": "animation.player.sprint",
+                "walk": "animation.player.walk",
+                "walk_controller": "controller.animation.common_enemy.walk",
+                "tail_move": "animation.player.tail.move"
+            },
+            "render_controllers": [
+                "controller.render.cell",
+                "controller.render.cell.eyes",
+                {
+                    "controller.render.player.ki_manipulation": "v.is_loading_attack"
+                },
+                {
+                    "controller.render.player.ki_manipulation.outline": "v.is_loading_attack"
+                }
+            ]
+        }
+    }
+}

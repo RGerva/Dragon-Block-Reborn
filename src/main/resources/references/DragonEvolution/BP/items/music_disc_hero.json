@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbe:music_disc_hero"
+    },
+
+    "components": {
+      "minecraft:icon": "music_disc_hero",
+      "minecraft:rarity": "rare",
+      "minecraft:display_name": {
+        "value": "item.record.name"
+      },
+      "minecraft:record": {
+        "sound_event": "record.cat",
+        "comparator_signal": 13,
+        "duration": 216
+      },
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "dbe:giant_fish",
+            "runtime_identifier": "minecraft:cod",
+            "is_spawnable": true,
+            "is_summonable": true
+        },
+
+        "component_groups": {
+            "dbe:scale_small": {
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "dbe:scale_normal": {
+                "minecraft:scale": {
+                    "value": 1.25
+                }
+            },
+            "dbe:scale_large": {
+                "minecraft:scale": {
+                    "value": 1.5
+                }
+            }
+        },
+
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "fish",
+                    "giant_fish"
+                ]
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/giant_fish.json"
+            },
+            "minecraft:health": {
+                "value": 9999999,
+                "max": 9999999
+            },
+            "minecraft:attack": {
+                "damage": 1
+            },
+            "minecraft:collision_box": {
+                "width": 0.9,
+                "height": 0.9
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": 0,
+                "breathes_air": false,
+                "breathes_water": true
+            },
+            "minecraft:navigation.generic": {
+                "is_amphibious": false,
+                "can_path_over_water": false,
+                "can_swim": true,
+                "can_walk": false,
+                "can_breach": false,
+                "can_sink": false
+            },
+            "minecraft:movement": {
+                "value": 0.2
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.2
+            },
+            "minecraft:movement.sway": {
+                "sway_amplitude": 0
+            },
+            // behaviors---------------------------------------------------------------
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 1,
+                "within_radius": 16,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "value": "player"
+                        },
+                        "max_dist": 8
+                    }
+                ]
+            },
+            "minecraft:behavior.melee_box_attack": {
+                "priority": 2
+            },
+            "minecraft:behavior.random_swim": {
+                "priority": 3,
+                "speed_multiplier": 1,
+                "xz_dist": 16,
+                "y_dist": 4,
+                "interval": 0
+            },
+            "minecraft:behavior.swim_wander": {
+                "priority": 4,
+                "interval": 0.166,
+                "look_ahead": 5,
+                "speed_multiplier": 0.1,
+                "wander_time": 5
+            },
+            "minecraft:behavior.swim_idle": {
+                "priority": 5,
+                "idle_time": 5,
+                "success_rate": 0.1
+            },
+            // ------------------------------------------------------------------------
+
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:despawn": {
+                "despawn_from_distance": { }
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 128,
+                    "max_dropped_ticks": 20,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:nameable": { },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:physics": { }
+        },
+
+        "events": {
+            "minecraft:entity_spawned": {
+                "randomize": [
+                    {
+                        "weight": 1,
+                        "add": {
+                            "component_groups": [
+                                "dbe:scale_small"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 8,
+                        "add": {
+                            "component_groups": [
+                                "dbe:scale_normal"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 1,
+                        "add": {
+                            "component_groups": [
+                                "dbe:scale_large"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

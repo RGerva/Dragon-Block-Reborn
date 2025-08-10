@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "dbe:vegeta_battle_boots",
+            "materials": {
+                "default": "armor",
+                "dyed": "entity_alphatest_change_color"
+            },
+            "textures": {
+                "default": "textures/models/armor/vegeta_battle_armor",
+                "dyed": "textures/models/armor/vegeta_battle_armor_grayscale"
+            },
+            "geometry": {
+                "default": "geometry.battle_armor.boots"
+            },
+            "scripts": {
+                "parent_setup": "v.boot_layer_visible = 0;",
+                "pre_animation": [
+                    "v.is_dyed = q.armor_color_slot(3, 0) != 1 || q.armor_color_slot(3, 1) != 1 || q.armor_color_slot(3, 2) != 1 || q.armor_color_slot(3, 3) != 1;"
+                ]
+            },
+            "render_controllers": [ "controller.render.dyed_armor" ]
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:goku_chestplate"
+    },
+
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "A A",
+      "AAB",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:orange_wool"
+      },
+      "B": {
+        "item": "minecraft:white_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:goku_chestplate"
+    }
+  }
+}

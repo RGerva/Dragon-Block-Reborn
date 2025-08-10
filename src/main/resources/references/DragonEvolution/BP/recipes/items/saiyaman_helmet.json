@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:saiyaman_helmet"
+    },
+
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "CBC",
+      "CAC"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:black_stained_glass_pane"
+      },
+      "B": {
+        "item": "minecraft:black_wool"
+      },
+      "C": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:saiyaman_helmet"
+    }
+  }
+}

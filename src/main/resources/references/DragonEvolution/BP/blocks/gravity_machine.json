@@ -1,0 +1,77 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:block": {
+        "description": {
+            "identifier": "dbe:gravity_machine",
+            "states": {
+                "dbe:is_powered": [ false, true ],
+                "dbe:fuel": {
+                    "values": {
+                        "min": 0,
+                        "max": 15
+                    }
+                }
+            }
+        },
+
+        "components": {
+            "minecraft:map_color": "#a6b0c1",
+            "minecraft:loot": "loot_tables/blocks/gravity_machine.json",
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1.5
+            },
+            "minecraft:destruction_particles": {
+                "texture": "gravity_machine_top"
+            },
+            "minecraft:geometry": "minecraft:geometry.full_block",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "gravity_machine_side",
+                    "render_method": "opaque"
+                },
+                "up": {
+                    "texture": "gravity_machine_top",
+                    "render_method": "opaque"
+                },
+                "down": {
+                    "texture": "gravity_machine_bottom",
+                    "render_method": "opaque"
+                }
+            },
+            "minecraft:tick": {
+                "interval_range": [ 1, 1 ]
+            },
+            "minecraft:redstone_conductivity": {
+                "allows_wire_to_step_down": true,
+                "redstone_conductor": true
+            },
+            "dbe:gravity_machine": { },
+            "tag:minecraft:is_pickaxe_item_destructible": { },
+            "tag:dbe:not_destroyed_by_ki_attacks": { }
+        },
+
+        "permutations": [
+            {
+                "condition": "q.block_state('dbe:is_powered')",
+                "components": {
+                    "minecraft:light_emission": 3,
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "gravity_machine_side",
+                            "render_method": "opaque"
+                        },
+                        "up": {
+                            "texture": "gravity_machine_activated_top",
+                            "render_method": "opaque"
+                        },
+                        "down": {
+                            "texture": "gravity_machine_bottom",
+                            "render_method": "opaque"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,70 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:block": {
+        "description": {
+            "identifier": "dbe:ajisa_log",
+            "traits": {
+                "minecraft:placement_position": {
+                    "enabled_states": [ "minecraft:block_face" ]
+                }
+            }
+        },
+
+        "components": {
+            "minecraft:map_color": "#817430",
+            "minecraft:loot": "loot_tables/blocks/ajisa_log.json",
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1.5
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 1.5
+            },
+            "minecraft:destruction_particles": {
+                "texture": "ajisa_log_top"
+            },
+            "minecraft:geometry": "minecraft:geometry.full_block",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "ajisa_log_side",
+                    "render_method": "opaque"
+                },
+                "ends": {
+                    "texture": "ajisa_log_top",
+                    "render_method": "opaque"
+                },
+                "up": "ends",
+                "down": "ends"
+            },
+            "minecraft:redstone_conductivity": {
+                "allows_wire_to_step_down": true,
+                "redstone_conductor": true
+            },
+            "minecraft:flammable": {
+                "catch_chance_modifier": 5,
+                "destroy_chance_modifier": 5
+            },
+            "tag:log": { },
+            "tag:minecraft:is_axe_item_destructible": { },
+            "tag:wood": { }
+        },
+
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'north' || q.block_state('minecraft:block_face') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [ 90, 0, 0 ]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'east' || q.block_state('minecraft:block_face') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [ 0, 0, 90 ]
+                    }
+                }
+            }
+        ]
+    }
+}

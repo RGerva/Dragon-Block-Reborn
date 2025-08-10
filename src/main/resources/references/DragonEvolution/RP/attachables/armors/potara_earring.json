@@ -1,0 +1,29 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "dbe:potara_earring",
+            "materials": {
+                "default": "entity_alphatest",
+                "enchanted": "armor_enchanted"
+            },
+            "textures": {
+                "default": "textures/models/potara_earrings",
+                "enchanted": "textures/misc/enchanted_item_glint"
+            },
+            "geometry": {
+                "default": "geometry.earrings"
+            },
+            "scripts": {
+                "parent_setup": "v.helmet_layer_visible = 0.0;",
+                "animate": [
+                    "offset"
+                ]
+            },
+            "animations": {
+                "offset": "animation.armor.helmet.offset"
+            },
+            "render_controllers": [ "controller.render.potara_earring" ]
+        }
+    }
+}

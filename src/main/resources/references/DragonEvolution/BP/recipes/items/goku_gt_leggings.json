@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "dbe:goku_gt_leggings"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "dbe:goku_leggings"
+      },
+      {
+        "item": "minecraft:yellow_dye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "dbe:goku_leggings"
+      }
+    ],
+    "result": {
+      "item": "dbe:goku_gt_leggings"
+    }
+  }
+}

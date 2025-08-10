@@ -1,0 +1,92 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "dbe:ki_beam",
+            "runtime_identifier": "minecraft:snowball",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "properties": {
+                "dbe:color_r": {
+                    "type": "int",
+                    "range": [ 0, 255 ],
+                    "default": 0,
+                    "client_sync": true
+                },
+                "dbe:color_g": {
+                    "type": "int",
+                    "range": [ 0, 255 ],
+                    "default": 0,
+                    "client_sync": true
+                },
+                "dbe:color_b": {
+                    "type": "int",
+                    "range": [ 0, 255 ],
+                    "default": 0,
+                    "client_sync": true
+                }
+            }
+        },
+
+        "component_groups": {
+            "dbe:scale_1": { "minecraft:scale": { "value": 1 } },
+            "dbe:scale_2": { "minecraft:scale": { "value": 2 } },
+            "dbe:scale_3": { "minecraft:scale": { "value": 3 } },
+            "dbe:scale_4": { "minecraft:scale": { "value": 4 } },
+            "dbe:scale_5": { "minecraft:scale": { "value": 5 } },
+            "dbe:scale_6": { "minecraft:scale": { "value": 6 } },
+            "dbe:scale_7": { "minecraft:scale": { "value": 7 } },
+            "dbe:scale_8": { "minecraft:scale": { "value": 8 } },
+            "dbe:scale_9": { "minecraft:scale": { "value": 9 } },
+            "dbe:scale_10": { "minecraft:scale": { "value": 10 } },
+            "dbe:despawn": {
+                "minecraft:instant_despawn": { }
+            }
+        },
+
+        "components": {
+            "minecraft:type_family": {
+                "family": [ "ki_attack" ]
+            },
+            "minecraft:collision_box": {
+                "width": 0.64,
+                "height": 0.64
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:timer": {
+                "time": 4,
+                "time_down_event": {
+                    "event": "dbe:despawn"
+                }
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 128,
+                    "max_dropped_ticks": 20,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:physics": { }
+        },
+
+        "events": {
+            "dbe:scale_1": { "add": { "component_groups": [ "dbe:scale_1" ] } },
+            "dbe:scale_2": { "add": { "component_groups": [ "dbe:scale_2" ] } },
+            "dbe:scale_3": { "add": { "component_groups": [ "dbe:scale_3" ] } },
+            "dbe:scale_4": { "add": { "component_groups": [ "dbe:scale_4" ] } },
+            "dbe:scale_5": { "add": { "component_groups": [ "dbe:scale_5" ] } },
+            "dbe:scale_6": { "add": { "component_groups": [ "dbe:scale_6" ] } },
+            "dbe:scale_7": { "add": { "component_groups": [ "dbe:scale_7" ] } },
+            "dbe:scale_8": { "add": { "component_groups": [ "dbe:scale_8" ] } },
+            "dbe:scale_9": { "add": { "component_groups": [ "dbe:scale_9" ] } },
+            "dbe:scale_10": { "add": { "component_groups": [ "dbe:scale_10" ] } },
+            "dbe:despawn": {
+                "add": {
+                    "component_groups": [ "dbe:despawn" ]
+                }
+            }
+        }
+    }
+}

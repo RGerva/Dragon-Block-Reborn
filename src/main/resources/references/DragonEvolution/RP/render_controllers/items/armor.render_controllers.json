@@ -1,0 +1,39 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.custom_armor": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "v.is_enchanted ? Material.enchanted : Material.default" } ],
+            "textures": [ "Texture.default", "Texture.enchanted" ],
+            "part_visibility": [
+                { "*": "q.has_property('dbe:is_armor_visible') ? q.property('dbe:is_armor_visible') : true" }
+            ]
+        },
+        "controller.render.dyed_armor": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "v.is_dyed ? Material.dyed : Material.default" } ],
+            "textures": [ "v.is_dyed ? Texture.dyed : Texture.default" ],
+            "part_visibility": [
+                { "*": "q.has_property('dbe:is_armor_visible') ? q.property('dbe:is_armor_visible') : true" }
+            ]
+        },
+        "controller.render.player.brave_sword_sheath": {
+            "geometry": "Geometry.brave_sword_sheath",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.brave_sword_sheath" ],
+            "part_visibility": [
+                { "*": "q.property('dbe:is_armor_visible')" },
+                { "braveSword": "!q.is_item_name_any('slot.weapon.mainhand', 'dbe:brave_sword')" }
+            ]
+        },
+        "controller.render.player.power_pole_sheath": {
+            "geometry": "Geometry.power_pole_sheath",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.power_pole_sheath" ],
+            "part_visibility": [
+                { "*": "q.property('dbe:is_armor_visible')" },
+                { "powerPole": "!q.is_item_name_any('slot.weapon.mainhand', 'dbe:power_pole')" }
+            ]
+        }
+    }
+}

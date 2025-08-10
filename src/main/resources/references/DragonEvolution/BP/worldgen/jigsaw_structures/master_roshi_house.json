@@ -1,0 +1,35 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:jigsaw": {
+        "description": {
+            "identifier": "dbe:master_roshi_house"
+        },
+        "biome_filters": [
+            {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "ocean"
+            },
+            {
+                "test": "has_biome_tag",
+                "operator": "!=",
+                "value": "frozen"
+            },
+            {
+                "test": "has_biome_tag",
+                "operator": "!=",
+                "value": "cold"
+            }
+        ],
+        "step": "surface_structures",
+        "terrain_adaptation": "beard_thin",
+        "start_pool": "dbe:master_roshi_house",
+        "max_depth": 1,
+        "start_height": {
+            "type": "constant",
+            "value": {
+                "absolute": -48
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:trunks_chestplate"
+    },
+
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "A A",
+      "ABA",
+      "BBB"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:blue_wool"
+      },
+      "B": {
+        "item": "minecraft:gray_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:trunks_chestplate"
+    }
+  }
+}

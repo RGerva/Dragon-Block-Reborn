@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:training_orb",
+            "materials": {
+                "default": "player_spectator"
+            },
+            "textures": {
+                "green": "textures/entity/training_orb/green_training_orb",
+                "red": "textures/entity/training_orb/red_training_orb",
+                "black": "textures/entity/training_orb/black_training_orb"
+            },
+            "geometry": {
+                "default": "geometry.training_orb"
+            },
+            "scripts": {
+                "animate": [
+                    "levitate"
+                ]
+            },
+            "animations": {
+                "levitate": "animation.training_orb.levitate"
+            },
+            "render_controllers": [ "controller.render.training_orb" ]
+        }
+    }
+}

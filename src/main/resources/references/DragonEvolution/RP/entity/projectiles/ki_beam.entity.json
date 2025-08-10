@@ -1,0 +1,31 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:ki_beam",
+            "materials": {
+                "default": "entity_alphatest",
+                "outline": "outline"
+            },
+            "textures": {
+                "default": "textures/entity/ki_attack"
+            },
+            "geometry": {
+                "default": "geometry.ki_beam",
+                "outline": "geometry.ki_beam_outline"
+            },
+            "scripts": {
+                "animate": [
+                    "flying"
+                ]
+            },
+            "animations": {
+                "flying": "animation.ki_beam.flying"
+            },
+            "render_controllers": [
+                "controller.render.ki_beam",
+                "controller.render.ki_beam.armor"
+            ]
+        }
+    }
+}

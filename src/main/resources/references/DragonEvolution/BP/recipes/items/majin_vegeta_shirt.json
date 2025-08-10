@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:majin_vegeta_shirt"
+    },
+
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "A A",
+      "AAA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:blue_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:majin_vegeta_shirt"
+    }
+  }
+}

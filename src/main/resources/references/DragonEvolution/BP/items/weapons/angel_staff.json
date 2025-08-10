@@ -1,0 +1,25 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:item": {
+        "description": {
+            "identifier": "dbe:angel_staff"
+        },
+
+        "components": {
+            "minecraft:icon": "angel_staff",
+            "minecraft:rarity": "epic",
+            "minecraft:damage": {
+                "value": 80
+            },
+            "minecraft:max_stack_size": 1,
+            "minecraft:hand_equipped": true,
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:should_despawn": false,
+            "minecraft:tags": {
+                "tags": [
+                    "hold"
+                ]
+            }
+        }
+    }
+}

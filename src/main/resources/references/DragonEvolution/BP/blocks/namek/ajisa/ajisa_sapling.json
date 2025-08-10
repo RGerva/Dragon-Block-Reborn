@@ -1,0 +1,63 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:block": {
+        "description": {
+            "identifier": "dbe:ajisa_sapling",
+            "states": {
+                "dbe:growth": [ 0, 1 ]
+            }
+        },
+
+        "components": {
+            "minecraft:map_color": "#5163bb",
+            "minecraft:loot": "loot_tables/blocks/ajisa_sapling.json",
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0
+            },
+            "minecraft:destruction_particles": {
+                "texture": "ajisa_sapling"
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:collision_box": false,
+            "minecraft:selection_box": {
+                "origin": [ -7, 0, -7 ],
+                "size": [ 14, 14, 14 ]
+            },
+            "minecraft:geometry": "minecraft:geometry.cross",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "ajisa_sapling",
+                    "render_method": "alpha_test_single_sided",
+                    "ambient_occlusion": false,
+                    "face_dimming": false
+                }
+            },
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "block_filter": [
+                            {
+                                "tags": "q.any_tag('grass')"
+                            }
+                        ],
+                        "allowed_faces": [ "up" ]
+                    }
+                ]
+            },
+            "minecraft:flammable": {
+                "catch_chance_modifier": 60,
+                "destroy_chance_modifier": 100
+            },
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "popped"
+                    }
+                ]
+            }
+        }
+    }
+}

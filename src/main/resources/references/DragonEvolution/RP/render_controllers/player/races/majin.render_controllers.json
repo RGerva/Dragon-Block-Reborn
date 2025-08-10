@@ -1,0 +1,72 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.player.majin.eyes": {
+            "geometry": "Geometry.eyes",
+            "materials": [
+                { "*": "Material.default" },
+                { "leftEye": "Material.entity_emissive" },
+                { "rightEye": "Material.entity_emissive" }
+            ],
+            "textures": [ "Texture.majin_eyes" ]
+        },
+        "controller.render.player.majin.first_person": {
+            "arrays": {
+                "textures": {
+                    "Array.skins": [
+                        "Texture.majin_skin_1",
+                        "Texture.majin_skin_2",
+                        "Texture.majin_skin_3",
+                        "Texture.majin_skin_4",
+                        "Texture.majin_skin_5"
+                    ]
+                }
+            },
+            "geometry": "Geometry.majin",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.skins[v.skin]" ],
+            "part_visibility": [
+                { "*": false },
+                { "rightArm": "v.rightarm_visible || q.get_equipped_item_name(0, 1) == '' || q.get_equipped_item_name(0, 1) == 'map'" },
+                { "rightForearm": "v.rightarm_visible || q.get_equipped_item_name(0, 1) == '' || q.get_equipped_item_name(0, 1) == 'map'" },
+                { "leftArm": "v.leftarm_visible || (q.get_equipped_item_name(0, 1) == 'map' && q.get_equipped_item_name('off_hand') != 'shield') || (q.get_equipped_item_name('off_hand') == 'map' && !q.item_is_charged) || (!q.item_is_charged && (v.item_use_normalized > 0 && v.item_use_normalized < 1.0))" },
+                { "leftForearm": "v.leftarm_visible || (q.get_equipped_item_name(0, 1) == 'map' && q.get_equipped_item_name('off_hand') != 'shield') || (q.get_equipped_item_name('off_hand') == 'map' && !q.item_is_charged) || (!q.item_is_charged && (v.item_use_normalized > 0 && v.item_use_normalized < 1.0))" }
+            ],
+            "overlay_color": {
+                "r": "v.kaioken_enabled ? 1 : 0",
+                "g": 0,
+                "b": 0,
+                "a": "v.kaioken_enabled ? 0.2 : 0"
+            }
+        },
+        "controller.render.player.majin.third_person": {
+            "arrays": {
+                "textures": {
+                    "Array.skins": [
+                        "Texture.majin_skin_1",
+                        "Texture.majin_skin_2",
+                        "Texture.majin_skin_3",
+                        "Texture.majin_skin_4",
+                        "Texture.majin_skin_5"
+                    ]
+                }
+            },
+            "geometry": "Geometry.majin",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.skins[v.skin]" ],
+            "part_visibility": [
+                { "*": true },
+                { "bra": "v.is_female" },
+                { "*antenna*": "!v.is_using_helmet && v.transformation < 2" },
+                { "*bigAntenna*": "!v.is_using_helmet && v.transformation >= 2" },
+                { "leftEar": "!q.is_item_name_any('slot.armor.head', 'dbe:scouter')" }
+            ],
+            "overlay_color": {
+                "r": "v.kaioken_enabled ? 1 : 0",
+                "g": 0,
+                "b": 0,
+                "a": "v.kaioken_enabled ? 0.2 : 0"
+            }
+        }
+    }
+}

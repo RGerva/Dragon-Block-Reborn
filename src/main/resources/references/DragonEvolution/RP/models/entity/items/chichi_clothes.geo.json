@@ -1,0 +1,94 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.chichi_clothes",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "leftLeg",
+					"parent": "root",
+					"pivot": [1.9, 12, 0],
+					"cubes": [
+						{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "inflate": 0.2, "uv": [24, 0]},
+						{"origin": [-2.5, 6, -4], "size": [4, 6, 4], "inflate": 0.3, "pivot": [0, 0, 0], "rotation": [0, -90, 0], "uv": [32, 32]},
+						{"origin": [-2.5, 6, 0], "size": [4, 6, 4], "inflate": 0.3, "pivot": [0, 0, 0], "rotation": [0, 90, 0], "uv": [40, 0]}
+					]
+				},
+				{
+					"name": "leftBoot",
+					"parent": "leftLeg",
+					"pivot": [2, 12, 0],
+					"cubes": [
+						{"origin": [-0.1, 0, -2], "size": [4, 6, 4], "inflate": 0.6, "uv": [40, 10]}
+					]
+				},
+				{
+					"name": "rightLeg",
+					"parent": "root",
+					"pivot": [-1.9, 12, 0],
+					"cubes": [
+						{"origin": [-1.5, 6, 0], "size": [4, 6, 4], "inflate": 0.3, "pivot": [0, 0, 0], "rotation": [0, -90, 0], "uv": [40, 0], "mirror": true},
+						{"origin": [-1.5, 6, -4], "size": [4, 6, 4], "inflate": 0.3, "pivot": [0, 0, 0], "rotation": [0, 90, 0], "uv": [32, 32], "mirror": true},
+						{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "inflate": 0.2, "uv": [24, 16]}
+					]
+				},
+				{
+					"name": "rightBoot",
+					"parent": "rightLeg",
+					"pivot": [-2, 12, 0],
+					"cubes": [
+						{"origin": [-3.9, 0, -2], "size": [4, 6, 4], "inflate": 0.6, "uv": [40, 20]}
+					]
+				},
+				{
+					"name": "waist",
+					"parent": "root",
+					"pivot": [0, 12, 0]
+				},
+				{
+					"name": "body",
+					"parent": "waist",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "inflate": 0.2, "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "leftArm",
+					"parent": "body",
+					"pivot": [5, 22, 0],
+					"cubes": [
+						{"origin": [4, 12, -2], "size": [4, 12, 4], "inflate": 0.2, "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "leggings",
+					"parent": "body",
+					"pivot": [0, 14, 0],
+					"cubes": [
+						{"origin": [-4, 12, -2], "size": [8, 6, 4], "inflate": 0.1, "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "rightArm",
+					"parent": "body",
+					"pivot": [-5, 22, 0],
+					"cubes": [
+						{"origin": [-8, 12, -2], "size": [4, 12, 4], "inflate": 0.2, "uv": [16, 32]}
+					]
+				}
+			]
+		}
+	]
+}

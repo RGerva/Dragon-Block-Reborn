@@ -1,0 +1,26 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.player.kienzan": {
+			"states": {
+				"default": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"kienzan": "v.is_loading_attack && v.selected_ki_attack == 'kienzan'"
+						}
+					]
+				},
+				"kienzan": {
+					"blend_transition": 0.2,
+					"animations": [ "kienzan" ],
+					"transitions": [
+						{
+							"default": "!v.is_loading_attack || v.selected_ki_attack != 'kienzan'"
+						}
+					]
+				}
+			}
+		}
+	}
+}

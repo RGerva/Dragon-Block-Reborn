@@ -1,0 +1,33 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.frieza_soldier": {
+            "arrays": {
+                "textures": {
+                    "Array.texture": [
+                        "Texture.skin_frieza_soldier_1",
+                        "Texture.skin_frieza_soldier_2",
+                        "Texture.skin_frieza_soldier_3"
+                    ]
+                }
+            },
+            "geometry": "q.variant == 2 ? Geometry.frieza_soldier : Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.texture[q.variant]" ]
+        },
+        "controller.render.frieza_soldier.eyes": {
+            "arrays": {
+                "textures": {
+                    "Array.texture": [
+                        "Texture.eyes_frieza_soldier_1",
+                        "Texture.eyes_frieza_soldier_2",
+                        "Texture.eyes_frieza_soldier_3"
+                    ]
+                }
+            },
+            "geometry": "Geometry.eyes",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.texture[q.variant]" ]
+        }
+    }
+}

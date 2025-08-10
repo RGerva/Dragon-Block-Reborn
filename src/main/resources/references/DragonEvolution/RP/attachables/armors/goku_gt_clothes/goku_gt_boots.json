@@ -1,0 +1,29 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "dbe:goku_gt_boots",
+            "materials": {
+                "default": "armor",
+                "enchanted": "armor_enchanted"
+            },
+            "textures": {
+                "default": "textures/models/armor/goku_gt_clothes",
+                "enchanted": "textures/misc/enchanted_item_glint"
+            },
+            "geometry": {
+                "default": "geometry.clothes.boots"
+            },
+            "scripts": {
+                "parent_setup": "v.boot_layer_visible = 0.0;",
+                "animate": [
+                    "offset"
+                ]
+            },
+            "animations": {
+                "offset": "animation.armor.boots.offset"
+            },
+            "render_controllers": [ "controller.render.custom_armor" ]
+        }
+    }
+}

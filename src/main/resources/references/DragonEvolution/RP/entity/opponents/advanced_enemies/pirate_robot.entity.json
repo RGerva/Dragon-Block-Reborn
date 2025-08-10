@@ -1,0 +1,71 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:pirate_robot",
+            "materials": {
+                "default": "entity_emissive_alpha",
+                "outline": "outline"
+            },
+            "textures": {
+                "default": "textures/entity/enemies/pirate_robot",
+                "ki_attack": "textures/entity/ki_attack"
+            },
+            "geometry": {
+                "default": "geometry.pirate_robot",
+                "ki_manipulation": "geometry.ki_manipulation",
+                "ki_manipulation_outline": "geometry.ki_manipulation_outline"
+            },
+            "particle_effects": {
+                "pirate_robot_shoot": "dbe:pirate_robot_shoot"
+            },
+            "sound_effects": {
+                "shoot": "mob.pirate_robot.shoot",
+                "sword_swing_end": "mob.pirate_robot.sword_swing_end",
+                "sword_swing_start": "mob.pirate_robot.sword_swing_start",
+                "sword_swing": "mob.pirate_robot.sword_swing"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "v.is_falling = q.vertical_speed < -0.2;",
+                    "v.is_loading_attack = q.property('dbe:is_loading_attack');",
+                    "v.is_flying = q.property('dbe:is_flying') && !v.is_loading_attack;",
+                    "v.is_idle = !q.ground_speed && !v.is_loading_attack;",
+                    "v.selected_ki_attack = q.property('dbe:selected_ki_attack');",
+                    "v.is_knocked_out = q.property('dbe:is_knocked_out');",
+                    "v.is_sprinting = q.property('dbe:aura_boost') && !v.is_loading_attack;",
+                    "v.is_walking = q.ground_speed && !v.is_loading_attack;",
+                    "v.transformation = q.property('dbe:transformation');"
+                ],
+                "animate": [
+                    "general",
+                    "attack_controller",
+                    "tail_move"
+                ]
+            },
+            "animations": {
+                "general": "controller.animation.pirate_robot.general",
+                "attack_controller": "controller.animation.pirate_robot.attack",
+                "melee_attack_1": "animation.pirate_robot.sword.attack_1",
+                "melee_attack_2": "animation.pirate_robot.sword.attack_2",
+                "idle": "animation.pirate_robot.idle",
+                "levitate": "animation.pirate_robot.levitate",
+                "levitate_moving": "animation.pirate_robot.move_levitate",
+                "moving": "animation.pirate_robot.idle",
+                "start_shooting": "animation.pirate_robot.shoot1",
+                "shooting": "animation.pirate_robot.shoot2",
+                "stop_shooting": "animation.pirate_robot.shoot3",
+                "tail_move": "animation.pirate_robot.tail"
+            },
+            "render_controllers": [
+                "controller.render.default",
+                {
+                    "controller.render.player.ki_manipulation": "v.is_loading_attack"
+                },
+                {
+                    "controller.render.player.ki_manipulation.outline": "v.is_loading_attack"
+                }
+            ]
+        }
+    }
+}

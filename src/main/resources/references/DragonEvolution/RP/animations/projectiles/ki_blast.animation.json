@@ -1,0 +1,28 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.player.first_person.ki_blast": {
+			"animation_length": 600,
+			"bones": {
+				"rightKiBall": {
+					"rotation": ["q.anim_time * 1000", "q.anim_time * 1000", 0]
+				},
+				"rightArm": {
+					"rotation": [-20, -2.5, -12.5]
+				}
+			}
+		},
+		"animation.player.third_person.ki_blast": {
+			"loop": true,
+			"override_previous_animation": true,
+			"bones": {
+				"rightKiBall": {
+					"rotation": ["q.anim_time * 1000", "q.anim_time * 1000", 0]
+				},
+				"rightArm": {
+					"rotation": ["q.target_x_rotation - 90", "q.target_y_rotation", 0]
+				}
+			}
+		}
+	}
+}

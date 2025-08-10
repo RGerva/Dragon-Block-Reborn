@@ -1,0 +1,37 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:deer",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/animals/deer"
+            },
+            "geometry": {
+                "default": "geometry.deer"
+            },
+            "spawn_egg": {
+                "base_color": "#a46944",
+                "overlay_color": "#824726"
+            },
+            "scripts": {
+                "animate": [
+                    "general"
+                ]
+            },
+            "animations": {
+                "general": "controller.animation.deer.general",
+                "idle": "animation.deer.idle",
+                "idle_controller": "controller.animation.deer.idle",
+                "look_at_target": "animation.common.look_at_target",
+                "move_controller": "controller.animation.deer.move",
+                "walk": "animation.deer.walk"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

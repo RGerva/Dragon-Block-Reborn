@@ -1,0 +1,36 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.player.ki_manipulation": {
+            "geometry": "Geometry.ki_manipulation",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.ki_attack" ],
+            "part_visibility": [
+                { "*": false },
+                { "rightKiBall": "v.selected_ki_attack == 'kamehameha' || v.selected_ki_attack == 'ki_blast'" },
+                { "rightKiDisc": "v.selected_ki_attack == 'kienzan'" },
+                { "topKiBall": "v.selected_ki_attack == 'genki_dama'" }
+            ],
+            "light_color_multiplier": 10,
+            "ignore_lighting": true
+        },
+        "controller.render.player.ki_manipulation.outline": {
+            "geometry": "Geometry.ki_manipulation_outline",
+            "materials": [ { "*": "Material.outline" } ],
+            "textures": [ "Texture.ki_attack" ],
+            "part_visibility": [
+                { "*": false },
+                { "rightKiBall": "v.selected_ki_attack == 'kamehameha' || v.selected_ki_attack == 'ki_blast'" },
+                { "rightKiDisc": "v.selected_ki_attack == 'kienzan'" },
+                { "topKiBall": "v.selected_ki_attack == 'genki_dama'" }
+            ],
+            "overlay_color": {
+                "r": "q.property('dbe:aura_color_r') / 255",
+                "g": "q.property('dbe:aura_color_g') / 255",
+                "b": "q.property('dbe:aura_color_b') / 255",
+                "a": 1
+            },
+            "ignore_lighting": true
+        }
+    }
+}

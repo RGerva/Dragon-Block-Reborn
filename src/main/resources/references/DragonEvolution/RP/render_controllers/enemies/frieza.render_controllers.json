@@ -1,0 +1,60 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.frieza": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.default",
+                        "Texture.default",
+                        "Texture.third_form",
+                        "Texture.fourth_form",
+                        "Texture.fourth_form",
+                        "Texture.golden_form",
+                        "Texture.black_form",
+                        "Texture.mecha_frieza"
+                    ]
+                }
+            },
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.textures[v.transformation]" ],
+            "part_visibility": [
+                { "*": true },
+                { "headExtension": "v.transformation == 2" },
+                { "leftEar": "v.transformation != 1" },
+                { "leftFrontHorn": "v.transformation < 3" },
+                { "rightFrontHorn": "v.transformation < 3" },
+                { "leftFrontHorn2": "v.transformation == 1 || v.transformation == 2" },
+                { "rightFrontHorn2": "v.transformation == 1 || v.transformation == 2" },
+                { "*leftBackHorn*": "v.transformation == 2" },
+                { "*rightBackHorn*": "v.transformation == 2" },
+                { "leftShoulderPad": "v.transformation == 2" },
+                { "rightShoulderPad": "v.transformation == 2" }
+            ]
+        },
+        "controller.render.frieza.eyes": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.eyes",
+                        "Texture.eyes",
+                        "Texture.eyes",
+                        "Texture.eyes_fourth_form",
+                        "Texture.eyes_fourth_form",
+                        "Texture.eyes_golden_form",
+                        "Texture.eyes_black_form",
+                        "Texture.eyes_mecha_frieza"
+                    ]
+                }
+            },
+            "geometry": "Geometry.eyes",
+            "materials": [
+                { "*": "Material.default" },
+                { "leftEye": "Material.default" },
+                { "rightEye": "Material.default" }
+            ],
+            "textures": [ "Array.textures[v.transformation]" ]
+        }
+    }
+}

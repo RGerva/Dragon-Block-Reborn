@@ -1,0 +1,16 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:weighted_random_feature": {
+        "description": {
+            "identifier": "dbe:select_dirtstone_rock_feature"
+        },
+
+        "features": [
+            [ "dbe:small_dirtstone_rock_1_feature", 8 ],
+            [ "dbe:small_dirtstone_rock_2_feature", 3 ],
+            [ "dbe:medium_dirtstone_rock_1_feature", 5 ],
+            [ "dbe:big_dirtstone_rock_1_feature", 3 ],
+            [ "dbe:dirtstone_arch_1_feature", 1 ]
+        ]
+    }
+}

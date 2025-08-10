@@ -1,0 +1,43 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.flying_nimbus": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"flying_nimbus": "q.variant == 0"
+						},
+						{
+							"black_flying_nimbus": "q.variant == 1"
+						}
+					]
+				},
+				"flying_nimbus": {
+					"particle_effects": [
+						{
+							"effect": "flying_nimbus"
+						},
+						{
+							"effect": "flying_nimbus_trail",
+							"pre_effect_script": "v.direction_x = Q.target_x_rotation; v.direction_y = q.body_y_rotation;"
+						}
+					]
+				},
+				"black_flying_nimbus": {
+					"particle_effects": [
+						{
+							"effect": "flying_nimbus",
+							"pre_effect_script": "v.r = 0.06666; v.g = 0.05098; v.b = 0.12941;"
+						},
+						{
+							"effect": "flying_nimbus_trail",
+							"pre_effect_script": "v.r = 0.06666; v.g = 0.05098; v.b = 0.12941; v.direction_x = q.target_x_rotation; v.direction_y = q.body_y_rotation;"
+						}
+					]
+				}
+			}
+		}
+	}
+}

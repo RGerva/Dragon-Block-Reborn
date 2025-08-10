@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:elegant_suit_boots"
+    },
+
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "A A"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:white_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:elegant_suit_boots"
+    }
+  }
+}

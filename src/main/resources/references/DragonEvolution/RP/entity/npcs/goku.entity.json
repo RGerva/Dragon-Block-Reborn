@@ -1,0 +1,47 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:goku",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/saiyan/saiyan_base_2",
+                "armor": "textures/models/armor/goku_clothes",
+                "armor2": "textures/models/armor/training_shirt",
+                "eyes": "textures/entity/saiyan/eyes/male_saiyan_base_1",
+                "hair": "textures/entity/saiyan/hairs/saiyan_base_1"
+            },
+            "geometry": {
+                "default": "geometry.human",
+                "armor": "geometry.clothes",
+                "armor2": "geometry.clothes",
+                "eyes": "geometry.eyes",
+                "hair": "geometry.goku_hair",
+                "training_shirt": "geometry.clothes"
+            },
+            "scripts": {
+                "scale": "0.9375",
+                "animate": [
+                    "root",
+                    "hair_move"
+                ]
+            },
+            "animations": {
+                "root": "controller.animation.npc.root",
+                "blink": "animation.humanoid.blink",
+                "bob": "animation.player.bob",
+                "hair_move": "animation.player.hair.move",
+                "look_at_target": "animation.humanoid.look_at_target.default"
+            },
+            "render_controllers": [
+                "controller.render.entity_saiyan",
+                "controller.render.entity_armor",
+                "controller.render.entity_armor2",
+                "controller.render.entity_eyes",
+                "controller.render.entity_hair"
+            ]
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:biome": {
+        "description": {
+            "identifier": "dbe:dirtstone"
+        },
+
+        "components": {
+            "minecraft:climate": {
+                "downfall": 0.8,
+                "snow_accumulation": [ 0, 0.125 ],
+                "temperature": 1.2
+            },
+            "minecraft:overworld_height": {
+                "noise_params": [ 0.3625, 1.225 ]
+            },
+            "minecraft:surface_parameters": {
+                "sea_floor_depth": 7,
+                "sea_floor_material": "minecraft:gravel",
+                "foundation_material": "dbe:dirtstone",
+                "mid_material": "dbe:dirtstone",
+                "top_material": "dbe:dirtstone_grass",
+                "sea_material": "minecraft:water"
+            },
+            "minecraft:replace_biomes": {
+                "replacements": [
+                    {
+                        "dimension": "minecraft:overworld",
+                        "noise_frequency_scale": 0.5,
+                        "amount": 0.5,
+                        "targets": [ "plains" ]
+                    }
+                ]
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "animal",
+                    "dirtstone",
+                    "overworld"
+                ]
+            }
+        }
+    }
+}

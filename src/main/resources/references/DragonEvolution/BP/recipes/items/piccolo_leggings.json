@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:piccolo_leggings"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "AAA",
+      "B B",
+      "B B"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:blue_wool"
+      },
+      "B": {
+        "item": "minecraft:purple_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:piccolo_leggings"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:block": {
+        "description": {
+            "identifier": "dbe:ajisa_leaves"
+        },
+
+        "components": {
+            "minecraft:map_color": "#293880",
+            "minecraft:loot": "loot_tables/blocks/ajisa_leaves.json",
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0.3
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0.3
+            },
+            "minecraft:destruction_particles": {
+                "texture": "ajisa_leaves"
+            },
+            "minecraft:light_dampening": 7,
+            "minecraft:geometry": {
+                "identifier": "minecraft:geometry.full_block",
+                "culling": ""
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "ajisa_leaves",
+                    "render_method": "blend",
+                    "ambient_occlusion": false
+                },
+                "down": {
+                    "texture": "ajisa_leaves",
+                    "render_method": "blend",
+                    "ambient_occlusion": false,
+                    "isotropic": true
+                },
+                "up": "down"
+            },
+            "minecraft:flammable": {
+                "catch_chance_modifier": 30,
+                "destroy_chance_modifier": 60
+            },
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "can_contain_liquid": true
+                    }
+                ]
+            },
+            "dbe:leaves": { },
+            "tag:minecraft:is_hoe_item_destructible": { }
+        }
+    }
+}

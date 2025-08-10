@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:ki_attack",
+            "materials": {
+                "default": "entity_alphatest",
+                "outline": "outline"
+            },
+            "textures": {
+                "default": "textures/entity/ki_attack"
+            },
+            "geometry": {
+                "default": "geometry.ki_attack",
+                "outline": "geometry.ki_attack_outline"
+            },
+            "particle_effects": {
+                "lightning": "dbe:lightning"
+            },
+            "sound_effects": {
+                "attack": "common.ki_blast"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "v.attack_type = q.property('dbe:attack_type');",
+                    "v.attack_index = v.attack_type == 'beam' || v.attack_type == 'blast' ? 0 : 1;"
+                ],
+                "animate": [
+                    "flying_controller"
+                ]
+            },
+            "animations": {
+                "flying_controller": "controller.animation.ki_attack.flying",
+                "flying": "animation.ki_attack.flying"
+            },
+            "render_controllers": [
+                "controller.render.ki_attack",
+                "controller.render.ki_attack.armor"
+            ]
+        }
+    }
+}

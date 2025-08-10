@@ -1,0 +1,41 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:block": {
+        "description": {
+            "identifier": "dbe:yellow_cloud_block"
+        },
+
+        "components": {
+            "minecraft:map_color": "#ffc800",
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 1
+            },
+            "minecraft:destruction_particles": {
+                "texture": "yellow_cloud_block"
+            },
+            "minecraft:light_emission": 15,
+            "minecraft:light_dampening": 7,
+            "minecraft:collision_box": false,
+            "minecraft:geometry": "minecraft:geometry.full_block",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "yellow_cloud_block",
+                    "render_method": "blend",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "on_liquid_touches": "no_reaction",
+                        "can_contain_liquid": true
+                    }
+                ]
+            },
+            "dbe:yellow_cloud": { }
+        }
+    }
+}

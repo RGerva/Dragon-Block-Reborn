@@ -39,12 +39,13 @@ public class AuraEntity extends Entity {
 		}
 
 		private void setupAnimationStates() {
-				if(this.idleAnimationTimeout <= 0) {
-						this.idleAnimationTimeout = 80;
-						this.renderState.idleAnimationState.start(this.tickCount);
-				} else {
-						--this.idleAnimationTimeout;
-				}
+				this.renderState.activateAnimationState.start(this.tickCount);
+//				if(this.idleAnimationTimeout <= 0) {
+//						this.idleAnimationTimeout = 80;
+//						this.renderState.idleAnimationState.start(this.tickCount);
+//				} else {
+//						--this.idleAnimationTimeout;
+//				}
 		}
 
 		@Override

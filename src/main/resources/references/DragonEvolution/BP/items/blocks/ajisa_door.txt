@@ -1,0 +1,24 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:item": {
+        "description": {
+            "identifier": "dbe:ajisa_door"
+        },
+
+        "components": {
+            "minecraft:icon": "ajisa_door",
+            "minecraft:display_name": {
+                "value": "tile.dbe:ajisa_door.name"
+            },
+            "minecraft:block_placer": {
+                "block": "dbe:ajisa_door",
+                "replace_block_item": true
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "minecraft:door"
+                ]
+            }
+        }
+    }
+}

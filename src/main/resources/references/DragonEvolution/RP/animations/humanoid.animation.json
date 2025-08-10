@@ -1,0 +1,50 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.humanoid.blink": {
+			"loop": true,
+			"animation_length": 2.5
+		},
+		"animation.humanoid.eyes": {
+			"loop": true,
+			"bones": {
+				"eyes": {
+					"scale": "q.is_sleeping || v.is_blinking ? 0 : 1"
+				},
+				"leftPupil": {
+					"position": ["math.clamp(math.round(-q.target_y_rotation / 90), -(v.eye_size - 2), 1)", 0, 0]
+				},
+				"rightPupil": {
+					"position": ["math.clamp(math.round(-q.target_y_rotation / 90), -1, v.eye_size - 2)", 0, 0]
+				}
+			}
+		},
+		"animation.humanoid.knocked_out": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [-90, 0, 0],
+					"position": [0, 2, -16]
+				},
+				"leftLeg": {
+					"rotation": [0, 0, -10]
+				},
+				"rightLeg": {
+					"rotation": [0, 0, 10]
+				},
+				"head": {
+					"rotation": [15, 0, 0]
+				},
+				"leftArm": {
+					"rotation": [0, 0, -20]
+				},
+				"rightArm": {
+					"rotation": [0, 0, 20]
+				},
+				"eyes": {
+					"scale": 0
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "dbe:zamas_chestplate"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "dbe:kaioshin_chestplate"
+      },
+      {
+        "item": "minecraft:gray_dye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "dbe:kaioshin_chestplate"
+      }
+    ],
+    "result": {
+      "item": "dbe:zamas_chestplate"
+    }
+  }
+}

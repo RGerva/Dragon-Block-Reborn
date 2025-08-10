@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "dbe:zamas_leggings"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "dbe:kaioshin_leggings"
+      },
+      {
+        "item": "minecraft:gray_dye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "dbe:kaioshin_leggings"
+      }
+    ],
+    "result": {
+      "item": "dbe:zamas_leggings"
+    }
+  }
+}

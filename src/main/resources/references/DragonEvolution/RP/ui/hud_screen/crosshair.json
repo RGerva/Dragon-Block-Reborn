@@ -1,0 +1,10 @@
+{
+    "namespace": "crosshair",
+
+    "crosshair": {
+        "type": "image",
+        "size": [ 17, 13 ],
+        "texture": "textures/gui/crosshair",
+        "alpha": 0.6
+    }
+}

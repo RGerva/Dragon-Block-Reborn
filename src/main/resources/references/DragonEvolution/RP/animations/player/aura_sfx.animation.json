@@ -1,0 +1,23 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.sfx.charge_loop": {
+			"loop": true,
+			"animation_length": 2.823,
+			"sound_effects": {
+				"0.0": {
+					"effect": "charge_loop"
+				}
+			}
+		},
+		"animation.sfx.charge_god_loop": {
+			"loop": true,
+			"animation_length": 2,
+			"sound_effects": {
+				"0.0": {
+					"effect": "charge_god_loop"
+				}
+			}
+		}
+	}
+}

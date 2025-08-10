@@ -1,0 +1,60 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.player.first_person.genki_dama": {
+			"animation_length": 600,
+			"bones": {
+				"topKiBall": {
+					"rotation": ["q.anim_time * 1000", "q.anim_time * 1000", 0],
+					"position": {
+						"0.0": [0, 0, 200],
+						"2.0": [0, 50, 250]
+					},
+					"scale": {
+						"0.0": [0, 0, 0],
+						"2.0": [20, 20, 20]
+					}
+				},
+				"leftArm": {
+					"rotation": [-20, 2.5, 12.5]
+				},
+				"leftItem": {
+					"scale": 0
+				},
+				"rightArm": {
+					"rotation": [-20, -2.5, -12.5]
+				}
+			}
+		},
+		"animation.player.genki_dama": {
+			"animation_length": 600,
+			"bones": {
+				"topKiBall": {
+					"rotation": ["q.anim_time * 1000", "q.anim_time * 1000", 0],
+					"position": {
+						"0.0": [0, 0, 0],
+						"2.0": [0, 100, 0]
+					},
+					"scale": {
+						"0.0": [0, 0, 0],
+						"2.0": [20, 20, 20]
+					}
+				},
+				"root": {
+					"rotation": [0, "q.target_y_rotation", 0]
+				},
+				"leftItem": {
+					"scale": 0
+				},
+				"leftArm": {
+					"rotation": [-180, 20, 5],
+					"position": [0, 2, 0]
+				},
+				"rightArm": {
+					"rotation": [-180, -20, -5],
+					"position": [0, 2, 0]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:kami_sama",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/npcs/kami_sama"
+            },
+            "geometry": {
+                "default": "geometry.kami_sama"
+            },
+            "scripts": {
+                "animate": [
+                    "root"
+                ]
+            },
+            "animations": {
+                "root": "controller.animation.npc.root",
+                "blink": "animation.humanoid.blink",
+                "bob": "animation.player.bob",
+                "look_at_target": "animation.humanoid.look_at_target.default"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

@@ -1,0 +1,512 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.dbe.general": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        "attack_controller",
+                        "aura_controller",
+                        {
+                            "bio_android_wings": "v.race == 'bio_android'"
+                        },
+                        "charge_ki_controller",
+                        {
+                            "empty_lefthand": "v.is_first_person && v.leftarm_visible"
+                        },
+                        "eyes_controller",
+                        "fly_controller",
+                        "hair_move",
+                        "idle_controller",
+                        "jump_controller",
+                        "ki_attacks_controller",
+                        {
+                            "knocked_out": "v.is_knocked_out"
+                        },
+                        {
+                            "muscular": "v.is_muscular"
+                        },
+                        {
+                            "slim_body": "v.has_slim_body"
+                        },
+                        "sneak_controller",
+                        "tail_controller",
+                        "weapons_controller",
+                        "walk_controller",
+                        {
+                            "female_setup": "v.is_female"
+                        },
+
+                        {
+                            "holding_attachable": "v.is_first_person && q.equipped_item_any_tag('slot.weapon.mainhand', 'hold')"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.attack": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.1,
+                    "transitions": [
+                        {
+                            "attack": "v.attack_time && !v.is_first_person"
+                        }
+                    ]
+                },
+                "attack": {
+                    "blend_transition": 0.2,
+                    "transitions": [
+                        {
+                            "default": "q.any_animation_finished || v.is_first_person"
+                        }
+                    ],
+                    "animations": [
+                        { "melee_attack_1": "v.random_attack == 0" },
+                        { "melee_attack_2": "v.random_attack == 1" },
+                        { "melee_attack_4": "v.random_attack == 2" },
+                        { "melee_attack_3": "v.random_attack == 3" },
+                        { "melee_attack_5": "v.random_attack == 4" },
+                        { "melee_attack_6": "v.random_attack == 5" }
+                    ],
+                    "on_entry": [
+                        "v.random_attack = math.random_integer(0, 5);"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.aura": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "aura_on": "!q.is_in_ui && v.aura_type == 'normal' && v.aura_enabled && !v.ultra_instinct"
+                        },
+                        {
+                            "divine_aura": "!q.is_in_ui && v.aura_type == 'divine'"
+                        },
+                        {
+                            "ultra_instinct_aura": "!q.is_in_ui && v.ultra_instinct > 0"
+                        }
+                    ]
+                },
+                "aura_on": {
+                    "animations": [
+                        "aura_on"
+                    ],
+                    "transitions": [
+                        {
+                            "common_aura": "q.all_animations_finished"
+                        }
+                    ]
+                },
+                "common_aura": {
+                    // "particle_effects": [
+                    //     {
+                    //         "effect": "kaioken_aura",
+                    //         "pre_effect_script": "v.r = q.property('dbe:aura_color_r') / 255; v.g = q.property('dbe:aura_color_g') / 255; v.b = q.property('dbe:aura_color_b') / 255;"
+                    //     }
+                    // ],
+                    "animations": [
+                        "aura_move",
+                        {
+                            "sfx_charge_loop": "v.aura_sound == 0"
+                        },
+                        {
+                            "sfx_charge_god_loop": "v.aura_sound == 1"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "aura_off": "q.is_in_ui || !v.aura_enabled || v.current_form != v.transformation || v.ultra_instinct > 0"
+                        }
+                    ],
+                    "on_entry": [
+                        "v.current_form = v.transformation;"
+                    ]
+                },
+                "divine_aura": {
+                    "animations": [
+                        {
+                            "sfx_charge_loop": "v.aura_enabled && v.aura_sound == 0"
+                        },
+                        {
+                            "sfx_charge_god_loop": "v.aura_enabled && v.aura_sound == 1"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.is_in_ui || v.aura_type != 'divine'"
+                        }
+                    ],
+                    "particle_effects": [
+                        {
+                            "effect": "aura_god"
+                        }
+                    ]
+                },
+                "ultra_instinct_aura": {
+                    "particle_effects": [
+                        {
+                            "effect": "ultra_instinct_aura"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.is_in_ui || !v.ultra_instinct"
+                        }
+                    ]
+                },
+                "aura_off": {
+                    "animations": [
+                        "aura_off"
+                    ],
+                    "transitions": [
+                        {
+                            "aura_on": "!q.is_in_ui && v.aura_enabled && !v.ultra_instinct"
+                        },
+                        {
+                            "default": "q.all_animations_finished"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.charge_ki": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.1,
+                    "transitions": [
+                        {
+                            "charge_ki": "q.modified_move_speed < 0.1 && v.aura_enabled && v.is_charging_ki"
+                        }
+                    ]
+                },
+                "charge_ki": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "charge_ki": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.modified_move_speed >= 0.1 || !v.aura_enabled || !v.is_charging_ki"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.humanoid.eyes": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        "eyes"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.fly": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.2,
+                    "transitions": [
+                        {
+                            "fly_walking": "v.is_flying"
+                        },
+                        {
+                            "fly_sprinting": "v.is_flying && q.is_sprinting"
+                        }
+                    ]
+                },
+                "fly_walking": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "fly_walking": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "fly_sprinting": "v.is_flying && q.is_sprinting"
+                        },
+                        {
+                            "default": "!v.is_flying"
+                        }
+                    ]
+                },
+                "fly_sprinting": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "fly_sprinting": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "fly_walking": "v.is_flying && !q.is_sprinting"
+                        },
+                        {
+                            "default": "!v.is_flying || !q.is_sprinting"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.idle": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.2,
+                    "transitions": [
+                        {
+                            "idle": "v.is_idle && !v.is_flying"
+                        },
+                        {
+                            "fly_idle": "v.is_idle && v.is_flying"
+                        }
+                    ]
+                },
+                "idle": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "idle": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "fly_idle": "v.is_idle && v.is_flying"
+                        },
+                        {
+                            "default": "!v.is_idle"
+                        }
+                    ]
+                },
+                "fly_idle": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "fly_idle": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "idle": "v.is_idle && !v.is_flying"
+                        },
+                        {
+                            "default": "!v.is_idle"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.jump": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.1,
+                    "transitions": [
+                        {
+                            "jump": "!q.is_on_ground"
+                        }
+                    ]
+                },
+                "jump": {
+                    "blend_transition": 0.1,
+                    "animations": [
+                        {
+                            "jump": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "fall": "q.any_animation_finished"
+                        },
+                        {
+                            "default": "q.is_on_ground"
+                        }
+                    ]
+                },
+                "fall": {
+                    "blend_transition": 0.1,
+                    "animations": [
+                        {
+                            "fall": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "air": "!q.is_on_ground && !v.is_falling"
+                        },
+                        {
+                            "land": "q.is_on_ground"
+                        }
+                    ]
+                },
+                "air": {
+                    "blend_transition": 0.1,
+                    "transitions": [
+                        {
+                            "fall": "v.is_falling"
+                        },
+                        {
+                            "land": "q.is_on_ground"
+                        }
+                    ]
+                },
+                "land": {
+                    "blend_transition": 0.1,
+                    "animations": [
+                        {
+                            "land": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "jump": "!q.is_on_ground"
+                        },
+                        {
+                            "default": "q.any_animation_finished"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.ki_attacks": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        "genki_dama_controller",
+                        "kamehameha_controller",
+                        "ki_blast_controller",
+                        "kienzan_controller"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.sneak": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.2,
+                    "transitions": [
+                        {
+                            "sneak": "q.is_sneaking && q.is_on_ground && !v.is_charging_ki && !v.is_flying"
+                        }
+                    ]
+                },
+                "sneak": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "sneak": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "sneak_walk": "q.modified_move_speed >= 0.1"
+                        },
+                        {
+                            "default": "!q.is_sneaking || !q.is_on_ground || v.is_charging_ki || v.is_flying"
+                        }
+                    ]
+                },
+                "sneak_walk": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "sneak_walk": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "sneak": "q.modified_move_speed < 0.1"
+                        },
+                        {
+                            "default": "!q.is_sneaking || !q.is_on_ground || v.is_charging_ki || v.is_flying"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.tail": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.2,
+                    "animations": [ "tail_move" ],
+                    "transitions": [
+                        {
+                            "tail_curled": "v.race == 'saiyan' && v.tail_curled"
+                        }
+                    ]
+                },
+                "tail_curled": {
+                    "blend_transition": 0.2,
+                    "animations": [ "tail_curled" ],
+                    "transitions": [
+                        {
+                            "default": "v.race != 'saiyan' || !v.tail_curled"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.walk": {
+            "states": {
+                "default": {
+                    "blend_transition": 0.2,
+                    "transitions": [
+                        {
+                            "walk": "v.is_walking && !v.is_flying && !q.is_swimming"
+                        }
+                    ]
+                },
+                "walk": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "walk": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "sprint": "q.is_sprinting"
+                        },
+                        {
+                            "default": "!v.is_walking || v.is_flying || q.is_swimming"
+                        }
+                    ]
+                },
+                "sprint": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        {
+                            "sprint": "!v.is_first_person"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "walk": "v.is_walking && !q.is_sprinting"
+                        },
+                        {
+                            "default": "!v.is_walking || v.is_flying || q.is_swimming"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.weapons": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        "ki_scythe_controller",
+                        "power_pole_controller",
+                        "z_sword_controller"
+                    ]
+                }
+            }
+        }
+    }
+}

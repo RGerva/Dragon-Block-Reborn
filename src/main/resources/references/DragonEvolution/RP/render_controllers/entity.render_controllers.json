@@ -1,0 +1,49 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.entity_armor": {
+            "geometry": "Geometry.armor",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.armor" ]
+        },
+        "controller.render.entity_armor2": {
+            "geometry": "Geometry.armor2",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.armor2" ]
+        },
+        "controller.render.entity_earrings": {
+            "geometry": "Geometry.earrings",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.earrings" ]
+        },
+        "controller.render.entity_eyes": {
+            "geometry": "Geometry.eyes",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.eyes" ]
+        },
+        "controller.render.entity_hair": {
+            "geometry": "Geometry.hair",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.hair" ]
+        },
+        "controller.render.entity_saiyan": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.default" ],
+            "part_visibility": [
+                { "*": true },
+                { "bra": false }
+            ]
+        },
+        "controller.render.entity_scouter": {
+            "geometry": "Geometry.scouter",
+            "materials": [ { "*": "Material.alphablend" } ],
+            "textures": [ "Texture.scouter" ]
+        },
+        "controller.render.entity_tail": {
+            "geometry": "Geometry.tail",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Texture.tail" ]
+        }
+    }
+}

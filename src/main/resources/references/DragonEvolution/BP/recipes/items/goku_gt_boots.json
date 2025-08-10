@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "dbe:goku_gt_boots"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "dbe:goku_boots"
+      },
+      {
+        "item": "minecraft:light_gray_dye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "dbe:goku_boots"
+      }
+    ],
+    "result": {
+      "item": "dbe:goku_gt_boots"
+    }
+  }
+}

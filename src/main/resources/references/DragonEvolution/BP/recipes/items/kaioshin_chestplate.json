@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbe:kaioshin_chestplate"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "B B",
+      "ABA",
+      "BBA"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:cyan_wool"
+      },
+      "B": {
+        "item": "minecraft:red_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:wool"
+      }
+    ],
+    "result": {
+      "item": "dbe:kaioshin_chestplate"
+    }
+  }
+}

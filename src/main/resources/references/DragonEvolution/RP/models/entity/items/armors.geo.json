@@ -1,0 +1,501 @@
+{
+    "format_version": "1.8.0",
+    "geometry.android_16_armor.boots:geometry.android_16_armor": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.android_16_armor.chestplate:geometry.android_16_armor": {
+        "bones": [
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.android_16_armor.leggings:geometry.android_16_armor": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.baby_armor.boots:geometry.baby_armor": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.baby_armor.chestplate:geometry.baby_armor": {
+        "bones": [
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightProtector", "reset": true }
+        ]
+    },
+    "geometry.baby_armor.leggings:geometry.baby_armor": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.battle_armor.boots:geometry.battle_armor": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftProtector", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "middleProtector", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightProtector", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.battle_armor.chestplate:geometry.battle_armor": {
+        "bones": [
+            { "name": "head", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftProtector", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "middleProtector", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightProtector", "reset": true }
+        ]
+    },
+    "geometry.battle_armor.helmet:geometry.battle_armor": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftProtector", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "middleProtector", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightProtector", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.battle_armor.leggings:geometry.battle_armor": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.broly_battle.boots:geometry.broly_battle": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.broly_battle.chestplate:geometry.broly_battle": {
+        "bones": [
+            { "name": "head", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.broly_battle.leggings:geometry.broly_battle": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.bunny_costume.boots:geometry.bunny_costume": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rabbitLeftEar", "reset": true },
+            { "name": "rabbitRightEar", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.bunny_costume.chestplate:geometry.bunny_costume": {
+        "bones": [
+            { "name": "head", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rabbitLeftEar", "reset": true },
+            { "name": "rabbitRightEar", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.bunny_costume.helmet:geometry.bunny_costume": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.bunny_costume.leggings:geometry.bunny_costume": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "rabbitLeftEar", "reset": true },
+            { "name": "rabbitRightEar", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true }
+        ]
+    },
+    "geometry.chichi_clothes.boots:geometry.chichi_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.chichi_clothes.chestplate:geometry.chichi_clothes": {
+        "bones": [
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.chichi_clothes.leggings:geometry.chichi_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true }
+        ]
+    },
+    "geometry.clothes.boots:geometry.clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.clothes.chestplate:geometry.clothes": {
+        "bones": [
+            { "name": "head", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.clothes.helmet:geometry.clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.clothes.leggings:geometry.clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true }
+        ]
+    },
+    "geometry.elegant_suit.boots:geometry.elegant_suit": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "hat", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.elegant_suit.chestplate:geometry.elegant_suit": {
+        "bones": [
+            { "name": "hat", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.elegant_suit.helmet:geometry.elegant_suit": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.elegant_suit.leggings:geometry.elegant_suit": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "hat", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true }
+        ]
+    },
+    "geometry.great_saiyaman_clothes.boots:geometry.great_saiyaman_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "customCape", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "leftLeg", "reset": true }
+        ]
+    },
+    "geometry.great_saiyaman_clothes.chestplate:geometry.great_saiyaman_clothes": {
+        "bones": [
+            { "name": "head", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "leftBoot", "reset": true }
+        ]
+    },
+    "geometry.great_saiyaman_clothes.helmet:geometry.great_saiyaman_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "customCape", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "leftBoot", "reset": true }
+        ]
+    },
+    "geometry.great_saiyaman_clothes.leggings:geometry.great_saiyaman_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "customCape", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "leftBoot", "reset": true }
+        ]
+    },
+    "geometry.kaioshin_clothes.boots:geometry.kaioshin_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.kaioshin_clothes.chestplate:geometry.kaioshin_clothes": {
+        "bones": [
+            { "name": "head", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true }
+        ]
+    },
+    "geometry.kaioshin_clothes.helmet:geometry.kaioshin_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.kaioshin_clothes.leggings:geometry.kaioshin_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftShoulderPad", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightShoulderPad", "reset": true }
+        ]
+    },
+    "geometry.maid_costume.boots:geometry.maid_costume": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "chest", "reset": true },
+            { "name": "hat", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "skirt", "reset": true }
+        ]
+    },
+    "geometry.maid_costume.chestplate:geometry.maid_costume": {
+        "bones": [
+            { "name": "hat", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "skirt", "reset": true }
+        ]
+    },
+    "geometry.maid_costume.helmet:geometry.maid_costume": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "chest", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "skirt", "reset": true }
+        ]
+    },
+    "geometry.maid_costume.leggings:geometry.maid_costume": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "chest", "reset": true },
+            { "name": "hat", "reset": true },
+            { "name": "head", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "leftBoot", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "rightBoot", "reset": true }
+        ]
+    },
+    "geometry.xeno_goku_clothes.boots:geometry.xeno_goku_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "leggings", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "leftLeg", "reset": true }
+        ]
+    },
+    "geometry.xeno_goku_clothes.chestplate:geometry.xeno_goku_clothes": {
+        "bones": [
+            { "name": "leggings", "reset": true },
+            { "name": "rightLeg", "reset": true },
+            { "name": "leftLeg", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "leftBoot", "reset": true }
+        ]
+    },
+    "geometry.xeno_goku_clothes.leggings:geometry.xeno_goku_clothes": {
+        "bones": [
+            { "name": "body", "reset": true },
+            { "name": "rightArm", "reset": true },
+            { "name": "leftArm", "reset": true },
+            { "name": "rightBoot", "reset": true },
+            { "name": "leftBoot", "reset": true }
+        ]
+    }
+}

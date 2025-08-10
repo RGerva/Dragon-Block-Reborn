@@ -1,0 +1,61 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.player.kamehameha": {
+			"states": {
+				"default": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"first_person_kamehameha": "v.is_first_person && v.is_loading_attack && v.selected_ki_attack == 'kamehameha'"
+						},
+						{
+							"third_person_kamehameha": "!v.is_first_person && v.is_loading_attack && v.selected_ki_attack == 'kamehameha'"
+						}
+					]
+				},
+				"first_person_kamehameha": {
+					"blend_transition": 0.2,
+					"animations": [ "first_person_kamehameha_beam" ],
+					"particle_effects": [
+						{
+							"effect": "beam",
+							"locator": "rightkiball",
+							"pre_effect_script": "v.r = q.property('dbe:aura_color_r'); v.g = q.property('dbe:aura_color_g'); v.b = q.property('dbe:aura_color_b');"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!v.is_loading_attack || v.selected_ki_attack != 'kamehameha'"
+						}
+					]
+				},
+				"third_person_kamehameha": {
+					"blend_transition": 0.2,
+					"animations": [ "kamehameha_beam" ],
+					"particle_effects": [
+						{
+							"effect": "beam",
+							"locator": "rightkiball",
+							"pre_effect_script": "v.r = q.property('dbe:aura_color_r'); v.g = q.property('dbe:aura_color_g'); v.b = q.property('dbe:aura_color_b');"
+						}
+					],
+					"transitions": [
+						{
+							"third_person_kamehameha_attack": "!v.is_loading_attack"
+						}
+					]
+				},
+				"third_person_kamehameha_attack": {
+					"blend_transition": 0.2,
+					"animations": [ "kamehameha_attack" ],
+					"transitions": [
+						{
+							"default": "q.any_animation_finished"
+						}
+					]
+				}
+			}
+		}
+	}
+}

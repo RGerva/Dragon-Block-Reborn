@@ -1,0 +1,32 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "dbe:turtle_shell",
+            "materials": {
+                "default": "armor",
+                "enchanted": "armor_enchanted"
+            },
+            "textures": {
+                "default": "textures/models/turtle_shell",
+                "enchanted": "textures/misc/enchanted_item_glint"
+            },
+            "geometry": {
+                "default": "geometry.turtle_shell"
+            },
+            "scripts": {
+                "animate": [
+                    "custom_cape"
+                ]
+            },
+            "animations": {
+                "custom_cape": "animation.player.custom_cape"
+            },
+            "render_controllers": [
+                {
+                    "controller.render.custom_armor": "q.is_item_name_any('slot.weapon.offhand', 1, 'dbe:turtle_shell') && !c.is_first_person"
+                }
+            ]
+        }
+    }
+}

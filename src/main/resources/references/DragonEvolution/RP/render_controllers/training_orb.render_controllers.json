@@ -1,0 +1,25 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.training_orb": {
+            "arrays": {
+                "textures": {
+                    "Array.colors": [
+                        "Texture.green",
+                        "Texture.red",
+                        "Texture.black"
+                    ]
+                }
+            },
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "Material.default" } ],
+            "textures": [ "Array.colors[q.property('dbe:color')]" ],
+            "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": "math.clamp(1 - query.distance_from_camera / 2, 0, 1)"
+            }
+        }
+    }
+}

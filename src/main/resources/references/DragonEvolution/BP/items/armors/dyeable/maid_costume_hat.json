@@ -1,0 +1,30 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbe:maid_costume_hat"
+    },
+
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "maid_costume_hat",
+          "dyed": "maid_costume_hat"
+        }
+      },
+      "minecraft:wearable": {
+        "protection": 1,
+        "slot": "slot.armor.head"
+      },
+      "minecraft:dyeable": {
+        "default_color": "#FFFFFF"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:tags": {
+        "tags": [
+          "keep_on_death"
+        ]
+      }
+    }
+  }
+}

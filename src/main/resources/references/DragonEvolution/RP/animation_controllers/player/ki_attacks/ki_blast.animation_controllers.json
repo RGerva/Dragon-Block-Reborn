@@ -1,0 +1,40 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.player.ki_blast": {
+			"states": {
+				"default": {
+					"blend_transition": 0.2,
+					"transitions": [
+						{
+							"ki_blast": "v.is_loading_attack && v.selected_ki_attack == 'ki_blast'"
+						}
+					]
+				},
+				"ki_blast": {
+					"blend_transition": 0.2,
+					"animations": [
+						{
+							"first_person_ki_blast": "v.is_first_person"
+						},
+						{
+							"third_person_ki_blast": "!v.is_first_person"
+						}
+					],
+					"particle_effects": [
+						{
+							"effect": "beam",
+							"locator": "rightkiball",
+							"pre_effect_script": "v.r = q.property('dbe:aura_color_r'); v.g = q.property('dbe:aura_color_g'); v.b = q.property('dbe:aura_color_b');"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!v.is_loading_attack || v.selected_ki_attack != 'ki_blast'"
+						}
+					]
+				}
+			}
+		}
+	}
+}

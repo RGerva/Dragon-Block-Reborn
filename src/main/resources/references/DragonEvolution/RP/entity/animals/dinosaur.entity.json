@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "dbe:dinosaur",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/animals/dinosaur/orange_dinosaur",
+                "brown_dinosaur": "textures/entity/animals/dinosaur/brown_dinosaur",
+                "yellow_dinosaur": "textures/entity/animals/dinosaur/yellow_dinosaur"
+            },
+            "geometry": {
+                "default": "geometry.dinosaur"
+            },
+            "spawn_egg": {
+                "base_color": "#ec8612",
+                "overlay_color": "#4779ee"
+            },
+            "scripts": {
+                "animate": [
+                    "general"
+                ]
+            },
+            "animations": {
+                "general": "controller.animation.dinosaur.general",
+                "attack_controller": "controller.animation.dinosaur.attack",
+                "attack": "animation.dinosaur.attack",
+                "idle_controller": "controller.animation.dinosaur.idle",
+                "idle": "animation.dinosaur.idle",
+                "look_at_target": "animation.dinosaur.look_at_target",
+                "move_controller": "controller.animation.dinosaur.move",
+                "setup": "animation.dinosaur.setup",
+                "walk": "animation.dinosaur.walk"
+            },
+            "render_controllers": [
+                "controller.render.dinosaur"
+            ]
+        }
+    }
+}

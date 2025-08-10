@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "dbe:scouter",
+            "materials": {
+                "default": "armor",
+                "dyed": "entity_change_color"
+            },
+            "textures": {
+                "default": "textures/models/scouter",
+                "dyed": "textures/models/scouter_grayscale"
+            },
+            "geometry": {
+                "default": "geometry.scouter"
+            },
+            "scripts": {
+                "parent_setup": "v.helmet_layer_visible = 0;",
+                "pre_animation": [
+                    "v.is_dyed = q.armor_color_slot(0, 0) != 1 || q.armor_color_slot(0, 1) != 1 || q.armor_color_slot(0, 2) != 1 || q.armor_color_slot(0, 3) != 1;"
+                ]
+            },
+            "render_controllers": [ "controller.render.dyed_armor" ]
+        }
+    }
+}
