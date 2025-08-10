@@ -29,20 +29,20 @@ import com.rgerva.dbr.neoforge.NeoforgeVersions;
 import com.rgerva.dbr.utils.LogUtils;
 
 public class Main {
-    public static final LogUtils.Logger LOGGER = LogUtils.getLogger();
+		public static final LogUtils.Logger LOGGER = LogUtils.getLogger();
 
-    public static void main(String[] args) {
+		public static void main(String[] args) {
 
-        NeoforgeVersions neo = new NeoforgeVersions();
-        neo.neoforgeCheck();
+				NeoforgeVersions neo = new NeoforgeVersions();
+				neo.neoforgeCheck();
 
-        ModDevVersions modDevVersions = new ModDevVersions();
-        modDevVersions.modDevCheck();
+				ModDevVersions modDevVersions = new ModDevVersions();
+				modDevVersions.modDevCheck();
 
-        JUnitVersions jUnitVersions = new JUnitVersions();
-        jUnitVersions.junitCheck();
+				JUnitVersions jUnitVersions = new JUnitVersions();
+				jUnitVersions.junitCheck();
 
-        GradleVersions gradle = new GradleVersions();
-        gradle.gradleCheck();
-    }
+				GradleVersions gradle = new GradleVersions();
+				gradle.gradleCheck();
+		}
 }

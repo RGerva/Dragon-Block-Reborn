@@ -35,140 +35,140 @@ import java.util.Scanner;
 
 public class NeoforgeVersions {
 
-    private static final String NEOFORGE_URL =
-            "https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml";
-    private static final Path GRADLE_PROPERTIES_PATH = Path.of("gradle.properties");
-    private static final Path README_PATH = Path.of("README.md");
+		private static final String NEOFORGE_URL =
+						"https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml";
+		private static final Path GRADLE_PROPERTIES_PATH = Path.of("gradle.properties");
+		private static final Path README_PATH = Path.of("README.md");
 
-    private final String localVersion;
-    private final String releaseVersion;
-    private final boolean outdated;
+		private final String localVersion;
+		private final String releaseVersion;
+		private final boolean outdated;
 
-    public NeoforgeVersions() {
-        this.localVersion = getLocalNeoVersion();
-        this.releaseVersion = getInfos("release");
-        this.outdated = isOutdated(localVersion, releaseVersion);
-    }
+		public NeoforgeVersions() {
+				this.localVersion = getLocalNeoVersion();
+				this.releaseVersion = getInfos("release");
+				this.outdated = isOutdated(localVersion, releaseVersion);
+		}
 
-    private String getLocalVersion() {
-        return localVersion;
-    }
+		private String getLocalVersion() {
+				return localVersion;
+		}
 
-    private String getReleaseVersion() {
-        return releaseVersion;
-    }
+		private String getReleaseVersion() {
+				return releaseVersion;
+		}
 
-    private boolean isOutdated() {
-        return outdated;
-    }
+		private boolean isOutdated() {
+				return outdated;
+		}
 
-    public void neoforgeCheck() {
-        Main.LOGGER.func("NeoForge Version Check");
-        Main.LOGGER.info("Local version: {}", localVersion);
-        Main.LOGGER.info("Latest Release available version: {}", releaseVersion);
-        if (isOutdated()) {
-            Main.LOGGER.warn("NeoForge is outdated.");
-            getUserConfirmation();
-        } else {
-            Main.LOGGER.success("NeoForge is up to date.");
-        }
-    }
+		public void neoforgeCheck() {
+				Main.LOGGER.func("NeoForge Version Check");
+				Main.LOGGER.info("Local version: {}", localVersion);
+				Main.LOGGER.info("Latest Release available version: {}", releaseVersion);
+				if (isOutdated()) {
+						Main.LOGGER.warn("NeoForge is outdated.");
+						getUserConfirmation();
+				} else {
+						Main.LOGGER.success("NeoForge is up to date.");
+				}
+		}
 
-    protected void getUserConfirmation() {
-        Main.LOGGER.info("Do you want to update NeoForge from {} to {} ? (y/N): ", getLocalVersion(), getReleaseVersion());
-        String input = new Scanner(System.in).nextLine().trim().toLowerCase();
+		protected void getUserConfirmation() {
+				Main.LOGGER.info("Do you want to update NeoForge from {} to {} ? (y/N): ", getLocalVersion(), getReleaseVersion());
+				String input = new Scanner(System.in).nextLine().trim().toLowerCase();
 
-        if (input.equals("y") || input.equals("yes")) {
-            updateGradlePropertiesVersion(getReleaseVersion());
-            updateReadmeVersion(getReleaseVersion());
-        } else {
-            Main.LOGGER.warn("Update canceled by user.");
-        }
-    }
+				if (input.equals("y") || input.equals("yes")) {
+						updateGradlePropertiesVersion(getReleaseVersion());
+						updateReadmeVersion(getReleaseVersion());
+				} else {
+						Main.LOGGER.warn("Update canceled by user.");
+				}
+		}
 
-    protected static void updateReadmeVersion(String newVersion){
-        try{
-            Path path = README_PATH;
-            List<String> lines = Files.readAllLines(path);
+		protected static void updateReadmeVersion(String newVersion){
+				try{
+						Path path = README_PATH;
+						List<String> lines = Files.readAllLines(path);
 
-            for(int i = 0; i < lines.size(); i++){
-                if(lines.get(i).trim().startsWith("- **NeoForge Version:**")){
-                    lines.set(i, "- **NeoForge Version:** " + newVersion);
-                    break;
-                }
-            }
+						for(int i = 0; i < lines.size(); i++){
+								if(lines.get(i).trim().startsWith("- **NeoForge Version:**")){
+										lines.set(i, "- **NeoForge Version:** " + newVersion);
+										break;
+								}
+						}
 
-            String contentWithLf = String.join("\n", lines) + "\n";
-            Files.writeString(path, contentWithLf, StandardOpenOption.TRUNCATE_EXISTING);
+						String contentWithLf = String.join("\n", lines) + "\n";
+						Files.writeString(path, contentWithLf, StandardOpenOption.TRUNCATE_EXISTING);
 
-            Main.LOGGER.success("neo_version updated in readme to: {}", newVersion);
+						Main.LOGGER.success("neo_version updated in readme to: {}", newVersion);
 
-        } catch (IOException e) {
-            Main.LOGGER.error("Failed to update readme.md: {}", e.getMessage());
-        }
-    }
+				} catch (IOException e) {
+						Main.LOGGER.error("Failed to update readme.md: {}", e.getMessage());
+				}
+		}
 
-    protected static void updateGradlePropertiesVersion(String newVersion) {
-        try {
-            Path path = GRADLE_PROPERTIES_PATH;
-            List<String> lines = Files.readAllLines(path);
+		protected static void updateGradlePropertiesVersion(String newVersion) {
+				try {
+						Path path = GRADLE_PROPERTIES_PATH;
+						List<String> lines = Files.readAllLines(path);
 
-            for (int i = 0; i < lines.size(); i++) {
-                if (lines.get(i).trim().startsWith("neo_version=")) {
-                    lines.set(i, "neo_version=" + newVersion);
-                    break;
-                }
-            }
-            String contentWithLf = String.join("\n", lines) + "\n";
-            Files.writeString(path, contentWithLf, StandardOpenOption.TRUNCATE_EXISTING);
+						for (int i = 0; i < lines.size(); i++) {
+								if (lines.get(i).trim().startsWith("neo_version=")) {
+										lines.set(i, "neo_version=" + newVersion);
+										break;
+								}
+						}
+						String contentWithLf = String.join("\n", lines) + "\n";
+						Files.writeString(path, contentWithLf, StandardOpenOption.TRUNCATE_EXISTING);
 
-            Main.LOGGER.success("neo_version updated in gradle.properties to: {}", newVersion);
+						Main.LOGGER.success("neo_version updated in gradle.properties to: {}", newVersion);
 
-        } catch (IOException e) {
-            Main.LOGGER.error("Failed to update gradle.properties: {}", e.getMessage());
-        }
-    }
+				} catch (IOException e) {
+						Main.LOGGER.error("Failed to update gradle.properties: {}", e.getMessage());
+				}
+		}
 
-    protected static boolean isOutdated(String current, String latest) {
-        if (current == null || latest == null) return false;
-        return !current.trim().equals(latest.trim());
-    }
+		protected static boolean isOutdated(String current, String latest) {
+				if (current == null || latest == null) return false;
+				return !current.trim().equals(latest.trim());
+		}
 
-    protected static String getLocalNeoVersion() {
-        Properties props = new Properties();
-        try (InputStream input = Files.newInputStream(GRADLE_PROPERTIES_PATH)) {
-            props.load(input);
-            return props.getProperty("neo_version");
-        } catch (IOException e) {
-            Main.LOGGER.error("Could not read gradle.properties: {}", e.getMessage());
-            return null;
-        }
-    }
+		protected static String getLocalNeoVersion() {
+				Properties props = new Properties();
+				try (InputStream input = Files.newInputStream(GRADLE_PROPERTIES_PATH)) {
+						props.load(input);
+						return props.getProperty("neo_version");
+				} catch (IOException e) {
+						Main.LOGGER.error("Could not read gradle.properties: {}", e.getMessage());
+						return null;
+				}
+		}
 
-    protected static String getInfos(String tagName){
-        try {
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(NEOFORGE_URL))
-                    .GET()
-                    .build();
+		protected static String getInfos(String tagName){
+				try {
+						HttpClient client = HttpClient.newHttpClient();
+						HttpRequest request = HttpRequest.newBuilder()
+										.uri(URI.create(NEOFORGE_URL))
+										.GET()
+										.build();
 
-            HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
+						HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
 
-            if (response.statusCode() != 200) {
-                throw new RuntimeException("HTTP error: " + response.statusCode());
-            }
+						if (response.statusCode() != 200) {
+								throw new RuntimeException("HTTP error: " + response.statusCode());
+						}
 
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            Document doc = factory.newDocumentBuilder().parse(response.body());
-            doc.normalize();
+						DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+						Document doc = factory.newDocumentBuilder().parse(response.body());
+						doc.normalize();
 
-            NodeList nodes = doc.getElementsByTagName(tagName);
-            return (nodes.getLength() > 0) ? nodes.item(0).getTextContent().trim() : null;
+						NodeList nodes = doc.getElementsByTagName(tagName);
+						return (nodes.getLength() > 0) ? nodes.item(0).getTextContent().trim() : null;
 
-        } catch (Exception e) {
-            Main.LOGGER.error("Error {}", e);
-            throw new RuntimeException(e);
-        }
-    }
+				} catch (Exception e) {
+						Main.LOGGER.error("Error {}", e);
+						throw new RuntimeException(e);
+				}
+		}
 }
