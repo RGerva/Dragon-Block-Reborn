@@ -64,6 +64,11 @@ loadScripts(document, 'script');</script>
 <li><a href="#field-summary" tabindex="0">Field Summary</a></li>
 <li><a href="#constructor-summary" tabindex="0">Constructor Summary</a></li>
 <li><a href="#method-summary" tabindex="0">Method Summary</a></li>
+<li><a href="#field-detail" tabindex="0">Field Details</a>
+<ol class="toc-list">
+<li><a href="#idleAnimationState" tabindex="0">idleAnimationState</a></li>
+</ol>
+</li>
 <li><a href="#constructor-detail" tabindex="0">Constructor Details</a>
 <ol class="toc-list">
 <li><a href="#%3Cinit%3E(net.minecraft.world.entity.EntityType,net.minecraft.world.level.Level)" tabindex="0">AuraEntity(EntityType, Level)</a></li>
@@ -77,7 +82,24 @@ loadScripts(document, 'script');</script>
 <li><a href="#hurtServer(net.minecraft.server.level.ServerLevel,net.minecraft.world.damagesource.DamageSource,float)" tabindex="0">hurtServer(ServerLevel, DamageSource, float)</a></li>
 <li><a href="#readAdditionalSaveData(net.minecraft.world.level.storage.ValueInput)" tabindex="0">readAdditionalSaveData(ValueInput)</a></li>
 <li><a href="#addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput)" tabindex="0">addAdditionalSaveData(ValueOutput)</a></li>
+<li><a href="#isPickable()" tabindex="0">isPickable()</a></li>
+<li><a href="#isInvisible()" tabindex="0">isInvisible()</a></li>
+<li><a href="#isPushable()" tabindex="0">isPushable()</a></li>
+<li><a href="#isAttackable()" tabindex="0">isAttackable()</a></li>
+<li><a href="#isAlwaysTicking()" tabindex="0">isAlwaysTicking()</a></li>
 <li><a href="#removePassenger(net.minecraft.world.entity.Entity)" tabindex="0">removePassenger(Entity)</a></li>
+<li><a href="#getVariantId()" tabindex="0">getVariantId()</a></li>
+<li><a href="#isKaiokenEnabled()" tabindex="0">isKaiokenEnabled()</a></li>
+<li><a href="#getAuraColorR()" tabindex="0">getAuraColorR()</a></li>
+<li><a href="#getAuraColorG()" tabindex="0">getAuraColorG()</a></li>
+<li><a href="#getAuraColorB()" tabindex="0">getAuraColorB()</a></li>
+<li><a href="#activateAura()" tabindex="0">activateAura()</a></li>
+<li><a href="#setActiveAndSync(boolean)" tabindex="0">setActiveAndSync(boolean)</a></li>
+<li><a href="#spawnAura(net.minecraft.server.level.ServerLevel,net.minecraft.server.level.ServerPlayer)" tabindex="0">spawnAura(ServerLevel, ServerPlayer)</a></li>
+<li><a href="#isOwnedBy(net.minecraft.world.entity.player.Player)" tabindex="0">isOwnedBy(Player)</a></li>
+<li><a href="#getOwnerUUID()" tabindex="0">getOwnerUUID()</a></li>
+<li><a href="#setActive(boolean)" tabindex="0">setActive(boolean)</a></li>
+<li><a href="#initOwner(net.minecraft.world.entity.LivingEntity)" tabindex="0">initOwner(LivingEntity)</a></li>
 </ol>
 </li>
 </ol>
@@ -98,11 +120,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code>net.minecraft.core.component.DataComponentGetter</code>, <code>net.minecraft.network.syncher.SyncedDataHolder</code>, <code>net.minecraft.world.level.entity.EntityAccess</code>, <code>net.minecraft.world.level.entity.UniquelyIdentifyable</code>, <code>net.minecraft.world.Nameable</code>, <code>net.minecraft.world.scores.ScoreHolder</code>, <code>net.neoforged.neoforge.attachment.IAttachmentHolder</code>, <code>net.neoforged.neoforge.common.extensions.IEntityExtension</code></dd>
+<dd><code><a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></code>, <code>net.minecraft.core.component.DataComponentGetter</code>, <code>net.minecraft.network.syncher.SyncedDataHolder</code>, <code>net.minecraft.world.level.entity.EntityAccess</code>, <code>net.minecraft.world.level.entity.UniquelyIdentifyable</code>, <code>net.minecraft.world.Nameable</code>, <code>net.minecraft.world.scores.ScoreHolder</code>, <code>net.neoforged.neoforge.attachment.IAttachmentHolder</code>, <code>net.neoforged.neoforge.common.extensions.IEntityExtension</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">AuraEntity</span>
-<span class="extends-implements">extends net.minecraft.world.entity.Entity</span></div>
+<span class="extends-implements">extends net.minecraft.world.entity.Entity
+implements <a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></span></div>
 </div>
 </section>
 <section class="summary">
@@ -123,6 +146,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="field-summary" id="field-summary">
 <h2>Field Summary</h2>
+<div class="caption"><span>Fields</span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Field</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>final net.minecraft.world.entity.AnimationState</code></div>
+<div class="col-second even-row-color"><code><a href="#idleAnimationState" class="member-name-link">idleAnimationState</a></code></div>
+<div class="col-last even-row-color">&nbsp;</div>
+</div>
 <div class="inherited-list">
 <h3 id="fields-inherited-from-class-net.minecraft.world.entity.Entity">Fields inherited from class&nbsp;net.minecraft.world.entity.Entity</h3>
 <code>BASE_SAFE_FALL_DISTANCE, BASE_TICKS_REQUIRED_TO_FREEZE, blocksBuilding, BOARDING_COOLDOWN, boardingCooldown, CONTENTS_SLOT_INDEX, DATA_POSE, DATA_SHARED_FLAGS_ID, DEFAULT_BB_HEIGHT, DEFAULT_BB_WIDTH, DELTA_AFFECTED_BY_BLOCKS_BELOW_0_2, DELTA_AFFECTED_BY_BLOCKS_BELOW_0_5, DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0, ENTITY_COUNTER, entityData, fallDistance, firstTick, FLAG_FALL_FLYING, FLAG_GLOWING, FLAG_ONFIRE, fluidHeight, flyDist, forgeFluidTypeHeight, FREEZE_HURT_FREQUENCY, hasImpulse, horizontalCollision, hurtMarked, invulnerableTime, isInPowderSnow, mainSupportingBlockPos, MAX_ENTITY_TAG_COUNT, MAX_MOVEMENTS_HANDELED_PER_TICK, minorHorizontalCollision, moveDist, noPhysics, portalProcess, random, stringUUID, stuckSpeedMultiplier, TAG_AIR, TAG_DATA, TAG_FALL_DISTANCE, TAG_FIRE, TAG_GLOWING, TAG_ID, TAG_INVULNERABLE, TAG_MOTION, TAG_NO_GRAVITY, TAG_ON_GROUND, TAG_PASSENGERS, TAG_PORTAL_COOLDOWN, TAG_POS, TAG_ROTATION, TAG_SILENT, TAG_UUID, tickCount, TOTAL_AIR_SUPPLY, uuid, verticalCollision, verticalCollisionBelow, wasEyeInWater, wasInPowderSnow, wasTouchingWater, xo, xOld, xRotO, yo, yOld, yRotO, zo, zOld</code></div>
@@ -153,25 +185,67 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel" aria-labelledby="method-summary-table-tab0">
 <div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput)" class="member-name-link">addAdditionalSaveData</a><wbr>(net.minecraft.world.level.storage.ValueOutput&nbsp;valueOutput)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAura()" class="member-name-link">activateAura</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder)" class="member-name-link">defineSynchedData</a><wbr>(net.minecraft.network.syncher.SynchedEntityData.Builder&nbsp;builder)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput)" class="member-name-link">addAdditionalSaveData</a><wbr>(net.minecraft.world.level.storage.ValueOutput&nbsp;valueOutput)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="AuraVariant.html" title="enum class in com.rgerva.dbr.entity">AuraVariant</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getVariant()" class="member-name-link">getVariant</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder)" class="member-name-link">defineSynchedData</a><wbr>(net.minecraft.network.syncher.SynchedEntityData.Builder&nbsp;builder)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAuraColorB()" class="member-name-link">getAuraColorB</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAuraColorG()" class="member-name-link">getAuraColorG</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAuraColorR()" class="member-name-link">getAuraColorR</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getOwnerUUID()" class="member-name-link">getOwnerUUID</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="AuraVariant.html" title="enum class in com.rgerva.dbr.entity">AuraVariant</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getVariant()" class="member-name-link">getVariant</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getVariantId()" class="member-name-link">getVariantId</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hurtServer(net.minecraft.server.level.ServerLevel,net.minecraft.world.damagesource.DamageSource,float)" class="member-name-link">hurtServer</a><wbr>(net.minecraft.server.level.ServerLevel&nbsp;serverLevel,
  net.minecraft.world.damagesource.DamageSource&nbsp;damageSource,
  float&nbsp;v)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#initOwner(net.minecraft.world.entity.LivingEntity)" class="member-name-link">initOwner</a><wbr>(net.minecraft.world.entity.LivingEntity&nbsp;owner)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isAlwaysTicking()" class="member-name-link">isAlwaysTicking</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isAttackable()" class="member-name-link">isAttackable</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isInvisible()" class="member-name-link">isInvisible</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isKaiokenEnabled()" class="member-name-link">isKaiokenEnabled</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isOwnedBy(net.minecraft.world.entity.player.Player)" class="member-name-link">isOwnedBy</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPickable()" class="member-name-link">isPickable</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPushable()" class="member-name-link">isPushable</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#readAdditionalSaveData(net.minecraft.world.level.storage.ValueInput)" class="member-name-link">readAdditionalSaveData</a><wbr>(net.minecraft.world.level.storage.ValueInput&nbsp;valueInput)</code></div>
@@ -180,14 +254,24 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removePassenger(net.minecraft.world.entity.Entity)" class="member-name-link">removePassenger</a><wbr>(net.minecraft.world.entity.Entity&nbsp;passenger)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tick()" class="member-name-link">tick</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setActive(boolean)" class="member-name-link">setActive</a><wbr>(boolean&nbsp;active)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setActiveAndSync(boolean)" class="member-name-link">setActiveAndSync</a><wbr>(boolean&nbsp;activate)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#spawnAura(net.minecraft.server.level.ServerLevel,net.minecraft.server.level.ServerPlayer)" class="member-name-link">spawnAura</a><wbr>(net.minecraft.server.level.ServerLevel&nbsp;level,
+ net.minecraft.server.level.ServerPlayer&nbsp;player)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tick()" class="member-name-link">tick</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.minecraft.world.entity.Entity">Methods inherited from class&nbsp;net.minecraft.world.entity.Entity</h3>
-<code>absSnapRotationTo, absSnapTo, absSnapTo, addDeltaMovement, addPassenger, addTag, adjustSpawnLocation, animateHurt, applyComponentsFromItemStack, applyEffectsFromBlocks, applyEffectsFromBlocks, applyGravity, applyImplicitComponent, applyImplicitComponentIfPresent, applyImplicitComponents, awardKillScore, baseTick, blockPosition, broadcastToPlayer, calculateUpVector, calculateViewVector, canAddPassenger, canBeCollidedWith, canBeHitByProjectile, canCollideWith, canControlVehicle, canFreeze, canRide, canSimulateMovement, canSpawnSprintParticle, canSprint, canTeleport, canTrample, canUsePortal, captureDrops, captureDrops, castComponentValue, causeFallDamage, checkBelowWorld, checkDespawn, checkFallDamage, checkFallDistanceAccumulation, checkSupportingBlock, chunkPosition, clearFire, clearFreeze, clearMovementThisTick, closerThan, closerThan, collideBoundingBox, collidedWithFluid, collidedWithShapeMovingFrom, considersEntityAsAlly, copyPosition, couldAcceptPassenger, countPlayerPassengers, createCommandSourceStackForNameResolution, createHoverEvent, damageSources, dampensVibrations, deflection, discard, dismountsUnderwater, dismountTo, displayFireAnimation, distanceTo, distanceToSqr, distanceToSqr, distanceToSqr, doCheckFallDamage, doWaterSplashEffect, dropAllLeashConnections, ejectPassengers, equals, extinguishFire, fillCrashReportCategory, fireImmune, fixupDimensions, forceSetRotation, fudgePositionAfterSizeChange, gameEvent, gameEvent, get, getAddEntityPacket, getAirSupply, getAttachments, getBbHeight, getBbWidth, getBlockExplosionResistance, getBlockJumpFactor, getBlockPosBelowThatAffectsMyMovement, getBlockSpeedFactor, getBlockStateOn, getBlockStateOnLegacy, getBlockX, getBlockY, getBlockZ, getBoundingBox, getCapability, getCapability, getCollisionHorizontalEscapeVector, getControlledVehicle, getControllingPassenger, getCustomName, getDefaultGravity, getDefaultPassengerAttachmentPoint, getDeltaMovement, getDimensionChangingDelay, getDimensions, getDirection, getDismountLocationForPassenger, getDisplayName, getEncodeId, getEntityData, getEyeHeight, getEyeHeight, getEyeInFluidType, getEyePosition, getEyePosition, getEyeY, getFireImmuneTicks, getFirstPassenger, getFluidHeight, getFluidJumpThreshold, getFluidTypeHeight, getForward, getGravity, getHandHoldingItemAngle, getId, getInBlockState, getIndirectPassengers, getInputVector, getInterpolation, getKnownMovement, getLightLevelDependentMagicValue, getLightProbePosition, getLookAngle, getLootTable, getMaxAirSupply, getMaxFallDistance, getMaxHeightFluidType, getMotionDirection, getMovementEmission, getName, getNearestViewDirection, getOnPos, getOnPos, getOnPosLegacy, getPassengerAttachmentPoint, getPassengerRidingPosition, getPassengers, getPassengersAndSelf, getPercentFrozen, getPersistentData, getPickRadius, getPickResult, getPistonPushReaction, getPortalCooldown, getPose, getPosition, getPositionCodec, getPreciseBodyRotation, getPrimaryStepSoundBlockPos, getQuadLeashHolderOffsets, getRandom, getRandomX, getRandomY, getRandomZ, getRelativePortalPosition, getRemainingFireTicks, getRemovalReason, getRequiresPrecisePosition, getRootVehicle, getRopeHoldPosition, getRotationVector, getScoreboardName, getSelfAndPassengers, getServer, getSharedFlag, getSlot, getSoundSource, getStringUUID, getSwimHighSpeedSplashSound, getSwimSound, getSwimSplashSound, getTags, getTeam, getTeamColor, getTicksFrozen, getTicksRequiredToFreeze, getType, getTypeName, getUpVector, getUUID, getVehicle, getVehicleAttachmentPoint, getViewScale, getViewVector, getViewXRot, getViewYRot, getVisualRotationYInDegrees, getWeaponItem, getX, getX, getXRot, getXRot, getY, getY, getYHeadRot, getYRot, getYRot, getZ, getZ, handleDamageEvent, handleEntityEvent, handleOnAboveBubbleColumn, handleOnInsideBubbleColumn, handlePortal, hasControllingPassenger, hasCustomName, hasExactlyOnePlayerPassenger, hasGlowingTag, hashCode, hasIndirectPassenger, hasPassenger, hasPassenger, hasPose, hurt, hurtClient, hurtOrSimulate, igniteForSeconds, igniteForTicks, ignoreExplosion, interact, interactAt, is, isAddedToLevel, isAffectedByBlocks, isAlive, isAlliedTo, isAlliedTo, isAlwaysTicking, isAttackable, isClientAuthoritative, isColliding, isCrouching, isCurrentlyGlowing, isCustomNameVisible, isDescending, isDiscrete, isEffectiveAi, isEyeInFluid, isFlapping, isFlyingVehicle, isFree, isFreezing, isFullyFrozen, isHorizontalCollisionMinor, isIgnoringBlockTriggers, isInClouds, isInFluidType, isInFluidType, isInLava, isInLiquid, isInterpolating, isInvisible, isInvisibleTo, isInvulnerable, isInvulnerableToBase, isInWall, isInWater, isInWaterOrRain, isLocalClientAuthoritative, isLocalInstanceAuthoritative, isNoGravity, isOnFire, isOnPortalCooldown, isOnRails, isPassenger, isPassengerOfSameVehicle, isPickable, isPushable, isPushedByFluid, isRemoved, isShiftKeyDown, isSilent, isSpectator, isSprinting, isSteppingCarefully, isSupportedBy, isSuppressingBounce, isSwimming, isUnderWater, isVehicle, isVisuallyCrawling, isVisuallySwimming, kill, killedEntity, lavaHurt, lavaIgnite, lerpHeadTo, lerpMotion, lerpPositionAndRotationStep, level, limitPistonMovement, load, lookAt, makeBoundingBox, makeBoundingBox, makeStuckInBlock, markHurt, maxUpStep, maybeBackOffFromEdge, mayInteract, mirror, move, moveOrInterpolateTo, moveRelative, moveTowardsClosestSpace, nextStep, notifyLeasheeRemoved, notifyLeashHolder, oldPosition, onAboveBubbleColumn, onAddedToLevel, onBelowWorld, onClientRemoval, onExplosionHit, onFlap, onGround, onInsideBlock, onInsideBubbleColumn, onPassengerTurned, onRemoval, onRemovedFromLevel, onSyncedDataUpdated, onSyncedDataUpdated, pick, placePortalTicket, playCombinationStepSounds, playEntityOnFireExtinguishedSound, playerTouch, playMuffledStepSound, playSound, playSound, playStepSound, playSwimSound, position, positionRider, positionRider, problemPath, processFlappingMovement, processPortalCooldown, propagateFallToPassengers, push, push, push, reapplyPosition, recreateFromPacket, refreshDimensions, registryAccess, remove, removeAfterChangingDimensions, removeLatestMovementRecording, removeTag, removeVehicle, repositionEntityAfterLoad, resetFallDistance, restoreFrom, revive, rideTick, rotate, save, saveAsPassenger, saveWithoutId, sendBubbleColumnParticles, setAirSupply, setAsInsidePortal, setBoundingBox, setComponent, setCustomName, setCustomNameVisible, setData, setDeltaMovement, setDeltaMovement, setFluidTypeHeight, setGlowingTag, setId, setInvisible, setInvulnerable, setIsInPowderSnow, setLevel, setLevelCallback, setNoGravity, setOldPos, setOldPosAndRot, setOldPosAndRot, setOldRot, setOnGround, setOnGroundWithMovement, setOnGroundWithMovement, setPortalCooldown, setPortalCooldown, setPos, setPos, setPose, setPosRaw, setRemainingFireTicks, setRemoved, setRequiresPrecisePosition, setRot, setSharedFlag, setSharedFlagOnFire, setShiftKeyDown, setSilent, setSprinting, setSwimming, setTicksFrozen, setUUID, setViewScale, setXRot, setYBodyRot, setYHeadRot, setYRot, shearOffAllLeashConnections, shouldBeSaved, shouldBlockExplode, shouldPlayLavaHurtSound, shouldRender, shouldRenderAtSqrDistance, shouldShowName, showVehicleHealth, skipAttackInteraction, snapTo, snapTo, snapTo, snapTo, snapTo, spawnAtLocation, spawnAtLocation, spawnAtLocation, spawnAtLocation, spawnAtLocation, spawnSprintParticle, startRiding, startRiding, startSeenByPlayer, stopRiding, stopSeenByPlayer, supportQuadLeashAsHolder, syncData, syncPacketPositionCodec, teleport, teleportRelative, teleportSetPosition, teleportSpectators, teleportTo, teleportTo, thunderHit, toString, touchingUnloadedChunk, trackingPosition, turn, unRide, unsetRemoved, updateDynamicGameEventListener, updateFluidHeightAndDoFluidPushing, updateFluidHeightAndDoFluidPushing, updateInWaterStateAndDoFluidPushing, updateSwimming, waterSwimSound</code></div>
+<code>absSnapRotationTo, absSnapTo, absSnapTo, addDeltaMovement, addPassenger, addTag, adjustSpawnLocation, animateHurt, applyComponentsFromItemStack, applyEffectsFromBlocks, applyEffectsFromBlocks, applyGravity, applyImplicitComponent, applyImplicitComponentIfPresent, applyImplicitComponents, awardKillScore, baseTick, blockPosition, broadcastToPlayer, calculateUpVector, calculateViewVector, canAddPassenger, canBeCollidedWith, canBeHitByProjectile, canCollideWith, canControlVehicle, canFreeze, canRide, canSimulateMovement, canSpawnSprintParticle, canSprint, canTeleport, canTrample, canUsePortal, captureDrops, captureDrops, castComponentValue, causeFallDamage, checkBelowWorld, checkDespawn, checkFallDamage, checkFallDistanceAccumulation, checkSupportingBlock, chunkPosition, clearFire, clearFreeze, clearMovementThisTick, closerThan, closerThan, collideBoundingBox, collidedWithFluid, collidedWithShapeMovingFrom, considersEntityAsAlly, copyPosition, couldAcceptPassenger, countPlayerPassengers, createCommandSourceStackForNameResolution, createHoverEvent, damageSources, dampensVibrations, deflection, discard, dismountsUnderwater, dismountTo, displayFireAnimation, distanceTo, distanceToSqr, distanceToSqr, distanceToSqr, doCheckFallDamage, doWaterSplashEffect, dropAllLeashConnections, ejectPassengers, equals, extinguishFire, fillCrashReportCategory, fireImmune, fixupDimensions, forceSetRotation, fudgePositionAfterSizeChange, gameEvent, gameEvent, get, getAddEntityPacket, getAirSupply, getAttachments, getBbHeight, getBbWidth, getBlockExplosionResistance, getBlockJumpFactor, getBlockPosBelowThatAffectsMyMovement, getBlockSpeedFactor, getBlockStateOn, getBlockStateOnLegacy, getBlockX, getBlockY, getBlockZ, getBoundingBox, getCapability, getCapability, getCollisionHorizontalEscapeVector, getControlledVehicle, getControllingPassenger, getCustomName, getDefaultGravity, getDefaultPassengerAttachmentPoint, getDeltaMovement, getDimensionChangingDelay, getDimensions, getDirection, getDismountLocationForPassenger, getDisplayName, getEncodeId, getEntityData, getEyeHeight, getEyeHeight, getEyeInFluidType, getEyePosition, getEyePosition, getEyeY, getFireImmuneTicks, getFirstPassenger, getFluidHeight, getFluidJumpThreshold, getFluidTypeHeight, getForward, getGravity, getHandHoldingItemAngle, getId, getInBlockState, getIndirectPassengers, getInputVector, getInterpolation, getKnownMovement, getLightLevelDependentMagicValue, getLightProbePosition, getLookAngle, getLootTable, getMaxAirSupply, getMaxFallDistance, getMaxHeightFluidType, getMotionDirection, getMovementEmission, getName, getNearestViewDirection, getOnPos, getOnPos, getOnPosLegacy, getPassengerAttachmentPoint, getPassengerRidingPosition, getPassengers, getPassengersAndSelf, getPercentFrozen, getPersistentData, getPickRadius, getPickResult, getPistonPushReaction, getPortalCooldown, getPose, getPosition, getPositionCodec, getPreciseBodyRotation, getPrimaryStepSoundBlockPos, getQuadLeashHolderOffsets, getRandom, getRandomX, getRandomY, getRandomZ, getRelativePortalPosition, getRemainingFireTicks, getRemovalReason, getRequiresPrecisePosition, getRootVehicle, getRopeHoldPosition, getRotationVector, getScoreboardName, getSelfAndPassengers, getServer, getSharedFlag, getSlot, getSoundSource, getStringUUID, getSwimHighSpeedSplashSound, getSwimSound, getSwimSplashSound, getTags, getTeam, getTeamColor, getTicksFrozen, getTicksRequiredToFreeze, getType, getTypeName, getUpVector, getUUID, getVehicle, getVehicleAttachmentPoint, getViewScale, getViewVector, getViewXRot, getViewYRot, getVisualRotationYInDegrees, getWeaponItem, getX, getX, getXRot, getXRot, getY, getY, getYHeadRot, getYRot, getYRot, getZ, getZ, handleDamageEvent, handleEntityEvent, handleOnAboveBubbleColumn, handleOnInsideBubbleColumn, handlePortal, hasControllingPassenger, hasCustomName, hasExactlyOnePlayerPassenger, hasGlowingTag, hashCode, hasIndirectPassenger, hasPassenger, hasPassenger, hasPose, hurt, hurtClient, hurtOrSimulate, igniteForSeconds, igniteForTicks, ignoreExplosion, interact, interactAt, is, isAddedToLevel, isAffectedByBlocks, isAlive, isAlliedTo, isAlliedTo, isClientAuthoritative, isColliding, isCrouching, isCurrentlyGlowing, isCustomNameVisible, isDescending, isDiscrete, isEffectiveAi, isEyeInFluid, isFlapping, isFlyingVehicle, isFree, isFreezing, isFullyFrozen, isHorizontalCollisionMinor, isIgnoringBlockTriggers, isInClouds, isInFluidType, isInFluidType, isInLava, isInLiquid, isInterpolating, isInvisibleTo, isInvulnerable, isInvulnerableToBase, isInWall, isInWater, isInWaterOrRain, isLocalClientAuthoritative, isLocalInstanceAuthoritative, isNoGravity, isOnFire, isOnPortalCooldown, isOnRails, isPassenger, isPassengerOfSameVehicle, isPushedByFluid, isRemoved, isShiftKeyDown, isSilent, isSpectator, isSprinting, isSteppingCarefully, isSupportedBy, isSuppressingBounce, isSwimming, isUnderWater, isVehicle, isVisuallyCrawling, isVisuallySwimming, kill, killedEntity, lavaHurt, lavaIgnite, lerpHeadTo, lerpMotion, lerpPositionAndRotationStep, level, limitPistonMovement, load, lookAt, makeBoundingBox, makeBoundingBox, makeStuckInBlock, markHurt, maxUpStep, maybeBackOffFromEdge, mayInteract, mirror, move, moveOrInterpolateTo, moveRelative, moveTowardsClosestSpace, nextStep, notifyLeasheeRemoved, notifyLeashHolder, oldPosition, onAboveBubbleColumn, onAddedToLevel, onBelowWorld, onClientRemoval, onExplosionHit, onFlap, onGround, onInsideBlock, onInsideBubbleColumn, onPassengerTurned, onRemoval, onRemovedFromLevel, onSyncedDataUpdated, onSyncedDataUpdated, pick, placePortalTicket, playCombinationStepSounds, playEntityOnFireExtinguishedSound, playerTouch, playMuffledStepSound, playSound, playSound, playStepSound, playSwimSound, position, positionRider, positionRider, problemPath, processFlappingMovement, processPortalCooldown, propagateFallToPassengers, push, push, push, reapplyPosition, recreateFromPacket, refreshDimensions, registryAccess, remove, removeAfterChangingDimensions, removeLatestMovementRecording, removeTag, removeVehicle, repositionEntityAfterLoad, resetFallDistance, restoreFrom, revive, rideTick, rotate, save, saveAsPassenger, saveWithoutId, sendBubbleColumnParticles, setAirSupply, setAsInsidePortal, setBoundingBox, setComponent, setCustomName, setCustomNameVisible, setData, setDeltaMovement, setDeltaMovement, setFluidTypeHeight, setGlowingTag, setId, setInvisible, setInvulnerable, setIsInPowderSnow, setLevel, setLevelCallback, setNoGravity, setOldPos, setOldPosAndRot, setOldPosAndRot, setOldRot, setOnGround, setOnGroundWithMovement, setOnGroundWithMovement, setPortalCooldown, setPortalCooldown, setPos, setPos, setPose, setPosRaw, setRemainingFireTicks, setRemoved, setRequiresPrecisePosition, setRot, setSharedFlag, setSharedFlagOnFire, setShiftKeyDown, setSilent, setSprinting, setSwimming, setTicksFrozen, setUUID, setViewScale, setXRot, setYBodyRot, setYHeadRot, setYRot, shearOffAllLeashConnections, shouldBeSaved, shouldBlockExplode, shouldPlayLavaHurtSound, shouldRender, shouldRenderAtSqrDistance, shouldShowName, showVehicleHealth, skipAttackInteraction, snapTo, snapTo, snapTo, snapTo, snapTo, spawnAtLocation, spawnAtLocation, spawnAtLocation, spawnAtLocation, spawnAtLocation, spawnSprintParticle, startRiding, startRiding, startSeenByPlayer, stopRiding, stopSeenByPlayer, supportQuadLeashAsHolder, syncData, syncPacketPositionCodec, teleport, teleportRelative, teleportSetPosition, teleportSpectators, teleportTo, teleportTo, thunderHit, toString, touchingUnloadedChunk, trackingPosition, turn, unRide, unsetRemoved, updateDynamicGameEventListener, updateFluidHeightAndDoFluidPushing, updateFluidHeightAndDoFluidPushing, updateInWaterStateAndDoFluidPushing, updateSwimming, waterSwimSound</code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.neoforged.neoforge.attachment.AttachmentHolder">Methods inherited from class&nbsp;net.neoforged.neoforge.attachment.AttachmentHolder</h3>
 <code>deserializeAttachments, getData, getExistingDataOrNull, hasAttachments, hasData, removeData, serializeAttachments</code></div>
@@ -204,6 +288,9 @@ loadScripts(document, 'script');</script>
 <h3 id="methods-inherited-from-class-net.neoforged.neoforge.common.extensions.IEntityExtension">Methods inherited from interface&nbsp;net.neoforged.neoforge.common.extensions.IEntityExtension</h3>
 <code>canBeRiddenUnderFluidType, canFluidExtinguish, canHydrateInFluidType, canRiderInteract, canStartSwimming, canSwimInFluidType, copyAttachmentsFrom, getClassification, getFluidFallDistanceModifier, getFluidMotionScale, getParts, getSoundFromFluidType, hasCustomOutlineRendering, isEyeInFluidType, isInFluidType, isInFluidType, isInFluidType, isMultipartEntity, isPushedByFluid, sendPairingData, shouldRiderSit</code></div>
 <div class="inherited-list">
+<h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModAuraSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></h3>
+<code><a href="../network/interfaces/IModAuraSync.html#syncAuraToClient(net.minecraft.world.entity.player.Player)">syncAuraToClient</a>, <a href="../network/interfaces/IModAuraSync.html#syncAuraToServer()">syncAuraToServer</a></code></div>
+<div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.minecraft.world.scores.ScoreHolder">Methods inherited from interface&nbsp;net.minecraft.world.scores.ScoreHolder</h3>
 <code>getFeedbackDisplayName</code></div>
 </section>
@@ -212,6 +299,22 @@ loadScripts(document, 'script');</script>
 </section>
 <section class="details">
 <ul class="details-list">
+<!-- ============ FIELD DETAIL =========== -->
+<li>
+<section class="field-details" id="field-detail">
+<h2>Field Details</h2>
+<ul class="member-list">
+<li>
+<section class="detail" id="idleAnimationState">
+<h3>idleAnimationState</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">net.minecraft.world.entity.AnimationState</span>&nbsp;<span class="element-name">idleAnimationState</span></div>
+</div>
+</section>
+</li>
+</ul>
+</section>
+</li>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <li>
 <section class="constructor-details" id="constructor-detail">
@@ -305,6 +408,68 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="isPickable()">
+<h3>isPickable</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPickable</span>()</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>isPickable</code>&nbsp;in class&nbsp;<code>net.minecraft.world.entity.Entity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isInvisible()">
+<h3>isInvisible</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isInvisible</span>()</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>isInvisible</code>&nbsp;in class&nbsp;<code>net.minecraft.world.entity.Entity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isPushable()">
+<h3>isPushable</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPushable</span>()</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>isPushable</code>&nbsp;in class&nbsp;<code>net.minecraft.world.entity.Entity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isAttackable()">
+<h3>isAttackable</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isAttackable</span>()</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>isAttackable</code>&nbsp;in class&nbsp;<code>net.minecraft.world.entity.Entity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isAlwaysTicking()">
+<h3>isAlwaysTicking</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isAlwaysTicking</span>()</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code>isAlwaysTicking</code>&nbsp;in interface&nbsp;<code>net.minecraft.world.level.entity.EntityAccess</code></dd>
+<dt>Overrides:</dt>
+<dd><code>isAlwaysTicking</code>&nbsp;in class&nbsp;<code>net.minecraft.world.entity.Entity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
 <section class="detail" id="removePassenger(net.minecraft.world.entity.Entity)">
 <h3>removePassenger</h3>
 <div class="horizontal-scroll">
@@ -313,6 +478,107 @@ loadScripts(document, 'script');</script>
 <dt>Overrides:</dt>
 <dd><code>removePassenger</code>&nbsp;in class&nbsp;<code>net.minecraft.world.entity.Entity</code></dd>
 </dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getVariantId()">
+<h3>getVariantId</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getVariantId</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isKaiokenEnabled()">
+<h3>isKaiokenEnabled</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isKaiokenEnabled</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getAuraColorR()">
+<h3>getAuraColorR</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getAuraColorR</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getAuraColorG()">
+<h3>getAuraColorG</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getAuraColorG</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getAuraColorB()">
+<h3>getAuraColorB</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getAuraColorB</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="activateAura()">
+<h3>activateAura</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">activateAura</span>()</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../network/interfaces/IModAuraSync.html#activateAura()">activateAura</a></code>&nbsp;in interface&nbsp;<code><a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setActiveAndSync(boolean)">
+<h3>setActiveAndSync</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setActiveAndSync</span><wbr><span class="parameters">(boolean&nbsp;activate)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="spawnAura(net.minecraft.server.level.ServerLevel,net.minecraft.server.level.ServerPlayer)">
+<h3>spawnAura</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">spawnAura</span><wbr><span class="parameters">(net.minecraft.server.level.ServerLevel&nbsp;level,
+ net.minecraft.server.level.ServerPlayer&nbsp;player)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isOwnedBy(net.minecraft.world.entity.player.Player)">
+<h3>isOwnedBy</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isOwnedBy</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getOwnerUUID()">
+<h3>getOwnerUUID</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name">getOwnerUUID</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setActive(boolean)">
+<h3>setActive</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setActive</span><wbr><span class="parameters">(boolean&nbsp;active)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="initOwner(net.minecraft.world.entity.LivingEntity)">
+<h3>initOwner</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">initOwner</span><wbr><span class="parameters">(net.minecraft.world.entity.LivingEntity&nbsp;owner)</span></div>
 </div>
 </section>
 </li>

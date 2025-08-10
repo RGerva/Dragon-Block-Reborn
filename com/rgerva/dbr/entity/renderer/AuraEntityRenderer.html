@@ -73,6 +73,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#shouldRender(com.rgerva.dbr.entity.AuraEntity,net.minecraft.client.renderer.culling.Frustum,double,double,double)" tabindex="0">shouldRender(AuraEntity, Frustum, double, double, double)</a></li>
 <li><a href="#render(com.rgerva.dbr.entity.renderer.AuraEntityRenderState,com.mojang.blaze3d.vertex.PoseStack,net.minecraft.client.renderer.MultiBufferSource,int)" tabindex="0">render(AuraEntityRenderState, PoseStack, MultiBufferSource, int)</a></li>
 <li><a href="#createRenderState()" tabindex="0">createRenderState()</a></li>
+<li><a href="#extractRenderState(com.rgerva.dbr.entity.AuraEntity,com.rgerva.dbr.entity.renderer.AuraEntityRenderState,float)" tabindex="0">extractRenderState(AuraEntity, AuraEntityRenderState, float)</a></li>
 </ol>
 </li>
 </ol>
@@ -133,24 +134,29 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createRenderState()" class="member-name-link">createRenderState</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#render(com.rgerva.dbr.entity.renderer.AuraEntityRenderState,com.mojang.blaze3d.vertex.PoseStack,net.minecraft.client.renderer.MultiBufferSource,int)" class="member-name-link">render</a><wbr>(<a href="AuraEntityRenderState.html" title="class in com.rgerva.dbr.entity.renderer">AuraEntityRenderState</a>&nbsp;renderState,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#extractRenderState(com.rgerva.dbr.entity.AuraEntity,com.rgerva.dbr.entity.renderer.AuraEntityRenderState,float)" class="member-name-link">extractRenderState</a><wbr>(<a href="../AuraEntity.html" title="class in com.rgerva.dbr.entity">AuraEntity</a>&nbsp;entity,
+ <a href="AuraEntityRenderState.html" title="class in com.rgerva.dbr.entity.renderer">AuraEntityRenderState</a>&nbsp;reusedState,
+ float&nbsp;partialTick)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#render(com.rgerva.dbr.entity.renderer.AuraEntityRenderState,com.mojang.blaze3d.vertex.PoseStack,net.minecraft.client.renderer.MultiBufferSource,int)" class="member-name-link">render</a><wbr>(<a href="AuraEntityRenderState.html" title="class in com.rgerva.dbr.entity.renderer">AuraEntityRenderState</a>&nbsp;renderState,
  com.mojang.blaze3d.vertex.PoseStack&nbsp;poseStack,
  net.minecraft.client.renderer.MultiBufferSource&nbsp;bufferSource,
  int&nbsp;packedLight)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shouldRender(com.rgerva.dbr.entity.AuraEntity,net.minecraft.client.renderer.culling.Frustum,double,double,double)" class="member-name-link">shouldRender</a><wbr>(<a href="../AuraEntity.html" title="class in com.rgerva.dbr.entity">AuraEntity</a>&nbsp;livingEntity,
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shouldRender(com.rgerva.dbr.entity.AuraEntity,net.minecraft.client.renderer.culling.Frustum,double,double,double)" class="member-name-link">shouldRender</a><wbr>(<a href="../AuraEntity.html" title="class in com.rgerva.dbr.entity">AuraEntity</a>&nbsp;livingEntity,
  net.minecraft.client.renderer.culling.Frustum&nbsp;camera,
  double&nbsp;camX,
  double&nbsp;camY,
  double&nbsp;camZ)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.minecraft.client.renderer.entity.EntityRenderer">Methods inherited from class&nbsp;net.minecraft.client.renderer.entity.EntityRenderer</h3>
-<code>affectedByCulling, createRenderState, extractAdditionalHitboxes, extractRenderState, getBlockLightLevel, getBoundingBoxForCulling, getFont, getNameTag, getPackedLightCoords, getRenderOffset, getShadowRadius, getShadowStrength, getSkyLightLevel, renderNameTag, shouldShowName</code></div>
+<code>affectedByCulling, createRenderState, extractAdditionalHitboxes, getBlockLightLevel, getBoundingBoxForCulling, getFont, getNameTag, getPackedLightCoords, getRenderOffset, getShadowRadius, getShadowStrength, getSkyLightLevel, renderNameTag, shouldShowName</code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -220,6 +226,20 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code>createRenderState</code>&nbsp;in class&nbsp;<code>net.minecraft.client.renderer.entity.EntityRenderer&lt;<a href="../AuraEntity.html" title="class in com.rgerva.dbr.entity">AuraEntity</a>,<wbr><a href="AuraEntityRenderState.html" title="class in com.rgerva.dbr.entity.renderer">AuraEntityRenderState</a>&gt;</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="extractRenderState(com.rgerva.dbr.entity.AuraEntity,com.rgerva.dbr.entity.renderer.AuraEntityRenderState,float)">
+<h3>extractRenderState</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">extractRenderState</span><wbr><span class="parameters">(<a href="../AuraEntity.html" title="class in com.rgerva.dbr.entity">AuraEntity</a>&nbsp;entity,
+ <a href="AuraEntityRenderState.html" title="class in com.rgerva.dbr.entity.renderer">AuraEntityRenderState</a>&nbsp;reusedState,
+ float&nbsp;partialTick)</span></div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code>extractRenderState</code>&nbsp;in class&nbsp;<code>net.minecraft.client.renderer.entity.EntityRenderer&lt;<a href="../AuraEntity.html" title="class in com.rgerva.dbr.entity">AuraEntity</a>,<wbr><a href="AuraEntityRenderState.html" title="class in com.rgerva.dbr.entity.renderer">AuraEntityRenderState</a>&gt;</code></dd>
 </dl>
 </div>
 </section>

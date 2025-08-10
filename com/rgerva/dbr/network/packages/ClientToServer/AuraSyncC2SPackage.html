@@ -72,18 +72,19 @@ loadScripts(document, 'script');</script>
 </li>
 <li><a href="#constructor-detail" tabindex="0">Constructor Details</a>
 <ol class="toc-list">
-<li><a href="#%3Cinit%3E()" tabindex="0">AuraSyncC2SPackage()</a></li>
+<li><a href="#%3Cinit%3E(net.minecraft.network.RegistryFriendlyByteBuf)" tabindex="0">AuraSyncC2SPackage(RegistryFriendlyByteBuf)</a></li>
+<li><a href="#%3Cinit%3E(boolean)" tabindex="0">AuraSyncC2SPackage(boolean)</a></li>
 </ol>
 </li>
 <li><a href="#method-detail" tabindex="0">Method Details</a>
 <ol class="toc-list">
-<li><a href="#read(net.minecraft.network.RegistryFriendlyByteBuf)" tabindex="0">read(RegistryFriendlyByteBuf)</a></li>
 <li><a href="#write(net.minecraft.network.RegistryFriendlyByteBuf)" tabindex="0">write(RegistryFriendlyByteBuf)</a></li>
 <li><a href="#type()" tabindex="0">type()</a></li>
 <li><a href="#handle(com.rgerva.dbr.network.packages.ClientToServer.AuraSyncC2SPackage,net.neoforged.neoforge.network.handling.IPayloadContext)" tabindex="0">handle(AuraSyncC2SPackage, IPayloadContext)</a></li>
 <li><a href="#toString()" tabindex="0">toString()</a></li>
 <li><a href="#hashCode()" tabindex="0">hashCode()</a></li>
 <li><a href="#equals(java.lang.Object)" tabindex="0">equals(Object)</a></li>
+<li><a href="#activate()" tabindex="0">activate()</a></li>
 </ol>
 </li>
 </ol>
@@ -105,7 +106,7 @@ loadScripts(document, 'script');</script>
 <dd><code>net.minecraft.network.protocol.common.custom.CustomPacketPayload</code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">AuraSyncC2SPackage</span>()
+<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">AuraSyncC2SPackage</span>(boolean&nbsp;activate)
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a>
 implements net.minecraft.network.protocol.common.custom.CustomPacketPayload</span></div>
 </div>
@@ -147,10 +148,12 @@ implements net.minecraft.network.protocol.common.custom.CustomPacketPayload</spa
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">AuraSyncC2SPackage</a>()</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(boolean)" class="member-name-link">AuraSyncC2SPackage</a><wbr>(boolean&nbsp;activate)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Creates an instance of a <code>AuraSyncC2SPackage</code> record class.</div>
 </div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(net.minecraft.network.RegistryFriendlyByteBuf)" class="member-name-link">AuraSyncC2SPackage</a><wbr>(net.minecraft.network.RegistryFriendlyByteBuf&nbsp;buf)</code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -165,23 +168,25 @@ implements net.minecraft.network.protocol.common.custom.CustomPacketPayload</spa
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#equals(java.lang.Object)" class="member-name-link">equals</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activate()" class="member-name-link">activate</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the value of the <code>activate</code> record component.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#equals(java.lang.Object)" class="member-name-link">equals</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Indicates whether some other object is "equal to" this one.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#handle(com.rgerva.dbr.network.packages.ClientToServer.AuraSyncC2SPackage,net.neoforged.neoforge.network.handling.IPayloadContext)" class="member-name-link">handle</a><wbr>(<a href="AuraSyncC2SPackage.html" title="class in com.rgerva.dbr.network.packages.ClientToServer">AuraSyncC2SPackage</a>&nbsp;data,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#handle(com.rgerva.dbr.network.packages.ClientToServer.AuraSyncC2SPackage,net.neoforged.neoforge.network.handling.IPayloadContext)" class="member-name-link">handle</a><wbr>(<a href="AuraSyncC2SPackage.html" title="class in com.rgerva.dbr.network.packages.ClientToServer">AuraSyncC2SPackage</a>&nbsp;data,
  net.neoforged.neoforge.network.handling.IPayloadContext&nbsp;context)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns a hash code value for this object.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="AuraSyncC2SPackage.html" title="class in com.rgerva.dbr.network.packages.ClientToServer">AuraSyncC2SPackage</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#read(net.minecraft.network.RegistryFriendlyByteBuf)" class="member-name-link">read</a><wbr>(net.minecraft.network.RegistryFriendlyByteBuf&nbsp;buf)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -238,11 +243,23 @@ implements net.minecraft.network.protocol.common.custom.CustomPacketPayload</spa
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;()">
+<section class="detail" id="&lt;init&gt;(net.minecraft.network.RegistryFriendlyByteBuf)">
 <h3>AuraSyncC2SPackage</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AuraSyncC2SPackage</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AuraSyncC2SPackage</span><wbr><span class="parameters">(net.minecraft.network.RegistryFriendlyByteBuf&nbsp;buf)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(boolean)">
+<h3>AuraSyncC2SPackage</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AuraSyncC2SPackage</span><wbr><span class="parameters">(boolean&nbsp;activate)</span></div>
 <div class="block">Creates an instance of a <code>AuraSyncC2SPackage</code> record class.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>activate</code> - the value for the <code>activate</code> record component</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -254,14 +271,6 @@ implements net.minecraft.network.protocol.common.custom.CustomPacketPayload</spa
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
-<li>
-<section class="detail" id="read(net.minecraft.network.RegistryFriendlyByteBuf)">
-<h3>read</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="AuraSyncC2SPackage.html" title="class in com.rgerva.dbr.network.packages.ClientToServer">AuraSyncC2SPackage</a></span>&nbsp;<span class="element-name">read</span><wbr><span class="parameters">(net.minecraft.network.RegistryFriendlyByteBuf&nbsp;buf)</span></div>
-</div>
-</section>
-</li>
 <li>
 <section class="detail" id="write(net.minecraft.network.RegistryFriendlyByteBuf)">
 <h3>write</h3>
@@ -326,7 +335,7 @@ implements net.minecraft.network.protocol.common.custom.CustomPacketPayload</spa
 <h3>equals</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">equals</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</span></div>
-<div class="block">Indicates whether some other object is "equal to" this one. The objects are equal if the other object is of the same class and if all the record components are equal. </div>
+<div class="block">Indicates whether some other object is "equal to" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with the <code>compare</code> method from their corresponding wrapper classes.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Record.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a></code></dd>
@@ -334,6 +343,19 @@ implements net.minecraft.network.protocol.common.custom.CustomPacketPayload</spa
 <dd><code>o</code> - the object with which to compare</dd>
 <dt>Returns:</dt>
 <dd><code>true</code> if this object is the same as the <code>o</code> argument; <code>false</code> otherwise.</dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="activate()">
+<h3>activate</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">activate</span>()</div>
+<div class="block">Returns the value of the <code>activate</code> record component.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the value of the <code>activate</code> record component</dd>
 </dl>
 </div>
 </section>
