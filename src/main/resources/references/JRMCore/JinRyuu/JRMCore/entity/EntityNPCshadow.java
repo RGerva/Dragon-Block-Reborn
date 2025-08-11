@@ -91,7 +91,7 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
 
    public int BattlePower() {
       int exp = this.field_70728_aV * 100;
-      int BattlePower = 1200 + this.field_70146_Z.nextInt(100);
+      int BattlePower = 1200 + this.rand.nextInt(100);
       return BattlePower;
    }
 
@@ -114,14 +114,14 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
    protected Entity func_70782_k() {
       int n = 8;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.field_70165_t - (double)n, this.field_70163_u - (double)n, this.field_70161_v - (double)n, this.field_70165_t + (double)n, this.field_70163_u + (double)n, this.field_70161_v + (double)n);
-      Entity entity = this.field_70170_p.func_72857_a(EntityCreature.class, aabb, this);
-      EntityPlayer entityplayer = this.field_70170_p.func_72856_b(this, 16.0D);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.posX - (double)n, this.posY - (double)n, this.posZ - (double)n, this.posX + (double)n, this.posY + (double)n, this.posZ + (double)n);
+      Entity entity = this.world.func_72857_a(EntityCreature.class, aabb, this);
+      EntityPlayer entityplayer = this.world.func_72856_b(this, 16.0D);
       Entity target = this.target;
       return (Entity)(target != null ? target : (entityplayer != null && entityplayer != this.summoner ? entityplayer : (entity != null && entity != this.summoner && entity != this ? entity : null)));
    }
@@ -129,14 +129,14 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
    public void func_70636_d() {
       String[] pmj = JRMCoreH.pmj[Integer.parseInt(this.type)];
       this.pmje = Integer.parseInt(pmj[13]);
-      if (!this.field_70170_p.field_72995_K && (this.summoner == null || !(this.summoner instanceof EntityPlayer) || this.age > 6000)) {
-         this.func_70106_y();
+      if (!this.world.field_72995_K && (this.summoner == null || !(this.summoner instanceof EntityPlayer) || this.age > 6000)) {
+         this.setDead();
       } else {
          double r = 10.0D;
-         AxisAlignedBB ab = AxisAlignedBB.func_72330_a(this.field_70165_t - r, this.field_70163_u - r, this.field_70161_v - r, this.field_70165_t + r, this.field_70163_u + r, this.field_70161_v + r);
-         List entityList = this.field_70170_p.func_72872_a(this.getClass(), ab);
+         AxisAlignedBB ab = AxisAlignedBB.func_72330_a(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
+         List entityList = this.world.func_72872_a(this.getClass(), ab);
          if (entityList.size() > 5) {
-            this.func_70106_y();
+            this.setDead();
          } else {
             ++this.age;
             if (this.age == 1) {
@@ -156,7 +156,7 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
       } else {
          Entity var3 = par1DamageSource.func_76346_g();
          if (var3 instanceof EntityPlayer) {
-            List var4 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+            List var4 = this.world.func_72839_b(this, this.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
 
             for(int var5 = 0; var5 < var4.size(); ++var5) {
                Entity var6 = (Entity)var4.get(var5);
@@ -175,8 +175,8 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
 
    private void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
-      this.randomSoundDelay = this.field_70146_Z.nextInt(40);
+      this.angerLevel = 400 + this.rand.nextInt(400);
+      this.randomSoundDelay = this.rand.nextInt(40);
    }
 
    protected void func_70628_a(boolean par1, int par2) {
@@ -210,7 +210,7 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
       boolean var4 = par1Entity.func_70097_a(DamageSource.func_76358_a(this), (float)var2);
       if (var4) {
          if (var3 > 0) {
-            par1Entity.func_70024_g((double)(-MathHelper.func_76126_a(this.field_70177_z * 3.1415927F / 180.0F) * (float)var3 * 0.5F), 0.1D, (double)(MathHelper.func_76134_b(this.field_70177_z * 3.1415927F / 180.0F) * (float)var3 * 0.5F));
+            par1Entity.func_70024_g((double)(-MathHelper.func_76126_a(this.rotationYaw * 3.1415927F / 180.0F) * (float)var3 * 0.5F), 0.1D, (double)(MathHelper.func_76134_b(this.rotationYaw * 3.1415927F / 180.0F) * (float)var3 * 0.5F));
             this.field_70159_w *= 0.6D;
             this.field_70179_y *= 0.6D;
          }
@@ -226,12 +226,12 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
 
    public void func_70645_a(DamageSource par1DamageSource) {
       Entity var3 = par1DamageSource.func_76346_g();
-      this.field_70170_p.func_72956_a(this, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndHitPM[0], 1.0F, 1.0F);
+      this.world.func_72956_a(this, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndHitPM[0], 1.0F, 1.0F);
       super.func_70645_a(par1DamageSource);
    }
 
    protected void func_70785_a(Entity par1Entity, float par2) {
-      if (this.field_70724_aR <= 0 && par2 < 2.0F && par1Entity.field_70121_D.field_72337_e > this.field_70121_D.field_72338_b && par1Entity.field_70121_D.field_72338_b < this.field_70121_D.field_72337_e) {
+      if (this.field_70724_aR <= 0 && par2 < 2.0F && par1Entity.boundingBox.field_72337_e > this.boundingBox.field_72338_b && par1Entity.boundingBox.field_72338_b < this.boundingBox.field_72337_e) {
          this.field_70724_aR = 20;
          this.func_70652_k(par1Entity);
       }
@@ -241,27 +241,27 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
    public void writeSpawnData(ByteBuf data) {
       data.writeInt(this.dam);
       data.writeInt(this.maxHealth);
-      ByteBufUtils.writeUTF8String(data, this.summoner != null ? this.summoner.func_70005_c_() : "");
+      ByteBufUtils.writeUTF8String(data, this.summoner != null ? this.summoner.getName() : "");
    }
 
    public void readSpawnData(ByteBuf data) {
       this.dam = data.readInt();
       this.maxHealth = data.readInt();
-      this.summoner = this.field_70170_p.func_72924_a(ByteBufUtils.readUTF8String(data));
+      this.summoner = this.world.getPlayerEntityByName(ByteBufUtils.readUTF8String(data));
    }
 
-   public void func_70014_b(NBTTagCompound nbtCompound) {
-      super.func_70014_b(nbtCompound);
+   public void writeEntityToNBT(NBTTagCompound nbtCompound) {
+      super.writeEntityToNBT(nbtCompound);
       nbtCompound.func_74768_a("NPCdam", this.dam);
       nbtCompound.func_74768_a("maxHealth", this.maxHealth);
-      nbtCompound.func_74778_a("NPCsummoner", this.summoner != null ? this.summoner.func_70005_c_() : "");
+      nbtCompound.func_74778_a("NPCsummoner", this.summoner != null ? this.summoner.getName() : "");
    }
 
-   public void func_70037_a(NBTTagCompound nbtCompound) {
-      super.func_70037_a(nbtCompound);
+   public void readEntityFromNBT(NBTTagCompound nbtCompound) {
+      super.readEntityFromNBT(nbtCompound);
       this.dam = nbtCompound.func_74762_e("NPCdam");
       this.maxHealth = nbtCompound.func_74762_e("maxHealth");
-      this.summoner = this.field_70170_p.func_72924_a(nbtCompound.func_74779_i("NPCsummoner"));
+      this.summoner = this.world.getPlayerEntityByName(nbtCompound.func_74779_i("NPCsummoner"));
    }
 
    private NBTTagCompound nbt(EntityPlayer p, String s) {
@@ -284,11 +284,11 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
       if (this.summoner != null) {
          int R = 32;
          ++this.wait;
-         List entityList2 = this.field_70170_p.func_72872_a(EntityPlayer.class, this.field_70121_D.func_72314_b((double)R, (double)R, (double)R));
+         List entityList2 = this.world.func_72872_a(EntityPlayer.class, this.boundingBox.func_72314_b((double)R, (double)R, (double)R));
          if (!entityList2.isEmpty()) {
             for(int var5 = 0; var5 < entityList2.size(); ++var5) {
                EntityPlayer var6 = (EntityPlayer)entityList2.get(var5);
-               if (var6.func_70005_c_().equals(this.summoner.func_70005_c_())) {
+               if (var6.getName().equals(this.summoner.getName())) {
                   this.becomeAngryAt(var6);
                   if (this.wait == 150 * this.m) {
                      boolean calculateSize = JRMCoreConfig.ShadowDummyScaleToTarget;
@@ -303,9 +303,9 @@ public class EntityNPCshadow extends EntityNPC implements IEntityAdditionalSpawn
                      }
 
                      ++this.m;
-                     if (!this.field_70170_p.field_72995_K) {
-                        this.func_70634_a(var6.field_70165_t, var6.field_70163_u + 1.5D, var6.field_70161_v);
-                        this.field_70170_p.func_72956_a(this, JRMCoreH.TeleportSound(JRMCoreH.getByte(var6, "jrmcPwrtyp")), 0.5F, this.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
+                     if (!this.world.field_72995_K) {
+                        this.func_70634_a(var6.posX, var6.posY + 1.5D, var6.posZ);
+                        this.world.func_72956_a(this, JRMCoreH.TeleportSound(JRMCoreH.getByte(var6, "jrmcPwrtyp")), 0.5F, this.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
                      }
                   }
                }

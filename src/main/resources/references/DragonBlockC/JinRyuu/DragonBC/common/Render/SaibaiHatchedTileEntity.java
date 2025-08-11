@@ -88,7 +88,7 @@ public class SaibaiHatchedTileEntity extends TileEntity {
                double d3 = (double)(this.field_145848_d + this.field_145850_b.field_73012_v.nextInt(3) - 1);
                double d4 = (double)this.field_145849_e + (this.field_145850_b.field_73012_v.nextDouble() - this.field_145850_b.field_73012_v.nextDouble()) * (double)this.spawnRange;
                EntityLiving entityliving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
-               entity.func_70012_b(d0, d3, d4, this.field_145850_b.field_73012_v.nextFloat() * 360.0F, 0.0F);
+               entity.setLocationAndAngles(d0, d3, d4, this.field_145850_b.field_73012_v.nextFloat() * 360.0F, 0.0F);
                if (entityliving == null || entityliving.func_70601_bi()) {
                   this.func_98265_a(entity);
                   this.field_145850_b.func_72926_e(2004, this.field_145851_c, this.field_145848_d, this.field_145849_e, 0);
@@ -107,7 +107,7 @@ public class SaibaiHatchedTileEntity extends TileEntity {
    }
 
    private Entity func_98265_a(Entity par1Entity) {
-      if (par1Entity instanceof EntityLiving && par1Entity.field_70170_p != null) {
+      if (par1Entity instanceof EntityLiving && par1Entity.world != null) {
          this.field_145850_b.func_72838_d(par1Entity);
       }
 

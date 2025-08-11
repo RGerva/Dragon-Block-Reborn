@@ -38,7 +38,7 @@ public class JRMCoreGuiButtonEmpty extends GuiButton {
          int idY = 0;
          int idX = 0;
          ResourceLocation txx = new ResourceLocation(JRMCoreH.tjjrmc + ":" + (select ? "note_select.png" : "note_category_icons.png"));
-         minecraft.func_110434_K().func_110577_a(txx);
+         minecraft.func_110434_K().bindTexture(txx);
          if (!select && this.mode == 0 && hoverState != 2) {
             this.alpha = 0.6F;
          } else {

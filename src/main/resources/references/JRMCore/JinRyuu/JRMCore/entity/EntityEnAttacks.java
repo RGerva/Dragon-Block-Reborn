@@ -11,13 +11,13 @@ public class EntityEnAttacks extends Entity {
       super(par1World);
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound var1) {
+   protected void readEntityFromNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70014_b(NBTTagCompound var1) {
+   protected void writeEntityToNBT(NBTTagCompound var1) {
    }
 
    public long getPower(Entity entity) {

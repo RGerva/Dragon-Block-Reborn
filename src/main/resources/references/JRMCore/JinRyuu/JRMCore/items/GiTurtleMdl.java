@@ -48,19 +48,19 @@ public class GiTurtleMdl extends ModelBiped {
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
+      model.rotateAngleX = x;
       model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleZ = z;
    }
 
    public void setRotationPub(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
+      model.rotateAngleX = x;
       model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      super.func_78088_a(entity, f, f1, f2, f3, f4, f5);
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      super.render(entity, f, f1, f2, f3, f4, f5);
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
    }
 }

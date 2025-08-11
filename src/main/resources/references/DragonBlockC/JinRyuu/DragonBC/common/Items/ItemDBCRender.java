@@ -47,7 +47,7 @@ public class ItemDBCRender implements IItemRenderer {
          GL11.glDisable(2884);
          GL11.glEnable(3042);
          GL11.glBlendFunc(770, 771);
-         JRMCoreClient.mc.field_71446_o.func_110577_a(new ResourceLocation("jinryuudragonbc:textures/blades/" + this.t + ".png"));
+         JRMCoreClient.mc.field_71446_o.bindTexture(new ResourceLocation("jinryuudragonbc:textures/blades/" + this.t + ".png"));
          h1 = 1.0F;
          scale = 1.0F;
          GL11.glScalef(scale, scale, scale);
@@ -85,7 +85,7 @@ public class ItemDBCRender implements IItemRenderer {
             GL11.glScalef(scl, scl, scl);
          }
 
-         JRMCoreClient.mc.field_71446_o.func_110577_a(new ResourceLocation("jinryuudragonbc:textures/blades/" + this.t + ".png"));
+         JRMCoreClient.mc.field_71446_o.bindTexture(new ResourceLocation("jinryuudragonbc:textures/blades/" + this.t + ".png"));
          if (this.t.equals("Z")) {
             this.model2.render();
          } else {
@@ -100,7 +100,7 @@ public class ItemDBCRender implements IItemRenderer {
          GL11.glDisable(2884);
          GL11.glEnable(3042);
          GL11.glBlendFunc(770, 771);
-         JRMCoreClient.mc.field_71446_o.func_110577_a(new ResourceLocation("jinryuudragonbc:textures/blades/" + this.t + ".png"));
+         JRMCoreClient.mc.field_71446_o.bindTexture(new ResourceLocation("jinryuudragonbc:textures/blades/" + this.t + ".png"));
          h1 = 1.0F;
          scale = 0.65F;
          GL11.glScalef(scale, scale, scale);

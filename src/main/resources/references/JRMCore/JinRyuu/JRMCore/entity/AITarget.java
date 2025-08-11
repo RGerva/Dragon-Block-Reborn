@@ -91,7 +91,7 @@ public abstract class AITarget extends EntityAIBase {
             return false;
          }
 
-         if (!this.taskOwner.func_110176_b(MathHelper.func_76128_c(par1EntityLivingBase.field_70165_t), MathHelper.func_76128_c(par1EntityLivingBase.field_70163_u), MathHelper.func_76128_c(par1EntityLivingBase.field_70161_v))) {
+         if (!this.taskOwner.func_110176_b(MathHelper.func_76128_c(par1EntityLivingBase.posX), MathHelper.func_76128_c(par1EntityLivingBase.posY), MathHelper.func_76128_c(par1EntityLivingBase.posZ))) {
             return false;
          } else if (this.shouldCheckSight && !this.taskOwner.func_70635_at().func_75522_a(par1EntityLivingBase)) {
             return false;
@@ -125,8 +125,8 @@ public abstract class AITarget extends EntityAIBase {
          if (pathpoint == null) {
             return false;
          } else {
-            int i = pathpoint.field_75839_a - MathHelper.func_76128_c(par1EntityLivingBase.field_70165_t);
-            int j = pathpoint.field_75838_c - MathHelper.func_76128_c(par1EntityLivingBase.field_70161_v);
+            int i = pathpoint.field_75839_a - MathHelper.func_76128_c(par1EntityLivingBase.posX);
+            int j = pathpoint.field_75838_c - MathHelper.func_76128_c(par1EntityLivingBase.posZ);
             return (double)(i * i + j * j) <= 2.25D;
          }
       }

@@ -908,7 +908,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(2)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(p.func_70005_c_())) {
+            if (plyrs[pl].equals(p.getName())) {
                String[] s2 = data2[pl].split(";");
                on = Integer.parseInt(s2[1]);
                break;
@@ -928,7 +928,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(p.func_70005_c_())) {
+            if (plyrs[pl].equals(p.getName())) {
                String[] s = data1[pl].split(";");
                on = Byte.parseByte(s[2]);
                break;
@@ -949,7 +949,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(par1EntityPlayer.func_70005_c_())) {
+            if (plyrs[pl].equals(par1EntityPlayer.getName())) {
                String[] s = data1[pl].split(";");
                on = Byte.parseByte(s[3]);
                break;
@@ -1196,7 +1196,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1) && dnn(2)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(par1EntityPlayer.func_70005_c_())) {
+            if (plyrs[pl].equals(par1EntityPlayer.getName())) {
                String[] s = data1[pl].split(";");
                String[] s2 = data2[pl].split(";");
                if (saiyanBlood(s)) {
@@ -1224,7 +1224,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1) && dnn(2)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(par1EntityPlayer.func_70005_c_())) {
+            if (plyrs[pl].equals(par1EntityPlayer.getName())) {
                String[] s = data1[pl].split(";");
                String[] s2 = data2[pl].split(";");
                if (saiyanBlood(s) && state((String)s2[0], 0)) {
@@ -1249,7 +1249,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1) && dnn(2)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(par1EntityPlayer.func_70005_c_())) {
+            if (plyrs[pl].equals(par1EntityPlayer.getName())) {
                String[] s = data1[pl].split(";");
                String[] s2 = data2[pl].split(";");
                if (saiyanBlood(s) && !state((String)s2[0], 0)) {
@@ -1274,7 +1274,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1) && dnn(2)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(par1EntityPlayer.func_70005_c_())) {
+            if (plyrs[pl].equals(par1EntityPlayer.getName())) {
                String[] s = data1[pl].split(";");
                String[] s2 = data2[pl].split(";");
                if (saiyanBlood(s) && state((String)s2[0], 1)) {
@@ -1298,7 +1298,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1) && dnn(2)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(par1EntityPlayer.func_70005_c_())) {
+            if (plyrs[pl].equals(par1EntityPlayer.getName())) {
                String[] s = data1[pl].split(";");
                String[] s2 = data2[pl].split(";");
                if (saiyanBlood(s) && state((String)s2[0], 2)) {
@@ -1322,7 +1322,7 @@ public class JRMCoreH {
       Side side = FMLCommonHandler.instance().getEffectiveSide();
       if (side == Side.CLIENT && plyrs != null && plyrs.length > 0 && dnn(1) && dnn(2)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(par1EntityPlayer.func_70005_c_())) {
+            if (plyrs[pl].equals(par1EntityPlayer.getName())) {
                String[] s = data1[pl].split(";");
                String[] s2 = data2[pl].split(";");
                if (saiyanBlood(s) && state((String)s2[0], 3)) {
@@ -1624,7 +1624,7 @@ public class JRMCoreH {
    public static boolean aliveState() {
       if (plyrs != null && plyrs.length > 0 && dnn(13)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(mod_JRMCore.proxy.getPlayerClient().func_70005_c_())) {
+            if (plyrs[pl].equals(mod_JRMCore.proxy.getPlayerClient().getName())) {
                return aliveState(pl);
             }
          }
@@ -1673,7 +1673,7 @@ public class JRMCoreH {
    }
 
    public static String StusEfctsClient(EntityPlayer p) {
-      return data(p.func_70005_c_(), 19, "0; ;");
+      return data(p.getName(), 19, "0; ;");
    }
 
    public static String StusEfctsClient(int pl) {
@@ -1698,7 +1698,7 @@ public class JRMCoreH {
    }
 
    public static String StusEfctsMe() {
-      return StusEfctsClient2(mod_JRMCore.proxy.getPlayerClient().func_70005_c_());
+      return StusEfctsClient2(mod_JRMCore.proxy.getPlayerClient().getName());
    }
 
    public static boolean StusEfctsMe(int ste) {
@@ -1792,7 +1792,7 @@ public class JRMCoreH {
             if (Fzn.contains(",")) {
                String[] fusionMembers = Fzn.split(",");
                if (fusionMembers.length == 3) {
-                  return fusionMembers[1].equalsIgnoreCase(Player.func_70005_c_());
+                  return fusionMembers[1].equalsIgnoreCase(Player.getName());
                }
             }
          }
@@ -1804,12 +1804,12 @@ public class JRMCoreH {
    public static EntityPlayer getFusionSpectatorPartnerC(EntityPlayer player) {
       if (curRelease != 0 && StusEfctsMe(11) && !kob && isFused() && plyrs != null && plyrs.length > 0 && dnn(18)) {
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl].equals(player.func_70005_c_())) {
+            if (plyrs[pl].equals(player.getName())) {
                String[] fullFusionData = dat18[pl].split(";");
                if (fullFusionData.length >= 3) {
                   String[] fusionData = fullFusionData[2].split(",");
                   if (fusionData.length == 3) {
-                     EntityPlayer playerPartner = player.field_70170_p.func_72924_a(fusionData[0]);
+                     EntityPlayer playerPartner = player.world.getPlayerEntityByName(fusionData[0]);
                      if (player != null) {
                         return playerPartner;
                      }
@@ -2309,7 +2309,7 @@ public class JRMCoreH {
    }
 
    public static String data(int i, String d) {
-      return data(mod_JRMCore.proxy.getPlayerClient().func_70005_c_(), i, d);
+      return data(mod_JRMCore.proxy.getPlayerClient().getName(), i, d);
    }
 
    public static String data(String p, int i, String d) {
@@ -2349,8 +2349,8 @@ public class JRMCoreH {
 
          return l < 1L ? 1L : l;
       } else if (e instanceof EntityPlayer) {
-         String[] s = data(e.func_70005_c_(), 0, "0;0;0").split(";");
-         l = bpc((EntityPlayer)e, e.func_70005_c_());
+         String[] s = data(e.getName(), 0, "0;0;0").split(";");
+         l = bpc((EntityPlayer)e, e.getName());
          return l < 5L ? 5L : l;
       } else {
          return 1L;
@@ -2547,7 +2547,7 @@ public class JRMCoreH {
    }
 
    public static int getArcRsrv() {
-      return getArcRsrvID(mod_JRMCore.proxy.getPlayerClient().func_70005_c_());
+      return getArcRsrvID(mod_JRMCore.proxy.getPlayerClient().getName());
    }
 
    public static int getArcosianPowerPointBoost(int curentPow, int state, int currentRelease, int currentReserv, int stateID) {
@@ -2597,11 +2597,11 @@ public class JRMCoreH {
    }
 
    public static String getMajinAbsorption() {
-      return getMajinAbsorptionID(mod_JRMCore.proxy.getPlayerClient().func_70005_c_());
+      return getMajinAbsorptionID(mod_JRMCore.proxy.getPlayerClient().getName());
    }
 
    public static int getMajinAbsorptionValue() {
-      String data = getMajinAbsorptionID(mod_JRMCore.proxy.getPlayerClient().func_70005_c_());
+      String data = getMajinAbsorptionID(mod_JRMCore.proxy.getPlayerClient().getName());
       return Integer.parseInt(data.split(",")[0]);
    }
 
@@ -2872,8 +2872,8 @@ public class JRMCoreH {
    }
 
    public static String getFormMasteryData(EntityPlayer player, String decimalFormat) {
-      if (player != null && player.field_70170_p != null) {
-         if (!player.field_70170_p.field_72995_K) {
+      if (player != null && player.world != null) {
+         if (!player.world.field_72995_K) {
             JGPlayerMP jgPlayer = new JGPlayerMP(player);
             jgPlayer.connectBaseNBT();
             String mastery = "";
@@ -2959,7 +2959,7 @@ public class JRMCoreH {
          }
 
          if (dnn(32) && plyrs != null) {
-            String playerName = mod_JRMCore.proxy.getPlayerClient().func_70005_c_();
+            String playerName = mod_JRMCore.proxy.getPlayerClient().getName();
             if (playerName == null || playerName.length() == 0) {
                return "";
             }
@@ -3056,7 +3056,7 @@ public class JRMCoreH {
          }
 
          for(int pl = 0; pl < plyrs.length; ++pl) {
-            if (plyrs[pl] != null && plyrs[pl].equals(player.func_70005_c_())) {
+            if (plyrs[pl] != null && plyrs[pl].equals(player.getName())) {
                if (dat32 != null && dat32.length > pl) {
                   int race = Integer.parseInt(data1[pl].split(";")[0]);
                   int state = Integer.parseInt(data2[pl].split(";")[0]);
@@ -4818,7 +4818,7 @@ public class JRMCoreH {
    }
 
    public static int[] PlyrAttrbtsC(EntityPlayer p) {
-      String d = data(p.func_70005_c_(), 14, "10,10,10,10,10,10");
+      String d = data(p.getName(), 14, "10,10,10,10,10,10");
       if (d == "") {
          return new int[]{10, 10, 10, 10, 10, 10};
       } else {
@@ -5627,7 +5627,7 @@ public class JRMCoreH {
    public static String getBonusAttributes(String player, int attributeID) {
       if (plyrs != null) {
          if (player == null || player.length() == 0) {
-            player = mod_JRMCore.proxy.getPlayerClient().func_70005_c_();
+            player = mod_JRMCore.proxy.getPlayerClient().getName();
          }
 
          for(int pl = 0; pl < plyrs.length; ++pl) {
@@ -5654,11 +5654,11 @@ public class JRMCoreH {
       int value = (int)round(bs + (double)getStatBonus(powerType, race, classID, stat, false) * 0.01D * bs + (double)getStatBonus(powerType, race, classID, stat, true) * 0.01D * bs + bs * (double)skillBonus, 0, 0);
       if (JRMCoreConfig.JRMCABonusOn && attributeID > -1 && attributeID <= 5 && player instanceof EntityPlayer) {
          String nbtValue = "NONE";
-         if (!player.field_70170_p.field_72995_K) {
+         if (!player.world.field_72995_K) {
             NBTTagCompound nbt = nbt((EntityPlayer)player, "pres");
             nbtValue = nbt.func_74779_i("jrmcAttrBonus" + ComJrmcaBonus.ATTRIBUTES_SHORT[attributeID]);
          } else {
-            nbtValue = getBonusAttributes(player.func_70005_c_(), attributeID);
+            nbtValue = getBonusAttributes(player.getName(), attributeID);
          }
 
          if (!nbtValue.equals("NONE") && !nbtValue.equals("n")) {
@@ -6821,7 +6821,7 @@ public class JRMCoreH {
    }
 
    public static void resetChar(EntityPlayer p, boolean keepSkills, boolean keepTechs, boolean keepMasteries, float perc) {
-      String nam = p.func_70005_c_();
+      String nam = p.getName();
       String[] pw = new String[]{"NotSelected", "DBC", "NC", "SAO"};
       int pwr = getByte(p, "jrmcPwrtyp");
       mod_JRMCore.logger.info("Character reset for " + nam);
@@ -7027,7 +7027,7 @@ public class JRMCoreH {
    }
 
    public static int jrmcEnergyDam(Entity Player, int dbcA, DamageSource s) {
-      if (!Player.field_70170_p.field_72995_K && Player instanceof EntityPlayer) {
+      if (!Player.world.field_72995_K && Player instanceof EntityPlayer) {
          EntityPlayer player = (EntityPlayer)Player;
          ExtendedPlayer props = ExtendedPlayer.get(player);
          boolean block = props.getBlocking() == 1;
@@ -7060,11 +7060,11 @@ public class JRMCoreH {
    }
 
    public static int jrmcDam(Entity Player, int dbcA, DamageSource s, byte t) {
-      if (!Player.field_70170_p.field_72995_K && Player instanceof EntityPlayer && t == 2) {
+      if (!Player.world.field_72995_K && Player instanceof EntityPlayer && t == 2) {
          Random ran = new Random();
          int r = ran.nextInt(4);
          if (r == 0) {
-            Player.field_70170_p.func_72956_a(Player, "jinryuudragonbc:DBC4.disckill", 1.0F, 1.0F);
+            Player.world.func_72956_a(Player, "jinryuudragonbc:DBC4.disckill", 1.0F, 1.0F);
             setByte((byte)4, (EntityPlayer)Player, "jrmcTlmd");
             int state = getByte((EntityPlayer)Player, "jrmcState");
             if (state == 7 || state == 8 || state == 14) {
@@ -7077,7 +7077,7 @@ public class JRMCoreH {
    }
 
    public static int jrmcDam(Entity Player, int dbcA, DamageSource s) {
-      if (!Player.field_70170_p.field_72995_K && Player instanceof EntityPlayer) {
+      if (!Player.world.field_72995_K && Player instanceof EntityPlayer) {
          EntityPlayer player = (EntityPlayer)Player;
          boolean dse = s != null && s.func_76346_g() != null && s.func_76346_g() instanceof EntityPlayer;
          if (!player.field_71075_bZ.field_75098_d) {
@@ -7177,7 +7177,7 @@ public class JRMCoreH {
             staminaCost = (int)((float)(def - kiProtection) * 0.05F);
             if (block && currStamina >= staminaCost) {
                defensePenetration = (int)(Math.random() * 2.0D) + 1;
-               player.field_70170_p.func_72956_a(player, "jinryuudragonbc:DBC4.block" + defensePenetration, 0.5F, 0.9F / (player.field_70170_p.field_73012_v.nextFloat() * 0.6F + 0.9F));
+               player.world.func_72956_a(player, "jinryuudragonbc:DBC4.block" + defensePenetration, 0.5F, 0.9F / (player.world.field_73012_v.nextFloat() * 0.6F + 0.9F));
                if (!isInCreativeMode(player)) {
                   setInt(currStamina - staminaCost < 0 ? 0 : currStamina - staminaCost, player, "jrmcStamina");
                }
@@ -7193,8 +7193,8 @@ public class JRMCoreH {
                def -= kiProtection;
             }
 
-            if (JRMCoreConfig.DebugInfo || difp.length() > 0 && player.func_70005_c_().equalsIgnoreCase(difp)) {
-               mod_JRMCore.logger.info(player.func_70005_c_() + " receives Damage: Original=" + dbcA);
+            if (JRMCoreConfig.DebugInfo || difp.length() > 0 && player.getName().equalsIgnoreCase(difp)) {
+               mod_JRMCore.logger.info(player.getName() + " receives Damage: Original=" + dbcA);
             }
 
             defensePenetration = 0;
@@ -7217,8 +7217,8 @@ public class JRMCoreH {
             }
 
             dbcA = (int)((double)dbcA / per);
-            if (JRMCoreConfig.DebugInfo || difp.length() > 0 && player.func_70005_c_().equalsIgnoreCase(difp)) {
-               mod_JRMCore.logger.info(player.func_70005_c_() + " DM: A=" + dbcA + ", DF Div:" + per + ", " + ss);
+            if (JRMCoreConfig.DebugInfo || difp.length() > 0 && player.getName().equalsIgnoreCase(difp)) {
+               mod_JRMCore.logger.info(player.getName() + " DM: A=" + dbcA + ", DF Div:" + per + ", " + ss);
             }
 
             if (DBC()) {
@@ -7268,7 +7268,7 @@ public class JRMCoreH {
    }
 
    public static void jrmcExp(Entity shootingEntity, int e, int expGainMode) {
-      if (shootingEntity != null && !shootingEntity.field_70170_p.field_72995_K && shootingEntity instanceof EntityPlayer) {
+      if (shootingEntity != null && !shootingEntity.world.field_72995_K && shootingEntity instanceof EntityPlayer) {
          EntityPlayer player = (EntityPlayer)shootingEntity;
          Random rand = new Random();
          MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
@@ -7317,7 +7317,7 @@ public class JRMCoreH {
                            setInt((int)result, en, "jrmcTpint");
                         }
 
-                        if (elid.equalsIgnoreCase(en.func_70005_c_())) {
+                        if (elid.equalsIgnoreCase(en.getName())) {
                         }
                      }
                   }
@@ -8463,15 +8463,15 @@ public class JRMCoreH {
    }
 
    public static EntityPlayer getClosestPlayerToEntity(Entity p_72890_1_, double p_72890_2_) {
-      return getClosestPlayer(p_72890_1_, p_72890_1_.field_70165_t, p_72890_1_.field_70163_u, p_72890_1_.field_70161_v, p_72890_2_);
+      return getClosestPlayer(p_72890_1_, p_72890_1_.posX, p_72890_1_.posY, p_72890_1_.posZ, p_72890_2_);
    }
 
    public static EntityPlayer getClosestPlayer(Entity p_72890_1_, double p_72977_1_, double p_72977_3_, double p_72977_5_, double p_72977_7_) {
       double d4 = -1.0D;
       EntityPlayer entityplayer = null;
 
-      for(int i = 0; i < p_72890_1_.field_70170_p.field_73010_i.size(); ++i) {
-         EntityPlayer entityplayer1 = (EntityPlayer)p_72890_1_.field_70170_p.field_73010_i.get(i);
+      for(int i = 0; i < p_72890_1_.world.field_73010_i.size(); ++i) {
+         EntityPlayer entityplayer1 = (EntityPlayer)p_72890_1_.world.field_73010_i.get(i);
          if (!p_72890_1_.equals(entityplayer1)) {
             double d5 = entityplayer1.func_70092_e(p_72977_1_, p_72977_3_, p_72977_5_);
             if ((p_72977_7_ < 0.0D || d5 < p_72977_7_ * p_72977_7_) && (d4 == -1.0D || d5 < d4)) {
@@ -8536,7 +8536,7 @@ public class JRMCoreH {
 
    public static void playerUsedInstantTransmission(EntityPlayer entity) {
       if (entity != null) {
-         jrmctAll(50, entity.func_145782_y() + ";" + entity.field_70165_t + ";" + entity.field_70163_u + ";" + entity.field_70161_v);
+         jrmctAll(50, entity.func_145782_y() + ";" + entity.posX + ";" + entity.posY + ";" + entity.posZ);
       }
 
    }

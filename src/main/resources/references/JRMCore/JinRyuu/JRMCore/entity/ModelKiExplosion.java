@@ -430,25 +430,25 @@ public class ModelKiExplosion extends ModelBiped {
       this.a47.func_78792_a(this.a12door);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.a47.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.a47.render(f5);
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
+      model.rotateAngleX = x;
       model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
       float par31 = 1.0F;
-      this.a47.field_78808_h = 2.0F + f2;
+      this.a47.rotateAngleZ = 2.0F + f2;
       this.a47.field_78796_g = 2.0F + f2;
-      this.a47.field_78795_f = 2.0F + f2;
+      this.a47.rotateAngleX = 2.0F + f2;
    }
 
    public void renderModel(Entity entity, float par8, float par9, float f, float r) {
-      this.func_78088_a(entity, 0.0F, 0.0F, r, par8, par9, f);
+      this.render(entity, 0.0F, 0.0F, r, par8, par9, f);
    }
 }

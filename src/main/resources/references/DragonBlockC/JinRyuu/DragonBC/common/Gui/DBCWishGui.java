@@ -181,7 +181,7 @@ public class DBCWishGui extends GuiScreen {
       }
 
       if (this.clicked && JRMCoreH.wishes <= 0) {
-         this.field_146297_k.field_71439_g.func_71053_j();
+         this.field_146297_k.player.func_71053_j();
       }
 
       this.field_146292_n.clear();
@@ -223,7 +223,7 @@ public class DBCWishGui extends GuiScreen {
          tex = "jinryuudragonbc:wish.png";
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          tx = new ResourceLocation(tex);
-         this.field_146297_k.field_71446_o.func_110577_a(tx);
+         this.field_146297_k.field_71446_o.bindTexture(tx);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          j = 0;
          i2 = false;
@@ -296,7 +296,7 @@ public class DBCWishGui extends GuiScreen {
          tex = "jinryuudragonbc:wish2.png";
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          tx = new ResourceLocation(tex);
-         this.field_146297_k.field_71446_o.func_110577_a(tx);
+         this.field_146297_k.field_71446_o.bindTexture(tx);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          j = 0;
          i2 = false;
@@ -370,7 +370,7 @@ public class DBCWishGui extends GuiScreen {
          tex = "jinryuudragonbc:wish.png";
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          tx = new ResourceLocation(tex);
-         this.field_146297_k.field_71446_o.func_110577_a(tx);
+         this.field_146297_k.field_71446_o.bindTexture(tx);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          j = 0;
          i2 = false;
@@ -410,7 +410,7 @@ public class DBCWishGui extends GuiScreen {
          tex = "jinryuudragonbc:wish.png";
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          tx = new ResourceLocation(tex);
-         this.field_146297_k.field_71446_o.func_110577_a(tx);
+         this.field_146297_k.field_71446_o.bindTexture(tx);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          int a = false;
 

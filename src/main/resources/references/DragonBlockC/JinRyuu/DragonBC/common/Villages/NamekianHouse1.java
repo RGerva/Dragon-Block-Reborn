@@ -187,11 +187,11 @@ public class NamekianHouse1 extends WorldGenerator {
 
          for(int t = 0; t < 3; ++t) {
             EntityNamekian01 namekian01 = new EntityNamekian01(world);
-            namekian01.func_70012_b((double)i - 4.0D + (double)rand.nextInt(5) - (double)rand.nextInt(5), (double)(j + 2), (double)k - 4.0D + (double)rand.nextInt(5) - (double)rand.nextInt(5), 0.0F, 0.0F);
+            namekian01.setLocationAndAngles((double)i - 4.0D + (double)rand.nextInt(5) - (double)rand.nextInt(5), (double)(j + 2), (double)k - 4.0D + (double)rand.nextInt(5) - (double)rand.nextInt(5), 0.0F, 0.0F);
             world.func_72838_d(namekian01);
          }
 
-         namekian03.func_70012_b((double)i + 4.0D, (double)(j + 2), (double)k + 4.0D, 0.0F, 0.0F);
+         namekian03.setLocationAndAngles((double)i + 4.0D, (double)(j + 2), (double)k + 4.0D, 0.0F, 0.0F);
          world.func_72838_d(namekian03);
       }
 

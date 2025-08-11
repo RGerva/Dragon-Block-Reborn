@@ -24,9 +24,9 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
       double sx = (double)entity.strtX();
       double sy = (double)entity.strtY();
       double sz = (double)entity.strtZ();
-      double x = sx - entity.field_70165_t;
-      double y = sy - entity.field_70163_u;
-      double z = sz - entity.field_70161_v;
+      double x = sx - entity.posX;
+      double y = sy - entity.posY;
+      double z = sz - entity.posZ;
       if (shrink > 0) {
          this.updateEffect2(entity);
       } else {
@@ -202,8 +202,8 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
    }
 
    public void render_2d(EntityEnergyAttJ entity, double par2, double par4, double par6, float par8, float par9, float scale, double sx, double sy, double sz, int color, float rotation) {
-      Tessellator tessellator = Tessellator.field_78398_a;
-      long time = entity.field_70170_p.func_82737_E();
+      Tessellator tessellator = Tessellator.INSTANCE;
+      long time = entity.world.func_82737_E();
       float particleScale = 1.0F;
       float middle_start = 0.4F;
       float middle_max = 10.0F;
@@ -223,9 +223,9 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
       float Z = 0.0F;
       float position = entity.waveScale;
       position *= position;
-      X = (float)(-(entity.field_70165_t - sx) * 0.5D) * position;
-      Y = (float)(-(entity.field_70163_u - sy) * 0.5D) * position;
-      Z = (float)(-(entity.field_70161_v - sz) * 0.5D) * position;
+      X = (float)(-(entity.posX - sx) * 0.5D) * position;
+      Y = (float)(-(entity.posY - sy) * 0.5D) * position;
+      Z = (float)(-(entity.posZ - sz) * 0.5D) * position;
       if (X == 0.0F) {
          X = 0.0F;
       }
@@ -297,7 +297,7 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
                   texture_id = entity.animation_id % entity.animation_id_Max;
                }
 
-               FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("middle", texture_id));
+               FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("middle", texture_id));
                double length = entity.dist;
                if (length > (double)rotationY) {
                   length = (double)rotationY;
@@ -376,7 +376,7 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
             }
 
             texture_id = entity.animation_id % entity.animation_id_Max;
-            FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("noise", texture_id));
+            FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("noise", texture_id));
             this.apply_detail_rotation(j);
             JGRenderHelper.draw_tessellator2(tessellator, this.brightness, particleScale * this.scale_noise, 0.0F, (float)(entity.dist / 2.0D), 0.0F, this.red, this.green, this.blue, this.alpha);
             GL11.glPopMatrix();
@@ -394,7 +394,7 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
 
                GL11.glTranslated(0.0D, -this.modifierTranslation, 0.0D);
                texture_id = entity.animation_id % entity.animation_id_Max;
-               FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("head", texture_id));
+               FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("head", texture_id));
                GL11.glRotated(-90.0D, 1.0D, 0.0D, 0.0D);
                GL11.glRotatef((float)(j * 360 / 2), 0.0F, 1.0F, 0.0F);
                JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * (this.scaling_head ? wave_start_size : 1.0F) * this.scale_head, particleScale * (this.scaling_head ? wave_start_size : 1.0F) * this.scale_head, this.red, this.green, this.blue, this.alpha);
@@ -403,16 +403,16 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
          } else {
             GL11.glPushMatrix();
             GL11.glTranslated(0.0D, -this.modifierTranslation, 0.0D);
-            rotationX = entity.field_70127_C + (entity.field_70125_A - entity.field_70127_C) * par9;
+            rotationX = entity.field_70127_C + (entity.rotationPitch - entity.field_70127_C) * par9;
             GL11.glRotatef(rotationX, -1.0F, 0.0F, 0.0F);
-            rotationY = entity.field_70126_B + (entity.field_70177_z - entity.field_70126_B) * par9 - 180.0F;
+            rotationY = entity.field_70126_B + (entity.rotationYaw - entity.field_70126_B) * par9 - 180.0F;
             GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
             GL11.glRotatef(rotationY, 0.0F, 0.0F, -1.0F);
-            view2 = JRMCoreClient.mc.field_71474_y.field_74320_O == 2;
-            GL11.glRotatef(-this.field_76990_c.field_78735_i, 0.0F, 0.0F, 1.0F);
-            GL11.glRotatef(-this.field_76990_c.field_78732_j * (float)(view2 ? -1 : 1), 1.0F, 0.0F, 0.0F);
+            view2 = JRMCoreClient.mc.gameSettings.thirdPersonView == 2;
+            GL11.glRotatef(-this.renderManager.field_78735_i, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(-this.renderManager.field_78732_j * (float)(view2 ? -1 : 1), 1.0F, 0.0F, 0.0F);
             texture_id = entity.animation_id % entity.animation_id_Max;
-            FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("head", texture_id));
+            FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("head", texture_id));
             GL11.glRotated(-90.0D, 1.0D, 0.0D, 0.0D);
             if (this.rotate_head) {
                GL11.glRotatef((float)time % (360.0F / this.rotationSpeed) * this.rotationSpeed * 1.0F + this.rotationSpeed * par9, 0.0F, 0.0F, 1.0F);
@@ -432,7 +432,7 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
 
             GL11.glTranslated(0.0D, -this.modifierTranslation, 0.0D);
             texture_id = entity.animation_id % entity.animation_id_Max;
-            FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("head_connect", texture_id));
+            FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("head_connect", texture_id));
             this.apply_detail_rotation(j);
             JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * (this.scaling_head ? wave_start_size : 1.0F) * this.scale_head_connect, particleScale, this.red, this.green, this.blue, this.alpha);
             GL11.glPopMatrix();
@@ -454,7 +454,7 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
 
                GL11.glTranslated(0.0D, this.modifierTranslation, 0.0D);
                texture_id = entity.animation_id % entity.animation_id_Max;
-               FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail", texture_id));
+               FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail", texture_id));
                GL11.glRotated(-90.0D, 1.0D, 0.0D, 0.0D);
                GL11.glRotatef((float)(j * 360 / 2), 0.0F, 1.0F, 0.0F);
                JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * wave_end_size * this.scale_tail, particleScale * wave_end_size * this.scale_tail, this.red, this.green, this.blue, this.alpha);
@@ -474,7 +474,7 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
                      }
 
                      texture_id = entity.animation_id % entity.animation_id_Max;
-                     FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail", texture_id));
+                     FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail", texture_id));
                      GL11.glRotatef((float)(i * 360 / 2), 0.0F, 1.0F, 0.0F);
                      JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * wave_end_size * this.scale_tail, particleScale * wave_end_size * this.scale_tail, this.red, this.green, this.blue, this.alpha);
                      GL11.glPopMatrix();
@@ -489,16 +489,16 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
                GL11.glTranslated(0.0D, 0.0D, 0.25D);
             }
 
-            rotationX = entity.field_70127_C + (entity.field_70125_A - entity.field_70127_C) * par9;
+            rotationX = entity.field_70127_C + (entity.rotationPitch - entity.field_70127_C) * par9;
             GL11.glRotatef(rotationX, -1.0F, 0.0F, 0.0F);
-            rotationY = entity.field_70126_B + (entity.field_70177_z - entity.field_70126_B) * par9 - 180.0F;
+            rotationY = entity.field_70126_B + (entity.rotationYaw - entity.field_70126_B) * par9 - 180.0F;
             GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
             GL11.glRotatef(rotationY, 0.0F, 0.0F, -1.0F);
-            view2 = JRMCoreClient.mc.field_71474_y.field_74320_O == 2;
-            GL11.glRotatef(-this.field_76990_c.field_78735_i, 0.0F, 0.0F, 1.0F);
-            GL11.glRotatef(-this.field_76990_c.field_78732_j * (float)(view2 ? -1 : 1), 1.0F, 0.0F, 0.0F);
+            view2 = JRMCoreClient.mc.gameSettings.thirdPersonView == 2;
+            GL11.glRotatef(-this.renderManager.field_78735_i, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(-this.renderManager.field_78732_j * (float)(view2 ? -1 : 1), 1.0F, 0.0F, 0.0F);
             texture_id = entity.animation_id % entity.animation_id_Max;
-            FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail", texture_id));
+            FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail", texture_id));
             GL11.glRotated(-90.0D, 1.0D, 0.0D, 0.0D);
             if (this.rotate_tail) {
                GL11.glRotatef((float)time % (360.0F / this.rotationSpeed) * this.rotationSpeed * 1.0F + this.rotationSpeed * par9, 0.0F, 0.0F, 1.0F);
@@ -523,7 +523,7 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
 
             GL11.glTranslated(0.0D, this.modifierTranslation, 0.0D);
             texture_id = entity.animation_id % entity.animation_id_Max;
-            FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail_connect", texture_id));
+            FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail_connect", texture_id));
             this.apply_detail_rotation(j);
             JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * wave_end_size * this.scale_tail_connect, particleScale * (this.rendermode_tail == 2 ? this.scale_tail_connect : 1.0F), this.red, this.green, this.blue, this.alpha);
             GL11.glPopMatrix();
@@ -548,9 +548,9 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
       short eff = entity.getEff();
       float size = entity.getSizePerc() * ((float)JGConfigClientSettings.CLIENT_Jutsu_Scale / 10.0F);
       float var13 = this.handleRotationFloat(entity, par9);
-      double x = sx - entity.field_70165_t;
-      double y = sy - entity.field_70163_u;
-      double z = sz - entity.field_70161_v;
+      double x = sx - entity.posX;
+      double y = sy - entity.posY;
+      double z = sz - entity.posZ;
       int shrink = entity.getShrink();
       if (shrink > 0) {
          this.updateEffect2(entity);
@@ -561,24 +561,24 @@ public class RenderEnergyAttackJutsu extends RenderEnergyAttack<EntityEnergyAttJ
 
       if (type == 1) {
          this.glStart(entity, par2, par4, par6, par9);
-         JGRenderHelper.tex(this.field_76990_c, col, this.alpha);
+         JGRenderHelper.tex(this.renderManager, col, this.alpha);
          GL11.glScalef(size, size, size);
          this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, var13, false);
          this.glEnd();
       } else if (type == 2) {
          this.glStart(entity, par2, par4, par6, par9);
-         JGRenderHelper.tex(this.field_76990_c, col, this.alpha);
+         JGRenderHelper.tex(this.renderManager, col, this.alpha);
          GL11.glScalef(size, size, size);
          this.ener.renderModel(type, entity, 0.0F, 0.0F, 0.0625F, var13, false);
          this.glEnd();
       } else if (type == 0) {
          this.glStart(entity, par2, par4, par6, par9);
-         JGRenderHelper.tex(this.field_76990_c, col, this.alpha);
+         JGRenderHelper.tex(this.renderManager, col, this.alpha);
          GL11.glScalef(size, size, (float)(entity.dist * 2.0D));
          this.ener.renderModel(type, entity, 0.0F, 0.0F, 0.0625F, var13, false);
          this.glEnd();
          this.glStart(entity, par2, par4, par6, par9);
-         JGRenderHelper.tex(this.field_76990_c, col, this.alpha);
+         JGRenderHelper.tex(this.renderManager, col, this.alpha);
          GL11.glScalef(size, size, size);
          this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, var13, false);
          this.glEnd();

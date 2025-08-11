@@ -87,7 +87,7 @@ public class FamilyCP implements IMessage {
             String d = dat[4];
             String m = dat[5];
             int cn = Integer.parseInt(dat[6]);
-            Entity pl = p.field_70170_p.func_73045_a(eid);
+            Entity pl = p.world.func_73045_a(eid);
             if (pl instanceof EntityNPC && pl != null) {
                FamilyCCharGui.dtcf = follow;
                FamilyCCharGui.dtca = aggro;
@@ -104,7 +104,7 @@ public class FamilyCP implements IMessage {
 
          if (id == 23) {
             int n = Integer.parseInt(txt);
-            Entity pl = p.field_70170_p.func_73045_a(n);
+            Entity pl = p.world.func_73045_a(n);
             if (pl != null && pl instanceof EntityNPC) {
                EntityNPC npl = (EntityNPC)pl;
                npl.setNamUpdt(true);
@@ -129,7 +129,7 @@ public class FamilyCP implements IMessage {
          if (id == 0) {
             dat = txt.split(",");
             n = dat[0] + ",0";
-            type = txt + "!" + p.func_70005_c_() + ",e!0";
+            type = txt + "!" + p.getName() + ",e!0";
             dnsNPC = JRMCoreH.getString(p, FamilyCH.FID);
             if (FamilyCH.rfi(server, dat[0] + ",0").equals("0") && dnsNPC.length() < 2) {
                FamilyCH.wfi(server, type, n, false);
@@ -146,7 +146,7 @@ public class FamilyCP implements IMessage {
          String[] p1d;
          if (id == 1) {
             prid = JRMCoreH.getString(p, FamilyCH.FID);
-            n = p.func_70005_c_();
+            n = p.getName();
             p1d = prid.split(",");
             dnsNPC = p1d[0];
             pi = JRMCoreH.getPlayerForUsername(server, txt);
@@ -154,7 +154,7 @@ public class FamilyCP implements IMessage {
                d = JRMCoreH.getString(pi, FamilyCH.FID);
                if (d.length() < 2) {
                   JRMCoreH.setString("", pi, FamilyCH.FIDa);
-                  JRMCoreH.setString(p.func_70005_c_(), pi, FamilyCH.FIDi);
+                  JRMCoreH.setString(p.getName(), pi, FamilyCH.FIDi);
                   pi.func_145747_a((new ChatComponentText(y + "" + g + n + y + " sent you a proposal" + (dnsNPC.length() > 1 ? " from the " + g + dnsNPC + y + " family" : "") + "!")).func_150255_a(color));
                }
             }
@@ -163,7 +163,7 @@ public class FamilyCP implements IMessage {
          String[] prt;
          if (id == 2) {
             prid = JRMCoreH.getString(p, FamilyCH.FID);
-            n = p.func_70005_c_();
+            n = p.getName();
             p1d = prid.split(",");
             dnsNPC = p1d[0];
             pi = JRMCoreH.getPlayerForUsername(server, txt);
@@ -171,9 +171,9 @@ public class FamilyCP implements IMessage {
                d = JRMCoreH.getString(pi, FamilyCH.FID);
                if (d.length() < 2) {
                   JRMCoreH.setString("", pi, FamilyCH.FIDi);
-                  JRMCoreH.setString(p.func_70005_c_(), pi, FamilyCH.FIDa);
+                  JRMCoreH.setString(p.getName(), pi, FamilyCH.FIDa);
                   prt = dnsNPC.split(",");
-                  pi.func_145747_a((new ChatComponentText(y + "" + g + p.func_70005_c_() + y + " wants to adopt you" + (dnsNPC.length() > 1 ? ". So you'd be apart of the " + g + prt[0] + y + " family" : "") + "!")).func_150255_a(color));
+                  pi.func_145747_a((new ChatComponentText(y + "" + g + p.getName() + y + " wants to adopt you" + (dnsNPC.length() > 1 ? ". So you'd be apart of the " + g + prt[0] + y + " family" : "") + "!")).func_150255_a(color));
                }
             }
          }
@@ -221,7 +221,7 @@ public class FamilyCP implements IMessage {
                }
 
                if (nnf) {
-                  fh = prid + "," + p.func_70005_c_();
+                  fh = prid + "," + p.getName();
                   fD = fida[0] + "," + fn;
                   JRMCoreH.setString(dnsNPC, pt, FamilyCH.FIDo);
                   JRMCoreH.setString(fD, pt, FamilyCH.FID);
@@ -231,7 +231,7 @@ public class FamilyCP implements IMessage {
                   for(B1T = 0; B1T < fm.length; ++B1T) {
                      fD = fm[B1T];
                      if (fD.length() < 2 && !fD.equalsIgnoreCase(prid) && B1T < 2) {
-                        afm = afm + "," + p.func_70005_c_();
+                        afm = afm + "," + p.getName();
                         JRMCoreH.setString(dnsNPC, p, FamilyCH.FID);
                         JRMCoreH.setString("", p, FamilyCH.FIDi);
                         JRMCoreH.setString("", p, FamilyCH.FIDa);
@@ -246,8 +246,8 @@ public class FamilyCP implements IMessage {
                }
 
                fma = prid.split(",");
-               pt.func_145747_a((new ChatComponentText(y + "Proposal was accepted! You were married to " + g + p.func_70005_c_() + y + " and " + y + "joined the " + g + fma[0] + y + " family!")).func_150255_a(color));
-               p.func_145747_a((new ChatComponentText(y + "You have married " + g + pt.func_70005_c_() + y + " and so you joined the " + g + fma[0] + y + " family!")).func_150255_a(color));
+               pt.func_145747_a((new ChatComponentText(y + "Proposal was accepted! You were married to " + g + p.getName() + y + " and " + y + "joined the " + g + fma[0] + y + " family!")).func_150255_a(color));
+               p.func_145747_a((new ChatComponentText(y + "You have married " + g + pt.getName() + y + " and so you joined the " + g + fma[0] + y + " family!")).func_150255_a(color));
             } else {
                p.func_145747_a((new ChatComponentText(y + "Marriage failed because " + g + prid + y + " was not found!")).func_150255_a(color));
             }
@@ -293,7 +293,7 @@ public class FamilyCP implements IMessage {
                H1F = Integer.parseInt(fh2[2]);
                ++H1F;
                if (nnf) {
-                  afm = prid + ",e," + p.func_70005_c_() + ":" + H1F;
+                  afm = prid + ",e," + p.getName() + ":" + H1F;
                   fh = fida[0] + "," + fn;
                   JRMCoreH.setString(dnsNPC, pt, FamilyCH.FIDo);
                   JRMCoreH.setString(fh, pt, FamilyCH.FID);
@@ -301,7 +301,7 @@ public class FamilyCP implements IMessage {
                   FamilyCH.wfi(server, afm, fh, false);
                } else {
                   fh = drp == 0 ? fm[1] : fm[0];
-                  afm = fh + "," + p.func_70005_c_() + ":" + H1F;
+                  afm = fh + "," + p.getName() + ":" + H1F;
                   fD = drp == 0 ? prid + "!" + afm + "!" + H1F : afm;
                   JRMCoreH.setString(dnsNPC, p, FamilyCH.FID);
                   FamilyCH.wfi(server, fD, dnsNPC, false);
@@ -317,8 +317,8 @@ public class FamilyCP implements IMessage {
                   FamilyCH.wfi(server, fD, dnsNPC, false);
                }
 
-               pt.func_145747_a((new ChatComponentText(y + "Adoption offer was accepted! " + g + p.func_70005_c_() + y + " is now part of the " + g + fida[0] + y + " family!")).func_150255_a(color));
-               p.func_145747_a((new ChatComponentText(y + "You have been adopted by " + g + pt.func_70005_c_() + y + " and you are now part of the " + g + fida[0] + y + " family!")).func_150255_a(color));
+               pt.func_145747_a((new ChatComponentText(y + "Adoption offer was accepted! " + g + p.getName() + y + " is now part of the " + g + fida[0] + y + " family!")).func_150255_a(color));
+               p.func_145747_a((new ChatComponentText(y + "You have been adopted by " + g + pt.getName() + y + " and you are now part of the " + g + fida[0] + y + " family!")).func_150255_a(color));
             } else {
                p.func_145747_a((new ChatComponentText(y + "Adoption failed because " + g + prid + y + " was not found!")).func_150255_a(color));
             }
@@ -342,7 +342,7 @@ public class FamilyCP implements IMessage {
          int S1T;
          if (id == 6) {
             prid = JRMCoreH.getString(p, FamilyCH.FID);
-            n = p.func_70005_c_();
+            n = p.getName();
             if (prid.length() > 2) {
                p1d = prid.split(",");
                pog = Integer.parseInt(p1d[1]);
@@ -356,7 +356,7 @@ public class FamilyCP implements IMessage {
                for(H1F = 0; H1F < fm.length; ++H1F) {
                   afm = fm[H1F];
                   famDa = afm.split(":");
-                  if (famDa[0].equalsIgnoreCase(p.func_70005_c_())) {
+                  if (famDa[0].equalsIgnoreCase(p.getName())) {
                      p2 = p2 + (H1F < 2 ? ",l" : "");
                   } else {
                      p2 = p2 + "," + afm;
@@ -380,7 +380,7 @@ public class FamilyCP implements IMessage {
                   for(S1T = 0; S1T < fm.length; ++S1T) {
                      fh = fm[S1T];
                      String[] fh2 = fh.split(":");
-                     if (fh2[0].equalsIgnoreCase(p.func_70005_c_())) {
+                     if (fh2[0].equalsIgnoreCase(p.getName())) {
                         p2 = p2 + (S1T < 2 ? ",l" : "");
                         JRMCoreH.setString("0", p, FamilyCH.FIDo);
                      } else {
@@ -443,7 +443,7 @@ public class FamilyCP implements IMessage {
                }
 
                if (pud != null) {
-                  pud.func_145747_a((new ChatComponentText(y + "You have been removed from the " + g + fnam + y + " family by " + g + p.func_70005_c_() + y + "!")).func_150255_a(color));
+                  pud.func_145747_a((new ChatComponentText(y + "You have been removed from the " + g + fnam + y + " family by " + g + p.getName() + y + "!")).func_150255_a(color));
                }
 
                p.func_145747_a((new ChatComponentText(y + "You have removed " + g + n + y + " from the " + g + fnam + y + " family!")).func_150255_a(color));
@@ -553,10 +553,10 @@ public class FamilyCP implements IMessage {
                      String dnsHc = dnsHairSlcted != 12 ? "0" : (i == 12 && H2B == 12 ? (rid == 0 ? dnsH : dnsH2) : (i == 12 ? dnsH : (H2B == 12 ? dnsH2 : dnsHdef)));
                      EntityPlayer e = ptg == 1 ? pt : (drp == 1 ? p : p);
                      EntityPlayer e2 = ptg == 0 ? pt : (drp == 0 ? p : pt);
-                     JRMCoreH.setString(FamilyCP.Handler.dns + ";" + ((EntityPlayer)e).func_70005_c_() + ";" + ((EntityPlayer)e2).func_70005_c_() + ";" + txt + ";" + FamilyCConfig.pt * 120 + ";" + dnsHc, (EntityPlayer)e, FamilyCH.prID);
+                     JRMCoreH.setString(FamilyCP.Handler.dns + ";" + ((EntityPlayer)e).getName() + ";" + ((EntityPlayer)e2).getName() + ";" + txt + ";" + FamilyCConfig.pt * 120 + ";" + dnsHc, (EntityPlayer)e, FamilyCH.prID);
                      JRMCoreH.setString("f", (EntityPlayer)e2, FamilyCH.prID);
-                     ((EntityPlayer)e2).func_145747_a((new ChatComponentText(y + "" + g + ((EntityPlayer)e).func_70005_c_() + y + " is now pregnant, thanks to you!")).func_150255_a(color));
-                     ((EntityPlayer)e).func_145747_a((new ChatComponentText(y + "You've become pregnant! The father is " + g + ((EntityPlayer)e2).func_70005_c_() + y + ".")).func_150255_a(color));
+                     ((EntityPlayer)e2).func_145747_a((new ChatComponentText(y + "" + g + ((EntityPlayer)e).getName() + y + " is now pregnant, thanks to you!")).func_150255_a(color));
+                     ((EntityPlayer)e).func_145747_a((new ChatComponentText(y + "You've become pregnant! The father is " + g + ((EntityPlayer)e2).getName() + y + ".")).func_150255_a(color));
                   }
                }
             } else {
@@ -568,7 +568,7 @@ public class FamilyCP implements IMessage {
             prid = JRMCoreH.getString(p, FamilyCH.prID);
             pt = JRMCoreH.getPlayerForUsername(server, prid);
             if (pt != null) {
-               pt.func_145747_a((new ChatComponentText(y + "" + p.func_70005_c_() + " has declined your procreation offer!")).func_150255_a(color));
+               pt.func_145747_a((new ChatComponentText(y + "" + p.getName() + " has declined your procreation offer!")).func_150255_a(color));
             }
 
             JRMCoreH.setString("d", p, FamilyCH.prID);
@@ -592,11 +592,11 @@ public class FamilyCP implements IMessage {
                         p.func_145747_a((new ChatComponentText(y + "" + g + txt + y + " has already " + FamilyCConfig.mc + " children!")).func_150255_a(color));
                         allow = false;
                      } else {
-                        p2 = FamilyCH.rpfd(server, p.func_70005_c_());
+                        p2 = FamilyCH.rpfd(server, p.getName());
                         if (p2.contains(";")) {
                            String[] p2d = p2.split(";");
                            if (p2d.length >= FamilyCConfig.mc) {
-                              p.func_145747_a((new ChatComponentText(y + "" + g + p.func_70005_c_() + y + " has already " + FamilyCConfig.mc + " children!")).func_150255_a(color));
+                              p.func_145747_a((new ChatComponentText(y + "" + g + p.getName() + y + " has already " + FamilyCConfig.mc + " children!")).func_150255_a(color));
                               allow = false;
                            }
                         }
@@ -608,9 +608,9 @@ public class FamilyCP implements IMessage {
                      if (prid.contains(";") && !prid.equals("") && prid != "") {
                         p.func_145747_a((new ChatComponentText(y + (pg == 1 ? "You are" : g + txt + y + " is") + " already pregnant!")).func_150255_a(color));
                      } else {
-                        JRMCoreH.setString(p.func_70005_c_(), po, FamilyCH.prID);
+                        JRMCoreH.setString(p.getName(), po, FamilyCH.prID);
                         p.func_145747_a((new ChatComponentText(y + "A procreation offer has been sent!")).func_150255_a(color));
-                        po.func_145747_a((new ChatComponentText(y + "You've recived a procreation offer from " + g + p.func_70005_c_() + y + "!")).func_150255_a(color));
+                        po.func_145747_a((new ChatComponentText(y + "You've recived a procreation offer from " + g + p.getName() + y + "!")).func_150255_a(color));
                      }
                   }
                }
@@ -628,10 +628,10 @@ public class FamilyCP implements IMessage {
             boolean aggro = Integer.parseInt(dat[2]) == 1;
             i = Integer.parseInt(dat[3]);
             drp = Integer.parseInt(dat[4]);
-            Entity pl = p.field_70170_p.func_73045_a(eid);
+            Entity pl = p.world.func_73045_a(eid);
             if (pl != null && pl instanceof EntityNPC) {
                EntityNPC npl = (EntityNPC)pl;
-               if (p.func_70005_c_().equalsIgnoreCase(npl.getDad()) || p.func_70005_c_().equalsIgnoreCase(npl.getMom())) {
+               if (p.getName().equalsIgnoreCase(npl.getDad()) || p.getName().equalsIgnoreCase(npl.getMom())) {
                   npl.setFollow(pg);
                   npl.setAggr(aggro);
                   npl.setFollowTarget(i);
@@ -644,7 +644,7 @@ public class FamilyCP implements IMessage {
 
          if (id == 21) {
             boolean allow = true;
-            n = FamilyCH.rpfd(server, p.func_70005_c_());
+            n = FamilyCH.rpfd(server, p.getName());
             p1d = n.split(";");
             dnsNPC = "";
 
@@ -663,10 +663,10 @@ public class FamilyCP implements IMessage {
             dat = txt.split(":");
             eid = Integer.parseInt(dat[0]);
             type = dat[1];
-            Entity pl = p.field_70170_p.func_73045_a(eid);
+            Entity pl = p.world.func_73045_a(eid);
             if (pl != null && pl instanceof EntityNPC) {
                EntityNPC entityNPC = (EntityNPC)pl;
-               if (p.func_70005_c_().equalsIgnoreCase(entityNPC.getDad()) || p.func_70005_c_().equalsIgnoreCase(entityNPC.getMom())) {
+               if (p.getName().equalsIgnoreCase(entityNPC.getDad()) || p.getName().equalsIgnoreCase(entityNPC.getMom())) {
                   entityNPC.setCnam((byte)0);
                   entityNPC.setNam(type);
                   entityNPC.setNamUpdt(true);
@@ -683,10 +683,10 @@ public class FamilyCP implements IMessage {
             eid = Integer.parseInt(dat[0]);
             type = dat[1];
             dnsNPC = dat[2];
-            Entity entity = p.field_70170_p.func_73045_a(eid);
+            Entity entity = p.world.func_73045_a(eid);
             if (entity != null && entity instanceof EntityNPC) {
                EntityNPC entityNPC = (EntityNPC)entity;
-               if (p.func_70005_c_().equalsIgnoreCase(entityNPC.getDad()) || p.func_70005_c_().equalsIgnoreCase(entityNPC.getMom())) {
+               if (p.getName().equalsIgnoreCase(entityNPC.getDad()) || p.getName().equalsIgnoreCase(entityNPC.getMom())) {
                   if (type.equals("dns")) {
                      entityNPC.setDNS(dnsNPC);
                   }

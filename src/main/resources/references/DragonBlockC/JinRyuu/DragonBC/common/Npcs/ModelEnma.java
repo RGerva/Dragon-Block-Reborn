@@ -308,11 +308,11 @@ public class ModelEnma extends ModelBase {
       this.Desk2.func_78792_a(this.DeskLegFR);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       float r2 = 180.0F;
       float headY = f3 / (r2 / 3.1415927F);
       float headX = f4 / (r2 / 3.1415927F) * 0.3F;
-      int tick = entity.field_70173_aa;
+      int tick = entity.ticksExisted;
       int animation = tick / 100;
       int animationTick = tick - animation * 100;
       if (!Minecraft.func_71410_x().func_147113_T()) {
@@ -329,41 +329,41 @@ public class ModelEnma extends ModelBase {
             }
          }
 
-         this.Pen.field_78795_f = this.animationPen1;
-         this.YArm2R.field_78796_g = 0.04886922F + -this.animationPen2 * 0.1F;
-         this.YArm2R.field_78808_h = -0.2687807F + -this.animationPen2 * 0.1F;
+         this.Pen.rotateAngleX = this.animationPen1;
+         this.YArm2R.rotateAngleY = 0.04886922F + -this.animationPen2 * 0.1F;
+         this.YArm2R.rotateAngleZ = -0.2687807F + -this.animationPen2 * 0.1F;
       }
 
       if (animationTick < 50) {
-         this.Head.field_78795_f = 0.2F;
-         this.Head.field_78796_g = 0.0F;
+         this.Head.rotateAngleX = 0.2F;
+         this.Head.rotateAngleY = 0.0F;
       } else {
-         this.Head.field_78795_f = headX;
-         this.Head.field_78796_g = headY;
+         this.Head.rotateAngleX = headX;
+         this.Head.rotateAngleY = headY;
       }
 
-      if (this.Head.field_78795_f > 0.0F) {
-         this.Beard1.field_78795_f = -0.68294734F - this.Head.field_78795_f * 3.0F;
+      if (this.Head.rotateAngleX > 0.0F) {
+         this.Beard1.rotateAngleX = -0.68294734F - this.Head.rotateAngleX * 3.0F;
       } else {
-         this.Beard1.field_78795_f = -0.68294734F;
+         this.Beard1.rotateAngleX = -0.68294734F;
       }
 
       GL11.glPushMatrix();
       GL11.glTranslatef(0.0F, 0.0F, -1.0F);
       float F = entity.field_70131_O / 2.0F;
       JGRenderHelper.modelScalePositionHelper(F);
-      this.Chair1.func_78785_a(f5);
-      this.YemmaBody1.func_78785_a(f5);
+      this.Chair1.render(f5);
+      this.YemmaBody1.render(f5);
       if (JGConfigClientSettings.CLIENT_DA22) {
-         this.Desk1.func_78785_a(f5);
+         this.Desk1.render(f5);
       }
 
       GL11.glPopMatrix();
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 }

@@ -12,9 +12,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
 
-package com.rgerva.dbr.entity;
+package com.rgerva.dbr.entity.entity;
 
-import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.entity.ModEntities;
 import com.rgerva.dbr.entity.renderer.AuraEntityRenderState;
 import com.rgerva.dbr.network.interfaces.IModAuraSync;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -32,8 +32,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class AuraEntity extends Entity implements IModAuraSync {

@@ -35,11 +35,11 @@ public class ComJrmcRei extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(commandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var12) {
          }
 
-         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComSENAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComSENAS : JRMCoreConfig.ComSENAO);
+         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComSENAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComSENAS : JRMCoreConfig.ComSENAO);
          boolean keepSkills = false;
          if (stringArray.length > 2) {
             keepSkills = stringArray[2].toLowerCase().contentEquals("true");
@@ -73,7 +73,7 @@ public class ComJrmcRei extends CommandBase {
             String t = "You have been reincarnated, you kept " + (int)(per * 100.0F) + "%% of attributes and learnable skills " + (keepSkills ? "have been kept" : "has been removed") + ".";
             entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
             if (n) {
-               this.notifyAdmins(commandSender, "%s has been reincarnated with %s%% of attributes and learnable skills " + (keepSkills ? "have been kept" : "has been removed") + ".", new Object[]{entityplayermp.func_70005_c_(), (int)(per * 100.0F)});
+               this.notifyAdmins(commandSender, "%s has been reincarnated with %s%% of attributes and learnable skills " + (keepSkills ? "have been kept" : "has been removed") + ".", new Object[]{entityplayermp.getName(), (int)(per * 100.0F)});
             }
          }
 

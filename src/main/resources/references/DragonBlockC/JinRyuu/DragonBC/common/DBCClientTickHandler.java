@@ -123,14 +123,14 @@ public class DBCClientTickHandler {
    }
 
    public static boolean isPlayerInCreativeMode() {
-      return JRMCoreH.isInCreativeMode(DBCClient.mc.field_71439_g);
+      return JRMCoreH.isInCreativeMode(DBCClient.mc.player);
    }
 
    public void onRenderTickInGUI(GuiScreen guiscreen) {
-      if (this.mc.field_71439_g != null) {
-         EntityPlayer player = Minecraft.func_71410_x().field_71439_g;
+      if (this.mc.player != null) {
+         EntityPlayer player = Minecraft.func_71410_x().player;
          ItemStack hand = player.field_71071_by.func_70448_g();
-         ItemStack stackhead = ExtendedPlayer.get(this.mc.field_71439_g).inventory.func_70301_a(2);
+         ItemStack stackhead = ExtendedPlayer.get(this.mc.player).inventory.func_70301_a(2);
          if (JRMCoreH.armTypScoutAllOn(stackhead) && DBCKeyHandler.ScFunc.func_151470_d()) {
             ++ScFuncSB;
             KeyBinding var10000;
@@ -225,9 +225,9 @@ public class DBCClientTickHandler {
       if (this.mc.field_71415_G) {
          Minecraft var7 = this.mc;
          if (Minecraft.func_71382_s()) {
-            EntityPlayer var4 = Minecraft.func_71410_x().field_71439_g;
-            ItemStack hand = this.mc.field_71439_g.field_71071_by.func_70448_g();
-            ItemStack stackhead = ExtendedPlayer.get(this.mc.field_71439_g).inventory.func_70301_a(2);
+            EntityPlayer var4 = Minecraft.func_71410_x().player;
+            ItemStack hand = this.mc.player.field_71071_by.func_70448_g();
+            ItemStack stackhead = ExtendedPlayer.get(this.mc.player).inventory.func_70301_a(2);
             if (stackhead != null && JRMCoreH.armTypScoutAllOn(stackhead)) {
                if (DBCKeyHandler.ScFunc.func_151470_d()) {
                   ++ScFuncSB;
@@ -293,10 +293,10 @@ public class DBCClientTickHandler {
 
                String t = JRMCoreH.trlai("dbc", "kisensemode" + DBCEH.kisnsMd);
                ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
-               JRMCoreClient.mc.field_71439_g.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(color));
+               JRMCoreClient.mc.player.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(color));
             }
 
-            if (this.mc.field_71474_y.field_74320_O == 0) {
+            if (this.mc.gameSettings.thirdPersonView == 0) {
                DBCClient.scouterGui.renderScouter();
             }
          }
@@ -310,22 +310,22 @@ public class DBCClientTickHandler {
          gdb = 0;
          this.dbs.clear();
          Block blockID = null;
-         if (p.field_70170_p.field_73011_w.field_76574_g == 20) {
+         if (p.world.field_73011_w.field_76574_g == 20) {
             blockID = BlocksDBC.BlockNamekDragonBall;
          }
 
-         if (p.field_70170_p.field_73011_w.field_76574_g == 0) {
+         if (p.world.field_73011_w.field_76574_g == 0) {
             blockID = BlocksDBC.BlockDragonBall;
          }
 
          int m = 80;
-         int l1 = MathHelper.func_76128_c(p.field_70165_t);
-         int i11 = MathHelper.func_76128_c(p.field_70161_v);
+         int l1 = MathHelper.func_76128_c(p.posX);
+         int i11 = MathHelper.func_76128_c(p.posZ);
 
          for(int j11 = l1 - m; j11 <= l1 + m; ++j11) {
             for(int j2 = i11 - m; j2 <= i11 + m; ++j2) {
                for(int k2 = 109; k2 >= 64; --k2) {
-                  if (p.field_70170_p.func_147439_a(j11, k2, j2) == blockID) {
+                  if (p.world.func_147439_a(j11, k2, j2) == blockID) {
                      double[] d = new double[]{(double)j11, (double)j2};
                      this.dbs.add(d);
                   }
@@ -338,10 +338,10 @@ public class DBCClientTickHandler {
 
    public void DragonRadar(EntityPlayer p) {
       this.upd(p);
-      int pitch = (int)p.field_70125_A + 60;
+      int pitch = (int)p.rotationPitch + 60;
 
       for(int i = 0; i < this.dbs.size(); ++i) {
-         DBCClient.SagaSys.DragonDetect(((double[])this.dbs.get(i))[0] - p.field_70165_t, ((double[])this.dbs.get(i))[1] - p.field_70161_v, (float)(pitch > 0 ? pitch : 0));
+         DBCClient.SagaSys.DragonDetect(((double[])this.dbs.get(i))[0] - p.posX, ((double[])this.dbs.get(i))[1] - p.posZ, (float)(pitch > 0 ? pitch : 0));
       }
 
    }
@@ -382,14 +382,14 @@ public class DBCClientTickHandler {
    }
 
    public void onTickInGame() {
-      EntityPlayer var4 = Minecraft.func_71410_x().field_71439_g;
+      EntityPlayer var4 = Minecraft.func_71410_x().player;
       World var3 = FMLClientHandler.instance().getClient().field_71441_e;
-      if (this.mc.field_71441_e != null && this.mc.field_71439_g != null && !this.mc.field_71439_g.field_70128_L) {
+      if (this.mc.field_71441_e != null && this.mc.player != null && !this.mc.player.field_70128_L) {
          if (this.mc.func_71387_A()) {
          }
 
          if (mountHelper != 0) {
-            var4.func_70078_a(var4.field_70170_p.func_73045_a(mountHelper));
+            var4.func_70078_a(var4.world.func_73045_a(mountHelper));
             if (var4.func_70115_ae()) {
                mountHelper = 0;
             }
@@ -407,7 +407,7 @@ public class DBCClientTickHandler {
             inAabb = true;
          }
 
-         if (var4.field_71093_bK == DBCConfig.dimNullRealm && this.mc.field_71439_g.field_70163_u <= (double)DBCConfig.NullRealmMinimumHeight) {
+         if (var4.field_71093_bK == DBCConfig.dimNullRealm && this.mc.player.posY <= (double)DBCConfig.NullRealmMinimumHeight) {
             JRMCoreHDBC.requestNullRealmKnockout();
          }
 
@@ -441,11 +441,11 @@ public class DBCClientTickHandler {
 
          if (var4.field_71093_bK == 0) {
             kn = AxisAlignedBB.func_72330_a(76.0D, 64.0D, 41.0D, 79.0D, 129.0D, 44.0D);
-            l3 = var4.field_70170_p.func_72872_a(EntityPlayer.class, kn);
+            l3 = var4.world.func_72872_a(EntityPlayer.class, kn);
 
             for(i = 0; i < l3.size(); ++i) {
                EntityPlayer e2 = (EntityPlayer)l3.get(i);
-               if (e2.func_70005_c_() == var4.func_70005_c_()) {
+               if (e2.getName() == var4.getName()) {
                   float f5 = 0.15F;
                   if (var4.field_70159_w < (double)(-f5)) {
                      var4.field_70159_w = (double)(-f5);
@@ -480,8 +480,8 @@ public class DBCClientTickHandler {
             }
          }
 
-         ItemStack hand = this.mc.field_71439_g.field_71071_by.func_70448_g();
-         if (hand == null && DBCClient.mc.field_71474_y.field_74313_G.func_151470_d() && JRMCoreH.KASelected == 16 && !JRMCoreKeyHandler.KiCharge.func_151470_d() && JRMCoreH.kiAmount > 0) {
+         ItemStack hand = this.mc.player.field_71071_by.func_70448_g();
+         if (hand == null && DBCClient.mc.gameSettings.field_74313_G.func_151470_d() && JRMCoreH.KASelected == 16 && !JRMCoreKeyHandler.KiCharge.func_151470_d() && JRMCoreH.kiAmount > 0) {
          }
 
          int pl;
@@ -550,31 +550,31 @@ public class DBCClientTickHandler {
             startcountT = 0;
          }
 
-         if (DBCClient.mc.field_71439_g.field_70154_o != null && DBCClient.mc.field_71439_g.field_70154_o.getClass() == SpacePod01Entity.class && DBCClient.mc.field_71474_y.field_74322_I.func_151470_d()) {
-            DBCClient.mc.field_71439_g.openGui(mod_DragonBC.instance, 0, DBCClient.mc.field_71441_e, (int)DBCClient.mc.field_71439_g.field_70165_t, (int)DBCClient.mc.field_71439_g.field_70163_u, (int)DBCClient.mc.field_71439_g.field_70161_v);
+         if (DBCClient.mc.player.field_70154_o != null && DBCClient.mc.player.field_70154_o.getClass() == SpacePod01Entity.class && DBCClient.mc.gameSettings.field_74322_I.func_151470_d()) {
+            DBCClient.mc.player.openGui(mod_DragonBC.instance, 0, DBCClient.mc.field_71441_e, (int)DBCClient.mc.player.posX, (int)DBCClient.mc.player.posY, (int)DBCClient.mc.player.posZ);
          }
 
-         if (DBCClient.mc.field_71439_g.field_70154_o != null) {
-            if (DBCClient.mc.field_71474_y.field_74351_w.func_151470_d()) {
+         if (DBCClient.mc.player.field_70154_o != null) {
+            if (DBCClient.mc.gameSettings.field_74351_w.func_151470_d()) {
                JRMCoreH.forw = 1.0D;
                dri(1);
-            } else if (DBCClient.mc.field_71474_y.field_74368_y.func_151470_d()) {
+            } else if (DBCClient.mc.gameSettings.field_74368_y.func_151470_d()) {
                JRMCoreH.forw = 2.0D;
                dri(2);
             }
 
-            if (DBCClient.mc.field_71474_y.field_74370_x.func_151470_d()) {
+            if (DBCClient.mc.gameSettings.field_74370_x.func_151470_d()) {
                JRMCoreH.forw = 1.0D;
                dri(5);
-            } else if (DBCClient.mc.field_71474_y.field_74366_z.func_151470_d()) {
+            } else if (DBCClient.mc.gameSettings.field_74366_z.func_151470_d()) {
                JRMCoreH.forw = 2.0D;
                dri(6);
             }
 
-            if (DBCClient.mc.field_71474_y.field_74314_A.func_151470_d() && DBCClient.mc.field_71439_g.field_70154_o != null) {
+            if (DBCClient.mc.gameSettings.field_74314_A.func_151470_d() && DBCClient.mc.player.field_70154_o != null) {
                JRMCoreH.forw = 3.0D;
                dri(3);
-            } else if (JRMCoreKeyHandler.Fn.func_151470_d() && DBCClient.mc.field_71439_g.field_70154_o != null) {
+            } else if (JRMCoreKeyHandler.Fn.func_151470_d() && DBCClient.mc.player.field_70154_o != null) {
                JRMCoreH.forw = 4.0D;
                dri(4);
             } else {
@@ -586,23 +586,23 @@ public class DBCClientTickHandler {
             boolean itEnabledShort;
             KeyBinding var79;
             if (JRMCoreH.curRelease != 0 && !JRMCoreH.StusEfctsMe(11) && !JRMCoreH.kob) {
-               itEnabledShort = DBCClient.mc.field_71474_y.field_74322_I.func_151470_d();
-               if (hand == null && itEnabledShort && !DBCClient.mc.field_71474_y.field_74313_G.func_151470_d() && !JRMCoreH.isChrgng) {
+               itEnabledShort = DBCClient.mc.gameSettings.field_74322_I.func_151470_d();
+               if (hand == null && itEnabledShort && !DBCClient.mc.gameSettings.field_74313_G.func_151470_d() && !JRMCoreH.isChrgng) {
                   byte b = 0;
                   if (JRMCoreKeyHandler.Fn.func_151470_d()) {
                      b = 1;
                   }
 
                   DBCKiTech.EnAtSlct(b);
-                  var79 = DBCClient.mc.field_71474_y.field_74322_I;
-                  KeyBinding.func_74510_a(DBCClient.mc.field_71474_y.field_74322_I.func_151463_i(), false);
+                  var79 = DBCClient.mc.gameSettings.field_74322_I;
+                  KeyBinding.func_74510_a(DBCClient.mc.gameSettings.field_74322_I.func_151463_i(), false);
                   nuller();
-               } else if (JRMCoreKeyHandler.Fn.func_151470_d() && !DBCClient.mc.field_71474_y.field_74313_G.func_151470_d() && !JRMCoreH.isChrgng) {
+               } else if (JRMCoreKeyHandler.Fn.func_151470_d() && !DBCClient.mc.gameSettings.field_74313_G.func_151470_d() && !JRMCoreH.isChrgng) {
                   i = JRMCoreCliTicH.mw;
                   if (i != 0) {
                      this.changeCurEnAtSlct(i);
                      var4.field_71071_by.field_70461_c = this.curHand;
-                     if (DBCClient.mc.field_71474_y.field_74331_S) {
+                     if (DBCClient.mc.gameSettings.field_74331_S) {
                         if (i > 0) {
                            i = 1;
                         }
@@ -611,7 +611,7 @@ public class DBCClientTickHandler {
                            i = -1;
                         }
 
-                        GameSettings var80 = DBCClient.mc.field_71474_y;
+                        GameSettings var80 = DBCClient.mc.gameSettings;
                         var80.field_74328_V += (float)i * 0.25F;
                      }
                   }
@@ -628,8 +628,8 @@ public class DBCClientTickHandler {
                }
 
                this.curHand = var4.field_71071_by.field_70461_c;
-               float p = DBCClient.mc.field_71439_g.field_70125_A < 0.0F ? (float)((int)DBCClient.mc.field_71439_g.field_70125_A * -1) : (float)((int)DBCClient.mc.field_71439_g.field_70125_A);
-               float y = DBCClient.mc.field_71439_g.field_70177_z < 0.0F ? (float)((int)DBCClient.mc.field_71439_g.field_70177_z * -1) : (float)((int)DBCClient.mc.field_71439_g.field_70177_z);
+               float p = DBCClient.mc.player.rotationPitch < 0.0F ? (float)((int)DBCClient.mc.player.rotationPitch * -1) : (float)((int)DBCClient.mc.player.rotationPitch);
+               float y = DBCClient.mc.player.rotationYaw < 0.0F ? (float)((int)DBCClient.mc.player.rotationYaw * -1) : (float)((int)DBCClient.mc.player.rotationYaw);
                boolean var81;
                if ((!(p > DBCH.RotPic) || !(p > DBCH.RotPic + 0.1F)) && (!(p < DBCH.RotPic) || !(p < DBCH.RotPic - 0.1F)) && (!(y > DBCH.RotYaw) || !(y > DBCH.RotYaw + 0.1F)) && (!(y < DBCH.RotYaw) || !(y < DBCH.RotYaw - 0.1F))) {
                   var81 = false;
@@ -642,7 +642,7 @@ public class DBCClientTickHandler {
                String[] tech = JRMCoreH.tech(selectionID);
                byte[] sts;
                int type;
-               if (hand == null && DBCClient.mc.field_71474_y.field_74313_G.func_151470_d() && JRMCoreKeyHandler.Fn.func_151470_d() && JRMCoreH.curEnergy > 0 && !JRMCoreKeyHandler.KiCharge.func_151470_d() && tech != null && DBCKiTech.KAkiEn(selectionID, JRMCoreH.curRelease, JRMCoreH.chrgPrc) && JRMCoreConfig.dat5695[JRMCoreH.techDBCty(tech)]) {
+               if (hand == null && DBCClient.mc.gameSettings.field_74313_G.func_151470_d() && JRMCoreKeyHandler.Fn.func_151470_d() && JRMCoreH.curEnergy > 0 && !JRMCoreKeyHandler.KiCharge.func_151470_d() && tech != null && DBCKiTech.KAkiEn(selectionID, JRMCoreH.curRelease, JRMCoreH.chrgPrc) && JRMCoreConfig.dat5695[JRMCoreH.techDBCty(tech)]) {
                   sts = JRMCoreH.tech_statmods(tech[19]);
                   type = JRMCoreH.techDBCty(tech);
                   int color;
@@ -652,10 +652,10 @@ public class DBCClientTickHandler {
                      int f = (int)(50.0F / JRMCoreH.techDBCctWc(tech, sts) * (float)JRMCoreH.charged);
                      int var83 = JRMCoreH.PlyrAttrbts[3];
                      boolean c = JRMCoreH.isFused();
-                     color = JRMCoreH.getPlayerAttribute(DBCClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), 1, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
-                     int WIL2 = JRMCoreH.getPlayerAttribute(DBCClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, 0, 0, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), false, false, false, false, 1, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
-                     int stat = JRMCoreH.stat(DBCClient.mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, color, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
-                     pl = JRMCoreH.stat(DBCClient.mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, WIL2, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+                     color = JRMCoreH.getPlayerAttribute(DBCClient.mc.player, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), 1, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
+                     int WIL2 = JRMCoreH.getPlayerAttribute(DBCClient.mc.player, JRMCoreH.PlyrAttrbts, 3, 0, 0, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), false, false, false, false, 1, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
+                     int stat = JRMCoreH.stat(DBCClient.mc.player, 3, JRMCoreH.Pwrtyp, 4, color, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+                     pl = JRMCoreH.stat(DBCClient.mc.player, 3, JRMCoreH.Pwrtyp, 4, WIL2, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
                      float costKi = (float)(JRMCoreH.techDBCkic(tech, pl, sts) * JRMCoreH.chrgPrc) * 0.02F * (float)JRMCoreH.curRelease * 0.01F;
                      costKi = (float)((double)costKi * JRMCoreConfig.dat5696[type][2]);
                      if (tech[0].equals("KAFakeMoon")) {
@@ -690,7 +690,7 @@ public class DBCClientTickHandler {
                      boolean setGoDOn = false;
 
                      for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-                        if (JRMCoreH.plyrs[pl] != null && JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+                        if (JRMCoreH.plyrs[pl] != null && JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                            String s = JRMCoreH.data5[pl].split(";")[0];
                            align = Byte.parseByte(s);
                            setGoDOn = JRMCoreH.StusEfctsClient(20, pl);
@@ -760,12 +760,12 @@ public class DBCClientTickHandler {
                   sts = JRMCoreH.tech_statmods(tech[19]);
                   if (DBCKiTech.KAkiEn(selectionID, JRMCoreH.curRelease, JRMCoreH.chrgPrc)) {
                      type = JRMCoreH.techDBCty(tech);
-                     boolean isMoving = DBCClient.mc.field_71439_g.field_70159_w < 0.05D && DBCClient.mc.field_71439_g.field_70179_y < 0.05D && DBCClient.mc.field_71439_g.field_70159_w > -0.05D && DBCClient.mc.field_71439_g.field_70179_y > -0.05D && DBCClient.mc.field_71439_g.field_70181_x < 0.05D;
+                     boolean isMoving = DBCClient.mc.player.field_70159_w < 0.05D && DBCClient.mc.player.field_70179_y < 0.05D && DBCClient.mc.player.field_70159_w > -0.05D && DBCClient.mc.player.field_70179_y > -0.05D && DBCClient.mc.player.field_70181_x < 0.05D;
                      boolean doContinues = type >= JRMCoreConfig.ContinuesKiAttacks.length ? false : JRMCoreConfig.ContinuesKiAttacks[type];
                      if (doContinues && (float)JRMCoreH.charged > JRMCoreH.techDBCctWc(tech, sts) / 2.0F) {
                         if (isMoving) {
                            if ((float)JRMCoreH.charged > JRMCoreH.techDBCctWc(tech, sts) / 2.0F && JRMCoreH.chrgPrc != 0 && !JRMCoreH.isShtng) {
-                              EntityClientPlayerMP var82 = DBCClient.mc.field_71439_g;
+                              EntityClientPlayerMP var82 = DBCClient.mc.player;
                               var82.field_70181_x *= 0.0D;
                               if (JRMCoreH.cDEnAt(selectionID, JRMCoreH.techDBCcd(tech, sts)) && JRMCoreH.curEnergy > 0) {
                                  DBCKiTech.EnAt(DBCPacketHandlerServer.WAVE_FIRING);
@@ -812,8 +812,8 @@ public class DBCClientTickHandler {
                DBCH.RotYaw = y;
                JRMCoreHC.Blocking();
                DBCKiTech.ChargeKi();
-               DBCKiTech.JumpKi(DBCClient.mc.field_71474_y.field_74314_A);
-               DBCKiTech.FloatKi(JRMCoreKeyHandler.KiFlight, DBCClient.mc.field_71474_y.field_74314_A, DBCClient.mc.field_71474_y.field_74311_E);
+               DBCKiTech.JumpKi(DBCClient.mc.gameSettings.field_74314_A);
+               DBCKiTech.FloatKi(JRMCoreKeyHandler.KiFlight, DBCClient.mc.gameSettings.field_74314_A, DBCClient.mc.gameSettings.field_74311_E);
                DBCKiTech.TurboMode(JRMCoreKeyHandler.KiDash);
                DBCKiTech.DashKi(var4.func_70051_ag() || DBCKiTech.turbo);
                DBCKiTech.Ascend(JRMCoreKeyHandler.KiAscend);
@@ -821,16 +821,16 @@ public class DBCClientTickHandler {
             } else {
                if (JGConfigClientSettings.dbcFastFusionSpectatorCameraFollowOn && JRMCoreH.curRelease != 0 && JRMCoreH.StusEfctsMe(11) && !JRMCoreH.kob && JRMCoreH.isFused() && JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreH.dnn(18)) {
                   for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-                     if (JRMCoreH.plyrs[pl].equals(var4.func_70005_c_())) {
+                     if (JRMCoreH.plyrs[pl].equals(var4.getName())) {
                         String[] fullFusionData = JRMCoreH.dat18[pl].split(";");
                         if (fullFusionData.length >= 3) {
                            String[] fusionData = fullFusionData[2].split(",");
                            if (fusionData.length == 3) {
-                              EntityPlayer player = var4.field_70170_p.func_72924_a(fusionData[0]);
+                              EntityPlayer player = var4.world.getPlayerEntityByName(fusionData[0]);
                               if (player != null) {
-                                 var4.field_70159_w -= (var4.field_70165_t - player.field_70165_t) / 3.0D;
-                                 var4.field_70181_x -= (var4.field_70163_u - player.field_70163_u) / 3.0D;
-                                 var4.field_70179_y -= (var4.field_70161_v - player.field_70161_v) / 3.0D;
+                                 var4.field_70159_w -= (var4.posX - player.posX) / 3.0D;
+                                 var4.field_70181_x -= (var4.posY - player.posY) / 3.0D;
+                                 var4.field_70179_y -= (var4.posZ - player.posZ) / 3.0D;
                               }
                            }
                         }
@@ -856,7 +856,7 @@ public class DBCClientTickHandler {
                   String t1 = JRMCoreH.StusEfctsMe(11) ? JRMCoreH.trl("dbc", "fusedspectator") : JRMCoreH.trl("dbc.clienttick.increltouseki");
                   String t2 = JRMCoreKeyHandler.KiCharge.func_151464_g();
                   String tf = String.format(t1, t2);
-                  this.mc.field_71439_g.func_145747_a(new ChatComponentText(tf));
+                  this.mc.player.func_145747_a(new ChatComponentText(tf));
                   var79 = JRMCoreKeyHandler.KiFlight;
                   KeyBinding.func_74510_a(JRMCoreKeyHandler.KiFlight.func_151463_i(), false);
                   var79 = JRMCoreKeyHandler.KiDash;
@@ -867,9 +867,9 @@ public class DBCClientTickHandler {
             }
 
             if (JRMCoreH.isPowerTypeKi()) {
-               JRMCoreHC.BPC_ME = JRMCoreH.gkap(JRMCoreH.bpc(JRMCoreClient.mc.field_71439_g, JRMCoreClient.mc.field_71439_g.func_70005_c_(), JRMCoreH.Pwrtyp), "BPC_ME");
+               JRMCoreHC.BPC_ME = JRMCoreH.gkap(JRMCoreH.bpc(JRMCoreClient.mc.player, JRMCoreClient.mc.player.getName(), JRMCoreH.Pwrtyp), "BPC_ME");
                if (JRMCoreHC.t1s) {
-                  JRMCoreHC.BPC_ME2 = JRMCoreH.bpc(JRMCoreClient.mc.field_71439_g, JRMCoreClient.mc.field_71439_g.func_70005_c_(), JRMCoreH.Pwrtyp, 100);
+                  JRMCoreHC.BPC_ME2 = JRMCoreH.bpc(JRMCoreClient.mc.player, JRMCoreClient.mc.player.getName(), JRMCoreH.Pwrtyp, 100);
                }
 
                if (!JRMCoreH.damInd.isEmpty() && JRMCoreH.SklLvl(6) > 0) {
@@ -903,19 +903,19 @@ public class DBCClientTickHandler {
             boolean itEnabledLong = JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_ENABLED[1];
             boolean itEnabled = itEnabledShort || itEnabledLong;
             if (itEnabled) {
-               boolean isUsed = this.mc.field_71474_y.field_74313_G.func_151470_d();
+               boolean isUsed = this.mc.gameSettings.field_74313_G.func_151470_d();
                if (JRMCoreH.isPowerTypeKi() && JRMCoreH.curRelease != 0) {
                   int itLevel = JRMCoreH.SklLvl(17, JRMCoreH.Pwrtyp);
                   if (itLevel > 0 && DBCKeyHandler.thirdFn.func_151470_d()) {
                      boolean disabled = false;
                      if (JRMCoreH.StusEfctsMe(11) && !JRMCoreH.kob && JRMCoreH.isFused() && JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreH.dnn(18)) {
                         for(int pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-                           if (JRMCoreH.plyrs[pl].equals(var4.func_70005_c_())) {
+                           if (JRMCoreH.plyrs[pl].equals(var4.getName())) {
                               String[] fullFusionData = JRMCoreH.dat18[pl].split(";");
                               if (fullFusionData.length >= 3) {
                                  String[] fusionData = fullFusionData[2].split(",");
                                  if (fusionData.length == 3) {
-                                    EntityPlayer player = var4.field_70170_p.func_72924_a(fusionData[0]);
+                                    EntityPlayer player = var4.world.getPlayerEntityByName(fusionData[0]);
                                     if (player != null) {
                                        disabled = true;
                                     }
@@ -926,7 +926,7 @@ public class DBCClientTickHandler {
                         }
                      }
 
-                     boolean cancelUse = this.mc.field_71474_y.field_74312_F.func_151470_d() || this.mc.field_71439_g.field_71071_by.func_70448_g() != null || disabled;
+                     boolean cancelUse = this.mc.gameSettings.field_74312_F.func_151470_d() || this.mc.player.field_71071_by.func_70448_g() != null || disabled;
                      if (cancelUse) {
                         resetIT(isUsed);
                         var79 = DBCKeyHandler.thirdFn;
@@ -946,7 +946,7 @@ public class DBCClientTickHandler {
                               }
                            } else {
                               String message = "Instant Transmission Failed! Short teleportation is Disabled! ";
-                              DBCClient.mc.field_71439_g.func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
+                              DBCClient.mc.player.func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
                            }
                         } else if (instantTransmissionPress == null && !instantTransmissionRequestSent) {
                            instantTransmissionPress = Instant.now();
@@ -954,13 +954,13 @@ public class DBCClientTickHandler {
                            long timer = Duration.between(instantTransmissionPress, Instant.now()).getSeconds();
                            if (timer >= 4L) {
                               if (itEnabledLong) {
-                                 EntityPlayer plyr = DBCClient.mc.field_71439_g;
-                                 plyr.openGui(mod_JRMCore.instance, 10100, plyr.field_70170_p, (int)plyr.field_70165_t, (int)plyr.field_70163_u, (int)plyr.field_70161_v);
+                                 EntityPlayer plyr = DBCClient.mc.player;
+                                 plyr.openGui(mod_JRMCore.instance, 10100, plyr.world, (int)plyr.posX, (int)plyr.posY, (int)plyr.posZ);
                                  instantTransmissionRequestSent = true;
                                  instantTransmissionPress = null;
                               } else {
                                  String message = "Instant Transmission Failed! Long teleportation is Disabled! ";
-                                 DBCClient.mc.field_71439_g.func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
+                                 DBCClient.mc.player.func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
                               }
                            }
                         } else {
@@ -980,7 +980,7 @@ public class DBCClientTickHandler {
                   if (DBCKeyHandler.thirdFn.func_151470_d()) {
                      if (!instantTransmissionWarning) {
                         String message = "Instant Transmission Failed! Teleportation is Disabled! ";
-                        DBCClient.mc.field_71439_g.func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
+                        DBCClient.mc.player.func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
                         instantTransmissionWarning = true;
                      }
                   } else {

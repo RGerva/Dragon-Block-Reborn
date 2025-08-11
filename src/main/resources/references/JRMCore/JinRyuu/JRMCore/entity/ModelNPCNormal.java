@@ -68,68 +68,68 @@ public class ModelNPCNormal extends ModelBiped {
       this.field_78124_i.func_78793_a(1.9F, 12.0F + par2, 0.0F);
    }
 
-   public void func_78088_a(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-      this.func_78087_a(par2, par3, par4, par5, par6, par7, par1Entity);
+   public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+      this.setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
       if (this.field_78091_s) {
          float var8 = 2.0F;
          GL11.glPushMatrix();
          GL11.glScalef(1.5F / var8, 1.5F / var8, 1.5F / var8);
          GL11.glTranslatef(0.0F, 16.0F * par7, 0.0F);
-         this.field_78116_c.func_78785_a(par7);
+         this.field_78116_c.render(par7);
          GL11.glPopMatrix();
          GL11.glPushMatrix();
          GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
          GL11.glTranslatef(0.0F, 24.0F * par7, 0.0F);
-         this.field_78115_e.func_78785_a(par7);
-         this.field_78112_f.func_78785_a(par7);
-         this.field_78113_g.func_78785_a(par7);
-         this.field_78123_h.func_78785_a(par7);
-         this.field_78124_i.func_78785_a(par7);
-         this.field_78114_d.func_78785_a(par7);
+         this.field_78115_e.render(par7);
+         this.field_78112_f.render(par7);
+         this.field_78113_g.render(par7);
+         this.field_78123_h.render(par7);
+         this.field_78124_i.render(par7);
+         this.field_78114_d.render(par7);
          GL11.glPopMatrix();
       } else {
-         this.field_78116_c.func_78785_a(par7);
-         this.field_78115_e.func_78785_a(par7);
-         this.field_78112_f.func_78785_a(par7);
-         this.field_78113_g.func_78785_a(par7);
-         this.field_78123_h.func_78785_a(par7);
-         this.field_78124_i.func_78785_a(par7);
-         this.field_78114_d.func_78785_a(par7);
+         this.field_78116_c.render(par7);
+         this.field_78115_e.render(par7);
+         this.field_78112_f.render(par7);
+         this.field_78113_g.render(par7);
+         this.field_78123_h.render(par7);
+         this.field_78124_i.render(par7);
+         this.field_78114_d.render(par7);
       }
 
    }
 
-   public void func_78087_a(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
       this.field_78116_c.field_78796_g = par4 / 57.295776F;
-      this.field_78116_c.field_78795_f = par5 / 57.295776F;
+      this.field_78116_c.rotateAngleX = par5 / 57.295776F;
       this.field_78114_d.field_78796_g = this.field_78116_c.field_78796_g;
-      this.field_78114_d.field_78795_f = this.field_78116_c.field_78795_f;
-      this.field_78112_f.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 2.0F * par2 * 0.5F;
-      this.field_78113_g.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
-      this.field_78112_f.field_78808_h = 0.0F;
-      this.field_78113_g.field_78808_h = 0.0F;
-      this.field_78123_h.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F) * 1.4F * par2;
-      this.field_78124_i.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.4F * par2;
+      this.field_78114_d.rotateAngleX = this.field_78116_c.rotateAngleX;
+      this.field_78112_f.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 2.0F * par2 * 0.5F;
+      this.field_78113_g.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
+      this.field_78112_f.rotateAngleZ = 0.0F;
+      this.field_78113_g.rotateAngleZ = 0.0F;
+      this.field_78123_h.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F) * 1.4F * par2;
+      this.field_78124_i.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.4F * par2;
       this.field_78123_h.field_78796_g = 0.0F;
       this.field_78124_i.field_78796_g = 0.0F;
       ModelRenderer var10000;
       if (this.field_78093_q) {
          var10000 = this.field_78112_f;
-         var10000.field_78795_f += -0.62831855F;
+         var10000.rotateAngleX += -0.62831855F;
          var10000 = this.field_78113_g;
-         var10000.field_78795_f += -0.62831855F;
-         this.field_78123_h.field_78795_f = -1.2566371F;
-         this.field_78124_i.field_78795_f = -1.2566371F;
+         var10000.rotateAngleX += -0.62831855F;
+         this.field_78123_h.rotateAngleX = -1.2566371F;
+         this.field_78124_i.rotateAngleX = -1.2566371F;
          this.field_78123_h.field_78796_g = 0.31415927F;
          this.field_78124_i.field_78796_g = -0.31415927F;
       }
 
       if (this.field_78119_l != 0) {
-         this.field_78113_g.field_78795_f = this.field_78113_g.field_78795_f * 0.5F - 0.31415927F * (float)this.field_78119_l;
+         this.field_78113_g.rotateAngleX = this.field_78113_g.rotateAngleX * 0.5F - 0.31415927F * (float)this.field_78119_l;
       }
 
       if (this.field_78120_m != 0) {
-         this.field_78112_f.field_78795_f = this.field_78112_f.field_78795_f * 0.5F - 0.31415927F * (float)this.field_78120_m;
+         this.field_78112_f.rotateAngleX = this.field_78112_f.rotateAngleX * 0.5F - 0.31415927F * (float)this.field_78120_m;
       }
 
       this.field_78112_f.field_78796_g = 0.0F;
@@ -148,83 +148,83 @@ public class ModelNPCNormal extends ModelBiped {
          var10000 = this.field_78113_g;
          var10000.field_78796_g += this.field_78115_e.field_78796_g;
          var10000 = this.field_78113_g;
-         var10000.field_78795_f += this.field_78115_e.field_78796_g;
+         var10000.rotateAngleX += this.field_78115_e.field_78796_g;
          var8 = 1.0F - this.field_78095_p;
          var8 *= var8;
          var8 *= var8;
          var8 = 1.0F - var8;
          var9 = MathHelper.func_76126_a(var8 * 3.1415927F);
-         float var10 = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -(this.field_78116_c.field_78795_f - 0.7F) * 0.75F;
-         this.field_78112_f.field_78795_f = (float)((double)this.field_78112_f.field_78795_f - ((double)var9 * 1.2D + (double)var10));
+         float var10 = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -(this.field_78116_c.rotateAngleX - 0.7F) * 0.75F;
+         this.field_78112_f.rotateAngleX = (float)((double)this.field_78112_f.rotateAngleX - ((double)var9 * 1.2D + (double)var10));
          var10000 = this.field_78112_f;
          var10000.field_78796_g += this.field_78115_e.field_78796_g * 2.0F;
-         this.field_78112_f.field_78808_h = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
+         this.field_78112_f.rotateAngleZ = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
       }
 
       if (this.field_78117_n) {
-         this.field_78115_e.field_78795_f = 0.5F;
+         this.field_78115_e.rotateAngleX = 0.5F;
          var10000 = this.field_78112_f;
-         var10000.field_78795_f += 0.4F;
+         var10000.rotateAngleX += 0.4F;
          var10000 = this.field_78113_g;
-         var10000.field_78795_f += 0.4F;
+         var10000.rotateAngleX += 0.4F;
          this.field_78123_h.field_78798_e = 4.0F;
          this.field_78124_i.field_78798_e = 4.0F;
-         this.field_78123_h.field_78797_d = 9.0F;
-         this.field_78124_i.field_78797_d = 9.0F;
-         this.field_78116_c.field_78797_d = 1.0F;
-         this.field_78114_d.field_78797_d = 1.0F;
+         this.field_78123_h.rotationPointY = 9.0F;
+         this.field_78124_i.rotationPointY = 9.0F;
+         this.field_78116_c.rotationPointY = 1.0F;
+         this.field_78114_d.rotationPointY = 1.0F;
       } else {
-         this.field_78115_e.field_78795_f = 0.0F;
+         this.field_78115_e.rotateAngleX = 0.0F;
          this.field_78123_h.field_78798_e = 0.1F;
          this.field_78124_i.field_78798_e = 0.1F;
-         this.field_78123_h.field_78797_d = 12.0F;
-         this.field_78124_i.field_78797_d = 12.0F;
-         this.field_78116_c.field_78797_d = 0.0F;
-         this.field_78114_d.field_78797_d = 0.0F;
+         this.field_78123_h.rotationPointY = 12.0F;
+         this.field_78124_i.rotationPointY = 12.0F;
+         this.field_78116_c.rotationPointY = 0.0F;
+         this.field_78114_d.rotationPointY = 0.0F;
       }
 
       var10000 = this.field_78112_f;
-      var10000.field_78808_h += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+      var10000.rotateAngleZ += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
       var10000 = this.field_78113_g;
-      var10000.field_78808_h -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+      var10000.rotateAngleZ -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
       var10000 = this.field_78112_f;
-      var10000.field_78795_f += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+      var10000.rotateAngleX += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
       var10000 = this.field_78113_g;
-      var10000.field_78795_f -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+      var10000.rotateAngleX -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
       if (this.field_78118_o) {
          var8 = 0.0F;
          var9 = 0.0F;
-         this.field_78112_f.field_78808_h = 0.0F;
-         this.field_78113_g.field_78808_h = 0.0F;
+         this.field_78112_f.rotateAngleZ = 0.0F;
+         this.field_78113_g.rotateAngleZ = 0.0F;
          this.field_78112_f.field_78796_g = -(0.1F - var8 * 0.6F) + this.field_78116_c.field_78796_g;
          this.field_78113_g.field_78796_g = 0.1F - var8 * 0.6F + this.field_78116_c.field_78796_g + 0.4F;
-         this.field_78112_f.field_78795_f = -1.5707964F + this.field_78116_c.field_78795_f;
-         this.field_78113_g.field_78795_f = -1.5707964F + this.field_78116_c.field_78795_f;
+         this.field_78112_f.rotateAngleX = -1.5707964F + this.field_78116_c.rotateAngleX;
+         this.field_78113_g.rotateAngleX = -1.5707964F + this.field_78116_c.rotateAngleX;
          var10000 = this.field_78112_f;
-         var10000.field_78795_f -= var8 * 1.2F - var9 * 0.4F;
+         var10000.rotateAngleX -= var8 * 1.2F - var9 * 0.4F;
          var10000 = this.field_78113_g;
-         var10000.field_78795_f -= var8 * 1.2F - var9 * 0.4F;
+         var10000.rotateAngleX -= var8 * 1.2F - var9 * 0.4F;
          var10000 = this.field_78112_f;
-         var10000.field_78808_h += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+         var10000.rotateAngleZ += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
          var10000 = this.field_78113_g;
-         var10000.field_78808_h -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+         var10000.rotateAngleZ -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
          var10000 = this.field_78112_f;
-         var10000.field_78795_f += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+         var10000.rotateAngleX += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
          var10000 = this.field_78113_g;
-         var10000.field_78795_f -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+         var10000.rotateAngleX -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
       }
 
    }
 
    public void func_78110_b(float par1) {
       this.field_78121_j.field_78796_g = this.field_78116_c.field_78796_g;
-      this.field_78121_j.field_78795_f = this.field_78116_c.field_78795_f;
+      this.field_78121_j.rotateAngleX = this.field_78116_c.rotateAngleX;
       this.field_78121_j.field_78800_c = 0.0F;
-      this.field_78121_j.field_78797_d = 0.0F;
-      this.field_78121_j.func_78785_a(par1);
+      this.field_78121_j.rotationPointY = 0.0F;
+      this.field_78121_j.render(par1);
    }
 
    public void func_78111_c(float par1) {
-      this.field_78122_k.func_78785_a(par1);
+      this.field_78122_k.render(par1);
    }
 }

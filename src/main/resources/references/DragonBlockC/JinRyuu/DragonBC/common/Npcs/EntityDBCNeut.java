@@ -37,7 +37,7 @@ public class EntityDBCNeut extends EntityDBC {
    public void func_70645_a(DamageSource par1DamageSource) {
       Entity var3 = par1DamageSource.func_76346_g();
       if (var3 instanceof EntityPlayer) {
-         List var4 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+         List var4 = this.world.func_72839_b(this, this.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
 
          for(int var5 = 0; var5 < var4.size(); ++var5) {
             Entity var6 = (Entity)var4.get(var5);
@@ -53,13 +53,13 @@ public class EntityDBCNeut extends EntityDBC {
       super.func_70645_a(par1DamageSource);
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
-      super.func_70014_b(par1NBTTagCompound);
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+      super.writeEntityToNBT(par1NBTTagCompound);
       par1NBTTagCompound.func_74777_a("Anger", (short)this.angerLevel);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
-      super.func_70037_a(par1NBTTagCompound);
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readEntityFromNBT(par1NBTTagCompound);
       this.angerLevel = par1NBTTagCompound.func_74765_d("Anger");
    }
 
@@ -73,7 +73,7 @@ public class EntityDBCNeut extends EntityDBC {
       } else {
          Entity var3 = par1DamageSource.func_76346_g();
          if (var3 instanceof EntityPlayer) {
-            List var4 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+            List var4 = this.world.func_72839_b(this, this.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
 
             for(int var5 = 0; var5 < var4.size(); ++var5) {
                Entity var6 = (Entity)var4.get(var5);
@@ -92,6 +92,6 @@ public class EntityDBCNeut extends EntityDBC {
 
    private void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
+      this.angerLevel = 400 + this.rand.nextInt(400);
    }
 }

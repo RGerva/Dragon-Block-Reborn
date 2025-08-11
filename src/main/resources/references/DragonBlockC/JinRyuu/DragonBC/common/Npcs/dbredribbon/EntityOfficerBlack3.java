@@ -28,32 +28,32 @@ public class EntityOfficerBlack3 extends EntityRedRibbon {
    public long BattlePowerOld() {
       int BP = 16320000;
       int exp = this.field_70728_aV * 100;
-      long BattlePower = (long)(BP + this.field_70146_Z.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
+      long BattlePower = (long)(BP + this.rand.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
       return BattlePower;
    }
 
-   public void func_70071_h_() {
-      super.func_70071_h_();
-      if (!this.field_70170_p.field_72995_K && !this.field_70128_L && this.field_70789_a != null && this.field_70789_a.func_70089_S() && this.field_70789_a.func_70032_d(this) < 25.0F) {
+   public void onUpdate() {
+      super.onUpdate();
+      if (!this.world.field_72995_K && !this.field_70128_L && this.field_70789_a != null && this.field_70789_a.func_70089_S() && this.field_70789_a.func_70032_d(this) < 25.0F) {
          if (this.lastShot == -1) {
             this.lastShot = (new Random()).nextInt(2);
          }
 
          EntityPrjtls_1 var8;
          if (this.lastShot == 0) {
-            if ((this.field_70173_aa + 200) % 400 < 15) {
-               var8 = new EntityPrjtls_1(this.field_70170_p, this, this.field_70789_a, 1.8F, 1.0F, 6);
-               this.field_70170_p.func_72956_a(this, "jinryuudragonbc:DBC5.gun_shot_single", 0.2F, this.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
-               this.field_70170_p.func_72838_d(var8);
+            if ((this.ticksExisted + 200) % 400 < 15) {
+               var8 = new EntityPrjtls_1(this.world, this, this.field_70789_a, 1.8F, 1.0F, 6);
+               this.world.func_72956_a(this, "jinryuudragonbc:DBC5.gun_shot_single", 0.2F, this.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
+               this.world.func_72838_d(var8);
                this.shot = true;
             } else if (this.shot) {
                this.lastShot = -1;
                this.shot = false;
             }
-         } else if (this.field_70173_aa % 100 == 0) {
-            var8 = new EntityPrjtls_1(this.field_70170_p, this, this.field_70789_a, 1.8F, 1.0F, 2);
-            this.field_70170_p.func_72956_a(this, "jinryuudragonbc:DBC4.rocket_shot", 0.6F, this.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
-            this.field_70170_p.func_72838_d(var8);
+         } else if (this.ticksExisted % 100 == 0) {
+            var8 = new EntityPrjtls_1(this.world, this, this.field_70789_a, 1.8F, 1.0F, 2);
+            this.world.func_72956_a(this, "jinryuudragonbc:DBC4.rocket_shot", 0.6F, this.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
+            this.world.func_72838_d(var8);
             this.shot = true;
          } else if (this.shot) {
             this.lastShot = -1;

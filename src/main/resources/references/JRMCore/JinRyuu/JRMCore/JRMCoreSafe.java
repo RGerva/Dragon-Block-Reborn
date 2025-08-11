@@ -77,7 +77,7 @@ public class JRMCoreSafe {
    }
 
    public void SAAUW(int n, String un, String saa) {
-      JRMCoreH.nbt(this.world.func_72924_a(un), "pres").func_74768_a(saa, n);
+      JRMCoreH.nbt(this.world.getPlayerEntityByName(un), "pres").func_74768_a(saa, n);
    }
 
    public int SAAUR(EntityPlayer un, String saa) {

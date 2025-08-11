@@ -284,17 +284,17 @@ public class namekian_throneModel extends ModelBase {
       this.ArmrestL8.func_78792_a(this.ArmrestL9);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.Throne1.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.Throne1.render(f5);
    }
 
    public void renderModel(float f5) {
-      this.Throne1.func_78785_a(f5);
+      this.Throne1.render(f5);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 }

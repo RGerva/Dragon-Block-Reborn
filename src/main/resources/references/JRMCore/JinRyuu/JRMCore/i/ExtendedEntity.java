@@ -63,7 +63,7 @@ public class ExtendedEntity implements IExtendedEntityProperties {
    }
 
    public void onUpdate() {
-      if (!this.e.field_70170_p.field_72995_K && this.getLvl() == 0 && this.e instanceof EntityMob) {
+      if (!this.e.world.field_72995_K && this.getLvl() == 0 && this.e instanceof EntityMob) {
          EntityMob mob = (EntityMob)this.e;
          int lvl = JRMCoreHSAC.SAO_getLvlBasedOnDrop(mob);
          int newHealth = (int)(mob.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111125_b() * (double)lvl * 1.0D);

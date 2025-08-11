@@ -757,7 +757,7 @@ public class JRMCoreHDBC {
       float G = 1.0F;
       if (player.field_71093_bK == DBCConfig.otherWorld) {
          AxisAlignedBB ab = AxisAlignedBB.func_72330_a((double)DBCH.KPminX, (double)DBCH.KPminY, (double)DBCH.KPminZ, (double)DBCH.KPmaxX, (double)DBCH.KPmaxY, (double)DBCH.KPmaxZ);
-         if (ab.field_72336_d > player.field_70165_t && ab.field_72340_a < player.field_70165_t && ab.field_72337_e > player.field_70163_u && ab.field_72338_b < player.field_70163_u && ab.field_72334_f > player.field_70161_v && ab.field_72339_c < player.field_70161_v) {
+         if (ab.field_72336_d > player.posX && ab.field_72340_a < player.posX && ab.field_72337_e > player.posY && ab.field_72338_b < player.posY && ab.field_72334_f > player.posZ && ab.field_72339_c < player.posZ) {
             G = 10.0F;
          }
       }
@@ -771,7 +771,7 @@ public class JRMCoreHDBC {
    }
 
    public static void openGui(int id, EntityPlayer pl) {
-      pl.openGui(mod_DragonBC.instance, id, pl.field_70170_p, (int)pl.field_70165_t, (int)pl.field_70163_u, (int)pl.field_70161_v);
+      pl.openGui(mod_DragonBC.instance, id, pl.world, (int)pl.posX, (int)pl.posY, (int)pl.posZ);
    }
 
    public static void onEventDrop(LivingDropsEvent event) {
@@ -803,12 +803,12 @@ public class JRMCoreHDBC {
    }
 
    public static void spawnSaibaimans(EntityPlayer player) {
-      int i = MathHelper.func_76128_c(player.field_70165_t);
-      int j = MathHelper.func_76128_c(player.field_70163_u);
-      int k = MathHelper.func_76128_c(player.field_70161_v);
+      int i = MathHelper.func_76128_c(player.posX);
+      int j = MathHelper.func_76128_c(player.posY);
+      int k = MathHelper.func_76128_c(player.posZ);
       int r = 30;
       AxisAlignedBB aabb = AxisAlignedBB.func_72330_a((double)i - (double)r, 1.0D, (double)k - (double)r, (double)i + (double)r, 254.0D, (double)k + (double)r);
-      List list = player.field_70170_p.func_72872_a(EntitySaibaiman.class, aabb);
+      List list = player.world.func_72872_a(EntitySaibaiman.class, aabb);
       if (list.size() < 3) {
          Entity s = null;
 
@@ -818,14 +818,14 @@ public class JRMCoreHDBC {
                int r1 = ran1.nextInt(10);
                new Random();
                int r2 = ran1.nextInt(10);
-               Block block = player.field_70170_p.func_147439_a(i - 5 + r1, i1, k - 5 + r2);
+               Block block = player.world.func_147439_a(i - 5 + r1, i1, k - 5 + r2);
                if (block.func_149688_o() == Material.field_151579_a) {
-                  EntitySaibaiman sai1 = new EntitySaibaiman(player.field_70170_p);
-                  sai1.func_70012_b((double)(i - 5 + r1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
+                  EntitySaibaiman sai1 = new EntitySaibaiman(player.world);
+                  sai1.setLocationAndAngles((double)(i - 5 + r1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
                   sai1.setETA(player);
                   sai1.settarget(player);
                   sai1.setSpwner(player);
-                  player.field_70170_p.func_72838_d(sai1);
+                  player.world.func_72838_d(sai1);
                   s = sai1;
                   break;
                }
@@ -833,19 +833,19 @@ public class JRMCoreHDBC {
          }
 
          if (s != null) {
-            s.field_70170_p.func_72956_a(player, "jinryuudragonbc:DBC3.teleport", 1.0F, 1.0F);
+            s.world.func_72956_a(player, "jinryuudragonbc:DBC3.teleport", 1.0F, 1.0F);
          }
       }
 
    }
 
    public static void spawnFeezahenchmen(EntityPlayer player) {
-      int i = MathHelper.func_76128_c(player.field_70165_t);
-      int j = MathHelper.func_76128_c(player.field_70163_u);
-      int k = MathHelper.func_76128_c(player.field_70161_v);
+      int i = MathHelper.func_76128_c(player.posX);
+      int j = MathHelper.func_76128_c(player.posY);
+      int k = MathHelper.func_76128_c(player.posZ);
       int r = 30;
       AxisAlignedBB aabb = AxisAlignedBB.func_72330_a((double)i - (double)r, 1.0D, (double)k - (double)r, (double)i + (double)r, 254.0D, (double)k + (double)r);
-      List list = player.field_70170_p.func_72872_a(EntityFreezaSoldiers.class, aabb);
+      List list = player.world.func_72872_a(EntityFreezaSoldiers.class, aabb);
       if (list.size() < 2) {
          Entity s = null;
 
@@ -854,57 +854,57 @@ public class JRMCoreHDBC {
             int r1 = ran1.nextInt(10);
             new Random();
             int r2 = ran1.nextInt(10);
-            Block block1 = player.field_70170_p.func_147439_a(i - 5 + r1, i1, k - 5 + r2);
+            Block block1 = player.world.func_147439_a(i - 5 + r1, i1, k - 5 + r2);
             if (block1.func_149688_o() == Material.field_151579_a) {
-               EntityFreezaSoldier1 men1 = new EntityFreezaSoldier1(player.field_70170_p);
-               men1.func_70012_b((double)(i - 5 + r1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
+               EntityFreezaSoldier1 men1 = new EntityFreezaSoldier1(player.world);
+               men1.setLocationAndAngles((double)(i - 5 + r1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
                men1.func_70652_k(player);
                men1.setETA(player);
                men1.settarget(player);
                men1.setSpwner(player);
-               player.field_70170_p.func_72838_d(men1);
+               player.world.func_72838_d(men1);
                s = men1;
             }
 
-            Block block2 = player.field_70170_p.func_147439_a(i - 5 + r1 + 1, i1, k - 5 + r2);
+            Block block2 = player.world.func_147439_a(i - 5 + r1 + 1, i1, k - 5 + r2);
             if (block2.func_149688_o() == Material.field_151579_a) {
-               EntityFreezaSoldier2 men2 = new EntityFreezaSoldier2(player.field_70170_p);
-               men2.func_70012_b((double)(i - 5 + r1 + 1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
+               EntityFreezaSoldier2 men2 = new EntityFreezaSoldier2(player.world);
+               men2.setLocationAndAngles((double)(i - 5 + r1 + 1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
                men2.func_70652_k(player);
                men2.setETA(player);
                men2.settarget(player);
                men2.setSpwner(player);
-               player.field_70170_p.func_72838_d(men2);
+               player.world.func_72838_d(men2);
             }
 
-            Block block3 = player.field_70170_p.func_147439_a(i - 5 + r1 - 1, i1, k - 5 + r2);
+            Block block3 = player.world.func_147439_a(i - 5 + r1 - 1, i1, k - 5 + r2);
             if (block3.func_149688_o() == Material.field_151579_a) {
-               EntityFreezaSoldier3 men3 = new EntityFreezaSoldier3(player.field_70170_p);
-               men3.func_70012_b((double)(i - 5 + r1 - 1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
+               EntityFreezaSoldier3 men3 = new EntityFreezaSoldier3(player.world);
+               men3.setLocationAndAngles((double)(i - 5 + r1 - 1), (double)i1, (double)(k - 5 + r2), 0.0F, 0.0F);
                men3.func_70652_k(player);
                men3.setETA(player);
                men3.settarget(player);
                men3.setSpwner(player);
-               player.field_70170_p.func_72838_d(men3);
+               player.world.func_72838_d(men3);
                break;
             }
          }
 
          if (s != null) {
-            s.field_70170_p.func_72956_a(player, "jinryuudragonbc:DBC3.teleport", 1.0F, 1.0F);
+            s.world.func_72956_a(player, "jinryuudragonbc:DBC3.teleport", 1.0F, 1.0F);
          }
       }
 
    }
 
    public static List listEvilDBCnpcs(EntityPlayer player, AxisAlignedBB aabb) {
-      return player.field_70170_p.func_72872_a(EntityDBCEvil.class, aabb);
+      return player.world.func_72872_a(EntityDBCEvil.class, aabb);
    }
 
    public static void ifEvilDBCnpcs(Entity e, EntityPlayer p) {
       boolean b = e instanceof EntityDBCEvil;
       if (b) {
-         e.func_70029_a(p.field_70170_p);
+         e.func_70029_a(p.world);
          ((EntityDBCEvil)e).setSpwner(p);
       }
 
@@ -914,7 +914,7 @@ public class JRMCoreHDBC {
       boolean b = e instanceof EntityDBCEvil;
       boolean b2 = p instanceof EntityDBCEvil;
       if (b && b2) {
-         e.func_70029_a(p.field_70170_p);
+         e.func_70029_a(p.world);
          ((EntityDBCEvil)e).setSpwner(((EntityDBCEvil)p).getSpwner());
          ((EntityDBCEvil)e).settarget(((EntityDBCEvil)p).gettarget());
       }
@@ -928,9 +928,9 @@ public class JRMCoreHDBC {
       int xY = DBCH.KPmaxY;
       int nZ = DBCH.KPminZ;
       int xZ = DBCH.KPmaxZ;
-      int pX = (int)thePlayer.field_70165_t;
-      int pY = (int)thePlayer.field_70163_u;
-      int pZ = (int)thePlayer.field_70161_v;
+      int pX = (int)thePlayer.posX;
+      int pY = (int)thePlayer.posY;
+      int pZ = (int)thePlayer.posZ;
       return pX > nX && pX < xX && pY > nY && pY < xY && pZ > nZ && pZ < xZ;
    }
 
@@ -1336,7 +1336,7 @@ public class JRMCoreHDBC {
    public static void DBCCommonTickHandlerNPCSpawnCheck(EntityPlayerMP player) {
       if (JRMCoreConfig.NPCSpawnCheck) {
          int[][] ps = npc_ps();
-         EntityDBCKami[] ent = npc_ent(player.field_70170_p);
+         EntityDBCKami[] ent = npc_ent(player.world);
          Class[] entclss = npc_entclss();
          int[] dims = npc_dims();
          boolean[] spawn = npc_spawn();
@@ -1346,11 +1346,11 @@ public class JRMCoreHDBC {
             if (dims[i] == player.field_71093_bK && npc.length > 2) {
                int a = 2;
                AxisAlignedBB ab = AxisAlignedBB.func_72330_a((double)(npc[0] - a), (double)(npc[1] - a), (double)(npc[2] - a), (double)(npc[0] + a), (double)(npc[1] + a), (double)(npc[2] + a));
-               List enma = player.field_70170_p.func_72872_a(entclss[i], ab);
+               List enma = player.world.func_72872_a(entclss[i], ab);
                if (enma.isEmpty() && spawn[i]) {
                   EntityDBCKami en = ent[i];
-                  en.func_70012_b((double)npc[0], (double)npc[1], (double)npc[2], 0.0F, 0.0F);
-                  player.field_70170_p.func_72838_d(en);
+                  en.setLocationAndAngles((double)npc[0], (double)npc[1], (double)npc[2], 0.0F, 0.0F);
+                  player.world.func_72838_d(en);
                }
             }
          }
@@ -1466,7 +1466,7 @@ public class JRMCoreHDBC {
             if (sz.field_71093_bK == p.field_71093_bK) {
                AxisAlignedBB ab = sz.createSafeZoneHitBox();
                if (ab.field_72340_a < (double)x && (double)x < ab.field_72336_d && ab.field_72338_b < (double)y && (double)y < ab.field_72337_e && ab.field_72339_c < (double)z && (double)z < ab.field_72334_f) {
-                  Block block = p.field_70170_p.func_147439_a(x, y, z);
+                  Block block = p.world.func_147439_a(x, y, z);
                   boolean door = false;
                   if (JRMCoreConfig.sfzna != null) {
                      for(int j = 0; j < JRMCoreConfig.sfzna.length; ++j) {
@@ -1493,9 +1493,9 @@ public class JRMCoreHDBC {
    public static boolean JRMCoreEHonLivingHurtSafeZone(EntityLivingBase targetEntity) {
       if (targetEntity instanceof EntityPlayer) {
          EntityPlayer targetPlayer = (EntityPlayer)targetEntity;
-         int x = (int)targetEntity.field_70165_t;
-         int y = (int)targetEntity.field_70163_u;
-         int z = (int)targetEntity.field_70161_v;
+         int x = (int)targetEntity.posX;
+         int y = (int)targetEntity.posY;
+         int z = (int)targetEntity.posZ;
          int length = JRMCoreEH.allSafeZones.size();
 
          for(int i = length - 1; i >= 0; --i) {
@@ -1586,7 +1586,7 @@ public class JRMCoreHDBC {
          }
 
          JRMCoreH.resetChar(p);
-         if (DBCgetConfigDeadInv() && p.field_70170_p.func_82736_K().func_82766_b("keepInventory") && !p.field_71075_bZ.field_75098_d && JRMCoreH.getByte(p, "jrmcAlv") == 1) {
+         if (DBCgetConfigDeadInv() && p.world.func_82736_K().func_82766_b("keepInventory") && !p.field_71075_bZ.field_75098_d && JRMCoreH.getByte(p, "jrmcAlv") == 1) {
             JRMCoreH.nbt(p).func_74782_a("InventoryDead", p.field_71071_by.func_70442_a(new NBTTagList()));
             p.field_71071_by.func_70443_b(JRMCoreH.nbt(p).func_150295_c("InventoryLiving", 10));
             p.getEntityData().func_74782_a("Inventory", p.field_71071_by.func_70442_a(new NBTTagList()));

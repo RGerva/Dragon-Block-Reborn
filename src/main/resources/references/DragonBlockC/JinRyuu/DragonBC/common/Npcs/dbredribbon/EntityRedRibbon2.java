@@ -45,7 +45,7 @@ public class EntityRedRibbon2 extends EntityDBCWildlifeA implements IMob, IEntit
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
    protected void func_70628_a(boolean par1, int par2) {
@@ -65,9 +65,9 @@ public class EntityRedRibbon2 extends EntityDBCWildlifeA implements IMob, IEntit
    public void readSpawnData(ByteBuf additionalData) {
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
    }
 }

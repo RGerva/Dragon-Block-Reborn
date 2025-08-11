@@ -19,12 +19,12 @@ public class KintounBaseEntity extends Entity {
       super(par1World);
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound p_70037_1_) {
+   protected void readEntityFromNBT(NBTTagCompound p_70037_1_) {
    }
 
-   protected void func_70014_b(NBTTagCompound p_70014_1_) {
+   protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {
    }
 }

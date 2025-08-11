@@ -39,24 +39,24 @@ public class EntityFreeza7 extends EntityDBCEvil {
       this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(12000.0D);
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0) {
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
-      super.func_70014_b(par1NBTTagCompound);
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+      super.writeEntityToNBT(par1NBTTagCompound);
       par1NBTTagCompound.func_74777_a("Anger", (short)this.angerLevel);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
-      super.func_70037_a(par1NBTTagCompound);
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readEntityFromNBT(par1NBTTagCompound);
       this.angerLevel = par1NBTTagCompound.func_74765_d("Anger");
    }
 
@@ -91,7 +91,7 @@ public class EntityFreeza7 extends EntityDBCEvil {
          }
       }
 
-      if (this.field_70170_p.field_72995_K && JGConfigClientSettings.CLIENT_DA8) {
+      if (this.world.field_72995_K && JGConfigClientSettings.CLIENT_DA8) {
          float red = 249.0F;
          float green = 212.0F;
          float blue = 33.0F;
@@ -115,13 +115,13 @@ public class EntityFreeza7 extends EntityDBCEvil {
                x = Math.random() * (double)out - (double)(out / 2.0F);
                y = Math.random() * (double)this.field_70131_O - 0.5D;
                z = Math.random() * (double)out - (double)(out / 2.0F);
-               entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
+               entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
                x = Math.random() * (double)out - (double)(out / 2.0F);
                y = Math.random() * (double)this.field_70131_O - 0.5D;
                z = Math.random() * (double)out - (double)(out / 2.0F);
-               entity2.field_70170_p.func_72838_d(entity2);
-               entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
-               entity2.field_70170_p.func_72838_d(entity2);
+               entity2.world.func_72838_d(entity2);
+               entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
+               entity2.world.func_72838_d(entity2);
             }
 
             for(i = 0; i < 2; ++i) {
@@ -129,25 +129,25 @@ public class EntityFreeza7 extends EntityDBCEvil {
                x = Math.random() * (double)out - (double)(out / 2.0F);
                y = Math.random() * (double)this.field_70131_O - 0.5D;
                z = Math.random() * (double)out - (double)(out / 2.0F);
-               entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
+               entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
                x = Math.random() * (double)out - (double)(out / 2.0F);
                y = Math.random() * (double)this.field_70131_O - 0.5D;
                z = Math.random() * (double)out - (double)(out / 2.0F);
-               entity2.field_70170_p.func_72838_d(entity2);
-               entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
-               entity2.field_70170_p.func_72838_d(entity2);
+               entity2.world.func_72838_d(entity2);
+               entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
+               entity2.world.func_72838_d(entity2);
             }
 
             double x = Math.random() * 1.0D - 0.5D;
             double y = (Math.random() * (double)this.field_70131_O - 0.5D) * 0.800000011920929D;
             double z = Math.random() * 1.0D - 0.5D;
-            Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
+            Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
             x = Math.random() * 1.0D - 0.5D;
             y = (Math.random() * (double)this.field_70131_O - 0.5D) * 0.800000011920929D;
             z = Math.random() * 1.0D - 0.5D;
-            entity.field_70170_p.func_72838_d(entity);
-            entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
-            entity.field_70170_p.func_72838_d(entity2);
+            entity.world.func_72838_d(entity);
+            entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, this);
+            entity.world.func_72838_d(entity2);
          }
       }
 
@@ -161,7 +161,7 @@ public class EntityFreeza7 extends EntityDBCEvil {
       } else {
          Entity var3 = par1DamageSource.func_76346_g();
          if (var3 instanceof EntityPlayer) {
-            List var4 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+            List var4 = this.world.func_72839_b(this, this.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
 
             for(int var5 = 0; var5 < var4.size(); ++var5) {
                Entity var6 = (Entity)var4.get(var5);
@@ -180,19 +180,19 @@ public class EntityFreeza7 extends EntityDBCEvil {
 
    private void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
-      this.randomSoundDelay = this.field_70146_Z.nextInt(40);
+      this.angerLevel = 400 + this.rand.nextInt(400);
+      this.randomSoundDelay = this.rand.nextInt(40);
    }
 
    protected void func_70628_a(boolean par1, int par2) {
-      int var3 = this.field_70146_Z.nextInt(1 + par2);
+      int var3 = this.rand.nextInt(1 + par2);
 
       int var4;
       for(var4 = 0; var4 < var3; ++var4) {
          this.func_145779_a(ItemsDBC.BattleArmorHelmet04, 1);
       }
 
-      var3 = this.field_70146_Z.nextInt(2 + par2);
+      var3 = this.rand.nextInt(2 + par2);
 
       for(var4 = 0; var4 < var3; ++var4) {
       }

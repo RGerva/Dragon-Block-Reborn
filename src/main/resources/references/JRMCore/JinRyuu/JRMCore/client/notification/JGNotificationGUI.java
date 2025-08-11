@@ -165,7 +165,7 @@ public class JGNotificationGUI {
       getGUIInstance();
       ResourceLocation guiLocation = new ResourceLocation(JRMCoreGuiScreen.guiBG2);
       getGUIInstance();
-      JRMCoreGuiScreen.mc.field_71446_o.func_110577_a(guiLocation);
+      JRMCoreGuiScreen.mc.field_71446_o.bindTexture(guiLocation);
       getGUIInstance().func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
       String n = JRMCoreH.trl("jrmc", "Back");
       int nw = var8.func_78256_a(n) + 8;
@@ -305,13 +305,13 @@ public class JGNotificationGUI {
 
                ResourceLocation gui = new ResourceLocation(JRMCoreH.tjjrmc + ":note_background.png");
                getGUIInstance();
-               JRMCoreGuiScreen.mc.field_71446_o.func_110577_a(gui);
+               JRMCoreGuiScreen.mc.field_71446_o.bindTexture(gui);
                getGUIInstance().func_73729_b(xPos, yPos, 0, 0, 230, 26);
                xPos = guiLeft + 12;
                yPos = guiTop + 10 + 13 + k * 26 + 2;
                gui = new ResourceLocation(JRMCoreH.tjjrmc + ":note_category_icons.png");
                getGUIInstance();
-               JRMCoreGuiScreen.mc.field_71446_o.func_110577_a(gui);
+               JRMCoreGuiScreen.mc.field_71446_o.bindTexture(gui);
                int idY = note.icon * 16 / 256;
                int idX = note.icon * 16 - idY * 256;
                idY *= 16;
@@ -358,7 +358,7 @@ public class JGNotificationGUI {
 
          ResourceLocation gui = new ResourceLocation(JRMCoreH.tjjrmc + ":note_category_icons.png");
          getGUIInstance();
-         JRMCoreGuiScreen.mc.field_71446_o.func_110577_a(gui);
+         JRMCoreGuiScreen.mc.field_71446_o.bindTexture(gui);
          idY = note.icon * 16 / 256;
          int idX = note.icon * 16 - idY * 256;
          idY *= 16;

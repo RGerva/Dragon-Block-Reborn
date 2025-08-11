@@ -62,8 +62,8 @@ public class ItemDBCRenderRad implements IItemRenderer {
       case EQUIPPED_FIRST_PERSON:
          GL11.glPushMatrix();
          float p_78440_1_ = 0.0625F;
-         EntityClientPlayerMP entityclientplayermp = JRMCoreClient.mc.field_71439_g;
-         float f2 = entityclientplayermp.field_70127_C + (entityclientplayermp.field_70125_A - entityclientplayermp.field_70127_C) * p_78440_1_;
+         EntityClientPlayerMP entityclientplayermp = JRMCoreClient.mc.player;
+         float f2 = entityclientplayermp.field_70127_C + (entityclientplayermp.rotationPitch - entityclientplayermp.field_70127_C) * p_78440_1_;
          float f13 = 0.8F;
          float f1 = 0.0F;
          GL11.glTranslatef(0.35F, -0.0F, -0.3F);
@@ -91,7 +91,7 @@ public class ItemDBCRenderRad implements IItemRenderer {
    public void drawTexturedModalRect(int p_73729_1_, int p_73729_2_, int p_73729_3_, int p_73729_4_, int p_73729_5_, int p_73729_6_) {
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       double zLevel = 0.0D;
       tessellator.func_78374_a((double)(p_73729_1_ + 0), (double)(p_73729_2_ + p_73729_6_), zLevel, (double)((float)(p_73729_3_ + 0) * f), (double)((float)(p_73729_4_ + p_73729_6_) * f1));
@@ -111,9 +111,9 @@ public class ItemDBCRenderRad implements IItemRenderer {
       int ySize = 166;
       int xMin = false;
       int yMin = false;
-      texturemanager.func_110577_a(tx);
+      texturemanager.bindTexture(tx);
       TextureUtil.func_152777_a(false, false, 1.0F);
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       float f = 0.0F;
       float f = (float)xSize / 256.0F;
       float f1 = 0.0F;
@@ -137,11 +137,11 @@ public class ItemDBCRenderRad implements IItemRenderer {
             this.tick = 0;
          }
       } else {
-         this.DragonRadar(JRMCoreClient.mc.field_71439_g);
+         this.DragonRadar(JRMCoreClient.mc.player);
       }
 
       GL11.glDisable(32826);
-      texturemanager.func_110577_a(tx);
+      texturemanager.bindTexture(tx);
       TextureUtil.func_147945_b();
       GL11.glPopMatrix();
       if (ItemDragonRadar.cld) {
@@ -163,9 +163,9 @@ public class ItemDBCRenderRad implements IItemRenderer {
       xMin = false;
       int yMin = 166;
       int yMax = 166 + ySize;
-      texturemanager.func_110577_a(tx);
+      texturemanager.bindTexture(tx);
       TextureUtil.func_152777_a(false, false, 1.0F);
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       f = 0.0F;
       f1 = (float)xSize / 256.0F;
       f2 = (float)yMin / 256.0F;
@@ -186,11 +186,11 @@ public class ItemDBCRenderRad implements IItemRenderer {
       JRMCoreHC.ri(tessellator, f1, f2, f, f3, xSize, ySize, 0.06F);
       GL11.glPopMatrix();
       GL11.glDisable(32826);
-      texturemanager.func_110577_a(tx);
+      texturemanager.bindTexture(tx);
       TextureUtil.func_147945_b();
       GL11.glPopMatrix();
-      EntityClientPlayerMP entityclientplayermp = JRMCoreClient.mc.field_71439_g;
-      JRMCoreClient.mc.func_110434_K().func_110577_a(entityclientplayermp.func_110306_p());
+      EntityClientPlayerMP entityclientplayermp = JRMCoreClient.mc.player;
+      JRMCoreClient.mc.func_110434_K().bindTexture(entityclientplayermp.func_110306_p());
       int j1 = false;
       GL11.glPushMatrix();
       GL11.glTranslatef(0.6F, 0.0F, 0.0F);
@@ -236,14 +236,14 @@ public class ItemDBCRenderRad implements IItemRenderer {
    }
 
    public void chk(EntityPlayer p, int x, int n) {
-      int l1 = MathHelper.func_76128_c(p.field_70165_t);
-      int i11 = MathHelper.func_76128_c(p.field_70161_v);
+      int l1 = MathHelper.func_76128_c(p.posX);
+      int i11 = MathHelper.func_76128_c(p.posZ);
       int m = 80;
 
       for(int j11 = l1 - m; j11 <= l1 + m; ++j11) {
          for(int j2 = i11 - m; j2 <= i11 + m; ++j2) {
             for(int k2 = x; k2 >= n; --k2) {
-               if (p.field_70170_p.func_147439_a(j11, k2, j2) == BlocksDBC.BlockDragonBall || p.field_70170_p.func_147439_a(j11, k2, j2) == BlocksDBC.BlockNamekDragonBall) {
+               if (p.world.func_147439_a(j11, k2, j2) == BlocksDBC.BlockDragonBall || p.world.func_147439_a(j11, k2, j2) == BlocksDBC.BlockNamekDragonBall) {
                   double[] d = new double[]{(double)j11, (double)j2};
                   this.dbs.add(d);
                   this.dbs2.add(d);
@@ -260,11 +260,11 @@ public class ItemDBCRenderRad implements IItemRenderer {
 
       int i;
       for(i = 0; i < this.dbs.size(); ++i) {
-         this.DragonDetect(((double[])this.dbs.get(i))[0] - p.field_70165_t, ((double[])this.dbs.get(i))[1] - p.field_70161_v, (float)(pitch > 0 ? pitch : 0));
+         this.DragonDetect(((double[])this.dbs.get(i))[0] - p.posX, ((double[])this.dbs.get(i))[1] - p.posZ, (float)(pitch > 0 ? pitch : 0));
       }
 
       for(i = 0; i < this.dbs2.size(); ++i) {
-         this.DragonDetect(((double[])this.dbs2.get(i))[0] - p.field_70165_t, ((double[])this.dbs2.get(i))[1] - p.field_70161_v, (float)(pitch > 0 ? pitch : 0));
+         this.DragonDetect(((double[])this.dbs2.get(i))[0] - p.posX, ((double[])this.dbs2.get(i))[1] - p.posZ, (float)(pitch > 0 ? pitch : 0));
       }
 
    }
@@ -280,7 +280,7 @@ public class ItemDBCRenderRad implements IItemRenderer {
          GL11.glDisable(2896);
          GL11.glTranslatef(-0.005F, -0.0025F, 0.0F);
          GL11.glTranslatef(0.567F, 0.44F, 0.0F);
-         GL11.glRotatef(-JRMCoreClient.mc.field_71439_g.field_70759_as - 180.0F, 0.0F, 0.0F, 1.0F);
+         GL11.glRotatef(-JRMCoreClient.mc.player.field_70759_as - 180.0F, 0.0F, 0.0F, 1.0F);
          GL14.glBlendFuncSeparate(0, 1, 771, 0);
          GL11.glTranslatef(-0.567F, -0.44F, 0.0F);
          GL11.glTranslatef(0.0F, 0.0F, -0.065F);
@@ -292,7 +292,7 @@ public class ItemDBCRenderRad implements IItemRenderer {
          String var4 = "jinryuudragonbc:radarm.png";
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          ResourceLocation tx = new ResourceLocation(var4);
-         JRMCoreClient.mc.field_71446_o.func_110577_a(tx);
+         JRMCoreClient.mc.field_71446_o.bindTexture(tx);
          this.drawTexturedModalRect(-166, -166, 0, 0, xSize, ySize);
          GL11.glBlendFunc(773, 772);
          JRMCoreClient.mc.field_71460_t.func_78483_a(0.0D);
@@ -302,7 +302,7 @@ public class ItemDBCRenderRad implements IItemRenderer {
          var4 = "jinryuudragonbc:detect.png";
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          tx = new ResourceLocation(var4);
-         JRMCoreClient.mc.field_71446_o.func_110577_a(tx);
+         JRMCoreClient.mc.field_71446_o.bindTexture(tx);
          this.drawTexturedModalRect((int)((double)guiLeft + x) - 166, (int)((double)guiTop + y) - 166, 0, 0, xSize, ySize);
          JRMCoreClient.mc.field_71460_t.func_78463_b(0.0D);
          GL11.glEnable(2896);

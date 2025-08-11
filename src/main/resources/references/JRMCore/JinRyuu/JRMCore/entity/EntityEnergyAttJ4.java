@@ -26,22 +26,22 @@ public class EntityEnergyAttJ4 extends EntityEnAttacks {
       this.type = type;
       this.size = 1.0F;
       this.func_70105_a(this.size, this.size);
-      this.field_70165_t = x;
-      this.field_70163_u = y;
-      this.field_70161_v = z;
+      this.posX = x;
+      this.posY = y;
+      this.posZ = z;
    }
 
-   public void func_70071_h_() {
-      if (this.field_70170_p.field_72995_K) {
-         if (this.field_70173_aa == 1) {
+   public void onUpdate() {
+      if (this.world.field_72995_K) {
+         if (this.ticksExisted == 1) {
             this.func_70105_a(this.size, this.size);
          }
 
-         if (this.field_70173_aa > 20) {
-            this.func_70106_y();
+         if (this.ticksExisted > 20) {
+            this.setDead();
          }
 
-         this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+         this.func_70107_b(this.posX, this.posY, this.posZ);
       }
 
    }

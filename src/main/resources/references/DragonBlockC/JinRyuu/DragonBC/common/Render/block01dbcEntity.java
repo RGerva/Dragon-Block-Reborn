@@ -37,8 +37,8 @@ public class block01dbcEntity extends Entity {
    }
 
    public void func_70030_z() {
-      if (this.field_70153_n == null || this.field_70170_p.func_147437_c((int)this.bx, (int)this.by, (int)this.bz)) {
-         this.func_70106_y();
+      if (this.field_70153_n == null || this.world.func_147437_c((int)this.bx, (int)this.by, (int)this.bz)) {
+         this.setDead();
       }
 
    }
@@ -51,12 +51,12 @@ public class block01dbcEntity extends Entity {
       return (double)this.field_70131_O - 0.2D;
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound p_70037_1_) {
+   protected void readEntityFromNBT(NBTTagCompound p_70037_1_) {
    }
 
-   protected void func_70014_b(NBTTagCompound p_70014_1_) {
+   protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {
    }
 }

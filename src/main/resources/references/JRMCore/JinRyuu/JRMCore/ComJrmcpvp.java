@@ -30,7 +30,7 @@ public class ComJrmcpvp extends CommandBase {
          int dim = entityplayermp.field_71093_bK;
          MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
          JRMCoreH.wwip(server, s, dim + "", false);
-         this.notifyAdmins(par1ICommandSender, "PVP in dimension %s is %s by %s", new Object[]{dim, pvp ? "enabled" : "disabled", entityplayermp.func_70005_c_()});
+         this.notifyAdmins(par1ICommandSender, "PVP in dimension %s is %s by %s", new Object[]{dim, pvp ? "enabled" : "disabled", entityplayermp.getName()});
       }
    }
 

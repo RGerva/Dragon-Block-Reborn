@@ -33,7 +33,7 @@ public class ComJrmcDebug extends CommandBase {
             entityplayermp = func_71521_c(par1ICommandSender);
          }
 
-         JRMCoreH.difp = i ? entityplayermp.func_70005_c_() : "";
+         JRMCoreH.difp = i ? entityplayermp.getName() : "";
       }
    }
 

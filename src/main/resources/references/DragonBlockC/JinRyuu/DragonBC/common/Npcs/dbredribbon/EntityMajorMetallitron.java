@@ -41,16 +41,16 @@ public class EntityMajorMetallitron extends EntityRedRibbon2 {
       this.damageCategory = additionalData.readByte();
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
       par1NBTTagCompound.func_74774_a("damageCategory", this.damageCategory);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
       this.damageCategory = (byte)(par1NBTTagCompound.func_74771_c("damageCategory") & 255);
    }
 
-   public void func_70071_h_() {
-      super.func_70071_h_();
+   public void onUpdate() {
+      super.onUpdate();
       int currentHealth = (int)this.func_110143_aJ();
       int maxHealth = (int)this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111126_e();
       this.damageCategory = (byte)((maxHealth - currentHealth) / (maxHealth / 3));
@@ -60,10 +60,10 @@ public class EntityMajorMetallitron extends EntityRedRibbon2 {
          this.damageCategory = 2;
       }
 
-      if (!this.field_70170_p.field_72995_K && !this.field_70128_L && this.field_70789_a != null && this.field_70789_a.func_70089_S() && this.field_70789_a.func_70032_d(this) < 25.0F && (this.field_70173_aa + 200) % 400 < 30) {
-         EntityPrjtls_1 var8 = new EntityPrjtls_1(this.field_70170_p, this, this.field_70789_a, 1.8F, 1.0F, 6);
-         this.field_70170_p.func_72956_a(this, "jinryuudragonbc:DBC5.gun_shot_single", 0.2F, this.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
-         this.field_70170_p.func_72838_d(var8);
+      if (!this.world.field_72995_K && !this.field_70128_L && this.field_70789_a != null && this.field_70789_a.func_70089_S() && this.field_70789_a.func_70032_d(this) < 25.0F && (this.ticksExisted + 200) % 400 < 30) {
+         EntityPrjtls_1 var8 = new EntityPrjtls_1(this.world, this, this.field_70789_a, 1.8F, 1.0F, 6);
+         this.world.func_72956_a(this, "jinryuudragonbc:DBC5.gun_shot_single", 0.2F, this.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
+         this.world.func_72838_d(var8);
       }
 
    }

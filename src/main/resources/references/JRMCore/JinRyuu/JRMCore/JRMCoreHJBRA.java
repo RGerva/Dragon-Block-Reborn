@@ -102,7 +102,7 @@ public class JRMCoreHJBRA {
             String dns;
             int A;
             if (JRMCoreH.dnn(1) && JRMCoreH.dnn(2)) {
-               s = JRMCoreH.data(ply.func_70005_c_(), 1, "0;0;0;0;0;0").split(";");
+               s = JRMCoreH.data(ply.getName(), 1, "0;0;0;0;0;0").split(";");
                dns = s[1];
                A = JRMCoreH.dnsGender(dns) + 1;
                if (A >= 1) {
@@ -121,7 +121,7 @@ public class JRMCoreHJBRA {
                if (pwr == 1 && A > 1) {
                   int race = Integer.parseInt(s[0]);
                   String[] var10000 = new String[]{"0", "0", "0"};
-                  String[] state = JRMCoreH.data(ply.func_70005_c_(), 2, "0;0;0").split(";");
+                  String[] state = JRMCoreH.data(ply.getName(), 2, "0;0;0").split(";");
                   int State = pwr != 2 && race != 0 ? Integer.parseInt(state[0]) : 0;
                   boolean saiOozar = JRMCoreH.rSai(race) ? State == 7 || State == 8 : false;
                   if (saiOozar) {
@@ -131,7 +131,7 @@ public class JRMCoreHJBRA {
             }
 
             if (JRMCoreH.dnn(30) && !ply.func_82150_aj() && JRMCoreH.dnn(30)) {
-               String s = JRMCoreH.data(ply.func_70005_c_(), 30, "0");
+               String s = JRMCoreH.data(ply.getName(), 30, "0");
                int i = s.matches("[0-9]+") ? Integer.parseInt(s) : 0;
                A = JFCgetConfigpt() * 120;
                if (i > 1) {
@@ -144,7 +144,7 @@ public class JRMCoreHJBRA {
             }
 
             if (JRMCoreH.dnn(1) && JRMCoreH.dnn(2)) {
-               s = JRMCoreH.data(ply.func_70005_c_(), 1, "0;0;0;0;0;0").split(";");
+               s = JRMCoreH.data(ply.getName(), 1, "0;0;0;0;0;0").split(";");
                dns = s[1];
                breast = JRMCoreH.dnsBreast(dns);
             }

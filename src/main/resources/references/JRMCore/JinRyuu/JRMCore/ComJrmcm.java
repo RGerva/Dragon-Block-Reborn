@@ -36,7 +36,7 @@ public class ComJrmcm extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(par1ICommandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var32) {
          }
 
@@ -179,13 +179,13 @@ public class ComJrmcm extends CommandBase {
             }
          }
 
-         boolean n = par1ICommandSender.equals("Console") ? JRMCoreConfig.ComANAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComANAS : JRMCoreConfig.ComANAO);
+         boolean n = par1ICommandSender.equals("Console") ? JRMCoreConfig.ComANAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComANAS : JRMCoreConfig.ComANAO);
          if (n) {
             if (!matc) {
                throw new WrongUsageException("Mission change failure", new Object[0]);
             }
 
-            this.notifyAdmins(par1ICommandSender, "Mission has changed for " + s + " to id " + a, new Object[]{entityplayermp.func_70005_c_()});
+            this.notifyAdmins(par1ICommandSender, "Mission has changed for " + s + " to id " + a, new Object[]{entityplayermp.getName()});
          }
 
       }

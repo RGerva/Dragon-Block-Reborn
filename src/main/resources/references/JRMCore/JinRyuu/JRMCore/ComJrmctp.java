@@ -59,11 +59,11 @@ public class ComJrmctp extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(par1ICommandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var25) {
          }
 
-         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComTPNAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComTPNAS : JRMCoreConfig.ComTPNAO);
+         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComTPNAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComTPNAS : JRMCoreConfig.ComTPNAO);
          NBTTagCompound nbt = JRMCoreH.nbt(entityplayermp, "pres");
          if (hasTag) {
             String datas = s2.replace("[", "").replace(")]", "").replace("(", "|");
@@ -119,7 +119,7 @@ public class ComJrmctp extends CommandBase {
          if (nbt.func_74771_c("jrmcPwrtyp") == 3) {
             JRMCoreH.sao_expgain((int)i, entityplayermp);
             if (n) {
-               this.notifyAdmins(par1ICommandSender, "Exp given %s success %s", new Object[]{(int)i, entityplayermp.func_70005_c_()});
+               this.notifyAdmins(par1ICommandSender, "Exp given %s success %s", new Object[]{(int)i, entityplayermp.getName()});
             }
          } else {
             int tp;
@@ -134,7 +134,7 @@ public class ComJrmctp extends CommandBase {
 
                nbt.func_74768_a("jrmcTpint", added);
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "TP take away %s success %s", new Object[]{(int)(b ? i + ((long)tp - i) : i), entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(par1ICommandSender, "TP take away %s success %s", new Object[]{(int)(b ? i + ((long)tp - i) : i), entityplayermp.getName()});
                }
             } else {
                tp = nbt.func_74762_e("jrmcTpint");
@@ -152,7 +152,7 @@ public class ComJrmctp extends CommandBase {
 
                nbt.func_74768_a("jrmcTpint", added);
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "TP adding %s success for %s", new Object[]{(int)(b ? i - ((long)tp + i - (long)JRMCoreH.getMaxTP()) : i), entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(par1ICommandSender, "TP adding %s success for %s", new Object[]{(int)(b ? i - ((long)tp + i - (long)JRMCoreH.getMaxTP()) : i), entityplayermp.getName()});
                }
             }
          }

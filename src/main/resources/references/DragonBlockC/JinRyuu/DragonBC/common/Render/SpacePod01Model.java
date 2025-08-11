@@ -461,86 +461,86 @@ public class SpacePod01Model extends ModelBase {
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
       GL11.glPushMatrix();
       GL11.glTranslatef(0.4F, 0.0F, 0.0F);
-      this.a47.func_78785_a(f5);
-      this.a48.func_78785_a(f5);
-      this.a49.func_78785_a(f5);
-      this.a50.func_78785_a(f5);
-      this.a13door.func_78785_a(f5);
-      this.a51.func_78785_a(f5);
-      this.a52.func_78785_a(f5);
-      this.a53.func_78785_a(f5);
-      this.a54.func_78785_a(f5);
-      this.a55.func_78785_a(f5);
-      this.a33.func_78785_a(f5);
-      this.a32.func_78785_a(f5);
-      this.a04chair.func_78785_a(f5);
-      this.a01chair.func_78785_a(f5);
-      this.a30.func_78785_a(f5);
-      this.a31.func_78785_a(f5);
-      this.a27.func_78785_a(f5);
-      this.a26.func_78785_a(f5);
-      this.a25.func_78785_a(f5);
-      this.a241.func_78785_a(f5);
-      this.a23.func_78785_a(f5);
-      this.a221.func_78785_a(f5);
-      this.a21.func_78785_a(f5);
-      this.a19.func_78785_a(f5);
-      this.a20.func_78785_a(f5);
-      this.a16.func_78785_a(f5);
-      this.a18.func_78785_a(f5);
-      this.a17.func_78785_a(f5);
-      this.a15.func_78785_a(f5);
-      this.a14.func_78785_a(f5);
-      this.a11door1.func_78785_a(f5);
-      this.a12door1.func_78785_a(f5);
-      this.a13.func_78785_a(f5);
-      this.a09door1.func_78785_a(f5);
-      this.a08door.func_78785_a(f5);
-      this.a10door1.func_78785_a(f5);
-      this.a07door.func_78785_a(f5);
-      this.a05.func_78785_a(f5);
-      this.a06door.func_78785_a(f5);
-      this.a04.func_78785_a(f5);
-      this.a03.func_78785_a(f5);
-      this.a02.func_78785_a(f5);
-      this.a01.func_78785_a(f5);
-      this.a10doorpanel.func_78785_a(f5);
-      this.a02chair.func_78785_a(f5);
-      this.a45.func_78785_a(f5);
-      this.a46.func_78785_a(f5);
-      this.a34.func_78785_a(f5);
-      this.a35.func_78785_a(f5);
-      this.a24.func_78785_a(f5);
-      this.a36.func_78785_a(f5);
-      this.a37.func_78785_a(f5);
-      this.a38.func_78785_a(f5);
-      this.a39.func_78785_a(f5);
-      this.a40.func_78785_a(f5);
-      this.a41.func_78785_a(f5);
-      this.a22.func_78785_a(f5);
-      this.a42.func_78785_a(f5);
-      this.a43.func_78785_a(f5);
-      this.a44.func_78785_a(f5);
-      this.a09door.func_78785_a(f5);
-      this.a10door.func_78785_a(f5);
-      this.a11door.func_78785_a(f5);
-      this.a12door.func_78785_a(f5);
+      this.a47.render(f5);
+      this.a48.render(f5);
+      this.a49.render(f5);
+      this.a50.render(f5);
+      this.a13door.render(f5);
+      this.a51.render(f5);
+      this.a52.render(f5);
+      this.a53.render(f5);
+      this.a54.render(f5);
+      this.a55.render(f5);
+      this.a33.render(f5);
+      this.a32.render(f5);
+      this.a04chair.render(f5);
+      this.a01chair.render(f5);
+      this.a30.render(f5);
+      this.a31.render(f5);
+      this.a27.render(f5);
+      this.a26.render(f5);
+      this.a25.render(f5);
+      this.a241.render(f5);
+      this.a23.render(f5);
+      this.a221.render(f5);
+      this.a21.render(f5);
+      this.a19.render(f5);
+      this.a20.render(f5);
+      this.a16.render(f5);
+      this.a18.render(f5);
+      this.a17.render(f5);
+      this.a15.render(f5);
+      this.a14.render(f5);
+      this.a11door1.render(f5);
+      this.a12door1.render(f5);
+      this.a13.render(f5);
+      this.a09door1.render(f5);
+      this.a08door.render(f5);
+      this.a10door1.render(f5);
+      this.a07door.render(f5);
+      this.a05.render(f5);
+      this.a06door.render(f5);
+      this.a04.render(f5);
+      this.a03.render(f5);
+      this.a02.render(f5);
+      this.a01.render(f5);
+      this.a10doorpanel.render(f5);
+      this.a02chair.render(f5);
+      this.a45.render(f5);
+      this.a46.render(f5);
+      this.a34.render(f5);
+      this.a35.render(f5);
+      this.a24.render(f5);
+      this.a36.render(f5);
+      this.a37.render(f5);
+      this.a38.render(f5);
+      this.a39.render(f5);
+      this.a40.render(f5);
+      this.a41.render(f5);
+      this.a22.render(f5);
+      this.a42.render(f5);
+      this.a43.render(f5);
+      this.a44.render(f5);
+      this.a09door.render(f5);
+      this.a10door.render(f5);
+      this.a11door.render(f5);
+      this.a12door.render(f5);
       GL11.glPopMatrix();
    }
 
    public void renderModel(float f5) {
-      this.func_78088_a((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f5);
+      this.render((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f5);
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
    }
 }

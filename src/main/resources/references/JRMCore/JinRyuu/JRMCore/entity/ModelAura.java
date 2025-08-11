@@ -20,18 +20,18 @@ public class ModelAura extends ModelBiped {
       this.setRotation(this.auro, 0.0F, 0.0F, 0.0F);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.auro.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.auro.render(f5);
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
+      model.rotateAngleX = x;
       model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
       float par3 = f2;
       if (f2 > f) {
          par3 = f2 - f;
@@ -40,15 +40,15 @@ public class ModelAura extends ModelBiped {
       float maxageperc = 100.0F / f;
       float curperc = par3 * maxageperc;
       par3 = curperc * 0.01F * 20.0F;
-      this.auro.field_78797_d = 55.0F + par3;
-      this.auro.field_82908_p = -par3 * 0.2F;
-      this.auro.field_82907_q = par3 < 8.0F ? 0.4F - par3 * 0.1F : -0.3F + (par3 - 7.0F) * 0.053F;
+      this.auro.rotationPointY = 55.0F + par3;
+      this.auro.offsetY = -par3 * 0.2F;
+      this.auro.offsetZ = par3 < 8.0F ? 0.4F - par3 * 0.1F : -0.3F + (par3 - 7.0F) * 0.053F;
       float ff = par3 * this.inc / 3.2F;
-      this.auro.field_78795_f = 0.8726646F - curperc * 0.01F - f1;
+      this.auro.rotateAngleX = 0.8726646F - curperc * 0.01F - f1;
    }
 
    public void renderModel(Entity entity, float f, float r, float w, float s) {
-      this.func_78088_a(entity, s, w, r, 0.0F, 0.0F, f);
+      this.render(entity, s, w, r, 0.0F, 0.0F, f);
    }
 
    public int func_78104_a() {

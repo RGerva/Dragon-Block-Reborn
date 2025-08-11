@@ -29,7 +29,7 @@ public class EntityAuraSup extends Entity {
       return 0.0F;
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.mot != null) {
          this.field_70159_w = this.mot.field_70159_w;
          this.field_70181_x = this.mot.field_70181_x;
@@ -39,21 +39,21 @@ public class EntityAuraSup extends Entity {
       int x = false;
       int y = false;
       int z = false;
-      if (this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v - 1).func_149688_o() == Material.field_151579_a) {
-         int x = (int)this.field_70165_t;
-         int y = (int)this.field_70163_u;
-         int var6 = (int)this.field_70161_v;
+      if (this.world.func_147439_a((int)this.posX, (int)this.posY, (int)this.posZ - 1).func_149688_o() == Material.field_151579_a) {
+         int x = (int)this.posX;
+         int y = (int)this.posY;
+         int var6 = (int)this.posZ;
       }
 
-      this.field_70169_q = this.field_70165_t;
-      this.field_70167_r = this.field_70163_u;
-      this.field_70166_s = this.field_70161_v;
+      this.field_70169_q = this.posX;
+      this.field_70167_r = this.posY;
+      this.field_70166_s = this.posZ;
       if (this.Age++ >= this.MaxAge) {
-         this.func_70106_y();
+         this.setDead();
       }
 
       this.field_70181_x += 0.0D;
-      if (this.field_70163_u == this.field_70167_r) {
+      if (this.posY == this.field_70167_r) {
          this.field_70159_w *= 1.0D;
          this.field_70179_y *= 1.0D;
       }
@@ -90,18 +90,18 @@ public class EntityAuraSup extends Entity {
    }
 
    public boolean getCanSpawnHere() {
-      return !this.field_70170_p.func_72855_b(this.field_70121_D);
+      return !this.world.checkNoEntityCollision(this.boundingBox);
    }
 
    public void onLivingUpdate() {
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound var1) {
+   protected void readEntityFromNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70014_b(NBTTagCompound var1) {
+   protected void writeEntityToNBT(NBTTagCompound var1) {
    }
 }

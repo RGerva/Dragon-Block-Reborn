@@ -235,56 +235,56 @@ public class DragonBlock01Model extends ModelBase {
       this.setRotation(this.Shape131, 0.0F, 0.0F, 0.0F);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.starblock.func_78785_a(f5);
-      this.Shape11.func_78785_a(f5);
-      this.Shape12.func_78785_a(f5);
-      this.Shape13.func_78785_a(f5);
-      this.Shape14.func_78785_a(f5);
-      this.Shape15.func_78785_a(f5);
-      this.Shape16.func_78785_a(f5);
-      this.Shape17.func_78785_a(f5);
-      this.Shape18.func_78785_a(f5);
-      this.Shape19.func_78785_a(f5);
-      this.Shape110.func_78785_a(f5);
-      this.Shape111.func_78785_a(f5);
-      this.Shape112.func_78785_a(f5);
-      this.Shape113.func_78785_a(f5);
-      this.Shape114.func_78785_a(f5);
-      this.Shape115.func_78785_a(f5);
-      this.Shape116.func_78785_a(f5);
-      this.Shape117.func_78785_a(f5);
-      this.Shape118.func_78785_a(f5);
-      this.Shape119.func_78785_a(f5);
-      this.Shape120.func_78785_a(f5);
-      this.Shape121.func_78785_a(f5);
-      this.Shape122.func_78785_a(f5);
-      this.Shape123.func_78785_a(f5);
-      this.Shape124.func_78785_a(f5);
-      this.Shape125.func_78785_a(f5);
-      this.Shape126.func_78785_a(f5);
-      this.Shape127.func_78785_a(f5);
-      this.Shape128.func_78785_a(f5);
-      this.Shape129.func_78785_a(f5);
-      this.Shape130.func_78785_a(f5);
-      this.Shape131.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.starblock.render(f5);
+      this.Shape11.render(f5);
+      this.Shape12.render(f5);
+      this.Shape13.render(f5);
+      this.Shape14.render(f5);
+      this.Shape15.render(f5);
+      this.Shape16.render(f5);
+      this.Shape17.render(f5);
+      this.Shape18.render(f5);
+      this.Shape19.render(f5);
+      this.Shape110.render(f5);
+      this.Shape111.render(f5);
+      this.Shape112.render(f5);
+      this.Shape113.render(f5);
+      this.Shape114.render(f5);
+      this.Shape115.render(f5);
+      this.Shape116.render(f5);
+      this.Shape117.render(f5);
+      this.Shape118.render(f5);
+      this.Shape119.render(f5);
+      this.Shape120.render(f5);
+      this.Shape121.render(f5);
+      this.Shape122.render(f5);
+      this.Shape123.render(f5);
+      this.Shape124.render(f5);
+      this.Shape125.render(f5);
+      this.Shape126.render(f5);
+      this.Shape127.render(f5);
+      this.Shape128.render(f5);
+      this.Shape129.render(f5);
+      this.Shape130.render(f5);
+      this.Shape131.render(f5);
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
    }
 
    public void renderModel(float f) {
-      this.func_78088_a((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
+      this.render((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
    }
 
    public void render() {
-      this.func_78088_a((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+      this.render((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
    }
 }

@@ -30,8 +30,8 @@ public class EntityTigerBandit extends EntityDBCWildlifeA implements IMob, IEnti
       this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(30.0D);
    }
 
-   public void func_70071_h_() {
-      super.func_70071_h_();
+   public void onUpdate() {
+      super.onUpdate();
    }
 
    @SideOnly(Side.CLIENT)
@@ -40,7 +40,7 @@ public class EntityTigerBandit extends EntityDBCWildlifeA implements IMob, IEnti
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
    protected Entity func_70782_k() {
@@ -68,9 +68,9 @@ public class EntityTigerBandit extends EntityDBCWildlifeA implements IMob, IEnti
    public void readSpawnData(ByteBuf additionalData) {
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
    }
 }

@@ -53,11 +53,11 @@ public class ComSkill extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(par1ICommandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var32) {
          }
 
-         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComANAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComANAS : JRMCoreConfig.ComANAO);
+         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComANAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComANAS : JRMCoreConfig.ComANAO);
          NBTTagCompound nbt = JRMCoreH.nbt(entityplayermp, "pres");
          int pwrtyp = JRMCoreH.getByte(entityplayermp, "jrmcPwrtyp");
          int rc = JRMCoreH.getByte(entityplayermp, "jrmcRace");
@@ -101,7 +101,7 @@ public class ComSkill extends CommandBase {
                            ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                            entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[]{sklsNms[i], re + 1})).func_150255_a(color));
                            if (n) {
-                              this.notifyAdmins(par1ICommandSender, "%s has upgraded skill %s to lvl %s", new Object[]{entityplayermp.func_70005_c_(), sklsNms[i], re + 1});
+                              this.notifyAdmins(par1ICommandSender, "%s has upgraded skill %s to lvl %s", new Object[]{entityplayermp.getName(), sklsNms[i], re + 1});
                            }
                         }
                      }
@@ -123,7 +123,7 @@ public class ComSkill extends CommandBase {
                            ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                            entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[]{sklsNms[id], lv + 1})).func_150255_a(color));
                            if (n) {
-                              this.notifyAdmins(par1ICommandSender, "%s has upgraded skill %s to lvl %s", new Object[]{entityplayermp.func_70005_c_(), sklsNms[id], lv + 1});
+                              this.notifyAdmins(par1ICommandSender, "%s has upgraded skill %s to lvl %s", new Object[]{entityplayermp.getName(), sklsNms[id], lv + 1});
                            }
 
                            return;
@@ -137,7 +137,7 @@ public class ComSkill extends CommandBase {
                   ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                   entityplayermp.func_145747_a((new ChatComponentTranslation(sn2, new Object[0])).func_150255_a(color));
                   if (n) {
-                     this.notifyAdmins(par1ICommandSender, "%s already has skill %s", new Object[]{entityplayermp.func_70005_c_(), sklsNms[id]});
+                     this.notifyAdmins(par1ICommandSender, "%s already has skill %s", new Object[]{entityplayermp.getName(), sklsNms[id]});
                   }
                } else {
                   PlyrSkills = nbt.func_74779_i("jrmcSSlts").split(",");
@@ -169,7 +169,7 @@ public class ComSkill extends CommandBase {
                            ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                            entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[]{sklsNms[i]})).func_150255_a(color));
                            if (n) {
-                              this.notifyAdmins(par1ICommandSender, "%s has received skill %s to lvl %s", new Object[]{entityplayermp.func_70005_c_(), sklsNms[i], re + 1});
+                              this.notifyAdmins(par1ICommandSender, "%s has received skill %s to lvl %s", new Object[]{entityplayermp.getName(), sklsNms[i], re + 1});
                            }
                         }
                      }
@@ -189,7 +189,7 @@ public class ComSkill extends CommandBase {
                      ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                      entityplayermp.func_145747_a((new ChatComponentTranslation(skl, new Object[]{sklsNms[id]})).func_150255_a(color));
                      if (n) {
-                        this.notifyAdmins(par1ICommandSender, "%s has received skill %s to lvl %s", new Object[]{entityplayermp.func_70005_c_(), sklsNms[id], re + 1});
+                        this.notifyAdmins(par1ICommandSender, "%s has received skill %s to lvl %s", new Object[]{entityplayermp.getName(), sklsNms[id], re + 1});
                      }
                   }
                }
@@ -218,7 +218,7 @@ public class ComSkill extends CommandBase {
                         ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                         entityplayermp.func_145747_a((new ChatComponentText(t)).func_150255_a(color));
                         if (n) {
-                           this.notifyAdmins(par1ICommandSender, "%s's skill %s has been removed!", new Object[]{entityplayermp.func_70005_c_(), skl});
+                           this.notifyAdmins(par1ICommandSender, "%s's skill %s has been removed!", new Object[]{entityplayermp.getName(), skl});
                         }
                      }
                   }
@@ -228,7 +228,7 @@ public class ComSkill extends CommandBase {
                   color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                   entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(color));
                   if (n) {
-                     this.notifyAdmins(par1ICommandSender, "%s's all skill has been removed!", new Object[]{entityplayermp.func_70005_c_()});
+                     this.notifyAdmins(par1ICommandSender, "%s's all skill has been removed!", new Object[]{entityplayermp.getName()});
                   }
                }
             }

@@ -29,7 +29,7 @@ public class JGModel extends ModelBase {
       this.field_78089_u = textureHeight;
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       this.updateAnimation((EntityNull)entity, f, f1, f2, f3, f4, f5);
    }
 
@@ -101,11 +101,11 @@ public class JGModel extends ModelBase {
       while(var1.hasNext()) {
          AttributeModel attributeModel = (AttributeModel)var1.next();
          if (attributeModel.value == AttributeModel.X) {
-            attributeModel.model.field_78795_f = 0.0F;
+            attributeModel.model.rotateAngleX = 0.0F;
          } else if (attributeModel.value == AttributeModel.Y) {
             attributeModel.model.field_78796_g = 0.0F;
          } else if (attributeModel.value == AttributeModel.Z) {
-            attributeModel.model.field_78808_h = 0.0F;
+            attributeModel.model.rotateAngleZ = 0.0F;
          }
       }
 
@@ -126,11 +126,11 @@ public class JGModel extends ModelBase {
          AttributeModel array = (AttributeModel)var2.next();
          array.update(age);
          if (array.value == AttributeModel.X) {
-            array.model.field_78795_f = array.attributeArray.lastValue;
+            array.model.rotateAngleX = array.attributeArray.lastValue;
          } else if (array.value == AttributeModel.Y) {
             array.model.field_78796_g = array.attributeArray.lastValue;
          } else if (array.value == AttributeModel.Z) {
-            array.model.field_78808_h = array.attributeArray.lastValue;
+            array.model.rotateAngleZ = array.attributeArray.lastValue;
          }
 
          if (!array.hasEnded) {
@@ -168,8 +168,8 @@ public class JGModel extends ModelBase {
    }
 
    public void setRotateAngle(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
+      model.rotateAngleX = x;
       model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleZ = z;
    }
 }

@@ -22,11 +22,11 @@ public class RenderPunch extends RenderJRMC {
       float randfloat = (float)((double)rand.nextInt(5) * 0.1D);
       float var20 = 0.001F;
       GL11.glTranslatef((float)par2 + 0.0F, (float)par4 + 0.0F, (float)par6 + 0.0F);
-      GL11.glRotatef(par1Entity.field_70126_B + (par1Entity.field_70177_z - par1Entity.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
-      GL11.glRotatef(par1Entity.field_70127_C + (par1Entity.field_70125_A - par1Entity.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
+      GL11.glRotatef(par1Entity.field_70126_B + (par1Entity.rotationYaw - par1Entity.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
+      GL11.glRotatef(par1Entity.field_70127_C + (par1Entity.rotationPitch - par1Entity.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
       GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
       ResourceLocation txx = new ResourceLocation("jinryuudragonbc:Ki/ki.png");
-      this.field_76990_c.field_78724_e.func_110577_a(txx);
+      this.renderManager.renderEngine.bindTexture(txx);
       GL11.glEnable(2977);
       GL11.glEnable(3042);
       GL11.glBlendFunc(770, 771);
@@ -39,10 +39,10 @@ public class RenderPunch extends RenderJRMC {
    }
 
    protected float handleRotationFloat(Entity par1Entity, float par2) {
-      return (float)par1Entity.field_70173_aa + par2;
+      return (float)par1Entity.ticksExisted + par2;
    }
 
-   public void func_76986_a(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
       this.renderPunch((EntityPunch)par1Entity, par2, par4, par6, par8, par9);
    }
 }

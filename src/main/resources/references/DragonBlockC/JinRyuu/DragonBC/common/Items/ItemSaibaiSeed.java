@@ -46,8 +46,8 @@ public class ItemSaibaiSeed extends Item {
       if (world.func_147439_a(x, y, z) != null) {
          if (!world.field_72995_K && this.ticker == 0) {
             EntitySaibaiman mr = new EntitySaibaiman(world);
-            mr.func_70029_a(p.field_70170_p);
-            mr.func_70012_b((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), 0.0F, 0.0F);
+            mr.func_70029_a(p.world);
+            mr.setLocationAndAngles((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), 0.0F, 0.0F);
             mr.setSpwner(p);
             world.func_72838_d(mr);
             this.ticker = 20;

@@ -102,28 +102,28 @@ public class ModelSpirit extends ModelBase {
       this.Body.func_78792_a(this.Body2);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.Body.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.Body.render(f5);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
-      float ex = (float)par7Entity.field_70173_aa;
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
+      float ex = (float)par7Entity.ticksExisted;
       float sin = MathHelper.func_76126_a(ex * 0.5F) * 0.01F;
       float sin2 = MathHelper.func_76126_a(ex * 1.0F) * -0.01F;
       float sin3 = MathHelper.func_76126_a(ex * 1.0F) * 0.01F;
       ModelRenderer[] segments = new ModelRenderer[]{this.Body, this.Body1, this.Body2, this.Body3, this.Body4, this.Body5, this.Body6, this.Body7, this.Body8, this.BodyL, this.BodyTop, this.BodyBot, this.BodyFront, this.Bodytail1};
 
       for(int i = 0; i < segments.length; ++i) {
-         segments[i].field_78795_f = sin * (float)(i / 2 == 0 ? 1 : -1);
-         segments[i].field_78796_g = sin2 * (float)(i / 2 == 0 ? 1 : -1);
-         segments[i].field_78808_h = sin3 * (float)(i / 2 == 0 ? 1 : -1);
+         segments[i].rotateAngleX = sin * (float)(i / 2 == 0 ? 1 : -1);
+         segments[i].rotateAngleY = sin2 * (float)(i / 2 == 0 ? 1 : -1);
+         segments[i].rotateAngleZ = sin3 * (float)(i / 2 == 0 ? 1 : -1);
       }
 
    }

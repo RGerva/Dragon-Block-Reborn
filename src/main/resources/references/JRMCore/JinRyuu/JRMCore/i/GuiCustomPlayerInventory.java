@@ -28,7 +28,7 @@ public class GuiCustomPlayerInventory extends GuiContainer {
    protected void func_73869_a(char c, int keyCode) {
       super.func_73869_a(c, keyCode);
       if (keyCode == JRMCoreKeyHandler.Sagasys.func_151463_i()) {
-         this.field_146297_k.field_71439_g.func_71053_j();
+         this.field_146297_k.player.func_71053_j();
       }
 
    }
@@ -49,12 +49,12 @@ public class GuiCustomPlayerInventory extends GuiContainer {
 
    protected void func_146976_a(float f, int mouseX, int mouseY) {
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-      this.field_146297_k.func_110434_K().func_110577_a(iconLocation);
+      this.field_146297_k.func_110434_K().bindTexture(iconLocation);
       this.func_73729_b(this.field_147003_i, this.field_147009_r, 0, 0, this.field_146999_f, this.field_147000_g);
-      this.drawEntityOnScreen(this.field_147003_i + 51, this.field_147009_r + 75, 30, (float)(this.field_147003_i + 51) - this.xSize_lo, (float)(this.field_147009_r + 25) - this.ySize_lo, this.field_146297_k.field_71439_g);
+      this.drawEntityOnScreen(this.field_147003_i + 51, this.field_147009_r + 75, 30, (float)(this.field_147003_i + 51) - this.xSize_lo, (float)(this.field_147009_r + 25) - this.ySize_lo, this.field_146297_k.player);
    }
 
    private void drawEntityOnScreen(int i, int j, int k, float f, float g, EntityClientPlayerMP thePlayer) {
-      GuiInventory.func_147046_a(this.field_147003_i + 51, this.field_147009_r + 75, 30, (float)(this.field_147003_i + 51) - this.xSize_lo, (float)(this.field_147009_r + 25) - this.ySize_lo, this.field_146297_k.field_71439_g);
+      GuiInventory.func_147046_a(this.field_147003_i + 51, this.field_147009_r + 75, 30, (float)(this.field_147003_i + 51) - this.xSize_lo, (float)(this.field_147009_r + 25) - this.ySize_lo, this.field_146297_k.player);
    }
 }

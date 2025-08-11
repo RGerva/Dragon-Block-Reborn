@@ -21,10 +21,10 @@ public class AAiDBCFlyingCharge extends AAi {
 
    public void update() {
       EntityDBC entity = (EntityDBC)this.aaiSystem.entity;
-      if (entity.func_70089_S() && !entity.field_70170_p.field_72995_K && !entity.isLocked() && !entity.chargingKiAttack && entity.getTargetedEntity() != null && entity.func_70685_l(entity.getTargetedEntity()) && this.checkChanceToUse(this.rate) && entity.canFly && !entity.field_70122_E) {
+      if (entity.func_70089_S() && !entity.world.field_72995_K && !entity.isLocked() && !entity.chargingKiAttack && entity.getTargetedEntity() != null && entity.func_70685_l(entity.getTargetedEntity()) && this.checkChanceToUse(this.rate) && entity.canFly && !entity.field_70122_E) {
          double zDiff;
          if (JGMathHelper.doubleSmallerThan(entity.field_70159_w, 0.5D)) {
-            zDiff = (entity.getTargetedEntity().field_70165_t - entity.field_70165_t) / 50.0D * this.multi;
+            zDiff = (entity.getTargetedEntity().posX - entity.posX) / 50.0D * this.multi;
             entity.field_70159_w = zDiff;
             if (this.limit != -1.0D) {
                entity.field_70159_w = JGMathHelper.doubleLimit(entity.field_70159_w, this.limit);
@@ -32,7 +32,7 @@ public class AAiDBCFlyingCharge extends AAi {
          }
 
          if (JGMathHelper.doubleSmallerThan(entity.field_70179_y, 0.5D)) {
-            zDiff = (entity.getTargetedEntity().field_70161_v - entity.field_70161_v) / 50.0D * this.multi;
+            zDiff = (entity.getTargetedEntity().posZ - entity.posZ) / 50.0D * this.multi;
             entity.field_70179_y = zDiff;
             if (this.limit != -1.0D) {
                entity.field_70179_y = JGMathHelper.doubleLimit(entity.field_70179_y, this.limit);

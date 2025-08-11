@@ -55,13 +55,13 @@ public class mEnergy7 extends ModelBase {
       this.Base.func_78792_a(this.BaseSide_Ball);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.Base.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.Base.render(f5);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
+      modelRenderer.rotateAngleX = x;
       modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleZ = z;
    }
 }

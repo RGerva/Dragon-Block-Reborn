@@ -120,7 +120,7 @@ public class JRMCoreCliTicH {
       }
 
       boolean ation = this.actionMenuOpen;
-      if (JRMCoreA.pwr_usrs(JRMCoreH.Pwrtyp) && this.mc.field_71439_g != null && this.mc.field_71441_e != null && this.mc.field_71462_r == null && JRMCoreKeyHandler.actionMenu.func_151470_d()) {
+      if (JRMCoreA.pwr_usrs(JRMCoreH.Pwrtyp) && this.mc.player != null && this.mc.field_71441_e != null && this.mc.field_71462_r == null && JRMCoreKeyHandler.actionMenu.func_151470_d()) {
          JRMCoreClient.JFCGui.renderActionMenu();
          this.actionMenuOpen = true;
          if (this.mc.field_71415_G) {
@@ -150,13 +150,13 @@ public class JRMCoreCliTicH {
          }
       }
 
-      if (!actionNBO && ation && JRMCoreClient.mc.field_71474_y.field_74312_F.func_151470_d() && actionSelectID % 9 == 4) {
+      if (!actionNBO && ation && JRMCoreClient.mc.gameSettings.field_74312_F.func_151470_d() && actionSelectID % 9 == 4) {
          actionSelectID = -1;
          actionNBO = true;
          actionNPA = actionNPA == 0 ? 1 : 0;
       }
 
-      EntityPlayer player = Minecraft.func_71410_x().field_71439_g;
+      EntityPlayer player = Minecraft.func_71410_x().player;
       dst = 35;
       if (lockOn != null && player != null && JRMCoreConfig.lockon) {
          if (lockOn.field_70128_L || player.func_70032_d(lockOn) > (float)dst) {
@@ -165,15 +165,15 @@ public class JRMCoreCliTicH {
          }
 
          EntityLivingBase target = lockOn;
-         double dx = player.field_70165_t - target.field_70165_t;
-         double dz = player.field_70161_v - target.field_70161_v;
-         double dy = player.field_70163_u - (target.field_70163_u + (double)(target.field_70131_O / 2.0F) - (double)this.mc.field_71439_g.field_70131_O + 1.600000023841858D);
+         double dx = player.posX - target.posX;
+         double dz = player.posZ - target.posZ;
+         double dy = player.posY - (target.posY + (double)(target.field_70131_O / 2.0F) - (double)this.mc.player.field_70131_O + 1.600000023841858D);
          double angle = Math.atan2(dz, dx) * 180.0D / 3.141592653589793D;
          double pitch = Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)) * 180.0D / 3.141592653589793D;
          double distance = (double)player.func_70032_d(target);
 
          float rYaw;
-         for(rYaw = (float)(angle - (double)player.field_70177_z); rYaw > 180.0F; rYaw -= 360.0F) {
+         for(rYaw = (float)(angle - (double)player.rotationYaw); rYaw > 180.0F; rYaw -= 360.0F) {
          }
 
          while(rYaw < -180.0F) {
@@ -182,10 +182,10 @@ public class JRMCoreCliTicH {
 
          rYaw += 90.0F;
          float rPitch = (float)pitch - (float)(10.0D / Math.sqrt(distance)) + (float)(distance * 3.141592653589793D / 90.0D);
-         player.func_70082_c(rYaw, -(rPitch - player.field_70125_A));
+         player.func_70082_c(rYaw, -(rPitch - player.rotationPitch));
       }
 
-      if (this.mc.field_71439_g != null && this.mc.field_71415_G) {
+      if (this.mc.player != null && this.mc.field_71415_G) {
          Minecraft var10000 = this.mc;
          if (Minecraft.func_71382_s()) {
             GL11.glPushMatrix();
@@ -193,7 +193,7 @@ public class JRMCoreCliTicH {
                JRMCoreClient.bars.swoop();
             }
 
-            if ((this.dbc || this.nc) && JRMCoreH.Accepted == 1 && !this.mc.field_71474_y.field_74321_H.func_151470_d() && (JRMCoreH.Pwrtyp == 1 || JRMCoreH.Pwrtyp == 2 && JRMCoreH.inIll == null)) {
+            if ((this.dbc || this.nc) && JRMCoreH.Accepted == 1 && !this.mc.gameSettings.field_74321_H.func_151470_d() && (JRMCoreH.Pwrtyp == 1 || JRMCoreH.Pwrtyp == 2 && JRMCoreH.inIll == null)) {
                if (JGConfigClientSettings.CLIENT_hud2) {
                   JRMCoreClient.bars.renderCG(0);
                } else {
@@ -231,7 +231,7 @@ public class JRMCoreCliTicH {
                }
             }
 
-            if (JRMCoreH.Pwrtyp == 3 && JRMCoreH.SAOC() && JRMCoreH.Accepted == 1 && !this.mc.field_71474_y.field_74321_H.func_151470_d()) {
+            if (JRMCoreH.Pwrtyp == 3 && JRMCoreH.SAOC() && JRMCoreH.Accepted == 1 && !this.mc.gameSettings.field_74321_H.func_151470_d()) {
                JRMCoreClient.bars.renderSAOHealthBar();
             }
 
@@ -245,7 +245,7 @@ public class JRMCoreCliTicH {
    }
 
    private void onInputEvent(KeyInputEvent event) {
-      EntityPlayer player = this.mc.field_71439_g;
+      EntityPlayer player = this.mc.player;
       if (JRMCoreKeyHandler.lockOn.func_151470_d() && JRMCoreH.SklLvl(6) > 0 && JRMCoreConfig.lockon) {
          Entity rtr = JRMCoreH2.getTarget(1.0F, (double)dst);
          if (lockOn == null && rtr != null) {
@@ -253,17 +253,17 @@ public class JRMCoreCliTicH {
             double reachSq = (double)(dst * dst);
             if (reachSq >= distanceSq && rtr instanceof EntityLivingBase) {
                lockOn = (EntityLivingBase)rtr;
-               player.field_70170_p.func_72980_b(player.field_70165_t, player.field_70163_u, player.field_70161_v, "jinryuudragonbc:DBC4.lockon", 1.0F, 1.0F, true);
+               player.world.func_72980_b(player.posX, player.posY, player.posZ, "jinryuudragonbc:DBC4.lockon", 1.0F, 1.0F, true);
             }
          } else {
             lockOn = null;
          }
       }
 
-      this.keys.put(this.mc.field_71474_y.field_74351_w.func_151463_i(), this.mc.field_71474_y.field_74351_w);
-      this.keys.put(this.mc.field_71474_y.field_74368_y.func_151463_i(), this.mc.field_71474_y.field_74368_y);
-      this.keys.put(this.mc.field_71474_y.field_74370_x.func_151463_i(), this.mc.field_71474_y.field_74370_x);
-      this.keys.put(this.mc.field_71474_y.field_74366_z.func_151463_i(), this.mc.field_71474_y.field_74366_z);
+      this.keys.put(this.mc.gameSettings.field_74351_w.func_151463_i(), this.mc.gameSettings.field_74351_w);
+      this.keys.put(this.mc.gameSettings.field_74368_y.func_151463_i(), this.mc.gameSettings.field_74368_y);
+      this.keys.put(this.mc.gameSettings.field_74370_x.func_151463_i(), this.mc.gameSettings.field_74370_x);
+      this.keys.put(this.mc.gameSettings.field_74366_z.func_151463_i(), this.mc.gameSettings.field_74366_z);
       Iterator var8 = this.keys.entrySet().iterator();
 
       while(var8.hasNext()) {
@@ -296,7 +296,7 @@ public class JRMCoreCliTicH {
 
    public void onTickInGUI() {
       GuiScreen guiscreen = this.mc.field_71462_r;
-      EntityPlayer plyr = this.mc.field_71439_g;
+      EntityPlayer plyr = this.mc.player;
       if (guiscreen instanceof GuiMainMenu && !this.wig) {
          JRMCoreH.resetChar();
          JRMCoreH.resetDedSer();
@@ -324,7 +324,7 @@ public class JRMCoreCliTicH {
 
    public void onTickInGame() {
       mw = Mouse.getDWheel();
-      EntityPlayer plyr = this.mc.field_71439_g;
+      EntityPlayer plyr = this.mc.player;
       if (JRMCoreH.data1 == null) {
          JRMCoreH.Race = this.b(0);
          JRMCoreH.dns = "0";
@@ -395,37 +395,37 @@ public class JRMCoreCliTicH {
          boolean b = JRMCoreConfig.releaseStop && JRMCoreKeyHandler.KiCharge.func_151470_d() || JRMCoreH.kob;
          String[] d18 = JRMCoreH.data(18, "0;0;0;0;0;0;0;0;0").split(";");
          String[] fuse = d18[2].split(",");
-         if (fuse.length == 3 && fuse[1].equalsIgnoreCase(this.mc.field_71439_g.func_70005_c_()) || JRMCoreH.kob) {
+         if (fuse.length == 3 && fuse[1].equalsIgnoreCase(this.mc.player.getName()) || JRMCoreH.kob) {
             b = true;
-            EntityPlayer pl = this.mc.field_71441_e.func_72924_a(fuse[0]);
+            EntityPlayer pl = this.mc.field_71441_e.getPlayerEntityByName(fuse[0]);
             if (pl != null) {
-               if (this.mc.field_71439_g.func_70032_d(pl) > 5.0F) {
-                  this.mc.field_71439_g.func_70012_b(pl.field_70165_t, pl.field_70163_u, pl.field_70161_v, this.mc.field_71439_g.field_70177_z, this.mc.field_71439_g.field_70125_A);
+               if (this.mc.player.func_70032_d(pl) > 5.0F) {
+                  this.mc.player.setLocationAndAngles(pl.posX, pl.posY, pl.posZ, this.mc.player.rotationYaw, this.mc.player.rotationPitch);
                }
 
-               this.mc.field_71474_y.field_74320_O = 1;
-               this.mc.field_71439_g.field_70159_w = 0.0D;
-               this.mc.field_71439_g.field_70181_x = 0.0D;
-               this.mc.field_71439_g.field_70179_y = 0.0D;
+               this.mc.gameSettings.thirdPersonView = 1;
+               this.mc.player.field_70159_w = 0.0D;
+               this.mc.player.field_70181_x = 0.0D;
+               this.mc.player.field_70179_y = 0.0D;
             }
          }
 
          if (JRMCoreH.kob) {
             if (!this.viewChange) {
                this.viewChange = true;
-               this.viewPrevious = this.mc.field_71474_y.field_74320_O;
+               this.viewPrevious = this.mc.gameSettings.thirdPersonView;
             }
 
-            this.mc.field_71474_y.field_74320_O = 1;
+            this.mc.gameSettings.thirdPersonView = 1;
          } else if (this.viewChange) {
             this.viewChange = false;
-            this.mc.field_71474_y.field_74320_O = this.viewPrevious;
+            this.mc.gameSettings.thirdPersonView = this.viewPrevious;
          }
 
          EntityClientPlayerMP var10000;
          if (!(JRMCoreH.WeightOn > 0.0F) && !b && smod == 1.0F && !JRMCoreH.pnh) {
-            if (!(this.mc.field_71439_g.field_71158_b instanceof MovementInputFromOptions)) {
-               this.mc.field_71439_g.field_71158_b = new MovementInputFromOptions(this.mc.field_71474_y);
+            if (!(this.mc.player.field_71158_b instanceof MovementInputFromOptions)) {
+               this.mc.player.field_71158_b = new MovementInputFromOptions(this.mc.gameSettings);
             }
          } else {
             if (b) {
@@ -436,36 +436,36 @@ public class JRMCoreCliTicH {
                w *= 0.5F;
             }
 
-            if (this.mc.field_71439_g.field_71158_b instanceof MoveInputJRMC && this.mc.field_71439_g.field_70170_p.func_72976_f((int)this.mc.field_71439_g.field_70165_t, (int)this.mc.field_71439_g.field_70161_v) > 0 && this.mc.field_71439_g.field_70181_x > 0.0D) {
-               var10000 = this.mc.field_71439_g;
+            if (this.mc.player.field_71158_b instanceof MoveInputJRMC && this.mc.player.world.func_72976_f((int)this.mc.player.posX, (int)this.mc.player.posZ) > 0 && this.mc.player.field_70181_x > 0.0D) {
+               var10000 = this.mc.player;
                var10000.field_70181_x *= (double)w;
             }
 
-            if (!(this.mc.field_71439_g.field_71158_b instanceof MoveInputJRMC) && (this.mc.field_71439_g.field_71158_b.field_78900_b != 0.0F || this.mc.field_71439_g.field_71158_b.field_78902_a != 0.0F)) {
-               this.mc.field_71439_g.field_71158_b = new MoveInputJRMC(this.mc.field_71474_y, w);
+            if (!(this.mc.player.field_71158_b instanceof MoveInputJRMC) && (this.mc.player.field_71158_b.field_78900_b != 0.0F || this.mc.player.field_71158_b.field_78902_a != 0.0F)) {
+               this.mc.player.field_71158_b = new MoveInputJRMC(this.mc.gameSettings, w);
             }
 
-            if (this.mc.field_71439_g.field_71158_b instanceof MoveInputJRMC && ((MoveInputJRMC)this.mc.field_71439_g.field_71158_b).moveModifier != w) {
-               ((MoveInputJRMC)this.mc.field_71439_g.field_71158_b).moveModifier = w;
+            if (this.mc.player.field_71158_b instanceof MoveInputJRMC && ((MoveInputJRMC)this.mc.player.field_71158_b).moveModifier != w) {
+               ((MoveInputJRMC)this.mc.player.field_71158_b).moveModifier = w;
             }
          }
 
          ++this.check;
          if (this.check == 1) {
-            plyr.openGui(mod_JRMCore.instance, 30, plyr.field_70170_p, (int)plyr.field_70165_t, (int)plyr.field_70163_u, (int)plyr.field_70161_v);
+            plyr.openGui(mod_JRMCore.instance, 30, plyr.world, (int)plyr.posX, (int)plyr.posY, (int)plyr.posZ);
             this.check = 2;
          }
 
          if ((JRMCoreH.Pwrtyp == 1 || JRMCoreH.Pwrtyp == 2) && JRMCoreKeyHandler.Sagasys.func_151470_d()) {
-            plyr.openGui(mod_JRMCore.instance, 60, plyr.field_70170_p, (int)plyr.field_70165_t, (int)plyr.field_70163_u, (int)plyr.field_70161_v);
+            plyr.openGui(mod_JRMCore.instance, 60, plyr.world, (int)plyr.posX, (int)plyr.posY, (int)plyr.posZ);
          }
 
          if (JRMCoreKeyHandler.infopanel.func_151470_d()) {
-            plyr.openGui(mod_JRMCore.instance, 30, plyr.field_70170_p, (int)plyr.field_70165_t, (int)plyr.field_70163_u, (int)plyr.field_70161_v);
+            plyr.openGui(mod_JRMCore.instance, 30, plyr.world, (int)plyr.posX, (int)plyr.posY, (int)plyr.posZ);
          }
 
          if (JRMCoreKeyHandler.DS.func_151470_d()) {
-            plyr.openGui(mod_JRMCore.instance, 0, plyr.field_70170_p, (int)plyr.field_70165_t, (int)plyr.field_70163_u, (int)plyr.field_70161_v);
+            plyr.openGui(mod_JRMCore.instance, 0, plyr.world, (int)plyr.posX, (int)plyr.posY, (int)plyr.posZ);
          }
 
          if (JRMCoreH.PlyrAttrbts[0] == 0 || this.wig) {
@@ -544,9 +544,9 @@ public class JRMCoreCliTicH {
          }
 
          if (!plyr.func_70608_bn() && JRMCoreH.JBRA()) {
-            if (this.mc.field_71474_y.field_74314_A.func_151468_f() && (this.mc.field_71441_e.func_147439_a((int)this.mc.field_71439_g.field_70165_t, (int)this.mc.field_71439_g.field_70163_u - 1, (int)this.mc.field_71439_g.field_70161_v - 1).func_149688_o() == Material.field_151586_h || this.mc.field_71441_e.func_147439_a((int)this.mc.field_71439_g.field_70165_t, (int)this.mc.field_71439_g.field_70163_u - 1, (int)this.mc.field_71439_g.field_70161_v - 1).func_149688_o() == Material.field_151587_i)) {
+            if (this.mc.gameSettings.field_74314_A.func_151468_f() && (this.mc.field_71441_e.func_147439_a((int)this.mc.player.posX, (int)this.mc.player.posY - 1, (int)this.mc.player.posZ - 1).func_149688_o() == Material.field_151586_h || this.mc.field_71441_e.func_147439_a((int)this.mc.player.posX, (int)this.mc.player.posY - 1, (int)this.mc.player.posZ - 1).func_149688_o() == Material.field_151587_i)) {
                double d1 = 0.02D;
-               var10000 = this.mc.field_71439_g;
+               var10000 = this.mc.player;
                var10000.field_70181_x += d1;
             }
 
@@ -561,17 +561,17 @@ public class JRMCoreCliTicH {
          }
 
          int r = 10;
-         AxisAlignedBB ab = AxisAlignedBB.func_72330_a(plyr.field_70165_t - (double)r, plyr.field_70163_u - (double)r, plyr.field_70161_v - (double)r, plyr.field_70165_t + (double)r, plyr.field_70163_u + (double)r, plyr.field_70161_v + (double)r);
-         List list = this.mc.field_71439_g.field_70170_p.func_72872_a(EntityPlayer.class, ab);
+         AxisAlignedBB ab = AxisAlignedBB.func_72330_a(plyr.posX - (double)r, plyr.posY - (double)r, plyr.posZ - (double)r, plyr.posX + (double)r, plyr.posY + (double)r, plyr.posZ + (double)r);
+         List list = this.mc.player.world.func_72872_a(EntityPlayer.class, ab);
 
          for(int i = 0; i < list.size(); ++i) {
             EntityPlayer plyr1 = (EntityPlayer)list.get(i);
-            if (!plyr.func_70005_c_().equals(plyr1.func_70005_c_())) {
-               String[] s = JRMCoreH.data(plyr1.func_70005_c_(), 1, "0;0;0;0;0;0").split(";");
-               String[] s2 = JRMCoreH.data(plyr1.func_70005_c_(), 2, "0;0").split(";");
+            if (!plyr.getName().equals(plyr1.getName())) {
+               String[] s = JRMCoreH.data(plyr1.getName(), 1, "0;0;0;0;0;0").split(";");
+               String[] s2 = JRMCoreH.data(plyr1.getName(), 2, "0;0").split(";");
                int state = Integer.parseInt(s2[0]);
-               String[] s14 = JRMCoreH.data(plyr1.func_70005_c_(), 14, "0,0,0,0,0,0").split(",");
-               int rls = Integer.parseInt(JRMCoreH.data(plyr1.func_70005_c_(), 10, "0;0").split(";")[0]);
+               String[] s14 = JRMCoreH.data(plyr1.getName(), 14, "0,0,0,0,0,0").split(",");
+               int rls = Integer.parseInt(JRMCoreH.data(plyr1.getName(), 10, "0;0").split(";")[0]);
                int race = Integer.parseInt(s[0]);
                int[] PlyrAttrbts = new int[s14.length];
 
@@ -630,7 +630,7 @@ public class JRMCoreCliTicH {
                   if (JRMCoreH.JBRA()) {
                      float clientHght = JRMCoreComTickH.height * f1 * f3 * yc;
                      clientWdth2 = JRMCoreComTickH.width * f1 * f2 * f3 * yc;
-                     if (fuse.length == 3 && fuse[1].equalsIgnoreCase(plyr1.func_70005_c_())) {
+                     if (fuse.length == 3 && fuse[1].equalsIgnoreCase(plyr1.getName())) {
                         JRMCoreComTickH.sS(plyr1, 0.0F, 0.0F);
                         DO = false;
                      } else {
@@ -638,7 +638,7 @@ public class JRMCoreCliTicH {
                      }
                   }
 
-                  if (DO && fuse.length == 3 && fuse[1].equalsIgnoreCase(plyr1.func_70005_c_())) {
+                  if (DO && fuse.length == 3 && fuse[1].equalsIgnoreCase(plyr1.getName())) {
                      JRMCoreComTickH.sS(plyr1, 0.0F, 0.0F);
                   }
                }
@@ -656,7 +656,7 @@ public class JRMCoreCliTicH {
             JRMCoreH.Anim(2);
          }
 
-         if (this.mc.field_71439_g != null && this.mc.field_71441_e != null) {
+         if (this.mc.player != null && this.mc.field_71441_e != null) {
             if (fnPressed > 0 && (this.mc.field_71462_r instanceof GuiInventory || this.mc.field_71462_r instanceof GuiContainerCreative)) {
                PD.sendToServer(new OpenGuiMessage(mod_JRMCore.GUI_CUSTOM_INV));
             }
@@ -719,7 +719,7 @@ public class JRMCoreCliTicH {
 
    private void NotificationHandler() {
       int size = notificationPings.size();
-      if (this.mc.field_71439_g != null && size > 0) {
+      if (this.mc.player != null && size > 0) {
          ResourceLocation txx = new ResourceLocation(JRMCoreH.tjjrmc + ":notification.png");
          ResourceLocation txx2 = new ResourceLocation(JRMCoreH.tjjrmc + ":note_category_icons.png");
          FontRenderer fontRenderer = this.mc.field_71466_p;
@@ -778,7 +778,7 @@ public class JRMCoreCliTicH {
                      y = sh - yy[renderLocation];
                   }
 
-                  this.mc.func_110434_K().func_110577_a(txx);
+                  this.mc.func_110434_K().bindTexture(txx);
                   int icon = note.icon;
                   int idY = note.icon * 16 / 256;
                   int idX = note.icon * 16 - idY * 256;
@@ -788,7 +788,7 @@ public class JRMCoreCliTicH {
                   GL11.glBlendFunc(770, 771);
                   GL11.glColor4f(1.0F, 1.0F, 1.0F, alpha);
                   this.drawTexturedModalRect(x, y, 0, 0, 116, 21);
-                  this.mc.func_110434_K().func_110577_a(txx2);
+                  this.mc.func_110434_K().bindTexture(txx2);
                   JGNotificationGUI.color(note.iconColor, alpha);
                   this.drawTexturedModalRect(x + 3, y + 2, idX, idY, 16, 16);
                   GL11.glColor4f(1.0F, 1.0F, 1.0F, alpha);
@@ -807,7 +807,7 @@ public class JRMCoreCliTicH {
       float zLevel = 0.0F;
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)(x + 0), (double)(y + h), (double)zLevel, (double)((float)(u + 0) * f), (double)((float)(v + h) * f1));
       tessellator.func_78374_a((double)(x + w), (double)(y + h), (double)zLevel, (double)((float)(u + w) * f), (double)((float)(v + h) * f1));
@@ -819,7 +819,7 @@ public class JRMCoreCliTicH {
    public void updateMaxStats() {
       if (this.updateClient == null || Duration.between(this.updateClient, Instant.now()).toMillis() >= 1000L) {
          this.updateClient = Instant.now();
-         EntityPlayer p = JRMCoreClient.mc.field_71439_g;
+         EntityPlayer p = JRMCoreClient.mc.player;
          byte pwr = JRMCoreH.Pwrtyp;
          byte rce = JRMCoreH.Race;
          byte cls = JRMCoreH.Class;

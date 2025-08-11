@@ -32,7 +32,6 @@ import net.minecraft.world.entity.AnimationState;
 
 import java.awt.*;
 
-
 public class AuraModel extends EntityModel<AuraEntityRenderState> {
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(DragonBlockReborn.MOD_ID, "aura_template"),

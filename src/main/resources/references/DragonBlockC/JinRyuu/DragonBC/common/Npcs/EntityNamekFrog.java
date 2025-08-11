@@ -22,12 +22,12 @@ public class EntityNamekFrog extends EntityAnimal {
       return 0.0F;
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.j && this.field_70122_E && !this.field_70703_bu) {
          this.j = false;
       }
 
-      if (!this.j && !this.field_70703_bu && (int)(Math.random() * 10.0D) == 0 && this.field_70173_aa % 100 == 0) {
+      if (!this.j && !this.field_70703_bu && (int)(Math.random() * 10.0D) == 0 && this.ticksExisted % 100 == 0) {
          this.func_70664_aZ();
       }
 
@@ -57,7 +57,7 @@ public class EntityNamekFrog extends EntityAnimal {
          this.j = true;
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
    }
 
    protected void func_70069_a(float p_70069_1_) {
@@ -69,7 +69,7 @@ public class EntityNamekFrog extends EntityAnimal {
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
    protected void func_70628_a(boolean par1, int par2) {

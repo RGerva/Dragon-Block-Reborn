@@ -52,8 +52,8 @@ public class DBCEH {
                if (fullFusionData.length >= 3) {
                   String[] fusionData = fullFusionData[2].split(",");
                   if (fusionData.length == 3) {
-                     EntityPlayer fusionSpectator = player.field_70170_p.func_72924_a(fusionData[1]);
-                     if (fusionSpectator != null && fusionSpectator.func_70005_c_().equals(player.func_70005_c_())) {
+                     EntityPlayer fusionSpectator = player.world.getPlayerEntityByName(fusionData[1]);
+                     if (fusionSpectator != null && fusionSpectator.getName().equals(player.getName())) {
                         return;
                      }
                   }
@@ -65,7 +65,7 @@ public class DBCEH {
       int kiSenseLvl = JRMCoreH.SklLvl(6);
       double distance = entity.func_70068_e(p);
       float f2 = (float)(30 + kiSenseLvl * 10);
-      if (distance < (double)(f2 * f2) && (!(entity.field_70163_u < 61.0D) || Y > (double)(-kiSenseLvl * 4))) {
+      if (distance < (double)(f2 * f2) && (!(entity.posY < 61.0D) || Y > (double)(-kiSenseLvl * 4))) {
          float width = 39.0F;
          float maxperc = width / (float)maxki;
          float var20 = maxperc * (float)ki;
@@ -79,7 +79,7 @@ public class DBCEH {
             var21 = width;
          }
 
-         long res = JRMCoreH.gkap(JRMCoreH.bpc(entity), "sns;" + entity.func_70005_c_() + ";" + entity.func_145782_y());
+         long res = JRMCoreH.gkap(JRMCoreH.bpc(entity), "sns;" + entity.getName() + ";" + entity.func_145782_y());
          long bps = JRMCoreHC.BPC_ME;
          long pwr = res > bps ? res / bps : bps / res;
          long bpsa = JRMCoreHC.BPC_ME2;
@@ -102,7 +102,7 @@ public class DBCEH {
          double rty = Math.cos((double)(angle / 57.295776F));
          GL11.glTranslatef((float)(X + 0.0D * rtx), (float)Y + entity.field_70131_O + 1.75F - entity.field_70131_O * 0.75F + 0.5F, (float)(Z - 0.0D * rty));
          GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-         boolean t = DBCClient.mc.field_71474_y.field_74320_O == 2;
+         boolean t = DBCClient.mc.gameSettings.thirdPersonView == 2;
          GL11.glRotatef(-RenderManager.field_78727_a.field_78735_i, 0.0F, 1.0F, 0.0F);
          GL11.glRotatef(t ? -RenderManager.field_78727_a.field_78732_j : RenderManager.field_78727_a.field_78732_j, 1.0F, 0.0F, 0.0F);
          double ikr = (double)(RenderManager.field_78727_a.field_78735_i % 180.0F / 57.295776F);
@@ -121,7 +121,7 @@ public class DBCEH {
          int Ypos = -40;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.7F);
          ResourceLocation guiLocation = new ResourceLocation(JRMCoreH.tjdbcAssts + ":kisense.png");
-         JRMCoreClient.mc.field_71446_o.func_110577_a(guiLocation);
+         JRMCoreClient.mc.field_71446_o.bindTexture(guiLocation);
          this.drawTexturedModalRect(0.0F, (float)(0 + Ypos), 0, 0, 21.0F, 41.0F, 0.0F);
          int red = 16522030;
          int blu = 654591;
@@ -191,7 +191,7 @@ public class DBCEH {
          }
 
          if (kiSenseLvl > 9) {
-            String n = entity.func_70005_c_();
+            String n = entity.getName();
             String[] d10 = JRMCoreH.data(n, 10, "0;0").split(";");
             String[] d2 = JRMCoreH.data(n, 2, "0;0").split(";");
             String[] d1 = JRMCoreH.data(n, 1, "0;0").split(";");
@@ -285,20 +285,20 @@ public class DBCEH {
                return;
             }
 
-            if (!JRMCoreClient.mc.field_71439_g.func_70005_c_().equals(event.entity.func_70005_c_()) && JRMCoreH.dnn(14) && JRMCoreH.dnn(8) && JRMCoreH.dnn(9) && JRMCoreH.dnn(1) && JRMCoreH.dnn(5)) {
+            if (!JRMCoreClient.mc.player.getName().equals(event.entity.getName()) && JRMCoreH.dnn(14) && JRMCoreH.dnn(8) && JRMCoreH.dnn(9) && JRMCoreH.dnn(1) && JRMCoreH.dnn(5)) {
                EntityPlayer p = (EntityPlayer)event.entity;
-               int hp = Integer.parseInt(JRMCoreH.data(event.entity.func_70005_c_(), 8, "200"));
-               int ki = Integer.parseInt(JRMCoreH.data(event.entity.func_70005_c_(), 9, "200"));
+               int hp = Integer.parseInt(JRMCoreH.data(event.entity.getName(), 8, "200"));
+               int ki = Integer.parseInt(JRMCoreH.data(event.entity.getName(), 9, "200"));
                int[] atr = JRMCoreH.PlyrAttrbtsC((EntityPlayer)event.entity);
-               String[] s = JRMCoreH.data(event.entity.func_70005_c_(), 1, "0;0;0;0;0;0").split(";");
+               String[] s = JRMCoreH.data(event.entity.getName(), 1, "0;0;0;0;0;0").split(";");
                int race = Integer.parseInt(s[0]);
                int pwr = Integer.parseInt(s[2]);
                int cls = Integer.parseInt(s[3]);
-               s = JRMCoreH.data(event.entity.func_70005_c_(), 6, "pty;pty;pty;pty").split(";");
+               s = JRMCoreH.data(event.entity.getName(), 6, "pty;pty;pty;pty").split(";");
                String[] PlyrSkills = s[0].split(",");
                int maxhp = JRMCoreH.stat(p, 2, pwr, 2, atr[2], race, cls, 0.0F);
                int maxki = JRMCoreH.stat(p, 5, pwr, 5, atr[5], race, cls, JRMCoreH.SklLvl_KiBs(PlyrSkills, pwr));
-               int align = JRMCoreH.Algnmnt(Integer.parseInt(JRMCoreH.data(event.entity.func_70005_c_(), 5, "50;0").split(";")[0]));
+               int align = JRMCoreH.Algnmnt(Integer.parseInt(JRMCoreH.data(event.entity.getName(), 5, "50;0").split(";")[0]));
                this.renderSense(hp, maxhp, ki, maxki, align, event);
             }
          }
@@ -309,7 +309,7 @@ public class DBCEH {
    public void drawTexturedModalRect(float x, float y, int u, int v, float width, float height, float z) {
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)x, (double)(y + 0.0F), (double)z, (double)((float)(u + 0) * f), (double)((float)(v + 0) * f1));
       tessellator.func_78374_a((double)x, (double)(y + height), (double)z, (double)((float)(u + 0) * f), (double)(((float)v + height) * f1));

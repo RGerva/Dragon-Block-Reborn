@@ -206,63 +206,63 @@ public class ModelDino02 extends ModelBase {
       this.Head.func_78792_a(this.L);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
       GL11.glPushMatrix();
-      this.Body.func_78785_a(f5);
+      this.Body.render(f5);
       GL11.glPopMatrix();
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
       float r = 360.0F;
       float r2 = 180.0F;
       float n4 = (par4 + r2) % r;
       n4 = n4 > 0.0F ? n4 - r2 : n4 + r2;
       n4 = n4 > r2 ? r2 : (n4 < -r2 ? -r2 : n4);
       float p = 5.0F;
-      this.Head.field_78796_g = n4 / (r2 / 3.1415927F) / p;
-      this.Head.field_78795_f = par5 / (r2 / 3.1415927F) / p;
-      this.Neck.field_78796_g = n4 / (r2 / 3.1415927F) / p;
-      this.Neck.field_78795_f = par5 / (r2 / 3.1415927F) / p;
-      this.Neck2.field_78796_g = n4 / (r2 / 3.1415927F) / p;
-      this.Neck2.field_78795_f = par5 / (r2 / 3.1415927F) / p;
-      this.Neck3.field_78796_g = n4 / (r2 / 3.1415927F) / p;
-      this.Neck3.field_78795_f = par5 / (r2 / 3.1415927F) / p;
-      this.Neck4.field_78796_g = n4 / (r2 / 3.1415927F) / p;
-      this.Neck4.field_78795_f = par5 / (r2 / 3.1415927F) / p;
-      this.Neck5.field_78796_g = n4 / (r2 / 3.1415927F) / p;
-      this.Neck5.field_78795_f = par5 / (r2 / 3.1415927F) / p;
-      this.RightLeg.field_78795_f = -0.5F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
-      this.LeftLeg.field_78795_f = -0.5F + MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.2F * par2;
-      this.RightLeg.field_78796_g = 0.0F;
-      this.LeftLeg.field_78796_g = 0.0F;
-      float ex = (float)par7Entity.field_70173_aa;
+      this.Head.rotateAngleY = n4 / (r2 / 3.1415927F) / p;
+      this.Head.rotateAngleX = par5 / (r2 / 3.1415927F) / p;
+      this.Neck.rotateAngleY = n4 / (r2 / 3.1415927F) / p;
+      this.Neck.rotateAngleX = par5 / (r2 / 3.1415927F) / p;
+      this.Neck2.rotateAngleY = n4 / (r2 / 3.1415927F) / p;
+      this.Neck2.rotateAngleX = par5 / (r2 / 3.1415927F) / p;
+      this.Neck3.rotateAngleY = n4 / (r2 / 3.1415927F) / p;
+      this.Neck3.rotateAngleX = par5 / (r2 / 3.1415927F) / p;
+      this.Neck4.rotateAngleY = n4 / (r2 / 3.1415927F) / p;
+      this.Neck4.rotateAngleX = par5 / (r2 / 3.1415927F) / p;
+      this.Neck5.rotateAngleY = n4 / (r2 / 3.1415927F) / p;
+      this.Neck5.rotateAngleX = par5 / (r2 / 3.1415927F) / p;
+      this.RightLeg.rotateAngleX = -0.5F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
+      this.LeftLeg.rotateAngleX = -0.5F + MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.2F * par2;
+      this.RightLeg.rotateAngleY = 0.0F;
+      this.LeftLeg.rotateAngleY = 0.0F;
+      float ex = (float)par7Entity.ticksExisted;
       float r3 = MathHelper.func_76134_b(ex * 0.14F) * 0.1F;
       float r4 = MathHelper.func_76134_b(ex / 8.0F) / 4.0F - 0.2F;
-      this.Tail.field_78796_g = 0.2F;
+      this.Tail.rotateAngleY = 0.2F;
       ModelRenderer var10000 = this.Tail;
-      var10000.field_78796_g += r4;
-      this.Tail2.field_78796_g = 0.2F;
+      var10000.rotateAngleY += r4;
+      this.Tail2.rotateAngleY = 0.2F;
       var10000 = this.Tail2;
-      var10000.field_78796_g += r4;
-      this.Tail3.field_78796_g = 0.2F;
+      var10000.rotateAngleY += r4;
+      this.Tail3.rotateAngleY = 0.2F;
       var10000 = this.Tail3;
-      var10000.field_78796_g += r4;
-      this.Tail4.field_78796_g = 0.2F;
+      var10000.rotateAngleY += r4;
+      this.Tail4.rotateAngleY = 0.2F;
       var10000 = this.Tail4;
-      var10000.field_78796_g += r4;
-      this.Tail5.field_78796_g = 0.2F;
+      var10000.rotateAngleY += r4;
+      this.Tail5.rotateAngleY = 0.2F;
       var10000 = this.Tail5;
-      var10000.field_78796_g += r4;
-      this.Tail6.field_78796_g = 0.2F;
+      var10000.rotateAngleY += r4;
+      this.Tail6.rotateAngleY = 0.2F;
       var10000 = this.Tail6;
-      var10000.field_78796_g += r4;
-      super.func_78087_a(par1, par2, par3, par4, par5, par6, par7Entity);
+      var10000.rotateAngleY += r4;
+      super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
    }
 }

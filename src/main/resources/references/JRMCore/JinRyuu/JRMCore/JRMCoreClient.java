@@ -66,61 +66,61 @@ public class JRMCoreClient extends JRMCore {
    }
 
    public EntityPlayer getPlayerEntity(MessageContext ctx) {
-      return (EntityPlayer)(ctx.side.isClient() ? mc.field_71439_g : super.getPlayerEntity(ctx));
+      return (EntityPlayer)(ctx.side.isClient() ? mc.player : super.getPlayerEntity(ctx));
    }
 
    public EntityPlayer getPlayerEntity() {
-      return mc.field_71439_g;
+      return mc.player;
    }
 
    public EntityPlayer getPlayerClient() {
-      return mc.field_71439_g;
+      return mc.player;
    }
 
    public void generateDamIndParticles(double x, double y, double z, double amount, float timeleft) {
-      double motionX = this.getPlayerClient().field_70170_p.field_73012_v.nextGaussian() * 0.02D;
-      double motionY = this.getPlayerClient().field_70170_p.field_73012_v.nextGaussian() * 0.02D;
-      double motionZ = this.getPlayerClient().field_70170_p.field_73012_v.nextGaussian() * 0.02D;
-      EntityFX particleMysterious = new JRMCoreDamInd(amount, timeleft, this.getPlayerClient().field_70170_p, x, y, z, 0.0D, 0.0D, 0.0D);
+      double motionX = this.getPlayerClient().world.field_73012_v.nextGaussian() * 0.02D;
+      double motionY = this.getPlayerClient().world.field_73012_v.nextGaussian() * 0.02D;
+      double motionZ = this.getPlayerClient().world.field_73012_v.nextGaussian() * 0.02D;
+      EntityFX particleMysterious = new JRMCoreDamInd(amount, timeleft, this.getPlayerClient().world, x, y, z, 0.0D, 0.0D, 0.0D);
       mc.field_71452_i.func_78873_a(particleMysterious);
    }
 
    public void func_gcp(Entity entity, EntityCusPar e, double poX, double poY, double poZ, double moX, double moY, double moZ) {
       for(int i = 0; i < JGConfigClientSettings.get_da1(); ++i) {
-         Entity p = new EntityCusPar(e.getdata3(), entity.field_70170_p, e.field_70131_O, e.field_70130_N, entity.field_70165_t + poX, entity.field_70163_u + poY, entity.field_70161_v + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, 0.0F, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5(), e.getdata6(), e.getdata7(), e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
-         entity.field_70170_p.func_72838_d(p);
+         Entity p = new EntityCusPar(e.getdata3(), entity.world, e.field_70131_O, e.field_70130_N, entity.posX + poX, entity.posY + poY, entity.posZ + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, 0.0F, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5(), e.getdata6(), e.getdata7(), e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
+         entity.world.func_72838_d(p);
       }
 
    }
 
    public void func_gcp(Entity entity, EntityCusPar e, double poX, double poY, double poZ, double moX, double moY, double moZ, float size_min, float size_max, float size_speed) {
       for(int i = 0; i < JGConfigClientSettings.get_da1(); ++i) {
-         Entity p = new EntityCusPar(e.getdata3(), entity.field_70170_p, e.field_70131_O, e.field_70130_N, entity.field_70165_t + poX, entity.field_70163_u + poY, entity.field_70161_v + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, 0.0F, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5() * size_min, e.getdata6() * size_max, e.getdata7() * size_speed, e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
-         entity.field_70170_p.func_72838_d(p);
+         Entity p = new EntityCusPar(e.getdata3(), entity.world, e.field_70131_O, e.field_70130_N, entity.posX + poX, entity.posY + poY, entity.posZ + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, 0.0F, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5() * size_min, e.getdata6() * size_max, e.getdata7() * size_speed, e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
+         entity.world.func_72838_d(p);
       }
 
    }
 
    public void func_gcp(Entity entity, EntityCusPar e, double poX, double poY, double poZ, double moX, double moY, double moZ, float size_min, float size_max, float size_speed, float motion) {
       for(int i = 0; i < JGConfigClientSettings.get_da1(); ++i) {
-         Entity p = new EntityCusPar(e.getdata3(), entity.field_70170_p, e.field_70131_O, e.field_70130_N, entity.field_70165_t + poX, entity.field_70163_u + poY, entity.field_70161_v + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, motion, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5() * size_min, e.getdata6() * size_max, e.getdata7() * size_speed, e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
-         entity.field_70170_p.func_72838_d(p);
+         Entity p = new EntityCusPar(e.getdata3(), entity.world, e.field_70131_O, e.field_70130_N, entity.posX + poX, entity.posY + poY, entity.posZ + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, motion, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5() * size_min, e.getdata6() * size_max, e.getdata7() * size_speed, e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
+         entity.world.func_72838_d(p);
       }
 
    }
 
    public void func_gcp(Entity entity, EntityCusPar e, double poX, double poY, double poZ, double moX, double moY, double moZ, float size_min, float size_max, float size_speed, float motion, int death) {
       for(int i = 0; i < JGConfigClientSettings.get_da1(); ++i) {
-         Entity p = new EntityCusPar(e.getdata3(), entity.field_70170_p, e.field_70131_O, e.field_70130_N, entity.field_70165_t + poX, entity.field_70163_u + poY, entity.field_70161_v + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, motion, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), death, e.getdata4(), e.getdata5() * size_min, e.getdata6() * size_max, e.getdata7() * size_speed, e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
-         entity.field_70170_p.func_72838_d(p);
+         Entity p = new EntityCusPar(e.getdata3(), entity.world, e.field_70131_O, e.field_70130_N, entity.posX + poX, entity.posY + poY, entity.posZ + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, motion, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), 32, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), death, e.getdata4(), e.getdata5() * size_min, e.getdata6() * size_max, e.getdata7() * size_speed, e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
+         entity.world.func_72838_d(p);
       }
 
    }
 
    public void func_gcp(Entity entity, EntityCusPar e, double poX, double poY, double poZ, double moX, double moY, double moZ, int img_s) {
       for(int i = 0; i < JGConfigClientSettings.get_da1(); ++i) {
-         Entity p = new EntityCusPar(e.getdata3(), entity.field_70170_p, e.field_70131_O, e.field_70130_N, entity.field_70165_t + poX, entity.field_70163_u + poY, entity.field_70161_v + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, 0.0F, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), img_s, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5(), e.getdata6(), e.getdata7(), e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
-         entity.field_70170_p.func_72838_d(p);
+         Entity p = new EntityCusPar(e.getdata3(), entity.world, e.field_70131_O, e.field_70130_N, entity.posX + poX, entity.posY + poY, entity.posZ + poZ, 0.0D, 0.0D, 0.0D, moX, moY, moZ, 0.0F, (int)(Math.random() * (double)e.getId_max()) + e.getId_min(), e.getId_min(), e.getId_max(), img_s, e.getRotate(), e.getMaxRotation_Sp(), e.getRotate2(), e.getMaxRotation_Sp2(), e.getdata1(), e.getrr(), e.getdata2(), e.getdata4(), e.getdata5(), e.getdata6(), e.getdata7(), e.getdata31(), e.getdata8(), e.getdata9(), e.getdata10(), e.getdata11(), e.getdata12(), e.getdata13(), e.getdata14(), e.getdata15(), e.getdata16(), e.getdata20(), e.getdata21(), e.getdata22(), e.getdata23(), e.getdata24(), e.getdata25(), false, -1, false, (Entity)null);
+         entity.world.func_72838_d(p);
       }
 
    }
@@ -159,7 +159,7 @@ public class JRMCoreClient extends JRMCore {
       }
 
       for(i = 0; i < JGConfigClientSettings.get_da1(); ++i) {
-         Entity p = new EntityCusPar(data3, w, box1, box2, found ? base.field_70165_t : poX, found ? base.field_70163_u + (double)(base instanceof EntityPlayerSP ? -1.6F : 0.0F) : poY, found ? base.field_70161_v : poZ, start_poX, start_poY, start_poZ, moX, moY, moZ, data29, id, id_min, id_max, data32, rotate, max_rotation_sp, rotate2, max_rotation_sp2, data1, rr, data2, data4, data5, data6, data7, data31, data8, data9, data10, data11, data12, data13, data14, data15, data16, data20, data21, data22, data23, data24, data25, data33, data34, data35, base);
+         Entity p = new EntityCusPar(data3, w, box1, box2, found ? base.posX : poX, found ? base.posY + (double)(base instanceof EntityPlayerSP ? -1.6F : 0.0F) : poY, found ? base.posZ : poZ, start_poX, start_poY, start_poZ, moX, moY, moZ, data29, id, id_min, id_max, data32, rotate, max_rotation_sp, rotate2, max_rotation_sp2, data1, rr, data2, data4, data5, data6, data7, data31, data8, data9, data10, data11, data12, data13, data14, data15, data16, data20, data21, data22, data23, data24, data25, data33, data34, data35, base);
          w.func_72838_d(p);
       }
 

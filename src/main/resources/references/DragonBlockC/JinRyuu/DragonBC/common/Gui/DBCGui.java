@@ -22,7 +22,7 @@ public class DBCGui extends GuiContainer {
       String picture = "/terrain.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(picture);
-      this.field_146297_k.field_71446_o.func_110577_a(tx);
+      this.field_146297_k.field_71446_o.bindTexture(tx);
       int x = (this.field_146294_l - this.field_146999_f) / 2;
       int y = (this.field_146295_m - this.field_147000_g) / 2;
       this.func_73729_b(x, y, 0, 0, this.field_146999_f, this.field_147000_g);

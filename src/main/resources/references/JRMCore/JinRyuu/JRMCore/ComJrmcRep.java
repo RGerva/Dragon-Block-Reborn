@@ -34,7 +34,7 @@ public class ComJrmcRep extends CommandBase {
       EntityPlayerMP entityplayermp;
       try {
          entityplayermp = func_71521_c(par1ICommandSender);
-         entitycommansender = entityplayermp.func_70005_c_();
+         entitycommansender = entityplayermp.getName();
       } catch (Exception var7) {
       }
 
@@ -60,9 +60,9 @@ public class ComJrmcRep extends CommandBase {
          }
       }
 
-      boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComHealNAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComHealNAS : JRMCoreConfig.ComHealNAO);
+      boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComHealNAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComHealNAS : JRMCoreConfig.ComHealNAO);
       if (n) {
-         this.notifyAdmins(par1ICommandSender, "%s -> all equiped items were fixed!", new Object[]{entityplayermp.func_70005_c_()});
+         this.notifyAdmins(par1ICommandSender, "%s -> all equiped items were fixed!", new Object[]{entityplayermp.getName()});
       }
 
    }

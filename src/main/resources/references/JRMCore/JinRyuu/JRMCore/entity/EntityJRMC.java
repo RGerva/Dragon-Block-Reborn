@@ -57,8 +57,8 @@ public class EntityJRMC extends EntityCreature implements IMob {
       this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.5D);
    }
 
-   protected void func_70088_a() {
-      super.func_70088_a();
+   protected void entityInit() {
+      super.entityInit();
    }
 
    protected boolean func_70650_aV() {
@@ -93,12 +93,12 @@ public class EntityJRMC extends EntityCreature implements IMob {
       super.func_70636_d();
    }
 
-   public void func_70071_h_() {
-      super.func_70071_h_();
+   public void onUpdate() {
+      super.onUpdate();
    }
 
    protected Entity func_70782_k() {
-      EntityPlayer entityplayer = this.field_70170_p.func_72856_b(this, 16.0D);
+      EntityPlayer entityplayer = this.world.func_72856_b(this, 16.0D);
       return entityplayer != null && this.func_70685_l(entityplayer) ? entityplayer : null;
    }
 
@@ -138,7 +138,7 @@ public class EntityJRMC extends EntityCreature implements IMob {
       boolean flag = par1Entity.func_70097_a(DamageSource.func_76358_a(this), i);
       if (flag) {
          if (j > 0) {
-            par1Entity.func_70024_g((double)(-MathHelper.func_76126_a(this.field_70177_z * 3.1415927F / 180.0F) * (float)j * 0.5F), 0.1D, (double)(MathHelper.func_76134_b(this.field_70177_z * 3.1415927F / 180.0F) * (float)j * 0.5F));
+            par1Entity.func_70024_g((double)(-MathHelper.func_76126_a(this.rotationYaw * 3.1415927F / 180.0F) * (float)j * 0.5F), 0.1D, (double)(MathHelper.func_76134_b(this.rotationYaw * 3.1415927F / 180.0F) * (float)j * 0.5F));
             this.field_70159_w *= 0.6D;
             this.field_70179_y *= 0.6D;
          }
@@ -156,7 +156,7 @@ public class EntityJRMC extends EntityCreature implements IMob {
    }
 
    protected void func_70785_a(Entity par1Entity, float par2) {
-      if (this.field_70724_aR <= 0 && par2 < 2.0F && par1Entity.field_70121_D.field_72337_e > this.field_70121_D.field_72338_b && par1Entity.field_70121_D.field_72338_b < this.field_70121_D.field_72337_e) {
+      if (this.field_70724_aR <= 0 && par2 < 2.0F && par1Entity.boundingBox.field_72337_e > this.boundingBox.field_72338_b && par1Entity.boundingBox.field_72338_b < this.boundingBox.field_72337_e) {
          this.field_70724_aR = 20;
          this.func_70652_k(par1Entity);
       }
@@ -164,25 +164,25 @@ public class EntityJRMC extends EntityCreature implements IMob {
    }
 
    public float func_70783_a(int par1, int par2, int par3) {
-      return 0.5F - this.field_70170_p.func_72801_o(par1, par2, par3);
+      return 0.5F - this.world.func_72801_o(par1, par2, par3);
    }
 
    protected boolean isValidLightLevel() {
-      int i = MathHelper.func_76128_c(this.field_70165_t);
-      int j = MathHelper.func_76128_c(this.field_70121_D.field_72338_b);
-      int k = MathHelper.func_76128_c(this.field_70161_v);
-      if (this.field_70170_p.func_72972_b(EnumSkyBlock.Sky, i, j, k) > this.field_70146_Z.nextInt(32)) {
+      int i = MathHelper.func_76128_c(this.posX);
+      int j = MathHelper.func_76128_c(this.boundingBox.field_72338_b);
+      int k = MathHelper.func_76128_c(this.posZ);
+      if (this.world.func_72972_b(EnumSkyBlock.Sky, i, j, k) > this.rand.nextInt(32)) {
          return false;
       } else {
-         int l = this.field_70170_p.func_72957_l(i, j, k);
-         if (this.field_70170_p.func_72911_I()) {
-            int i1 = this.field_70170_p.field_73008_k;
-            this.field_70170_p.field_73008_k = 10;
-            l = this.field_70170_p.func_72957_l(i, j, k);
-            this.field_70170_p.field_73008_k = i1;
+         int l = this.world.func_72957_l(i, j, k);
+         if (this.world.func_72911_I()) {
+            int i1 = this.world.field_73008_k;
+            this.world.field_73008_k = 10;
+            l = this.world.func_72957_l(i, j, k);
+            this.world.field_73008_k = i1;
          }
 
-         return l <= this.field_70146_Z.nextInt(8);
+         return l <= this.rand.nextInt(8);
       }
    }
 

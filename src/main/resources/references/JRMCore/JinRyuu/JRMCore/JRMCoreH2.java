@@ -54,14 +54,14 @@ public class JRMCoreH2 {
       Entity pointedEntity = null;
       Vec3 vec33 = null;
       float f1 = 1.0F;
-      List list = JRMCoreClient.mc.field_71441_e.func_72839_b(JRMCoreClient.mc.field_71451_h, JRMCoreClient.mc.field_71451_h.field_70121_D.func_72321_a(vec31.field_72450_a * distance, vec31.field_72448_b * distance, vec31.field_72449_c * distance).func_72314_b((double)f1, (double)f1, (double)f1));
+      List list = JRMCoreClient.mc.field_71441_e.func_72839_b(JRMCoreClient.mc.field_71451_h, JRMCoreClient.mc.field_71451_h.boundingBox.func_72321_a(vec31.field_72450_a * distance, vec31.field_72448_b * distance, vec31.field_72449_c * distance).func_72314_b((double)f1, (double)f1, (double)f1));
       double d2 = distance;
 
       for(int i = 0; i < list.size(); ++i) {
          Entity entity = (Entity)list.get(i);
          if (entity.func_70067_L()) {
             float f2 = entity.func_70111_Y();
-            AxisAlignedBB axisalignedbb = entity.field_70121_D.func_72314_b((double)f2, (double)f2, (double)f2);
+            AxisAlignedBB axisalignedbb = entity.boundingBox.func_72314_b((double)f2, (double)f2, (double)f2);
             MovingObjectPosition movingobjectposition = axisalignedbb.func_72327_a(vec3, vec32);
             if (axisalignedbb.func_72318_a(vec3)) {
                if (0.0D < d2 || d2 == 0.0D) {

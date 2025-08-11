@@ -108,7 +108,7 @@ public class JRMCoreGuiBars extends Gui {
          var8.func_78276_b(text, x, y - 1, 0);
          var8.func_78276_b(text, x, y, 16574720);
          ResourceLocation tx = new ResourceLocation("jinryuumodscore:icons3.png");
-         this.mc.field_71446_o.func_110577_a(tx);
+         this.mc.field_71446_o.bindTexture(tx);
          GL11.glPushMatrix();
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.8F);
          GL11.glEnable(3042);
@@ -140,7 +140,7 @@ public class JRMCoreGuiBars extends Gui {
       int x = (var5.func_78326_a() - 256) / 2;
       int y = (var5.func_78328_b() - 256) / 2;
       ResourceLocation tx2 = new ResourceLocation("jinryuudragonbc:sw" + this.swoop_id + ".png");
-      this.mc.field_71446_o.func_110577_a(tx2);
+      this.mc.field_71446_o.bindTexture(tx2);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glScalef((float)var5.func_78326_a() / 256.0F, (float)var5.func_78328_b() / 256.0F, 1.0F);
       GL11.glEnable(3042);
@@ -312,8 +312,8 @@ public class JRMCoreGuiBars extends Gui {
 
                   this.drawHUD2(HUD_Images[i], x, y, posX2, posY2, w, h, j, false);
                   if (i == 1 && j == 1) {
-                     ki = JRMCoreClient.mc.field_71439_g.func_110143_aJ();
-                     maxki = JRMCoreClient.mc.field_71439_g.func_110138_aP();
+                     ki = JRMCoreClient.mc.player.func_110143_aJ();
+                     maxki = JRMCoreClient.mc.player.func_110138_aP();
                      egy = maxki / 100.0F;
                      int var20 = (int)(ki / egy);
                      if (this.getClientHealth() <= 0) {
@@ -569,7 +569,7 @@ public class JRMCoreGuiBars extends Gui {
          if (y + id * h + h <= 255) {
             GL11.glPushMatrix();
             ResourceLocation tx2 = new ResourceLocation("jinryuumodscore:custom_hud/" + img + ".png");
-            this.mc.field_71446_o.func_110577_a(tx2);
+            this.mc.field_71446_o.bindTexture(tx2);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glEnable(3042);
             GL11.glBlendFunc(770, 771);
@@ -612,7 +612,7 @@ public class JRMCoreGuiBars extends Gui {
 
          GL11.glPushMatrix();
          ResourceLocation tx2 = new ResourceLocation("jinryuumodscore:custom_hud/" + img + ".png");
-         this.mc.field_71446_o.func_110577_a(tx2);
+         this.mc.field_71446_o.bindTexture(tx2);
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          GL11.glEnable(3042);
          GL11.glBlendFunc(770, 771);
@@ -664,8 +664,8 @@ public class JRMCoreGuiBars extends Gui {
          var22st = (float)height;
       }
 
-      float health = JRMCoreClient.mc.field_71439_g.func_110143_aJ();
-      float healthmax = JRMCoreClient.mc.field_71439_g.func_110138_aP();
+      float health = JRMCoreClient.mc.player.func_110143_aJ();
+      float healthmax = JRMCoreClient.mc.player.func_110138_aP();
       maxperc = (float)height / healthmax;
       int var20 = (int)(maxperc * health);
       if (var20 > height) {
@@ -674,7 +674,7 @@ public class JRMCoreGuiBars extends Gui {
 
       this.field_73735_i = -90.0F;
       ResourceLocation tx2 = new ResourceLocation("jinryuumodscore:health.png");
-      this.mc.field_71446_o.func_110577_a(tx2);
+      this.mc.field_71446_o.bindTexture(tx2);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glEnable(3042);
       GL11.glBlendFunc(770, 771);
@@ -757,7 +757,7 @@ public class JRMCoreGuiBars extends Gui {
       GL11.glPushMatrix();
       this.field_73735_i = -90.0F;
       ResourceLocation tx2 = new ResourceLocation(JRMCoreH.tjsaoc + ":gui2.png");
-      this.mc.field_71446_o.func_110577_a(tx2);
+      this.mc.field_71446_o.bindTexture(tx2);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glEnable(3042);
       GL11.glBlendFunc(770, 771);
@@ -785,7 +785,7 @@ public class JRMCoreGuiBars extends Gui {
       int height = var5.func_78328_b();
       this.xSize_lo = (float)width / 2.0F;
       this.ySize_lo = (float)height / 2.0F;
-      JRMCoreGuiScreen.head(20, 60, 60, 5.0F, 10.0F, this.mc.field_71439_g);
+      JRMCoreGuiScreen.head(20, 60, 60, 5.0F, 10.0F, this.mc.player);
    }
 
    public void renderKiBar() {
@@ -849,7 +849,7 @@ public class JRMCoreGuiBars extends Gui {
    }
 
    public void drawIcon(int var51, int var61, int resourceID, float r, float g, float b, float w) {
-      this.mc.func_110434_K().func_110577_a(new ResourceLocation(this.getIcons()));
+      this.mc.func_110434_K().bindTexture(new ResourceLocation(this.getIcons()));
       GL11.glColor4f(r, g, b, 1.0F);
       int h = resourceID % 16;
       int v = resourceID / 16;
@@ -863,7 +863,7 @@ public class JRMCoreGuiBars extends Gui {
    }
 
    public void drawIconB(int var51, int var61, int resourceID, float r, float g, float b, float w) {
-      this.mc.func_110434_K().func_110577_a(new ResourceLocation(this.getIcons()));
+      this.mc.func_110434_K().bindTexture(new ResourceLocation(this.getIcons()));
       GL11.glColor4f(r, g, b, 1.0F);
       int h = resourceID % 16;
       int v = resourceID / 16;
@@ -892,7 +892,7 @@ public class JRMCoreGuiBars extends Gui {
       FontRenderer var8 = this.mc.field_71466_p;
       byte pwr = JRMCoreH.Pwrtyp;
       ResourceLocation tx = new ResourceLocation((pwr == 1 ? "jinryuumodscore:" : (pwr == 2 ? "jinryuunarutoc:" : "jinryuumodscore:")) + "energy.png");
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       this.field_73735_i = -90.0F;
       String bc = "" + JRMCoreH.numSepShort(JRMCoreHC.BPC_ME);
       GL11.glEnable(3042);
@@ -958,7 +958,7 @@ public class JRMCoreGuiBars extends Gui {
 
          GL11.glDisable(3042);
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-         bc = "" + JRMCoreH.gkap(JRMCoreH.bpc(this.mc.field_71439_g, this.mc.field_71439_g.func_70005_c_(), JRMCoreH.Pwrtyp), "SL_ME");
+         bc = "" + JRMCoreH.gkap(JRMCoreH.bpc(this.mc.player, this.mc.player.getName(), JRMCoreH.Pwrtyp), "SL_ME");
          var8.func_78276_b("SL " + bc + " §8" + JRMCoreH.DifficultySNmes[JRMCoreH.Dffclty], var51 + 5 + JGConfigClientSettings.CLIENT_hud0x, 5 + JGConfigClientSettings.CLIENT_hud0y, 0);
          String s = " §0" + this.getSmoothReleaseLevel() + "%";
          var8.func_78276_b(s, var21 / 2 - var8.func_78256_a(s) / 2 + JGConfigClientSettings.CLIENT_hud0x, 60 + JGConfigClientSettings.CLIENT_hud0y, 0);
@@ -993,7 +993,7 @@ public class JRMCoreGuiBars extends Gui {
 
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          var8.func_78276_b("BP " + bc + " §8" + JRMCoreH.DifficultySNmes[JRMCoreH.Dffclty] + " §0" + this.getSmoothReleaseLevel() + "%", var51 + 2, var61 + 2, 0);
-         EntityPlayer var4 = this.mc.field_71439_g;
+         EntityPlayer var4 = this.mc.player;
          ExtendedPlayer props = ExtendedPlayer.get(var4);
          String block = props.getBlocking() == 1 ? "Blocking " : "";
          String fly = JRMCoreHDBC.DBCKiTechFly() ? "Flying " : "";
@@ -1035,7 +1035,7 @@ public class JRMCoreGuiBars extends Gui {
       int fuseo0 = fuse.length == 1 && !fuse[0].equals(" ") ? Integer.parseInt(fuse[0]) : 0;
       String fuzeo = "(" + JRMCoreH.format_remTim(fuseo0 * 5) + ")";
       fuzeo = fuseo0 > 0 ? "NoFuse" + fuzeo + " " : "";
-      EntityPlayer var4 = this.mc.field_71439_g;
+      EntityPlayer var4 = this.mc.player;
       ExtendedPlayer props = ExtendedPlayer.get(var4);
       int resourceID = true;
       boolean block = props.getBlocking() == 1;
@@ -1060,7 +1060,7 @@ public class JRMCoreGuiBars extends Gui {
       String pnd = pn > 0 ? "Pain" + pnS + " " : "";
       String kod = ko > 0 ? "KO" + koS + " " : "";
       int[] f = new int[]{-1, 18, -1, 2, 2, 3, -1, 4, 7, -1, -1, -1, 9, 19, 10, 3, 11, 15, 16, 17, 23};
-      this.mc.func_110434_K().func_110577_a(new ResourceLocation(this.getIcons()));
+      this.mc.func_110434_K().bindTexture(new ResourceLocation(this.getIcons()));
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       int i = 0;
       int j = 0;
@@ -1399,7 +1399,7 @@ public class JRMCoreGuiBars extends Gui {
       int var7 = var5.func_78328_b();
       FontRenderer var8 = this.mc.field_71466_p;
       ResourceLocation tx = new ResourceLocation("jinryuumodscore:gui.png");
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       int xSize = 140;
       int ySize = 72;
       int guiLeft = var6 - xSize - 5;
@@ -1464,7 +1464,7 @@ public class JRMCoreGuiBars extends Gui {
       int scaleH = var5.func_78328_b();
       FontRenderer fontRenderer = this.mc.field_71466_p;
       ResourceLocation tx = new ResourceLocation("jinryuumodscore:icons.png");
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       short charged = JRMCoreH.charged;
       byte selected = JRMCoreH.EnAtSlct;
       float charge = JRMCoreH.techDBCctWc(JRMCoreH.tech(selected), JRMCoreH.tech_statmods(JRMCoreH.tech(selected)[19]));
@@ -1506,10 +1506,10 @@ public class JRMCoreGuiBars extends Gui {
 
       boolean isFused = JRMCoreH.isFused();
       int var10000 = JRMCoreH.PlyrAttrbts[3];
-      int WIL = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), 1, JRMCoreH.PlyrSkills, isFused, JRMCoreH.getMajinAbsorption());
-      int WIL2 = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, 0, 0, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), false, false, false, false, 1, JRMCoreH.PlyrSkills, isFused, JRMCoreH.getMajinAbsorption());
-      int stat = JRMCoreH.stat(this.mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, WIL, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
-      int stat2 = JRMCoreH.stat(this.mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, WIL2, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+      int WIL = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), 1, JRMCoreH.PlyrSkills, isFused, JRMCoreH.getMajinAbsorption());
+      int WIL2 = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 3, 0, 0, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), false, false, false, false, 1, JRMCoreH.PlyrSkills, isFused, JRMCoreH.getMajinAbsorption());
+      int stat = JRMCoreH.stat(this.mc.player, 3, JRMCoreH.Pwrtyp, 4, WIL, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+      int stat2 = JRMCoreH.stat(this.mc.player, 3, JRMCoreH.Pwrtyp, 4, WIL2, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
       boolean fakeMoon = JRMCoreH.tech(selected)[0].equals("KAFakeMoon");
       String costki;
       if ((float)charged > JRMCoreH.techDBCctWc(JRMCoreH.tech(selected), JRMCoreH.tech_statmods(JRMCoreH.tech(selected)[19])) / 2.0F && !fakeMoon) {
@@ -1541,7 +1541,7 @@ public class JRMCoreGuiBars extends Gui {
       int var7 = var5.func_78328_b();
       FontRenderer var8 = this.mc.field_71466_p;
       ResourceLocation tx = new ResourceLocation("jinryuumodscore:icons.png");
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       short stt = JRMCoreH.TransSaiTre[JRMCoreH.State];
       if (stt < 4) {
          int var51 = JRMCoreHDBC.DBCgetConfigcwfb() + 10;
@@ -1587,7 +1587,7 @@ public class JRMCoreGuiBars extends Gui {
 
       this.field_73735_i = -90.0F;
       ResourceLocation tx2 = new ResourceLocation("jinryuumodscore:icons.png");
-      this.mc.field_71446_o.func_110577_a(tx2);
+      this.mc.field_71446_o.bindTexture(tx2);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glEnable(3042);
       GL11.glBlendFunc(770, 771);
@@ -1606,7 +1606,7 @@ public class JRMCoreGuiBars extends Gui {
          int var7 = var5.func_78328_b();
          FontRenderer var8 = this.mc.field_71466_p;
          ResourceLocation tx = new ResourceLocation("jinryuumodscore:icons.png");
-         this.mc.field_71446_o.func_110577_a(tx);
+         this.mc.field_71446_o.bindTexture(tx);
          int w = 180;
          int charged_percentage = (int)JRMCoreH.getHeatPercentageClient();
          int var51 = var6 / 2 - w / 2;
@@ -1642,7 +1642,7 @@ public class JRMCoreGuiBars extends Gui {
             b = 1.0F;
          }
 
-         int playerTick = JRMCoreClient.mc.field_71439_g != null ? JRMCoreClient.mc.field_71439_g.field_70173_aa : 0;
+         int playerTick = JRMCoreClient.mc.player != null ? JRMCoreClient.mc.player.ticksExisted : 0;
          float y = MathHelper.func_76126_a((float)playerTick * 0.1F) * 0.2F;
          if (y < 0.0F) {
             y *= -1.0F;
@@ -1698,7 +1698,7 @@ public class JRMCoreGuiBars extends Gui {
       GL11.glBlendFunc(770, 771);
       ResourceLocation tx = new ResourceLocation(ic);
       ResourceLocation tx2 = new ResourceLocation(ic2);
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       this.field_73735_i = -90.0F;
       this.func_73729_b(guiLeft, guiTop, 245, 0, xSize, ySize + 1);
@@ -1714,9 +1714,9 @@ public class JRMCoreGuiBars extends Gui {
          if (JRMCoreH.tech(i) != null) {
             if (i > 3) {
                JRMCoreH.mrAtts = true;
-               this.mc.field_71446_o.func_110577_a(tx2);
+               this.mc.field_71446_o.bindTexture(tx2);
             } else {
-               this.mc.field_71446_o.func_110577_a(tx);
+               this.mc.field_71446_o.bindTexture(tx);
             }
 
             String type = JRMCoreH.tech(i)[3];
@@ -1772,7 +1772,7 @@ public class JRMCoreGuiBars extends Gui {
          JRMCoreH.EnAtSlct = 0;
       }
 
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       i = JRMCoreH.EnAtSlct;
       int x = 13;
       int y = 13;
@@ -1801,7 +1801,7 @@ public class JRMCoreGuiBars extends Gui {
       ResourceLocation tx2 = new ResourceLocation(ic2);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       this.field_73735_i = -90.0F;
-      this.mc.field_71446_o.func_110577_a(tx2);
+      this.mc.field_71446_o.bindTexture(tx2);
       xSize = 16;
       ySize = 16;
       int guiLeft = var6 - (xSize + 3);

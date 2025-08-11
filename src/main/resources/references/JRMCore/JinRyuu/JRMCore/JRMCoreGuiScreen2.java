@@ -170,7 +170,7 @@ public class JRMCoreGuiScreen2 extends GuiScreen implements ClipboardOwner, GuiY
          int ll = Integer.parseInt("" + o[6]);
          int descw = var8.func_78256_a(desc);
          int var10000 = 1 + var8.func_78256_a(desc) / ll;
-         mc.field_71446_o.func_110577_a(new ResourceLocation("jinryuumodscore:allw.png"));
+         mc.field_71446_o.bindTexture(new ResourceLocation("jinryuumodscore:allw.png"));
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.8F);
          int desch = JRMCoreH.txt(desc, (String)o[1], Integer.parseInt("" + o[2]), false, 0, 0, ll);
          ScaledResolution var5 = new ScaledResolution(mc, mc.field_71443_c, mc.field_71440_d);

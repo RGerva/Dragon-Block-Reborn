@@ -612,23 +612,23 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       }
 
       if (button.field_146127_k == 4900 && JRMCoreH.DBC()) {
-         JRMCoreHDBC.openGui(0, JRMCoreClient.mc.field_71439_g);
+         JRMCoreHDBC.openGui(0, JRMCoreClient.mc.player);
       }
 
       if (button.field_146127_k == 4901 && JRMCoreH.NC()) {
-         JRMCoreHNC.openGui(0, JRMCoreClient.mc.field_71439_g);
+         JRMCoreHNC.openGui(0, JRMCoreClient.mc.player);
       }
 
       if (button.field_146127_k == 4902 && JRMCoreH.JYC()) {
-         JRMCoreHJYC.openGui(1, JRMCoreClient.mc.field_71439_g);
+         JRMCoreHJYC.openGui(1, JRMCoreClient.mc.player);
       }
 
       if (button.field_146127_k == 4903 && JRMCoreH.JFC()) {
-         JRMCoreHJFC.openGui(1, JRMCoreClient.mc.field_71439_g);
+         JRMCoreHJFC.openGui(1, JRMCoreClient.mc.player);
       }
 
       if (button.field_146127_k == 4904 && JRMCoreH.SAOC()) {
-         JRMCoreHSAC.openGui(0, JRMCoreClient.mc.field_71439_g);
+         JRMCoreHSAC.openGui(0, JRMCoreClient.mc.player);
       }
 
       if (button.field_146127_k == 0) {
@@ -1252,7 +1252,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       }
 
       if (button.field_146127_k == 10) {
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 11) {
@@ -1273,7 +1273,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          JRMCoreH.Char((byte)2, (byte)PwrtypSlcted);
          JRMCoreH.Char((byte)3, (byte)ClassSlcted);
          JRMCoreH.Char((byte)4, (byte)1);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 14) {
@@ -1288,7 +1288,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             JRMCoreH.jrmcDataFC(1, dnsH);
          }
 
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == -14) {
@@ -1323,7 +1323,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       if (button.field_146127_k == 16) {
          setdnsau();
          JRMCoreH.jrmcDataFC(4, dnsau);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 31) {
@@ -1377,24 +1377,24 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       if (button.field_146127_k == 63 || button.field_146127_k == 64 || button.field_146127_k == 65) {
          i = button.field_146127_k - 62;
          this.dri(JRMCoreH.SagaProg - i);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 66) {
          i = button.field_146127_k - 62;
          this.dri(JRMCoreH.SagaProg + 100 - i - 1);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 67) {
          i = button.field_146127_k - 62;
          this.dri(JRMCoreH.SagaProg + 100 - i - 1);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 68) {
          this.dri(3990);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 69) {
@@ -1410,7 +1410,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          i3 = i / 100 - i2 * 100;
          i3 = i - i2 * 10000 - i3 * 100;
          JRMCoreH.quad(2, i2, i3, i3);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 80) {
@@ -1472,7 +1472,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
       if (button.field_146127_k == -30) {
          JRMCoreH.quad(10, 0, 0, 0);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == -31) {
@@ -1488,7 +1488,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
       if (button.field_146127_k == -33) {
          JRMCoreH.quad(10, 1, 1, this.miniGameConcentration.score);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == -34) {
@@ -1502,7 +1502,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
       if (button.field_146127_k == -36) {
          JRMCoreH.quad(10, 2, 1, this.miniGameAirBoxing.score);
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 100) {
@@ -1966,13 +1966,13 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
       JGNotificationGUI.checkButtons(button.field_146127_k);
       if (button.field_146127_k == 10101) {
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       for(i = 0; i < 20; ++i) {
          if (button.field_146127_k == 10102 + i) {
             DBCPacketHandlerClient.selectGroupTeleport(i);
-            mc.field_71439_g.func_71053_j();
+            mc.player.func_71053_j();
             break;
          }
       }
@@ -2379,7 +2379,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             this.sscl = 0;
          }
 
-         mc.field_71439_g.func_71053_j();
+         mc.player.func_71053_j();
       }
 
       for(i = 0; i < (JRMCoreH.Pwrtyp == 2 ? JRMCoreH.NCSkillNames : JRMCoreH.DBCSkillNames).length; ++i) {
@@ -2402,7 +2402,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       if (button instanceof JRMCoreGuiButtons00MS && button.field_146127_k == 6000) {
          JRMCoreGuiButtons00MS btn = (JRMCoreGuiButtons00MS)button;
          if (btn.d2.equals("-1")) {
-            mc.field_71439_g.func_71053_j();
+            mc.player.func_71053_j();
          }
 
          dataSend(btn.d1, btn.d2);
@@ -2482,7 +2482,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                snd = JRMCoreH.techSndFireLeser[crt[13]];
             }
 
-            JRMCoreClient.mc.field_71439_g.func_85030_a("jinryuudragonbc:DBC4." + snd, 1.0F, 1.0F);
+            JRMCoreClient.mc.player.func_85030_a("jinryuudragonbc:DBC4." + snd, 1.0F, 1.0F);
          } else if (JRMCoreH.Pwrtyp == 2) {
             if (crt[11] == 1) {
                if (JRMCoreH.techNCSndIncAff.length > crt[6]) {
@@ -2509,15 +2509,15 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             }
 
             float p = JRMCoreH.PtchVc == 0 ? 1.0F : 0.8F + 0.006F * (float)JRMCoreH.PtchVc;
-            JRMCoreClient.mc.field_71439_g.func_85030_a("jinryuunarutoc:NC2." + snd, 1.0F, p);
-            JRMCoreClient.mc.field_71439_g.func_85030_a("jinryuunarutoc:NC2." + snd2, 1.0F, p);
+            JRMCoreClient.mc.player.func_85030_a("jinryuunarutoc:NC2." + snd, 1.0F, p);
+            JRMCoreClient.mc.player.func_85030_a("jinryuunarutoc:NC2." + snd2, 1.0F, p);
          }
       } else if (t == 1 && JRMCoreH.Pwrtyp == 2) {
          Random r = new Random();
          i = r.nextInt(JRMCoreH.techNCSndIncAff.length);
          snd = JRMCoreH.techNCSndIncAff[i];
          float p = 0.8F + 0.6F * ptch;
-         JRMCoreClient.mc.field_71439_g.func_85030_a("jinryuunarutoc:NC2." + snd, 1.0F, p);
+         JRMCoreClient.mc.player.func_85030_a("jinryuunarutoc:NC2." + snd, 1.0F, p);
       }
 
    }
@@ -2697,7 +2697,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
    }
 
    public static void csau_d() {
-      String dnsau = JRMCoreH.data(JRMCoreClient.mc.field_71439_g.func_70005_c_(), 16, "");
+      String dnsau = JRMCoreH.data(JRMCoreClient.mc.player.getName(), 16, "");
       dnsau = dnsau.contains(";") ? dnsau.substring(1) : dnsau;
       BodyauColMainSlcted = JRMCoreH.dnsauCM(dnsau);
       BodyauColSub1Slcted = JRMCoreH.dnsauC1(dnsau);
@@ -3255,7 +3255,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiLeft = (this.field_146295_m - xSize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiLeft, 0, 0, xSize, xSize);
          this.field_146292_n.add(new JRMCoreGuiButtons00(100, guiLeft + xSize / 2 - 150, guiLeft + xSize / 2 + 65, 20, 20, "X", 0));
          i2 = JRMCoreH.curTP;
@@ -3508,7 +3508,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiLeft = (this.field_146295_m - xSize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiLeft, 0, 0, xSize, xSize);
          if (this.isGUIOpen(50)) {
             this.field_146292_n.add(new JRMCoreGuiButtonsTab(31, guiLeft + xSize / 2 - 110, guiLeft + (xSize + 1) / 2 - 99, 60, 20, JRMCoreH.trl("jrmc", "News"), 0));
@@ -3703,7 +3703,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                         TRState = JRMCoreH.tjjrmc + ":yt.png";
                         ResourceLocation tx2 = new ResourceLocation(TRState);
-                        mc.field_71446_o.func_110577_a(tx2);
+                        mc.field_71446_o.bindTexture(tx2);
                         JRMCoreHC.dtr((float)(guiLeft + 5), (float)(guiLeft + 8 - 3 + i * 10 - this.scroll * 10), 0, 0, 20.0F, 15.0F, this.field_73735_i);
                      }
 
@@ -3759,7 +3759,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiLeft = (this.field_146295_m - xSize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiLeft, 0, 0, xSize, xSize);
          if (this.isGUIOpen(60)) {
             this.field_146292_n.add(new JRMCoreGuiButtonsTab(62, guiLeft + xSize / 2 - 10, guiLeft + (xSize + 1) / 2 - 99, 60, 20, JRMCoreH.trl("jrmc", "Group") + (JRMCoreH.GMN > 1 ? " " + JRMCoreH.GMN : ""), 0));
@@ -3912,9 +3912,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      this.field_146292_n.add(new JRMCoreGuiButtons00(80, guiLeft + xSize / 2 - 85, guiLeft + (xSize + 1) / 2 + 35, 170, 20, JRMCoreH.trl("jrmc", "form"), 0));
                   } else {
                      for(i2 = 0; i2 < JRMCoreH.plyrs.length; ++i2) {
-                        Entity e = mc.field_71441_e.func_72924_a(JRMCoreH.plyrs[i2]);
-                        if (e != null && e.func_70005_c_().equalsIgnoreCase(JRMCoreH.GIDi)) {
-                           mod = e.func_70005_c_();
+                        Entity e = mc.field_71441_e.getPlayerEntityByName(JRMCoreH.plyrs[i2]);
+                        if (e != null && e.getName().equalsIgnoreCase(JRMCoreH.GIDi)) {
+                           mod = e.getName();
                            mod = JRMCoreH.trl("jrmc", "recivedinv") + " " + mod;
                            var8.func_78276_b(mod, guiLeft + 5, guiLeft + 5, 0);
                            powerType = JRMCoreH.trl("jrmc", "Accept");
@@ -3935,9 +3935,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      if (JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreH.GIDs != null) {
                         for(i = 0; i < (JRMCoreH.plyrs.length < JRMCoreH.GIDs.length ? JRMCoreH.plyrs.length : JRMCoreH.GIDs.length); ++i) {
                            if (JRMCoreH.GIDs[i] == JRMCoreH.GID) {
-                              e = mc.field_71441_e.func_72924_a(JRMCoreH.plyrs[i]);
+                              e = mc.field_71441_e.getPlayerEntityByName(JRMCoreH.plyrs[i]);
                               if (e != null) {
-                                 mod = e.func_70005_c_();
+                                 mod = e.getName();
                                  this.field_146292_n.add(new JRMCoreGuiButtons01(-2010 - i2, guiLeft + xSize / 2 - 122, guiLeft + (xSize + 1) / 2 - 74 + i2 * 10 - this.ipg * 14 * 10, this.field_146289_q.func_78256_a(mod), mod, 0));
                                  ++i2;
                               }
@@ -3951,7 +3951,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      if (JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreH.GIDs != null) {
                         for(i = 0; i < (JRMCoreH.plyrs.length < JRMCoreH.GIDs.length ? JRMCoreH.plyrs.length : JRMCoreH.GIDs.length); ++i) {
                            if (JRMCoreH.GIDs[i] == JRMCoreH.GID) {
-                              e = mc.field_71441_e.func_72924_a(JRMCoreH.plyrs[i]);
+                              e = mc.field_71441_e.getPlayerEntityByName(JRMCoreH.plyrs[i]);
                               mod = JRMCoreH.plyrs[i];
                               this.field_146292_n.add(new JRMCoreGuiButtons01(-2000 - i2, guiLeft + xSize / 2 - 122, guiLeft + (xSize + 1) / 2 - 74 + i2 * 10 - this.ipg * 14 * 10, this.field_146289_q.func_78256_a(mod), mod, e != null ? 0 : JRMCoreH.techCol[4]));
                               ++i2;
@@ -3967,9 +3967,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      if (JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreH.GIDs != null) {
                         for(gender = 0; gender < (JRMCoreH.plyrs.length < JRMCoreH.GIDs.length ? JRMCoreH.plyrs.length : JRMCoreH.GIDs.length); ++gender) {
                            if (i2 <= 14 + this.ipg * 14 && i2 >= 0 + this.ipg * 14 && JRMCoreH.GIDs[gender] == 0) {
-                              Entity e = mc.field_71441_e.func_72924_a(JRMCoreH.plyrs[gender]);
+                              Entity e = mc.field_71441_e.getPlayerEntityByName(JRMCoreH.plyrs[gender]);
                               if (e != null) {
-                                 raceName = e.func_70005_c_();
+                                 raceName = e.getName();
                                  this.field_146292_n.add(new JRMCoreGuiButtons01(2000 + gender, guiLeft + xSize / 2 - 122, guiLeft + (xSize + 1) / 2 - 74 + i2 * 10 - this.ipg * 14 * 10, this.field_146289_q.func_78256_a(raceName), raceName, 0));
                                  ++i2;
                               }
@@ -3995,7 +3995,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      if (JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreH.GIDs != null) {
                         for(i = 0; i < (JRMCoreH.plyrs.length < JRMCoreH.GIDs.length ? JRMCoreH.plyrs.length : JRMCoreH.GIDs.length); ++i) {
                            if (JRMCoreH.GIDs[i] == JRMCoreH.GID) {
-                              Entity e = mc.field_71441_e.func_72924_a(JRMCoreH.plyrs[i]);
+                              Entity e = mc.field_71441_e.getPlayerEntityByName(JRMCoreH.plyrs[i]);
                               powerType = (e != null ? "" : JRMCoreH.cldr) + JRMCoreH.plyrs[i] + (JRMCoreH.plyrs[i].equalsIgnoreCase(JRMCoreH.GLID) ? " " + JRMCoreH.cly + ln : "");
                               var8.func_78276_b(powerType, guiLeft + 5, guiLeft + 6 + i * 10, 0);
                               ++i;
@@ -4003,7 +4003,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                         }
                      }
 
-                     if (mc.field_71439_g.func_70005_c_().equalsIgnoreCase(JRMCoreH.GLID)) {
+                     if (mc.player.getName().equalsIgnoreCase(JRMCoreH.GLID)) {
                         if (JRMCoreH.GMN < 10) {
                            mod = JRMCoreH.trl("jrmc", "invite");
                            gender = this.field_146289_q.func_78256_a(mod) + 8;
@@ -4057,7 +4057,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiLeft = (this.field_146295_m - xSize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiLeft, 0, 0, xSize, xSize);
          this.field_146292_n.add(new JRMCoreGuiButtons00(10, posX - 150, posY + 65, 20, 20, "X", 0));
          ln = JRMCoreH.trl("jrmc", "Next");
@@ -4181,7 +4181,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             h4 = (float)(ColorSlcted & 255) / 255.0F;
             posXm = 1.0F;
             GL11.glColor4f(posXm * h2, posXm * h3, posXm * h4, 1.0F);
-            mc.field_71446_o.func_110577_a(new ResourceLocation(button1));
+            mc.field_71446_o.bindTexture(new ResourceLocation(button1));
             this.func_73729_b(guiLeft + 190 - 25, guiLeft + 4 + i * 10, 0, 0, 50, 10);
          } else if (RaceSlcted == 4) {
             speed = Race + ": " + JRMCoreH.cldgy + JRMCoreH.trl("jrmc", JRMCoreH.TransNms[RaceSlcted][JRMCoreH.State]);
@@ -4300,9 +4300,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          var10000 = (int)((float)var6 * posXm);
          var10000 = var7 - (int)((float)var7 * posYm);
          if (fc) {
-            func_110423_a(guiLeft + 51, guiLeft + 155 + 190, 180, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.field_71439_g, false, false, false);
+            func_110423_a(guiLeft + 51, guiLeft + 155 + 190, 180, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.player, false, false, false);
          } else {
-            func_110423_a_I(guiLeft + 51, guiLeft + 155, 60, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.field_71439_g);
+            func_110423_a_I(guiLeft + 51, guiLeft + 155, 60, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.player);
          }
 
          StatIncreaseDesc5 = JRMCoreH.trl("jrmc", "Appearance");
@@ -4319,7 +4319,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiLeft = (this.field_146295_m - xSize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiLeft, 0, 0, xSize, xSize);
          this.field_146292_n.add(new JRMCoreGuiButtons00(10, posX - 150, posY + 65, 20, 20, "X", 0));
          ln = JRMCoreH.trl("jrmc", "Accept");
@@ -4345,9 +4345,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          var10000 = (int)((float)var6 * posXm);
          var10000 = var7 - (int)((float)var7 * posYm);
          if (COLOR_ID) {
-            func_110423_a(guiLeft + 51, guiLeft + 155 + 190, 180, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.field_71439_g, false, false, false);
+            func_110423_a(guiLeft + 51, guiLeft + 155 + 190, 180, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.player, false, false, false);
          } else {
-            func_110423_a_I(guiLeft + 51, guiLeft + 155, 60, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.field_71439_g);
+            func_110423_a_I(guiLeft + 51, guiLeft + 155, 60, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiLeft + 80) - this.ySize_lo, mc.player);
          }
 
          speed = JRMCoreH.trl("jrmc", "ArcosianUltimateColor");
@@ -4391,10 +4391,10 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          i = 0;
-         hairCheck(guiLeft + 25 - 25, guiTop + 220 + 45, 80, (float)(guiLeft + 150) - this.xSize_lo, (float)(guiTop + 80) - this.ySize_lo, (EntityLivingBase)((EntityLivingBase)(ItemBarberSnC.barberTarget == null ? mc.field_71439_g : ItemBarberSnC.barberTarget)), this.curPage);
+         hairCheck(guiLeft + 25 - 25, guiTop + 220 + 45, 80, (float)(guiLeft + 150) - this.xSize_lo, (float)(guiTop + 80) - this.ySize_lo, (EntityLivingBase)((EntityLivingBase)(ItemBarberSnC.barberTarget == null ? mc.player : ItemBarberSnC.barberTarget)), this.curPage);
          var8.func_78276_b(hcp[this.curPage], guiLeft + 7, guiTop + 5, 0);
          if (!headRoton) {
             powerType = JRMCoreH.trl("jrmc", "Yaw");
@@ -4653,7 +4653,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          gn = false;
 
@@ -4715,7 +4715,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          h3 = (float)(i & 255) / 255.0F;
          h4 = 1.0F;
          GL11.glColor4f(h4 * h2, h4 * h2, h4 * h3, 1.0F);
-         mc.field_71446_o.func_110577_a(new ResourceLocation(button1));
+         mc.field_71446_o.bindTexture(new ResourceLocation(button1));
          this.func_73729_b(guiLeft + 180, guiTop + 65, 0, 0, 50, 10);
          techTypes = new String[]{"Red", "Green", "Blue"};
 
@@ -4744,7 +4744,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          s = JRMCoreH.trl("jrmc", "Back");
          i = this.field_146289_q.func_78256_a(s) + 8;
@@ -4822,7 +4822,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             h3 = (float)(owner & 255) / 255.0F;
             h4 = 1.0F;
             GL11.glColor4f(h4 * h2, h4 * h2, h4 * h3, 1.0F);
-            mc.field_71446_o.func_110577_a(new ResourceLocation(button1));
+            mc.field_71446_o.bindTexture(new ResourceLocation(button1));
             this.func_73729_b(guiLeft + 64 - 50 + 1, guiTop + 4 + reward * 10, 0, 0, 100, 10);
             s = JRMCoreH.trl("jrmc", "AuraColor");
             sw = this.field_146289_q.func_78256_a(s) / 2;
@@ -4842,7 +4842,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          float inc;
          if (PwrtypSlcted != 1 && PwrtypSlcted != 2) {
             if (PwrtypSlcted == 3) {
-               sw = JRMCoreH.stat(mc.field_71439_g, 0, PwrtypSlcted, 0, owner, RaceSlcted, ClassSlcted, 0.0F);
+               sw = JRMCoreH.stat(mc.player, 0, PwrtypSlcted, 0, owner, RaceSlcted, ClassSlcted, 0.0F);
                dmg = (int)JRMCoreH.statInc[PwrtypSlcted][0];
                StatIncreaseDesc4 = JRMCoreH.trl("saoc", JRMCoreH.attrStat[PwrtypSlcted][0]);
                StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4852,7 +4852,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                TrainingPoints = JRMCoreH.trl("saoc", JRMCoreH.attrDsc[PwrtypSlcted][0]);
                drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
                ++reward;
-               sw = JRMCoreH.stat(mc.field_71439_g, 2, PwrtypSlcted, 2, costP, RaceSlcted, ClassSlcted, 0.0F);
+               sw = JRMCoreH.stat(mc.player, 2, PwrtypSlcted, 2, costP, RaceSlcted, ClassSlcted, 0.0F);
                dmg = (int)JRMCoreH.statInc[PwrtypSlcted][2];
                StatIncreaseDesc4 = JRMCoreH.trl("saoc", JRMCoreH.attrStat[PwrtypSlcted][2]);
                StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4867,7 +4867,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
                ++reward;
             } else {
-               sw = JRMCoreH.stat(mc.field_71439_g, 0, PwrtypSlcted, 0, owner, RaceSlcted, ClassSlcted, 0.0F);
+               sw = JRMCoreH.stat(mc.player, 0, PwrtypSlcted, 0, owner, RaceSlcted, ClassSlcted, 0.0F);
                inc = JRMCoreH.statInc[PwrtypSlcted][0];
                StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][0]);
                StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4877,7 +4877,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                TrainingPoints = JRMCoreH.trl("jrmc", JRMCoreH.attrDsc[PwrtypSlcted][0]);
                drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
                ++reward;
-               sw = JRMCoreH.stat(mc.field_71439_g, 2, PwrtypSlcted, 2, costP, RaceSlcted, ClassSlcted, 0.0F);
+               sw = JRMCoreH.stat(mc.player, 2, PwrtypSlcted, 2, costP, RaceSlcted, ClassSlcted, 0.0F);
                inc = JRMCoreH.statInc[PwrtypSlcted][2];
                StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][2]);
                StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4889,7 +4889,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                ++reward;
             }
          } else {
-            sw = JRMCoreH.stat(mc.field_71439_g, 0, PwrtypSlcted, 0, owner, RaceSlcted, ClassSlcted, 0.0F);
+            sw = JRMCoreH.stat(mc.player, 0, PwrtypSlcted, 0, owner, RaceSlcted, ClassSlcted, 0.0F);
             inc = JRMCoreH.statInc(PwrtypSlcted, 0, 1, RaceSlcted, ClassSlcted, 0.0F);
             StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][0]);
             StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4899,7 +4899,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             TrainingPoints = JRMCoreH.trl("jrmc", JRMCoreH.attrDsc[PwrtypSlcted][0]);
             drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
             ++reward;
-            sw = JRMCoreH.stat(mc.field_71439_g, 1, PwrtypSlcted, 1, i, RaceSlcted, ClassSlcted, 0.0F);
+            sw = JRMCoreH.stat(mc.player, 1, PwrtypSlcted, 1, i, RaceSlcted, ClassSlcted, 0.0F);
             inc = JRMCoreH.statInc(PwrtypSlcted, 1, 1, RaceSlcted, ClassSlcted, 0.0F);
             StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][1]);
             StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4909,7 +4909,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             TrainingPoints = JRMCoreH.trl("jrmc", JRMCoreH.attrDsc[PwrtypSlcted][1]);
             drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
             ++reward;
-            sw = JRMCoreH.stat(mc.field_71439_g, 2, PwrtypSlcted, 2, costP, RaceSlcted, ClassSlcted, 0.0F);
+            sw = JRMCoreH.stat(mc.player, 2, PwrtypSlcted, 2, costP, RaceSlcted, ClassSlcted, 0.0F);
             inc = JRMCoreH.statInc(PwrtypSlcted, 2, 1, RaceSlcted, ClassSlcted, 0.0F);
             StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][2]);
             StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4919,7 +4919,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             TrainingPoints = JRMCoreH.trl("jrmc", JRMCoreH.attrDsc[PwrtypSlcted][2]);
             drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
             ++reward;
-            sw = JRMCoreH.stat(mc.field_71439_g, 2, PwrtypSlcted, 3, costP, RaceSlcted, ClassSlcted, 0.0F);
+            sw = JRMCoreH.stat(mc.player, 2, PwrtypSlcted, 3, costP, RaceSlcted, ClassSlcted, 0.0F);
             inc = JRMCoreH.statInc(PwrtypSlcted, 3, 1, RaceSlcted, ClassSlcted, 0.0F);
             StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][3]);
             StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4929,7 +4929,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             TrainingPoints = JRMCoreH.trl("jrmc", JRMCoreH.attrDsc[PwrtypSlcted][3]);
             drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
             ++reward;
-            sw = JRMCoreH.stat(mc.field_71439_g, 3, PwrtypSlcted, 4, cls, RaceSlcted, ClassSlcted, 0.0F);
+            sw = JRMCoreH.stat(mc.player, 3, PwrtypSlcted, 4, cls, RaceSlcted, ClassSlcted, 0.0F);
             inc = JRMCoreH.statInc(PwrtypSlcted, 4, 1, RaceSlcted, ClassSlcted, 0.0F);
             StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][4]);
             StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4939,7 +4939,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             TrainingPoints = JRMCoreH.trl("jrmc", JRMCoreH.attrDsc[PwrtypSlcted][4]);
             drawDetails(TP, TrainingPoints, guiLeft + 5 + 128, guiTop + 5 + reward * 10, x, y, var8);
             ++reward;
-            sw = JRMCoreH.stat(mc.field_71439_g, 5, PwrtypSlcted, 5, ni, RaceSlcted, ClassSlcted, JRMCoreH.SklLvl_KiBs(this.pwr));
+            sw = JRMCoreH.stat(mc.player, 5, PwrtypSlcted, 5, ni, RaceSlcted, ClassSlcted, JRMCoreH.SklLvl_KiBs(this.pwr));
             inc = JRMCoreH.statInc(PwrtypSlcted, 5, 1, RaceSlcted, ClassSlcted, 0.0F);
             StatIncreaseDesc4 = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[PwrtypSlcted][5]);
             StatIncreaseDesc5 = JRMCoreH.cldgy + StatIncreaseDesc4 + ": " + JRMCoreH.cldr + sw;
@@ -4957,7 +4957,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          s = JRMCoreH.trl("jrmc", "Back");
          i = this.field_146289_q.func_78256_a(s) + 8;
@@ -4997,10 +4997,10 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          posXm = (float)(ColorSlcted & 255) / 255.0F;
          posYm = 1.0F;
          GL11.glColor4f(posYm * h3, posYm * h4, posYm * posXm, 1.0F);
-         mc.field_71446_o.func_110577_a(new ResourceLocation(button1));
+         mc.field_71446_o.bindTexture(new ResourceLocation(button1));
          this.func_73729_b(guiLeft + 5 + var8.func_78256_a("Color: "), guiTop + 3 + 30, 0, 0, 50, 10);
          dmg = guiLeft + xSize / 2;
-         func_110423_a_I(dmg + 51, guiTop + 155, 60, (float)(dmg + 51) - this.xSize_lo, (float)(guiTop + 120 - 40) - this.ySize_lo, mc.field_71439_g);
+         func_110423_a_I(dmg + 51, guiTop + 155, 60, (float)(dmg + 51) - this.xSize_lo, (float)(guiTop + 120 - 40) - this.ySize_lo, mc.player);
       } else if (this.isGUIOpen(8)) {
          xSize = 256;
          ySize = 159;
@@ -5008,7 +5008,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          i = 0;
          if (CanHair) {
@@ -5063,12 +5063,12 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             h4 = (float)(ColorSlcted & 255) / 255.0F;
             float h1 = 1.0F;
             GL11.glColor4f(h1 * h2, h1 * h3, h1 * h4, 1.0F);
-            mc.field_71446_o.func_110577_a(new ResourceLocation(button1));
+            mc.field_71446_o.bindTexture(new ResourceLocation(button1));
             this.func_73729_b(guiLeft + 190 - 25, guiTop + 4 + i * 10, 0, 0, 50, 10);
          }
 
          ++i;
-         func_110423_a(guiLeft + 51, guiTop + 155, 60, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiTop + 80) - this.ySize_lo, (EntityLivingBase)((EntityLivingBase)(ItemBarberSnC.barberTarget == null ? mc.field_71439_g : ItemBarberSnC.barberTarget)));
+         func_110423_a(guiLeft + 51, guiTop + 155, 60, (float)(guiLeft + 51) - this.xSize_lo, (float)(guiTop + 80) - this.ySize_lo, (EntityLivingBase)((EntityLivingBase)(ItemBarberSnC.barberTarget == null ? mc.player : ItemBarberSnC.barberTarget)));
          if (!CanHair) {
             Race = JRMCoreH.trl("jrmc", "NoHairToEdit");
             possibleReward = this.field_146289_q.func_78256_a(Race) / 2;
@@ -5097,7 +5097,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          s = JRMCoreH.trl("jrmc", "Back");
          i = this.field_146289_q.func_78256_a(s) + 8;
@@ -5120,7 +5120,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             }
 
             this.field_146292_n.add(new JRMCoreGuiButtons00(-101 - limit, posX - 120, posY - 86 + gender * 10, 60, 20, JRMCoreH.trl("jrmc", JRMCoreH.DifficultyNames[limit]), xPos));
-            possibleReward = JRMCoreH.expgnrt(JRMCoreH.Race, JRMCoreH.State, limit, mc.field_71439_g);
+            possibleReward = JRMCoreH.expgnrt(JRMCoreH.Race, JRMCoreH.State, limit, mc.player);
             Iterator iterator = mc.field_71466_p.func_78271_c(JRMCoreH.cct(JRMCoreH.trl("jrmc", JRMCoreH.DifficultyDesc[limit]), possibleReward + "%"), 245).iterator();
 
             while(iterator.hasNext()) {
@@ -5142,7 +5142,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(JRMCoreH.isPowerTypeSAO() ? JRMCoreH.tjsaoc + ":gui.png" : wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          if (this.pwr != 3) {
             this.align(icons);
@@ -5225,10 +5225,10 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          String stc = JRMCoreH.StusEfctsMe(19) ? JRMCoreH.cllb : JRMCoreH.clgd;
          boolean c = JRMCoreH.StusEfctsMe(10) || JRMCoreH.StusEfctsMe(11);
          if (JRMCoreH.Pwrtyp != 3 && JRMCoreH.Pwrtyp > 0) {
-            STR = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 0, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
-            DEX = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 1, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
-            WIL = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
-            af = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 2, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
+            STR = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 0, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
+            DEX = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 1, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
+            WIL = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
+            af = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 2, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, c, JRMCoreH.getMajinAbsorption());
             per = (double)(af > CON ? af : CON) / ((double)CON * 1.0D);
          }
 
@@ -5254,21 +5254,21 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             if (this.pwr == 3) {
                StatIncreaseDescStr = JRMCoreH.trl("saoc", "StatIncreaseDescStr");
                StatIncreaseDescVit = JRMCoreH.trl("saoc", "StatIncreaseDescVit");
-               costTp = JRMCoreHSAC.getWeaponDamage(mc.field_71439_g.func_71045_bC(), STR);
-               statSPI = JRMCoreHSAC.getWeaponBonus(mc.field_71439_g.func_71045_bC(), 0);
-               sklks = JRMCoreHSAC.getWeaponBonus(mc.field_71439_g.func_71045_bC(), 1);
+               costTp = JRMCoreHSAC.getWeaponDamage(mc.player.func_71045_bC(), STR);
+               statSPI = JRMCoreHSAC.getWeaponBonus(mc.player.func_71045_bC(), 0);
+               sklks = JRMCoreHSAC.getWeaponBonus(mc.player.func_71045_bC(), 1);
                stat = (int)JRMCoreHSAC.getDamage(costTp, STR, DEX);
-               int requires = JRMCoreHSAC.getWeaponStatName(mc.field_71439_g.func_71045_bC(), "requires");
-               int attackMin = JRMCoreHSAC.getWeaponStatName(mc.field_71439_g.func_71045_bC(), "attackMin");
-               curAtr = JRMCoreHSAC.getWeaponStatName(mc.field_71439_g.func_71045_bC(), "attackMax");
+               int requires = JRMCoreHSAC.getWeaponStatName(mc.player.func_71045_bC(), "requires");
+               int attackMin = JRMCoreHSAC.getWeaponStatName(mc.player.func_71045_bC(), "attackMin");
+               curAtr = JRMCoreHSAC.getWeaponStatName(mc.player.func_71045_bC(), "attackMax");
                int attackMinOrg = attackMin;
                int attackMaxOrg = curAtr;
-               if (requires > 0 && requires <= STR && mc.field_71439_g.func_71045_bC() != null) {
+               if (requires > 0 && requires <= STR && mc.player.func_71045_bC() != null) {
                   attackMin = (int)JRMCoreHSAC.getDamage(attackMin, STR + statSPI, DEX);
                   curAtr = (int)JRMCoreHSAC.getDamage(curAtr, STR + sklks, DEX);
-               } else if (mc.field_71439_g.func_71045_bC() != null) {
-                  int d1 = mc.field_71439_g.func_71045_bC().func_77973_b() instanceof ItemSword ? 4 : 0;
-                  Multimap multimap = mc.field_71439_g.func_71045_bC().func_111283_C();
+               } else if (mc.player.func_71045_bC() != null) {
+                  int d1 = mc.player.func_71045_bC().func_77973_b() instanceof ItemSword ? 4 : 0;
+                  Multimap multimap = mc.player.func_71045_bC().func_111283_C();
                   if (!multimap.isEmpty()) {
                      Iterator iterator = multimap.entries().iterator();
 
@@ -5277,7 +5277,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                         AttributeModifier attributemodifier = (AttributeModifier)entry.getValue();
                         double d0 = attributemodifier.func_111164_d();
                         if (attributemodifier.func_111167_a() == UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF")) {
-                           d0 += (double)EnchantmentHelper.func_152377_a(mc.field_71439_g.func_71045_bC(), EnumCreatureAttribute.UNDEFINED);
+                           d0 += (double)EnchantmentHelper.func_152377_a(mc.player.func_71045_bC(), EnumCreatureAttribute.UNDEFINED);
                         }
 
                         if (attributemodifier.func_111169_c() != 1 && attributemodifier.func_111169_c() != 2) {
@@ -5301,7 +5301,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
                max = JRMCoreH.sao_level >= 255;
                drawDetails(buttonText + ": " + JRMCoreH.cldgy + JRMCoreH.sao_level, JRMCoreH.cldgy + (max ? JRMCoreH.trl("jrmc", "LevelMax") : "You need " + JRMCoreH.SAOexpNeeded(JRMCoreH.sao_level, JRMCoreH.sao_exp) + " to Level up"), guiLeft + 5, guiTop + 5 + i * 10, x, y, var8);
-               drawDetails("AreaLevel: " + JRMCoreHSAC.SAO_getLvlBasedOnDrop(JRMCoreClient.mc.field_71439_g), "Current Level of an Area and mobs are probably around this level.", guiLeft + 5 + 128, guiTop + 5 + i * 10, x, y, var8);
+               drawDetails("AreaLevel: " + JRMCoreHSAC.SAO_getLvlBasedOnDrop(JRMCoreClient.mc.player), "Current Level of an Area and mobs are probably around this level.", guiLeft + 5 + 128, guiTop + 5 + i * 10, x, y, var8);
                ++i;
                statAttrW = "EXP: " + JRMCoreH.cldgy + JRMCoreH.sao_exp + "/" + JRMCoreH.SAOexpNeeded(JRMCoreH.sao_level, JRMCoreH.sao_exp);
                String desc = JRMCoreH.trl("saoc", "expDesc");
@@ -5333,7 +5333,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                String AttrDesc = JRMCoreH.trl("saoc", JRMCoreH.attrDsc[JRMCoreH.Pwrtyp][0]);
                drawDetails(startAttr, AttrDesc, guiLeft + 5 + 10, guiTop + 5 + i * 10, x, y, var8);
                ++i;
-               int stat = JRMCoreH.stat(mc.field_71439_g, 2, JRMCoreH.Pwrtyp, 2, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+               int stat = JRMCoreH.stat(mc.player, 2, JRMCoreH.Pwrtyp, 2, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
                statO = (int)JRMCoreH.statInc[JRMCoreH.Pwrtyp][2];
                statNam = JRMCoreH.trl("saoc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][2]);
                Stat = JRMCoreH.cldgy + statNam + ": " + JRMCoreH.cldr + stat;
@@ -5355,7 +5355,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
                ++i;
             } else {
-               stat = JRMCoreH.stat(mc.field_71439_g, 0, JRMCoreH.Pwrtyp, 0, STR, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+               stat = JRMCoreH.stat(mc.player, 0, JRMCoreH.Pwrtyp, 0, STR, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
                float inc = JRMCoreH.statInc[JRMCoreH.Pwrtyp][0];
                statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][0]);
                nameEffect = JRMCoreH.cldgy + statNam + ": " + JRMCoreH.cldr + stat;
@@ -5365,7 +5365,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                String AttrDesc = JRMCoreH.trl("jrmc", JRMCoreH.attrDsc[JRMCoreH.Pwrtyp][0]);
                drawDetails(startAttr, AttrDesc, guiLeft + 5, guiTop + 5 + i * 10, x, y, var8);
                ++i;
-               stat = JRMCoreH.stat(mc.field_71439_g, 2, JRMCoreH.Pwrtyp, 2, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+               stat = JRMCoreH.stat(mc.player, 2, JRMCoreH.Pwrtyp, 2, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
                inc = JRMCoreH.statInc[JRMCoreH.Pwrtyp][2];
                statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][2]);
                nameEffect = JRMCoreH.cldgy + statNam + ": " + JRMCoreH.cldr + stat;
@@ -5383,13 +5383,13 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                ncbonus = (float)statSPI * 0.04F + (float)JRMCoreH.State * 0.25F;
             }
 
-            statSPI = JRMCoreH.stat(mc.field_71439_g, 5, JRMCoreH.Pwrtyp, 5, SPI, JRMCoreH.Race, JRMCoreH.Class, JRMCoreH.SklLvl_KiBs(this.pwr));
+            statSPI = JRMCoreH.stat(mc.player, 5, JRMCoreH.Pwrtyp, 5, SPI, JRMCoreH.Race, JRMCoreH.Class, JRMCoreH.SklLvl_KiBs(this.pwr));
             sklks = 0;
             if (JRMCoreH.Pwrtyp == 1) {
                sklks = (int)((double)JRMCoreH.SklLvl(12) * 0.0025D * (double)statSPI * (double)JRMCoreH.curRelease * 0.01D);
             }
 
-            stat = JRMCoreH.stat(mc.field_71439_g, 0, JRMCoreH.Pwrtyp, 0, STR, JRMCoreH.Race, JRMCoreH.Class, ncbonus);
+            stat = JRMCoreH.stat(mc.player, 0, JRMCoreH.Pwrtyp, 0, STR, JRMCoreH.Race, JRMCoreH.Class, ncbonus);
             float inc = JRMCoreH.statInc(JRMCoreH.Pwrtyp, 0, 1, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             String statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][0]);
             curAtr = (int)((double)stat * 0.01D * (double)JRMCoreH.curRelease * (double)JRMCoreH.weightPerc(0));
@@ -5407,7 +5407,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                sklks = (int)((double)JRMCoreH.SklLvl(11) * 0.005D * (double)statSPI * (double)JRMCoreH.curRelease * 0.01D);
             }
 
-            stat = JRMCoreH.stat(mc.field_71439_g, 1, JRMCoreH.Pwrtyp, 1, DEX, JRMCoreH.Race, JRMCoreH.Class, ncbonus);
+            stat = JRMCoreH.stat(mc.player, 1, JRMCoreH.Pwrtyp, 1, DEX, JRMCoreH.Race, JRMCoreH.Class, ncbonus);
             inc = JRMCoreH.statInc(JRMCoreH.Pwrtyp, 1, 1, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][1]);
             curAtr = (int)((double)stat * 0.01D * (double)JRMCoreH.curRelease * (double)JRMCoreH.weightPerc(1));
@@ -5427,7 +5427,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             statAttrW = hasWeight ? "\n" + JRMCoreH.cldgy + JRMCoreH.trl("jrmc", "weightreduction") + ": " + JRMCoreH.cllr + (int)(100.0F - wDex * 100.0F) + "%" : "";
             drawDetails(Stat, JRMCoreH.cct(s + StatIncreaseDesc2 + StatIncreaseDesc3 + (sklks > 0 ? StatIncreaseDesc4 : ""), statAttr, inc, JRMCoreH.numSep((long)stat), JRMCoreH.numSep((long)((int)((float)curAtr * (float)JRMCoreConfig.StatPasDef * 0.01F))), JRMCoreH.numSep((long)sklks)) + statAttrW, guiLeft + 5 + 128 + 5, guiTop + 5 + i * 10, x, y, var8);
             ++i;
-            stat = JRMCoreH.stat(mc.field_71439_g, 2, JRMCoreH.Pwrtyp, 2, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+            stat = JRMCoreH.stat(mc.player, 2, JRMCoreH.Pwrtyp, 2, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             inc = JRMCoreH.statInc(JRMCoreH.Pwrtyp, 2, 1, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][2]);
             int dr = (int)((1.0D - 1.0D / per) * 100.0D);
@@ -5435,22 +5435,22 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             statAttr = JRMCoreH.attrNms(JRMCoreH.Pwrtyp, 2);
             drawDetails(Stat, JRMCoreH.cct(s + (JRMCoreH.round(per, 1) != 1.0D ? StatIncreaseDesc5 : ""), statAttr, inc, dr), guiLeft + 5 + 128, guiTop + 5 + i * 10, x, y, var8);
             ++i;
-            stat = JRMCoreH.stat(mc.field_71439_g, 2, JRMCoreH.Pwrtyp, 3, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+            stat = JRMCoreH.stat(mc.player, 2, JRMCoreH.Pwrtyp, 3, CON, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             inc = JRMCoreH.statInc(JRMCoreH.Pwrtyp, 3, 1, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][3]);
             Stat = JRMCoreH.cldgy + statNam + ": " + JRMCoreH.cldr + JRMCoreH.numSep((long)stat);
             statAttr = JRMCoreH.attrNms(JRMCoreH.Pwrtyp, 2);
             drawDetails(Stat, JRMCoreH.cct(s, statAttr, inc), guiLeft + 5 + 128, guiTop + 5 + i * 10, x, y, var8);
             ++i;
-            stat = JRMCoreH.stat(mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, WIL, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+            stat = JRMCoreH.stat(mc.player, 3, JRMCoreH.Pwrtyp, 4, WIL, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             inc = JRMCoreH.statInc(JRMCoreH.Pwrtyp, 4, 1, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][4]);
             Stat = JRMCoreH.cldgy + statNam + ": " + (st ? stc : JRMCoreH.cldr) + JRMCoreH.numSep((long)((int)((double)stat * 0.01D * (double)JRMCoreH.curRelease)));
             statAttr = JRMCoreH.attrNms(JRMCoreH.Pwrtyp, 3);
             drawDetails(Stat, JRMCoreH.cct(s + StatIncreaseDesc2, statAttr, inc, JRMCoreH.numSep((long)stat)), guiLeft + 5 + 128, guiTop + 5 + i * 10, x, y, var8);
             ++i;
-            stat = JRMCoreH.stat(mc.field_71439_g, 5, JRMCoreH.Pwrtyp, 5, SPI, JRMCoreH.Race, JRMCoreH.Class, JRMCoreH.SklLvl_KiBs(this.pwr));
-            statO = JRMCoreH.stat(mc.field_71439_g, 5, JRMCoreH.Pwrtyp, 5, SPI, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+            stat = JRMCoreH.stat(mc.player, 5, JRMCoreH.Pwrtyp, 5, SPI, JRMCoreH.Race, JRMCoreH.Class, JRMCoreH.SklLvl_KiBs(this.pwr));
+            statO = JRMCoreH.stat(mc.player, 5, JRMCoreH.Pwrtyp, 5, SPI, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             statO = stat - statO;
             inc = JRMCoreH.statInc(JRMCoreH.Pwrtyp, 5, 1, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
             statNam = JRMCoreH.trl("jrmc", JRMCoreH.attrStat[JRMCoreH.Pwrtyp][5]);
@@ -5504,10 +5504,10 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             GL11.glPushMatrix();
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             ResourceLocation textureIcons = new ResourceLocation(JRMCoreH.tjjrmc + ":icons3.png");
-            mc.field_71446_o.func_110577_a(textureIcons);
+            mc.field_71446_o.bindTexture(textureIcons);
             this.func_73729_b(guiLeft + 5 + this.field_146289_q.func_78256_a(textRace), guiTop + 5 + (i - 1) * 10 - 3, 0, (8 - (gender >= 1 ? 1 : 0)) * 16, 16, 16);
             GL11.glPopMatrix();
-            mc.field_71446_o.func_110577_a(guiLocation);
+            mc.field_71446_o.bindTexture(guiLocation);
             String fullFormText = TRState + ": " + (!JRMCoreH.StusEfctsMe(10) && !JRMCoreH.StusEfctsMe(11) ? (JRMCoreH.StusEfctsMe(14) && JRMCoreH.lgndb() ? JRMCoreH.cldg : JRMCoreH.cldgy) : JRMCoreH.clpr) + TransNms;
             boolean fz;
             String AttrDesc;
@@ -5515,7 +5515,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             if (JGConfigDBCFormMastery.FM_Enabled && JRMCoreH.isPowerTypeKi()) {
                fz = JRMCoreH.StusEfctsMe(5);
                int kaiokenID = JRMCoreH.getFormID("Kaioken", JRMCoreH.Race);
-               double formLevel2 = JRMCoreH.getFormMasteryValue(JRMCoreClient.mc.field_71439_g, kaiokenID);
+               double formLevel2 = JRMCoreH.getFormMasteryValue(JRMCoreClient.mc.player, kaiokenID);
                String[] formData = JRMCoreH.getFormMasteryData().split(",");
                AttrDesc = formData[0];
                say = formData[1];
@@ -5612,7 +5612,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          this.menuButtons("SK");
          if (JRMCoreH.isPowerTypeChakra()) {
@@ -5685,7 +5685,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                }
             }
 
-            if (JRMCoreH.Race == 4 && JRMCoreHDBC.auc(n2) && !JRMCoreH.data(mc.field_71439_g.func_70005_c_(), 16, "").contains(";")) {
+            if (JRMCoreH.Race == 4 && JRMCoreHDBC.auc(n2) && !JRMCoreH.data(mc.player.getName(), 16, "").contains(";")) {
                this.field_146292_n.add(new JRMCoreGuiButtonsA3(392, guiLeft + 10 + var8.func_78256_a(TP + (n2 < 7 ? this.textLevel(n2) : "")), guiTop + 13 + skillID * 10, 20, 1));
             }
 
@@ -5799,7 +5799,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             wpy = 50;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             guiLocation = new ResourceLocation(wish);
-            mc.field_71446_o.func_110577_a(guiLocation);
+            mc.field_71446_o.bindTexture(guiLocation);
             this.func_73729_b(guiLeft + wpx, guiTop + wpy, 0, 159, xSize, ySize);
             RequiredTP = JRMCoreH.PlyrSkills[this.IDtoProcessConfirmFor];
             if (!RequiredTP.contains("pty") && RequiredTP.length() > 2) {
@@ -5823,7 +5823,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          this.menuButtons("TE");
          if (JRMCoreH.Pwrtyp == 2) {
@@ -5889,10 +5889,10 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      JRMCoreClient.bars.renderEnSideBar();
                      boolean v = JRMCoreH.StusEfctsMe(10) || JRMCoreH.StusEfctsMe(11);
                      var10000 = JRMCoreH.PlyrAttrbts[3];
-                     STRo = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, v, JRMCoreH.getMajinAbsorption());
-                     DEX = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, 0, 0, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, v, JRMCoreH.getMajinAbsorption());
-                     DEXo = JRMCoreH.stat(mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, STRo, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
-                     WIL = JRMCoreH.stat(mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, DEX, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+                     STRo = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, v, JRMCoreH.getMajinAbsorption());
+                     DEX = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 3, 0, 0, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, v, JRMCoreH.getMajinAbsorption());
+                     DEXo = JRMCoreH.stat(mc.player, 3, JRMCoreH.Pwrtyp, 4, STRo, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+                     WIL = JRMCoreH.stat(mc.player, 3, JRMCoreH.Pwrtyp, 4, DEX, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
                      WILo = JRMCoreH.techDBCdmg(j, DEXo, sts);
                      String dam2 = "";
                      if (Integer.parseInt(Stats) == 6) {
@@ -6068,8 +6068,8 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      STR = STR < 1 ? 1 : STR;
                      boolean v = JRMCoreH.StusEfctsMe(10) || JRMCoreH.StusEfctsMe(11);
                      var10000 = JRMCoreH.PlyrAttrbts[3];
-                     WIL = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, v, JRMCoreH.getMajinAbsorption());
-                     WILo = JRMCoreH.stat(mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, WIL, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+                     WIL = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, v, JRMCoreH.getMajinAbsorption());
+                     WILo = JRMCoreH.stat(mc.player, 3, JRMCoreH.Pwrtyp, 4, WIL, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
                      MND = JRMCoreH.techDBCdmg(j, WILo, sts);
                      JRMCoreH.techDBCkic(j, WILo, sts);
                      CON = JRMCoreH.techDBCtpc(j, false);
@@ -6174,7 +6174,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                      var8.func_78276_b("§0" + techName[8] + ": " + c + (StatIncreaseDesc2.equals("0") ? "Jutsu selector" : StatIncreaseDesc2), guiLeft + 120, guiTop + 15 + 8 + i * 35, 0);
                      var8.func_78276_b("§0" + techName[7] + ": " + c + WIL + " (" + DEXo + "%)", guiLeft + 120, guiTop + 15 + 16 + i * 35, 0);
                      JRMCoreH.txt("Hover over and release " + Keyboard.getKeyName(NCKeyHandler.HandSeal1.func_151463_i()), JRMCoreH.cldgy, 0, true, 0, 0, 180);
-                     tt = JRMCoreH.cldr + techName[0] + ": " + c + Class + "\n" + (StatIncreaseDesc2.equals("0") ? JRMCoreH.cldr + techName[8] + ": " + c + "None\n" + JRMCoreH.cldr + "Usage: " + JRMCoreH.cldg + "You must use the special jutsu selector on the right side.\n" + JRMCoreH.cldgy + JRMCoreH.cldr + "Keys: " + JRMCoreH.cldgy + "Press and Hold " + JRMCoreH.cllr + JRMCoreHC.getKey(JRMCoreKeyHandler.Fn.func_151463_i()) + ", " + JRMCoreH.cldgy + "then either press " + JRMCoreH.clpr + JRMCoreHC.getKey(mc.field_71474_y.field_74322_I.func_151463_i()) + JRMCoreH.cldgy + " or use the Mouse Wheel to choose a special jutsu.\nTo Activate the selected jutsu Press " + JRMCoreH.clbe + JRMCoreHC.getKey(JRMCoreKeyHandler.KiAscend.func_151463_i()) + JRMCoreH.cldgy : JRMCoreH.cldr + techName[8] + ": " + c + StatIncreaseDesc2 + "\n" + JRMCoreH.cldr + "Usage: " + JRMCoreH.cldg + "Combination of the \"Hand Seal\" keys\n" + JRMCoreH.cldr + "Keys: " + JRMCoreH.cldgy + JRMCoreH.cllr + JRMCoreHC.getKey(NCKeyHandler.HandSeal1.func_151463_i()) + JRMCoreH.cldgy + ", " + JRMCoreH.clpr + JRMCoreHC.getKey(NCKeyHandler.HandSeal2.func_151463_i()) + JRMCoreH.cldgy + ", " + JRMCoreH.clbe + JRMCoreHC.getKey(NCKeyHandler.HandSeal2.func_151463_i()));
+                     tt = JRMCoreH.cldr + techName[0] + ": " + c + Class + "\n" + (StatIncreaseDesc2.equals("0") ? JRMCoreH.cldr + techName[8] + ": " + c + "None\n" + JRMCoreH.cldr + "Usage: " + JRMCoreH.cldg + "You must use the special jutsu selector on the right side.\n" + JRMCoreH.cldgy + JRMCoreH.cldr + "Keys: " + JRMCoreH.cldgy + "Press and Hold " + JRMCoreH.cllr + JRMCoreHC.getKey(JRMCoreKeyHandler.Fn.func_151463_i()) + ", " + JRMCoreH.cldgy + "then either press " + JRMCoreH.clpr + JRMCoreHC.getKey(mc.gameSettings.field_74322_I.func_151463_i()) + JRMCoreH.cldgy + " or use the Mouse Wheel to choose a special jutsu.\nTo Activate the selected jutsu Press " + JRMCoreH.clbe + JRMCoreHC.getKey(JRMCoreKeyHandler.KiAscend.func_151463_i()) + JRMCoreH.cldgy : JRMCoreH.cldr + techName[8] + ": " + c + StatIncreaseDesc2 + "\n" + JRMCoreH.cldr + "Usage: " + JRMCoreH.cldg + "Combination of the \"Hand Seal\" keys\n" + JRMCoreH.cldr + "Keys: " + JRMCoreH.cldgy + JRMCoreH.cllr + JRMCoreHC.getKey(NCKeyHandler.HandSeal1.func_151463_i()) + JRMCoreH.cldgy + ", " + JRMCoreH.clpr + JRMCoreHC.getKey(NCKeyHandler.HandSeal2.func_151463_i()) + JRMCoreH.cldgy + ", " + JRMCoreH.clbe + JRMCoreHC.getKey(NCKeyHandler.HandSeal2.func_151463_i()));
                      drawDetails(JRMCoreH.cct(tt), guiLeft + 5, guiTop + 15 + i * 35 + 1, 240, 20, x, y, this.field_146289_q);
                   }
 
@@ -6239,7 +6239,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          ResourceLocation guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          if (this.inputField != null && this.attCrtPg == 0) {
             this.inputField.func_146194_f();
@@ -6274,8 +6274,8 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                   tech = new String[]{JRMCoreGuiScreen.name, "" + techCrt[1], JRMCoreGuiScreen.owner, "" + techCrt[3], "" + techCrt[4], "" + techCrt[5], "" + techCrt[6], "" + techCrt[7], "" + techCrt[8], "" + techCrt[9], "" + techCrt[10], "" + techCrt[11], "" + techCrt[12], "" + techCrt[13], "" + techCrt[14]};
                   fc = JRMCoreH.StusEfctsMe(10) || JRMCoreH.StusEfctsMe(11);
                   var10000 = JRMCoreH.PlyrAttrbts[3];
-                  fcs = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.field_71439_g, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, fc, JRMCoreH.getMajinAbsorption());
-                  ni = JRMCoreH.stat(mc.field_71439_g, 3, JRMCoreH.Pwrtyp, 4, fcs, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
+                  fcs = JRMCoreH.getPlayerAttribute(JRMCoreClient.mc.player, JRMCoreH.PlyrAttrbts, 3, JRMCoreH.State, JRMCoreH.State2, JRMCoreH.Race, JRMCoreH.PlyrSkillX, JRMCoreH.curRelease, JRMCoreH.getArcRsrv(), JRMCoreH.StusEfctsMe(14), JRMCoreH.StusEfctsMe(12), JRMCoreH.StusEfctsMe(5), JRMCoreH.StusEfctsMe(13), JRMCoreH.StusEfctsMe(19), JRMCoreH.StusEfctsMe(20), JRMCoreH.Pwrtyp, JRMCoreH.PlyrSkills, fc, JRMCoreH.getMajinAbsorption());
+                  ni = JRMCoreH.stat(mc.player, 3, JRMCoreH.Pwrtyp, 4, fcs, JRMCoreH.Race, JRMCoreH.Class, 0.0F);
                   byte[] sts = JRMCoreH.techDBCstatsDefault;
                   dmg = JRMCoreH.techDBCdmg(tech, ni, sts);
                   cost = JRMCoreH.techDBCkic(tech, ni, sts);
@@ -6340,7 +6340,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                   if (this.attCrtPg == 0) {
                      AlignmentDesc = "jinryuumodscore:icons5.png";
                      ResourceLocation tx = new ResourceLocation(AlignmentDesc);
-                     mc.field_71446_o.func_110577_a(tx);
+                     mc.field_71446_o.bindTexture(tx);
                      type = techCrt[3];
                      i = techCrt[5];
                      STR = techCrt[6];
@@ -6492,7 +6492,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          this.field_146292_n.add(new JRMCoreGuiButtons00(10, posX - 150, posY + 65, 20, 20, "X", 0));
          String[][] PMA;
@@ -6559,7 +6559,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          this.field_146292_n.add(new JRMCoreGuiButtons00(10, posX - 150, posY + 65, 20, 20, "X", 0));
          if (this.pwr == 2) {
@@ -6630,7 +6630,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          this.menuButtons("TR");
          s = " " + JRMCoreH.trl("jrmc", "Start");
@@ -6668,14 +6668,14 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             guiTop = (this.field_146295_m - ySize) / 2;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             guiLocation = new ResourceLocation(MiniGame.training1gui);
-            mc.field_71446_o.func_110577_a(guiLocation);
+            mc.field_71446_o.bindTexture(guiLocation);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             this.field_146292_n.add(new JRMCoreGuiButtons00(10, posX - 150, posY + 65, 20, 20, "X", 0));
             guiLeft += 5;
             guiTop += 5;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             guiLocation = new ResourceLocation(MiniGame.training1);
-            mc.field_71446_o.func_110577_a(guiLocation);
+            mc.field_71446_o.bindTexture(guiLocation);
             this.miniGameConcentration.stateManager(guiLeft, guiTop);
             this.field_146292_n.add(new JRMCoreGuiButtonsMG0(-32, guiLeft, guiTop, 150, 150, "", 0));
             i = 0;
@@ -6749,7 +6749,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             guiTop = (this.field_146295_m - ySize) / 2;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             guiLocation = new ResourceLocation(MiniGame.training1gui);
-            mc.field_71446_o.func_110577_a(guiLocation);
+            mc.field_71446_o.bindTexture(guiLocation);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             if (JGConfigClientSettings.airboxing3DCharacterOn) {
                if (this.entityTest == null) {
@@ -6768,7 +6768,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
                   this.timer = Instant.now();
                }
 
-               if (i > 0 && (float)Duration.between(this.timer, Instant.now()).toMillis() >= (float)(200 / (i / 2 > 20 ? 20 : i / 2 + 1)) && (!JRMCoreClient.mc.field_71439_g.field_70170_p.field_72995_K || !JRMCoreClient.mc.func_147113_T())) {
+               if (i > 0 && (float)Duration.between(this.timer, Instant.now()).toMillis() >= (float)(200 / (i / 2 > 20 ? 20 : i / 2 + 1)) && (!JRMCoreClient.mc.player.world.field_72995_K || !JRMCoreClient.mc.func_147113_T())) {
                   this.timer = Instant.now();
                   i = i / 2 >= 20 ? i / 50 + 1 : 1;
                   if (i > 5) {
@@ -6796,7 +6796,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
             guiTop += 5;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             guiLocation = new ResourceLocation(MiniGame.training1);
-            mc.field_71446_o.func_110577_a(guiLocation);
+            mc.field_71446_o.bindTexture(guiLocation);
             this.miniGameAirBoxing.stateManager(guiLeft, guiTop);
             i = 0;
             int COLOR_ID = true;
@@ -6868,7 +6868,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       int guiTop = (this.field_146295_m - ySize) / 2;
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation guiLocation = new ResourceLocation(pc);
-      mc.field_71446_o.func_110577_a(guiLocation);
+      mc.field_71446_o.bindTexture(guiLocation);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
       String title = "Select a Group Member";
       var8.func_78276_b(title, guiLeft + 5, guiTop + 5, 0);
@@ -6876,9 +6876,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       if (JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreH.GIDs != null) {
          for(int pl = 0; pl < (JRMCoreH.plyrs.length < JRMCoreH.GIDs.length ? JRMCoreH.plyrs.length : JRMCoreH.GIDs.length); ++pl) {
             if (JRMCoreH.GIDs[pl] == JRMCoreH.GID) {
-               Entity e = mc.field_71441_e.func_72924_a(JRMCoreH.plyrs[pl]);
+               Entity e = mc.field_71441_e.getPlayerEntityByName(JRMCoreH.plyrs[pl]);
                String n;
-               if (JRMCoreH.plyrs[pl].equalsIgnoreCase(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equalsIgnoreCase(JRMCoreClient.mc.player.getName())) {
                   n = JRMCoreH.plyrs[pl];
                   var8.func_78276_b(n, guiLeft + xSize / 2 - 120, guiTop + (ySize + 1) / 2 - 62 + i * 10 - this.ipg * 14 * 10, 0);
                } else {
@@ -6903,7 +6903,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       int guiTop = (this.field_146295_m - ySize) / 2;
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation guiLocation = new ResourceLocation(pc);
-      mc.field_71446_o.func_110577_a(guiLocation);
+      mc.field_71446_o.bindTexture(guiLocation);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
       if (help_mode == 0) {
          this.drawHUD_helpgmodeselect(posX, posY, var5, var6, var8);
@@ -6919,7 +6919,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
    private void drawHUD_helpgmodeselect(int posX, int posY, ScaledResolution var5, int var6, FontRenderer var8) {
       ResourceLocation gui_help_tab = new ResourceLocation(gui_help_tabs);
-      mc.field_71446_o.func_110577_a(gui_help_tab);
+      mc.field_71446_o.bindTexture(gui_help_tab);
       this.func_73729_b(this.guiLeft, this.guiTop + 18, 0, 0, this.xSize, this.ySize);
       var8.func_78276_b(JRMCoreH.trl("jrmc", "help_main") + ": ", this.guiLeft + 10, this.guiTop + 5, 0);
       var8.func_78276_b(JRMCoreH.trl("jrmc", "help_main1_1"), this.guiLeft + 80, this.guiTop + 25, 0);
@@ -6982,7 +6982,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          int kep_x = false;
          int kep_y = false;
          ResourceLocation kep = new ResourceLocation(JRMCoreH.tjjrmc + ":help/inv.png");
-         mc.field_71446_o.func_110577_a(kep);
+         mc.field_71446_o.bindTexture(kep);
          int kep_x = 168;
          int kep_y = 78;
          this.func_73729_b(this.guiLeft + 40, this.guiTop + 75, 0, 0, kep_x, kep_y);
@@ -7055,7 +7055,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          int k;
          for(k = 0; k < 4; ++k) {
             ResourceLocation kep = new ResourceLocation(JRMCoreH.tjjrmc + ":help/craft" + (k < Recipes ? "" : "empty") + ".png");
-            mc.field_71446_o.func_110577_a(kep);
+            mc.field_71446_o.bindTexture(kep);
             int i = k % 2;
             int j = k > 1 ? 1 : 0;
             int kep_x = 241;
@@ -7150,7 +7150,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       int guiTop = (this.field_146295_m - ySize) / 2;
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation guiLocation = new ResourceLocation(wish);
-      mc.field_71446_o.func_110577_a(guiLocation);
+      mc.field_71446_o.bindTexture(guiLocation);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
       String n = JRMCoreH.trl("jrmc", "Back");
       int nw = this.field_146289_q.func_78256_a(n) + 8;
@@ -7617,7 +7617,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          int guiHeight = (int)(256.0F * size);
          GL11.glTranslatef((float)(var6 / 2 - ypos / 2), 5.0F, 0.0F);
          GL11.glScalef(size, size, size);
-         mc.field_71446_o.func_110577_a(new ResourceLocation(JRMCoreH.tjjrmc, "gui/lo/" + JGConfigClientSettings.get_hud_lockon() + ".png"));
+         mc.field_71446_o.bindTexture(new ResourceLocation(JRMCoreH.tjjrmc, "gui/lo/" + JGConfigClientSettings.get_hud_lockon() + ".png"));
          this.func_73729_b(0, 0, 0, 0, 256, 256);
          GL11.glPopMatrix();
          if (JGConfigClientSettings.CLIENT_hud2) {
@@ -7628,10 +7628,10 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          } else {
             byte pwr = JRMCoreH.Pwrtyp;
             ResourceLocation tx = new ResourceLocation((pwr == 1 ? "jinryuumodscore:" : (pwr == 2 ? "jinryuunarutoc:" : "jinryuumodscore:")) + "energy.png");
-            mc.field_71446_o.func_110577_a(tx);
+            mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(JGConfigClientSettings.CLIENT_hud0x + (pwr == 1 ? 10 : 0), JGConfigClientSettings.CLIENT_hud0y + (pwr == 1 ? 10 : 25), 0, 0 + (pwr == 1 ? JGConfigClientSettings.get_hud_pos(0) : 86), pwr == 1 ? JGConfigClientSettings.get_hud_x() + this.getx1() : 50, pwr == 1 ? JGConfigClientSettings.get_hud_y() + this.gety1() : 86);
             tx = new ResourceLocation("jinryuumodscore:health.png");
-            mc.field_71446_o.func_110577_a(tx);
+            mc.field_71446_o.bindTexture(tx);
             int img_height = JGConfigClientSettings.get_hud_1_height();
             int var_x = var5.func_78326_a() + JGConfigClientSettings.CLIENT_hud1x;
             int var = (var5.func_78328_b() - JGConfigClientSettings.CLIENT_hud1y) / 2 + 25;
@@ -7943,7 +7943,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
          int ll = Integer.parseInt("" + o[6]);
          int descw = var8.func_78256_a(desc);
          int var10000 = 1 + var8.func_78256_a(desc) / ll;
-         mc.field_71446_o.func_110577_a(new ResourceLocation("jinryuumodscore:allw.png"));
+         mc.field_71446_o.bindTexture(new ResourceLocation("jinryuumodscore:allw.png"));
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.8F);
          int desch = JRMCoreH.txt(desc, (String)o[1], Integer.parseInt("" + o[2]), false, 0, 0, ll);
          ScaledResolution var5 = new ScaledResolution(mc, mc.field_71443_c, mc.field_71440_d);
@@ -7998,7 +7998,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       int guiTop2 = (this.field_146295_m - ySize2) / 2;
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(icons);
-      mc.field_71446_o.func_110577_a(tx);
+      mc.field_71446_o.bindTexture(tx);
       GL11.glPushMatrix();
       int alignment1 = 654591;
       int alignment2 = 6028287;
@@ -8105,11 +8105,11 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
    protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-      mc.func_110434_K().func_110577_a(field_110408_a);
+      mc.func_110434_K().bindTexture(field_110408_a);
       int k = this.guiLeft;
       int l = this.guiTop;
       this.func_73729_b(k, l, 0, 0, this.xSize, this.ySize);
-      func_110423_a(k + 51, l + 75, 30, (float)(k + 51) - this.xSize_lo, (float)(l + 75 - 50) - this.ySize_lo, mc.field_71439_g);
+      func_110423_a(k + 51, l + 75, 30, (float)(k + 51) - this.xSize_lo, (float)(l + 75 - 50) - this.ySize_lo, mc.player);
    }
 
    public static void head(int par0, int par1, int par2, float par3, float par4, EntityLivingBase par5EntityLivingBase) {
@@ -8119,8 +8119,8 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       GL11.glScalef((float)(-par2), (float)par2, (float)par2);
       GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
       float f2 = par5EntityLivingBase.field_70761_aq;
-      float f3 = par5EntityLivingBase.field_70177_z;
-      float f4 = par5EntityLivingBase.field_70125_A;
+      float f3 = par5EntityLivingBase.rotationYaw;
+      float f4 = par5EntityLivingBase.rotationPitch;
       float f5 = par5EntityLivingBase.field_70758_at;
       float f6 = par5EntityLivingBase.field_70759_as;
       GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
@@ -8128,16 +8128,16 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
       GL11.glRotatef(-((float)Math.atan((double)(par4 / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
       par5EntityLivingBase.field_70761_aq = (float)Math.atan((double)(par3 / 40.0F)) * 20.0F;
-      par5EntityLivingBase.field_70177_z = (float)Math.atan((double)(par3 / 40.0F)) * 40.0F;
-      par5EntityLivingBase.field_70125_A = -((float)Math.atan((double)(par4 / 40.0F))) * 20.0F;
-      par5EntityLivingBase.field_70759_as = par5EntityLivingBase.field_70177_z;
-      par5EntityLivingBase.field_70758_at = par5EntityLivingBase.field_70177_z;
+      par5EntityLivingBase.rotationYaw = (float)Math.atan((double)(par3 / 40.0F)) * 40.0F;
+      par5EntityLivingBase.rotationPitch = -((float)Math.atan((double)(par4 / 40.0F))) * 20.0F;
+      par5EntityLivingBase.field_70759_as = par5EntityLivingBase.rotationYaw;
+      par5EntityLivingBase.field_70758_at = par5EntityLivingBase.rotationYaw;
       GL11.glTranslatef(0.0F, par5EntityLivingBase.field_70129_M, 0.0F);
       RenderManager.field_78727_a.field_78735_i = 180.0F;
       renderEntityWithPosYaw(par5EntityLivingBase, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
       par5EntityLivingBase.field_70761_aq = f2;
-      par5EntityLivingBase.field_70177_z = f3;
-      par5EntityLivingBase.field_70125_A = f4;
+      par5EntityLivingBase.rotationYaw = f3;
+      par5EntityLivingBase.rotationPitch = f4;
       par5EntityLivingBase.field_70758_at = f5;
       par5EntityLivingBase.field_70759_as = f6;
       GL11.glPopMatrix();
@@ -8153,9 +8153,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
 
       try {
          render = RenderManager.field_78727_a.func_78713_a(par1Entity);
-         if (render != null && RenderManager.field_78727_a.field_78724_e != null) {
+         if (render != null && RenderManager.field_78727_a.renderEngine != null) {
             try {
-               render.func_76986_a(par1Entity, par2, par4, par6, par8, par9);
+               render.doRender(par1Entity, par2, par4, par6, par8, par9);
             } catch (Throwable var12) {
                throw new ReportedException(CrashReport.func_85055_a(var12, "Rendering entity in world"));
             }
@@ -8182,8 +8182,8 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       GL11.glScalef((float)(-scale), (float)scale, (float)scale);
       GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
       float f2 = entity.field_70761_aq;
-      float f3 = entity.field_70177_z;
-      float f4 = entity.field_70125_A;
+      float f3 = entity.rotationYaw;
+      float f4 = entity.rotationPitch;
       float f5 = entity.field_70758_at;
       float f6 = entity.field_70759_as;
       GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
@@ -8197,16 +8197,16 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       }
 
       entity.field_70761_aq = hr ? (float)(i ? -1 : 1) * (float)Math.atan((double)(par3 / 40.0F)) * 20.0F : 0.0F;
-      entity.field_70177_z = hr ? (float)(i ? -1 : 1) * (float)Math.atan((double)(par3 / 40.0F)) * 40.0F : 0.0F;
-      entity.field_70125_A = hr ? -((float)Math.atan((double)(par4 / 40.0F))) * 20.0F : 0.0F;
-      entity.field_70759_as = hr ? entity.field_70177_z : 0.0F;
-      entity.field_70758_at = hr ? entity.field_70177_z : 0.0F;
+      entity.rotationYaw = hr ? (float)(i ? -1 : 1) * (float)Math.atan((double)(par3 / 40.0F)) * 40.0F : 0.0F;
+      entity.rotationPitch = hr ? -((float)Math.atan((double)(par4 / 40.0F))) * 20.0F : 0.0F;
+      entity.field_70759_as = hr ? entity.rotationYaw : 0.0F;
+      entity.field_70758_at = hr ? entity.rotationYaw : 0.0F;
       GL11.glTranslatef(0.0F, entity.field_70129_M, 0.0F);
       RenderManager.field_78727_a.field_78735_i = 180.0F;
       RenderManager.field_78727_a.func_147940_a(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
       entity.field_70761_aq = f2;
-      entity.field_70177_z = f3;
-      entity.field_70125_A = f4;
+      entity.rotationYaw = f3;
+      entity.rotationPitch = f4;
       entity.field_70758_at = f5;
       entity.field_70759_as = f6;
       GL11.glPopMatrix();
@@ -8241,24 +8241,24 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       }
 
       float f2 = par5EntityLivingBase.field_70761_aq;
-      float f3 = par5EntityLivingBase.field_70177_z;
-      float f4 = par5EntityLivingBase.field_70125_A;
+      float f3 = par5EntityLivingBase.rotationYaw;
+      float f4 = par5EntityLivingBase.rotationPitch;
       float f5 = par5EntityLivingBase.field_70758_at;
       float f6 = par5EntityLivingBase.field_70759_as;
       GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
       RenderHelper.func_74519_b();
       GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
       par5EntityLivingBase.field_70761_aq = headRoton ? -((float)Math.atan((double)(par3 / 40.0F))) * 20.0F : 0.0F;
-      par5EntityLivingBase.field_70177_z = headRoton ? -((float)Math.atan((double)(par3 / 40.0F))) * 40.0F : (float)headRotX;
-      par5EntityLivingBase.field_70125_A = headRoton ? -((float)Math.atan((double)(par4 / 40.0F))) * 20.0F : (float)headRotZ;
-      par5EntityLivingBase.field_70759_as = par5EntityLivingBase.field_70177_z;
-      par5EntityLivingBase.field_70758_at = par5EntityLivingBase.field_70177_z;
+      par5EntityLivingBase.rotationYaw = headRoton ? -((float)Math.atan((double)(par3 / 40.0F))) * 40.0F : (float)headRotX;
+      par5EntityLivingBase.rotationPitch = headRoton ? -((float)Math.atan((double)(par4 / 40.0F))) * 20.0F : (float)headRotZ;
+      par5EntityLivingBase.field_70759_as = par5EntityLivingBase.rotationYaw;
+      par5EntityLivingBase.field_70758_at = par5EntityLivingBase.rotationYaw;
       GL11.glTranslatef(0.0F, par5EntityLivingBase.field_70129_M, 0.0F);
       RenderManager.field_78727_a.field_78735_i = 180.0F;
       RenderManager.field_78727_a.func_147940_a(par5EntityLivingBase, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
       par5EntityLivingBase.field_70761_aq = f2;
-      par5EntityLivingBase.field_70177_z = f3;
-      par5EntityLivingBase.field_70125_A = f4;
+      par5EntityLivingBase.rotationYaw = f3;
+      par5EntityLivingBase.rotationPitch = f4;
       par5EntityLivingBase.field_70758_at = f5;
       par5EntityLivingBase.field_70759_as = f6;
       GL11.glPopMatrix();
@@ -8299,9 +8299,9 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
+      model.rotateAngleX = x;
       model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleZ = z;
    }
 
    public boolean func_73868_f() {
@@ -8328,7 +8328,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       this.func_73866_w_();
       Minecraft minecraft = JRMCoreClient.mc;
       World world = minecraft.field_71441_e;
-      EntityPlayerSP entityplayersp = minecraft.field_71439_g;
+      EntityPlayerSP entityplayersp = minecraft.player;
       ScaledResolution scaledresolution = new ScaledResolution(minecraft, minecraft.field_71443_c, minecraft.field_71440_d);
       int width = scaledresolution.func_78326_a() / 2;
       int height = scaledresolution.func_78328_b() / 2;
@@ -8351,7 +8351,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       String var4 = "jinryuudragonbc:sagas.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation guiLocation = new ResourceLocation(var4);
-      mc.field_71446_o.func_110577_a(guiLocation);
+      mc.field_71446_o.bindTexture(guiLocation);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
    }
 
@@ -8362,8 +8362,8 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glDisable(3008);
       ResourceLocation guiLocation = new ResourceLocation(this.textureFile);
-      mc.field_71446_o.func_110577_a(guiLocation);
-      Tessellator var3 = Tessellator.field_78398_a;
+      mc.field_71446_o.bindTexture(guiLocation);
+      Tessellator var3 = Tessellator.INSTANCE;
       var3.func_78382_b();
       var3.func_78374_a(0.0D, (double)par2, -90.0D, 0.0D, 1.0D);
       var3.func_78374_a((double)par1, (double)par2, -90.0D, 1.0D, 1.0D);
@@ -8751,7 +8751,7 @@ public class JRMCoreGuiScreen extends GuiScreen implements ClipboardOwner, GuiYe
    }
 
    static {
-      owner = JRMCoreClient.mc.field_71439_g.func_70005_c_();
+      owner = JRMCoreClient.mc.player.getName();
       type = JRMCoreH.techBase[3];
       speed = JRMCoreH.techBase[4];
       dam = JRMCoreH.techBase[5];

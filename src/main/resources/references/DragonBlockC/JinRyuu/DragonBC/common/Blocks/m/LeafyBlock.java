@@ -59,7 +59,7 @@ public class LeafyBlock extends BlockLeaves {
    }
 
    public IIcon func_149691_a(int side, int meta) {
-      this.func_150122_b(Minecraft.func_71410_x().field_71474_y.field_74347_j);
+      this.func_150122_b(Minecraft.func_71410_x().gameSettings.field_74347_j);
       return (meta & 3) == 1 ? this.field_150129_M[this.field_150127_b][1] : this.field_150129_M[this.field_150127_b][0];
    }
 

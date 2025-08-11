@@ -69,11 +69,11 @@ public class ComJrmcKills extends CommandBase {
                   Karma = JRMCoreH.getInt(entityplayermp, "jrmcKillCountNeut");
                   Total = JRMCoreH.getInt(entityplayermp, "jrmcKillCountEvil");
                   Good = KllCG + Karma + Total;
-                  this.setter("topBadKarma", Karma, player.func_70005_c_());
-                  this.setter("topTotalKills", Good, player.func_70005_c_());
-                  this.setter("topGoodKills", KllCG, player.func_70005_c_());
-                  this.setter("topNeutralKills", Karma, player.func_70005_c_());
-                  this.setter("topEvilKills", Total, player.func_70005_c_());
+                  this.setter("topBadKarma", Karma, player.getName());
+                  this.setter("topTotalKills", Good, player.getName());
+                  this.setter("topGoodKills", KllCG, player.getName());
+                  this.setter("topNeutralKills", Karma, player.getName());
+                  this.setter("topEvilKills", Total, player.getName());
                }
 
                Object[] topBadKarma = this.getter("topBadKarma");
@@ -132,7 +132,7 @@ public class ComJrmcKills extends CommandBase {
             entitycommansender.func_145747_a((new ChatComponentText("Evil Kills: " + KllCG)).func_150255_a(color));
             entitycommansender.func_145747_a((new ChatComponentText("Bad Karma: " + Karma)).func_150255_a(color));
             entitycommansender.func_145747_a((new ChatComponentText("Alignment: " + JRMCoreH.AlgnmntNms[JRMCoreH.Algnmnt(Align)])).func_150255_a(color));
-            this.notifyAdmins(par1ICommandSender, "%s checked kill counts of %s  ", new Object[]{func_71521_c(par1ICommandSender).getDisplayName(), entityplayermp.func_70005_c_()});
+            this.notifyAdmins(par1ICommandSender, "%s checked kill counts of %s  ", new Object[]{func_71521_c(par1ICommandSender).getDisplayName(), entityplayermp.getName()});
          }
 
       }

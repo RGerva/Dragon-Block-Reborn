@@ -49,7 +49,7 @@ public class ItemBarberSnC extends Item {
 
       if (par2World.field_72995_K) {
          barberTarget = null;
-         par3EntityPlayer.openGui(mod_JRMCore.instance, 8, par3EntityPlayer.field_70170_p, (int)par3EntityPlayer.field_70165_t, (int)par3EntityPlayer.field_70163_u, (int)par3EntityPlayer.field_70161_v);
+         par3EntityPlayer.openGui(mod_JRMCore.instance, 8, par3EntityPlayer.world, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ);
       }
 
       if (!par3EntityPlayer.field_71075_bZ.field_75098_d) {
@@ -60,11 +60,11 @@ public class ItemBarberSnC extends Item {
    }
 
    public boolean func_111207_a(ItemStack itemstack, EntityPlayer player, EntityLivingBase entity) {
-      if (entity.field_70170_p.field_72995_K) {
+      if (entity.world.field_72995_K) {
          if (JRMCoreH.JFC() && JRMCoreHJFC.isChildNPC(entity)) {
             itemstack.func_77972_a(1, entity);
             barberTarget = entity;
-            player.openGui(mod_JRMCore.instance, 8, player.field_70170_p, (int)player.field_70165_t, (int)player.field_70163_u, (int)player.field_70161_v);
+            player.openGui(mod_JRMCore.instance, 8, player.world, (int)player.posX, (int)player.posY, (int)player.posZ);
          }
 
          return true;
@@ -72,8 +72,8 @@ public class ItemBarberSnC extends Item {
          return false;
       } else {
          IShearable target = (IShearable)entity;
-         if (target.isShearable(itemstack, entity.field_70170_p, (int)entity.field_70165_t, (int)entity.field_70163_u, (int)entity.field_70161_v)) {
-            ArrayList<ItemStack> drops = target.onSheared(itemstack, entity.field_70170_p, (int)entity.field_70165_t, (int)entity.field_70163_u, (int)entity.field_70161_v, EnchantmentHelper.func_77506_a(Enchantment.field_77346_s.field_77352_x, itemstack));
+         if (target.isShearable(itemstack, entity.world, (int)entity.posX, (int)entity.posY, (int)entity.posZ)) {
+            ArrayList<ItemStack> drops = target.onSheared(itemstack, entity.world, (int)entity.posX, (int)entity.posY, (int)entity.posZ, EnchantmentHelper.func_77506_a(Enchantment.field_77346_s.field_77352_x, itemstack));
             Random rand = new Random();
 
             EntityItem ent;

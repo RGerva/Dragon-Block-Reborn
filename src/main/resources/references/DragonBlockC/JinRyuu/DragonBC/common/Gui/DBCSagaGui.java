@@ -49,9 +49,9 @@ public class DBCSagaGui extends Gui {
       String var4 = "jinryuudragonbc:radar.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(var4);
-      this.mc.field_71446_o.func_110577_a(tx);
-      double heading = Math.toRadians((double)this.mc.field_71439_g.field_70177_z) + 1.5707963267948966D;
-      int pitch = (int)this.mc.field_71439_g.field_70125_A + 60;
+      this.mc.field_71446_o.bindTexture(tx);
+      double heading = Math.toRadians((double)this.mc.player.rotationYaw) + 1.5707963267948966D;
+      int pitch = (int)this.mc.player.rotationPitch + 60;
       if (pitch > 0) {
          this.func_73729_b(guiLeft - pitch, guiTop - pitch, 0, 0, xSize, ySize);
          drawArrow((double)(guiLeft2 - pitch), (double)(guiTop2 - pitch), heading, 10.0D, Color.GREEN.getRGB());
@@ -72,9 +72,9 @@ public class DBCSagaGui extends Gui {
       String var4 = "jinryuudragonbc:radarm.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(var4);
-      this.mc.field_71446_o.func_110577_a(tx);
-      double heading = Math.toRadians((double)this.mc.field_71439_g.field_70177_z) + 1.5707963267948966D;
-      int pitch = (int)this.mc.field_71439_g.field_70125_A + 60;
+      this.mc.field_71446_o.bindTexture(tx);
+      double heading = Math.toRadians((double)this.mc.player.rotationYaw) + 1.5707963267948966D;
+      int pitch = (int)this.mc.player.rotationPitch + 60;
       if (pitch > 0) {
          this.func_73729_b(guiLeft - pitch, guiTop - pitch, 0, 0, xSize, ySize);
       } else {
@@ -103,7 +103,7 @@ public class DBCSagaGui extends Gui {
       GL11.glEnable(3042);
       GL11.glDisable(3553);
       GL11.glBlendFunc(770, 771);
-      Tessellator tes = Tessellator.field_78398_a;
+      Tessellator tes = Tessellator.INSTANCE;
       tes.func_78382_b();
       tes.func_78377_a(coords[0], coords[1], zDepth);
       tes.func_78377_a(coords[2], coords[3], zDepth);
@@ -123,7 +123,7 @@ public class DBCSagaGui extends Gui {
    }
 
    public void DragonDetect(double x, double y, float f) {
-      EntityPlayerSP entityplayersp = this.mc.field_71439_g;
+      EntityPlayerSP entityplayersp = this.mc.player;
       ScaledResolution scaledresolution = new ScaledResolution(this.mc, this.mc.field_71443_c, this.mc.field_71440_d);
       int width = scaledresolution.func_78326_a();
       int height = scaledresolution.func_78328_b();
@@ -141,7 +141,7 @@ public class DBCSagaGui extends Gui {
       String var4 = "jinryuudragonbc:detect.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(var4);
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       this.func_73729_b((int)((double)guiLeft + x - (double)f), (int)((double)guiTop + y - (double)f), 0, 0, xSize, ySize);
       GL11.glDisable(3042);
       GL11.glPopMatrix();

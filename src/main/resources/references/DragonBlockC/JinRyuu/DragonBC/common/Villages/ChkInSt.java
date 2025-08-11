@@ -1540,7 +1540,7 @@ public class ChkInSt extends WorldGenerator {
          ((ChkInStP2)p2).generate2(w, rand, i, j, k);
          EntityMasterEnma namekian03 = new EntityMasterEnma(w);
          namekian03.func_70029_a(w);
-         namekian03.func_70012_b(75.0D, 91.0D, 53.0D, 0.0F, 0.0F);
+         namekian03.setLocationAndAngles(75.0D, 91.0D, 53.0D, 0.0F, 0.0F);
          w.func_72838_d(namekian03);
       }
 

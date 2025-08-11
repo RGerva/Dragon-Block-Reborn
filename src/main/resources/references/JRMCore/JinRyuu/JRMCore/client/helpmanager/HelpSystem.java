@@ -80,7 +80,7 @@ public class HelpSystem {
          } else if (!extraInventory) {
             extraInventory = true;
             giveHelp = false;
-            JRMCoreClient.phc.handleNotification("Extra Inventory", "Press 2nd Function Key (" + GameSettings.func_74298_c(JRMCoreKeyHandler.Fn.func_151463_i()) + ") + Inventory Key (" + GameSettings.func_74298_c(Minecraft.func_71410_x().field_71474_y.field_151445_Q.func_151463_i()) + ") to open up your Extra Inventory slots.\nThere you can place Scouters, weights, Vanity, and other armor items.", (byte)4, (byte)1, (byte)1, 15445286);
+            JRMCoreClient.phc.handleNotification("Extra Inventory", "Press 2nd Function Key (" + GameSettings.func_74298_c(JRMCoreKeyHandler.Fn.func_151463_i()) + ") + Inventory Key (" + GameSettings.func_74298_c(Minecraft.func_71410_x().gameSettings.field_151445_Q.func_151463_i()) + ") to open up your Extra Inventory slots.\nThere you can place Scouters, weights, Vanity, and other armor items.", (byte)4, (byte)1, (byte)1, 15445286);
          } else if (!gainTP && JRMCoreH.Pwrtyp != 0) {
             gainTP = true;
             giveHelp = false;

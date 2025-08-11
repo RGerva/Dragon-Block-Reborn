@@ -27,7 +27,7 @@ public class DragonBlock01ItemR implements IItemRenderer {
    public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
       GL11.glPushMatrix();
       ResourceLocation tx = new ResourceLocation("jinryuudragonbc:dragon_ball.png");
-      JRMCoreClient.mc.func_110434_K().func_110577_a(tx);
+      JRMCoreClient.mc.func_110434_K().bindTexture(tx);
       GL11.glScalef(this.t, this.t, this.t);
       GL11.glTranslatef((type == ItemRenderType.ENTITY ? 0.1F : 0.5F) + -0.08F * this.t, -0.9F - 0.1F * this.t, 0.0F);
       if (type == ItemRenderType.INVENTORY) {

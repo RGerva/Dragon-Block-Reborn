@@ -141,9 +141,9 @@ public class ComDbcSpawnKi extends CommandBase {
                }
 
                byte[] sts = JRMCoreH.techDBCstatsDefault;
-               ((EntityLivingBase)entityplayermp).field_70170_p.func_72956_a((Entity)entityplayermp, "jinryuudragonbc:DBC2.basicbeam_fire", 0.5F, 1.0F);
+               ((EntityLivingBase)entityplayermp).world.func_72956_a((Entity)entityplayermp, "jinryuudragonbc:DBC2.basicbeam_fire", 0.5F, 1.0F);
                mr = new EntityEnergyAtt((EntityLivingBase)entityplayermp, type, speed, 50, effect, color, density, (byte)0, (byte)0, sndMv, chrg, dam1, 0, sts, (byte)0);
-               ((EntityLivingBase)entityplayermp).field_70170_p.func_72838_d(mr);
+               ((EntityLivingBase)entityplayermp).world.func_72838_d(mr);
                spawned = true;
             }
          }

@@ -20,19 +20,19 @@ public class ModelAuraG extends ModelBiped {
       this.setRotation(this.auro, 0.0F, 0.0F, 0.0F);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.auro.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.auro.render(f5);
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
    }
 
    public void renderModel(Entity entity, float f, float r, float w, float s) {
-      this.func_78088_a(entity, s, w, r, 0.0F, 0.0F, f);
+      this.render(entity, s, w, r, 0.0F, 0.0F, f);
    }
 
    public int func_78104_a() {

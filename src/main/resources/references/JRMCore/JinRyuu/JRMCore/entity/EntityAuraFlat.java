@@ -51,9 +51,9 @@ public class EntityAuraFlat extends EntityLiving {
       this.lrZ = r.nextBoolean();
       float value = ((float)r.nextInt(1000) / 100.0F - 5.0F) / 4.0F;
       float limit = 1.25F;
-      this.field_70165_t = (double)((xz ? value : 1.25F) * (float)(this.lrX ? -1 : 1));
+      this.posX = (double)((xz ? value : 1.25F) * (float)(this.lrX ? -1 : 1));
       this.startY = -((float)r.nextInt(1000) / 100.0F - 5.0F) / 3.0F + 2.0F;
-      this.field_70161_v = (double)((!xz ? value : 1.25F) * (float)(this.lrZ ? -1 : 1));
+      this.posZ = (double)((!xz ? value : 1.25F) * (float)(this.lrZ ? -1 : 1));
       this.directionX = xz;
    }
 
@@ -63,14 +63,14 @@ public class EntityAuraFlat extends EntityLiving {
       this.transparency.update(this.age);
       this.spawnTime = Instant.now();
       if (this.age >= 0.25F) {
-         this.func_70106_y();
+         this.setDead();
       }
 
-      this.field_70163_u = (double)(this.startY - this.array.lastValue);
+      this.posY = (double)(this.startY - this.array.lastValue);
       if (!this.directionX) {
-         this.field_70165_t = (double)(this.array.lastValue * (float)(this.lrX ? -1 : 1));
+         this.posX = (double)(this.array.lastValue * (float)(this.lrX ? -1 : 1));
       } else {
-         this.field_70161_v = (double)(this.array.lastValue * (float)(this.lrZ ? -1 : 1));
+         this.posZ = (double)(this.array.lastValue * (float)(this.lrZ ? -1 : 1));
       }
 
    }

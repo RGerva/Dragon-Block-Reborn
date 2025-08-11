@@ -200,7 +200,7 @@ public class JRMCorePacHanS {
       }
 
       MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-      SenderName = server.func_71266_T() ? p.func_146103_bH().getId() + ";" + p.func_70005_c_() : p.func_70005_c_();
+      SenderName = server.func_71266_T() ? p.func_146103_bH().getId() + ";" + p.getName() : p.getName();
       NBTTagCompound nbt = this.nbt(p, "pres");
       if (c == 80 && JRMCoreConfig.ssurl.contains("http://")) {
          String[] ssurl = JRMCoreConfig.ssurl.split(",");
@@ -220,10 +220,10 @@ public class JRMCorePacHanS {
 
             String[] s1 = ssc.split(";");
             String uid = RandomStringUtils.randomAlphanumeric(10).toUpperCase();
-            mod_JRMCore.logger.info("PWSPlog: Phase1! " + p.func_70005_c_() + " issued purchase for localID " + (r + 1) + "! UniqueID=" + uid);
+            mod_JRMCore.logger.info("PWSPlog: Phase1! " + p.getName() + " issued purchase for localID " + (r + 1) + "! UniqueID=" + uid);
             SenderName = SenderName + ";" + uid;
             if (!ssc.contains("=")) {
-               mod_JRMCore.logger.info("PWSPlog: " + p.func_70005_c_() + " something went wrong!");
+               mod_JRMCore.logger.info("PWSPlog: " + p.getName() + " something went wrong!");
                p.func_145747_a((new ChatComponentText("something went wrong, get in contact with an admin!")).func_150255_a(chatStyle));
             } else {
                String[] sn = new String[s1.length];
@@ -258,7 +258,7 @@ public class JRMCorePacHanS {
 
                         nbt.func_74768_a("jrmcTpint", n2);
                         JRMCoreH.jrmcDataToP(c, a + "", p);
-                        mod_JRMCore.logger.info("PWSPlog: " + p.func_70005_c_() + " successfully bought " + addtp + " TP and now has " + n2 + (n3 > 0 ? " and " + n3 + " has gone wasted!" : "."));
+                        mod_JRMCore.logger.info("PWSPlog: " + p.getName() + " successfully bought " + addtp + " TP and now has " + n2 + (n3 > 0 ? " and " + n3 + " has gone wasted!" : "."));
                         p.func_145747_a((new ChatComponentText("You have successfully bought " + addtp + " TP and now has " + n2 + (n3 > 0 ? " and " + n3 + " has gone wasted!" : "."))).func_150255_a(chatStyle));
                      } else {
                         String it;
@@ -271,15 +271,15 @@ public class JRMCorePacHanS {
                            if (!sn[r].contains("||")) {
                               n1 = sn[r].split("!")[0].substring(2);
                               String com = sn[r].split("!")[1];
-                              nam = String.format(com.replace("@p", "%s"), p.func_70005_c_());
+                              nam = String.format(com.replace("@p", "%s"), p.getName());
                               p.func_145747_a((new ChatComponentText("You have successfully bought " + n1 + "!")).func_150255_a(chatStyle));
-                              mod_JRMCore.logger.info("PWSPlog: " + p.func_70005_c_() + " successfully bought " + n1 + "!");
-                              p.field_70170_p.func_147449_b(0, 254, 0, Blocks.field_150483_bI);
-                              TileEntity tileentity = p.field_70170_p.func_147438_o(0, 254, 0);
+                              mod_JRMCore.logger.info("PWSPlog: " + p.getName() + " successfully bought " + n1 + "!");
+                              p.world.func_147449_b(0, 254, 0, Blocks.field_150483_bI);
+                              TileEntity tileentity = p.world.func_147438_o(0, 254, 0);
                               CommandBlockLogic commandblocklogic = ((TileEntityCommandBlock)tileentity).func_145993_a();
                               commandblocklogic.func_145752_a(nam);
-                              commandblocklogic.func_145755_a(p.field_70170_p);
-                              p.field_70170_p.func_147468_f(0, 254, 0);
+                              commandblocklogic.func_145755_a(p.world);
+                              p.world.func_147468_f(0, 254, 0);
                            } else {
                               ssa = sn[r].split("\\|\\|");
                               it = ssa[0].substring(2);
@@ -288,17 +288,17 @@ public class JRMCorePacHanS {
                                  nam = ssa[n2];
                                  n1 = nam.split("!")[0].substring(2);
                                  String com = nam.split("!")[1];
-                                 String s = String.format(com.replace("@p", "%s"), p.func_70005_c_());
-                                 p.field_70170_p.func_147449_b(0, 254, 0, Blocks.field_150483_bI);
-                                 TileEntity tileentity = p.field_70170_p.func_147438_o(0, 254, 0);
+                                 String s = String.format(com.replace("@p", "%s"), p.getName());
+                                 p.world.func_147449_b(0, 254, 0, Blocks.field_150483_bI);
+                                 TileEntity tileentity = p.world.func_147438_o(0, 254, 0);
                                  CommandBlockLogic commandblocklogic = ((TileEntityCommandBlock)tileentity).func_145993_a();
                                  commandblocklogic.func_145752_a(s);
-                                 commandblocklogic.func_145755_a(p.field_70170_p);
-                                 p.field_70170_p.func_147468_f(0, 254, 0);
+                                 commandblocklogic.func_145755_a(p.world);
+                                 p.world.func_147468_f(0, 254, 0);
                               }
 
                               p.func_145747_a((new ChatComponentText("You have successfully bought " + it + "!")).func_150255_a(chatStyle));
-                              mod_JRMCore.logger.info("PWSPlog: " + p.func_70005_c_() + " successfully bought " + it + "!");
+                              mod_JRMCore.logger.info("PWSPlog: " + p.getName() + " successfully bought " + it + "!");
                            }
                         } else if (sn[r].substring(0, 2).contains("IT")) {
                            it = "";
@@ -361,7 +361,7 @@ public class JRMCorePacHanS {
                               }
                            }
 
-                           mod_JRMCore.logger.info("PWSPlog: " + p.func_70005_c_() + " successfully bought " + it);
+                           mod_JRMCore.logger.info("PWSPlog: " + p.getName() + " successfully bought " + it);
                            p.func_145747_a((new ChatComponentText("You have successfully bought " + it)).func_150255_a(chatStyle));
                         }
                      }
@@ -372,7 +372,7 @@ public class JRMCorePacHanS {
             mod_JRMCore.logger.info("PWSPlog: END");
          }
       } else if (c == 80) {
-         mod_JRMCore.logger.info("PWSPlog: " + p.func_70005_c_() + " something terribly went wrong!");
+         mod_JRMCore.logger.info("PWSPlog: " + p.getName() + " something terribly went wrong!");
          p.func_145747_a((new ChatComponentText("something terribly went wrong, get in contact with an admin!")).func_150255_a(chatStyle));
       }
 
@@ -683,14 +683,14 @@ public class JRMCorePacHanS {
                                        } else if (srw[0].equalsIgnoreCase("com")) {
                                           tptype = srw[1];
                                           tptype = tptype.replace("@p", "%s");
-                                          n1 = String.format(tptype, p1.func_70005_c_());
-                                          p1.field_70170_p.func_147449_b(0, 254, 0, Blocks.field_150483_bI);
-                                          TileEntity tileentity = p1.field_70170_p.func_147438_o(0, 254, 0);
+                                          n1 = String.format(tptype, p1.getName());
+                                          p1.world.func_147449_b(0, 254, 0, Blocks.field_150483_bI);
+                                          TileEntity tileentity = p1.world.func_147438_o(0, 254, 0);
                                           CommandBlockLogic commandblocklogic = ((TileEntityCommandBlock)tileentity).func_145993_a();
                                           commandblocklogic.func_145752_a(n1);
-                                          commandblocklogic.func_145755_a(p1.field_70170_p);
-                                          p1.field_70170_p.func_147468_f(0, 254, 0);
-                                          mod_JRMCore.logger.info("MSNlog: " + p1.func_70005_c_() + " successfully earned reward for quest " + seriesID + "/" + msn.getId() + "!");
+                                          commandblocklogic.func_145755_a(p1.world);
+                                          p1.world.func_147468_f(0, 254, 0);
+                                          mod_JRMCore.logger.info("MSNlog: " + p1.getName() + " successfully earned reward for quest " + seriesID + "/" + msn.getId() + "!");
                                        }
                                     } else {
                                        tptype = srw[1];
@@ -802,16 +802,16 @@ public class JRMCorePacHanS {
                               if (t.equalsIgnoreCase("kill")) {
                                  spwn = JRMCoreM.getMCo_data(os, "P").equalsIgnoreCase("spwn");
                                  if (!spwn) {
-                                    float angle = p.field_70177_z;
+                                    float angle = p.rotationYaw;
                                     tpamount = Math.sin((double)(angle / 57.295776F));
                                     rtx = Math.cos((double)(angle / 57.295776F));
-                                    at = p.field_70170_p.func_72976_f((int)(p.field_70165_t - 3.0D * tpamount), (int)(p.field_70161_v + 3.0D * rtx));
+                                    at = p.world.func_72976_f((int)(p.posX - 3.0D * tpamount), (int)(p.posZ + 3.0D * rtx));
                                     dsnS = JRMCoreM.getMCo_data(os, "T");
-                                    this.spawcha(p, p.field_70170_p, JRMCoreM.getMCo_data(os, "N"), JRMCoreM.getMCo_data(os, "H"), JRMCoreM.getMCo_data(os, "A"), dsnS, seriesID + ";" + msnToSendID + ";" + p.func_70005_c_(), p.field_70165_t - 3.0D * tpamount, (double)at, p.field_70161_v + 3.0D * rtx, g);
+                                    this.spawcha(p, p.world, JRMCoreM.getMCo_data(os, "N"), JRMCoreM.getMCo_data(os, "H"), JRMCoreM.getMCo_data(os, "A"), dsnS, seriesID + ";" + msnToSendID + ";" + p.getName(), p.posX - 3.0D * tpamount, (double)at, p.posZ + 3.0D * rtx, g);
                                     JRMCoreM.prog(p, seriesID, msnToSendID, size, JRMCoreM.SYNC_COND_data_REV(2), "1");
                                     msd = JRMCoreM.setSyda(msd, seriesID, msnToSendID, size, JRMCoreM.SYNC_COND_data_REV(2), "1");
                                     String md = JRMCoreM.getMCo_data(os, "S");
-                                    List pl = p.field_70170_p.func_72872_a(EntityPlayer.class, p.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+                                    List pl = p.world.func_72872_a(EntityPlayer.class, p.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
                                     if (pl.size() > 0 && md.length() > 1) {
                                        for(int v = 0; v < pl.size(); ++v) {
                                           EntityPlayer va = (EntityPlayer)pl.get(v);
@@ -824,9 +824,9 @@ public class JRMCorePacHanS {
                                           if (dsnS.length() > 1) {
                                              if (dsnS.contains(",")) {
                                                 String[] dsnSa = dsnS.split(",");
-                                                va.field_70170_p.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
+                                                va.world.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
                                              } else {
-                                                va.field_70170_p.func_72956_a(va, dsnS, 1.0F, 1.0F);
+                                                va.world.func_72956_a(va, dsnS, 1.0F, 1.0F);
                                              }
                                           }
                                        }
@@ -858,17 +858,17 @@ public class JRMCorePacHanS {
                                     tptype = JRMCoreM.getMCo_data(os, "T");
 
                                     for(b = 0; b < (int)((float)JRMCoreM.getMCo_dataI(os, "M") * JRMCoreM.gm(g)); ++b) {
-                                       float angle = p.field_70177_z;
+                                       float angle = p.rotationYaw;
                                        rtx = Math.sin((double)(angle / 57.295776F));
                                        tpres = Math.cos((double)(angle / 57.295776F));
-                                       int Y = p.field_70170_p.func_72976_f((int)(p.field_70165_t - 3.0D * rtx), (int)(p.field_70161_v + 3.0D * tpres));
-                                       this.spawcha(p, p.field_70170_p, JRMCoreM.getMCo_data(os, "N"), JRMCoreM.getMCo_data(os, "H"), JRMCoreM.getMCo_data(os, "A"), tptype, seriesID + ";" + msnToSendID + ";" + p.func_70005_c_(), p.field_70165_t - 3.0D * rtx, (double)Y, p.field_70161_v + 3.0D * tpres, 1);
+                                       int Y = p.world.func_72976_f((int)(p.posX - 3.0D * rtx), (int)(p.posZ + 3.0D * tpres));
+                                       this.spawcha(p, p.world, JRMCoreM.getMCo_data(os, "N"), JRMCoreM.getMCo_data(os, "H"), JRMCoreM.getMCo_data(os, "A"), tptype, seriesID + ";" + msnToSendID + ";" + p.getName(), p.posX - 3.0D * rtx, (double)Y, p.posZ + 3.0D * tpres, 1);
                                     }
 
                                     JRMCoreM.prog(p, seriesID, msnToSendID, size, JRMCoreM.SYNC_COND_data_REV(2), "1");
                                     msd = JRMCoreM.setSyda(msd, seriesID, msnToSendID, size, JRMCoreM.SYNC_COND_data_REV(2), "1");
                                     n1 = JRMCoreM.getMCo_data(os, "S");
-                                    List pl = p.field_70170_p.func_72872_a(EntityPlayer.class, p.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+                                    List pl = p.world.func_72872_a(EntityPlayer.class, p.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
                                     if (pl.size() > 0 && n1.length() > 1) {
                                        for(n3 = 0; n3 < pl.size(); ++n3) {
                                           EntityPlayer va = (EntityPlayer)pl.get(n3);
@@ -881,9 +881,9 @@ public class JRMCorePacHanS {
                                           if (dsnS.length() > 1) {
                                              if (dsnS.contains(",")) {
                                                 String[] dsnSa = dsnS.split(",");
-                                                va.field_70170_p.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
+                                                va.world.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
                                              } else {
-                                                va.field_70170_p.func_72956_a(va, dsnS, 1.0F, 1.0F);
+                                                va.world.func_72956_a(va, dsnS, 1.0F, 1.0F);
                                              }
                                           }
                                        }
@@ -996,14 +996,14 @@ public class JRMCorePacHanS {
    public void handleQuad(int b1, int b2, int b3, int b4, EntityPlayer player) {
       MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
       if (b1 == 1) {
-         player.field_70170_p.func_72956_a(player, "jinryuudragonbc:" + JRMCoreH.techSnds(b2, b3, b4), 1.0F, 1.0F);
+         player.world.func_72956_a(player, "jinryuudragonbc:" + JRMCoreH.techSnds(b2, b3, b4), 1.0F, 1.0F);
       }
 
       String l;
       if (b1 == 2 && JRMCoreConfig.DebugInfo) {
          l = "JRMC has found Potential hacking at ID:01 by player: %s";
-         mod_JRMCore.logger.info(String.format(l, player.func_70005_c_()));
-         CommandBase.func_152373_a(player, (ICommand)null, l, new Object[]{player.func_70005_c_()});
+         mod_JRMCore.logger.info(String.format(l, player.getName()));
+         CommandBase.func_152373_a(player, (ICommand)null, l, new Object[]{player.getName()});
       }
 
       int i;
@@ -1016,7 +1016,7 @@ public class JRMCorePacHanS {
             Random ran = new Random();
             i = ran.nextInt(1000000);
             JRMCoreH.setInt(i, player, "JRMCGID");
-            JRMCoreH.setString(player.func_70005_c_(), player, "JRMCGLIDs");
+            JRMCoreH.setString(player.getName(), player, "JRMCGLIDs");
          } else {
             int pl;
             if (b2 == 2) {
@@ -1057,7 +1057,7 @@ public class JRMCorePacHanS {
                if (b2 == 4) {
                   gid = JRMCoreH.getInt(player, "JRMCGID");
                   lid = JRMCoreH.getString(player, "JRMCGLIDs");
-                  if (player.func_70005_c_().equalsIgnoreCase(lid) && server.func_71213_z() != null && server.func_71213_z().length > 0) {
+                  if (player.getName().equalsIgnoreCase(lid) && server.func_71213_z() != null && server.func_71213_z().length > 0) {
                      for(pl = 0; pl < server.func_71213_z().length; ++pl) {
                         e = JRMCoreH.getPlayerForUsername(server, server.func_71213_z()[pl]);
                         egid = JRMCoreH.getInt(e, "JRMCGID");
@@ -1073,14 +1073,14 @@ public class JRMCorePacHanS {
                   if (b2 == 5) {
                      gid = JRMCoreH.getInt(player, "JRMCGID");
                      lid = JRMCoreH.getString(player, "JRMCGLIDs");
-                     if (player.func_70005_c_().equalsIgnoreCase(lid)) {
+                     if (player.getName().equalsIgnoreCase(lid)) {
                         String i = " ";
                         if (server.func_71213_z() != null && server.func_71213_z().length > 0) {
                            for(pl = 0; pl < server.func_71213_z().length; ++pl) {
                               e = JRMCoreH.getPlayerForUsername(server, server.func_71213_z()[pl]);
                               egid = JRMCoreH.getInt(e, "JRMCGID");
                               if (gid == egid && player.func_145782_y() != e.func_145782_y()) {
-                                 i = e.func_70005_c_();
+                                 i = e.getName();
                                  break;
                               }
                            }
@@ -1101,7 +1101,7 @@ public class JRMCorePacHanS {
                   } else if (b2 == 6) {
                      EntityPlayerMP inv = JRMCoreH.getPlayerForUsername(server, server.func_71213_z()[b3 * 100 + b4]);
                      if (inv != null && JRMCoreH.getInt(inv, "JRMCGID") == 0) {
-                        JRMCoreH.setString(player.func_70005_c_(), inv, "JRMCGIDis");
+                        JRMCoreH.setString(player.getName(), inv, "JRMCGIDis");
                      }
                   } else if (b2 == 7) {
                      gid = JRMCoreH.getInt(player, "JRMCGID");
@@ -1125,7 +1125,7 @@ public class JRMCorePacHanS {
                            e = JRMCoreH.getPlayerForUsername(server, server.func_71213_z()[pl]);
                            egid = JRMCoreH.getInt(e, "JRMCGID");
                            if (egid == gid) {
-                              JRMCoreH.setString(nl.func_70005_c_(), e, "JRMCGLIDs");
+                              JRMCoreH.setString(nl.getName(), e, "JRMCGLIDs");
                            }
                         }
                      }
@@ -1137,7 +1137,7 @@ public class JRMCorePacHanS {
                            e = JRMCoreH.getPlayerForUsername(server, server.func_71213_z()[pl]);
                            egid = JRMCoreH.getInt(e, "JRMCGID");
                            if (egid == gid) {
-                              if (i == b3 && !e.func_70005_c_().equalsIgnoreCase(player.func_70005_c_())) {
+                              if (i == b3 && !e.getName().equalsIgnoreCase(player.getName())) {
                                  JRMCoreH.setString(" ", e, "JRMCGLIDs");
                                  JRMCoreH.setInt((int)0, e, "JRMCGID");
                               }
@@ -1166,9 +1166,9 @@ public class JRMCorePacHanS {
                   int[] PlyrAttrbts = JRMCoreH.PlyrAttrbts(player);
                   result = JRMCoreH.stat(player, 0, pwrtyp, 0, PlyrAttrbts[0], rce, cls, 0.0F);
                   int maxBody = JRMCoreH.stat(player, 2, pwrtyp, 2, PlyrAttrbts[2], rce, cls, 0.0F);
-                  EntityNPCshadow var8 = new EntityNPCshadow(player.field_70170_p, player, maxBody, result, player);
-                  var8.func_70012_b(player.field_70165_t - 0.0D, player.field_70163_u + 1.5D, player.field_70161_v - 0.0D, player.field_70177_z, player.field_70125_A);
-                  player.field_70170_p.func_72838_d(var8);
+                  EntityNPCshadow var8 = new EntityNPCshadow(player.world, player, maxBody, result, player);
+                  var8.setLocationAndAngles(player.posX - 0.0D, player.posY + 1.5D, player.posZ - 0.0D, player.rotationYaw, player.rotationPitch);
+                  player.world.func_72838_d(var8);
                } else {
                   player.func_145747_a(new ChatComponentText(JRMCoreH.cly + "You need more TP to Start training"));
                }
@@ -1206,7 +1206,7 @@ public class JRMCorePacHanS {
                         player.func_145747_a(new ChatComponentText(JRMCoreH.cly + "Reward from Minigame " + reward + " TP"));
                         info = "JRMC given reward of %sTP from minigame at ID:02 by player: %s";
                         if (JRMCoreConfig.DebugInfo) {
-                           mod_JRMCore.logger.info(String.format(info, reward, player.func_70005_c_()));
+                           mod_JRMCore.logger.info(String.format(info, reward, player.getName()));
                         }
                      }
 
@@ -1241,7 +1241,7 @@ public class JRMCorePacHanS {
                      player.func_145747_a(new ChatComponentText(JRMCoreH.cly + "Reward from Minigame " + reward + " TP"));
                      info = "JRMC given reward of %sTP from minigame at ID:02 by player: %s";
                      if (JRMCoreConfig.DebugInfo) {
-                        mod_JRMCore.logger.info(String.format(info, reward, player.func_70005_c_()));
+                        mod_JRMCore.logger.info(String.format(info, reward, player.getName()));
                      }
                   }
 
@@ -1261,8 +1261,8 @@ public class JRMCorePacHanS {
    }
 
    public void handleTech(byte b, String s, EntityPlayer p) {
-      if (JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(p.func_70005_c_()) < JRMCoreConfig.osbic * 20) {
-         p.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(p.func_70005_c_())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(chatStyle));
+      if (JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(p.getName()) < JRMCoreConfig.osbic * 20) {
+         p.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(p.getName())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(chatStyle));
       } else {
          int pwrtyp = JRMCoreH.getByte(p, P);
          String te = "te;;;";
@@ -1287,8 +1287,8 @@ public class JRMCorePacHanS {
                         toteach = JRMCoreH.tech_teach(JRMCoreH.getString(p, JRMCoreH.techNbt[b]));
                         String[] tn = JRMCoreH.tech_conv(toteach.split(";"));
                         i = JRMCoreH.techDBCtpc(tn, true) * 2;
-                        va.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "teachingOffer"), new Object[]{p.func_70005_c_(), tn[0], i})).func_150255_a(JRMCoreH2.styl_ylw));
-                        JRMCoreH.setString(toteach + ";:;" + p.func_70005_c_(), va, "jrmcTechLearn");
+                        va.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "teachingOffer"), new Object[]{p.getName(), tn[0], i})).func_150255_a(JRMCoreH2.styl_ylw));
+                        JRMCoreH.setString(toteach + ";:;" + p.getName(), va, "jrmcTechLearn");
                      } else {
                         p.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "noOneToTeach"), new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
                      }
@@ -1578,7 +1578,7 @@ public class JRMCorePacHanS {
             }
 
             if (b3 != 4) {
-               p.field_70170_p.func_72956_a(p, b3 == 5 ? "jinryuudragonbc:DBC2.swoop" : "jinryuudragonbc:DBC2.tp", 0.25F, p.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
+               p.world.func_72956_a(p, b3 == 5 ? "jinryuudragonbc:DBC2.swoop" : "jinryuudragonbc:DBC2.tp", 0.25F, p.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
             }
          }
 
@@ -1618,8 +1618,8 @@ public class JRMCorePacHanS {
    }
 
    public void handleStats3(byte b, byte b2, byte b3, EntityPlayer p) {
-      if (JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(p.func_70005_c_()) < JRMCoreConfig.osbic * 20) {
-         p.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(p.func_70005_c_())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(chatStyle));
+      if (JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(p.getName()) < JRMCoreConfig.osbic * 20) {
+         p.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(p.getName())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(chatStyle));
       } else {
          NBTTagCompound nbt = this.nbt(p, "pres");
          JGPlayerMP jgPlayer = new JGPlayerMP(p);
@@ -1829,16 +1829,16 @@ public class JRMCorePacHanS {
                               }
                            } else if (JRMCoreConfig.DebugInfo) {
                               info = "JRMC has found Potential hacking at ID:05 by player: %s";
-                              mod_JRMCore.logger.info(String.format(info, p.func_70005_c_()));
-                              CommandBase.func_152373_a(p, (ICommand)null, info, new Object[]{p.func_70005_c_()});
+                              mod_JRMCore.logger.info(String.format(info, p.getName()));
+                              CommandBase.func_152373_a(p, (ICommand)null, info, new Object[]{p.getName()});
                            }
                         } else {
                            info = "JRMC has blocked an action at ID:10 by player: %s for: %s";
-                           mod_JRMCore.logger.info(String.format(info, p.func_70005_c_(), sklnm));
+                           mod_JRMCore.logger.info(String.format(info, p.getName(), sklnm));
                         }
                      } else if (!sklnm.equals("pty") && !doit) {
                         String info = "JRMC has found Potential hacking at ID:15 by player: %s";
-                        mod_JRMCore.logger.info(String.format(info, p.func_70005_c_(), sklnm));
+                        mod_JRMCore.logger.info(String.format(info, p.getName(), sklnm));
                      }
                   } else if (b == 4) {
                      StE = b2 == 100 ? "jrmcSSltX" : (b2 == 101 ? "jrmcSSltY" : "jrmcSSlts");
@@ -1908,8 +1908,8 @@ public class JRMCorePacHanS {
    }
 
    public void handleUpgrade(byte b, EntityPlayer p) {
-      if (JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(p.func_70005_c_()) < JRMCoreConfig.osbic * 20) {
-         p.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(p.func_70005_c_())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(chatStyle));
+      if (JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(p.getName()) < JRMCoreConfig.osbic * 20) {
+         p.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(p.getName())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(chatStyle));
       } else {
          NBTTagCompound nbt = this.nbt(p, "pres");
          JGPlayerMP jgPlayer = new JGPlayerMP(p);

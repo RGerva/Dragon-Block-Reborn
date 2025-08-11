@@ -37,9 +37,9 @@ public class ComReincarnate extends CommandBase {
             String t = JRMCoreH.trlai("dbc", "reincarnated");
             ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
             p.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(color));
-            this.notifyAdmins(par1ICommandSender, "%s reincarnated!", new Object[]{p.func_70005_c_()});
+            this.notifyAdmins(par1ICommandSender, "%s reincarnated!", new Object[]{p.getName()});
          } else {
-            this.notifyAdmins(par1ICommandSender, "Unable to reincarnate while fused.", new Object[]{p.func_70005_c_()});
+            this.notifyAdmins(par1ICommandSender, "Unable to reincarnate while fused.", new Object[]{p.getName()});
          }
 
       }

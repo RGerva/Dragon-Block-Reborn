@@ -123,11 +123,11 @@ public class ComJrmcaBonus extends CommandBase {
 
          try {
             commansender = func_71521_c(commandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var36) {
          }
 
-         boolean notify = entitycommansender.equals("Console") ? JRMCoreConfig.CommandNotifyAdminJRMCABonusConsole : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.CommandNotifyAdminJRMCABonusSelf : JRMCoreConfig.CommandNotifyAdminJRMCABonusOthers);
+         boolean notify = entitycommansender.equals("Console") ? JRMCoreConfig.CommandNotifyAdminJRMCABonusConsole : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.CommandNotifyAdminJRMCABonusSelf : JRMCoreConfig.CommandNotifyAdminJRMCABonusOthers);
          boolean run = false;
          NBTTagCompound nbt = this.nbt(entityplayermp, "pres");
          String startString = nbt.func_74779_i("jrmcAttrBonus" + ATTRIBUTES_SHORT[attribute]);
@@ -190,7 +190,7 @@ public class ComJrmcaBonus extends CommandBase {
 
                run = true;
             } else if (notify) {
-               this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added for " + entityplayermp.func_70005_c_() + ", Reason: Bonus list already contains a value with this ID: " + bonusNameIDString, new Object[0]);
+               this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added for " + entityplayermp.getName() + ", Reason: Bonus list already contains a value with this ID: " + bonusNameIDString, new Object[0]);
             }
          } else {
             double value;
@@ -230,9 +230,9 @@ public class ComJrmcaBonus extends CommandBase {
 
                if (!run && notify) {
                   if (nbtFail) {
-                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.func_70005_c_() + ", Reason: One of the Bonus values is an NBT value name.", new Object[0]);
+                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.getName() + ", Reason: One of the Bonus values is an NBT value name.", new Object[0]);
                   } else {
-                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.func_70005_c_() + ", Reason: Bonus list didn't contain a value with this ID: " + bonusNameIDString, new Object[0]);
+                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.getName() + ", Reason: Bonus list didn't contain a value with this ID: " + bonusNameIDString, new Object[0]);
                   }
                }
             } else {
@@ -263,7 +263,7 @@ public class ComJrmcaBonus extends CommandBase {
                   }
 
                   if (!run && notify) {
-                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.func_70005_c_() + ", Reason: Bonus list didn't contain a value with this " + (number ? "ID" : "Name") + ": " + bonusNameIDString, new Object[0]);
+                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.getName() + ", Reason: Bonus list didn't contain a value with this " + (number ? "ID" : "Name") + ": " + bonusNameIDString, new Object[0]);
                   }
                } else if (mode == 3) {
                   color = (new ChatStyle()).func_150238_a(EnumChatFormatting.GOLD);
@@ -317,7 +317,7 @@ public class ComJrmcaBonus extends CommandBase {
                   }
 
                   if (!run && notify) {
-                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.func_70005_c_() + ", Reason: Bonus list didn't contain a value with this " + (number ? "ID" : "Name") + ": " + bonusNameIDString, new Object[0]);
+                     this.notifyAdmins(commandSender, "Bonus Attribute Failed to be added to for " + entityplayermp.getName() + ", Reason: Bonus list didn't contain a value with this " + (number ? "ID" : "Name") + ": " + bonusNameIDString, new Object[0]);
                   }
                } else if (mode == 5) {
                   for(i = 0; i < bonus.length; ++i) {
@@ -342,7 +342,7 @@ public class ComJrmcaBonus extends CommandBase {
          }
 
          if (notify && run) {
-            this.notifyAdmins(commandSender, "Bonus Attribute " + this.MODES[mode].toUpperCase() + " finished for " + entityplayermp.func_70005_c_(), new Object[0]);
+            this.notifyAdmins(commandSender, "Bonus Attribute " + this.MODES[mode].toUpperCase() + " finished for " + entityplayermp.getName(), new Object[0]);
          }
 
          if (!JRMCoreConfig.JRMCABonusOn) {

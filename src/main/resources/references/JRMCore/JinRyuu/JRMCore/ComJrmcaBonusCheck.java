@@ -96,12 +96,12 @@ public class ComJrmcaBonusCheck extends CommandBase {
 
          try {
             commansender = func_71521_c(commandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var24) {
          }
 
          boolean canRun = true;
-         if (!JRMCoreConfig.JRMCABonusCheckOnOthersWithoutOP && commansender != null && !entitycommansender.equals("Console") && !entityplayermp.func_70005_c_().equals(entitycommansender)) {
+         if (!JRMCoreConfig.JRMCABonusCheckOnOthersWithoutOP && commansender != null && !entitycommansender.equals("Console") && !entityplayermp.getName().equals(entitycommansender)) {
             canRun = false;
             ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.RED);
             commansender.func_145747_a((new ChatComponentText("JRMCABonusCheck - Non OP Players can check other Player's Sheet is DISABLED!")).func_150255_a(color));

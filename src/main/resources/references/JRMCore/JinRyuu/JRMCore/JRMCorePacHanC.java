@@ -69,15 +69,15 @@ public class JRMCorePacHanC {
       ExplosionJRMC var2 = new ExplosionJRMC(JRMCoreClient.mc.field_71441_e, (Entity)null, this.explosionX, this.explosionY, this.explosionZ, this.explosionSize, this.expGriOff, this.expDam, this.origin, this.type);
       var2.field_77281_g = this.chunkPositionRecords;
       var2.func_77279_a(false);
-      EntityClientPlayerMP var10000 = JRMCoreClient.mc.field_71439_g;
+      EntityClientPlayerMP var10000 = JRMCoreClient.mc.player;
       var10000.field_70159_w += (double)this.playerVelocityX;
-      var10000 = JRMCoreClient.mc.field_71439_g;
+      var10000 = JRMCoreClient.mc.player;
       var10000.field_70181_x += (double)this.playerVelocityY;
-      var10000 = JRMCoreClient.mc.field_71439_g;
+      var10000 = JRMCoreClient.mc.player;
       var10000.field_70179_y += (double)this.playerVelocityZ;
       EntityJRMCexpl aura = new EntityJRMCexpl(JRMCoreClient.mc.field_71441_e, this.type);
       if (aura != null) {
-         aura.func_70012_b(this.explosionX, this.explosionY, this.explosionZ, 0.0F, 0.0F);
+         aura.setLocationAndAngles(this.explosionX, this.explosionY, this.explosionZ, 0.0F, 0.0F);
          aura.explsiz = this.explosionSize;
          JRMCoreClient.mc.field_71441_e.func_72838_d(aura);
       }
@@ -153,18 +153,18 @@ public class JRMCorePacHanC {
          JRMCoreH.plyrs = d.replaceAll("::", "").split(":");
       }
 
-      if (JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreClient.mc.field_71439_g != null) {
+      if (JRMCoreH.plyrs != null && JRMCoreH.plyrs.length > 0 && JRMCoreClient.mc.player != null) {
          int pl;
          if (dataID == 1) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.data1[pl].split(";");
                   JRMCoreH.Race = Byte.parseByte(s2[0]);
                   JRMCoreH.dns = s2[1];
                   JRMCoreH.Pwrtyp = Byte.parseByte(s2[2]);
                   JRMCoreH.Class = Byte.parseByte(s2[3]);
                   JRMCoreH.Accepted = Byte.parseByte(s2[4]);
-                  ExtendedPlayer props = ExtendedPlayer.get(JRMCoreClient.mc.field_71439_g);
+                  ExtendedPlayer props = ExtendedPlayer.get(JRMCoreClient.mc.player);
                   JRMCoreH.dnsH = props.getHairCode();
                   break;
                }
@@ -173,7 +173,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 2) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.data2[pl].split(";");
                   JRMCoreH.State = Byte.parseByte(s2[0]);
                   JRMCoreH.State2 = Byte.parseByte(s2[1]);
@@ -225,7 +225,7 @@ public class JRMCorePacHanC {
          String[] s3;
          if (dataID == 6) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_()) && JRMCoreH.data6.length >= JRMCoreH.plyrs.length) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName()) && JRMCoreH.data6.length >= JRMCoreH.plyrs.length) {
                   s2 = JRMCoreH.data6[pl].split(";");
                   JRMCoreH.PlyrSkillX = s2[1];
                   JRMCoreH.PlyrSkillY = s2[2];
@@ -248,7 +248,7 @@ public class JRMCorePacHanC {
          String s;
          if (dataID == 8) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s = JRMCoreH.data8[pl];
                   JRMCoreH.curBody = Integer.parseInt(s);
                   break;
@@ -258,7 +258,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 9) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s = JRMCoreH.data9[pl];
                   JRMCoreH.curEnergy = Integer.parseInt(s);
                   break;
@@ -268,7 +268,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 10) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.dat10[pl].split(";");
                   JRMCoreH.curRelease = Byte.parseByte(s2[0]);
                   JRMCoreH.curStamina = Integer.parseInt(s2[1]);
@@ -279,7 +279,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 4) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.data4[pl].split(";");
                   JRMCoreH.TransSaiCurRg = Byte.parseByte(s2[0]);
                   JRMCoreH.cura = Integer.parseInt(s2[1]);
@@ -290,7 +290,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 5) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.data5[pl].split(";");
                   JRMCoreH.align = Byte.parseByte(s2[0]);
                   break;
@@ -301,7 +301,7 @@ public class JRMCorePacHanC {
          byte pwr;
          if (dataID == 11) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.data1[pl].split(";");
                   int pwr = Byte.parseByte(s2[2]);
                   pwr = Byte.parseByte(s2[4]);
@@ -321,7 +321,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 12) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s = JRMCoreH.dat12[pl];
                   JRMCoreH.curExp = Integer.parseInt(s);
                   break;
@@ -331,7 +331,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 14) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.dat14[pl].split(",");
                   int[] PlyrAttrbts = new int[JRMCoreH.PlyrAttrbts.length];
 
@@ -353,7 +353,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 18) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s = JRMCoreH.dat18[pl];
                   s3 = s.split(";");
                   JRMCoreH.Dffclty = Byte.parseByte(s3[0]);
@@ -366,7 +366,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 19) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s2 = JRMCoreH.dat19[pl].split(";");
                   JRMCoreH.TlMd = Byte.parseByte(s2[0]);
                   break;
@@ -409,7 +409,7 @@ public class JRMCorePacHanC {
 
          if (dataID == 23) {
             for(pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
-               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.field_71439_g.func_70005_c_())) {
+               if (JRMCoreH.plyrs[pl].equals(JRMCoreClient.mc.player.getName())) {
                   s = JRMCoreH.dat23[pl];
                   JRMCoreH.GID = Integer.parseInt(s);
                   break;
@@ -1240,36 +1240,36 @@ public class JRMCorePacHanC {
       if (jrmcpg == 4) {
          s = jrmcp.split(";");
          if (s.length > 2) {
-            e = p.field_70170_p.func_73045_a(Integer.parseInt(s[0]));
+            e = p.world.func_73045_a(Integer.parseInt(s[0]));
             if (e != null) {
                if (JGConfigClientSettings.CLIENT_DA15) {
                   scale = 1.0F;
                   a = 1.0F;
-                  float scale = (float)e.field_70173_aa * (e.field_70131_O / 100.0F);
+                  float scale = (float)e.ticksExisted * (e.field_70131_O / 100.0F);
                   Entity pl = e;
                   double x = 0.0D;
                   double y = (double)(e.field_70131_O * 0.6F);
                   double z = 0.0D;
-                  Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", e.field_70170_p, 0.4F, 0.4F, e.field_70165_t, e.field_70163_u, e.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 4.0D) + 12, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 35, 1, (float)(Math.random() * 0.019999999552965164D) + 0.04F, (float)(Math.random() * 0.029999999329447746D) + 0.06F, (float)(Math.random() * 0.003000000026077032D) + 0.001F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
+                  Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", e.world, 0.4F, 0.4F, e.posX, e.posY, e.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 4.0D) + 12, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 35, 1, (float)(Math.random() * 0.019999999552965164D) + 0.04F, (float)(Math.random() * 0.029999999329447746D) + 0.06F, (float)(Math.random() * 0.003000000026077032D) + 0.001F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
                   ((EntityCusPar)entity7).setdata39((float)((int)(Math.random() * 360.0D)));
-                  e.field_70170_p.func_72838_d(entity7);
+                  e.world.func_72838_d(entity7);
                   int num = (int)(Math.random() * 4.0D) + 1;
 
                   for(int i = 0; i < num; ++i) {
-                     Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", e.field_70170_p, 0.4F, 0.4F, pl.field_70165_t, pl.field_70163_u, pl.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 4.0D) + 4, 4, 4, 64, true, (float)(Math.random() * 0.4000000059604645D) + 0.4F, false, 0.0F, 1, "", 22, 1, (float)(Math.random() * 0.019999999552965164D) + 0.03F, (float)(Math.random() * 0.029999999329447746D) + 0.05F, (float)(Math.random() * 0.0020000000949949026D) + 0.001F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
+                     Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", e.world, 0.4F, 0.4F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 4.0D) + 4, 4, 4, 64, true, (float)(Math.random() * 0.4000000059604645D) + 0.4F, false, 0.0F, 1, "", 22, 1, (float)(Math.random() * 0.019999999552965164D) + 0.03F, (float)(Math.random() * 0.029999999329447746D) + 0.05F, (float)(Math.random() * 0.0020000000949949026D) + 0.001F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
                      ((EntityCusPar)entity7).setdata39((float)((int)(Math.random() * 360.0D)));
-                     e.field_70170_p.func_72838_d(entity7);
+                     e.world.func_72838_d(entity7);
                   }
                }
 
-               JRMCoreH.damInd.put(e.field_70165_t + ":" + (e.field_70163_u + (double)e.field_70131_O) + ":" + e.field_70161_v, s[2] + ":100");
+               JRMCoreH.damInd.put(e.posX + ":" + (e.posY + (double)e.field_70131_O) + ":" + e.posZ, s[2] + ":100");
             }
          }
       } else if (jrmcpg == 50) {
          if (JGConfigClientSettings.instantTransmissionParticles) {
             s = jrmcp.split(";");
             if (s.length > 3) {
-               e = p.field_70170_p.func_73045_a(Integer.parseInt(s[0]));
+               e = p.world.func_73045_a(Integer.parseInt(s[0]));
                if (e != null) {
                   scale = 0.025F * e.field_70131_O;
                   a = 0.25F;
@@ -1279,17 +1279,17 @@ public class JRMCorePacHanC {
                   double x2 = Double.parseDouble(s[1]);
                   double y2 = Double.parseDouble(s[2]);
                   double z2 = Double.parseDouble(s[3]);
-                  Entity entity = new EntityCusPar("jinryuudragonbc:bens_particles2.png", e.field_70170_p, 0.4F, 0.4F, x2, y2, z2, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 3.0D), 0, 0, 64, false, 0.0F, false, 0.0F, 1, "", 10, 1, scale, scale / 50.0F, -scale / 20.0F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, a, 0.0F, 0.0F, 0.0F, a / 5.0F, false, -1, false, (Entity)null);
-                  e.field_70170_p.func_72838_d(entity);
+                  Entity entity = new EntityCusPar("jinryuudragonbc:bens_particles2.png", e.world, 0.4F, 0.4F, x2, y2, z2, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 3.0D), 0, 0, 64, false, 0.0F, false, 0.0F, 1, "", 10, 1, scale, scale / 50.0F, -scale / 20.0F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, a, 0.0F, 0.0F, 0.0F, a / 5.0F, false, -1, false, (Entity)null);
+                  e.world.func_72838_d(entity);
                }
             }
          }
       } else if (jrmcpg != 5) {
          if (jrmcpg == 20) {
-            p.openGui(mod_JRMCore.instance, 2, p.field_70170_p, (int)p.field_70165_t, (int)p.field_70163_u, (int)p.field_70161_v);
+            p.openGui(mod_JRMCore.instance, 2, p.world, (int)p.posX, (int)p.posY, (int)p.posZ);
             JRMCoreH.ask = jrmcp;
          } else if (jrmcpg == 22) {
-            p.openGui(mod_JRMCore.instance, 3, p.field_70170_p, (int)p.field_70165_t, (int)p.field_70163_u, (int)p.field_70161_v);
+            p.openGui(mod_JRMCore.instance, 3, p.world, (int)p.posX, (int)p.posY, (int)p.posZ);
             JRMCoreH.ask = jrmcp;
          } else if (jrmcpg == 1) {
             if (jrmcp == "::") {

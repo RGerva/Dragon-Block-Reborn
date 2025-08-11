@@ -61,17 +61,17 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
          this.canBePickedUp = 0;
       }
 
-      this.field_70163_u = par2EntityLivingBase.field_70163_u + (double)par2EntityLivingBase.func_70047_e() - 0.10000000149011612D;
-      double var6 = par3EntityLivingBase.field_70165_t - par2EntityLivingBase.field_70165_t;
-      double var8 = par3EntityLivingBase.field_70163_u + (double)par3EntityLivingBase.func_70047_e() - 0.699999988079071D - this.field_70163_u;
-      double var10 = par3EntityLivingBase.field_70161_v - par2EntityLivingBase.field_70161_v;
+      this.posY = par2EntityLivingBase.posY + (double)par2EntityLivingBase.func_70047_e() - 0.10000000149011612D;
+      double var6 = par3EntityLivingBase.posX - par2EntityLivingBase.posX;
+      double var8 = par3EntityLivingBase.posY + (double)par3EntityLivingBase.func_70047_e() - 0.699999988079071D - this.posY;
+      double var10 = par3EntityLivingBase.posZ - par2EntityLivingBase.posZ;
       double var12 = (double)MathHelper.func_76133_a(var6 * var6 + var10 * var10);
       if (var12 >= 1.0E-7D) {
          float var14 = (float)(Math.atan2(var10, var6) * 180.0D / 3.141592653589793D) - 90.0F;
          float var15 = (float)(-(Math.atan2(var8, var12) * 180.0D / 3.141592653589793D));
          double var16 = var6 / var12;
          double var18 = var10 / var12;
-         this.func_70012_b(par2EntityLivingBase.field_70165_t + var16, this.field_70163_u, par2EntityLivingBase.field_70161_v + var18, var14, var15);
+         this.setLocationAndAngles(par2EntityLivingBase.posX + var16, this.posY, par2EntityLivingBase.posZ + var18, var14, var15);
          this.field_70129_M = this.size / 2.0F;
          float var20 = (float)var12 * 0.2F;
          this.setThrowableHeading(var6, var8 + (double)var20, var10, par4, par5);
@@ -93,18 +93,18 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       double d8 = (double)par2EntityLivingBase.field_70130_N;
       double d9 = (double)par2EntityLivingBase.field_70131_O;
       Vec3 vec3 = par2EntityLivingBase.func_70676_i(1.0F);
-      double x = par2EntityLivingBase.field_70165_t + vec3.field_72450_a * d8;
-      double y = par2EntityLivingBase.field_70163_u + vec3.field_72448_b * d8 + (double)(par2EntityLivingBase.field_70131_O * 0.55F);
-      double z = par2EntityLivingBase.field_70161_v + vec3.field_72449_c * d8;
-      this.func_70012_b(x, y, z, par2EntityLivingBase.field_70177_z, par2EntityLivingBase.field_70125_A);
+      double x = par2EntityLivingBase.posX + vec3.field_72450_a * d8;
+      double y = par2EntityLivingBase.posY + vec3.field_72448_b * d8 + (double)(par2EntityLivingBase.field_70131_O * 0.55F);
+      double z = par2EntityLivingBase.posZ + vec3.field_72449_c * d8;
+      this.setLocationAndAngles(x, y, z, par2EntityLivingBase.rotationYaw, par2EntityLivingBase.rotationPitch);
       this.field_70129_M = this.size * 0.5F;
-      this.field_70159_w = (double)(-MathHelper.func_76126_a(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-      this.field_70179_y = (double)(MathHelper.func_76134_b(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-      this.field_70181_x = (double)(-MathHelper.func_76126_a(this.field_70125_A / 180.0F * 3.1415927F));
+      this.field_70159_w = (double)(-MathHelper.func_76126_a(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+      this.field_70179_y = (double)(MathHelper.func_76134_b(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+      this.field_70181_x = (double)(-MathHelper.func_76126_a(this.rotationPitch / 180.0F * 3.1415927F));
       this.setThrowableHeading(this.field_70159_w, this.field_70181_x, this.field_70179_y, par3 * 1.5F, 1.0F);
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
       this.field_70180_af.func_75682_a(16, (byte)0);
    }
 
@@ -113,9 +113,9 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       par1 /= (double)var9;
       par3 /= (double)var9;
       par5 /= (double)var9;
-      par1 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par3 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par5 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par1 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par3 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par5 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
       par1 *= (double)par7;
       par3 *= (double)par7;
       par5 *= (double)par7;
@@ -123,8 +123,8 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       this.field_70181_x = par3;
       this.field_70179_y = par5;
       float var10 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-      this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-      this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
+      this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+      this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
       this.ticksInGround = 0;
    }
 
@@ -141,34 +141,34 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       this.field_70179_y = par5;
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var7 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A;
-         this.field_70126_B = this.field_70177_z;
-         this.func_70012_b(this.field_70165_t, this.field_70163_u, this.field_70161_v, this.field_70177_z, this.field_70125_A);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch;
+         this.field_70126_B = this.rotationYaw;
+         this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
          this.ticksInGround = 0;
       }
 
    }
 
-   public void func_70071_h_() {
-      super.func_70071_h_();
-      if (this.field_70173_aa == 1) {
+   public void onUpdate() {
+      super.onUpdate();
+      if (this.ticksExisted == 1) {
          this.func_70105_a(this.size, this.size);
          this.field_70129_M = this.size / 2.0F;
       }
 
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var1 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
       }
 
-      Block block = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
+      Block block = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
       if (block.func_149688_o() != Material.field_151579_a) {
-         block.func_149719_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         AxisAlignedBB axisalignedbb = block.func_149668_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v))) {
+         block.func_149719_a(this.world, this.xTile, this.yTile, this.zTile);
+         AxisAlignedBB axisalignedbb = block.func_149668_a(this.world, this.xTile, this.yTile, this.zTile);
+         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.posX, this.posY, this.posZ))) {
             this.inGround = true;
          }
       }
@@ -177,32 +177,32 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       }
 
       if (this.inGround) {
-         int var19 = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
+         int var19 = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
          if (block == this.inTile && var19 == this.inData) {
             ++this.ticksInGround;
             if (this.ticksInGround == 1) {
-               if (!this.field_70170_p.field_72995_K && this.explevel == 2.0F) {
+               if (!this.world.field_72995_K && this.explevel == 2.0F) {
                }
 
-               this.func_70106_y();
+               this.setDead();
             }
          } else {
             this.inGround = false;
-            this.field_70159_w *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-            this.field_70181_x *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-            this.field_70179_y *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
+            this.field_70159_w *= (double)(this.rand.nextFloat() * 0.2F);
+            this.field_70181_x *= (double)(this.rand.nextFloat() * 0.2F);
+            this.field_70179_y *= (double)(this.rand.nextFloat() * 0.2F);
             this.ticksInGround = 0;
             this.ticksInAir = 0;
          }
       } else {
          ++this.ticksInAir;
-         Vec3 var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         Vec3 var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-         MovingObjectPosition var4 = this.field_70170_p.func_147447_a(var17, var3, false, true, false);
-         var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
+         Vec3 var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         Vec3 var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+         MovingObjectPosition var4 = this.world.func_147447_a(var17, var3, false, true, false);
+         var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
          if (this.ticksInAir == 5) {
-            this.func_70106_y();
+            this.setDead();
          }
 
          if (var4 != null) {
@@ -210,7 +210,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
          }
 
          Entity var5 = null;
-         List var6 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
+         List var6 = this.world.func_72839_b(this, this.boundingBox.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
          double var7 = 0.0D;
 
          float var11;
@@ -219,7 +219,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
             Entity var10 = (Entity)var6.get(var9);
             if (var10.func_70067_L() && (var10 != this.shootingEntity || this.ticksInAir >= 5)) {
                var11 = 0.0F;
-               AxisAlignedBB var12 = var10.field_70121_D.func_72314_b((double)var11, (double)var11, (double)var11);
+               AxisAlignedBB var12 = var10.boundingBox.func_72314_b((double)var11, (double)var11, (double)var11);
                damagesource = var12.func_72327_a(var17, var3);
                if (damagesource != null) {
                   double var14 = var17.func_72438_d(damagesource.field_72307_f);
@@ -238,7 +238,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
          float var20;
          float var25;
          if (var4 != null) {
-            if (!this.field_70170_p.field_72995_K) {
+            if (!this.world.field_72995_K) {
             }
 
             if (var4.field_72308_g != null && var4.field_72308_g instanceof EntityLivingBase && var4.field_72308_g != this.shootingEntity && var4.field_72308_g.func_70089_S()) {
@@ -252,7 +252,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
                   JRMCoreH.jrmcEnergyDam(var4.field_72308_g, (int)(this.damage * (double)this.prc), (DamageSource)null);
                }
 
-               if (!this.field_70170_p.field_72995_K && (!JRMCoreH.DBC() || JRMCoreH.DGE(var4.field_72308_g)) && this.shootingEntity != null) {
+               if (!this.world.field_72995_K && (!JRMCoreH.DBC() || JRMCoreH.DGE(var4.field_72308_g)) && this.shootingEntity != null) {
                   JRMCoreH.jrmcExp(this.shootingEntity, 1);
                }
 
@@ -269,14 +269,14 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
                }
 
                if (var4.field_72308_g.func_70097_a(damagesource, (float)var23)) {
-                  if (!this.field_70170_p.field_72995_K) {
-                     this.field_70170_p.func_72956_a(this, JRMCEnAttacks.PunchExplSound, 0.5F, 0.9F / (this.field_70146_Z.nextFloat() * 0.4F + 0.8F));
+                  if (!this.world.field_72995_K) {
+                     this.world.func_72956_a(this, JRMCEnAttacks.PunchExplSound, 0.5F, 0.9F / (this.rand.nextFloat() * 0.4F + 0.8F));
                   }
 
                   if (var4.field_72308_g instanceof EntityLivingBase) {
-                     if (!this.field_70170_p.field_72995_K) {
+                     if (!this.world.field_72995_K) {
                         EntityLivingBase var24 = (EntityLivingBase)var4.field_72308_g;
-                        if (!this.field_70170_p.field_72995_K) {
+                        if (!this.world.field_72995_K) {
                         }
                      }
 
@@ -288,56 +288,56 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
                      }
                   }
 
-                  this.func_70106_y();
+                  this.setDead();
                } else {
                   this.field_70159_w *= -0.10000000149011612D;
                   this.field_70181_x *= -0.10000000149011612D;
                   this.field_70179_y *= -0.10000000149011612D;
-                  this.field_70177_z += 180.0F;
+                  this.rotationYaw += 180.0F;
                   this.field_70126_B += 180.0F;
-                  this.func_70106_y();
+                  this.setDead();
                   this.ticksInAir = 0;
                }
             } else {
                this.xTile = var4.field_72311_b;
                this.yTile = var4.field_72312_c;
                this.zTile = var4.field_72309_d;
-               this.inTile = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
-               this.inData = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
-               this.field_70159_w = (double)((float)(var4.field_72307_f.field_72450_a - this.field_70165_t));
-               this.field_70181_x = (double)((float)(var4.field_72307_f.field_72448_b - this.field_70163_u));
-               this.field_70179_y = (double)((float)(var4.field_72307_f.field_72449_c - this.field_70161_v));
+               this.inTile = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
+               this.inData = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
+               this.field_70159_w = (double)((float)(var4.field_72307_f.field_72450_a - this.posX));
+               this.field_70181_x = (double)((float)(var4.field_72307_f.field_72448_b - this.posY));
+               this.field_70179_y = (double)((float)(var4.field_72307_f.field_72449_c - this.posZ));
                var20 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70181_x * this.field_70181_x + this.field_70179_y * this.field_70179_y);
-               this.field_70165_t -= this.field_70159_w / (double)var20 * 0.05000000074505806D;
-               this.field_70163_u -= this.field_70181_x / (double)var20 * 0.05000000074505806D;
-               this.field_70161_v -= this.field_70179_y / (double)var20 * 0.05000000074505806D;
+               this.posX -= this.field_70159_w / (double)var20 * 0.05000000074505806D;
+               this.posY -= this.field_70181_x / (double)var20 * 0.05000000074505806D;
+               this.posZ -= this.field_70179_y / (double)var20 * 0.05000000074505806D;
                this.inGround = true;
                this.arrowShake = 0;
                this.setIsCritical(false);
                if (this.inTile.func_149688_o() != Material.field_151579_a) {
-                  this.inTile.func_149670_a(this.field_70170_p, this.xTile, this.yTile, this.zTile, this);
+                  this.inTile.func_149670_a(this.world, this.xTile, this.yTile, this.zTile, this);
                }
             }
          }
 
-         this.field_70165_t += this.field_70159_w;
-         this.field_70163_u += this.field_70181_x;
-         this.field_70161_v += this.field_70179_y;
+         this.posX += this.field_70159_w;
+         this.posY += this.field_70181_x;
+         this.posZ += this.field_70179_y;
          var20 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
-         this.field_70177_z = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
+         this.rotationYaw = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
 
-         for(this.field_70125_A = (float)(Math.atan2(this.field_70181_x, (double)var20) * 180.0D / 3.141592653589793D); this.field_70125_A - this.field_70127_C < -180.0F; this.field_70127_C -= 360.0F) {
+         for(this.rotationPitch = (float)(Math.atan2(this.field_70181_x, (double)var20) * 180.0D / 3.141592653589793D); this.rotationPitch - this.field_70127_C < -180.0F; this.field_70127_C -= 360.0F) {
          }
 
-         while(this.field_70125_A - this.field_70127_C >= 180.0F) {
+         while(this.rotationPitch - this.field_70127_C >= 180.0F) {
             this.field_70127_C += 360.0F;
          }
 
-         while(this.field_70177_z - this.field_70126_B < -180.0F) {
+         while(this.rotationYaw - this.field_70126_B < -180.0F) {
             this.field_70126_B -= 360.0F;
          }
 
-         while(this.field_70177_z - this.field_70126_B >= 180.0F) {
+         while(this.rotationYaw - this.field_70126_B >= 180.0F) {
             this.field_70126_B += 360.0F;
          }
 
@@ -346,7 +346,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
          if (this.func_70090_H()) {
             for(int var26 = 0; var26 < 4; ++var26) {
                var25 = 0.25F;
-               this.field_70170_p.func_72869_a("bubble", this.field_70165_t - this.field_70159_w * (double)var25, this.field_70163_u - this.field_70181_x * (double)var25, this.field_70161_v - this.field_70179_y * (double)var25, this.field_70159_w, this.field_70181_x, this.field_70179_y);
+               this.world.func_72869_a("bubble", this.posX - this.field_70159_w * (double)var25, this.posY - this.field_70181_x * (double)var25, this.posZ - this.field_70179_y * (double)var25, this.field_70159_w, this.field_70181_x, this.field_70179_y);
             }
 
             var22 = 0.8F;
@@ -356,7 +356,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
          this.field_70181_x *= (double)var22;
          this.field_70179_y *= (double)var22;
          this.field_70181_x -= (double)var11;
-         this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+         this.func_70107_b(this.posX, this.posY, this.posZ);
          this.doBlockCollisions();
       }
 
@@ -369,7 +369,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2, EntityLivingBase e) {
       if (e.func_85032_ar()) {
          return false;
-      } else if (e.field_70170_p.field_72995_K) {
+      } else if (e.world.field_72995_K) {
          return false;
       } else {
          e.field_70721_aZ = 1.5F;
@@ -383,16 +383,16 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
          }
 
          if (flag) {
-            e.field_70170_p.func_72960_a(this, (byte)2);
+            e.world.func_72960_a(this, (byte)2);
             if (entity != null) {
-               double d0 = entity.field_70165_t - e.field_70165_t;
+               double d0 = entity.posX - e.posX;
 
                double d1;
-               for(d1 = entity.field_70161_v - e.field_70161_v; d0 * d0 + d1 * d1 < 1.0E-4D; d1 = (Math.random() - Math.random()) * 0.01D) {
+               for(d1 = entity.posZ - e.posZ; d0 * d0 + d1 * d1 < 1.0E-4D; d1 = (Math.random() - Math.random()) * 0.01D) {
                   d0 = (Math.random() - Math.random()) * 0.01D;
                }
 
-               e.field_70739_aP = (float)(Math.atan2(d1, d0) * 180.0D / 3.141592653589793D) - e.field_70177_z;
+               e.field_70739_aP = (float)(Math.atan2(d1, d0) * 180.0D / 3.141592653589793D) - e.rotationYaw;
                e.func_70653_a(entity, par2, d0, d1);
             } else {
                e.field_70739_aP = (float)((int)(Math.random() * 2.0D) * 180);
@@ -462,7 +462,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       return par2 <= 0.0F ? 0.0F : par2;
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
       par1NBTTagCompound.func_74777_a("xTile", (short)this.xTile);
       par1NBTTagCompound.func_74777_a("yTile", (short)this.yTile);
       par1NBTTagCompound.func_74777_a("zTile", (short)this.zTile);
@@ -474,7 +474,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       par1NBTTagCompound.func_74780_a("damage", this.damage);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
       this.xTile = par1NBTTagCompound.func_74765_d("xTile");
       this.yTile = par1NBTTagCompound.func_74765_d("yTile");
       this.zTile = par1NBTTagCompound.func_74765_d("zTile");
@@ -495,7 +495,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
    }
 
    public void func_70100_b_(EntityPlayer par1EntityPlayer) {
-      if (!this.field_70170_p.field_72995_K && this.inGround) {
+      if (!this.world.field_72995_K && this.inGround) {
       }
 
    }
@@ -542,7 +542,7 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
 
    private void explode() {
       float var1 = 2.0F;
-      this.field_70170_p.func_72876_a((Entity)null, this.field_70165_t, this.field_70163_u, this.field_70161_v, var1, this.inGround);
+      this.world.func_72876_a((Entity)null, this.posX, this.posY, this.posZ, var1, this.inGround);
    }
 
    public boolean func_82704_a(Entity var1) {
@@ -559,6 +559,6 @@ public class EntityPunch extends EntityKiAttacksLight implements IEntityAddition
       int first = data.readInt();
       this.damage = data.readDouble();
       this.size = data.readFloat();
-      this.shootingEntity = first == 0 ? this.shootingEntity : this.field_70170_p.func_73045_a(first);
+      this.shootingEntity = first == 0 ? this.shootingEntity : this.world.func_73045_a(first);
    }
 }

@@ -65,7 +65,7 @@ public class DBCSAAGui extends GuiScreen {
          this.field_146292_n.add(new DBCGuiButtons02(8, posX - 82, posY + 40, 83, 20, StatCollector.func_74838_a("dbc.saagui.ascending")));
          this.field_146292_n.add(new DBCGuiButtons02(9, posX + 2, posY + 40, 83, 20, StatCollector.func_74838_a("dbc.saagui.attackpower")));
          this.field_146292_n.add(new DBCGuiButtons01(10, posX - 10, posY + 65, 20, 20, "X"));
-         if (!JRMCoreH.HairExists(DBCClient.mc.field_71439_g)) {
+         if (!JRMCoreH.HairExists(DBCClient.mc.player)) {
             this.field_146292_n.add(new DBCGuiButtons01(200, posX + 55, posY + 65, 70, 20, StatCollector.func_74838_a("dbc.saagui.selecthair")));
          }
       }
@@ -205,11 +205,11 @@ public class DBCSAAGui extends GuiScreen {
 
    public void func_146284_a(GuiButton button) {
       if (button.field_146127_k == -1) {
-         this.field_146297_k.field_71439_g.openGui(mod_DragonBC.instance, 6, this.field_146297_k.field_71439_g.field_70170_p, (int)this.field_146297_k.field_71439_g.field_70165_t, (int)this.field_146297_k.field_71439_g.field_70163_u, (int)this.field_146297_k.field_71439_g.field_70161_v);
+         this.field_146297_k.player.openGui(mod_DragonBC.instance, 6, this.field_146297_k.player.world, (int)this.field_146297_k.player.posX, (int)this.field_146297_k.player.posY, (int)this.field_146297_k.player.posZ);
       }
 
       if (button.field_146127_k == -2) {
-         this.field_146297_k.field_71439_g.openGui(mod_DragonBC.instance, 5, this.field_146297_k.field_71439_g.field_70170_p, (int)this.field_146297_k.field_71439_g.field_70165_t, (int)this.field_146297_k.field_71439_g.field_70163_u, (int)this.field_146297_k.field_71439_g.field_70161_v);
+         this.field_146297_k.player.openGui(mod_DragonBC.instance, 5, this.field_146297_k.player.world, (int)this.field_146297_k.player.posX, (int)this.field_146297_k.player.posY, (int)this.field_146297_k.player.posZ);
       }
 
       if (button.field_146127_k == -3) {
@@ -221,19 +221,19 @@ public class DBCSAAGui extends GuiScreen {
       }
 
       if (button.field_146127_k == 10) {
-         this.field_146297_k.field_71439_g.func_71053_j();
+         this.field_146297_k.player.func_71053_j();
       }
 
       if (button.field_146127_k == 21 || button.field_146127_k == 22 || button.field_146127_k == 23 || button.field_146127_k == 24 || button.field_146127_k == 25 || button.field_146127_k == 26 || button.field_146127_k == 27 || button.field_146127_k == 28 || button.field_146127_k == 29 || button.field_146127_k == 30 || button.field_146127_k == 31 || button.field_146127_k == 32 || button.field_146127_k == 33 || button.field_146127_k == 34 || button.field_146127_k == 35 || button.field_146127_k == 36 || button.field_146127_k == 100) {
          dbcSAA(button.field_146127_k);
-         this.field_146297_k.field_71439_g.func_71053_j();
+         this.field_146297_k.player.func_71053_j();
          if (button.field_146127_k != 100) {
-            this.field_146297_k.field_71439_g.func_145747_a(new ChatComponentText(StatCollector.func_74838_a("dbc.saagui.newskill")));
+            this.field_146297_k.player.func_145747_a(new ChatComponentText(StatCollector.func_74838_a("dbc.saagui.newskill")));
          }
       }
 
       if (button.field_146127_k == 220) {
-         this.field_146297_k.field_71439_g.func_71053_j();
+         this.field_146297_k.player.func_71053_j();
          dbcHair(JRMCoreH.Har + JRMCoreH.Col);
       }
 
@@ -267,7 +267,7 @@ public class DBCSAAGui extends GuiScreen {
       int guiTop = (this.field_146295_m - ySize) / 2;
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(wish);
-      this.field_146297_k.field_71446_o.func_110577_a(tx);
+      this.field_146297_k.field_71446_o.bindTexture(tx);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
       int j;
       if (this.saa == 5) {
@@ -319,7 +319,7 @@ public class DBCSAAGui extends GuiScreen {
          float h1 = 1.0F;
          GL11.glColor3f(h1 * h2, h1 * h3, h1 * h4);
          ResourceLocation tx2 = new ResourceLocation(wish);
-         this.field_146297_k.field_71446_o.func_110577_a(tx2);
+         this.field_146297_k.field_71446_o.bindTexture(tx2);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
       }
 
@@ -354,7 +354,7 @@ public class DBCSAAGui extends GuiScreen {
             for(ex = 0; ex < tp; ++ex) {
                String n = var27[ex];
                String[] m = n.split(";");
-               if (this.field_146297_k.field_71439_g.func_70005_c_().equals(m[0])) {
+               if (this.field_146297_k.player.getName().equals(m[0])) {
                   s = m[1];
                }
             }
@@ -363,7 +363,7 @@ public class DBCSAAGui extends GuiScreen {
          this.current("BP: " + s, 0, -71, var8, var6, var7);
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          ResourceLocation tx3 = new ResourceLocation(ww);
-         this.field_146297_k.field_71446_o.func_110577_a(tx3);
+         this.field_146297_k.field_71446_o.bindTexture(tx3);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          tp = JRMCoreH.dbcTrainPoint;
          ex = JRMCoreH.jrmcExp;
@@ -437,7 +437,7 @@ public class DBCSAAGui extends GuiScreen {
       this.func_73866_w_();
       Minecraft minecraft = this.field_146297_k;
       World world = minecraft.field_71441_e;
-      EntityPlayerSP entityplayersp = minecraft.field_71439_g;
+      EntityPlayerSP entityplayersp = minecraft.player;
       ScaledResolution scaledresolution = new ScaledResolution(minecraft, minecraft.field_71443_c, minecraft.field_71440_d);
       int width = scaledresolution.func_78326_a() / 2;
       int height = scaledresolution.func_78328_b() / 2;
@@ -460,7 +460,7 @@ public class DBCSAAGui extends GuiScreen {
       String var4 = "jinryuudragonbc:sagas.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(var4);
-      this.field_146297_k.field_71446_o.func_110577_a(tx);
+      this.field_146297_k.field_71446_o.bindTexture(tx);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
    }
 
@@ -471,8 +471,8 @@ public class DBCSAAGui extends GuiScreen {
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glDisable(3008);
       ResourceLocation tx = new ResourceLocation(this.textureFile);
-      this.field_146297_k.field_71446_o.func_110577_a(tx);
-      Tessellator var3 = Tessellator.field_78398_a;
+      this.field_146297_k.field_71446_o.bindTexture(tx);
+      Tessellator var3 = Tessellator.INSTANCE;
       var3.func_78382_b();
       var3.func_78374_a(0.0D, (double)par2, -90.0D, 0.0D, 1.0D);
       var3.func_78374_a((double)par1, (double)par2, -90.0D, 1.0D, 1.0D);

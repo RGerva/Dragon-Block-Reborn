@@ -18,7 +18,7 @@ public class JRMCoreHJFC {
    }
 
    public static void openGui(int id, EntityPlayer pl) {
-      pl.openGui(mod_FamilyC.instance, id, pl.field_70170_p, (int)pl.field_70165_t, (int)pl.field_70163_u, (int)pl.field_70161_v);
+      pl.openGui(mod_FamilyC.instance, id, pl.world, (int)pl.posX, (int)pl.posY, (int)pl.posZ);
    }
 
    public static boolean isChildNPC(Entity entity) {

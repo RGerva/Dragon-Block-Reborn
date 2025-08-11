@@ -81,11 +81,11 @@ public class ComJrmca extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(commandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var42) {
          }
 
-         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComANAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComANAS : JRMCoreConfig.ComANAO);
+         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComANAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComANAS : JRMCoreConfig.ComANAO);
          int str = JRMCoreH.getInt(entityplayermp, JRMCoreH.AttrbtNbtI[0]);
          int dex = JRMCoreH.getInt(entityplayermp, JRMCoreH.AttrbtNbtI[1]);
          int cns = JRMCoreH.getInt(entityplayermp, JRMCoreH.AttrbtNbtI[2]);
@@ -164,7 +164,7 @@ public class ComJrmca extends CommandBase {
             WIL = JRMCoreH.getInt(entityplayermp, att);
             JRMCoreH.setInt((int)(max ? am : (add ? (WIL + i < 1 ? 1 : WIL + i) : (set ? (CON < 1 ? 1 : CON) : 1))), entityplayermp, att);
             if (n) {
-               this.notifyAdmins(commandSender, "Attribute " + (add && WIL + i >= 1 ? "Adding " + i + " to " + attnam : (set ? attnam + " was set to " + i : attnam + " was set to " + (max ? am : 1))) + " Successfully", new Object[]{i, entityplayermp.func_70005_c_()});
+               this.notifyAdmins(commandSender, "Attribute " + (add && WIL + i >= 1 ? "Adding " + i + " to " + attnam : (set ? attnam + " was set to " + i : attnam + " was set to " + (max ? am : 1))) + " Successfully", new Object[]{i, entityplayermp.getName()});
             }
          } else if (alignment && amount) {
             int cur = JRMCoreH.getByte(entityplayermp, "jrmcAlign");
@@ -176,7 +176,7 @@ public class ComJrmca extends CommandBase {
 
             JRMCoreH.setByte((int)(max ? am : (add ? (cur + i < 1 ? 1 : cur + i) : (set ? (i < 1 ? 1 : i) : 1))), entityplayermp, att);
             if (n) {
-               this.notifyAdmins(commandSender, "Attribute " + (add && cur + i >= 1 ? "Adding " + i + " to " + attnam : (set ? attnam + " was set to " + i : attnam + " was set to " + (max ? 100 : 1))) + " Successfully", new Object[]{i, entityplayermp.func_70005_c_()});
+               this.notifyAdmins(commandSender, "Attribute " + (add && cur + i >= 1 ? "Adding " + i + " to " + attnam : (set ? attnam + " was set to " + i : attnam + " was set to " + (max ? 100 : 1))) + " Successfully", new Object[]{i, entityplayermp.getName()});
             }
          } else {
             int STR;
@@ -190,7 +190,7 @@ public class ComJrmca extends CommandBase {
                }
 
                if (n) {
-                  this.notifyAdmins(commandSender, "Attribute Everything for " + entityplayermp.func_70005_c_() + " has received " + i + " Successfully", new Object[]{i, entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(commandSender, "Attribute Everything for " + entityplayermp.getName() + " has received " + i + " Successfully", new Object[]{i, entityplayermp.getName()});
                }
             } else if (set && all && num) {
                for(STR = 0; STR < JRMCoreH.AttrbtNbtI.length; ++STR) {
@@ -200,7 +200,7 @@ public class ComJrmca extends CommandBase {
                }
 
                if (n) {
-                  this.notifyAdmins(commandSender, "Attribute Everything for " + entityplayermp.func_70005_c_() + " was set to " + i + " Successfully", new Object[]{i, entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(commandSender, "Attribute Everything for " + entityplayermp.getName() + " was set to " + i + " Successfully", new Object[]{i, entityplayermp.getName()});
                }
             } else {
                if (!set || !all || !max && !reset) {
@@ -232,7 +232,7 @@ public class ComJrmca extends CommandBase {
                }
 
                if (n) {
-                  this.notifyAdmins(commandSender, "Attribute Everything for " + entityplayermp.func_70005_c_() + " has been " + (max ? "Maxed" : (reset ? "Reset" : "failed")), new Object[]{i, entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(commandSender, "Attribute Everything for " + entityplayermp.getName() + " has been " + (max ? "Maxed" : (reset ? "Reset" : "failed")), new Object[]{i, entityplayermp.getName()});
                }
             }
          }

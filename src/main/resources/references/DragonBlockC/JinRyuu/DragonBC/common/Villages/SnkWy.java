@@ -1552,11 +1552,11 @@ public class SnkWy extends WorldGenerator {
          ((SnkWyP2)p2).generate2(w, rand, i, j, k);
          EntityMasterKaio namekian03 = new EntityMasterKaio(w);
          namekian03.func_70029_a(w);
-         namekian03.func_70012_b(107.0D, 116.0D, -3719.0D, 0.0F, 0.0F);
+         namekian03.setLocationAndAngles(107.0D, 116.0D, -3719.0D, 0.0F, 0.0F);
          w.func_72838_d(namekian03);
          EntityMasterJin namekian04 = new EntityMasterJin(w);
          namekian04.func_70029_a(w);
-         namekian04.func_70012_b(107.0D, 116.0D, -3722.0D, 0.0F, 0.0F);
+         namekian04.setLocationAndAngles(107.0D, 116.0D, -3722.0D, 0.0F, 0.0F);
          w.func_72838_d(namekian04);
       }
 

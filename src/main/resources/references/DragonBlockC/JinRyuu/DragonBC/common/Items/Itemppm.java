@@ -27,14 +27,14 @@ public class Itemppm extends Itemm {
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
    public void render(String s) {
       float par1 = 0.0625F;
-      this.sw.field_78796_g = 0.5F;
-      this.sw.func_78785_a(par1);
+      this.sw.rotateAngleY = 0.5F;
+      this.sw.render(par1);
    }
 }

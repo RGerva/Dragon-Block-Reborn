@@ -599,155 +599,155 @@ public class ModelPorunga extends ModelBiped {
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
       GL11.glPushMatrix();
       GL11.glTranslatef(0.0F, -0.5F, 0.0F);
-      this.Head1.func_78785_a(f5);
-      this.ShoulderR.func_78785_a(f5);
-      this.Body1.func_78785_a(f5);
-      this.ShoulderL.func_78785_a(f5);
+      this.Head1.render(f5);
+      this.ShoulderR.render(f5);
+      this.Body1.render(f5);
+      this.ShoulderL.render(f5);
       GL11.glPopMatrix();
    }
 
    public void renderModel(Entity entity, float f) {
-      this.func_78088_a(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
+      this.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
    }
 
    public void renderModel2(Entity entity, float f) {
-      this.func_78088_a(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
+      this.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-      f2 = (float)entity.field_70173_aa;
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+      f2 = (float)entity.ticksExisted;
       boolean update = f2 > this.last_update_tick;
       this.last_update_tick = f2;
       float rotation = 0.0F;
       float ANIMATION_MULTI = 1.0F;
       float ANIMATION_MULTI2 = 3.0F;
-      this.Head1.field_78795_f = 0.5F;
+      this.Head1.rotateAngleX = 0.5F;
       float r = MathHelper.func_76126_a(f2 * 0.01F * 3.0F) * 0.05F * 1.0F + 0.15F;
       float r2 = MathHelper.func_76126_a(f2 * 0.001F * 3.0F) * 0.05F * 1.0F + 0.15F;
       float ANIMATION_MULTI3 = 5.0F;
       float r3 = MathHelper.func_76126_a(f2 * 0.01F * 5.0F) * 0.05F * 1.0F + 0.15F;
-      this.Jaw1.field_78795_f = r;
+      this.Jaw1.rotateAngleX = r;
       rotation = -r2 * 0.5F;
-      this.ShoulderR.field_78795_f = rotation * 1.0F;
+      this.ShoulderR.rotateAngleX = rotation * 1.0F;
       rotation = r2 * 0.05F;
-      this.ShoulderR.field_78808_h = rotation * 1.0F;
+      this.ShoulderR.rotateAngleZ = rotation * 1.0F;
       rotation = -r2;
-      this.BicepR.field_78795_f = rotation * 1.0F;
+      this.BicepR.rotateAngleX = rotation * 1.0F;
       rotation = r2 * 1.0F;
-      this.BicepR.field_78808_h = rotation * 1.0F;
+      this.BicepR.rotateAngleZ = rotation * 1.0F;
       rotation = -r2 - 0.2F;
-      this.ForeArmR.field_78795_f = rotation * 1.0F;
+      this.ForeArmR.rotateAngleX = rotation * 1.0F;
       rotation = -r2 * 1.0F;
-      this.ForeArmR.field_78808_h = rotation * 1.0F;
+      this.ForeArmR.rotateAngleZ = rotation * 1.0F;
       rotation = -r2 * 1.0F;
-      this.RFingerT1.field_78795_f = rotation * 1.0F;
+      this.RFingerT1.rotateAngleX = rotation * 1.0F;
       rotation = -r2 * 2.0F;
-      this.RFingerT1.field_78796_g = rotation * 1.0F;
+      this.RFingerT1.rotateAngleY = rotation * 1.0F;
       rotation = -r2 * 2.0F;
-      this.RFingerL1.field_78795_f = -rotation * 1.0F;
-      this.RFingerR1.field_78795_f = -rotation * 1.0F;
-      this.RFingerM1.field_78795_f = -rotation * 1.0F;
-      this.RFingerP1.field_78795_f = -rotation * 1.0F;
+      this.RFingerL1.rotateAngleX = -rotation * 1.0F;
+      this.RFingerR1.rotateAngleX = -rotation * 1.0F;
+      this.RFingerM1.rotateAngleX = -rotation * 1.0F;
+      this.RFingerP1.rotateAngleX = -rotation * 1.0F;
       rotation = 2.0F + r2 * 1.0F;
-      this.PalmR1.field_78796_g = rotation * 1.0F;
+      this.PalmR1.rotateAngleY = rotation * 1.0F;
       rotation = r3 * 1.0F;
-      this.Body1.field_78795_f = rotation * 1.0F;
+      this.Body1.rotateAngleX = rotation * 1.0F;
       rotation = -r3 * 1.0F;
-      this.Body3.field_78795_f = rotation * 1.0F;
+      this.Body3.rotateAngleX = rotation * 1.0F;
       rotation = -r3 * 0.5F;
       float rotation2 = rotation * 1.0F;
-      this.Tail1.field_78796_g = rotation2 * 1.0F;
-      this.Tail2.field_78796_g = rotation2 * 1.0F;
+      this.Tail1.rotateAngleY = rotation2 * 1.0F;
+      this.Tail2.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.18203785F;
-      this.Tail3.field_78796_g = rotation2 * 1.0F;
+      this.Tail3.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.18203785F;
-      this.Tail4.field_78796_g = rotation2 * 1.0F;
+      this.Tail4.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.18203785F;
-      this.Tail5.field_78796_g = rotation2 * 1.0F;
+      this.Tail5.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.3642502F;
-      this.Tail6.field_78796_g = rotation2 * 1.0F;
+      this.Tail6.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.22759093F;
-      this.Tail7.field_78796_g = rotation2 * 1.0F;
+      this.Tail7.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.22759093F;
-      this.Tail8.field_78796_g = rotation2 * 1.0F;
+      this.Tail8.rotateAngleY = rotation2 * 1.0F;
       rotation2 = r3 * 1.6F;
-      this.Tail9.field_78796_g = rotation2 * 1.0F;
+      this.Tail9.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.31869712F;
-      this.Tail10.field_78796_g = rotation2 * 1.0F;
+      this.Tail10.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.13665928F;
-      this.Tail11.field_78796_g = rotation2 * 1.0F;
+      this.Tail11.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.18203785F;
-      this.Tail12.field_78796_g = rotation2 * 1.0F;
+      this.Tail12.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.091106184F;
-      this.Tail13.field_78796_g = rotation2 * 1.0F;
+      this.Tail13.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.091106184F;
-      this.Tail14.field_78796_g = rotation2 * 1.0F;
+      this.Tail14.rotateAngleY = rotation2 * 1.0F;
       rotation2 = rotation + -0.091106184F;
-      this.Tail15.field_78796_g = rotation2 * 1.0F;
+      this.Tail15.rotateAngleY = rotation2 * 1.0F;
       if (!this.whis_granted) {
          rotation = -r2 * 0.5F;
-         this.ShoulderL.field_78795_f = rotation * 1.0F;
+         this.ShoulderL.rotateAngleX = rotation * 1.0F;
          rotation = -r2 * 0.05F;
-         this.ShoulderL.field_78808_h = rotation * 1.0F;
+         this.ShoulderL.rotateAngleZ = rotation * 1.0F;
          rotation = -r2;
-         this.BicepL.field_78795_f = rotation * 1.0F;
+         this.BicepL.rotateAngleX = rotation * 1.0F;
          rotation = -r2 * 1.0F;
-         this.BicepL.field_78808_h = rotation * 1.0F;
+         this.BicepL.rotateAngleZ = rotation * 1.0F;
          rotation = -r2 - 0.2F;
-         this.ForeArmL.field_78795_f = rotation * 1.0F;
+         this.ForeArmL.rotateAngleX = rotation * 1.0F;
          rotation = r2 * 1.0F;
-         this.ForeArmL.field_78808_h = rotation * 1.0F;
+         this.ForeArmL.rotateAngleZ = rotation * 1.0F;
          rotation = -r2 * 1.0F;
-         this.LFingerT1.field_78795_f = rotation * 1.0F;
+         this.LFingerT1.rotateAngleX = rotation * 1.0F;
          rotation = -r2 * 2.0F;
-         this.LFingerT1.field_78796_g = -rotation * 1.0F;
+         this.LFingerT1.rotateAngleY = -rotation * 1.0F;
          rotation = -r2 * 2.0F;
-         this.LFingerL1.field_78795_f = -rotation * 1.0F;
-         this.LFingerR1.field_78795_f = -rotation * 1.0F;
-         this.LFingerM1.field_78795_f = -rotation * 1.0F;
-         this.LFingerP1.field_78795_f = -rotation * 1.0F;
+         this.LFingerL1.rotateAngleX = -rotation * 1.0F;
+         this.LFingerR1.rotateAngleX = -rotation * 1.0F;
+         this.LFingerM1.rotateAngleX = -rotation * 1.0F;
+         this.LFingerP1.rotateAngleX = -rotation * 1.0F;
          rotation = -r2 * 2.0F;
-         this.LFingersT2.field_78796_g = 1.0471976F;
-         this.LFingerL2.field_78795_f = 0.8651597F;
-         this.LFingerR2.field_78795_f = 1.0016445F;
-         this.LFingerM2.field_78795_f = 1.0016445F;
-         this.LFingerP2.field_78795_f = 0.8651597F;
+         this.LFingersT2.rotateAngleY = 1.0471976F;
+         this.LFingerL2.rotateAngleX = 0.8651597F;
+         this.LFingerR2.rotateAngleX = 1.0016445F;
+         this.LFingerM2.rotateAngleX = 1.0016445F;
+         this.LFingerP2.rotateAngleX = 0.8651597F;
          rotation = -2.0F - r2 * 1.0F;
-         this.PalmL1.field_78796_g = rotation * 1.0F;
+         this.PalmL1.rotateAngleY = rotation * 1.0F;
       } else {
          rotation = -r2 * 0.5F;
-         this.ShoulderL.field_78795_f = rotation * 1.0F;
+         this.ShoulderL.rotateAngleX = rotation * 1.0F;
          rotation = -r2 * 0.05F;
-         this.ShoulderL.field_78808_h = rotation * 1.0F;
+         this.ShoulderL.rotateAngleZ = rotation * 1.0F;
          rotation = -r2;
-         this.BicepL.field_78795_f = -0.4F;
+         this.BicepL.rotateAngleX = -0.4F;
          rotation = -r2 * 1.0F;
-         this.BicepL.field_78808_h = -0.6F;
+         this.BicepL.rotateAngleZ = -0.6F;
          rotation = -r2 - 0.2F;
-         this.ForeArmL.field_78795_f = -1.5F;
+         this.ForeArmL.rotateAngleX = -1.5F;
          rotation = r2 * 1.0F;
-         this.ForeArmL.field_78808_h = rotation * 1.0F;
-         this.LFingerT1.field_78795_f = -1.8F;
-         this.LFingerT1.field_78796_g = 1.6F;
-         this.LFingerL1.field_78795_f = 0.1F;
-         this.LFingerR1.field_78795_f = 0.0F;
-         this.LFingerM1.field_78795_f = 0.0F;
-         this.LFingerP1.field_78795_f = 1.1F;
-         this.LFingersT2.field_78796_g = 0.5F;
-         this.LFingerL2.field_78795_f = 0.2F;
-         this.LFingerR2.field_78795_f = 0.2F;
-         this.LFingerM2.field_78795_f = 0.2F;
-         this.LFingerP2.field_78795_f = 1.2F;
-         this.PalmL1.field_78796_g = -2.0F;
+         this.ForeArmL.rotateAngleZ = rotation * 1.0F;
+         this.LFingerT1.rotateAngleX = -1.8F;
+         this.LFingerT1.rotateAngleY = 1.6F;
+         this.LFingerL1.rotateAngleX = 0.1F;
+         this.LFingerR1.rotateAngleX = 0.0F;
+         this.LFingerM1.rotateAngleX = 0.0F;
+         this.LFingerP1.rotateAngleX = 1.1F;
+         this.LFingersT2.rotateAngleY = 0.5F;
+         this.LFingerL2.rotateAngleX = 0.2F;
+         this.LFingerR2.rotateAngleX = 0.2F;
+         this.LFingerM2.rotateAngleX = 0.2F;
+         this.LFingerP2.rotateAngleX = 1.2F;
+         this.PalmL1.rotateAngleY = -2.0F;
       }
 
    }

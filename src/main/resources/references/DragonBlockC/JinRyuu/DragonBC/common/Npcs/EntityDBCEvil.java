@@ -70,12 +70,12 @@ public class EntityDBCEvil extends EntityDBC implements IEntityAdditionalSpawnDa
       super.func_70645_a(par1DamageSource);
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (!(this instanceof EntitySaiyan01) && !(this instanceof EntitySaiyan02)) {
          double r = (double)DBCConfig.mdal;
          if (this.spwner != null && r != 0.0D) {
-            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.field_70165_t - r, this.field_70163_u - r, this.field_70161_v - r, this.field_70165_t + r, this.field_70163_u + r, this.field_70161_v + r);
-            List list = this.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
+            List list = this.world.func_72872_a(EntityPlayer.class, aabb);
             boolean b = false;
             int j = 0;
             int sgid = JRMCoreH.getInt((EntityPlayer)this.spwner, "JRMCGID");
@@ -90,7 +90,7 @@ public class EntityDBCEvil extends EntityDBC implements IEntityAdditionalSpawnDa
                   if (j == 0) {
                      --this.noSpwnr;
                      if (this.noSpwnr <= 0) {
-                        this.func_70106_y();
+                        this.setDead();
                      }
                   } else if (this.noSpwnr != DBCConfig.mdat) {
                      this.noSpwnr = DBCConfig.mdat;
@@ -108,12 +108,12 @@ public class EntityDBCEvil extends EntityDBC implements IEntityAdditionalSpawnDa
             }
          }
 
-         if (!this.field_70170_p.field_72995_K && this.spwner == null) {
-            this.func_70106_y();
+         if (!this.world.field_72995_K && this.spwner == null) {
+            this.setDead();
          }
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
    }
 
    public boolean func_70097_a(DamageSource par1DamageSource, float par2) {
@@ -182,8 +182,8 @@ public class EntityDBCEvil extends EntityDBC implements IEntityAdditionalSpawnDa
       int e1 = data.readInt();
       int e2 = data.readInt();
       int e3 = data.readInt();
-      this.spwner = e1 == 0 ? this.spwner : this.field_70170_p.func_73045_a(e1);
-      this.target = e2 == 0 ? this.target : this.field_70170_p.func_73045_a(e2);
-      this.field_70789_a = e3 == 0 ? this.field_70789_a : this.field_70170_p.func_73045_a(e3);
+      this.spwner = e1 == 0 ? this.spwner : this.world.func_73045_a(e1);
+      this.target = e2 == 0 ? this.target : this.world.func_73045_a(e2);
+      this.field_70789_a = e3 == 0 ? this.field_70789_a : this.world.func_73045_a(e3);
    }
 }

@@ -85,7 +85,7 @@ public class JRMCoreHC {
    public static void dtm(float x, float y, int u, int v, float width, float height, float z) {
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)x, (double)(y + 0.0F), (double)z, (double)((float)(u + 0) * f), (double)((float)(v + 0) * f1));
       tessellator.func_78374_a((double)x, (double)(y + height), (double)z, (double)((float)(u + 0) * f), (double)(((float)v + height) * f1));
@@ -97,7 +97,7 @@ public class JRMCoreHC {
    public static void dtr(float x, float y, int u, int v, float width, float height, float z) {
       float f = 1.0F / width;
       float f1 = 1.0F / height;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)x, (double)(y + 0.0F), (double)z, (double)((float)(u + 0) * f), (double)((float)(v + 0) * f1));
       tessellator.func_78374_a((double)x, (double)(y + height), (double)z, (double)((float)(u + 0) * f), (double)(((float)v + height) * f1));
@@ -107,17 +107,17 @@ public class JRMCoreHC {
    }
 
    public static void Blocking() {
-      if (JRMCoreClient.mc.field_71474_y.field_74312_F.func_151470_d()) {
+      if (JRMCoreClient.mc.gameSettings.field_74312_F.func_151470_d()) {
          attackTime = 0;
       } else if (attackTime < atv) {
          ++attackTime;
       }
 
-      EntityPlayer var4 = JRMCoreClient.mc.field_71439_g;
+      EntityPlayer var4 = JRMCoreClient.mc.player;
       ItemStack var11 = var4.field_71071_by.func_70448_g();
       ExtendedPlayer props = ExtendedPlayer.get(var4);
       int mode = JRMCoreH.DBC() ? DBCPacketHandlerClient.getDBCPlayerBlockMode() : 1;
-      boolean b = !JRMCoreKeyHandler.Fn.func_151470_d() && JRMCoreClient.mc.field_71474_y.field_74313_G.func_151470_d() || mode == 2;
+      boolean b = !JRMCoreKeyHandler.Fn.func_151470_d() && JRMCoreClient.mc.gameSettings.field_74313_G.func_151470_d() || mode == 2;
       if (b && props.getBlocking() != mode && attackTime >= atv && var11 == null) {
          triForce(2, mode, 0);
          props.setBlocking(mode);

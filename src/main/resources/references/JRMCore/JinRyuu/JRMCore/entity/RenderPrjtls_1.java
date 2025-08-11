@@ -14,7 +14,7 @@ public class RenderPrjtls_1 extends Render {
    private ModelPrjtls_3 mod3 = new ModelPrjtls_3();
    String[] wt = new String[]{"Rocket1", "Rocket2", "Rocket3", "Rocket2", "Rocket2", "Rocket2", "Rocket2"};
 
-   protected ResourceLocation func_110775_a(Entity entity) {
+   protected ResourceLocation getEntityTexture(Entity entity) {
       return null;
    }
 
@@ -22,7 +22,7 @@ public class RenderPrjtls_1 extends Render {
       int wt = Entity.getWpnTyp();
       if (wt > -1) {
          ResourceLocation txx = new ResourceLocation("jinryuudragonbc:projectiles/" + this.wt[wt] + ".png");
-         this.field_76990_c.field_78724_e.func_110577_a(txx);
+         this.renderManager.renderEngine.bindTexture(txx);
          GL11.glPushMatrix();
          GL11.glEnable(2977);
          GL11.glEnable(3042);
@@ -31,8 +31,8 @@ public class RenderPrjtls_1 extends Render {
          GL11.glTranslatef((float)par2, (float)par4, (float)par6);
          GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
          GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
-         GL11.glRotatef(-Entity.field_70177_z, 0.0F, 1.0F, 0.0F);
-         GL11.glRotatef(Entity.field_70125_A - 90.0F, 0.0F, 0.0F, 1.0F);
+         GL11.glRotatef(-Entity.rotationYaw, 0.0F, 1.0F, 0.0F);
+         GL11.glRotatef(Entity.rotationPitch - 90.0F, 0.0F, 0.0F, 1.0F);
          GL11.glRotatef(90.0F, -1.0F, 0.0F, 0.0F);
          float sc = 0.7F;
          if (wt == 0) {
@@ -50,15 +50,15 @@ public class RenderPrjtls_1 extends Render {
          GL11.glScalef(sc, sc, sc);
          GL11.glColor3f(1.0F, 1.0F, 1.0F);
          if (wt == 0) {
-            this.mod1.func_78088_a(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            this.mod1.render(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
          } else if (wt != 1 && wt != 5) {
             if (wt == 2) {
-               this.mod3.func_78088_a(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+               this.mod3.render(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
             } else {
-               this.mod2.func_78088_a(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+               this.mod2.render(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
             }
          } else {
-            this.mod2.func_78088_a(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            this.mod2.render(Entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
          }
 
          GL11.glDisable(3042);
@@ -69,7 +69,7 @@ public class RenderPrjtls_1 extends Render {
 
    }
 
-   public void func_76986_a(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
       this.renderItemKunai((EntityPrjtls_1)par1Entity, par2, par4, par6, par8, par9);
    }
 }

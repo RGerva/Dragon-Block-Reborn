@@ -48,16 +48,16 @@ public class ComJrmc extends CommandBase {
          boolean heal = false;
          boolean accept = s.toLowerCase().contains("accept");
          boolean decline = s.toLowerCase().contains("decline");
-         if (entityplayermp != null && JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(entityplayermp.func_70005_c_()) < JRMCoreConfig.osbic * 20) {
-            entityplayermp.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(entityplayermp.func_70005_c_())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
+         if (entityplayermp != null && JRMCoreConfig.osbic > 0 && (Integer)JRMCoreH.osbic.get(entityplayermp.getName()) < JRMCoreConfig.osbic * 20) {
+            entityplayermp.func_145747_a((new ChatComponentTranslation("Offline Protection: " + ((int)((float)(JRMCoreConfig.osbic * 20 - (Integer)JRMCoreH.osbic.get(entityplayermp.getName())) * 0.05F) + 1) + "s left", new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
          } else {
             if (startnew) {
                if (JRMCoreH.DBC()) {
                   if (!JRMCoreH.isFused(entityplayermp)) {
                      JRMCoreH.resetChar(entityplayermp);
-                     this.notifyAdmins(commandSender, "Resetting attributes and character look has been processed.", new Object[]{entityplayermp.func_70005_c_()});
+                     this.notifyAdmins(commandSender, "Resetting attributes and character look has been processed.", new Object[]{entityplayermp.getName()});
                   } else {
-                     this.notifyAdmins(commandSender, "Unable to reset attributes and character look while fused.", new Object[]{entityplayermp.func_70005_c_()});
+                     this.notifyAdmins(commandSender, "Unable to reset attributes and character look while fused.", new Object[]{entityplayermp.getName()});
                   }
                }
             } else if (!accept && !decline) {
@@ -93,7 +93,7 @@ public class ComJrmc extends CommandBase {
                            if (tp - costTp >= 0) {
                               JRMCoreH.setInt((int)(tp - costTp), p, "jrmcTpint");
                               JRMCoreH.setString(toteach[0], p, JRMCoreH.techNbt[b]);
-                              teacher.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "teachingOfferAccepted"), new Object[]{p.func_70005_c_(), tn[0]})).func_150255_a(JRMCoreH2.styl_ylw));
+                              teacher.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "teachingOfferAccepted"), new Object[]{p.getName(), tn[0]})).func_150255_a(JRMCoreH2.styl_ylw));
                               p.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "techadded"), new Object[]{tn[0]})).func_150255_a(JRMCoreH2.styl_ylw));
                            } else {
                               p.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "notenoughtp"), new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
@@ -106,7 +106,7 @@ public class ComJrmc extends CommandBase {
                      JRMCoreH.setString(" ", entityplayermp, "jrmcTechLearn");
                      entityplayermp.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "teachingOfDeclByYou"), new Object[]{toteach[1], tn[0]})).func_150255_a(JRMCoreH2.styl_ylw));
                      if (teacher != null) {
-                        teacher.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "teachingOfDeclByPlayr"), new Object[]{entityplayermp.func_70005_c_()})).func_150255_a(JRMCoreH2.styl_ylw));
+                        teacher.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "teachingOfDeclByPlayr"), new Object[]{entityplayermp.getName()})).func_150255_a(JRMCoreH2.styl_ylw));
                      }
                   } else {
                      JRMCoreH.setString(" ", entityplayermp, "jrmcTechLearn");

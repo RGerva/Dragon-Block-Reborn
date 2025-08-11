@@ -72,54 +72,54 @@ public class KintounModel extends ModelBase {
       this.BackR1.func_78792_a(this.BackR2);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
       GL11.glPushMatrix();
       GL11.glRotatef(90.0F, 0.0F, -1.0F, 0.0F);
       GL11.glTranslatef(0.2F, 0.5F, 0.0F);
-      float ex = (float)entity.field_70173_aa;
+      float ex = (float)entity.ticksExisted;
       float cosi = MathHelper.func_76134_b(ex * 0.2F) * 0.02F;
       float cosi2 = MathHelper.func_76134_b(ex * 0.2F) * 0.01F * -1.0F;
       GL11.glTranslatef(cosi, cosi, 0.0F);
-      this.Base.func_78785_a(f5);
+      this.Base.render(f5);
       GL11.glPopMatrix();
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 
    public void renderModel(float f5) {
-      this.func_78088_a((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f5);
+      this.render((Entity)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f5);
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
-      float ex = (float)par7Entity.field_70173_aa;
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par7Entity) {
+      float ex = (float)par7Entity.ticksExisted;
       float cosi = MathHelper.func_76134_b(ex * 0.5F) * 0.2F;
       float cosi2 = MathHelper.func_76134_b(ex * 0.5F) * 0.1F;
-      this.FrontL.field_78795_f = -cosi * f2 * -1.0F;
-      this.FrontL.field_78796_g = -cosi * f2 * -1.0F;
-      this.FrontR.field_78795_f = -cosi2 * f2;
-      this.FrontR.field_78796_g = -cosi2 * f2;
-      this.SideL1.field_78795_f = -cosi * f2 * -1.0F;
-      this.SideL1.field_78796_g = -cosi * f2 * -1.0F;
-      this.SideR.field_78795_f = -cosi2 * f2;
-      this.SideR.field_78796_g = -cosi2 * f2;
-      this.BackR1.field_78795_f = -cosi * f2 * -1.0F;
-      this.BackR1.field_78796_g = -cosi * f2 * -1.0F;
-      this.BackL1.field_78795_f = -cosi2 * f2;
-      this.BackL1.field_78796_g = -cosi2 * f2;
-      this.Bottom.field_78795_f = -cosi * f2 * -1.0F;
-      this.Bottom.field_78796_g = -cosi * f2 * -1.0F;
-      this.SideL2.field_78795_f = -cosi2 * f2;
-      this.SideL2.field_78796_g = -cosi2 * f2;
-      this.BackR2.field_78795_f = -cosi * f2 * -1.0F;
-      this.BackR2.field_78796_g = -cosi * f2 * -1.0F;
-      this.Tail1.field_78795_f = -cosi2 * f2;
-      this.Tail1.field_78796_g = -cosi2 * f2;
-      this.Tail2.field_78795_f = -cosi * f2 * -1.0F;
-      this.Tail2.field_78796_g = -cosi * f2 * -1.0F;
+      this.FrontL.rotateAngleX = -cosi * f2 * -1.0F;
+      this.FrontL.rotateAngleY = -cosi * f2 * -1.0F;
+      this.FrontR.rotateAngleX = -cosi2 * f2;
+      this.FrontR.rotateAngleY = -cosi2 * f2;
+      this.SideL1.rotateAngleX = -cosi * f2 * -1.0F;
+      this.SideL1.rotateAngleY = -cosi * f2 * -1.0F;
+      this.SideR.rotateAngleX = -cosi2 * f2;
+      this.SideR.rotateAngleY = -cosi2 * f2;
+      this.BackR1.rotateAngleX = -cosi * f2 * -1.0F;
+      this.BackR1.rotateAngleY = -cosi * f2 * -1.0F;
+      this.BackL1.rotateAngleX = -cosi2 * f2;
+      this.BackL1.rotateAngleY = -cosi2 * f2;
+      this.Bottom.rotateAngleX = -cosi * f2 * -1.0F;
+      this.Bottom.rotateAngleY = -cosi * f2 * -1.0F;
+      this.SideL2.rotateAngleX = -cosi2 * f2;
+      this.SideL2.rotateAngleY = -cosi2 * f2;
+      this.BackR2.rotateAngleX = -cosi * f2 * -1.0F;
+      this.BackR2.rotateAngleY = -cosi * f2 * -1.0F;
+      this.Tail1.rotateAngleX = -cosi2 * f2;
+      this.Tail1.rotateAngleY = -cosi2 * f2;
+      this.Tail2.rotateAngleX = -cosi * f2 * -1.0F;
+      this.Tail2.rotateAngleY = -cosi * f2 * -1.0F;
    }
 }

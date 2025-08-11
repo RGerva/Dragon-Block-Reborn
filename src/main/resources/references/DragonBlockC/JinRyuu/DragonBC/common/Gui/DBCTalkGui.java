@@ -141,7 +141,7 @@ public class DBCTalkGui extends GuiScreen {
       Iterator it = l.iterator();
       if (it.hasNext()) {
          EntityDBCKami k = (EntityDBCKami)it.next();
-         this.CurMaster = k.func_70005_c_();
+         this.CurMaster = k.getName();
       }
 
       this.wish = w;
@@ -172,57 +172,57 @@ public class DBCTalkGui extends GuiScreen {
 
    public void func_146284_a(GuiButton button) {
       if (button.field_146127_k == -1) {
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 0) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 1) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 2) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 3) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 4) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 10) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 11) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 12) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 13) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 14) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 99) {
@@ -236,12 +236,12 @@ public class DBCTalkGui extends GuiScreen {
 
       if (button.field_146127_k == 100) {
          this.dbcTelep(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 101) {
          this.dbcTelep(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 103) {
@@ -253,13 +253,13 @@ public class DBCTalkGui extends GuiScreen {
       }
 
       if (button.field_146127_k == 105) {
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
          JRMCoreH.Char((byte)101, (byte)0);
       }
 
       if (button.field_146127_k == 106) {
          JRMCoreH.Char((byte)104, (byte)0);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 107) {
@@ -272,7 +272,7 @@ public class DBCTalkGui extends GuiScreen {
 
       if (button.field_146127_k == 109) {
          JRMCoreH.Char((byte)105, (byte)0);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 198) {
@@ -312,15 +312,15 @@ public class DBCTalkGui extends GuiScreen {
 
       if (button.field_146127_k == 199) {
          this.dbcWish(button.field_146127_k);
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 201) {
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
          JRMCoreH.Char((byte)4, (byte)0);
          JRMCoreH.Char((byte)100, (byte)0);
          boolean doit = true;
-         if (JRMCoreH.DBC() && this.mc.field_71439_g != null) {
+         if (JRMCoreH.DBC() && this.mc.player != null) {
             doit = !JRMCoreH.isFused();
          }
 
@@ -345,13 +345,13 @@ public class DBCTalkGui extends GuiScreen {
             this.dbcWish(button.field_146127_k + 1);
          }
 
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button instanceof JRMCoreGuiButtons00MS && button.field_146127_k == 6000) {
          JRMCoreGuiButtons00MS btn = (JRMCoreGuiButtons00MS)button;
          if (btn.d2.equals("-3")) {
-            this.mc.field_71439_g.func_71053_j();
+            this.mc.player.func_71053_j();
          }
 
          JRMCoreGuiScreen.dataSend(btn.d1, btn.d2);
@@ -380,43 +380,43 @@ public class DBCTalkGui extends GuiScreen {
 
          if (button.field_146127_k == 210) {
             PD.sendToServer(new DBCPwish(2, "0;" + this.name));
-            this.mc.field_71439_g.func_71053_j();
+            this.mc.player.func_71053_j();
          }
 
          if (button.field_146127_k == 211) {
             PD.sendToServer(new DBCPwish(2, "1;" + this.name));
-            this.mc.field_71439_g.func_71053_j();
+            this.mc.player.func_71053_j();
          }
 
          if (button.field_146127_k == 212) {
             PD.sendToServer(new DBCPwish(2, "2;" + this.name));
-            this.mc.field_71439_g.func_71053_j();
+            this.mc.player.func_71053_j();
          }
 
          if (button.field_146127_k == 213) {
             PD.sendToServer(new DBCPwish(2, "3;" + this.name));
-            this.mc.field_71439_g.func_71053_j();
+            this.mc.player.func_71053_j();
          }
 
          if (button.field_146127_k == 214) {
             PD.sendToServer(new DBCPwish(2, "4;" + this.name));
-            this.mc.field_71439_g.func_71053_j();
+            this.mc.player.func_71053_j();
          }
       }
 
       if (button.field_146127_k == 50) {
          PD.sendToServer(new DBCPwish(5, "0"));
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 51) {
          PD.sendToServer(new DBCPwish(5, "1"));
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
       if (button.field_146127_k == 52) {
          PD.sendToServer(new DBCPwish(6, ""));
-         this.mc.field_71439_g.func_71053_j();
+         this.mc.player.func_71053_j();
       }
 
    }
@@ -506,13 +506,13 @@ public class DBCTalkGui extends GuiScreen {
       int nw;
       int i2;
       if (this.MsnSysTalkTo != null) {
-         wish = EntityList.func_75620_a((String)this.MsnSysTalkTo.get("N"), (World)null).func_70005_c_();
+         wish = EntityList.func_75620_a((String)this.MsnSysTalkTo.get("N"), (World)null).getName();
          if (wish.equalsIgnoreCase(this.CurMaster)) {
             cont = false;
             s2 = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             ResourceLocation tx = new ResourceLocation(s2);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             i = 0;
             this.Process = wish;
@@ -692,7 +692,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             nr = 0;
             this.Process = StatCollector.func_74838_a("dbc.talkgui.giveweightsdesc");
@@ -756,7 +756,7 @@ public class DBCTalkGui extends GuiScreen {
                wish = "jinryuudragonbc:saa.png";
                GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                tx = new ResourceLocation(wish);
-               this.mc.field_71446_o.func_110577_a(tx);
+               this.mc.field_71446_o.bindTexture(tx);
                this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                posX = this.field_146294_l / 2;
                posY = this.field_146295_m / 2;
@@ -801,7 +801,7 @@ public class DBCTalkGui extends GuiScreen {
                      wish = "jinryuudragonbc:saa.png";
                      GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                      tx = new ResourceLocation(wish);
-                     this.mc.field_71446_o.func_110577_a(tx);
+                     this.mc.field_71446_o.bindTexture(tx);
                      this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                      posX = this.field_146294_l / 2;
                      posY = this.field_146295_m / 2;
@@ -835,7 +835,7 @@ public class DBCTalkGui extends GuiScreen {
                      wish = "jinryuudragonbc:saa.png";
                      GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                      tx = new ResourceLocation(wish);
-                     this.mc.field_71446_o.func_110577_a(tx);
+                     this.mc.field_71446_o.bindTexture(tx);
                      this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                      posX = this.field_146294_l / 2;
                      posY = this.field_146295_m / 2;
@@ -876,7 +876,7 @@ public class DBCTalkGui extends GuiScreen {
                      wish = "jinryuudragonbc:saa.png";
                      GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                      tx = new ResourceLocation(wish);
-                     this.mc.field_71446_o.func_110577_a(tx);
+                     this.mc.field_71446_o.bindTexture(tx);
                      this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                      posX = this.field_146294_l / 2;
                      posY = this.field_146295_m / 2;
@@ -940,7 +940,7 @@ public class DBCTalkGui extends GuiScreen {
                         wish = "jinryuudragonbc:saa.png";
                         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                         tx = new ResourceLocation(wish);
-                        this.mc.field_71446_o.func_110577_a(tx);
+                        this.mc.field_71446_o.bindTexture(tx);
                         this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                         posX = this.field_146294_l / 2;
                         posY = this.field_146295_m / 2;
@@ -982,7 +982,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1020,7 +1020,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            Iterator iterator = this.mc.field_71466_p.func_78271_c(JRMCoreH.trl("dbc", "KaioDiffRed"), 245).iterator();
                            i2 = 0;
@@ -1041,10 +1041,10 @@ public class DBCTalkGui extends GuiScreen {
                               }
 
                               this.field_146292_n.add(new DBCGuiButtons01(198, posX - 35, posY + 55, 100, 20, StatCollector.func_74838_a("dbc.talkgui.skills")));
-                              if (!this.mc.field_71439_g.field_71071_by.func_146028_b(ItemsDBC.KintounItem)) {
+                              if (!this.mc.player.field_71071_by.func_146028_b(ItemsDBC.KintounItem)) {
                                  this.field_146292_n.add(new DBCGuiButtons01(202, posX - 35, posY + 15, 100, 20, StatCollector.func_74838_a("dbc.talkgui.kintoun")));
                               }
-                           } else if (!this.mc.field_71439_g.field_71071_by.func_146028_b(ItemsDBC.KintounBlackItem)) {
+                           } else if (!this.mc.player.field_71071_by.func_146028_b(ItemsDBC.KintounBlackItem)) {
                               this.field_146292_n.add(new DBCGuiButtons01(202, posX - 35, posY + 15, 140, 20, StatCollector.func_74838_a("dbc.talkgui.kintounblack")));
                            }
 
@@ -1054,7 +1054,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1072,7 +1072,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[2]);
@@ -1105,7 +1105,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1125,7 +1125,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1163,7 +1163,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[12]);
@@ -1191,7 +1191,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1217,7 +1217,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1256,7 +1256,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[13]);
@@ -1284,7 +1284,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1309,7 +1309,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1348,7 +1348,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[11]);
@@ -1376,7 +1376,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1400,7 +1400,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1439,7 +1439,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[15]);
@@ -1485,7 +1485,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1509,7 +1509,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1548,7 +1548,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[this.master]);
@@ -1584,7 +1584,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1610,7 +1610,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1649,7 +1649,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[this.master]);
@@ -1677,7 +1677,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1697,7 +1697,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1736,7 +1736,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[14]);
@@ -1764,7 +1764,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1785,7 +1785,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1824,7 +1824,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            nr = 0;
                            this.Process = StatCollector.func_74838_a(JRMCoreH.Masters[10]);
@@ -1852,7 +1852,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1873,7 +1873,7 @@ public class DBCTalkGui extends GuiScreen {
                            wish = "jinryuudragonbc:saa.png";
                            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                            tx = new ResourceLocation(wish);
-                           this.mc.field_71446_o.func_110577_a(tx);
+                           this.mc.field_71446_o.bindTexture(tx);
                            this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
                            posX = this.field_146294_l / 2;
                            posY = this.field_146295_m / 2;
@@ -1918,7 +1918,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             this.current(StatCollector.func_74838_a("dbc.talkgui.line1000"), 10, 10, var8, guiLeft, guiTop);
             n = StatCollector.func_74838_a("dbc.talkgui.line1001");
@@ -1943,7 +1943,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             this.current(StatCollector.func_74838_a("dbc.talkgui.line1010"), 10, 10, var8, guiLeft, guiTop);
             n = StatCollector.func_74838_a("dbc.talkgui.line1011");
@@ -1964,7 +1964,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             this.current(StatCollector.func_74838_a("dbc.talkgui.line1017"), 10, 10, var8, guiLeft, guiTop);
             n = StatCollector.func_74838_a("dbc.talkgui.line1018");
@@ -1985,7 +1985,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             this.current(StatCollector.func_74838_a("dbc.talkgui.line0000"), 10, 10, var8, guiLeft, guiTop);
             n = StatCollector.func_74838_a("dbc.talkgui.line0001");
@@ -2021,7 +2021,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             nr = 0;
             this.Process = StatCollector.func_74838_a("dbc.talkgui.kami.startanew");
@@ -2030,7 +2030,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             nr = 0;
             this.Process = StatCollector.func_74838_a("dbc.talkgui.kami.confirmtailcut");
@@ -2039,7 +2039,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             nr = 0;
             this.Process = StatCollector.func_74838_a("dbc.talkgui.kami.tailregrow");
@@ -2068,7 +2068,7 @@ public class DBCTalkGui extends GuiScreen {
             wish = "jinryuudragonbc:saa.png";
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             tx = new ResourceLocation(wish);
-            this.mc.field_71446_o.func_110577_a(tx);
+            this.mc.field_71446_o.bindTexture(tx);
             this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
             this.current(StatCollector.func_74838_a("dbc.talkgui.karin.00"), 10, 10, var8, guiLeft, guiTop);
             n = StatCollector.func_74838_a("dbc.talkgui.karin.01");
@@ -2109,7 +2109,7 @@ public class DBCTalkGui extends GuiScreen {
       int guiTop = (this.field_146295_m - ySize) / 2;
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(wish);
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
    }
 
@@ -2128,7 +2128,7 @@ public class DBCTalkGui extends GuiScreen {
       this.func_73866_w_();
       Minecraft minecraft = this.mc;
       World world = minecraft.field_71441_e;
-      EntityPlayerSP entityplayersp = minecraft.field_71439_g;
+      EntityPlayerSP entityplayersp = minecraft.player;
       ScaledResolution scaledresolution = new ScaledResolution(minecraft, minecraft.field_71443_c, minecraft.field_71440_d);
       int width = scaledresolution.func_78326_a() / 2;
       int height = scaledresolution.func_78328_b() / 2;
@@ -2152,7 +2152,7 @@ public class DBCTalkGui extends GuiScreen {
       String var4 = "jinryuudragonbc:sagas.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(var4);
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
    }
 }

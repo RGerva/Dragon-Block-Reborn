@@ -23,8 +23,8 @@ public class EntityJRMCexpl extends Entity {
       this.type = type;
    }
 
-   public void func_70071_h_() {
-      if (this.field_70170_p.field_72995_K && JGConfigClientSettings.CLIENT_GR4) {
+   public void onUpdate() {
+      if (this.world.field_72995_K && JGConfigClientSettings.CLIENT_GR4) {
          for(int k = 0; k < JGConfigClientSettings.get_da1(); ++k) {
             float h1;
             double y;
@@ -36,7 +36,7 @@ public class EntityJRMCexpl extends Entity {
             float scale;
             float motx;
             if (this.type == 10) {
-               if (this.field_70173_aa % 2 == 0 && this.field_70173_aa < 10) {
+               if (this.ticksExisted % 2 == 0 && this.ticksExisted < 10) {
                   pl = this;
                   h1 = this.explsiz;
 
@@ -58,15 +58,15 @@ public class EntityJRMCexpl extends Entity {
                      y = (double)((float)(Math.random() * (double)h1) - h1 / 2.0F);
                      z = (double)((float)(Math.random() * (double)h1) - h1 / 2.0F);
                      z = (double)((float)(Math.random() * (double)h1) - h1 / 2.0F);
-                     Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.4F, 0.4F, pl.field_70165_t, pl.field_70163_u, pl.field_70161_v, y, z, z, (double)moty, (double)motz, (double)motz, 0.0F, 10, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 50, 1, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * scale, ((float)(Math.random() * 0.019999999552965164D) + 0.09F) * scale, ((float)(Math.random() * 0.0020000000949949026D) + 0.003F) * scale, 1, 0.9647059F, 0.38431373F, 0.98039216F, -0.01F, -0.001F, -0.001F, 0.8392157F, 0.32941177F, 0.9137255F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
+                     Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.4F, 0.4F, pl.posX, pl.posY, pl.posZ, y, z, z, (double)moty, (double)motz, (double)motz, 0.0F, 10, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 50, 1, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * scale, ((float)(Math.random() * 0.019999999552965164D) + 0.09F) * scale, ((float)(Math.random() * 0.0020000000949949026D) + 0.003F) * scale, 1, 0.9647059F, 0.38431373F, 0.98039216F, -0.01F, -0.001F, -0.001F, 0.8392157F, 0.32941177F, 0.9137255F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
                      ((EntityCusPar)entity7).setdata39((float)((int)(Math.random() * 360.0D)));
-                     this.field_70170_p.func_72838_d(entity7);
+                     this.world.func_72838_d(entity7);
                   }
                }
-            } else if (this.field_70173_aa != 1 || this.type != 3 && this.type != 4) {
+            } else if (this.ticksExisted != 1 || this.type != 3 && this.type != 4) {
                float a;
                int j;
-               if (this.field_70173_aa == 1) {
+               if (this.ticksExisted == 1) {
                   if (this.type != 5) {
                      if (this.type != 0) {
                         if (JGConfigClientSettings.CLIENT_DA6) {
@@ -79,23 +79,23 @@ public class EntityJRMCexpl extends Entity {
                               double x = 0.0D;
                               y = 0.0D;
                               z = 0.0D;
-                              Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.4F, 0.4F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 2.0D) + 12, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 30, 1, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * a, ((float)(Math.random() * 0.03999999910593033D) + 0.09F) * a, ((float)(Math.random() * 0.003000000026077032D) + 0.005F) * a, 0, 116.0F, 187.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
+                              Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.4F, 0.4F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 2.0D) + 12, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 30, 1, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * a, ((float)(Math.random() * 0.03999999910593033D) + 0.09F) * a, ((float)(Math.random() * 0.003000000026077032D) + 0.005F) * a, 0, 116.0F, 187.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
                               ((EntityCusPar)entity7).setdata39((float)((int)(Math.random() * 360.0D)));
-                              this.field_70170_p.func_72838_d(entity7);
+                              this.world.func_72838_d(entity7);
                               a *= 0.65F;
                               int num = (int)(Math.random() * 4.0D) + 1;
 
                               for(int i = 0; i < num; ++i) {
-                                 Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.4F, 0.4F, pl.field_70165_t, pl.field_70163_u, pl.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 2.0D) + 6, 4, 4, 64, true, (float)(Math.random() * 0.20000000298023224D) + 0.2F, false, 0.0F, 1, "", 15, 1, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * a, ((float)(Math.random() * 0.03999999910593033D) + 0.09F) * a, ((float)(Math.random() * 0.003000000026077032D) + 0.005F) * a, 0, 116.0F, 187.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
+                                 Entity entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.4F, 0.4F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, (int)(Math.random() * 2.0D) + 6, 4, 4, 64, true, (float)(Math.random() * 0.20000000298023224D) + 0.2F, false, 0.0F, 1, "", 15, 1, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * a, ((float)(Math.random() * 0.03999999910593033D) + 0.09F) * a, ((float)(Math.random() * 0.003000000026077032D) + 0.005F) * a, 0, 116.0F, 187.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
                                  ((EntityCusPar)entity7).setdata39((float)((int)(Math.random() * 360.0D)));
-                                 this.field_70170_p.func_72838_d(entity7);
+                                 this.world.func_72838_d(entity7);
                               }
                            }
                         } else {
                            int i;
                            if (this.type == 5) {
                               for(i = 0; i < 5; ++i) {
-                                 if (this.field_70173_aa % 2 == 0) {
+                                 if (this.ticksExisted % 2 == 0) {
                                     this.func_exa();
                                     this.func_ex3();
                                  }
@@ -115,18 +115,18 @@ public class EntityJRMCexpl extends Entity {
                            }
                         }
                      }
-                  } else if (this.field_70173_aa < 15 && this.field_70173_aa % 2 == 0) {
+                  } else if (this.ticksExisted < 15 && this.ticksExisted % 2 == 0) {
                      this.func_exa();
                   }
                }
 
                if (this.type == 5) {
-                  if (this.field_70173_aa < 15 && this.field_70173_aa % 2 == 0) {
+                  if (this.ticksExisted < 15 && this.ticksExisted % 2 == 0) {
                      this.func_exa();
                   }
                } else {
                   if (JGConfigClientSettings.CLIENT_DA6) {
-                     if (this.type != 3 && this.type != 4 && this.type != 0 && this.field_70173_aa < 10) {
+                     if (this.type != 3 && this.type != 4 && this.type != 0 && this.ticksExisted < 10) {
                         pl = this;
 
                         double x;
@@ -146,9 +146,9 @@ public class EntityJRMCexpl extends Entity {
                            motx = ((float)(Math.random() * (double)size1) - size1 / 2.0F) * (this.explsiz / 5.0F);
                            moty = ((float)(Math.random() * (double)size1) - size1 / 2.0F) * (this.explsiz / 5.0F);
                            motz = ((float)(Math.random() * (double)size1) - size1 / 2.0F) * (this.explsiz / 5.0F);
-                           entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.4F, 0.4F, pl.field_70165_t, pl.field_70163_u, pl.field_70161_v, x, y, z, (double)motx, (double)moty, (double)motz, 0.0F, 10, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 50, 1, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * scale, ((float)(Math.random() * 0.019999999552965164D) + 0.09F) * scale, ((float)(Math.random() * 0.0020000000949949026D) + 0.003F) * scale, 1, 116.0F, 187.0F, 255.0F, -0.02F, -0.02F, -0.03F, 56.0F, 67.0F, 100.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
+                           entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.4F, 0.4F, pl.posX, pl.posY, pl.posZ, x, y, z, (double)motx, (double)moty, (double)motz, 0.0F, 10, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 50, 1, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * scale, ((float)(Math.random() * 0.019999999552965164D) + 0.09F) * scale, ((float)(Math.random() * 0.0020000000949949026D) + 0.003F) * scale, 1, 116.0F, 187.0F, 255.0F, -0.02F, -0.02F, -0.03F, 56.0F, 67.0F, 100.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
                            ((EntityCusPar)entity7).setdata39((float)((int)(Math.random() * 360.0D)));
-                           this.field_70170_p.func_72838_d(entity7);
+                           this.world.func_72838_d(entity7);
                         }
 
                         for(j = 0; j < (int)this.explsiz + 5; ++j) {
@@ -163,9 +163,9 @@ public class EntityJRMCexpl extends Entity {
                            motx = ((float)(Math.random() * (double)size1) - size1 / 2.0F) * (this.explsiz / 5.0F);
                            moty = ((float)(Math.random() * (double)size1) - size1 / 2.0F) * (this.explsiz / 5.0F);
                            motz = ((float)(Math.random() * (double)size1) - size1 / 2.0F) * (this.explsiz / 5.0F);
-                           entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.4F, 0.4F, pl.field_70165_t, pl.field_70163_u, pl.field_70161_v, x, y, z, (double)motx, (double)moty, (double)motz, 0.0F, 10, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 50, 1, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * scale, ((float)(Math.random() * 0.019999999552965164D) + 0.09F) * scale, ((float)(Math.random() * 0.0020000000949949026D) + 0.003F) * scale, 1, 1.0F, 1.0F, 1.0F, -0.01F, -0.005F, -0.005F, 216.0F, 244.0F, 245.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
+                           entity7 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.4F, 0.4F, pl.posX, pl.posY, pl.posZ, x, y, z, (double)motx, (double)moty, (double)motz, 0.0F, 10, 12, 4, 32, true, (float)(Math.random() * 0.30000001192092896D) + 0.3F, false, 0.0F, 1, "", 50, 1, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * scale, ((float)(Math.random() * 0.019999999552965164D) + 0.09F) * scale, ((float)(Math.random() * 0.0020000000949949026D) + 0.003F) * scale, 1, 1.0F, 1.0F, 1.0F, -0.01F, -0.005F, -0.005F, 216.0F, 244.0F, 245.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.05F, false, -1, false, (Entity)null);
                            ((EntityCusPar)entity7).setdata39((float)((int)(Math.random() * 360.0D)));
-                           this.field_70170_p.func_72838_d(entity7);
+                           this.world.func_72838_d(entity7);
                         }
                      }
                   } else if (this.type == 1 && this.explsiz > 0.5F && (float)this.MaxAge * 0.8F >= (float)this.Age) {
@@ -179,26 +179,26 @@ public class EntityJRMCexpl extends Entity {
                }
             } else {
                if (this.type == 3) {
-                  this.field_70170_p.func_72838_d(new EntityEnergyAttJ4(this.field_70170_p, (byte)0, this.field_70165_t, this.field_70163_u + 1.0D, this.field_70161_v));
+                  this.world.func_72838_d(new EntityEnergyAttJ4(this.world, (byte)0, this.posX, this.posY + 1.0D, this.posZ));
                }
 
                if (this.type == 4) {
-                  this.field_70170_p.func_72838_d(new EntityEnergyAttJ4(this.field_70170_p, (byte)1, this.field_70165_t, this.field_70163_u + 1.0D, this.field_70161_v));
+                  this.world.func_72838_d(new EntityEnergyAttJ4(this.world, (byte)1, this.posX, this.posY + 1.0D, this.posZ));
                }
             }
          }
       }
 
-      this.field_70169_q = this.field_70165_t;
-      this.field_70167_r = this.field_70163_u;
-      this.field_70166_s = this.field_70161_v;
+      this.field_70169_q = this.posX;
+      this.field_70167_r = this.posY;
+      this.field_70166_s = this.posZ;
       if (this.Age++ >= this.MaxAge) {
-         this.func_70106_y();
+         this.setDead();
       }
 
       this.field_70181_x += 0.0D;
       this.func_70091_d(0.0D, 0.0D, 0.0D);
-      if (this.field_70163_u == this.field_70167_r) {
+      if (this.posY == this.field_70167_r) {
          this.field_70159_w *= 1.0D;
          this.field_70179_y *= 1.0D;
       }
@@ -238,19 +238,19 @@ public class EntityJRMCexpl extends Entity {
    }
 
    public boolean getCanSpawnHere() {
-      return !this.field_70170_p.func_72855_b(this.field_70121_D);
+      return !this.world.checkNoEntityCollision(this.boundingBox);
    }
 
    public void onLivingUpdate() {
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound var1) {
+   protected void readEntityFromNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70014_b(NBTTagCompound var1) {
+   protected void writeEntityToNBT(NBTTagCompound var1) {
    }
 
    @SideOnly(Side.CLIENT)

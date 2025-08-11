@@ -30,7 +30,7 @@ public abstract class MiniGame {
    public abstract void update(int var1, int var2);
 
    public void stateManager(int guiLeft, int guiTop) {
-      if (!JRMCoreClient.mc.field_71439_g.field_70170_p.field_72995_K || !JRMCoreClient.mc.func_147113_T()) {
+      if (!JRMCoreClient.mc.player.world.field_72995_K || !JRMCoreClient.mc.func_147113_T()) {
          switch(this.state) {
          case 0:
             this.gameReset();

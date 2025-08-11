@@ -702,7 +702,7 @@ public class JRMCoreM {
          any = getMCo_data(os, "P").equalsIgnoreCase("no");
          spwn = getMCo_data(os, "P").equalsIgnoreCase("spwn");
          Entity e = EntityList.func_75620_a(nm, (World)null);
-         String en = e != null ? e.func_70005_c_() : "ERROR";
+         String en = e != null ? e.getName() : "ERROR";
          en = nss.equals("1") ? JRMCoreH.trl("jrmc", "missionObjType.defeated") : "" + (gm(g) > 1.0F ? " (x" + gm(g) + ")" : "");
          return JRMCoreH.trl("jrmc", "missionObjType." + t + (any ? "" : ""), en, en) + (!any && !spwn ? "" : JRMCoreH.trl("jrmc", "missionObjType.anywilldo"));
       } else {
@@ -712,7 +712,7 @@ public class JRMCoreM {
             spwn = getMCo_data(os, "P").equalsIgnoreCase("spwn");
             int am = (int)((float)getMCo_dataI(os, "M") * gm(g));
             Entity e = EntityList.func_75620_a(nm, (World)null);
-            en = e != null ? e.func_70005_c_() : "ERROR";
+            en = e != null ? e.getName() : "ERROR";
             kld = Integer.parseInt(nss) >= am ? JRMCoreH.trl("jrmc", "missionObjType.completed") : " - " + nss + "/" + am + (gm(g) > 1.0F ? " (x" + gm(g) + ")" : "");
             return JRMCoreH.trl("jrmc", "missionObjType." + t, en, kld) + (!any && !spwn ? "" : JRMCoreH.trl("jrmc", "missionObjType.anywilldo"));
          } else {
@@ -740,7 +740,7 @@ public class JRMCoreM {
                } else {
                   String kld;
                   if (t.equalsIgnoreCase("talk")) {
-                     kld = EntityList.func_75620_a(nm, (World)null).func_70005_c_();
+                     kld = EntityList.func_75620_a(nm, (World)null).getName();
                      kld = nss.equals("1") ? JRMCoreH.trl("jrmc", "missionObjType.completed") : "";
                      return JRMCoreH.trl("jrmc", "missionObjType." + t, kld, kld);
                   } else if (t.equalsIgnoreCase("state")) {

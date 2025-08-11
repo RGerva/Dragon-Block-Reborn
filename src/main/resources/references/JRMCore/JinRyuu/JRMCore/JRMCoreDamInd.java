@@ -23,32 +23,32 @@ public class JRMCoreDamInd extends EntityAuraFX {
       this.field_70547_e = 50;
    }
 
-   public void func_70071_h_() {
-      this.field_70169_q = this.field_70165_t;
-      this.field_70167_r = this.field_70163_u;
-      this.field_70166_s = this.field_70161_v;
+   public void onUpdate() {
+      this.field_70169_q = this.posX;
+      this.field_70167_r = this.posY;
+      this.field_70166_s = this.posZ;
       this.func_70091_d(this.field_70159_w, this.field_70181_x, this.field_70179_y);
       this.field_70159_w *= 0.99D;
       this.field_70181_x *= 0.99D;
       this.field_70179_y *= 0.99D;
       this.field_70181_x += 0.00125D;
       if (this.field_70547_e-- <= 0) {
-         this.func_70106_y();
+         this.setDead();
       }
 
    }
 
    public void func_70539_a(Tessellator p_70539_1_, float p_70539_2_, float p_70539_3_, float p_70539_4_, float p_70539_5_, float p_70539_6_, float p_70539_7_) {
-      float f11 = (float)(this.field_70169_q + (this.field_70165_t - this.field_70169_q) * (double)p_70539_2_ - field_70556_an);
-      float f12 = (float)(this.field_70167_r + (this.field_70163_u - this.field_70167_r) * (double)p_70539_2_ - field_70554_ao);
-      float f13 = (float)(this.field_70166_s + (this.field_70161_v - this.field_70166_s) * (double)p_70539_2_ - field_70555_ap);
+      float f11 = (float)(this.field_70169_q + (this.posX - this.field_70169_q) * (double)p_70539_2_ - field_70556_an);
+      float f12 = (float)(this.field_70167_r + (this.posY - this.field_70167_r) * (double)p_70539_2_ - field_70554_ao);
+      float f13 = (float)(this.field_70166_s + (this.posZ - this.field_70166_s) * (double)p_70539_2_ - field_70555_ap);
       p_70539_1_.func_78369_a(this.field_70552_h, this.field_70553_i, this.field_70551_j, this.field_82339_as);
       FontRenderer fontrenderer = JRMCoreClient.mc.field_71466_p;
       GL11.glPushMatrix();
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glTranslatef(f11 + 0.0F, f12 - 0.75F + 1.75F, f13);
       GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-      boolean ro = JRMCoreClient.mc.field_71474_y.field_74320_O == 2;
+      boolean ro = JRMCoreClient.mc.gameSettings.thirdPersonView == 2;
       GL11.glRotatef(-RenderManager.field_78727_a.field_78735_i, 0.0F, 1.0F, 0.0F);
       GL11.glRotatef(RenderManager.field_78727_a.field_78732_j, 1.0F * (float)(ro ? -1 : 1), 0.0F, 0.0F);
       float f1 = 0.0516F;
@@ -57,7 +57,7 @@ public class JRMCoreDamInd extends EntityAuraFX {
       String text = "" + JRMCoreH.numSep((long)((int)this.amount));
       int textWidth = fontrenderer.func_78256_a(text);
       JRMCoreGuiScreen.drawStringWithBorder(fontrenderer, text, -textWidth / 2, -2, JRMCoreH.techCol[4]);
-      JRMCoreClient.mc.field_71446_o.func_110577_a(particleTextures);
+      JRMCoreClient.mc.field_71446_o.bindTexture(particleTextures);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       GL11.glPopMatrix();
    }

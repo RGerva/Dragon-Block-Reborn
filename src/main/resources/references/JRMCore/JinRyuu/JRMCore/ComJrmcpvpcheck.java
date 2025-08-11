@@ -30,9 +30,9 @@ public class ComJrmcpvpcheck extends CommandBase {
       String s = JRMCoreH.rwip(server, dim + "");
       boolean pvp = !s.equalsIgnoreCase("false");
       if (dim == 0) {
-         this.notifyAdmins(par1ICommandSender, "PVP on Planet Earth is %s.", new Object[]{pvp ? "enabled" : "disabled", entityplayermp.func_70005_c_()});
+         this.notifyAdmins(par1ICommandSender, "PVP on Planet Earth is %s.", new Object[]{pvp ? "enabled" : "disabled", entityplayermp.getName()});
       } else {
-         this.notifyAdmins(par1ICommandSender, "PVP in dimension %s is %s.", new Object[]{dim, pvp ? "enabled" : "disabled", entityplayermp.func_70005_c_()});
+         this.notifyAdmins(par1ICommandSender, "PVP in dimension %s is %s.", new Object[]{dim, pvp ? "enabled" : "disabled", entityplayermp.getName()});
       }
 
    }

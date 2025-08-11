@@ -76,29 +76,29 @@ public class mEnergy5 extends ModelBase {
       this.Base1.func_78792_a(this.Base1Back);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.Base1.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.Base1.render(f5);
    }
 
    public void render() {
       float f5 = 0.0625F;
-      this.Base1.func_78785_a(f5);
+      this.Base1.render(f5);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
+      modelRenderer.rotateAngleX = x;
       modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
       float par31 = 1.0F;
-      this.Base1.field_78808_h = f2;
+      this.Base1.rotateAngleZ = f2;
       this.Base1.field_78796_g = f2;
-      this.Base1.field_78795_f = f2;
+      this.Base1.rotateAngleX = f2;
    }
 
    public void renderModel(Entity entity, float par8, float par9, float f, float r) {
-      this.func_78088_a(entity, 0.0F, 0.0F, r, par8, par9, f);
+      this.render(entity, 0.0F, 0.0F, r, par8, par9, f);
    }
 }

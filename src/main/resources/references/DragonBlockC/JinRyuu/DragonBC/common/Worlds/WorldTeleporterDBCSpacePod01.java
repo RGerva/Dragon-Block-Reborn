@@ -25,9 +25,9 @@ public class WorldTeleporterDBCSpacePod01 extends Teleporter {
    }
 
    public void func_77185_a(Entity entity, double par2, double par4, double par6, float par8) {
-      int i = MathHelper.func_76128_c(entity.field_70165_t + 1.0D);
-      int j = MathHelper.func_76128_c(entity.field_70163_u);
-      int k = MathHelper.func_76128_c(entity.field_70161_v);
+      int i = MathHelper.func_76128_c(entity.posX + 1.0D);
+      int j = MathHelper.func_76128_c(entity.posY);
+      int k = MathHelper.func_76128_c(entity.posZ);
       int k1 = i;
       int i2 = k;
 
@@ -44,11 +44,11 @@ public class WorldTeleporterDBCSpacePod01 extends Teleporter {
       double d2 = (double)i + 0.5D;
       double d4 = (double)j;
       double d6 = (double)k + 0.5D;
-      entity.func_70012_b(d2 + 0.0D, d4 + 20.0D, d6 + 0.0D, entity.field_70177_z, 0.0F);
+      entity.setLocationAndAngles(d2 + 0.0D, d4 + 20.0D, d6 + 0.0D, entity.rotationYaw, 0.0F);
       entity.field_70159_w = entity.field_70181_x = entity.field_70179_y = 0.0D;
       if (this.mo != null && this.mo.getClass() == SpacePod01Entity.class) {
          SpacePod01Entity e = new SpacePod01Entity(world);
-         e.func_70012_b(d2 + 0.0D, d4 + 20.0D, d6 + 0.0D, entity.field_70177_z, 0.0F);
+         e.setLocationAndAngles(d2 + 0.0D, d4 + 20.0D, d6 + 0.0D, entity.rotationYaw, 0.0F);
          world.func_72838_d(e);
          entity.func_70078_a(e);
          PD.sendTo(new DBCPspacepod1(e.func_145782_y()), (EntityPlayerMP)entity);

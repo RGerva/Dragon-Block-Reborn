@@ -152,15 +152,15 @@ public class JRMCoreEH {
          ExtendedEntity.get(player).onUpdate();
       }
 
-      if (event.entity instanceof EntityLivingBase && !event.entity.field_70170_p.field_72995_K) {
+      if (event.entity instanceof EntityLivingBase && !event.entity.world.field_72995_K) {
          EntityLivingBase entity = (EntityLivingBase)event.entity;
          String entityData = entity.getEntityData().func_74779_i("jrmcSpawnInitiatedCMT");
          double mt;
-         if (entityData.length() > 1 && entity.field_70173_aa % 20 == 1) {
+         if (entityData.length() > 1 && entity.ticksExisted % 20 == 1) {
             String[] aamt = JRMCoreM.getMobTranNext(entityData, entity);
-            if (aamt != null && aamt.length > 2 && !aamt[1].equals("0") && entity.field_70173_aa >= Integer.parseInt(aamt[1])) {
-               EntityLivingBase entity2 = (EntityLivingBase)EntityList.func_75620_a(aamt[0], entity.field_70170_p);
-               entity2.func_70012_b(entity.field_70165_t, entity.field_70163_u, entity.field_70161_v, 0.0F, 0.0F);
+            if (aamt != null && aamt.length > 2 && !aamt[1].equals("0") && entity.ticksExisted >= Integer.parseInt(aamt[1])) {
+               EntityLivingBase entity2 = (EntityLivingBase)EntityList.func_75620_a(aamt[0], entity.world);
+               entity2.setLocationAndAngles(entity.posX, entity.posY, entity.posZ, 0.0F, 0.0F);
                if (JRMCoreH.DBC()) {
                   JRMCoreHDBC.ifEvilDBCnpcs(entity2, (Entity)entity);
                }
@@ -181,9 +181,9 @@ public class JRMCoreEH {
                   entity2.getEntityData().func_74778_a("jrmcSpawnInitiatedCMT", entityData);
                }
 
-               entity.field_70170_p.func_72838_d(entity2);
+               entity.world.func_72838_d(entity2);
                double boxSize = 32.0D;
-               List pl = entity.field_70170_p.func_72872_a(EntityPlayer.class, entity.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+               List pl = entity.world.func_72872_a(EntityPlayer.class, entity.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
                if (pl.size() > 0 && aamt.length > 3 && aamt[3].length() > 2) {
                   for(int v = 0; v < pl.size(); ++v) {
                      EntityPlayer va = (EntityPlayer)pl.get(v);
@@ -191,7 +191,7 @@ public class JRMCoreEH {
                   }
                }
 
-               entity.func_70106_y();
+               entity.setDead();
             }
          }
 
@@ -243,7 +243,7 @@ public class JRMCoreEH {
       int mid;
       if (event.entityLiving instanceof EntityPlayerMP) {
          EntityPlayerMP player = (EntityPlayerMP)event.entityLiving;
-         if (!player.field_70170_p.func_82736_K().func_82766_b("keepInventory")) {
+         if (!player.world.func_82736_K().func_82766_b("keepInventory")) {
             for(i = 0; i < 11; ++i) {
                if (ExtendedPlayer.get(player).inventory.func_70301_a(i) != null) {
                   player.func_70099_a(ExtendedPlayer.get(player).inventory.func_70301_a(i), 0.0F);
@@ -267,7 +267,7 @@ public class JRMCoreEH {
             if (msd.contains(",")) {
                String[] fa = msd.split(",");
                EntityPlayerMP ot;
-               if (player.func_70005_c_().equalsIgnoreCase(fa[1])) {
+               if (player.getName().equalsIgnoreCase(fa[1])) {
                   JRMCoreH.StusEfcts(10, (EntityPlayer)player, false);
                   JRMCoreH.StusEfcts(11, (EntityPlayer)player, false);
                   JRMCoreH.setString("" + JRMCoreConfig.FznOverTime, player, "jrmcFuzion");
@@ -278,7 +278,7 @@ public class JRMCoreEH {
                      JRMCoreH.StusEfcts(10, (EntityPlayer)ot, false);
                      JRMCoreH.StusEfcts(11, (EntityPlayer)ot, false);
                   }
-               } else if (player.func_70005_c_().equalsIgnoreCase(fa[0])) {
+               } else if (player.getName().equalsIgnoreCase(fa[0])) {
                   JRMCoreH.StusEfcts(10, (EntityPlayer)player, false);
                   JRMCoreH.StusEfcts(11, (EntityPlayer)player, false);
                   JRMCoreH.setString("" + JRMCoreConfig.FznOverTime, player, "jrmcFuzion");
@@ -301,13 +301,13 @@ public class JRMCoreEH {
          String[] al = JRMCoreH.getString(player, "jrmcLastAttacker").split(";");
          boolean b = al.length > 1 && lastAttackedLstPlyrTm < Integer.parseInt(al[1]) + 5;
          if (b) {
-            mod_JRMCore.logger.info(JRMCoreH.trl("jrmc", "slainBy", player.func_70005_c_(), al[0]));
+            mod_JRMCore.logger.info(JRMCoreH.trl("jrmc", "slainBy", player.getName(), al[0]));
             player.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "youSlainBy"), new Object[]{al[0]})).func_150255_a(JRMCoreH.CHAT_STYLE_YELLOW));
          } else if (al.length > 1) {
-            mod_JRMCore.logger.info(JRMCoreH.trl("jrmc", "pDied2", player.func_70005_c_(), lastAttackedLstPlyrTm - Integer.parseInt(al[1]), al[0]));
+            mod_JRMCore.logger.info(JRMCoreH.trl("jrmc", "pDied2", player.getName(), lastAttackedLstPlyrTm - Integer.parseInt(al[1]), al[0]));
             player.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "youDied"), new Object[0])).func_150255_a(JRMCoreH.CHAT_STYLE_YELLOW));
          } else {
-            mod_JRMCore.logger.info(JRMCoreH.trl("jrmc", "pDied", player.func_70005_c_()));
+            mod_JRMCore.logger.info(JRMCoreH.trl("jrmc", "pDied", player.getName()));
             player.func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("jrmc", "youDied"), new Object[0])).func_150255_a(JRMCoreH.CHAT_STYLE_YELLOW));
          }
 
@@ -318,7 +318,7 @@ public class JRMCoreEH {
             if (epoch > lastAttackedLstPlyrTm && nam.length() > 1) {
                UUID lastAttackedLstPlyrNam = UUID.fromString(nam);
                JRMCoreH.setString("", player, "jrmcAttackLstPlyrNam");
-               EntityPlayer killer = player.field_70170_p.func_152378_a(lastAttackedLstPlyrNam);
+               EntityPlayer killer = player.world.func_152378_a(lastAttackedLstPlyrNam);
                if (killer != null) {
                   byte killerAlign = JRMCoreH.getByte(killer, "jrmcAlign");
                   byte playerAlign = JRMCoreH.getByte(player, "jrmcAlign");
@@ -474,7 +474,7 @@ public class JRMCoreEH {
                                  if (!any) {
                                     String imp = event.entityLiving.getEntityData().func_74779_i("jrmcSpawnInitiatedIMP");
                                     ar = imp.split(";");
-                                    if (ar.length < 3 || !ar[0].equalsIgnoreCase(seriesID) || !ar[1].equalsIgnoreCase(mid + "") || !ar[2].equalsIgnoreCase(p.func_70005_c_())) {
+                                    if (ar.length < 3 || !ar[0].equalsIgnoreCase(seriesID) || !ar[1].equalsIgnoreCase(mid + "") || !ar[2].equalsIgnoreCase(p.getName())) {
                                        continue;
                                     }
                                  }
@@ -497,7 +497,7 @@ public class JRMCoreEH {
                                           msd = JRMCoreM.setSyda(msd, seriesID, mid, size, k, "1");
                                           JRMCoreM.prog(p, seriesID, mid, size, k, "1");
                                           String md = JRMCoreM.getMCo_data(os, "D");
-                                          List pl = p.field_70170_p.func_72872_a(EntityPlayer.class, p.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+                                          List pl = p.world.func_72872_a(EntityPlayer.class, p.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
                                           if (pl.size() > 0 && md.length() > 1) {
                                              for(int v = 0; v < pl.size(); ++v) {
                                                 EntityPlayer va = (EntityPlayer)pl.get(v);
@@ -510,9 +510,9 @@ public class JRMCoreEH {
                                                 if (dsnS.length() > 1) {
                                                    if (dsnS.contains(",")) {
                                                       String[] dsnSa = dsnS.split(",");
-                                                      va.field_70170_p.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
+                                                      va.world.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
                                                    } else {
-                                                      va.field_70170_p.func_72956_a(va, dsnS, 1.0F, 1.0F);
+                                                      va.world.func_72956_a(va, dsnS, 1.0F, 1.0F);
                                                    }
                                                 }
                                              }
@@ -522,7 +522,7 @@ public class JRMCoreEH {
                                           msd = JRMCoreM.setSyda(msd, seriesID, mid, size, k, "" + kld);
                                           JRMCoreM.prog(p, seriesID, mid, size, k, "" + kld);
                                           String md = JRMCoreM.getMCo_data(os, "D");
-                                          List pl = p.field_70170_p.func_72872_a(EntityPlayer.class, p.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+                                          List pl = p.world.func_72872_a(EntityPlayer.class, p.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
                                           if (pl.size() > 0 && md.length() > 1) {
                                              for(int v = 0; v < pl.size(); ++v) {
                                                 EntityPlayer va = (EntityPlayer)pl.get(v);
@@ -535,9 +535,9 @@ public class JRMCoreEH {
                                                 if (dsnS.length() > 1) {
                                                    if (dsnS.contains(",")) {
                                                       String[] dsnSa = dsnS.split(",");
-                                                      va.field_70170_p.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
+                                                      va.world.func_72956_a(va, dsnSa[0], Float.parseFloat(dsnSa[1]), 1.0F);
                                                    } else {
-                                                      va.field_70170_p.func_72956_a(va, dsnS, 1.0F, 1.0F);
+                                                      va.world.func_72956_a(va, dsnS, 1.0F, 1.0F);
                                                    }
                                                 }
                                              }
@@ -628,7 +628,7 @@ public class JRMCoreEH {
          String f = JRMCoreH.getString(event.getPlayer(), "jrmcFuzion");
          if (f.contains(",")) {
             String[] fa = f.split(",");
-            if (event.getPlayer().func_70005_c_().equalsIgnoreCase(fa[1])) {
+            if (event.getPlayer().getName().equalsIgnoreCase(fa[1])) {
                event.setCanceled(true);
                return;
             }
@@ -643,7 +643,7 @@ public class JRMCoreEH {
          String f = JRMCoreH.getString(event.entityPlayer, "jrmcFuzion");
          if (f.contains(",")) {
             String[] fa = f.split(",");
-            if (event.entityPlayer.func_70005_c_().equalsIgnoreCase(fa[1])) {
+            if (event.entityPlayer.getName().equalsIgnoreCase(fa[1])) {
                event.setCanceled(true);
             }
          }
@@ -683,7 +683,7 @@ public class JRMCoreEH {
          f = JRMCoreH.getString((EntityPlayer)targetEntity, "jrmcFuzion");
          if (f.contains(",")) {
             fa = f.split(",");
-            EntityPlayer toat = targetEntity.field_70170_p.func_72924_a(fa[0]);
+            EntityPlayer toat = targetEntity.world.getPlayerEntityByName(fa[0]);
             if (!(source.func_76346_g() instanceof EntityPlayer) && source.func_76346_g() instanceof EntityLivingBase) {
                ((EntityLivingBase)source.func_76346_g()).func_70604_c(toat);
                if (source.func_76346_g() instanceof EntityCreature) {
@@ -691,7 +691,7 @@ public class JRMCoreEH {
                }
             }
 
-            if (targetEntity.func_70005_c_().equalsIgnoreCase(fa[1])) {
+            if (targetEntity.getName().equalsIgnoreCase(fa[1])) {
                event.setCanceled(true);
                return;
             }
@@ -702,7 +702,7 @@ public class JRMCoreEH {
          f = JRMCoreH.getString((EntityPlayer)source.func_76346_g(), "jrmcFuzion");
          if (f.contains(",")) {
             fa = f.split(",");
-            if (source.func_76346_g().func_70005_c_().equalsIgnoreCase(fa[1])) {
+            if (source.func_76346_g().getName().equalsIgnoreCase(fa[1])) {
                event.setCanceled(true);
                return;
             }
@@ -725,11 +725,11 @@ public class JRMCoreEH {
          lf = false;
       }
 
-      if (!dt && iek.equals(JRMCoreClient.mc.field_71439_g)) {
+      if (!dt && iek.equals(JRMCoreClient.mc.player)) {
          dt = lf;
       }
 
-      return Minecraft.func_71382_s() && (gk && dt || iek != RenderManager.field_78727_a.field_78734_h) && !iek.func_98034_c(Minecraft.func_71410_x().field_71439_g) && iek.field_70153_n == null;
+      return Minecraft.func_71382_s() && (gk && dt || iek != RenderManager.field_78727_a.field_78734_h) && !iek.func_98034_c(Minecraft.func_71410_x().player) && iek.field_70153_n == null;
    }
 
    @SideOnly(Side.CLIENT)
@@ -743,12 +743,12 @@ public class JRMCoreEH {
          float f2 = 64.0F;
          JsonParser xm4 = new JsonParser();
          EntityPlayer te = (EntityPlayer)event.entity;
-         String ld = te.func_70005_c_();
+         String ld = te.getName();
          JsonElement kw9 = xm4.parse(this.ybex7s(JRMCoreComTickH.tna3fu, te));
          if (d3 < (double)(f2 * f2) && kw9.isJsonArray()) {
             JsonArray wx2 = kw9.getAsJsonArray();
             if (wx2.size() > 3) {
-               boolean view2 = JRMCoreClient.mc.field_71474_y.field_74320_O == 2;
+               boolean view2 = JRMCoreClient.mc.gameSettings.thirdPersonView == 2;
                Gson xmf = new Gson();
                String rd = (String)xmf.fromJson(wx2.get(1), String.class);
                if (rd.equals("-POWER-")) {
@@ -780,7 +780,7 @@ public class JRMCoreEH {
                   GL11.glDepthMask(false);
                   GL11.glEnable(3042);
                   OpenGlHelper.func_148821_a(770, 771, 1, 0);
-                  tessellator = Tessellator.field_78398_a;
+                  tessellator = Tessellator.INSTANCE;
                   GL11.glDisable(3553);
                   tessellator.func_78382_b();
                   int i = fontrenderer.func_78256_a(rd) / 2;
@@ -810,7 +810,7 @@ public class JRMCoreEH {
                   GL11.glDisable(2929);
                   GL11.glEnable(3042);
                   OpenGlHelper.func_148821_a(770, 771, 1, 0);
-                  tessellator = Tessellator.field_78398_a;
+                  tessellator = Tessellator.INSTANCE;
                   byte b0 = 0;
                   GL11.glDisable(3553);
                   tessellator.func_78382_b();
@@ -846,7 +846,7 @@ public class JRMCoreEH {
 
    @SideOnly(Side.CLIENT)
    private String ybex7s(boolean tds, EntityPlayer ybh7b) {
-      String agr = tds ? ybh7b.func_110124_au().toString() : ybh7b.func_70005_c_();
+      String agr = tds ? ybh7b.func_110124_au().toString() : ybh7b.getName();
       String p43v = (String)this.zz5bj5.get(agr);
       if (!this.zz5bj5.containsKey(agr)) {
          if (JRMCoreCliTicH.countingValue == 1.0F && this.b5t == null) {
@@ -856,7 +856,7 @@ public class JRMCoreEH {
 
             for(int i = 0; i < jf.size(); ++i) {
                EntityPlayer entityplayer = (EntityPlayer)jf.get(i);
-               String ml = tds ? ((EntityPlayer)jf.get(i)).func_110124_au().toString() : ((EntityPlayer)jf.get(i)).func_70005_c_();
+               String ml = tds ? ((EntityPlayer)jf.get(i)).func_110124_au().toString() : ((EntityPlayer)jf.get(i)).getName();
                if (!this.zz5bj5.containsKey(ml) || this.zz5bj5.get(agr) == null || ((String)this.zz5bj5.get(agr)).equals("null") || !((String)this.zz5bj5.get(agr)).contains(",")) {
                   gad = gad + ml + ",";
                }
@@ -1176,7 +1176,7 @@ public class JRMCoreEH {
          }
 
          newStamina = (int)(Math.random() * 3.0D) + 1;
-         targetPlayer.field_70170_p.func_72956_a(targetPlayer, "jinryuudragonbc:DBC4.dodge" + newStamina, 0.5F, 0.9F / (targetPlayer.field_70170_p.field_73012_v.nextFloat() * 0.6F + 0.9F));
+         targetPlayer.world.func_72956_a(targetPlayer, "jinryuudragonbc:DBC4.dodge" + newStamina, 0.5F, 0.9F / (targetPlayer.world.field_73012_v.nextFloat() * 0.6F + 0.9F));
          ExtendedPlayer.get(targetPlayer).setUIAnimID((int)(Math.random() * 2.0D));
          ExtendedPlayer.get(targetPlayer).setUIAnim(15);
          return true;
@@ -1209,7 +1209,7 @@ public class JRMCoreEH {
          s = JRMCoreH.getString((EntityPlayer)targetEntity, "jrmcFuzion");
          if (s.contains(",")) {
             String[] fusionArray = s.split(",");
-            if (targetEntity.func_70005_c_().equalsIgnoreCase(fusionArray[1])) {
+            if (targetEntity.getName().equalsIgnoreCase(fusionArray[1])) {
                event.ammount = 0.0F;
                event.setCanceled(true);
                return;
@@ -1220,7 +1220,7 @@ public class JRMCoreEH {
       if (targetEntity instanceof EntityNPCshadow) {
          EntityNPCshadow e = (EntityNPCshadow)targetEntity;
          if (source.func_76346_g() instanceof EntityLivingBase && e.getSummoner() != source.func_76346_g()) {
-            e.func_70106_y();
+            e.setDead();
          }
       }
 
@@ -1244,17 +1244,17 @@ public class JRMCoreEH {
             String fusion = JRMCoreH.getString(attacker, "jrmcFuzion");
             if (fusion.contains(",")) {
                String[] fusionArray = fusion.split(",");
-               if (attacker.func_70005_c_().equalsIgnoreCase(fusionArray[0]) && targetEntity.func_70005_c_().equalsIgnoreCase(fusionArray[1])) {
+               if (attacker.getName().equalsIgnoreCase(fusionArray[0]) && targetEntity.getName().equalsIgnoreCase(fusionArray[1])) {
                   event.setCanceled(true);
                   return;
                }
 
-               if (attacker.func_70005_c_().equalsIgnoreCase(fusionArray[1]) && targetEntity.func_70005_c_().equalsIgnoreCase(fusionArray[0])) {
+               if (attacker.getName().equalsIgnoreCase(fusionArray[1]) && targetEntity.getName().equalsIgnoreCase(fusionArray[0])) {
                   event.setCanceled(true);
                   return;
                }
 
-               if (targetEntity.func_70005_c_().equalsIgnoreCase(fusionArray[1])) {
+               if (targetEntity.getName().equalsIgnoreCase(fusionArray[1])) {
                   event.setCanceled(true);
                   return;
                }
@@ -1338,7 +1338,7 @@ public class JRMCoreEH {
                   boolean hasKiWeaponEnabled = sklkf > 0 && skf > 0 && sklkfe2;
                   if (hasKiWeaponEnabled) {
                      int WIL = JRMCoreH.getPlayerAttribute(attacker, PlyrAttrbts, 3, state, state2, race, sklx, (int)release, resrv, lg, mj, kk, mc, mn, gd, powerType, PlyrSkills, c, absorption);
-                     attacker.field_70170_p.func_72956_a(attacker, "jinryuudragonbc:DBC4.kiblade2", 1.0F, 1.0F);
+                     attacker.world.func_72956_a(attacker, "jinryuudragonbc:DBC4.kiblade2", 1.0F, 1.0F);
                      int kiWeaponCost = 0;
                      int kiWeaponDamage = 0;
                      int dmg1 = (int)((float)JRMCoreH.stat(attacker, 3, powerType, 4, WIL, race, classID, 0.0F) * 0.01F);
@@ -1380,7 +1380,7 @@ public class JRMCoreEH {
                   }
 
                   if (JRMCoreConfig.DebugInfo) {
-                     mod_JRMCore.logger.info(attacker.func_70005_c_() + " attacks " + targetEntity.func_70005_c_() + " with melee " + curAtr + "+" + epoch + "=" + (curAtr + (double)epoch));
+                     mod_JRMCore.logger.info(attacker.getName() + " attacks " + targetEntity.getName() + " with melee " + curAtr + "+" + epoch + "=" + (curAtr + (double)epoch));
                   }
 
                   dam = (float)((double)dam + curAtr + (double)epoch);
@@ -1398,7 +1398,7 @@ public class JRMCoreEH {
                   handEffectID = ExtendedPlayer.get(attacker).getHandEffect();
                   sklkf = ExtendedPlayer.get(attacker).getEffect_used2();
                   if (handEffectID < 3 && handEffectID > 0 && attacker != null && attacker instanceof EntityPlayer && (handEffectID == 1 || handEffectID == 2)) {
-                     JRMCoreH.newExpl(targetEntity.field_70170_p, attacker, targetEntity.field_70165_t, targetEntity.field_70163_u, targetEntity.field_70161_v, 0.0F, false, 0.0D, attacker, (byte)(2 + handEffectID));
+                     JRMCoreH.newExpl(targetEntity.world, attacker, targetEntity.posX, targetEntity.posY, targetEntity.posZ, 0.0F, false, 0.0D, attacker, (byte)(2 + handEffectID));
                      c = true;
                      ExtendedPlayer.get(attacker).setHandEffect(0);
                      ExtendedPlayer.get(attacker).setEffect_used(0);
@@ -1516,9 +1516,9 @@ public class JRMCoreEH {
                         if (handEffectID == 1) {
                            this.damageEntity(targetEntity, source, dam);
                            float push = 1.0F;
-                           targetEntity.field_70159_w += (double)(attacker.field_70165_t > targetEntity.field_70165_t ? -push : push);
-                           targetEntity.field_70181_x += (double)(attacker.field_70163_u > targetEntity.field_70163_u ? -push : push);
-                           targetEntity.field_70179_y += (double)(attacker.field_70161_v > targetEntity.field_70161_v ? -push : push);
+                           targetEntity.field_70159_w += (double)(attacker.posX > targetEntity.posX ? -push : push);
+                           targetEntity.field_70181_x += (double)(attacker.posY > targetEntity.posY ? -push : push);
+                           targetEntity.field_70179_y += (double)(attacker.posZ > targetEntity.posZ ? -push : push);
                            targetEntity.field_70133_I = true;
                         } else if (handEffectID == 0) {
                            this.knockback(targetEntity, attacker, 1);
@@ -1526,7 +1526,7 @@ public class JRMCoreEH {
                      }
                   }
 
-                  if (!attacker.field_70170_p.field_72995_K && (!this.dbc || JRMCoreH.DGE(targetEntity)) && attacker != null) {
+                  if (!attacker.world.field_72995_K && (!this.dbc || JRMCoreH.DGE(targetEntity)) && attacker != null) {
                      boolean giveTP = true;
                      if (source.func_76364_f() != null && energyAtt) {
                         EntityEnergyAtt kiAttack = (EntityEnergyAtt)source.func_76364_f();
@@ -1566,7 +1566,7 @@ public class JRMCoreEH {
 
                   if (source.field_76373_n.equalsIgnoreCase("player")) {
                      epoch = (int)(Math.random() * 3.0D) + 1;
-                     attacker.field_70170_p.func_72956_a(attacker, "jinryuudragonbc:DBC4.punch" + epoch, 0.5F, 0.9F / (attacker.field_70170_p.field_73012_v.nextFloat() * 0.4F + 0.8F));
+                     attacker.world.func_72956_a(attacker, "jinryuudragonbc:DBC4.punch" + epoch, 0.5F, 0.9F / (attacker.world.field_73012_v.nextFloat() * 0.4F + 0.8F));
                   }
 
                   if (attacker != null) {
@@ -1577,13 +1577,13 @@ public class JRMCoreEH {
                      JRMCoreH.setInt(dealt, (EntityPlayer)targetEntity, "jrmcLastDamageReceived");
                      if (attacker != null) {
                         epoch = (int)(System.currentTimeMillis() / 1000L);
-                        JRMCoreH.setString(attacker.func_70005_c_() + ";" + epoch, (EntityPlayer)targetEntity, "jrmcLastAttacker");
+                        JRMCoreH.setString(attacker.getName() + ";" + epoch, (EntityPlayer)targetEntity, "jrmcLastAttacker");
                      }
                   } else if (targetEntity != null) {
                      JRMCoreH.nbt((Entity)targetEntity).func_74768_a("jrmcLastDamageReceived", dealt);
                      if (attacker != null) {
                         epoch = (int)(System.currentTimeMillis() / 1000L);
-                        JRMCoreH.nbt((Entity)targetEntity).func_74778_a("jrmcLastAttacker", attacker.func_70005_c_() + ";" + epoch);
+                        JRMCoreH.nbt((Entity)targetEntity).func_74778_a("jrmcLastAttacker", attacker.getName() + ";" + epoch);
                      }
                   }
 
@@ -1627,7 +1627,7 @@ public class JRMCoreEH {
                      if ((float)currentBody > amount) {
                         dealt = JRMCoreH.jrmcDam(attacker, (int)amount, source);
                      } else {
-                        attacker.func_70106_y();
+                        attacker.setDead();
                      }
                   } else if (source.func_76355_l().equals("EnergyAttack") && source.func_76364_f() instanceof EntityEnergyAtt) {
                      dealt = JRMCoreH.jrmcDam(attacker, (int)amount, source, ((EntityEnergyAtt)source.func_76364_f()).getType());
@@ -1652,13 +1652,13 @@ public class JRMCoreEH {
                      JRMCoreH.setInt(dealt, (EntityPlayer)targetEntity, "jrmcLastDamageReceived");
                      if (attacker != null) {
                         epoch = (int)(System.currentTimeMillis() / 1000L);
-                        JRMCoreH.setString(attacker.func_70005_c_() + ";" + epoch, (EntityPlayer)targetEntity, "jrmcLastAttacker");
+                        JRMCoreH.setString(attacker.getName() + ";" + epoch, (EntityPlayer)targetEntity, "jrmcLastAttacker");
                      }
                   } else if (targetEntity != null) {
                      JRMCoreH.nbt((Entity)targetEntity).func_74768_a("jrmcLastDamageReceived", dealt);
                      if (attacker != null) {
                         epoch = (int)(System.currentTimeMillis() / 1000L);
-                        JRMCoreH.nbt((Entity)targetEntity).func_74778_a("jrmcLastAttacker", attacker.func_70005_c_() + ";" + epoch);
+                        JRMCoreH.nbt((Entity)targetEntity).func_74778_a("jrmcLastAttacker", attacker.getName() + ";" + epoch);
                      }
                   }
 
@@ -1810,7 +1810,7 @@ public class JRMCoreEH {
       Item item = e.item.func_77973_b();
       if (item instanceof ItemFood) {
          EntityPlayer player = e.entityPlayer;
-         if (!player.field_70170_p.field_72995_K) {
+         if (!player.world.field_72995_K) {
             JGPlayerMP jgPlayer = new JGPlayerMP(player);
             jgPlayer.connectBaseNBT();
             if (!JRMCoreConfig.CanEatWhileKOd && jgPlayer.getNBT().func_74762_e("jrmcHar4va") > 0) {
@@ -1827,7 +1827,7 @@ public class JRMCoreEH {
       Item item = e.item.func_77973_b();
       if (item instanceof ItemFood) {
          EntityPlayer player = e.entityPlayer;
-         if (!player.field_70170_p.field_72995_K) {
+         if (!player.world.field_72995_K) {
             JGPlayerMP jgPlayer = new JGPlayerMP(player);
             jgPlayer.connectBaseNBT();
             if (!JRMCoreConfig.CanEatWhileKOd && jgPlayer.getNBT().func_74762_e("jrmcHar4va") > 0) {
@@ -2008,7 +2008,7 @@ public class JRMCoreEH {
    @SideOnly(Side.CLIENT)
    @SubscribeEvent
    public void ZcJt9r(RenderBlockOverlayEvent e) {
-      if (this.dbc && e.player.field_70170_p.func_147439_a(e.blockX, e.blockY, e.blockZ) == JRMCoreHDBC.getMedBlock()) {
+      if (this.dbc && e.player.world.func_147439_a(e.blockX, e.blockY, e.blockZ) == JRMCoreHDBC.getMedBlock()) {
          e.setCanceled(true);
          this.renderWarpedTextureOverlay(e.renderPartialTicks);
       }
@@ -2016,9 +2016,9 @@ public class JRMCoreEH {
    }
 
    private void renderWarpedTextureOverlay(float p_78448_1_) {
-      JRMCoreClient.mc.func_110434_K().func_110577_a(RES_UNDERMEDLIQUID_OVERLAY);
-      Tessellator tessellator = Tessellator.field_78398_a;
-      float f1 = JRMCoreClient.mc.field_71439_g.func_70013_c(p_78448_1_);
+      JRMCoreClient.mc.func_110434_K().bindTexture(RES_UNDERMEDLIQUID_OVERLAY);
+      Tessellator tessellator = Tessellator.INSTANCE;
+      float f1 = JRMCoreClient.mc.player.func_70013_c(p_78448_1_);
       GL11.glColor4f(f1, f1, f1, 0.5F);
       GL11.glEnable(3042);
       OpenGlHelper.func_148821_a(770, 771, 1, 0);
@@ -2029,8 +2029,8 @@ public class JRMCoreEH {
       float f5 = -1.0F;
       float f6 = 1.0F;
       float f7 = -0.5F;
-      float f8 = -JRMCoreClient.mc.field_71439_g.field_70177_z / 64.0F;
-      float f9 = JRMCoreClient.mc.field_71439_g.field_70125_A / 64.0F;
+      float f8 = -JRMCoreClient.mc.player.rotationYaw / 64.0F;
+      float f9 = JRMCoreClient.mc.player.rotationPitch / 64.0F;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)f3, (double)f5, (double)f7, (double)(f2 + f8), (double)(f2 + f9));
       tessellator.func_78374_a((double)f4, (double)f5, (double)f7, (double)(0.0F + f8), (double)(f2 + f9));

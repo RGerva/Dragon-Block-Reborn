@@ -38,7 +38,7 @@ public class AINearestAttackableTarget extends AITarget {
          return false;
       } else {
          double d0 = this.getTargetDistance();
-         List list = this.taskOwner.field_70170_p.func_82733_a(this.targetClass, this.taskOwner.field_70121_D.func_72314_b(d0, 4.0D, d0), this.targetEntitySelector);
+         List list = this.taskOwner.world.func_82733_a(this.targetClass, this.taskOwner.boundingBox.func_72314_b(d0, 4.0D, d0), this.targetEntitySelector);
          Collections.sort(list, this.theNearestAttackableTargetSorter);
          if (list.isEmpty()) {
             return false;

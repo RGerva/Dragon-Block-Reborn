@@ -145,27 +145,27 @@ public class ModelKB extends ModelBase {
       this.TopSpike1.func_78792_a(this.TopSpike2);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       if (this.type == 0) {
-         this.KiBlade1.func_78785_a(f5);
+         this.KiBlade1.render(f5);
       } else if (this.type == 1) {
-         this.BaseHandle4.func_78785_a(f5);
+         this.BaseHandle4.render(f5);
       }
 
    }
 
    public void render(float f5, int type) {
       if (type == 0) {
-         this.KiBlade1.func_78785_a(f5);
+         this.KiBlade1.render(f5);
       } else if (type == 1) {
-         this.BaseHandle4.func_78785_a(f5);
+         this.BaseHandle4.render(f5);
       }
 
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
+      modelRenderer.rotateAngleX = x;
       modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleZ = z;
    }
 }

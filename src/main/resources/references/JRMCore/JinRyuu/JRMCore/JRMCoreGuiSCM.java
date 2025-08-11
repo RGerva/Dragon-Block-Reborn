@@ -90,7 +90,7 @@ public class JRMCoreGuiSCM extends GuiScreen {
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          this.field_146292_n.add(new JRMCoreGuiButtons00(10, posX - 150, posY + 65, 20, 20, "X", 0));
          this.field_146292_n.add(new JRMCoreGuiButtons00(100, posX - 120, posY + 85, 80, 20, JRMCoreH.trl("jrmc", "MainAttributes"), 0));
@@ -223,7 +223,7 @@ public class JRMCoreGuiSCM extends GuiScreen {
          guiTop = (this.field_146295_m - ySize) / 2;
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          guiLocation = new ResourceLocation(wish);
-         mc.field_71446_o.func_110577_a(guiLocation);
+         mc.field_71446_o.bindTexture(guiLocation);
          this.func_73729_b(guiLeft, guiTop, 0, 0, xSize, ySize);
          this.field_146292_n.add(new JRMCoreGuiButtons00(10, posX - 150, posY + 65, 20, 20, "X", 0));
          String mod;

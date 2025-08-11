@@ -15,28 +15,21 @@
 package com.rgerva.dbr.entity.renderer;
 
 import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.datagen.model.custom.AuraModel;
-import com.rgerva.dbr.entity.AuraEntity;
-import com.rgerva.dbr.entity.AuraVariant;
+import com.rgerva.dbr.entity.entity.AuraEntity;
+import com.rgerva.dbr.entity.entity.AuraVariant;
 import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
-import org.joml.Vector3f;
 
 import java.util.Map;
 
@@ -90,7 +83,7 @@ public class AuraEntityRenderer extends EntityRenderer<AuraEntity, AuraEntityRen
 
 				// Renderizar a aura com cor
 				VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityTranslucent(texture));
-				model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, r, g, b, 1.0f);
+				model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, r, g, b, 0.1f);
 
 				poseStack.popPose();
 		}

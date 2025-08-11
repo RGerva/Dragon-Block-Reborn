@@ -42,7 +42,7 @@ public class EntityBeerus extends EntityDBCEvil {
    public long BattlePowerOld() {
       int BP = 1776275456;
       int exp = this.field_70728_aV * 100;
-      long BattlePower = (long)(BP + this.field_70146_Z.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
+      long BattlePower = (long)(BP + this.rand.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
       return BattlePower;
    }
 
@@ -57,19 +57,19 @@ public class EntityBeerus extends EntityDBCEvil {
          }
       }
 
-      if (this.field_70170_p.field_72995_K && JGConfigClientSettings.CLIENT_DA8) {
+      if (this.world.field_72995_K && JGConfigClientSettings.CLIENT_DA8) {
          for(int k = 0; k < JGConfigClientSettings.get_da1(); ++k) {
             for(int i = 0; i < 5; ++i) {
                double x = Math.random() * 1.0D - 0.5D;
                double y = Math.random() * (double)this.field_70131_O - 0.5D;
                double z = Math.random() * 1.0D - 0.5D;
-               Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, false, this);
-               entity.field_70170_p.func_72838_d(entity);
+               Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, false, this);
+               entity.world.func_72838_d(entity);
                x = Math.random() * 1.0D - 0.5D;
                y = Math.random() * (double)this.field_70131_O - 0.5D;
                z = Math.random() * 1.0D - 0.5D;
-               entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, false, this);
-               entity.field_70170_p.func_72838_d(entity);
+               entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, false, this);
+               entity.world.func_72838_d(entity);
             }
          }
       }
@@ -88,7 +88,7 @@ public class EntityBeerus extends EntityDBCEvil {
 
    private void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
-      this.randomSoundDelay = this.field_70146_Z.nextInt(40);
+      this.angerLevel = 400 + this.rand.nextInt(400);
+      this.randomSoundDelay = this.rand.nextInt(40);
    }
 }

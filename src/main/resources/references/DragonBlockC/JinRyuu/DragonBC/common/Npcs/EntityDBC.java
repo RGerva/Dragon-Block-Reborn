@@ -136,8 +136,8 @@ public class EntityDBC extends EntityCreature implements IMob {
       this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.5D);
    }
 
-   protected void func_70088_a() {
-      super.func_70088_a();
+   protected void entityInit() {
+      super.entityInit();
       this.field_70180_af.func_75682_a(23, new Integer(0));
    }
 
@@ -166,7 +166,7 @@ public class EntityDBC extends EntityCreature implements IMob {
       ItemStack var2 = this.func_70694_bm();
       int var3 = false;
       int value = (int)((float)(AttPow + 1) * 0.5F);
-      int dbcA = AttPow - this.field_70146_Z.nextInt(value);
+      int dbcA = AttPow - this.rand.nextInt(value);
       if (dbcA < 0) {
          dbcA = 0;
       }
@@ -187,7 +187,7 @@ public class EntityDBC extends EntityCreature implements IMob {
          }
 
          if (this.targetedEntity == null || this.aggroCooldown-- <= 0) {
-            this.targetedEntity = this.field_70170_p.func_72856_b(this, 100.0D);
+            this.targetedEntity = this.world.func_72856_b(this, 100.0D);
             super.func_70626_be();
             if (this.targetedEntity != null) {
                this.field_70180_af.func_75692_b(23, this.targetedEntity.func_145782_y());
@@ -199,8 +199,8 @@ public class EntityDBC extends EntityCreature implements IMob {
          double ogTimer;
          int fireAttackRate;
          if (this.field_70789_a != null && this.field_70789_a.func_70089_S() && this.field_70789_a.func_70032_d(this) < r) {
-            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.field_70165_t - (double)r, this.field_70163_u - (double)r, this.field_70161_v - (double)r, this.field_70165_t + (double)r, this.field_70163_u + (double)r, this.field_70161_v + (double)r);
-            List list = this.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.posX - (double)r, this.posY - (double)r, this.posZ - (double)r, this.posX + (double)r, this.posY + (double)r, this.posZ + (double)r);
+            List list = this.world.func_72872_a(EntityPlayer.class, aabb);
             ogTimer = this.getXZDistanceToEntity(this.targetedEntity);
             if (this.field_70724_aR - (!DBCConfig.AaiDisabled && ogTimer < 0.5D ? DBCConfig.EnemyDefaultAttackTimer - DBCConfig.EnemyDefaultShortRangeAttackTimer : 0) <= 0) {
                for(fireAttackRate = 0; fireAttackRate < list.size(); ++fireAttackRate) {
@@ -209,7 +209,7 @@ public class EntityDBC extends EntityCreature implements IMob {
                }
 
                this.field_70724_aR = DBCConfig.EnemyDefaultAttackTimer;
-               this.field_70170_p.func_72956_a(this, "jinryuudragonbc:DBC3.force", 0.5F, this.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
+               this.world.func_72956_a(this, "jinryuudragonbc:DBC3.force", 0.5F, this.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
             }
          }
 
@@ -221,15 +221,15 @@ public class EntityDBC extends EntityCreature implements IMob {
                fireAttackRate = this.kiAttackTimerMin;
             }
 
-            double d5 = this.targetedEntity.field_70165_t - this.field_70165_t;
-            double d6 = this.targetedEntity.field_70121_D.field_72338_b + (double)(this.targetedEntity.field_70131_O / 2.0F) - (this.field_70163_u + (double)(this.field_70131_O / 2.0F));
-            double d7 = this.targetedEntity.field_70161_v - this.field_70161_v;
-            this.field_70761_aq = this.field_70177_z = -((float)Math.atan2(d5, d7)) * 180.0F / 3.1415927F;
+            double d5 = this.targetedEntity.posX - this.posX;
+            double d6 = this.targetedEntity.boundingBox.field_72338_b + (double)(this.targetedEntity.field_70131_O / 2.0F) - (this.posY + (double)(this.field_70131_O / 2.0F));
+            double d7 = this.targetedEntity.posZ - this.posZ;
+            this.field_70761_aq = this.rotationYaw = -((float)Math.atan2(d5, d7)) * 180.0F / 3.1415927F;
             if (this.canFireKiAttacks && this.func_70685_l(this.targetedEntity)) {
                if (!this.hasAAiKiChargeSystem || this.chargingKiAttack) {
                   ++this.attackCounter;
                   if (this.attackCounter >= fireAttackRate) {
-                     this.field_70170_p.func_72956_a(this, "jinryuudragonbc:DBC2.basicbeam_fire", 0.5F, 1.0F);
+                     this.world.func_72956_a(this, "jinryuudragonbc:DBC2.basicbeam_fire", 0.5F, 1.0F);
                      byte type = this.data1;
                      byte speed = 1;
                      byte effect = 1;
@@ -252,10 +252,10 @@ public class EntityDBC extends EntityCreature implements IMob {
 
                      double d8 = (double)this.field_70130_N + 0.5D;
                      Vec3 vec3 = this.func_70676_i(1.0F);
-                     kiAttack.field_70165_t = this.field_70165_t + vec3.field_72450_a * d8;
-                     kiAttack.field_70163_u = this.field_70163_u + (double)(this.field_70131_O / 2.0F) + 0.5D;
-                     kiAttack.field_70161_v = this.field_70161_v + vec3.field_72449_c * d8;
-                     this.field_70170_p.func_72838_d(kiAttack);
+                     kiAttack.posX = this.posX + vec3.field_72450_a * d8;
+                     kiAttack.posY = this.posY + (double)(this.field_70131_O / 2.0F) + 0.5D;
+                     kiAttack.posZ = this.posZ + vec3.field_72449_c * d8;
+                     this.world.func_72838_d(kiAttack);
                      if (this.data1 == 6 && (int)(Math.random() * 8.0D) != 0) {
                         this.attackCounter = this.kiBarrageType0 ? fireAttackRate - 10 : fireAttackRate;
                         this.blst = false;
@@ -281,7 +281,7 @@ public class EntityDBC extends EntityCreature implements IMob {
 
    public void lookForTarget() {
       if (this.angerLevel <= 0 && (this.targetedEntity == null || this.aggroCooldown-- <= 0)) {
-         this.targetedEntity = this.field_70170_p.func_72856_b(this, 100.0D);
+         this.targetedEntity = this.world.func_72856_b(this, 100.0D);
          super.func_70626_be();
          if (this.targetedEntity != null) {
             this.field_70180_af.func_75692_b(23, this.targetedEntity.func_145782_y());
@@ -302,37 +302,37 @@ public class EntityDBC extends EntityCreature implements IMob {
       super.func_70636_d();
    }
 
-   public void func_70071_h_() {
-      if (this.field_70170_p.field_72995_K) {
+   public void onUpdate() {
+      if (this.world.field_72995_K) {
          ++this.rang;
       }
 
-      if (this.field_70170_p.field_72995_K && this.rang > 100) {
+      if (this.world.field_72995_K && this.rang > 100) {
          this.rang = 0;
          int i = this.updateDataInt(23);
-         this.targetedEntity = i > 0 ? this.field_70170_p.func_73045_a(i) : null;
+         this.targetedEntity = i > 0 ? this.world.func_73045_a(i) : null;
       }
 
-      if (!this.field_70170_p.field_72995_K && !this.updtd) {
+      if (!this.world.field_72995_K && !this.updtd) {
          this.updtd = true;
       }
 
       if (!(this instanceof EntityDBCWildlife) && this.targetedEntity != null && this.func_70685_l(this.targetedEntity) && this.canFly) {
-         boolean client = this.targetedEntity.field_70170_p.field_72995_K;
-         double posYTarget = this.targetedEntity.field_70163_u - (client ? (JGRenderHelper.isClientPlayer(this.targetedEntity) ? 1.6D : 0.0D) : 0.0D);
-         if ((posYTarget - this.field_70163_u > 5.0D || !this.targetedEntity.field_70122_E) && !this.field_70703_bu) {
+         boolean client = this.targetedEntity.world.field_72995_K;
+         double posYTarget = this.targetedEntity.posY - (client ? (JGRenderHelper.isClientPlayer(this.targetedEntity) ? 1.6D : 0.0D) : 0.0D);
+         if ((posYTarget - this.posY > 5.0D || !this.targetedEntity.field_70122_E) && !this.field_70703_bu) {
             double yDistance = 0.0D;
-            double posY = this.field_70163_u - (client ? (JGRenderHelper.isClientPlayer(this) ? 1.6D : 0.0D) : 0.0D);
+            double posY = this.posY - (client ? (JGRenderHelper.isClientPlayer(this) ? 1.6D : 0.0D) : 0.0D);
             double d1 = posYTarget - posY;
             if (d1 < 0.0D) {
                d1 *= -1.0D;
             }
 
-            double clientPlayerPosDiff = (double)(this.field_70170_p.field_72995_K ? (JGRenderHelper.isClientPlayer(this.targetedEntity) ? 1.6F : 0.0F) : 0.0F);
-            double targetPos = this.targetedEntity.field_70163_u - clientPlayerPosDiff;
+            double clientPlayerPosDiff = (double)(this.world.field_72995_K ? (JGRenderHelper.isClientPlayer(this.targetedEntity) ? 1.6F : 0.0F) : 0.0F);
+            double targetPos = this.targetedEntity.posY - clientPlayerPosDiff;
             this.field_70143_R = 0.0F;
             if (d1 > 0.5D) {
-               if (targetPos > this.field_70163_u - 0.5D) {
+               if (targetPos > this.posY - 0.5D) {
                   this.field_70181_x += d1 > 0.1D ? 0.1D : (d1 < -0.01D ? -0.01D : d1);
                }
             } else {
@@ -349,11 +349,11 @@ public class EntityDBC extends EntityCreature implements IMob {
          this.lockedBy = null;
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
    }
 
    protected Entity func_70782_k() {
-      EntityPlayer entityplayer = this.field_70170_p.func_72856_b(this, 16.0D);
+      EntityPlayer entityplayer = this.world.func_72856_b(this, 16.0D);
       return entityplayer != null && this.func_70685_l(entityplayer) ? entityplayer : null;
    }
 
@@ -370,7 +370,7 @@ public class EntityDBC extends EntityCreature implements IMob {
          boolean flag = entity.func_70097_a(DamageSource.func_76358_a(this), (float)f);
          if (flag) {
             if (i > 0) {
-               entity.func_70024_g((double)(-MathHelper.func_76126_a(this.field_70177_z * 3.1415927F / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.func_76134_b(this.field_70177_z * 3.1415927F / 180.0F) * (float)i * 0.5F));
+               entity.func_70024_g((double)(-MathHelper.func_76126_a(this.rotationYaw * 3.1415927F / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.func_76134_b(this.rotationYaw * 3.1415927F / 180.0F) * (float)i * 0.5F));
                this.field_70159_w *= 0.6D;
                this.field_70179_y *= 0.6D;
             }
@@ -394,7 +394,7 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    protected void func_70785_a(Entity par1Entity, float par2) {
-      if (this.field_70724_aR <= 0 && par2 < this.field_70130_N / 2.0F + 2.5F && par1Entity.field_70121_D.field_72337_e > this.field_70121_D.field_72338_b && par1Entity.field_70121_D.field_72338_b < this.field_70121_D.field_72337_e) {
+      if (this.field_70724_aR <= 0 && par2 < this.field_70130_N / 2.0F + 2.5F && par1Entity.boundingBox.field_72337_e > this.boundingBox.field_72338_b && par1Entity.boundingBox.field_72338_b < this.boundingBox.field_72337_e) {
          this.field_70724_aR = DBCConfig.EnemyDefaultAttackTimer;
          this.func_70652_k(par1Entity);
       }
@@ -402,25 +402,25 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    public float func_70783_a(int par1, int par2, int par3) {
-      return 0.5F - this.field_70170_p.func_72801_o(par1, par2, par3);
+      return 0.5F - this.world.func_72801_o(par1, par2, par3);
    }
 
    protected boolean isValidLightLevel() {
-      int i = MathHelper.func_76128_c(this.field_70165_t);
-      int j = MathHelper.func_76128_c(this.field_70121_D.field_72338_b);
-      int k = MathHelper.func_76128_c(this.field_70161_v);
-      if (this.field_70170_p.func_72972_b(EnumSkyBlock.Sky, i, j, k) > this.field_70146_Z.nextInt(32)) {
+      int i = MathHelper.func_76128_c(this.posX);
+      int j = MathHelper.func_76128_c(this.boundingBox.field_72338_b);
+      int k = MathHelper.func_76128_c(this.posZ);
+      if (this.world.func_72972_b(EnumSkyBlock.Sky, i, j, k) > this.rand.nextInt(32)) {
          return false;
       } else {
-         int l = this.field_70170_p.func_72957_l(i, j, k);
-         if (this.field_70170_p.func_72911_I()) {
-            int i1 = this.field_70170_p.field_73008_k;
-            this.field_70170_p.field_73008_k = 10;
-            l = this.field_70170_p.func_72957_l(i, j, k);
-            this.field_70170_p.field_73008_k = i1;
+         int l = this.world.func_72957_l(i, j, k);
+         if (this.world.func_72911_I()) {
+            int i1 = this.world.field_73008_k;
+            this.world.field_73008_k = 10;
+            l = this.world.func_72957_l(i, j, k);
+            this.world.field_73008_k = i1;
          }
 
-         return l <= this.field_70146_Z.nextInt(8);
+         return l <= this.rand.nextInt(8);
       }
    }
 
@@ -437,7 +437,7 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    public void becomeAngryAtAPlayer() {
-      List list = this.field_70170_p.func_72872_a(EntityPlayer.class, this.field_70121_D.func_72314_b(16.0D, 16.0D, 16.0D));
+      List list = this.world.func_72872_a(EntityPlayer.class, this.boundingBox.func_72314_b(16.0D, 16.0D, 16.0D));
       if (!list.isEmpty()) {
          Entity entity = (Entity)list.get(0);
          this.becomeAngryAt(entity);
@@ -446,7 +446,7 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    public void becomeAngryAtAllPlayer() {
-      List list = this.field_70170_p.func_72872_a(EntityPlayer.class, this.field_70121_D.func_72314_b(16.0D, 16.0D, 16.0D));
+      List list = this.world.func_72872_a(EntityPlayer.class, this.boundingBox.func_72314_b(16.0D, 16.0D, 16.0D));
       if (!list.isEmpty()) {
          for(int i = 0; i < list.size(); ++i) {
             Entity entity = (Entity)list.get(i);
@@ -457,7 +457,7 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    public void becomeAngryAtClosestPlayer() {
-      List list = this.field_70170_p.func_72872_a(EntityPlayer.class, this.field_70121_D.func_72314_b(16.0D, 16.0D, 16.0D));
+      List list = this.world.func_72872_a(EntityPlayer.class, this.boundingBox.func_72314_b(16.0D, 16.0D, 16.0D));
       if (!list.isEmpty()) {
          Entity entityClosest = null;
          int rangeClosest = -1;
@@ -480,7 +480,7 @@ public class EntityDBC extends EntityCreature implements IMob {
 
    private void becomeAngryAt(Entity entity) {
       this.field_70789_a = entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
+      this.angerLevel = 400 + this.rand.nextInt(400);
    }
 
    public void becomeAngryAt2(Entity entity) {
@@ -496,12 +496,12 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    public double getXZDistanceToEntity(Entity targetEntity) {
-      double d0 = targetEntity.field_70165_t - this.field_70165_t;
+      double d0 = targetEntity.posX - this.posX;
       if (d0 < 0.0D) {
          d0 *= -1.0D;
       }
 
-      double d2 = targetEntity.field_70161_v - this.field_70161_v;
+      double d2 = targetEntity.posZ - this.posZ;
       if (d2 < 0.0D) {
          d2 *= -1.0D;
       }
@@ -510,7 +510,7 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    public double getYDistanceToEntity(Entity targetEntity) {
-      double d1 = targetEntity.field_70163_u - this.field_70163_u;
+      double d1 = targetEntity.posY - this.posY;
       if (d1 < 0.0D) {
          d1 *= -1.0D;
       }
@@ -519,9 +519,9 @@ public class EntityDBC extends EntityCreature implements IMob {
    }
 
    public double getYDistanceToEntityWithClientDiff(Entity targetEntity) {
-      boolean client = targetEntity.field_70170_p.field_72995_K;
-      double posYTarget = targetEntity.field_70163_u - (client ? (JGRenderHelper.isClientPlayer(targetEntity) ? 1.6D : 0.0D) : 0.0D);
-      double posY = this.field_70163_u - (client ? (JGRenderHelper.isClientPlayer(this) ? 1.6D : 0.0D) : 0.0D);
+      boolean client = targetEntity.world.field_72995_K;
+      double posYTarget = targetEntity.posY - (client ? (JGRenderHelper.isClientPlayer(targetEntity) ? 1.6D : 0.0D) : 0.0D);
+      double posY = this.posY - (client ? (JGRenderHelper.isClientPlayer(this) ? 1.6D : 0.0D) : 0.0D);
       double d1 = posYTarget - posY;
       if (d1 < 0.0D) {
          d1 *= -1.0D;

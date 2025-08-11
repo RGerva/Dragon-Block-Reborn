@@ -131,7 +131,7 @@ public class DBCKiGui extends Gui {
       }
 
       ResourceLocation tx2 = new ResourceLocation("jinryuudragonbc:icons.png");
-      this.mc.field_71446_o.func_110577_a(tx2);
+      this.mc.field_71446_o.bindTexture(tx2);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       this.func_73729_b(var51, var61, 0, 80, 11, var21);
       if (var22 > 0.0D) {
@@ -153,7 +153,7 @@ public class DBCKiGui extends Gui {
 
    public void kiBarHelper(int var51, int var61, int var21, double var22) {
       ResourceLocation tx = new ResourceLocation("jinryuudragonbc:icons.png");
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       this.func_73729_b(var51, var61, 0, 64, var21, 5);
       if (var22 > 0.0D) {
@@ -168,7 +168,7 @@ public class DBCKiGui extends Gui {
       int var7 = var5.func_78328_b();
       FontRenderer var8 = this.mc.field_71466_p;
       ResourceLocation tx = new ResourceLocation("jinryuudragonbc:icons.png");
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       int ki = JRMCoreH.KACharge;
       int maxki = JRMCoreH.kiMax;
       int maxkiplus = JRMCoreH.kiChargRa;
@@ -266,7 +266,7 @@ public class DBCKiGui extends Gui {
       int ySize = 44;
       int guiLeft = var6 - xSize + 131;
       int guiTop = (var7 - ySize) / 2;
-      float pitch = DBCClient.mc.field_71439_g.field_70125_A + 0.0F;
+      float pitch = DBCClient.mc.player.rotationPitch + 0.0F;
       if (pitch > 0.0F) {
          guiLeft -= (int)(pitch * 1.4F);
       } else {
@@ -275,7 +275,7 @@ public class DBCKiGui extends Gui {
 
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(ic);
-      this.mc.field_71446_o.func_110577_a(tx);
+      this.mc.field_71446_o.bindTexture(tx);
       int d = JRMCoreH.KASelected;
       if (d != 0) {
          this.func_73729_b(guiLeft, guiTop, 0, 20, xSize, ySize);
@@ -293,7 +293,7 @@ public class DBCKiGui extends Gui {
          String i = "jinryuudragonbc:KA/KA" + d + ".png";
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          ResourceLocation tx2 = new ResourceLocation(i);
-         this.mc.field_71446_o.func_110577_a(tx2);
+         this.mc.field_71446_o.bindTexture(tx2);
          this.func_73729_b(Left - 1, Top - 33, 0, 0, x, y);
       }
 
@@ -380,15 +380,15 @@ public class DBCKiGui extends Gui {
 
    public String KAcost(int par1) {
       int explevel = JRMCoreH.kiAscPow;
-      if (JRMCoreH.armTypSS1On(DBCClient.mc.field_71439_g)) {
+      if (JRMCoreH.armTypSS1On(DBCClient.mc.player)) {
          explevel *= 2;
       }
 
-      if (JRMCoreH.armTypSS2On(DBCClient.mc.field_71439_g)) {
+      if (JRMCoreH.armTypSS2On(DBCClient.mc.player)) {
          explevel *= 3;
       }
 
-      if (JRMCoreH.armTypSS3On(DBCClient.mc.field_71439_g)) {
+      if (JRMCoreH.armTypSS3On(DBCClient.mc.player)) {
          explevel *= 4;
       }
 
@@ -484,15 +484,15 @@ public class DBCKiGui extends Gui {
 
    public String KAdesc(int par1) {
       int explevel = JRMCoreH.kiAscPow;
-      if (JRMCoreH.armTypSS1On(DBCClient.mc.field_71439_g)) {
+      if (JRMCoreH.armTypSS1On(DBCClient.mc.player)) {
          explevel *= 2;
       }
 
-      if (JRMCoreH.armTypSS2On(DBCClient.mc.field_71439_g)) {
+      if (JRMCoreH.armTypSS2On(DBCClient.mc.player)) {
          explevel *= 3;
       }
 
-      if (JRMCoreH.armTypSS3On(DBCClient.mc.field_71439_g)) {
+      if (JRMCoreH.armTypSS3On(DBCClient.mc.player)) {
          explevel *= 4;
       }
 

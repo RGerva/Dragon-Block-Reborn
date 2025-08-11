@@ -48,20 +48,20 @@ public class EntityPorunga2 extends EntityCreature {
    protected void func_70619_bc() {
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0) {
       }
 
       this.field_70159_w *= 0.0D;
       this.field_70179_y *= 0.0D;
-      super.func_70071_h_();
+      super.onUpdate();
       ++this.age;
       if (this.age == 200) {
          mod_DragonBC.logger.info("Porunga has fulfilled a wish!");
-         this.func_70106_y();
+         this.setDead();
       }
 
-      if (this.field_70170_p.field_72995_K) {
+      if (this.world.field_72995_K) {
          DBCH.dragonSum(this);
       }
 
@@ -73,7 +73,7 @@ public class EntityPorunga2 extends EntityCreature {
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
    public void func_70636_d() {
@@ -82,15 +82,15 @@ public class EntityPorunga2 extends EntityCreature {
       }
 
       if (this.field_70716_bi > 0) {
-         double d0 = this.field_70165_t + (this.field_70709_bj - this.field_70165_t) / (double)this.field_70716_bi;
-         double d1 = this.field_70163_u + (this.field_70710_bk - this.field_70163_u) / (double)this.field_70716_bi;
-         double d2 = this.field_70161_v + (this.field_110152_bk - this.field_70161_v) / (double)this.field_70716_bi;
-         double d3 = MathHelper.func_76138_g(this.field_70712_bm - (double)this.field_70177_z);
-         this.field_70177_z = (float)((double)this.field_70177_z + d3 / (double)this.field_70716_bi);
-         this.field_70125_A = (float)((double)this.field_70125_A + (this.field_70705_bn - (double)this.field_70125_A) / (double)this.field_70716_bi);
+         double d0 = this.posX + (this.field_70709_bj - this.posX) / (double)this.field_70716_bi;
+         double d1 = this.posY + (this.field_70710_bk - this.posY) / (double)this.field_70716_bi;
+         double d2 = this.posZ + (this.field_110152_bk - this.posZ) / (double)this.field_70716_bi;
+         double d3 = MathHelper.func_76138_g(this.field_70712_bm - (double)this.rotationYaw);
+         this.rotationYaw = (float)((double)this.rotationYaw + d3 / (double)this.field_70716_bi);
+         this.rotationPitch = (float)((double)this.rotationPitch + (this.field_70705_bn - (double)this.rotationPitch) / (double)this.field_70716_bi);
          --this.field_70716_bi;
          this.func_70107_b(d0, d1, d2);
-         this.func_70101_b(this.field_70177_z, this.field_70125_A);
+         this.func_70101_b(this.rotationYaw, this.rotationPitch);
       } else if (!this.func_70613_aW()) {
          this.field_70159_w *= 0.98D;
          this.field_70181_x *= 0.98D;
@@ -109,7 +109,7 @@ public class EntityPorunga2 extends EntityCreature {
          this.field_70179_y = 0.0D;
       }
 
-      this.field_70170_p.field_72984_F.func_76320_a("ai");
+      this.world.field_72984_F.func_76320_a("ai");
       if (this.func_70610_aX()) {
          this.field_70703_bu = false;
          this.field_70702_br = 0.0F;
@@ -117,18 +117,18 @@ public class EntityPorunga2 extends EntityCreature {
          this.field_70704_bt = 0.0F;
       } else if (this.func_70613_aW()) {
          if (this.func_70650_aV()) {
-            this.field_70170_p.field_72984_F.func_76320_a("newAi");
+            this.world.field_72984_F.func_76320_a("newAi");
             this.func_70619_bc();
-            this.field_70170_p.field_72984_F.func_76319_b();
+            this.world.field_72984_F.func_76319_b();
          } else {
-            this.field_70170_p.field_72984_F.func_76320_a("oldAi");
-            this.field_70170_p.field_72984_F.func_76319_b();
-            this.field_70759_as = this.field_70177_z;
+            this.world.field_72984_F.func_76320_a("oldAi");
+            this.world.field_72984_F.func_76319_b();
+            this.field_70759_as = this.rotationYaw;
          }
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("jump");
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("jump");
       if (this.field_70703_bu) {
          if (!this.func_70090_H() && !this.func_70058_J()) {
             if (this.field_70122_E && this.jumpTicks == 0) {
@@ -142,23 +142,23 @@ public class EntityPorunga2 extends EntityCreature {
          this.jumpTicks = 0;
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("travel");
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("travel");
       this.field_70702_br *= 0.98F;
       this.field_70701_bs *= 0.98F;
       this.field_70704_bt *= 0.9F;
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("push");
-      if (!this.field_70170_p.field_72995_K) {
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("push");
+      if (!this.world.field_72995_K) {
          this.func_85033_bc();
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("looting");
-      if (!this.field_70170_p.field_72995_K && this.func_98052_bS() && !this.field_70729_aU && this.field_70170_p.func_82736_K().func_82766_b("mobGriefing")) {
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("looting");
+      if (!this.world.field_72995_K && this.func_98052_bS() && !this.field_70729_aU && this.world.func_82736_K().func_82766_b("mobGriefing")) {
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76319_b();
       this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(1.0E-6D);
       this.field_70159_w *= 1.0E-4D;
       this.field_70179_y *= 1.0E-4D;

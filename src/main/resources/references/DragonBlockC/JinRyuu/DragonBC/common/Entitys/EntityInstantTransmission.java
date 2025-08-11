@@ -68,7 +68,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
    }
 
    public EntityInstantTransmission(EntityLivingBase userEntity) {
-      super(userEntity.field_70170_p);
+      super(userEntity.world);
       this.speed = 20;
       this.size = 0.5F;
       this.shootingEntity = userEntity;
@@ -78,14 +78,14 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
       double d8 = (double)(userEntity.field_70130_N + 1.0F);
       double var10000 = (double)(userEntity.field_70131_O + 0.5F + this.size * 0.5F);
       Vec3 vec3 = userEntity.func_70040_Z();
-      double x = userEntity.field_70165_t + vec3.field_72450_a * d8 - vec3.field_72450_a * 2.0D;
-      double y = userEntity.field_70163_u + vec3.field_72448_b * d8 + (double)(userEntity.field_70131_O * 0.55F) - vec3.field_72448_b * 2.0D;
-      double z = userEntity.field_70161_v + vec3.field_72449_c * d8 - vec3.field_72449_c * 2.0D;
+      double x = userEntity.posX + vec3.field_72450_a * d8 - vec3.field_72450_a * 2.0D;
+      double y = userEntity.posY + vec3.field_72448_b * d8 + (double)(userEntity.field_70131_O * 0.55F) - vec3.field_72448_b * 2.0D;
+      double z = userEntity.posZ + vec3.field_72449_c * d8 - vec3.field_72449_c * 2.0D;
       this.field_70129_M = this.size * 0.5F;
-      this.func_70012_b(x, y, z, userEntity.func_70079_am(), userEntity.field_70125_A);
-      this.field_70159_w = (double)(-MathHelper.func_76126_a(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-      this.field_70179_y = (double)(MathHelper.func_76134_b(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-      this.field_70181_x = (double)(-MathHelper.func_76126_a(this.field_70125_A / 180.0F * 3.1415927F));
+      this.setLocationAndAngles(x, y, z, userEntity.func_70079_am(), userEntity.rotationPitch);
+      this.field_70159_w = (double)(-MathHelper.func_76126_a(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+      this.field_70179_y = (double)(MathHelper.func_76134_b(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+      this.field_70181_x = (double)(-MathHelper.func_76126_a(this.rotationPitch / 180.0F * 3.1415927F));
       this.func_70186_c(this.field_70159_w, this.field_70181_x, this.field_70179_y, (float)this.speed * 0.05F, 1.0F);
    }
 
@@ -96,7 +96,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
       this.surroundMode = (byte)surroundMode;
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
       this.field_70180_af.func_75682_a(20, 0);
    }
 
@@ -105,9 +105,9 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
       par1 /= (double)var9;
       par3 /= (double)var9;
       par5 /= (double)var9;
-      par1 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par3 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par5 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par1 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par3 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par5 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
       par1 *= (double)par7;
       par3 *= (double)par7;
       par5 *= (double)par7;
@@ -115,8 +115,8 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
       this.field_70181_x = par3;
       this.field_70179_y = par5;
       float var10 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-      this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-      this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
+      this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+      this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
       this.ticksInGround = 0;
    }
 
@@ -133,90 +133,90 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
       this.field_70179_y = par5;
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var7 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A;
-         this.field_70126_B = this.field_70177_z;
-         this.func_70012_b(this.field_70165_t, this.field_70163_u, this.field_70161_v, this.field_70177_z, this.field_70125_A);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch;
+         this.field_70126_B = this.rotationYaw;
+         this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
          this.ticksInGround = 0;
       }
 
    }
 
-   public void func_70071_h_() {
-      if (!this.field_70170_p.field_72995_K && !JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_ENABLED[0]) {
-         this.func_70106_y();
+   public void onUpdate() {
+      if (!this.world.field_72995_K && !JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_ENABLED[0]) {
+         this.setDead();
       } else {
          this.onLand();
-         if (!this.field_70170_p.field_72995_K && this.shootingEntity == null) {
-            this.func_70106_y();
+         if (!this.world.field_72995_K && this.shootingEntity == null) {
+            this.setDead();
          }
 
-         if (this.field_70163_u >= 250.0D) {
+         if (this.posY >= 250.0D) {
             this.field_70181_x = 0.0D;
          } else {
             this.size = 0.5F;
             this.func_70105_a(this.size, this.size);
          }
 
-         if (this.field_70173_aa == 1) {
+         if (this.ticksExisted == 1) {
             this.func_70105_a(this.size, this.size);
             this.field_70129_M = this.size * 0.5F;
          }
 
-         super.func_70071_h_();
+         super.onUpdate();
          if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
             float var1 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
-            this.field_70126_B = this.field_70177_z = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
-            this.field_70127_C = this.field_70125_A = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
+            this.field_70126_B = this.rotationYaw = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
+            this.field_70127_C = this.rotationPitch = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
          }
 
-         Block block = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
+         Block block = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
          if (block.func_149688_o() != Material.field_151579_a) {
-            block.func_149719_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-            AxisAlignedBB axisalignedbb = block.func_149668_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-            if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v))) {
+            block.func_149719_a(this.world, this.xTile, this.yTile, this.zTile);
+            AxisAlignedBB axisalignedbb = block.func_149668_a(this.world, this.xTile, this.yTile, this.zTile);
+            if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.posX, this.posY, this.posZ))) {
                this.inGround = true;
             }
          }
 
          if (this.inGround) {
-            int var19 = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
+            int var19 = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
             if (block == this.inTile && var19 == this.inData) {
                ++this.ticksInGround;
                if (this.ticksInGround == 1) {
                }
             } else {
                this.inGround = false;
-               this.field_70159_w *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-               this.field_70181_x *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-               this.field_70179_y *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
+               this.field_70159_w *= (double)(this.rand.nextFloat() * 0.2F);
+               this.field_70181_x *= (double)(this.rand.nextFloat() * 0.2F);
+               this.field_70179_y *= (double)(this.rand.nextFloat() * 0.2F);
                this.ticksInGround = 0;
                this.ticksInAir = 0;
             }
          } else {
             ++this.ticksInAir;
-            Vec3 var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-            Vec3 var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-            MovingObjectPosition var4 = this.field_70170_p.func_147447_a(var17, var3, false, true, false);
-            var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-            var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-            if (!this.field_70170_p.field_72995_K && this.ticksInAir >= 2000) {
-               this.func_70106_y();
+            Vec3 var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+            Vec3 var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+            MovingObjectPosition var4 = this.world.func_147447_a(var17, var3, false, true, false);
+            var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+            var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+            if (!this.world.field_72995_K && this.ticksInAir >= 2000) {
+               this.setDead();
             }
 
             int t = this.ticksInAir / 10 * 10;
             if (this.ticksInAir == (t == 0 ? 10 : t)) {
-               this.field_70170_p.func_72956_a(this, "jinryuudragonbc:" + JRMCoreH.techSnds(0, 2, 0), 1.0F, 1.0F);
+               this.world.func_72956_a(this, "jinryuudragonbc:" + JRMCoreH.techSnds(0, 2, 0), 1.0F, 1.0F);
             }
 
             if (var4 != null) {
                var3 = Vec3.func_72443_a(var4.field_72307_f.field_72450_a, var4.field_72307_f.field_72448_b, var4.field_72307_f.field_72449_c);
             }
 
-            if (!this.field_70170_p.field_72995_K) {
+            if (!this.world.field_72995_K) {
                Entity var5 = null;
-               List var6 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
+               List var6 = this.world.func_72839_b(this, this.boundingBox.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
                double var7 = 0.0D;
                int var9 = 0;
 
@@ -231,7 +231,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                   Entity var10 = (Entity)var6.get(var9);
                   if (var10 instanceof EntityLivingBase && var10.func_70067_L() && (var10 != this.shootingEntity || this.ticksInAir >= 5)) {
                      float var11 = 0.0F;
-                     AxisAlignedBB var12 = var10.field_70121_D.func_72314_b((double)var11, (double)var11, (double)var11);
+                     AxisAlignedBB var12 = var10.boundingBox.func_72314_b((double)var11, (double)var11, (double)var11);
                      MovingObjectPosition var13 = var12.func_72327_a(var17, var3);
                      if (var13 != null) {
                         double var14 = var17.func_72438_d(var13.field_72307_f);
@@ -247,39 +247,39 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
             }
 
             if (var4 != null) {
-               if (!this.field_70170_p.field_72995_K) {
+               if (!this.world.field_72995_K) {
                }
 
                this.xTile = var4.field_72311_b;
                this.yTile = var4.field_72312_c;
                this.zTile = var4.field_72309_d;
-               this.inTile = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
-               this.inData = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
+               this.inTile = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
+               this.inData = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
                this.inGround = true;
                if (this.inTile.func_149688_o() != Material.field_151579_a) {
-                  this.inTile.func_149670_a(this.field_70170_p, this.xTile, this.yTile, this.zTile, this);
+                  this.inTile.func_149670_a(this.world, this.xTile, this.yTile, this.zTile, this);
                }
             }
 
-            while(this.field_70125_A - this.field_70127_C >= 180.0F) {
+            while(this.rotationPitch - this.field_70127_C >= 180.0F) {
                this.field_70127_C += 360.0F;
             }
 
-            while(this.field_70177_z - this.field_70126_B < -180.0F) {
+            while(this.rotationYaw - this.field_70126_B < -180.0F) {
                this.field_70126_B -= 360.0F;
             }
 
-            while(this.field_70177_z - this.field_70126_B >= 180.0F) {
+            while(this.rotationYaw - this.field_70126_B >= 180.0F) {
                this.field_70126_B += 360.0F;
             }
 
-            this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+            this.func_70107_b(this.posX, this.posY, this.posZ);
          }
 
       }
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
       par1NBTTagCompound.func_74777_a("xTile", (short)this.xTile);
       par1NBTTagCompound.func_74777_a("yTile", (short)this.yTile);
       par1NBTTagCompound.func_74777_a("zTile", (short)this.zTile);
@@ -288,7 +288,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
       par1NBTTagCompound.func_74774_a("inGround", (byte)(this.inGround ? 1 : 0));
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
       this.xTile = par1NBTTagCompound.func_74765_d("xTile");
       this.yTile = par1NBTTagCompound.func_74765_d("yTile");
       this.zTile = par1NBTTagCompound.func_74765_d("zTile");
@@ -325,7 +325,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
 
    public void readSpawnData(ByteBuf data) {
       int first = data.readInt();
-      this.shootingEntity = first == 0 ? this.shootingEntity : this.field_70170_p.func_73045_a(first);
+      this.shootingEntity = first == 0 ? this.shootingEntity : this.world.func_73045_a(first);
       this.speed = data.readByte();
       this.size = data.readFloat();
    }
@@ -356,29 +356,29 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
    }
 
    public void onLand() {
-      if (this.shootingEntity != null && !this.teleported && !this.field_70170_p.field_72995_K) {
+      if (this.shootingEntity != null && !this.teleported && !this.world.field_72995_K) {
          for(int j = 0; j < JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_SHORT_MAX_RANGE[this.skillLevel - 1]; ++j) {
-            this.field_70165_t += this.field_70159_w;
-            this.field_70163_u += this.field_70181_x;
-            this.field_70161_v += this.field_70179_y;
-            this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+            this.posX += this.field_70159_w;
+            this.posY += this.field_70181_x;
+            this.posZ += this.field_70179_y;
+            this.func_70107_b(this.posX, this.posY, this.posZ);
             if (!JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_SHORT_GO_THROUGH_BLOCKS_ENABLED) {
-               Block block = this.shootingEntity.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+               Block block = this.shootingEntity.world.func_147439_a((int)this.posX, (int)this.posY, (int)this.posZ);
                if (block.func_149688_o() != Material.field_151579_a) {
-                  block.func_149719_a(this.field_70170_p, (int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
-                  AxisAlignedBB axisalignedbb = block.func_149668_a(this.field_70170_p, (int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
-                  if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v))) {
+                  block.func_149719_a(this.world, (int)this.posX, (int)this.posY, (int)this.posZ);
+                  AxisAlignedBB axisalignedbb = block.func_149668_a(this.world, (int)this.posX, (int)this.posY, (int)this.posZ);
+                  if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.posX, this.posY, this.posZ))) {
                      String message = "Instant Transmission Failed! A block was in the way";
                      ((EntityPlayer)this.shootingEntity).func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
-                     this.func_70106_y();
+                     this.setDead();
                      return;
                   }
                }
             }
 
             double r = JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_SHORT_TARGET_FINDER_RANGE;
-            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.field_70165_t - r, this.field_70163_u - r, this.field_70161_v - r, this.field_70165_t + r, this.field_70163_u + r, this.field_70161_v + r);
-            List entityList = this.field_70170_p.func_72839_b(this, aabb);
+            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
+            List entityList = this.world.func_72839_b(this, aabb);
 
             for(int i = 0; i < entityList.size(); ++i) {
                Entity targetEntity = (Entity)entityList.get(i);
@@ -392,7 +392,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                      if (!targetCanBeSensed) {
                         String message = "Instant Transmission Failed! Target can not be sensed at 0% Release Level.";
                         ((EntityPlayer)this.shootingEntity).func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
-                        this.func_70106_y();
+                        this.setDead();
                         return;
                      }
                   }
@@ -406,8 +406,8 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                      int surroundPlayerLimit = JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_SURROUND_PLAYER_LIMIT_SKILL_LEVEL[0][this.skillLevel - 1];
                      double r2 = JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_SURROUND_TARGET_FINDER_RANGE;
                      double r2Y = 1.0D;
-                     AxisAlignedBB aabb2 = AxisAlignedBB.func_72330_a(pl.field_70165_t - r2, pl.field_70163_u - 1.0D, pl.field_70161_v - r2, pl.field_70165_t + r2, pl.field_70163_u + 1.0D, pl.field_70161_v + r2);
-                     List entityList2 = this.field_70170_p.func_72839_b(this, aabb2);
+                     AxisAlignedBB aabb2 = AxisAlignedBB.func_72330_a(pl.posX - r2, pl.posY - 1.0D, pl.posZ - r2, pl.posX + r2, pl.posY + 1.0D, pl.posZ + r2);
+                     List entityList2 = this.world.func_72839_b(this, aabb2);
 
                      for(int k = 0; k < entityList2.size(); ++k) {
                         Entity nearbyEntity = (Entity)entityList2.get(k);
@@ -457,7 +457,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                      if ((double)curEnergy < energyCost) {
                         String message = "Instant Transmission Failed! Not Enough Ki: " + (int)energyCost;
                         pl.func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
-                        this.func_70106_y();
+                        this.setDead();
                         return;
                      }
 
@@ -465,16 +465,16 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                      JRMCoreH.setInt(remainingEnergy, pl, "jrmcEnrgy");
                   }
 
-                  pl.field_70170_p.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
+                  pl.world.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
                   double x;
                   double y;
                   double z;
                   int tpLong;
                   if (this.shortTPMode == -1) {
-                     x = targetEntity.field_70165_t;
-                     y = targetEntity.field_70163_u;
-                     z = targetEntity.field_70161_v;
-                     Block block = this.shootingEntity.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+                     x = targetEntity.posX;
+                     y = targetEntity.posY;
+                     z = targetEntity.posZ;
+                     Block block = this.shootingEntity.world.func_147439_a((int)this.posX, (int)this.posY, (int)this.posZ);
                      if (block.func_149688_o() != Material.field_151579_a) {
                         ++y;
                      }
@@ -483,48 +483,48 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                      float value;
                      boolean found;
                      if (this.shortTPMode == 0) {
-                        x = targetEntity.field_70165_t - this.field_70159_w * 2.0D;
-                        y = targetEntity.field_70163_u - this.field_70181_x * 2.0D;
-                        z = targetEntity.field_70161_v - this.field_70179_y * 2.0D;
+                        x = targetEntity.posX - this.field_70159_w * 2.0D;
+                        y = targetEntity.posY - this.field_70181_x * 2.0D;
+                        z = targetEntity.posZ - this.field_70179_y * 2.0D;
 
                         for(k = 0; k < 3; ++k) {
                            found = false;
-                           block = this.shootingEntity.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+                           block = this.shootingEntity.world.func_147439_a((int)this.posX, (int)this.posY, (int)this.posZ);
 
                            for(tpLong = 0; tpLong < 3; ++tpLong) {
-                              block = this.shootingEntity.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u + tpLong, (int)this.field_70161_v);
+                              block = this.shootingEntity.world.func_147439_a((int)this.posX, (int)this.posY + tpLong, (int)this.posZ);
                               if (block.func_149688_o() != Material.field_151579_a) {
                                  if (k == 2) {
                                     ++y;
                                  } else {
                                     value = k == 0 ? 1.0F : 0.0F;
-                                    x = targetEntity.field_70165_t - this.field_70159_w * (double)value;
-                                    y = targetEntity.field_70163_u - this.field_70181_x * (double)value;
-                                    z = targetEntity.field_70161_v - this.field_70179_y * (double)value;
+                                    x = targetEntity.posX - this.field_70159_w * (double)value;
+                                    y = targetEntity.posY - this.field_70181_x * (double)value;
+                                    z = targetEntity.posZ - this.field_70179_y * (double)value;
                                  }
                                  break;
                               }
                            }
                         }
                      } else {
-                        x = targetEntity.field_70165_t + this.field_70159_w * 2.0D;
-                        y = targetEntity.field_70163_u + this.field_70181_x * 2.0D;
-                        z = targetEntity.field_70161_v + this.field_70179_y * 2.0D;
+                        x = targetEntity.posX + this.field_70159_w * 2.0D;
+                        y = targetEntity.posY + this.field_70181_x * 2.0D;
+                        z = targetEntity.posZ + this.field_70179_y * 2.0D;
 
                         for(k = 0; k < 3; ++k) {
                            found = false;
-                           block = this.shootingEntity.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+                           block = this.shootingEntity.world.func_147439_a((int)this.posX, (int)this.posY, (int)this.posZ);
 
                            for(tpLong = 0; tpLong < 3; ++tpLong) {
-                              block = this.shootingEntity.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u + tpLong, (int)this.field_70161_v);
+                              block = this.shootingEntity.world.func_147439_a((int)this.posX, (int)this.posY + tpLong, (int)this.posZ);
                               if (block.func_149688_o() != Material.field_151579_a) {
                                  if (k == 2) {
                                     ++y;
                                  } else {
                                     value = k == 0 ? 1.0F : 0.0F;
-                                    x = targetEntity.field_70165_t + this.field_70159_w * (double)value;
-                                    y = targetEntity.field_70163_u + this.field_70181_x * (double)value;
-                                    z = targetEntity.field_70161_v + this.field_70179_y * (double)value;
+                                    x = targetEntity.posX + this.field_70159_w * (double)value;
+                                    y = targetEntity.posY + this.field_70181_x * (double)value;
+                                    z = targetEntity.posZ + this.field_70179_y * (double)value;
                                  }
                                  break;
                               }
@@ -537,11 +537,11 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
 
                   for(k = teleportedEntities.size() - 1; k >= 0; --k) {
                      EntityPlayer entity = (EntityPlayer)teleportedEntities.get(k);
-                     double x2 = entity.field_70165_t - pl.field_70165_t;
+                     double x2 = entity.posX - pl.posX;
                      double y2 = 0.0D;
-                     double z2 = entity.field_70161_v - pl.field_70161_v;
-                     ((EntityPlayerMP)entity).func_70080_a(x + x2, y + y2 + 1.0D, z + z2, entity.field_70177_z - (float)(this.shortTPMode == 1 ? 180 : 0), entity.field_70125_A * (float)(this.shortTPMode == 1 ? -1 : 1));
-                     ((EntityPlayerMP)entity).field_71135_a.func_147364_a(x + x2, y + y2 + 1.0D, z + z2, entity.field_70177_z, entity.field_70125_A);
+                     double z2 = entity.posZ - pl.posZ;
+                     ((EntityPlayerMP)entity).func_70080_a(x + x2, y + y2 + 1.0D, z + z2, entity.rotationYaw - (float)(this.shortTPMode == 1 ? 180 : 0), entity.rotationPitch * (float)(this.shortTPMode == 1 ? -1 : 1));
+                     ((EntityPlayerMP)entity).field_71135_a.func_147364_a(x + x2, y + y2 + 1.0D, z + z2, entity.rotationYaw, entity.rotationPitch);
                      entity.func_71023_q(1);
                   }
 
@@ -552,15 +552,15 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                      if (instantTransmissionTimers.length() > 0 && !instantTransmissionTimers.equals(" ")) {
                         fusionParticipants = instantTransmissionTimers.split(",");
                         if (fusionParticipants.length == 3) {
-                           boolean isController = fusionParticipants[0].equalsIgnoreCase(pl.func_70005_c_());
+                           boolean isController = fusionParticipants[0].equalsIgnoreCase(pl.getName());
                            if (isController) {
-                              EntityPlayer fusedPlayerPartner = pl.field_70170_p.func_72924_a(fusionParticipants[1]);
+                              EntityPlayer fusedPlayerPartner = pl.world.getPlayerEntityByName(fusionParticipants[1]);
                               if (fusedPlayerPartner != null) {
                                  NBTTagCompound nbt2 = this.nbt(fusedPlayerPartner, "pres");
                                  String fusionMembers2 = nbt2.func_74779_i("jrmcFuzion");
                                  String[] fusionParticipants2 = fusionMembers2.split(",");
                                  if (fusionParticipants2.length == 3) {
-                                    ((EntityPlayerMP)fusedPlayerPartner).field_71135_a.func_147364_a(x, y + 1.5D, z, fusedPlayerPartner.field_70177_z, fusedPlayerPartner.field_70125_A);
+                                    ((EntityPlayerMP)fusedPlayerPartner).field_71135_a.func_147364_a(x, y + 1.5D, z, fusedPlayerPartner.rotationYaw, fusedPlayerPartner.rotationPitch);
                                     fusedPlayerPartner.func_71023_q(1);
                                  }
                               }
@@ -574,7 +574,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                   this.field_70159_w = 0.0D;
                   this.field_70181_x = 0.0D;
                   this.field_70179_y = 0.0D;
-                  pl.field_70170_p.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
+                  pl.world.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
                   if (nbt.func_74764_b("jrmcInstantTransmissionTimers")) {
                      instantTransmissionTimers = nbt.func_74779_i("jrmcInstantTransmissionTimers");
                      fusionParticipants = instantTransmissionTimers.split(";");
@@ -586,7 +586,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
                      JRMCoreH.setString(instantTransmissionTimers, pl, "jrmcInstantTransmissionTimers");
                   }
 
-                  this.func_70106_y();
+                  this.setDead();
                   return;
                }
             }
@@ -595,7 +595,7 @@ public class EntityInstantTransmission extends Entity implements IThrowableEntit
          if (!this.field_70128_L) {
             String message = "Instant Transmission didn't find any targets!";
             ((EntityPlayerMP)this.shootingEntity).func_145747_a((new ChatComponentText(message)).func_150255_a(DBCPacketHandlerServer.styleRed));
-            this.func_70106_y();
+            this.setDead();
             return;
          }
       }

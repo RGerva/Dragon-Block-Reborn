@@ -23,13 +23,13 @@ public class AAiDBCGroundDash extends AAi {
 
    public void update() {
       EntityDBC entity = (EntityDBC)this.aaiSystem.entity;
-      if (entity.func_70089_S() && !entity.field_70170_p.field_72995_K && !entity.isLocked() && entity.getTargetedEntity() != null && entity.getTargetedEntity().func_70089_S() && entity.getTargetedEntity().func_70068_e(entity) < 4096.0D) {
+      if (entity.func_70089_S() && !entity.world.field_72995_K && !entity.isLocked() && entity.getTargetedEntity() != null && entity.getTargetedEntity().func_70089_S() && entity.getTargetedEntity().func_70068_e(entity) < 4096.0D) {
          double xzDist = entity.getXZDistanceToEntity(entity.getTargetedEntity());
          if (this.checkChanceToUse(this.rate) && !entity.chargingKiAttack && xzDist >= 6.0D && entity.field_70122_E && !entity.isJumping()) {
             entity.field_70159_w *= this.multi;
             entity.field_70179_y *= this.multi;
-            double xDiff = (entity.getTargetedEntity().field_70165_t - entity.field_70165_t) / 50.0D * this.multi2;
-            double zDiff = (entity.getTargetedEntity().field_70161_v - entity.field_70161_v) / 50.0D * this.multi2;
+            double xDiff = (entity.getTargetedEntity().posX - entity.posX) / 50.0D * this.multi2;
+            double zDiff = (entity.getTargetedEntity().posZ - entity.posZ) / 50.0D * this.multi2;
             entity.field_70159_w += xDiff;
             if (this.limit != -1.0D) {
                entity.field_70159_w = JGMathHelper.doubleLimit(entity.field_70159_w, this.limit);

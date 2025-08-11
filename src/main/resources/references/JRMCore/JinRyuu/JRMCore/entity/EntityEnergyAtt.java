@@ -293,7 +293,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
    }
 
    public EntityEnergyAtt(EntityLivingBase entityLiving, byte type, byte speed, int dam, byte effect, byte color, byte density, byte sincantation, byte sfire, byte smove, byte perc, int dam1, int cost, byte[] sts, byte technum, byte release, byte align) {
-      super(entityLiving.field_70170_p);
+      super(entityLiving.world);
       this.xTile = -1;
       this.yTile = -1;
       this.zTile = -1;
@@ -428,29 +428,29 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             vec3 = this.shootingEntity.func_70040_Z();
          } else {
             float rotationYaw = this.shootingEntity.func_70079_am();
-            float rotationPitch = this.shootingEntity.field_70125_A;
+            float rotationPitch = this.shootingEntity.rotationPitch;
             float vx = -MathHelper.func_76126_a(this.rad(rotationYaw)) * MathHelper.func_76134_b(this.rad(rotationPitch));
             float vz = MathHelper.func_76134_b(this.rad(rotationYaw)) * MathHelper.func_76134_b(this.rad(rotationPitch));
             float vy = -MathHelper.func_76126_a(this.rad(rotationPitch));
             vec3 = Vec3.func_72443_a((double)vx, (double)vy, (double)vz);
          }
 
-         x = entityLiving.field_70165_t + vec3.field_72450_a * d8;
-         y = entityLiving.field_70163_u + vec3.field_72448_b * d8 + (double)(entityLiving.field_70131_O * 0.7F);
-         z = entityLiving.field_70161_v + vec3.field_72449_c * d8;
-         this.func_70012_b(x, y, z, entityLiving.func_70079_am(), entityLiving.field_70125_A);
+         x = entityLiving.posX + vec3.field_72450_a * d8;
+         y = entityLiving.posY + vec3.field_72448_b * d8 + (double)(entityLiving.field_70131_O * 0.7F);
+         z = entityLiving.posZ + vec3.field_72449_c * d8;
+         this.setLocationAndAngles(x, y, z, entityLiving.func_70079_am(), entityLiving.rotationPitch);
          this.field_70129_M = this.size * 0.5F;
-         this.field_70159_w = (double)(-MathHelper.func_76126_a(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-         this.field_70179_y = (double)(MathHelper.func_76134_b(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-         this.field_70181_x = (double)(-MathHelper.func_76126_a(this.field_70125_A / 180.0F * 3.1415927F));
+         this.field_70159_w = (double)(-MathHelper.func_76126_a(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+         this.field_70179_y = (double)(MathHelper.func_76134_b(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+         this.field_70181_x = (double)(-MathHelper.func_76126_a(this.rotationPitch / 180.0F * 3.1415927F));
          this.func_70186_c(this.field_70159_w, this.field_70181_x, this.field_70179_y, (float)((double)((float)this.speed * 0.05F) * JRMCoreConfig.dat5696[type][0]), 1.0F);
       } else {
          this.size = this.shootingEntity.field_70131_O * 3.0F * (!this.isExplosion() ? 1.0F : 2.0F);
          this.func_70105_a(this.size, this.size);
-         x = entityLiving.field_70165_t;
-         y = entityLiving.field_70163_u + (double)(entityLiving.field_70131_O * 0.55F);
-         z = entityLiving.field_70161_v;
-         this.func_70012_b(x, y, z, entityLiving.field_70177_z, entityLiving.field_70125_A);
+         x = entityLiving.posX;
+         y = entityLiving.posY + (double)(entityLiving.field_70131_O * 0.55F);
+         z = entityLiving.posZ;
+         this.setLocationAndAngles(x, y, z, entityLiving.rotationYaw, entityLiving.rotationPitch);
          this.field_70129_M = this.size * 0.5F;
          this.field_70159_w = 0.0D;
          this.field_70179_y = 0.0D;
@@ -470,7 +470,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
    }
 
    public EntityEnergyAtt(EntityLivingBase entityLiving, byte type, byte speed, int dam, byte effect, byte color, byte color2, byte density, byte sincantation, byte sfire, byte smove, byte perc, int dam1, int cost, byte[] sts, byte technum, byte release, byte align) {
-      super(entityLiving.field_70170_p);
+      super(entityLiving.world);
       this.xTile = -1;
       this.yTile = -1;
       this.zTile = -1;
@@ -621,29 +621,29 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             vec3 = this.shootingEntity.func_70040_Z();
          } else {
             float rotationYaw = this.shootingEntity.func_70079_am();
-            float rotationPitch = this.shootingEntity.field_70125_A;
+            float rotationPitch = this.shootingEntity.rotationPitch;
             float vx = -MathHelper.func_76126_a(this.rad(rotationYaw)) * MathHelper.func_76134_b(this.rad(rotationPitch));
             float vz = MathHelper.func_76134_b(this.rad(rotationYaw)) * MathHelper.func_76134_b(this.rad(rotationPitch));
             float vy = -MathHelper.func_76126_a(this.rad(rotationPitch));
             vec3 = Vec3.func_72443_a((double)vx, (double)vy, (double)vz);
          }
 
-         x = entityLiving.field_70165_t + vec3.field_72450_a * d8;
-         y = entityLiving.field_70163_u + vec3.field_72448_b * d8 + (double)(entityLiving.field_70131_O * 0.7F);
-         z = entityLiving.field_70161_v + vec3.field_72449_c * d8;
-         this.func_70012_b(x, y, z, entityLiving.func_70079_am(), entityLiving.field_70125_A);
+         x = entityLiving.posX + vec3.field_72450_a * d8;
+         y = entityLiving.posY + vec3.field_72448_b * d8 + (double)(entityLiving.field_70131_O * 0.7F);
+         z = entityLiving.posZ + vec3.field_72449_c * d8;
+         this.setLocationAndAngles(x, y, z, entityLiving.func_70079_am(), entityLiving.rotationPitch);
          this.field_70129_M = this.size * 0.5F;
-         this.field_70159_w = (double)(-MathHelper.func_76126_a(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-         this.field_70179_y = (double)(MathHelper.func_76134_b(this.field_70177_z / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.field_70125_A / 180.0F * 3.1415927F));
-         this.field_70181_x = (double)(-MathHelper.func_76126_a(this.field_70125_A / 180.0F * 3.1415927F));
+         this.field_70159_w = (double)(-MathHelper.func_76126_a(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+         this.field_70179_y = (double)(MathHelper.func_76134_b(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(this.rotationPitch / 180.0F * 3.1415927F));
+         this.field_70181_x = (double)(-MathHelper.func_76126_a(this.rotationPitch / 180.0F * 3.1415927F));
          this.func_70186_c(this.field_70159_w, this.field_70181_x, this.field_70179_y, (float)((double)((float)this.speed * 0.05F) * JRMCoreConfig.dat5696[type][0]), 1.0F);
       } else {
          this.size = this.shootingEntity.field_70131_O * 3.0F * (!this.isExplosion() ? 1.0F : 2.0F);
          this.func_70105_a(this.size, this.size);
-         x = entityLiving.field_70165_t;
-         y = entityLiving.field_70163_u + (double)(entityLiving.field_70131_O * 0.55F);
-         z = entityLiving.field_70161_v;
-         this.func_70012_b(x, y, z, entityLiving.field_70177_z, entityLiving.field_70125_A);
+         x = entityLiving.posX;
+         y = entityLiving.posY + (double)(entityLiving.field_70131_O * 0.55F);
+         z = entityLiving.posZ;
+         this.setLocationAndAngles(x, y, z, entityLiving.rotationYaw, entityLiving.rotationPitch);
          this.field_70129_M = this.size * 0.5F;
          this.field_70159_w = 0.0D;
          this.field_70179_y = 0.0D;
@@ -658,7 +658,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       this.motionZStart = this.field_70179_y;
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
       this.field_70180_af.func_75682_a(20, 0);
    }
 
@@ -667,9 +667,9 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       par1 /= (double)var9;
       par3 /= (double)var9;
       par5 /= (double)var9;
-      par1 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par3 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par5 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par1 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par3 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par5 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
       par1 *= (double)par7;
       par3 *= (double)par7;
       par5 *= (double)par7;
@@ -677,8 +677,8 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       this.field_70181_x = par3;
       this.field_70179_y = par5;
       float var10 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-      this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-      this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
+      this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+      this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
       this.ticksInGround = 0;
    }
 
@@ -695,11 +695,11 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       this.field_70179_y = par5;
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var7 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A;
-         this.field_70126_B = this.field_70177_z;
-         this.func_70012_b(this.field_70165_t, this.field_70163_u, this.field_70161_v, this.field_70177_z, this.field_70125_A);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch;
+         this.field_70126_B = this.rotationYaw;
+         this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
          this.ticksInGround = 0;
       }
 
@@ -709,8 +709,8 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       return this.getType() >= JRMCoreConfig.ContinuesKiAttacks.length ? false : JRMCoreConfig.ContinuesKiAttacks[this.getType()];
    }
 
-   public void func_70071_h_() {
-      if ((JGConfigClientSettings.configsChanged || this.run) && this.field_70170_p.field_72995_K && !this.field_70128_L) {
+   public void onUpdate() {
+      if ((JGConfigClientSettings.configsChanged || this.run) && this.world.field_72995_K && !this.field_70128_L) {
          this.field_70158_ak = JGConfigClientSettings.renderEnergyOutsideView;
       }
 
@@ -726,38 +726,38 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       }
 
       if (!this.run) {
-         if (this.field_70125_A != this.startRotationPitch) {
-            this.field_70125_A = this.startRotationPitch;
+         if (this.rotationPitch != this.startRotationPitch) {
+            this.rotationPitch = this.startRotationPitch;
          }
 
-         if (this.field_70177_z != this.startRotationYaw) {
-            this.field_70177_z = this.startRotationYaw;
+         if (this.rotationYaw != this.startRotationYaw) {
+            this.rotationYaw = this.startRotationYaw;
          }
       }
 
       boolean ROTATION_RELATED = true;
       if (this.run) {
-         this.startRotationPitch = this.field_70125_A;
-         this.startRotationYaw = this.field_70177_z;
+         this.startRotationPitch = this.rotationPitch;
+         this.startRotationYaw = this.rotationYaw;
          this.shooterHolds = this.isContinuesWave();
          if (this.shootingEntity != null && this.shootingEntity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer)this.shootingEntity;
             ExtendedPlayer.get(player).setAnimKiShootOn(0);
          }
 
-         if (!this.field_70170_p.field_72995_K && !JRMCoreConfig.dat5695[this.type] && !this.field_70128_L) {
-            this.func_70106_y();
+         if (!this.world.field_72995_K && !JRMCoreConfig.dat5695[this.type] && !this.field_70128_L) {
+            this.setDead();
          }
 
-         if (!this.field_70170_p.field_72995_K && !JRMCoreConfig.dat5709[this.type] && this.hasEffect()) {
+         if (!this.world.field_72995_K && !JRMCoreConfig.dat5709[this.type] && this.hasEffect()) {
             this.effect = 0;
          }
 
          this.run = false;
       }
 
-      if (!this.field_70170_p.field_72995_K && this.isContinuesWave() && !this.isShield() && !this.isExplosion() && this.target != null && !this.target.field_70128_L && !this.shooterHolds && JGMathHelper.isMotionSmallerThanN(this, 0.001D)) {
-         this.func_70106_y();
+      if (!this.world.field_72995_K && this.isContinuesWave() && !this.isShield() && !this.isExplosion() && this.target != null && !this.target.field_70128_L && !this.shooterHolds && JGMathHelper.isMotionSmallerThanN(this, 0.001D)) {
+         this.setDead();
       }
 
       double y;
@@ -781,9 +781,9 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             x = (double)(((EntityLivingBase)this.shootingEntity).field_70130_N + 1.0F + 1.0F);
             y = (double)(((EntityLivingBase)this.shootingEntity).field_70131_O + 0.2F);
             Vec3 vec3 = this.shootingEntity.func_70040_Z();
-            double x = this.shootingEntity.field_70165_t + vec3.field_72450_a * x;
-            double y = this.shootingEntity.field_70163_u + vec3.field_72448_b * x + (double)(this.shootingEntity.field_70131_O * 0.7F) + (double)(this.field_70170_p.field_72995_K ? JGPlayerClientServerHelper.clientPlayerPositioner(this.shootingEntity) : 0.0F);
-            motX = this.shootingEntity.field_70161_v + vec3.field_72449_c * x;
+            double x = this.shootingEntity.posX + vec3.field_72450_a * x;
+            double y = this.shootingEntity.posY + vec3.field_72448_b * x + (double)(this.shootingEntity.field_70131_O * 0.7F) + (double)(this.world.field_72995_K ? JGPlayerClientServerHelper.clientPlayerPositioner(this.shootingEntity) : 0.0F);
+            motX = this.shootingEntity.posZ + vec3.field_72449_c * x;
             if (x < 0.0D) {
                x *= -1.0D;
             }
@@ -832,7 +832,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                this.shooterHolds = false;
                EntityPlayer player = (EntityPlayer)this.shootingEntity;
                ExtendedPlayer.get(player).setAnimKiShoot(0);
-               if (!this.field_70170_p.field_72995_K) {
+               if (!this.world.field_72995_K) {
                   JRMCoreH.setByte((int)0, (EntityPlayer)this.shootingEntity, "jrmcFrng");
                   this.shrinkWave();
                } else {
@@ -857,17 +857,17 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             z *= -1.0D;
          }
 
-         kiX = this.shootingEntity.field_70165_t;
+         kiX = this.shootingEntity.posX;
          if (kiX < 0.0D) {
             kiX *= -1.0D;
          }
 
-         kiY = this.shootingEntity.field_70163_u + (double)(this.field_70170_p.field_72995_K ? JGPlayerClientServerHelper.clientPlayerPositioner(this.shootingEntity) : 0.0F);
+         kiY = this.shootingEntity.posY + (double)(this.world.field_72995_K ? JGPlayerClientServerHelper.clientPlayerPositioner(this.shootingEntity) : 0.0F);
          if (kiY < 0.0D) {
             kiY *= -1.0D;
          }
 
-         kiZ = this.shootingEntity.field_70161_v;
+         kiZ = this.shootingEntity.posZ;
          if (kiZ < 0.0D) {
             kiZ *= -1.0D;
          }
@@ -892,7 +892,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             this.shooterHolds = false;
             EntityPlayer player = (EntityPlayer)this.shootingEntity;
             ExtendedPlayer.get(player).setAnimKiShoot(0);
-            if (!this.field_70170_p.field_72995_K) {
+            if (!this.world.field_72995_K) {
                JRMCoreH.setByte((int)0, (EntityPlayer)this.shootingEntity, "jrmcFrng");
             } else {
                DBCClientTickHandler.nuller();
@@ -901,10 +901,10 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          }
       }
 
-      if (!this.field_70170_p.field_72995_K && this.isContinuesWave() && JRMCoreConfig.ContinuesEnergyAttackEnemyLock && this.target != null && !this.target.field_70128_L && this.shooterHolds) {
-         x = this.field_70165_t;
-         y = this.field_70163_u;
-         z = this.field_70161_v;
+      if (!this.world.field_72995_K && this.isContinuesWave() && JRMCoreConfig.ContinuesEnergyAttackEnemyLock && this.target != null && !this.target.field_70128_L && this.shooterHolds) {
+         x = this.posX;
+         y = this.posY;
+         z = this.posZ;
          if (x < 0.0D) {
             x *= -1.0D;
          }
@@ -917,17 +917,17 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             z *= -1.0D;
          }
 
-         kiX = this.target.field_70165_t;
+         kiX = this.target.posX;
          if (kiX < 0.0D) {
             kiX *= -1.0D;
          }
 
-         kiY = this.target.field_70163_u;
+         kiY = this.target.posY;
          if (kiY < 0.0D) {
             kiY *= -1.0D;
          }
 
-         kiZ = this.target.field_70161_v;
+         kiZ = this.target.posZ;
          if (kiZ < 0.0D) {
             kiZ *= -1.0D;
          }
@@ -949,12 +949,12 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
 
          spet = 0.5F;
          if (kulx > 0.5D || kuly > 0.5D || kulz > 0.5D) {
-            this.target.field_70165_t = x;
-            this.target.field_70163_u = y;
-            this.target.field_70161_v = z;
-            this.target.field_70165_t = this.field_70165_t;
-            this.target.field_70163_u = this.field_70163_u;
-            this.target.field_70161_v = this.field_70161_v;
+            this.target.posX = x;
+            this.target.posY = y;
+            this.target.posZ = z;
+            this.target.posX = this.posX;
+            this.target.posY = this.posY;
+            this.target.posZ = this.posZ;
             this.target.field_70159_w = this.field_70159_w;
             this.target.field_70181_x = this.field_70181_x;
             this.target.field_70179_y = this.field_70179_y;
@@ -965,10 +965,10 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          }
       }
 
-      if (!this.field_70170_p.field_72995_K && this.isContinuesWave() && JRMCoreConfig.ContinuesEnergyAttackTargetSlowdown && JRMCoreConfig.ContinuesEnergyAttackMoveOnLostTarget && this.target != null && !this.target.field_70128_L && this.shooterHolds && JGMathHelper.isMotionSmallerThanN(this, 0.001D)) {
-         x = this.field_70165_t;
-         y = this.field_70163_u;
-         z = this.field_70161_v;
+      if (!this.world.field_72995_K && this.isContinuesWave() && JRMCoreConfig.ContinuesEnergyAttackTargetSlowdown && JRMCoreConfig.ContinuesEnergyAttackMoveOnLostTarget && this.target != null && !this.target.field_70128_L && this.shooterHolds && JGMathHelper.isMotionSmallerThanN(this, 0.001D)) {
+         x = this.posX;
+         y = this.posY;
+         z = this.posZ;
          if (x < 0.0D) {
             x *= -1.0D;
          }
@@ -981,17 +981,17 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             z *= -1.0D;
          }
 
-         kiX = this.target.field_70165_t;
+         kiX = this.target.posX;
          if (kiX < 0.0D) {
             kiX *= -1.0D;
          }
 
-         kiY = this.target.field_70163_u;
+         kiY = this.target.posY;
          if (kiY < 0.0D) {
             kiY *= -1.0D;
          }
 
-         kiZ = this.target.field_70161_v;
+         kiZ = this.target.posZ;
          if (kiZ < 0.0D) {
             kiZ *= -1.0D;
          }
@@ -1021,10 +1021,10 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          }
       }
 
-      if (!this.field_70170_p.field_72995_K && JRMCoreConfig.WavesDieWhenTargetAway && this.shootingEntity != null && this.target != null && this.shootingEntity instanceof EntityPlayer && this.isContinuesWave()) {
-         x = this.field_70165_t;
-         y = this.field_70163_u;
-         z = this.field_70161_v;
+      if (!this.world.field_72995_K && JRMCoreConfig.WavesDieWhenTargetAway && this.shootingEntity != null && this.target != null && this.shootingEntity instanceof EntityPlayer && this.isContinuesWave()) {
+         x = this.posX;
+         y = this.posY;
+         z = this.posZ;
          if (x < 0.0D) {
             x *= -1.0D;
          }
@@ -1037,17 +1037,17 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             z *= -1.0D;
          }
 
-         kiX = this.target.field_70165_t;
+         kiX = this.target.posX;
          if (kiX < 0.0D) {
             kiX *= -1.0D;
          }
 
-         kiY = this.target.field_70163_u;
+         kiY = this.target.posY;
          if (kiY < 0.0D) {
             kiY *= -1.0D;
          }
 
-         kiZ = this.target.field_70161_v;
+         kiZ = this.target.posZ;
          if (kiZ < 0.0D) {
             kiZ *= -1.0D;
          }
@@ -1073,87 +1073,87 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                this.createExplosion(2);
             }
 
-            this.func_70106_y();
+            this.setDead();
          }
       }
 
       if (this.shootingEntity != null && this.isExplosion() && this.hasEffect()) {
-         x = this.shootingEntity.field_70165_t - this.field_70165_t;
+         x = this.shootingEntity.posX - this.posX;
          if (x < 0.0D) {
             x *= -1.0D;
          }
 
-         y = this.shootingEntity.field_70163_u - this.field_70163_u;
+         y = this.shootingEntity.posY - this.posY;
          if (y < 0.0D) {
             y *= -1.0D;
          }
 
-         z = this.shootingEntity.field_70161_v - this.field_70161_v;
+         z = this.shootingEntity.posZ - this.posZ;
          if (z < 0.0D) {
             z *= -1.0D;
          }
 
          if (x > 1.0D || y > 1.0D || z > 1.0D) {
-            this.shootingEntity.func_70107_b(this.field_70165_t, this.field_70163_u + 1.0D, this.field_70161_v);
+            this.shootingEntity.func_70107_b(this.posX, this.posY + 1.0D, this.posZ);
          }
       }
 
-      if (!this.field_70170_p.field_72995_K && this.shootingEntity == null) {
-         this.func_70106_y();
+      if (!this.world.field_72995_K && this.shootingEntity == null) {
+         this.setDead();
       }
 
-      if (!this.field_70170_p.field_72995_K && this.shootingEntity != null && !this.field_70128_L) {
+      if (!this.world.field_72995_K && this.shootingEntity != null && !this.field_70128_L) {
          if (this.isShield()) {
             if (JRMCoreConfig.ShieldsMoveWithUser) {
-               this.field_70165_t = this.shootingEntity.field_70165_t;
-               this.field_70163_u = this.shootingEntity.field_70163_u + (double)(this.shootingEntity.field_70131_O * 0.55F);
-               this.field_70161_v = this.shootingEntity.field_70161_v;
+               this.posX = this.shootingEntity.posX;
+               this.posY = this.shootingEntity.posY + (double)(this.shootingEntity.field_70131_O * 0.55F);
+               this.posZ = this.shootingEntity.posZ;
             } else {
-               diff = (int)(this.field_70165_t - this.shootingEntity.field_70165_t);
+               diff = (int)(this.posX - this.shootingEntity.posX);
                diff *= diff > 0 ? 1 : -1;
                if (diff > 3) {
-                  this.func_70106_y();
+                  this.setDead();
                }
 
-               diff = (int)(this.field_70163_u - this.shootingEntity.field_70163_u);
+               diff = (int)(this.posY - this.shootingEntity.posY);
                diff *= diff > 0 ? 1 : -1;
                if (diff > 3) {
-                  this.func_70106_y();
+                  this.setDead();
                }
 
-               diff = (int)(this.field_70161_v - this.shootingEntity.field_70161_v);
+               diff = (int)(this.posZ - this.shootingEntity.posZ);
                diff *= diff > 0 ? 1 : -1;
                if (diff > 3) {
-                  this.func_70106_y();
+                  this.setDead();
                }
             }
          } else if (this.isExplosion() && JRMCoreConfig.ExplosionsMoveWithUser) {
-            this.field_70165_t = this.shootingEntity.field_70165_t;
-            this.field_70163_u = this.shootingEntity.field_70163_u + (double)(this.shootingEntity.field_70131_O * 0.55F);
-            this.field_70161_v = this.shootingEntity.field_70161_v;
+            this.posX = this.shootingEntity.posX;
+            this.posY = this.shootingEntity.posY + (double)(this.shootingEntity.field_70131_O * 0.55F);
+            this.posZ = this.shootingEntity.posZ;
          }
       }
 
-      if (!this.field_70170_p.field_72995_K && this.shootingEntity != null && JRMCoreConfig.dat5710 && (this.isShield() || this.isExplosion())) {
-         diff = Integer.parseInt(JRMCoreH.data(this.shootingEntity.func_70005_c_(), 8, "200"));
+      if (!this.world.field_72995_K && this.shootingEntity != null && JRMCoreConfig.dat5710 && (this.isShield() || this.isExplosion())) {
+         diff = Integer.parseInt(JRMCoreH.data(this.shootingEntity.getName(), 8, "200"));
          if (diff == 0) {
-            this.func_70106_y();
+            this.setDead();
          }
       }
 
-      if (!this.field_70170_p.field_72995_K && this.isContinuesWave() && this.shootingEntity != null && this.shootingEntity instanceof EntityPlayer) {
+      if (!this.world.field_72995_K && this.isContinuesWave() && this.shootingEntity != null && this.shootingEntity instanceof EntityPlayer) {
          byte b = JRMCoreH.getByte((EntityPlayer)this.shootingEntity, "jrmcFrng");
          if (b == 0 && !this.shrink && JRMCoreConfig.WavesShrinkOnceLetGo) {
             this.shrink();
          }
       }
 
-      if (!this.field_70170_p.field_72995_K && this.isContinuesWave() && this.hadTarget && (this.target == null || this.target.field_70128_L)) {
-         this.func_70106_y();
+      if (!this.world.field_72995_K && this.isContinuesWave() && this.hadTarget && (this.target == null || this.target.field_70128_L)) {
+         this.setDead();
       }
 
-      if (!this.field_70170_p.field_72995_K && this.isExplosion() && this.field_70173_aa >= JRMCoreConfig.dat5697) {
-         this.func_70106_y();
+      if (!this.world.field_72995_K && this.isExplosion() && this.ticksExisted >= JRMCoreConfig.dat5697) {
+         this.setDead();
       }
 
       Entity var10000;
@@ -1172,41 +1172,41 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             this.target.field_70159_w = this.field_70159_w;
             this.target.field_70181_x = this.field_70181_x;
             this.target.field_70179_y = this.field_70179_y;
-            this.target.field_70165_t = this.field_70165_t;
-            this.target.field_70163_u = this.field_70163_u;
-            this.target.field_70161_v = this.field_70161_v;
+            this.target.posX = this.posX;
+            this.target.posY = this.posY;
+            this.target.posZ = this.posZ;
          }
       }
 
-      if (this.field_70173_aa == 1) {
+      if (this.ticksExisted == 1) {
          this.func_70105_a(this.size, this.size);
          this.field_70129_M = this.size * 0.5F;
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var1 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
       }
 
-      Block block = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
+      Block block = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
       if (block.func_149688_o() != Material.field_151579_a) {
-         block.func_149719_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         AxisAlignedBB axisalignedbb = block.func_149668_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v))) {
+         block.func_149719_a(this.world, this.xTile, this.yTile, this.zTile);
+         AxisAlignedBB axisalignedbb = block.func_149668_a(this.world, this.xTile, this.yTile, this.zTile);
+         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.posX, this.posY, this.posZ))) {
             this.inGround = true;
          }
       }
 
       if (this.inGround && !this.isShield() && !this.isExplosion()) {
-         int var19 = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
-         if (!this.field_70170_p.field_72995_K) {
+         int var19 = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
+         if (!this.world.field_72995_K) {
             if (block == this.inTile && var19 == this.inData) {
                ++this.ticksInGround;
                if (this.ticksInGround == 1) {
-                  this.func_70106_y();
-                  if (!this.field_70170_p.field_72995_K) {
+                  this.setDead();
+                  if (!this.world.field_72995_K) {
                      if (this.hasEffect()) {
                         this.createExplosion(1);
                      }
@@ -1216,22 +1216,22 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                }
             } else {
                this.inGround = false;
-               this.field_70159_w *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-               this.field_70181_x *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-               this.field_70179_y *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
+               this.field_70159_w *= (double)(this.rand.nextFloat() * 0.2F);
+               this.field_70181_x *= (double)(this.rand.nextFloat() * 0.2F);
+               this.field_70179_y *= (double)(this.rand.nextFloat() * 0.2F);
                this.ticksInGround = 0;
                this.ticksInAir = 0;
             }
          }
       } else {
          ++this.ticksInAir;
-         Vec3 var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         Vec3 var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-         MovingObjectPosition movingObject = this.field_70170_p.func_147447_a(var17, var3, false, true, false);
-         var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-         if (!this.field_70170_p.field_72995_K && ((float)this.ticksInAir >= (float)JRMCoreConfig.EnergyAttackMaxLifeTickPercMulti * (float)this.perc * 0.02F || this.ticksInAir >= JRMCoreConfig.EnergyAttackMaxLifeTick)) {
-            this.func_70106_y();
+         Vec3 var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         Vec3 var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+         MovingObjectPosition movingObject = this.world.func_147447_a(var17, var3, false, true, false);
+         var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+         if (!this.world.field_72995_K && ((float)this.ticksInAir >= (float)JRMCoreConfig.EnergyAttackMaxLifeTickPercMulti * (float)this.perc * 0.02F || this.ticksInAir >= JRMCoreConfig.EnergyAttackMaxLifeTick)) {
+            this.setDead();
          }
 
          int t = this.ticksInAir / 10 * 10;
@@ -1246,7 +1246,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          float var11;
          byte result;
          boolean doit;
-         if (!this.field_70170_p.field_72995_K) {
+         if (!this.world.field_72995_K) {
             Entity lastEntity = null;
             byte MODE_OLD = false;
             byte MODE_ONE = true;
@@ -1258,18 +1258,18 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             AxisAlignedBB aabb;
             List entityList;
             if (result == 4) {
-               aabb = this.field_70121_D.func_72329_c();
-               entityList = this.field_70170_p.func_72839_b(this, aabb);
+               aabb = this.boundingBox.func_72329_c();
+               entityList = this.world.func_72839_b(this, aabb);
             } else if (result == 3) {
-               aabb = this.field_70121_D.func_72329_c();
-               entityList = this.field_70170_p.func_72839_b(this, aabb.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y));
+               aabb = this.boundingBox.func_72329_c();
+               entityList = this.world.func_72839_b(this, aabb.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y));
             } else if (result == 2) {
-               aabb = this.field_70121_D.func_72329_c();
-               entityList = this.field_70170_p.func_72839_b(this, aabb.func_72314_b(0.5D, 0.5D, 0.5D));
+               aabb = this.boundingBox.func_72329_c();
+               entityList = this.world.func_72839_b(this, aabb.func_72314_b(0.5D, 0.5D, 0.5D));
             } else if (result == 1) {
-               entityList = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y));
+               entityList = this.world.func_72839_b(this, this.boundingBox.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y));
             } else {
-               entityList = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
+               entityList = this.world.func_72839_b(this, this.boundingBox.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
             }
 
             if (result != 5) {
@@ -1287,7 +1287,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                   Entity entity = (Entity)entityList.get(n);
                   if (entity instanceof EntityLivingBase && entity.func_70067_L() && (entity != this.shootingEntity || this.ticksInAir >= 5)) {
                      var11 = 0.0F;
-                     AxisAlignedBB entityHitbox = entity.field_70121_D.func_72314_b((double)var11, (double)var11, (double)var11);
+                     AxisAlignedBB entityHitbox = entity.boundingBox.func_72314_b((double)var11, (double)var11, (double)var11);
                      MovingObjectPosition movingObject2 = entityHitbox.func_72327_a(var17, var3);
                      if (movingObject2 != null) {
                         distance = var17.func_72438_d(movingObject2.field_72307_f);
@@ -1310,7 +1310,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          float var20;
          int var23;
          float spe;
-         if (!this.field_70170_p.field_72995_K) {
+         if (!this.world.field_72995_K) {
             List entityList = this.checkForEntitiesInside();
             var23 = 0;
 
@@ -1356,7 +1356,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                                     doit = true;
                                     result = 0;
                                     if (JGConfigDBCGoD.CONFIG_GOD_ENABLED && JGConfigDBCGoD.CONFIG_GOD_ENERGY_ENABLED && this.destroyer && this.damage * (double)this.DAMAGE_REDUCTION / 2.0D > entityKi.damage / 2.0D) {
-                                       entityKi.func_70106_y();
+                                       entityKi.setDead();
                                        break label1432;
                                     }
 
@@ -1400,7 +1400,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                                           }
                                        }
                                     }
-                                 } else if (this.isShield() && !this.field_70170_p.field_72995_K) {
+                                 } else if (this.isShield() && !this.world.field_72995_K) {
                                     doit = true;
                                     if ((int)(Math.random() * 3.0D) == 0) {
                                        doit = false;
@@ -1440,7 +1440,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                               this.giveExperience(entity, 1);
                               DamageSource damagesource = null;
                               if (this.shootingEntity == null || this.shootingEntity instanceof EntityDBC && entity instanceof EntityDBC) {
-                                 this.func_70106_y();
+                                 this.setDead();
                                  return;
                               }
 
@@ -1460,7 +1460,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                                  }
 
                                  if (entity instanceof EntityLivingBase) {
-                                    if (!this.field_70170_p.field_72995_K && this.shootingEntity instanceof EntityPlayer) {
+                                    if (!this.world.field_72995_K && this.shootingEntity instanceof EntityPlayer) {
                                        String s2 = JRMCoreH.getString((EntityPlayer)this.shootingEntity, JRMCoreH.techNbt[this.technum]);
                                        JRMCoreH.setString(JRMCoreH.tech_expgiv(s2, JRMCoreH.DBC() ? JRMCoreHDBC.DBCgetConfigTechExpRate() : 1), (EntityPlayer)this.shootingEntity, JRMCoreH.techNbt[this.technum]);
                                     }
@@ -1500,15 +1500,15 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
 
          if (!this.isShield()) {
             if (movingObject != null && movingObject.field_72308_g != this.shootingEntity) {
-               if (!this.field_70170_p.field_72995_K && !this.isExplosion() && !JRMCoreH.isFusionSpectator(movingObject == null ? null : movingObject.field_72308_g) && this.canSpiralNotGoThrough()) {
+               if (!this.world.field_72995_K && !this.isExplosion() && !JRMCoreH.isFusionSpectator(movingObject == null ? null : movingObject.field_72308_g) && this.canSpiralNotGoThrough()) {
                   this.playSoundAtEntity(this, JGConfigDBCGoD.CONFIG_GOD_ENABLED && JGConfigDBCGoD.CONFIG_GOD_ENERGY_ENABLED && this.destroyer ? "jinryuudragonbc:DBC5.hakai" : this.ExplSound, 1.0F, 1.0F);
                }
 
                if (movingObject.field_72308_g != null && (this.shootingEntity instanceof EntityPlayer || movingObject.field_72308_g instanceof EntityPlayer) && this.isContinuesWave() && this.shooterHolds) {
                   if (this.shootingEntity instanceof EntityPlayer) {
-                     this.trgtX = (float)this.field_70165_t;
-                     this.trgtY = (float)this.field_70163_u;
-                     this.trgtZ = (float)this.field_70161_v;
+                     this.trgtX = (float)this.posX;
+                     this.trgtY = (float)this.posY;
+                     this.trgtZ = (float)this.posZ;
                      byte b = JRMCoreH.getByte((EntityPlayer)this.shootingEntity, "jrmcFrng");
                      if (b == 1) {
                         if (this.target != null) {
@@ -1518,13 +1518,13 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                                  this.wave = 2;
                               }
 
-                              if (!this.field_70170_p.field_72995_K) {
+                              if (!this.world.field_72995_K) {
                                  EntityPlayer Player = (EntityPlayer)this.shootingEntity;
                                  byte curRel = JRMCoreH.getByte(Player, "jrmcRelease");
                                  int curEn = JRMCoreH.getInt(Player, "jrmcEnrgy");
                                  float cost2 = (float)((double)this.cost * (double)curRel * 0.009999999776482582D * (double)((float)this.perc * 0.02F) * JRMCoreConfig.dat5696[this.type][2]);
                                  if (!((float)curEn - cost2 > 0.0F)) {
-                                    this.func_70106_y();
+                                    this.setDead();
                                  }
 
                                  if (cost2 < (float)curEn) {
@@ -1534,11 +1534,11 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
 
                                     this.damage = (double)this.originDmg * (double)curRel * 0.009999999776482582D * (double)this.perc * 0.019999999552965164D * JRMCoreConfig.dat5696[this.type][1];
                                  } else {
-                                    this.func_70106_y();
+                                    this.setDead();
                                  }
                               }
 
-                              if (this.wave == 1 && movingObject.field_72308_g instanceof EntityLivingBase && !this.field_70170_p.field_72995_K) {
+                              if (this.wave == 1 && movingObject.field_72308_g instanceof EntityLivingBase && !this.world.field_72995_K) {
                                  EntityLivingBase var24 = (EntityLivingBase)movingObject.field_72308_g;
                                  if (this.shootingEntity instanceof EntityPlayer) {
                                     String s2 = JRMCoreH.getString((EntityPlayer)this.shootingEntity, JRMCoreH.techNbt[this.technum]);
@@ -1566,9 +1566,9 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                                  this.target.field_70159_w = this.field_70159_w;
                                  this.target.field_70181_x = this.field_70181_x;
                                  this.target.field_70179_y = this.field_70179_y;
-                                 this.target.field_70165_t = this.field_70165_t;
-                                 this.target.field_70163_u = this.field_70163_u;
-                                 this.target.field_70161_v = this.field_70161_v;
+                                 this.target.posX = this.posX;
+                                 this.target.posY = this.posY;
+                                 this.target.posZ = this.posZ;
                               }
                            }
 
@@ -1587,7 +1587,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                               this.createExplosion(2);
                            }
 
-                           this.func_70106_y();
+                           this.setDead();
                         }
                      } else {
                         this.shrinkWave();
@@ -1610,7 +1610,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                      this.giveExperience(movingObject.field_72308_g, 1);
                      damagesource = null;
                      if (this.shootingEntity == null || this.shootingEntity instanceof EntityDBC && movingObject.field_72308_g instanceof EntityDBC) {
-                        this.func_70106_y();
+                        this.setDead();
                         return;
                      }
 
@@ -1632,7 +1632,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                            }
 
                            if (movingObject.field_72308_g instanceof EntityLivingBase) {
-                              if (!this.field_70170_p.field_72995_K && this.shootingEntity instanceof EntityPlayer) {
+                              if (!this.world.field_72995_K && this.shootingEntity instanceof EntityPlayer) {
                                  boolean doit = true;
                                  if ((this.isBarrage() || this.isExplosion()) && (int)(Math.random() * 6.0D) == 0) {
                                     doit = false;
@@ -1657,15 +1657,15 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                                  this.createExplosion(2);
                               }
 
-                              this.func_70106_y();
+                              this.setDead();
                            }
                         } else if (movingObject.field_72308_g.func_70089_S() && !DBCConfig.KiAttackGoThroughInvulnerableEnemies && !this.isShield() && !this.isExplosion() && this.canSpiralNotGoThrough()) {
                            this.field_70159_w *= -0.10000000149011612D;
                            this.field_70181_x *= -0.10000000149011612D;
                            this.field_70179_y *= -0.10000000149011612D;
-                           this.field_70177_z += 180.0F;
+                           this.rotationYaw += 180.0F;
                            this.field_70126_B += 180.0F;
-                           this.func_70106_y();
+                           this.setDead();
                            this.ticksInAir = 0;
                         }
                      }
@@ -1673,11 +1673,11 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                      this.xTile = movingObject.field_72311_b;
                      this.yTile = movingObject.field_72312_c;
                      this.zTile = movingObject.field_72309_d;
-                     this.inTile = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
-                     this.inData = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
+                     this.inTile = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
+                     this.inData = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
                      this.inGround = true;
                      if (this.inTile.func_149688_o() != Material.field_151579_a) {
-                        this.inTile.func_149670_a(this.field_70170_p, this.xTile, this.yTile, this.zTile, this);
+                        this.inTile.func_149670_a(this.world, this.xTile, this.yTile, this.zTile, this);
                      }
 
                      if (movingObject.field_72308_g != null && this.shootingEntity != null) {
@@ -1685,7 +1685,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                         var23 = (int)this.damage;
                         damagesource = null;
                         if (this.shootingEntity == null || this.shootingEntity instanceof EntityDBC && movingObject.field_72308_g instanceof EntityDBC) {
-                           this.func_70106_y();
+                           this.setDead();
                            return;
                         }
 
@@ -1717,14 +1717,14 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                                  this.createExplosion(2);
                               }
 
-                              this.func_70106_y();
+                              this.setDead();
                            } else if (!this.isShield() && !this.isExplosion()) {
                               this.field_70159_w *= -0.10000000149011612D;
                               this.field_70181_x *= -0.10000000149011612D;
                               this.field_70179_y *= -0.10000000149011612D;
-                              this.field_70177_z += 180.0F;
+                              this.rotationYaw += 180.0F;
                               this.field_70126_B += 180.0F;
-                              this.func_70106_y();
+                              this.setDead();
                               this.ticksInAir = 0;
                            }
                         }
@@ -1737,21 +1737,21 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          }
 
          if (!this.isShield() && !this.isExplosion()) {
-            this.field_70165_t += this.field_70159_w;
-            this.field_70163_u += this.field_70181_x;
-            this.field_70161_v += this.field_70179_y;
+            this.posX += this.field_70159_w;
+            this.posY += this.field_70181_x;
+            this.posZ += this.field_70179_y;
          }
 
          this.ShieldPushAwayEntities();
-         if ((double)(this.field_70125_A - this.field_70127_C) >= 180.0D) {
+         if ((double)(this.rotationPitch - this.field_70127_C) >= 180.0D) {
             this.field_70127_C += 360.0F;
          }
 
-         if (this.field_70177_z - this.field_70126_B < -180.0F) {
+         if (this.rotationYaw - this.field_70126_B < -180.0F) {
             this.field_70126_B -= 360.0F;
          }
 
-         if (this.field_70177_z - this.field_70126_B >= 180.0F) {
+         if (this.rotationYaw - this.field_70126_B >= 180.0F) {
             this.field_70126_B += 360.0F;
          }
 
@@ -1760,7 +1760,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          if (this.func_70090_H()) {
             for(var23 = 0; var23 < 4; ++var23) {
                float var27 = 0.25F;
-               this.field_70170_p.func_72869_a("bubble", this.field_70165_t - this.field_70159_w * (double)var27, this.field_70163_u - this.field_70181_x * (double)var27, this.field_70161_v - this.field_70179_y * (double)var27, this.field_70159_w, this.field_70181_x, this.field_70179_y);
+               this.world.func_72869_a("bubble", this.posX - this.field_70159_w * (double)var27, this.posY - this.field_70181_x * (double)var27, this.posZ - this.field_70179_y * (double)var27, this.field_70159_w, this.field_70181_x, this.field_70179_y);
             }
 
             var22 = 1.0F;
@@ -1773,10 +1773,10 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             this.field_70181_x -= (double)var11;
          }
 
-         this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+         this.func_70107_b(this.posX, this.posY, this.posZ);
       }
 
-      if (this.field_70170_p.field_72995_K && this.field_70128_L && this.shootingEntity != null && this.shootingEntity instanceof EntityPlayer && this.shooterHolds) {
+      if (this.world.field_72995_K && this.field_70128_L && this.shootingEntity != null && this.shootingEntity instanceof EntityPlayer && this.shooterHolds) {
          EntityPlayer player = (EntityPlayer)this.shootingEntity;
          ExtendedPlayer.get(player).setAnimKiShoot(0);
          this.shrinkWave();
@@ -1784,9 +1784,9 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
 
    }
 
-   public void func_70106_y() {
-      super.func_70106_y();
-      if (this.field_70170_p.field_72995_K && this.field_70170_p.field_72995_K && this.field_70128_L && this.shootingEntity != null && this.shootingEntity instanceof EntityPlayer && this.shooterHolds) {
+   public void setDead() {
+      super.setDead();
+      if (this.world.field_72995_K && this.world.field_72995_K && this.field_70128_L && this.shootingEntity != null && this.shootingEntity instanceof EntityPlayer && this.shooterHolds) {
          EntityPlayer player = (EntityPlayer)this.shootingEntity;
          ExtendedPlayer.get(player).setAnimKiShoot(0);
          this.shrinkWave();
@@ -1832,16 +1832,16 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       double motZ;
       switch(data) {
       case 1:
-         this.func_70106_y();
+         this.setDead();
          break;
       case 2:
          if (!entity.field_70128_L) {
-            entity.func_70106_y();
+            entity.setDead();
          }
          break;
       case 3:
          if (this.effect == 1 && !entity.field_70128_L) {
-            entity.func_70106_y();
+            entity.setDead();
          }
          break;
       case 4:
@@ -1918,12 +1918,12 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          type = 10;
       }
 
-      JRMCoreH.newExpl(this.field_70170_p, this, this.field_70165_t, this.field_70163_u, this.field_70161_v, this.explevel, false, this.damage, this.shootingEntity, (byte)type);
+      JRMCoreH.newExpl(this.world, this, this.posX, this.posY, this.posZ, this.explevel, false, this.damage, this.shootingEntity, (byte)type);
    }
 
    private List checkForEntitiesInside() {
-      AxisAlignedBB aabb = this.field_70121_D.func_72329_c();
-      List entityList = this.field_70170_p.func_72839_b(this, aabb);
+      AxisAlignedBB aabb = this.boundingBox.func_72329_c();
+      List entityList = this.world.func_72839_b(this, aabb);
       return entityList;
    }
 
@@ -1936,9 +1936,9 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
    }
 
    private void playSoundAtEntity(Entity entity, String s, float f, float f1) {
-      this.field_70170_p.func_72956_a(entity, s, f, f1);
+      this.world.func_72956_a(entity, s, f, f1);
       if (this.isWave() && this.shooterHolds) {
-         this.field_70170_p.func_72908_a((double)this.strtX(), (double)this.strtY(), (double)this.strtZ(), s, f, f1);
+         this.world.func_72908_a((double)this.strtX(), (double)this.strtY(), (double)this.strtZ(), s, f, f1);
       }
 
    }
@@ -1971,7 +1971,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                return 2;
             }
          } else if ((double)power2 / JRMCoreConfig.dat5705 >= (double)power1) {
-            this.func_70106_y();
+            this.setDead();
             return 1;
          }
       }
@@ -1985,19 +1985,19 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          long kiPower = this.getPower(this);
          double kiDamage = this.getDamage();
          if (JGConfigDBCGoD.CONFIG_GOD_ENABLED && JGConfigDBCGoD.CONFIG_GOD_ENERGY_ENABLED && this.destroyer && kiPower > shieldPower) {
-            shield.func_70106_y();
+            shield.setDead();
             return;
          }
 
          if (kiPower > shieldPower) {
             this.setDamage((double)((float)this.getDamage() - (float)shield.getDamage()));
-            shield.func_70106_y();
+            shield.setDead();
          } else if (kiPower < shieldPower) {
             shield.setDamage((double)((float)shield.getDamage() - (float)kiDamage));
-            this.func_70106_y();
+            this.setDead();
          } else {
-            shield.func_70106_y();
-            this.func_70106_y();
+            shield.setDead();
+            this.setDead();
          }
 
          shield.field_70159_w = 0.0D;
@@ -2010,13 +2010,13 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
    private void handleKiaiClash(EntityEnergyAtt attack) {
       float dam = (float)attack.getDamage();
       if (JGConfigDBCGoD.CONFIG_GOD_ENABLED && JGConfigDBCGoD.CONFIG_GOD_ENERGY_ENABLED && this.destroyer && this.damage * (double)this.DAMAGE_REDUCTION / 2.0D > (double)dam) {
-         attack.func_70106_y();
+         attack.setDead();
          String s2 = JRMCoreH.getString((EntityPlayer)this.shootingEntity, JRMCoreH.techNbt[this.technum]);
          JRMCoreH.setString(JRMCoreH.tech_expgiv(s2, JRMCoreH.DBC() ? JRMCoreHDBC.DBCgetConfigTechExpRate() : 1), (EntityPlayer)this.shootingEntity, JRMCoreH.techNbt[this.technum]);
       } else {
          if (this.damage / 2.0D > (double)dam) {
             this.setDamage(this.getDamage() - (double)dam);
-            attack.func_70106_y();
+            attack.setDead();
          } else if (this.damage / 2.0D < (double)dam) {
             attack.setDamage((double)dam - this.damage / 2.0D);
             if (this.shootingEntity instanceof EntityPlayer) {
@@ -2031,10 +2031,10 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                }
             }
 
-            this.func_70106_y();
+            this.setDead();
          } else {
-            this.func_70106_y();
-            attack.func_70106_y();
+            this.setDead();
+            attack.setDead();
          }
 
       }
@@ -2081,7 +2081,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
    }
 
    private void ShieldPushAwayEntities() {
-      if (!this.field_70170_p.field_72995_K && this.isShield() && this.hasEffect()) {
+      if (!this.world.field_72995_K && this.isShield() && this.hasEffect()) {
          Entity var5 = null;
          List var6 = this.checkForEntitiesInside();
 
@@ -2089,9 +2089,9 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             var5 = (Entity)var6.get(var9);
             if (!var5.equals(this.shootingEntity) && var5 instanceof EntityLivingBase) {
                float res = 0.5F;
-               var5.field_70159_w = ((double)res - (var5.field_70165_t - this.field_70165_t)) * -1.0D;
-               var5.field_70181_x = ((double)res - (var5.field_70163_u - this.field_70163_u)) * -1.0D;
-               var5.field_70179_y = ((double)res - (var5.field_70161_v - this.field_70161_v)) * -1.0D;
+               var5.field_70159_w = ((double)res - (var5.posX - this.posX)) * -1.0D;
+               var5.field_70181_x = ((double)res - (var5.posY - this.posY)) * -1.0D;
+               var5.field_70179_y = ((double)res - (var5.posZ - this.posZ)) * -1.0D;
                var5.field_70133_I = true;
             }
          }
@@ -2099,7 +2099,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
 
    }
 
-   public void func_70014_b(NBTTagCompound nbt) {
+   public void writeEntityToNBT(NBTTagCompound nbt) {
       nbt.func_74777_a("xTile", (short)this.xTile);
       nbt.func_74777_a("yTile", (short)this.yTile);
       nbt.func_74777_a("zTile", (short)this.zTile);
@@ -2111,7 +2111,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
       nbt.func_74757_a("destroyer", this.destroyer);
    }
 
-   public void func_70037_a(NBTTagCompound nbt) {
+   public void readEntityFromNBT(NBTTagCompound nbt) {
       this.xTile = nbt.func_74765_d("xTile");
       this.yTile = nbt.func_74765_d("yTile");
       this.zTile = nbt.func_74765_d("zTile");
@@ -2207,9 +2207,9 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
 
    public void readSpawnData(ByteBuf data) {
       int first = data.readInt();
-      this.shootingEntity = first == 0 ? this.shootingEntity : this.field_70170_p.func_73045_a(first);
+      this.shootingEntity = first == 0 ? this.shootingEntity : this.world.func_73045_a(first);
       int second = data.readInt();
-      this.target = first == 0 ? this.target : this.field_70170_p.func_73045_a(second);
+      this.target = first == 0 ? this.target : this.world.func_73045_a(second);
       this.perc = data.readByte();
       this.type = data.readByte();
       this.speed = data.readByte();
@@ -2275,7 +2275,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
    }
 
    public void generateParticles(EntityEnergyAtt entityBlast, Entity entity, int color, int color2, boolean startSpawn) {
-      if (entityBlast != null && entity != null && entityBlast.field_70170_p.field_72995_K) {
+      if (entityBlast != null && entity != null && entityBlast.world.field_72995_K) {
          for(int i = 0; i < 3; ++i) {
             for(int k = 0; k < JGConfigClientSettings.get_da1(); ++k) {
                float colorFixer = 0.7F;
@@ -2315,16 +2315,16 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                   y2 += vec3.field_72448_b * d9 + (double)(entity.field_70131_O * 0.4F);
                   z2 += vec3.field_72449_c * d8;
                } else {
-                  x2 = entityBlast.field_70165_t;
-                  y2 = entityBlast.field_70163_u;
-                  z2 = entityBlast.field_70161_v;
+                  x2 = entityBlast.posX;
+                  y2 = entityBlast.posY;
+                  z2 = entityBlast.posZ;
                }
 
                x2 += x;
                y2 += y;
                z2 += z;
-               float rotationYaw = -entityBlast.field_70177_z;
-               float rotationPitch = -entityBlast.field_70125_A;
+               float rotationYaw = -entityBlast.rotationYaw;
+               float rotationPitch = -entityBlast.rotationPitch;
                double motionX = (double)(-MathHelper.func_76126_a(rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(rotationPitch / 180.0F * 3.1415927F));
                double motionZ = (double)(MathHelper.func_76134_b(rotationYaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(rotationPitch / 180.0F * 3.1415927F));
                double motionY = (double)(-MathHelper.func_76126_a(rotationPitch / 180.0F * 3.1415927F));
@@ -2349,10 +2349,10 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
                float scaleEnd = ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.3F;
                float scaleSpeed = 0.2F * life * 0.3F;
                int textureID = (int)(Math.random() * 3.0D) + 8;
-               Entity particle = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.field_70170_p, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart, scaleEnd, scaleStart, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F, 0.0F, 0.9F, 0.95F, 0.06F, false, -1, true, (Entity)null);
-               entity.field_70170_p.func_72838_d(particle);
-               Entity particle2 = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.field_70170_p, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart * 0.8F, scaleEnd * 0.8F, scaleStart * 0.8F, 0, red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F, 0.0F, 0.9F, 0.95F, 0.06F, false, -1, true, (Entity)null);
-               entity.field_70170_p.func_72838_d(particle2);
+               Entity particle = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.world, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart, scaleEnd, scaleStart, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F, 0.0F, 0.9F, 0.95F, 0.06F, false, -1, true, (Entity)null);
+               entity.world.func_72838_d(particle);
+               Entity particle2 = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.world, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart * 0.8F, scaleEnd * 0.8F, scaleStart * 0.8F, 0, red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F, 0.0F, 0.9F, 0.95F, 0.06F, false, -1, true, (Entity)null);
+               entity.world.func_72838_d(particle2);
             }
          }
       }
@@ -2364,7 +2364,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
          double minusDamage = (double)JRMCoreConfig.SpiralWeakensAfterHit / 100.0D;
          if (!JRMCoreConfig.SpiralWeakensBasedOnStartDamage) {
             if (this.damage <= 0.0D) {
-               this.func_70106_y();
+               this.setDead();
             } else {
                this.damage *= minusDamage;
             }
@@ -2372,7 +2372,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
             if (!((1.0D - minusDamage) * (double)this.damageTaken > this.damage) && !(this.damage <= 0.0D)) {
                this.damage = this.damageOriginal * (1.0D - minusDamage * (double)this.damageTaken);
             } else {
-               this.func_70106_y();
+               this.setDead();
             }
 
             ++this.damageTaken;
@@ -2380,7 +2380,7 @@ public class EntityEnergyAtt extends EntityEnAttacks implements IThrowableEntity
 
          if (this.damage < 0.0D) {
             this.damage = 0.0D;
-            this.func_70106_y();
+            this.setDead();
          }
       }
 

@@ -23,7 +23,7 @@ import org.lwjgl.opengl.GL11;
 public class DBCEHbckp {
    public long bpc(Entity e) {
       if (!(e instanceof EntityCreature)) {
-         return e instanceof EntityPlayer ? JRMCoreH.bpc((EntityPlayer)e, e.func_70005_c_()) : 1L;
+         return e instanceof EntityPlayer ? JRMCoreH.bpc((EntityPlayer)e, e.getName()) : 1L;
       } else {
          int atr = (int)(((EntityCreature)e).func_110138_aP() / JRMCoreH.statInc(1, 2, 1, 0, 0, 0.0F) * 6.0F);
          long res = 1L;
@@ -58,10 +58,10 @@ public class DBCEHbckp {
          }
 
          long res = this.bpc(event.entity);
-         long bps = JRMCoreH.bpc(JRMCoreClient.mc.field_71439_g, JRMCoreClient.mc.field_71439_g.func_70005_c_(), JRMCoreH.Pwrtyp);
+         long bps = JRMCoreH.bpc(JRMCoreClient.mc.player, JRMCoreClient.mc.player.getName(), JRMCoreH.Pwrtyp);
          long pwr = res > bps ? res / bps : bps / res;
          String disp = (res > bps ? "+" : "-") + (pwr > 100L ? "100^x" : pwr + "x");
-         long bpsa = JRMCoreH.bpc(JRMCoreClient.mc.field_71439_g, JRMCoreClient.mc.field_71439_g.func_70005_c_(), JRMCoreH.Pwrtyp, 100);
+         long bpsa = JRMCoreH.bpc(JRMCoreClient.mc.player, JRMCoreClient.mc.player.getName(), JRMCoreH.Pwrtyp, 100);
          long pwra = res > bpsa ? res / bps : bpsa / res;
          String dispa = (res > bpsa ? "+" : "-") + (pwra > 100L ? "100^x" : pwra + "x");
          FontRenderer fontrenderer = RenderManager.field_78727_a.func_78716_a();
@@ -90,7 +90,7 @@ public class DBCEHbckp {
          OpenGlHelper.func_148821_a(770, 771, 1, 0);
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.7F);
          ResourceLocation guiLocation = new ResourceLocation(JRMCoreH.tjdbcAssts + ":kisense.png");
-         Client.mc.field_71446_o.func_110577_a(guiLocation);
+         Client.mc.field_71446_o.bindTexture(guiLocation);
          this.drawTexturedModalRect(0.0F, 0.0F, 0, 0, 21.0F, 41.0F, 0.0F);
          int bc1 = 654591;
          if (JRMCoreH.align > 66) {
@@ -167,10 +167,10 @@ public class DBCEHbckp {
       }
 
       if (event.entity instanceof EntityPlayer && JRMCoreH.Pwrtyp == 1) {
-         int hp = Integer.parseInt(JRMCoreH.data(event.entity.func_70005_c_(), 8, "200"));
-         int ki = Integer.parseInt(JRMCoreH.data(event.entity.func_70005_c_(), 9, "200"));
+         int hp = Integer.parseInt(JRMCoreH.data(event.entity.getName(), 8, "200"));
+         int ki = Integer.parseInt(JRMCoreH.data(event.entity.getName(), 9, "200"));
          int[] atr = JRMCoreH.PlyrAttrbtsC((EntityPlayer)event.entity);
-         String[] s = JRMCoreH.data(event.entity.func_70005_c_(), 1, "0;0;0;0;0;0").split(";");
+         String[] s = JRMCoreH.data(event.entity.getName(), 1, "0;0;0;0;0;0").split(";");
          int cls = Integer.parseInt(s[3]);
          int race = Integer.parseInt(s[0]);
          int maxhp = JRMCoreH.stat(event.entity, 2, 1, 2, atr[2], race, cls, 0.0F);
@@ -208,7 +208,7 @@ public class DBCEHbckp {
             OpenGlHelper.func_148821_a(770, 771, 1, 0);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             ResourceLocation guiLocation = new ResourceLocation(JRMCoreH.tjsaoc + ":gui2.png");
-            JRMCoreClient.mc.field_71446_o.func_110577_a(guiLocation);
+            JRMCoreClient.mc.field_71446_o.bindTexture(guiLocation);
             this.drawTexturedModalRect(0.0F, -1.0F, 0, 43, 126.0F, 15.0F, 0.0F);
             GL11.glColor4f(r, g, b, 1.0F);
             this.drawTexturedModalRect(4.0F, 1.0F, 0, 58, var20, 11.0F, -0.01F);
@@ -230,7 +230,7 @@ public class DBCEHbckp {
    public void drawTexturedModalRect(float x, float y, int u, int v, float width, float height, float z) {
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)x, (double)(y + 0.0F), (double)z, (double)((float)(u + 0) * f), (double)((float)(v + 0) * f1));
       tessellator.func_78374_a((double)x, (double)(y + height), (double)z, (double)((float)(u + 0) * f), (double)(((float)v + height) * f1));

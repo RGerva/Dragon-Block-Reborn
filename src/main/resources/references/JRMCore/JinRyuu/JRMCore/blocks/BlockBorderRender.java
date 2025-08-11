@@ -23,12 +23,12 @@ public class BlockBorderRender extends TileEntitySpecialRenderer {
          int ani = false;
          String n = "";
          int ani;
-         if (JRMCoreClient.mc.field_71439_g.func_71045_bC() != null && JRMCoreClient.mc.field_71439_g.func_71045_bC().func_77977_a().equals("tile.BlockBorder")) {
+         if (JRMCoreClient.mc.player.func_71045_bC() != null && JRMCoreClient.mc.player.func_71045_bC().func_77977_a().equals("tile.BlockBorder")) {
             ani = 0;
             this.visibility = 1.0F;
             n = "Edit";
          } else {
-            ani = JRMCoreClient.mc.field_71439_g.field_70173_aa % 128;
+            ani = JRMCoreClient.mc.player.ticksExisted % 128;
             ani *= 2;
             this.visibility = 0.6F;
          }
@@ -85,7 +85,7 @@ public class BlockBorderRender extends TileEntitySpecialRenderer {
             GL11.glTranslatef((float)d + 0.5F, (float)d1 + 0.5F, (float)d2 + 0.5F);
             GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
             GL11.glPushMatrix();
-            boolean view2 = JRMCoreClient.mc.field_71474_y.field_74320_O == 2;
+            boolean view2 = JRMCoreClient.mc.gameSettings.thirdPersonView == 2;
             ResourceLocation tx = new ResourceLocation(JRMCoreH.tjjrmc + ":textures/blocks/tile.BlockBorder" + n + ".png");
             this.func_147499_a(tx);
             float scale = 0.00391F;
@@ -135,7 +135,7 @@ public class BlockBorderRender extends TileEntitySpecialRenderer {
    public void drawTexturedModalRect(float x, float y, int u, int v, float width, float height, float z) {
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)x, (double)(y + 0.0F), (double)z, (double)((float)(u + 0) * f), (double)((float)(v + 0) * f1));
       tessellator.func_78374_a((double)x, (double)(y + height), (double)z, (double)((float)(u + 0) * f), (double)(((float)v + height) * f1));

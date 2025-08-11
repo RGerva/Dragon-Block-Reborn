@@ -27,7 +27,7 @@ public class JRMCoreGuiButtonC1 extends GuiButton {
       if (this.field_146125_m) {
          FontRenderer var4 = par1Minecraft.field_71466_p;
          ResourceLocation txx = new ResourceLocation(JRMCoreGuiScreen.button1);
-         par1Minecraft.func_110434_K().func_110577_a(txx);
+         par1Minecraft.func_110434_K().bindTexture(txx);
          this.field_146123_n = par2 >= this.field_146128_h && par3 >= this.field_146129_i && par2 < this.field_146128_h + this.field_146120_f && par3 < this.field_146129_i + this.field_146121_g;
          int var5 = this.func_146114_a(this.field_146123_n);
          int j = 16449280;

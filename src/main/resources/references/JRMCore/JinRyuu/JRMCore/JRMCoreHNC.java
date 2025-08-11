@@ -135,7 +135,7 @@ public class JRMCoreHNC {
    }
 
    public static void openGui(int id, EntityPlayer pl) {
-      pl.openGui(mod_NarutoC.instance, id, pl.field_70170_p, (int)pl.field_70165_t, (int)pl.field_70163_u, (int)pl.field_70161_v);
+      pl.openGui(mod_NarutoC.instance, id, pl.world, (int)pl.posX, (int)pl.posY, (int)pl.posZ);
    }
 
    public static boolean NCgetEntityNC(Entity shootingEntity) {
@@ -166,7 +166,7 @@ public class JRMCoreHNC {
          }
 
          int[][] ps = new int[][]{Khvln1, Khvln2, Khvln3};
-         EntityNCKami[] ent = new EntityNCKami[]{new EntityKonohaSarutobi(player.field_70170_p), new EntityKonohaHiashi(player.field_70170_p), new EntityKonohaFugaku(player.field_70170_p)};
+         EntityNCKami[] ent = new EntityNCKami[]{new EntityKonohaSarutobi(player.world), new EntityKonohaHiashi(player.world), new EntityKonohaFugaku(player.world)};
          Class[] entclss = new Class[]{EntityKonohaSarutobi.class, EntityKonohaHiashi.class, EntityKonohaFugaku.class};
          int[] dims = new int[]{0, 0, 0};
          boolean[] spawn = new boolean[]{NCH.genKnvl.contains(";"), NCH.genKnvl.contains(";"), NCH.genKnvl.contains(";")};
@@ -176,11 +176,11 @@ public class JRMCoreHNC {
             if (dims[i] == player.field_71093_bK && npc.length > 2) {
                int a = 2;
                AxisAlignedBB ab = AxisAlignedBB.func_72330_a((double)(npc[0] - a), (double)(npc[1] - a), (double)(npc[2] - a), (double)(npc[0] + a), (double)(npc[1] + a), (double)(npc[2] + a));
-               List enma = player.field_70170_p.func_72872_a(entclss[i], ab);
+               List enma = player.world.func_72872_a(entclss[i], ab);
                if (enma.isEmpty() && spawn[i]) {
                   EntityNCKami en = ent[i];
-                  en.func_70012_b((double)npc[0] + 0.5D, (double)npc[1], (double)npc[2] + 0.5D, 0.0F, 0.0F);
-                  player.field_70170_p.func_72838_d(en);
+                  en.setLocationAndAngles((double)npc[0] + 0.5D, (double)npc[1], (double)npc[2] + 0.5D, 0.0F, 0.0F);
+                  player.world.func_72838_d(en);
                }
             }
          }
@@ -241,7 +241,7 @@ public class JRMCoreHNC {
             if (sz.field_71093_bK == p.field_71093_bK) {
                AxisAlignedBB ab = sz.createSafeZoneHitBox();
                if (ab.field_72340_a < (double)x && (double)x < ab.field_72336_d && ab.field_72338_b < (double)y && (double)y < ab.field_72337_e && ab.field_72339_c < (double)z && (double)z < ab.field_72334_f) {
-                  Block block = p.field_70170_p.func_147439_a(x, y, z);
+                  Block block = p.world.func_147439_a(x, y, z);
                   boolean door = false;
                   if (JRMCoreConfig.sfzna != null) {
                      for(int j = 0; j < JRMCoreConfig.sfzna.length; ++j) {

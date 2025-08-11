@@ -377,17 +377,17 @@ public class ModelGuru extends ModelBase {
       this.ArmrestR6.func_78792_a(this.ArmrestR62);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       GL11.glPushMatrix();
       float F = entity.field_70131_O / 2.1F;
       JGRenderHelper.modelScalePositionHelper(F);
-      this.Throne1.func_78785_a(f5);
+      this.Throne1.render(f5);
       GL11.glPopMatrix();
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 }

@@ -32,18 +32,18 @@ public class EntityDBCWildlife extends EntityDBC {
       this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(1.0D);
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
-      super.func_70014_b(par1NBTTagCompound);
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+      super.writeEntityToNBT(par1NBTTagCompound);
       par1NBTTagCompound.func_74777_a("Anger", (short)this.angerLevel);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
-      super.func_70037_a(par1NBTTagCompound);
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readEntityFromNBT(par1NBTTagCompound);
       this.angerLevel = par1NBTTagCompound.func_74765_d("Anger");
    }
 
    protected void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
+      this.angerLevel = 400 + this.rand.nextInt(400);
    }
 }

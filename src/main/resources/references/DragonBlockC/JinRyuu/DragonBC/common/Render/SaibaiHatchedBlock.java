@@ -58,7 +58,7 @@ public class SaibaiHatchedBlock extends BlockContainer {
    public boolean func_149727_a(World world, int x, int y, int z, EntityPlayer player, int i, float f, float g, float t) {
       if (player.field_71075_bZ.field_75098_d) {
          EntitySaibaiman Saibaiman = new EntitySaibaiman(world);
-         Saibaiman.func_70012_b((double)x + 0.5D, (double)(y + 1), (double)z + 0.5D, 0.0F, 0.0F);
+         Saibaiman.setLocationAndAngles((double)x + 0.5D, (double)(y + 1), (double)z + 0.5D, 0.0F, 0.0F);
          if (!world.field_72995_K) {
             world.func_72838_d(Saibaiman);
          }

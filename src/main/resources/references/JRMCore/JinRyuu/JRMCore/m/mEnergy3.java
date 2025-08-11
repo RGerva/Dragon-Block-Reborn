@@ -23,27 +23,27 @@ public class mEnergy3 extends ModelBiped {
       this.setRotation(this.bShape1, 0.0F, 0.0F, 0.0F);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
    }
 
    public void render(ModelRenderer a, Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      a.func_78785_a(f5);
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      a.render(f5);
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
+      model.rotateAngleX = x;
       model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-      this.bShape1.field_78808_h = f2;
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+      this.bShape1.rotateAngleZ = f2;
       this.bShape1.field_78796_g = f2;
-      this.bShape1.field_78795_f = f2;
-      this.bShape2.field_78808_h = f2;
+      this.bShape1.rotateAngleX = f2;
+      this.bShape2.rotateAngleZ = f2;
       this.bShape2.field_78796_g = f2;
-      this.bShape2.field_78795_f = f2;
+      this.bShape2.rotateAngleX = f2;
    }
 
    public void renderModel(byte type, Entity entity, float par8, float par9, float f, float r, boolean b) {

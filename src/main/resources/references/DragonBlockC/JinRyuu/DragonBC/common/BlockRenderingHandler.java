@@ -16,7 +16,7 @@ public class BlockRenderingHandler implements ISimpleBlockRenderingHandler {
    }
 
    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-      Tessellator tes = Tessellator.field_78398_a;
+      Tessellator tes = Tessellator.INSTANCE;
       return false;
    }
 

@@ -84,17 +84,17 @@ public class mEnergy4 extends ModelBase {
       this.Spine1.func_78792_a(this.FootRubble1);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.Spine3.func_78785_a(f5);
-      this.Spine1.func_78785_a(f5);
-      this.Spine4.func_78785_a(f5);
-      this.Spine5.func_78785_a(f5);
-      this.Spine2.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.Spine3.render(f5);
+      this.Spine1.render(f5);
+      this.Spine4.render(f5);
+      this.Spine5.render(f5);
+      this.Spine2.render(f5);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
+      modelRenderer.rotateAngleX = x;
       modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleZ = z;
    }
 }

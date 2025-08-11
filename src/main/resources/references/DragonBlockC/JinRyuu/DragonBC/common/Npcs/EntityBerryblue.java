@@ -37,12 +37,12 @@ public class EntityBerryblue extends EntityDBCEvil {
    public long BattlePowerOld() {
       int BP = 200000;
       int exp = this.field_70728_aV * 100;
-      long BattlePower = (long)(BP + this.field_70146_Z.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
+      long BattlePower = (long)(BP + this.rand.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
       return BattlePower;
    }
 
    public void func_70636_d() {
-      List var4 = this.field_70170_p.func_72872_a(EntityPlayer.class, this.field_70121_D.func_72314_b(16.0D, 16.0D, 16.0D));
+      List var4 = this.world.func_72872_a(EntityPlayer.class, this.boundingBox.func_72314_b(16.0D, 16.0D, 16.0D));
       if (!var4.isEmpty()) {
          for(int var5 = 0; var5 < var4.size(); ++var5) {
             Entity var6 = (Entity)var4.get(var5);
@@ -64,7 +64,7 @@ public class EntityBerryblue extends EntityDBCEvil {
 
    private void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
-      this.randomSoundDelay = this.field_70146_Z.nextInt(40);
+      this.angerLevel = 400 + this.rand.nextInt(400);
+      this.randomSoundDelay = this.rand.nextInt(40);
    }
 }

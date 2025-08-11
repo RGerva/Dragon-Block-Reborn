@@ -36,7 +36,7 @@ public class ComRespCon extends CommandBase {
          }
 
          EntityPlayerMP entityplayermp = func_71521_c(par1ICommandSender);
-         JRMCoreSafe safe = new JRMCoreSafe(entityplayermp.field_70170_p);
+         JRMCoreSafe safe = new JRMCoreSafe(entityplayermp.world);
          if (!respawn && !reset) {
             throw new WrongUsageException("Buildings Respawn failure", new Object[0]);
          } else {
@@ -85,12 +85,12 @@ public class ComRespCon extends CommandBase {
                int[] npc = ps[i];
                if (WorldGeneratorDB.DBbuildsdim[i] == entityplayermp.field_71093_bK && npc.length > 2) {
                   builds v = WorldGeneratorDB.DBbuilds[i];
-                  v.setWorld(entityplayermp.field_70170_p);
+                  v.setWorld(entityplayermp.world);
                   v.setRespawn(true);
                   int buildingID = -1;
                   if (!respawn && reset && s.equals("babidi") && i == 3) {
                      buildingID = 3;
-                     int j2 = entityplayermp.field_70170_p.func_72976_f(npc[0] + builds.SizeX / 2, npc[2] + builds.SizeZ / 2);
+                     int j2 = entityplayermp.world.func_72976_f(npc[0] + builds.SizeX / 2, npc[2] + builds.SizeZ / 2);
                      npc[1] = j2 - builds.SizeY;
                   }
 
@@ -101,7 +101,7 @@ public class ComRespCon extends CommandBase {
                         WorldGeneratorDB.DBbuildsGen(buildingID, d);
                      }
 
-                     v.func_76484_a(entityplayermp.field_70170_p, entityplayermp.field_70170_p.field_73012_v, npc[0], npc[1], npc[2]);
+                     v.func_76484_a(entityplayermp.world, entityplayermp.world.field_73012_v, npc[0], npc[1], npc[2]);
                      this.notifyAdmins(par1ICommandSender, StatCollector.func_74838_a(WorldGeneratorDB.DBbuildsNams2(i)) + " has been respawned.", new Object[0]);
                   }
                }
@@ -109,7 +109,7 @@ public class ComRespCon extends CommandBase {
 
             JRMCoreHDBC.WorldGenBuildingsSpawnCheck(FMLCommonHandler.instance().getMinecraftServerInstance());
             JRMCoreHDBC.DBCCommonTickHandlerNPCSpawnCheck(entityplayermp);
-            this.notifyAdmins(par1ICommandSender, "Buildings Respawn was Set. Now you must go close to a new chunk to activate it.", new Object[]{entityplayermp.func_70005_c_()});
+            this.notifyAdmins(par1ICommandSender, "Buildings Respawn was Set. Now you must go close to a new chunk to activate it.", new Object[]{entityplayermp.getName()});
          }
       }
    }

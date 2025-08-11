@@ -37,7 +37,7 @@ public class JRMCoreGuiSliderX00 extends GuiButton {
       if (this.field_146125_m) {
          FontRenderer fontrenderer = par1Minecraft.field_71466_p;
          ResourceLocation txx = new ResourceLocation(this.mainTexture ? JRMCoreGuiScreen.button1 : JRMCoreGuiScreen.button2);
-         par1Minecraft.func_110434_K().func_110577_a(txx);
+         par1Minecraft.func_110434_K().bindTexture(txx);
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          this.field_146123_n = par2 >= this.field_146128_h && par3 >= this.field_146129_i && par2 < this.field_146128_h + this.field_146120_f && par3 < this.field_146129_i + this.field_146121_g;
          int k = this.func_146114_a(this.field_146123_n);
@@ -79,7 +79,7 @@ public class JRMCoreGuiSliderX00 extends GuiButton {
          }
 
          ResourceLocation txx = new ResourceLocation(this.mainTexture ? JRMCoreGuiScreen.button1 : JRMCoreGuiScreen.button2);
-         par1Minecraft.func_110434_K().func_110577_a(txx);
+         par1Minecraft.func_110434_K().bindTexture(txx);
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
          this.func_73729_b(this.field_146128_h, this.field_146129_i + (int)(sliderValue * (float)(this.field_146121_g - 4)), 241, 155, 15, 2);
          this.func_73729_b(this.field_146128_h, this.field_146129_i + (int)(sliderValue * (float)(this.field_146121_g - 4)) + 2, 241, 157, 15, 2);

@@ -16,7 +16,7 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
    private boolean rotate_player_pitch;
    private ModelEnergy ener = new ModelEnergy();
 
-   public void func_76986_a(Entity entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
       if (entity != null && entity instanceof EntityEng && ((EntityEng)entity).user != null) {
          GL11.glPushMatrix();
          GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
@@ -37,7 +37,7 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
       int color = entity.destroyer ? (JGConfigClientSettings.CLIENT_Ki_3d[type] ? JRMCoreH.techCol[5] : JRMCoreH.techCol4[entity.getColor()]) : JRMCoreH.techCol[entity.getColor()];
       int color2 = entity.destroyer ? (JGConfigClientSettings.CLIENT_Ki_3d[type] ? JRMCoreH.techCol4[entity.getColor()] : JRMCoreH.techCol[entity.getColor()]) : (entity.getColor2() == -1 ? JRMCoreH.techCol2[entity.getColor()] : JRMCoreH.techCol3[entity.getColor2()]);
       EntityPlayer user = entity.user;
-      int ticksExisted = entity.field_70173_aa;
+      int ticksExisted = entity.ticksExisted;
       float scale = (float)ticksExisted * (entity.getSize() / 100.0F);
       if (scale > entity.getSize()) {
          scale = entity.getSize();
@@ -269,8 +269,8 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
    }
 
    public void render_2d(EntityEng entity, double par2, double par4, double par6, float par8, float par9, float scale, double sx, double sy, double sz, int color, int color2, float rotation) {
-      Tessellator tessellator = Tessellator.field_78398_a;
-      long time = entity.user.field_70170_p.func_82737_E();
+      Tessellator tessellator = Tessellator.INSTANCE;
+      long time = entity.user.world.func_82737_E();
       float particleScale = 1.0F;
       float middle_start = 0.4F;
       float middle_max = 10.0F;
@@ -287,20 +287,20 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
 
       GL11.glTranslatef(0.0F, (float)par4, 0.0F);
       if (this.rotate_player_yaw) {
-         GL11.glRotatef(entity.user.field_70177_z, 0.0F, 1.0F, 0.0F);
+         GL11.glRotatef(entity.user.rotationYaw, 0.0F, 1.0F, 0.0F);
       }
 
       if (this.rotate_player_pitch) {
-         GL11.glRotatef(entity.user.field_70125_A, -1.0F, 0.0F, 0.0F);
+         GL11.glRotatef(entity.user.rotationPitch, -1.0F, 0.0F, 0.0F);
       }
 
       GL11.glTranslatef((float)par2, 0.0F, (float)par6);
       if (this.rotate_player_pitch) {
-         GL11.glRotatef(entity.user.field_70125_A, 1.0F, 0.0F, 0.0F);
+         GL11.glRotatef(entity.user.rotationPitch, 1.0F, 0.0F, 0.0F);
       }
 
       if (this.rotate_player_yaw) {
-         GL11.glRotatef(entity.user.field_70177_z, 0.0F, -1.0F, 0.0F);
+         GL11.glRotatef(entity.user.rotationYaw, 0.0F, -1.0F, 0.0F);
       }
 
       GL11.glRotated(90.0D, 1.0D, 0.0D, 0.0D);
@@ -322,7 +322,7 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
                }
 
                texture_id = entity.animation_id % entity.animation_id_Max;
-               FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail", texture_id));
+               FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail", texture_id));
                GL11.glRotated(-90.0D, 1.0D, 0.0D, 0.0D);
                GL11.glRotatef((float)(j * 360 / 2), 0.0F, 1.0F, 0.0F);
                JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * wave_end_size * this.scale_tail, particleScale * wave_end_size * this.scale_tail, this.red, this.green, this.blue, this.alpha);
@@ -333,14 +333,14 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
             if (this.rendermode_tail == 2) {
             }
 
-            EntityClientPlayerMP client = JRMCoreClient.mc.field_71439_g;
-            float var10000 = client.field_70127_C + (client.field_70125_A - client.field_70127_C) * par9;
-            float rotationY = client.field_70126_B + (client.field_70177_z - client.field_70126_B) * par9 - 180.0F;
-            boolean view2 = JRMCoreClient.mc.field_71474_y.field_74320_O == 2;
-            GL11.glRotatef(-this.field_76990_c.field_78735_i, 0.0F, 0.0F, 1.0F);
-            GL11.glRotatef(-this.field_76990_c.field_78732_j * (float)(view2 ? -1 : 1), 1.0F, 0.0F, 0.0F);
+            EntityClientPlayerMP client = JRMCoreClient.mc.player;
+            float var10000 = client.field_70127_C + (client.rotationPitch - client.field_70127_C) * par9;
+            float rotationY = client.field_70126_B + (client.rotationYaw - client.field_70126_B) * par9 - 180.0F;
+            boolean view2 = JRMCoreClient.mc.gameSettings.thirdPersonView == 2;
+            GL11.glRotatef(-this.renderManager.field_78735_i, 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(-this.renderManager.field_78732_j * (float)(view2 ? -1 : 1), 1.0F, 0.0F, 0.0F);
             texture_id = entity.animation_id % entity.animation_id_Max;
-            FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail", texture_id));
+            FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail", texture_id));
             GL11.glRotated(-90.0D, 1.0D, 0.0D, 0.0D);
             if (this.rotate_tail) {
                GL11.glRotatef((float)time % (360.0F / this.rotationSpeed) * this.rotationSpeed * 1.0F + this.rotationSpeed * par9, 0.0F, 0.0F, 1.0F);
@@ -358,7 +358,7 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
                   }
 
                   texture_id = entity.animation_id % entity.animation_id_Max;
-                  FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail", texture_id));
+                  FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail", texture_id));
                   GL11.glRotatef((float)(i * 360 / 2), 0.0F, 1.0F, 0.0F);
                   JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * wave_end_size * this.scale_tail, particleScale * wave_end_size * this.scale_tail, this.red, this.green, this.blue, this.alpha);
                   GL11.glPopMatrix();
@@ -378,7 +378,7 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
             }
 
             texture_id = entity.animation_id % entity.animation_id_Max;
-            FMLClientHandler.instance().getClient().field_71446_o.func_110577_a(this.set_resource("tail_connect", texture_id));
+            FMLClientHandler.instance().getClient().field_71446_o.bindTexture(this.set_resource("tail_connect", texture_id));
             this.apply_detail_rotation(j);
             JGRenderHelper.draw_tessellator(tessellator, this.brightness, particleScale * wave_end_size * this.scale_tail_connect, particleScale * (this.rendermode_tail == 2 ? this.scale_tail_connect : 1.0F), this.red, this.green, this.blue, this.alpha);
             GL11.glPopMatrix();
@@ -396,7 +396,7 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
 
    public void render_3d(EntityEng entity, double par2, double par4, double par6, float par8, float par9, float scale, double sx, double sy, double sz, int color, int color2, float rotation) {
       EntityPlayer user = entity.user;
-      int ticksExisted = entity.field_70173_aa;
+      int ticksExisted = entity.ticksExisted;
       GL11.glPushMatrix();
       GL11.glEnable(3042);
       GL11.glDisable(2896);
@@ -421,16 +421,16 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
          }
 
          GL11.glTranslatef(0.0F, u, 0.0F);
-         GL11.glRotatef(user.field_70177_z, 0.0F, 1.0F, 0.0F);
-         GL11.glRotatef(user.field_70125_A, -1.0F, 0.0F, 0.0F);
+         GL11.glRotatef(user.rotationYaw, 0.0F, 1.0F, 0.0F);
+         GL11.glRotatef(user.rotationPitch, -1.0F, 0.0F, 0.0F);
          GL11.glTranslatef(0.0F, 0.0F, user.field_70130_N + 1.0F);
          GL11.glTranslatef(0.2F, 0.0F, 0.0F);
          GL11.glScalef(scale, scale, scale);
-         JGRenderHelper.tex(this.field_76990_c, color, this.alpha);
+         JGRenderHelper.tex(this.renderManager, color, this.alpha);
          GL11.glRotatef((float)ticksExisted * 15.0F, 1.0F, 1.0F, 0.0F);
          this.ener.renderModel((byte)type, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
          if (dual_color) {
-            JGRenderHelper.tex(this.field_76990_c, color2, this.alpha);
+            JGRenderHelper.tex(this.renderManager, color2, this.alpha);
             GL11.glScalef(0.8F, 0.8F, 0.8F);
             this.ener.renderModel((byte)type, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
          }
@@ -445,75 +445,75 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
          }
 
          GL11.glTranslatef(0.0F, u, 0.0F);
-         GL11.glRotatef(user.field_70177_z, 0.0F, 1.0F, 0.0F);
+         GL11.glRotatef(user.rotationYaw, 0.0F, 1.0F, 0.0F);
          GL11.glTranslatef(0.0F, -user.field_70131_O - scale, 0.0F);
          GL11.glScalef(scale, scale, scale);
-         JGRenderHelper.tex(this.field_76990_c, color, this.alpha);
+         JGRenderHelper.tex(this.renderManager, color, this.alpha);
          GL11.glRotatef((float)ticksExisted * 15.0F, 1.0F, 1.0F, 0.0F);
          this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
          if (dual_color) {
-            JGRenderHelper.tex(this.field_76990_c, color2, this.alpha);
+            JGRenderHelper.tex(this.renderManager, color2, this.alpha);
             GL11.glScalef(0.8F, 0.8F, 0.8F);
             this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
          }
       } else if (!entity.isShield() && !entity.isExplosion()) {
          if (entity.isDisk()) {
             GL11.glTranslatef(0.0F, u, 0.0F);
-            GL11.glRotatef(user.field_70177_z, 0.0F, 1.0F, 0.0F);
+            GL11.glRotatef(user.rotationYaw, 0.0F, 1.0F, 0.0F);
             GL11.glTranslatef(user.field_70130_N / 1.2F, -user.field_70131_O * 0.7F, 0.0F);
             GL11.glScalef(scale, scale, scale);
             GL11.glRotatef((float)(ticksExisted * 30), 0.0F, 1.0F, 0.0F);
-            JGRenderHelper.tex(this.field_76990_c, color, this.alpha);
+            JGRenderHelper.tex(this.renderManager, color, this.alpha);
             this.ener.renderModel((byte)type, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             if (dual_color) {
-               JGRenderHelper.tex(this.field_76990_c, color2, this.alpha);
+               JGRenderHelper.tex(this.renderManager, color2, this.alpha);
                GL11.glScalef(0.8F, 0.8F, 0.8F);
                this.ener.renderModel((byte)type, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             }
          } else if (entity.isLaser()) {
             scale /= 4.0F;
             GL11.glTranslatef(0.0F, u, 0.0F);
-            GL11.glRotatef(user.field_70177_z, 0.0F, 1.0F, 0.0F);
-            GL11.glRotatef(user.field_70125_A, -1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(user.rotationYaw, 0.0F, 1.0F, 0.0F);
+            GL11.glRotatef(user.rotationPitch, -1.0F, 0.0F, 0.0F);
             GL11.glTranslatef(0.0F, 0.0F, user.field_70130_N + 1.0F);
             GL11.glTranslatef(0.2F, 0.0F, 0.0F);
             GL11.glScalef(scale, scale, scale);
-            JGRenderHelper.tex(this.field_76990_c, color, this.alpha);
+            JGRenderHelper.tex(this.renderManager, color, this.alpha);
             GL11.glRotatef((float)ticksExisted * 15.0F, 1.0F, 1.0F, 0.0F);
             this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             if (dual_color) {
-               JGRenderHelper.tex(this.field_76990_c, color2, this.alpha);
+               JGRenderHelper.tex(this.renderManager, color2, this.alpha);
                GL11.glScalef(0.8F, 0.8F, 0.8F);
                this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             }
          } else if (entity.isSpiral()) {
             scale /= 4.0F;
             GL11.glTranslatef(0.0F, u, 0.0F);
-            GL11.glRotatef(user.field_70177_z, 0.0F, 1.0F, 0.0F);
-            GL11.glRotatef(user.field_70125_A, -1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(user.rotationYaw, 0.0F, 1.0F, 0.0F);
+            GL11.glRotatef(user.rotationPitch, -1.0F, 0.0F, 0.0F);
             GL11.glTranslatef(0.0F, 0.0F, user.field_70130_N + 1.0F);
             GL11.glTranslatef(0.2F, 0.0F, 0.0F);
             GL11.glScalef(scale, scale, scale);
-            JGRenderHelper.tex(this.field_76990_c, color, this.alpha);
+            JGRenderHelper.tex(this.renderManager, color, this.alpha);
             GL11.glRotatef((float)ticksExisted * 15.0F, 1.0F, 1.0F, 0.0F);
             this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             if (dual_color) {
-               JGRenderHelper.tex(this.field_76990_c, color2, this.alpha);
+               JGRenderHelper.tex(this.renderManager, color2, this.alpha);
                GL11.glScalef(0.8F, 0.8F, 0.8F);
                this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             }
          } else if (entity.isWave()) {
             scale /= 2.0F;
             GL11.glTranslatef(0.0F, u, 0.0F);
-            GL11.glRotatef(user.field_70177_z, 0.0F, 1.0F, 0.0F);
-            GL11.glRotatef(user.field_70125_A, -1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(user.rotationYaw, 0.0F, 1.0F, 0.0F);
+            GL11.glRotatef(user.rotationPitch, -1.0F, 0.0F, 0.0F);
             GL11.glTranslatef(0.0F, 0.0F, user.field_70130_N + 1.0F);
             GL11.glScalef(scale, scale, scale);
-            JGRenderHelper.tex(this.field_76990_c, color, this.alpha);
+            JGRenderHelper.tex(this.renderManager, color, this.alpha);
             GL11.glRotatef((float)ticksExisted * 15.0F, 1.0F, 1.0F, 0.0F);
             this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             if (dual_color) {
-               JGRenderHelper.tex(this.field_76990_c, color2, this.alpha);
+               JGRenderHelper.tex(this.renderManager, color2, this.alpha);
                GL11.glScalef(0.8F, 0.8F, 0.8F);
                this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
             }
@@ -522,7 +522,7 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
          scale += 0.5F;
          scale *= 4.0F;
          GL11.glTranslatef(0.0F, u, 0.0F);
-         GL11.glRotatef(user.field_70177_z, 0.0F, 1.0F, 0.0F);
+         GL11.glRotatef(user.rotationYaw, 0.0F, 1.0F, 0.0F);
          GL11.glTranslatef(0.0F, 0.0F + user.field_70131_O / 4.0F, 0.0F);
          GL11.glScalef(scale * user.field_70131_O / 2.0F, scale * user.field_70131_O / 2.0F, scale * user.field_70131_O / 2.0F);
          float szaz = 20.0F;
@@ -533,11 +533,11 @@ public class RenderEnergyAttackKiCharge extends RenderEnergyAttack<EntityEng> {
             offtr = 0.1F;
          }
 
-         JGRenderHelper.tex(this.field_76990_c, color, offtr);
+         JGRenderHelper.tex(this.renderManager, color, offtr);
          GL11.glRotatef((float)ticksExisted * 15.0F, 1.0F, 1.0F, 0.0F);
          this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
          if (dual_color) {
-            JGRenderHelper.tex(this.field_76990_c, color2, offtr);
+            JGRenderHelper.tex(this.renderManager, color2, offtr);
             GL11.glScalef(0.8F, 0.8F, 0.8F);
             this.ener.renderModel((byte)1, entity, 0.0F, 0.0F, 0.0625F, 0.0F, false);
          }

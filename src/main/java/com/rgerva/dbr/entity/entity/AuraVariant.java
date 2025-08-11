@@ -12,7 +12,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
 
-package com.rgerva.dbr.entity;
+package com.rgerva.dbr.entity.entity;
 
 import java.util.Arrays;
 import java.util.Comparator;

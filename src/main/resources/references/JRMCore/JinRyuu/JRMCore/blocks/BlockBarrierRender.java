@@ -22,7 +22,7 @@ public class BlockBarrierRender extends TileEntitySpecialRenderer {
             GL11.glTranslatef((float)d + 0.5F, (float)d1 + 0.5F, (float)d2 + 0.5F);
             GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
             GL11.glPushMatrix();
-            boolean view2 = JRMCoreClient.mc.field_71474_y.field_74320_O == 2;
+            boolean view2 = JRMCoreClient.mc.gameSettings.thirdPersonView == 2;
             GL11.glRotatef(RenderManager.field_78727_a.field_78735_i, 0.0F, 1.0F, 0.0F);
             GL11.glRotatef(RenderManager.field_78727_a.field_78732_j * (float)(view2 ? 1 : -1), 1.0F, 0.0F, 0.0F);
             ResourceLocation tx = new ResourceLocation(JRMCoreH.tjjrmc + ":textures/blocks/tile.BlockBarrier.png");
@@ -44,21 +44,21 @@ public class BlockBarrierRender extends TileEntitySpecialRenderer {
             GL11.glPopMatrix();
          }
 
-         if (JRMCoreClient.mc.field_71439_g.func_71045_bC() != null && JRMCoreClient.mc.field_71439_g.func_71045_bC().func_77977_a().equals("tile.BlockBarrier")) {
-            this.startedTick1 = JRMCoreClient.mc.field_71439_g.field_70173_aa;
+         if (JRMCoreClient.mc.player.func_71045_bC() != null && JRMCoreClient.mc.player.func_71045_bC().func_77977_a().equals("tile.BlockBarrier")) {
+            this.startedTick1 = JRMCoreClient.mc.player.ticksExisted;
             if (this.visibility < 1.0F) {
-               this.visibility += (float)(JRMCoreClient.mc.field_71439_g.field_70173_aa - this.startedTick2) / 15.0F;
-               this.startedTick2 = JRMCoreClient.mc.field_71439_g.field_70173_aa;
+               this.visibility += (float)(JRMCoreClient.mc.player.ticksExisted - this.startedTick2) / 15.0F;
+               this.startedTick2 = JRMCoreClient.mc.player.ticksExisted;
             }
 
             if (this.visibility > 1.0F) {
                this.visibility = 1.0F;
             }
          } else {
-            this.startedTick2 = JRMCoreClient.mc.field_71439_g.field_70173_aa;
+            this.startedTick2 = JRMCoreClient.mc.player.ticksExisted;
             if (this.visibility > 0.0F) {
-               this.visibility -= (float)(JRMCoreClient.mc.field_71439_g.field_70173_aa - this.startedTick1) / 15.0F;
-               this.startedTick1 = JRMCoreClient.mc.field_71439_g.field_70173_aa;
+               this.visibility -= (float)(JRMCoreClient.mc.player.ticksExisted - this.startedTick1) / 15.0F;
+               this.startedTick1 = JRMCoreClient.mc.player.ticksExisted;
             }
 
             if (this.visibility < 0.0F) {
@@ -76,7 +76,7 @@ public class BlockBarrierRender extends TileEntitySpecialRenderer {
    public void drawTexturedModalRect(float x, float y, int u, int v, float width, float height, float z) {
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)x, (double)(y + 0.0F), (double)z, (double)((float)(u + 0) * f), (double)((float)(v + 0) * f1));
       tessellator.func_78374_a((double)x, (double)(y + height), (double)z, (double)((float)(u + 0) * f), (double)(((float)v + height) * f1));

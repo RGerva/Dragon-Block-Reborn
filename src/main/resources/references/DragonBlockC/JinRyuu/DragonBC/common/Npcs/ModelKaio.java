@@ -119,23 +119,23 @@ public class ModelKaio extends ModelBase {
       this.Body1.func_78792_a(this.Body2);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       GL11.glPushMatrix();
       float F = 0.6F;
       JGRenderHelper.modelScalePositionHelper(0.6F);
       float r2 = 180.0F;
-      this.Head.field_78796_g = f3 / (r2 / 3.1415927F);
-      this.Head.field_78795_f = f4 / (r2 / 3.1415927F) - 0.2F;
-      this.Body1.func_78785_a(f5);
-      this.ShoulderL.func_78785_a(f5);
-      this.Head.func_78785_a(f5);
-      this.ShoulderR.func_78785_a(f5);
+      this.Head.rotateAngleY = f3 / (r2 / 3.1415927F);
+      this.Head.rotateAngleX = f4 / (r2 / 3.1415927F) - 0.2F;
+      this.Body1.render(f5);
+      this.ShoulderL.render(f5);
+      this.Head.render(f5);
+      this.ShoulderR.render(f5);
       GL11.glPopMatrix();
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 }

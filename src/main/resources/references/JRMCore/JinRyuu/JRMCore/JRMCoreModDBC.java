@@ -23,7 +23,7 @@ public class JRMCoreModDBC {
          if (enma.size() > 1) {
             for(int i = 1; enma.size() > i; ++i) {
                Entity m = (Entity)enma.get(i);
-               m.func_70106_y();
+               m.setDead();
             }
          }
 
@@ -31,7 +31,7 @@ public class JRMCoreModDBC {
          if (mobs.size() > 0) {
             for(int i = 0; mobs.size() > i; ++i) {
                Entity m = (Entity)mobs.get(i);
-               m.func_70106_y();
+               m.setDead();
             }
          }
 
@@ -39,7 +39,7 @@ public class JRMCoreModDBC {
          if (dem.size() > 0) {
             for(int i = 0; dem.size() > i; ++i) {
                Entity m = (Entity)dem.get(i);
-               m.func_70106_y();
+               m.setDead();
             }
          }
 
@@ -47,7 +47,7 @@ public class JRMCoreModDBC {
          if (eea.size() > 0) {
             for(int i = 0; eea.size() > i; ++i) {
                Entity m = (Entity)eea.get(i);
-               m.func_70106_y();
+               m.setDead();
             }
          }
 
@@ -55,7 +55,7 @@ public class JRMCoreModDBC {
          if (ep.size() > 0) {
             for(int i = 0; ep.size() > i; ++i) {
                Entity m = (Entity)ep.get(i);
-               m.func_70106_y();
+               m.setDead();
             }
          }
       }

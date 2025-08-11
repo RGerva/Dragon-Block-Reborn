@@ -28,11 +28,11 @@ public class EntityFreezaSoldier2 extends EntityFreezaSoldiers {
       this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(20.0D);
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0) {
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
    }
 
    @SideOnly(Side.CLIENT)
@@ -41,16 +41,16 @@ public class EntityFreezaSoldier2 extends EntityFreezaSoldiers {
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
-      super.func_70014_b(par1NBTTagCompound);
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+      super.writeEntityToNBT(par1NBTTagCompound);
       par1NBTTagCompound.func_74777_a("Anger", (short)this.angerLevel);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
-      super.func_70037_a(par1NBTTagCompound);
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readEntityFromNBT(par1NBTTagCompound);
       this.angerLevel = par1NBTTagCompound.func_74765_d("Anger");
    }
 
@@ -63,12 +63,12 @@ public class EntityFreezaSoldier2 extends EntityFreezaSoldiers {
    }
 
    protected void func_70628_a(boolean par1, int par2) {
-      int var3 = this.field_70146_Z.nextInt(1);
+      int var3 = this.rand.nextInt(1);
       if (var3 != 0) {
          this.func_145779_a(ItemsDBC.BattleArmorHelmet04, 1);
       }
 
-      var3 = this.field_70146_Z.nextInt(2 + par2);
+      var3 = this.rand.nextInt(2 + par2);
 
       for(int var4 = 0; var4 < var3; ++var4) {
       }

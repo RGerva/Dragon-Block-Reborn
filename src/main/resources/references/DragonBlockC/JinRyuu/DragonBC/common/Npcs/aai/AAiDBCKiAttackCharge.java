@@ -22,12 +22,12 @@ public class AAiDBCKiAttackCharge extends AAi {
 
    public void update() {
       EntityDBC entity = (EntityDBC)this.aaiSystem.entity;
-      if (entity.func_70089_S() && entity.canFireKiAttacks && !entity.isLocked() && !entity.field_70170_p.field_72995_K && entity.getTargetedEntity() != null && entity.getTargetedEntity().func_70089_S() && entity.getTargetedEntity().func_70068_e(entity) < 4096.0D) {
+      if (entity.func_70089_S() && entity.canFireKiAttacks && !entity.isLocked() && !entity.world.field_72995_K && entity.getTargetedEntity() != null && entity.getTargetedEntity().func_70089_S() && entity.getTargetedEntity().func_70068_e(entity) < 4096.0D) {
          int chargeTimerMax = true;
          int KI_ATTACK_DISTANCE = true;
          double xzDist = entity.getXZDistanceToEntity(entity.getTargetedEntity());
          double yDist = entity.getYDistanceToEntity(entity.getTargetedEntity());
-         if (!entity.chargingKiAttack && entity.field_70173_aa % 25 == 0 && this.checkChanceToUse(this.rate)) {
+         if (!entity.chargingKiAttack && entity.ticksExisted % 25 == 0 && this.checkChanceToUse(this.rate)) {
             entity.chargingKiAttack = true;
             entity.chargingKiAttackTimer = 0;
             entity.chargingKiAttackTimerMax = (byte)(35 + (new Random()).nextInt(25));
@@ -41,8 +41,8 @@ public class AAiDBCKiAttackCharge extends AAi {
             }
 
             if (xzDist < 10.0D) {
-               double xDiff = (entity.getTargetedEntity().field_70165_t - entity.field_70165_t) / 10.0D * this.multi;
-               double zDiff = (entity.getTargetedEntity().field_70161_v - entity.field_70161_v) / 10.0D * this.multi;
+               double xDiff = (entity.getTargetedEntity().posX - entity.posX) / 10.0D * this.multi;
+               double zDiff = (entity.getTargetedEntity().posZ - entity.posZ) / 10.0D * this.multi;
                entity.field_70159_w = -xDiff;
                entity.field_70159_w = JGMathHelper.doubleLimit(entity.field_70159_w, this.limit);
                entity.field_70179_y = -zDiff;

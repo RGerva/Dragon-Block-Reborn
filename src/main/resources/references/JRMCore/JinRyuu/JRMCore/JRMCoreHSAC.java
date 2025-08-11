@@ -60,7 +60,7 @@ public class JRMCoreHSAC {
    }
 
    public static void openGui(int id, EntityPlayer pl) {
-      pl.openGui(Main.instance, id, pl.field_70170_p, (int)pl.field_70165_t, (int)pl.field_70163_u, (int)pl.field_70161_v);
+      pl.openGui(Main.instance, id, pl.world, (int)pl.posX, (int)pl.posY, (int)pl.posZ);
    }
 
    public static void initGui() {
@@ -80,8 +80,8 @@ public class JRMCoreHSAC {
    }
 
    public static int SAO_getDropLevelBasedOnCoord(Entity e) {
-      double x = e.field_70165_t;
-      double z = e.field_70161_v;
+      double x = e.posX;
+      double z = e.posZ;
       return (int)MathHelper.func_76133_a(x * x + z * z);
    }
 
@@ -369,7 +369,7 @@ public class JRMCoreHSAC {
                   }
 
                   addSAOWeaponStats(stack, "RandomName", "" + lvlItem, "0", "" + attackMin, "" + attackMax, "" + lvlItem, bonuses);
-                  event.drops.add(new EntityItem(event.entity.field_70170_p, event.entity.field_70165_t, event.entity.field_70163_u, event.entity.field_70161_v, stack));
+                  event.drops.add(new EntityItem(event.entity.world, event.entity.posX, event.entity.posY, event.entity.posZ, stack));
                }
             }
          }

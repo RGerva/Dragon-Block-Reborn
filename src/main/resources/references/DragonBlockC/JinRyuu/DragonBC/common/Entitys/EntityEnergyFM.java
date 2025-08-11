@@ -95,9 +95,9 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
    }
 
    public EntityEnergyFM(EntityLivingBase par2EntityLivingBase) {
-      super(par2EntityLivingBase.field_70170_p);
+      super(par2EntityLivingBase.world);
       this.speed = 20;
-      int sbh = (int)(this.field_70163_u > 65.0D ? this.field_70163_u - 65.0D : 1.0D) * 4;
+      int sbh = (int)(this.posY > 65.0D ? this.posY - 65.0D : 1.0D) * 4;
       this.size = 0.5F + (float)(sbh / 5 * 100) * 0.02F / 8.0F;
       if (this.size > 10.0F) {
          this.size = 10.0F;
@@ -109,10 +109,10 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
       double d8 = (double)(par2EntityLivingBase.field_70130_N + 1.0F);
       double var10000 = (double)(par2EntityLivingBase.field_70131_O + 0.5F + this.size * 0.5F);
       Vec3 vec3 = par2EntityLivingBase.func_70676_i(1.0F);
-      double x = par2EntityLivingBase.field_70165_t + vec3.field_72450_a * d8;
-      double y = par2EntityLivingBase.field_70163_u + vec3.field_72448_b * d8 + (double)(par2EntityLivingBase.field_70131_O * 0.55F);
-      double z = par2EntityLivingBase.field_70161_v + vec3.field_72449_c * d8;
-      this.func_70012_b(x, y, z, 0.0F, 0.0F);
+      double x = par2EntityLivingBase.posX + vec3.field_72450_a * d8;
+      double y = par2EntityLivingBase.posY + vec3.field_72448_b * d8 + (double)(par2EntityLivingBase.field_70131_O * 0.55F);
+      double z = par2EntityLivingBase.posZ + vec3.field_72449_c * d8;
+      this.setLocationAndAngles(x, y, z, 0.0F, 0.0F);
       this.field_70129_M = this.size * 0.5F;
       this.field_70159_w = 0.0D;
       this.field_70179_y = 0.0D;
@@ -123,7 +123,7 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
       this.strtZ = (float)z;
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
       this.field_70180_af.func_75682_a(20, 0);
    }
 
@@ -132,9 +132,9 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
       par1 /= (double)var9;
       par3 /= (double)var9;
       par5 /= (double)var9;
-      par1 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par3 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par5 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par1 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par3 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par5 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
       par1 *= (double)par7;
       par3 *= (double)par7;
       par5 *= (double)par7;
@@ -142,8 +142,8 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
       this.field_70181_x = par3;
       this.field_70179_y = par5;
       float var10 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-      this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-      this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
+      this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+      this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
       this.ticksInGround = 0;
    }
 
@@ -160,79 +160,79 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
       this.field_70179_y = par5;
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var7 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A;
-         this.field_70126_B = this.field_70177_z;
-         this.func_70012_b(this.field_70165_t, this.field_70163_u, this.field_70161_v, this.field_70177_z, this.field_70125_A);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch;
+         this.field_70126_B = this.rotationYaw;
+         this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
          this.ticksInGround = 0;
       }
 
    }
 
-   public void func_70071_h_() {
-      if (!this.field_70170_p.field_72995_K && this.shootingEntity == null) {
-         this.func_70106_y();
+   public void onUpdate() {
+      if (!this.world.field_72995_K && this.shootingEntity == null) {
+         this.setDead();
       }
 
-      if (this.field_70163_u >= 250.0D) {
+      if (this.posY >= 250.0D) {
          this.field_70181_x = 0.0D;
       } else {
-         int sbh = (int)(this.field_70163_u > 80.0D ? this.field_70163_u - 80.0D : 1.0D) * 4;
+         int sbh = (int)(this.posY > 80.0D ? this.posY - 80.0D : 1.0D) * 4;
          this.size = 0.5F + (float)(sbh / 5 * 100) * 0.02F / 8.0F;
          this.func_70105_a(this.size, this.size);
       }
 
       this.field_70159_w = 0.0D;
       this.field_70179_y = 0.0D;
-      if (this.field_70173_aa == 1) {
+      if (this.ticksExisted == 1) {
          this.func_70105_a(this.size, this.size);
          this.field_70129_M = this.size * 0.5F;
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var1 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(this.field_70181_x, (double)var1) * 180.0D / 3.141592653589793D);
       }
 
-      Block block = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
+      Block block = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
       if (block.func_149688_o() != Material.field_151579_a) {
-         block.func_149719_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         AxisAlignedBB axisalignedbb = block.func_149668_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v))) {
+         block.func_149719_a(this.world, this.xTile, this.yTile, this.zTile);
+         AxisAlignedBB axisalignedbb = block.func_149668_a(this.world, this.xTile, this.yTile, this.zTile);
+         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.posX, this.posY, this.posZ))) {
             this.inGround = true;
          }
       }
 
       if (this.inGround) {
-         int var19 = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
+         int var19 = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
          if (block == this.inTile && var19 == this.inData) {
             ++this.ticksInGround;
             if (this.ticksInGround == 1) {
-               this.func_70106_y();
-               if (!this.field_70170_p.field_72995_K) {
-                  this.field_70170_p.func_72956_a(this, this.AirSound, 1.0F, 1.0F);
+               this.setDead();
+               if (!this.world.field_72995_K) {
+                  this.world.func_72956_a(this, this.AirSound, 1.0F, 1.0F);
                }
             }
          } else {
             this.inGround = false;
-            this.field_70159_w *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-            this.field_70181_x *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-            this.field_70179_y *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
+            this.field_70159_w *= (double)(this.rand.nextFloat() * 0.2F);
+            this.field_70181_x *= (double)(this.rand.nextFloat() * 0.2F);
+            this.field_70179_y *= (double)(this.rand.nextFloat() * 0.2F);
             this.ticksInGround = 0;
             this.ticksInAir = 0;
          }
       } else {
          ++this.ticksInAir;
-         Vec3 var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         Vec3 var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-         MovingObjectPosition var4 = this.field_70170_p.func_147447_a(var17, var3, false, true, false);
-         var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-         if (!this.field_70170_p.field_72995_K && this.ticksInAir >= 2000) {
-            this.func_70106_y();
+         Vec3 var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         Vec3 var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+         MovingObjectPosition var4 = this.world.func_147447_a(var17, var3, false, true, false);
+         var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+         if (!this.world.field_72995_K && this.ticksInAir >= 2000) {
+            this.setDead();
          }
 
          int var9;
@@ -241,7 +241,7 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
 
          var9 = this.ticksInAir / 10 * 10;
          if (this.ticksInAir == (var9 == 0 ? 10 : var9)) {
-            this.field_70170_p.func_72956_a(this, "jinryuudragonbc:" + JRMCoreH.techSnds(0, 2, 0), 1.0F, 1.0F);
+            this.world.func_72956_a(this, "jinryuudragonbc:" + JRMCoreH.techSnds(0, 2, 0), 1.0F, 1.0F);
          }
 
          if (var4 != null) {
@@ -249,9 +249,9 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
          }
 
          float var11;
-         if (!this.field_70170_p.field_72995_K) {
+         if (!this.world.field_72995_K) {
             Entity var5 = null;
-            List var6 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
+            List var6 = this.world.func_72839_b(this, this.boundingBox.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
             double var7 = 0.0D;
             var9 = 0;
 
@@ -266,7 +266,7 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
                Entity var10 = (Entity)var6.get(var9);
                if (var10 instanceof EntityLivingBase && var10.func_70067_L() && (var10 != this.shootingEntity || this.ticksInAir >= 5)) {
                   var11 = 0.0F;
-                  AxisAlignedBB var12 = var10.field_70121_D.func_72314_b((double)var11, (double)var11, (double)var11);
+                  AxisAlignedBB var12 = var10.boundingBox.func_72314_b((double)var11, (double)var11, (double)var11);
                   MovingObjectPosition var13 = var12.func_72327_a(var17, var3);
                   if (var13 != null) {
                      double var14 = var17.func_72438_d(var13.field_72307_f);
@@ -282,32 +282,32 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
          }
 
          if (var4 != null) {
-            if (!this.field_70170_p.field_72995_K) {
-               this.field_70170_p.func_72956_a(this, this.ExplSound, 1.0F, 1.0F);
+            if (!this.world.field_72995_K) {
+               this.world.func_72956_a(this, this.ExplSound, 1.0F, 1.0F);
             }
 
             this.xTile = var4.field_72311_b;
             this.yTile = var4.field_72312_c;
             this.zTile = var4.field_72309_d;
-            this.inTile = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
-            this.inData = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
+            this.inTile = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
+            this.inData = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
             this.inGround = true;
             if (this.inTile.func_149688_o() != Material.field_151579_a) {
-               this.inTile.func_149670_a(this.field_70170_p, this.xTile, this.yTile, this.zTile, this);
+               this.inTile.func_149670_a(this.world, this.xTile, this.yTile, this.zTile, this);
             }
          }
 
-         this.field_70165_t += this.field_70159_w;
-         this.field_70163_u += this.field_70181_x;
+         this.posX += this.field_70159_w;
+         this.posY += this.field_70181_x;
 
-         for(this.field_70161_v += this.field_70179_y; this.field_70125_A - this.field_70127_C >= 180.0F; this.field_70127_C += 360.0F) {
+         for(this.posZ += this.field_70179_y; this.rotationPitch - this.field_70127_C >= 180.0F; this.field_70127_C += 360.0F) {
          }
 
-         while(this.field_70177_z - this.field_70126_B < -180.0F) {
+         while(this.rotationYaw - this.field_70126_B < -180.0F) {
             this.field_70126_B -= 360.0F;
          }
 
-         while(this.field_70177_z - this.field_70126_B >= 180.0F) {
+         while(this.rotationYaw - this.field_70126_B >= 180.0F) {
             this.field_70126_B += 360.0F;
          }
 
@@ -316,7 +316,7 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
          if (this.func_70090_H()) {
             for(int var26 = 0; var26 < 4; ++var26) {
                float var27 = 0.25F;
-               this.field_70170_p.func_72869_a("bubble", this.field_70165_t - this.field_70159_w * (double)var27, this.field_70163_u - this.field_70181_x * (double)var27, this.field_70161_v - this.field_70179_y * (double)var27, this.field_70159_w, this.field_70181_x, this.field_70179_y);
+               this.world.func_72869_a("bubble", this.posX - this.field_70159_w * (double)var27, this.posY - this.field_70181_x * (double)var27, this.posZ - this.field_70179_y * (double)var27, this.field_70159_w, this.field_70181_x, this.field_70179_y);
             }
 
             var22 = 1.0F;
@@ -326,12 +326,12 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
          this.field_70181_x *= (double)var22;
          this.field_70179_y *= (double)var22;
          this.field_70181_x -= (double)var11;
-         this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+         this.func_70107_b(this.posX, this.posY, this.posZ);
       }
 
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
       par1NBTTagCompound.func_74777_a("xTile", (short)this.xTile);
       par1NBTTagCompound.func_74777_a("yTile", (short)this.yTile);
       par1NBTTagCompound.func_74777_a("zTile", (short)this.zTile);
@@ -340,7 +340,7 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
       par1NBTTagCompound.func_74774_a("inGround", (byte)(this.inGround ? 1 : 0));
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
       this.xTile = par1NBTTagCompound.func_74765_d("xTile");
       this.yTile = par1NBTTagCompound.func_74765_d("yTile");
       this.zTile = par1NBTTagCompound.func_74765_d("zTile");
@@ -350,7 +350,7 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
    }
 
    public void func_70100_b_(EntityPlayer par1EntityPlayer) {
-      if (!this.field_70170_p.field_72995_K && this.inGround) {
+      if (!this.world.field_72995_K && this.inGround) {
       }
 
    }
@@ -387,7 +387,7 @@ public class EntityEnergyFM extends Entity implements IThrowableEntity, IEntityA
 
    public void readSpawnData(ByteBuf data) {
       int first = data.readInt();
-      this.shootingEntity = first == 0 ? this.shootingEntity : this.field_70170_p.func_73045_a(first);
+      this.shootingEntity = first == 0 ? this.shootingEntity : this.world.func_73045_a(first);
       this.speed = data.readByte();
       this.strtX = data.readFloat();
       this.strtY = data.readFloat();

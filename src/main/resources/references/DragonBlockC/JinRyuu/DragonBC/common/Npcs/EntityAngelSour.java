@@ -38,7 +38,7 @@ public class EntityAngelSour extends EntityDBCEvil {
    public long BattlePowerOld() {
       int BP = -1863462912;
       int exp = this.field_70728_aV * 100;
-      long BattlePower = (long)(BP + this.field_70146_Z.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
+      long BattlePower = (long)(BP + this.rand.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
       return BattlePower;
    }
 
@@ -57,7 +57,7 @@ public class EntityAngelSour extends EntityDBCEvil {
 
    private void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
-      this.randomSoundDelay = this.field_70146_Z.nextInt(40);
+      this.angerLevel = 400 + this.rand.nextInt(400);
+      this.randomSoundDelay = this.rand.nextInt(40);
    }
 }

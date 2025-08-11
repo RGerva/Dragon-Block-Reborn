@@ -376,13 +376,13 @@ public class MiniGameAirBoxing extends MiniGame {
    private void isKeyPressed() {
       int key = this.lastKeyPressed;
       this.lastKeyPressed = -1;
-      if (GameSettings.func_100015_a(JRMCoreClient.mc.field_71474_y.field_74351_w)) {
+      if (GameSettings.func_100015_a(JRMCoreClient.mc.gameSettings.field_74351_w)) {
          this.lastKeyPressed = 0;
-      } else if (GameSettings.func_100015_a(JRMCoreClient.mc.field_71474_y.field_74370_x)) {
+      } else if (GameSettings.func_100015_a(JRMCoreClient.mc.gameSettings.field_74370_x)) {
          this.lastKeyPressed = 1;
-      } else if (GameSettings.func_100015_a(JRMCoreClient.mc.field_71474_y.field_74368_y)) {
+      } else if (GameSettings.func_100015_a(JRMCoreClient.mc.gameSettings.field_74368_y)) {
          this.lastKeyPressed = 2;
-      } else if (GameSettings.func_100015_a(JRMCoreClient.mc.field_71474_y.field_74366_z)) {
+      } else if (GameSettings.func_100015_a(JRMCoreClient.mc.gameSettings.field_74366_z)) {
          this.lastKeyPressed = 3;
       }
 
@@ -401,10 +401,10 @@ public class MiniGameAirBoxing extends MiniGame {
          int id;
          if (animationID <= 4) {
             id = (int)(Math.random() * 3.0D) + 1;
-            JRMCoreClient.mc.func_147118_V().func_147682_a(PositionedSoundRecord.func_147674_a(new ResourceLocation("jinryuudragonbc:DBC4.punch" + id), JRMCoreClient.mc.field_71439_g.field_70170_p.field_73012_v.nextFloat() * 0.4F + 0.8F));
+            JRMCoreClient.mc.func_147118_V().func_147682_a(PositionedSoundRecord.func_147674_a(new ResourceLocation("jinryuudragonbc:DBC4.punch" + id), JRMCoreClient.mc.player.world.field_73012_v.nextFloat() * 0.4F + 0.8F));
          } else if (animationID == 5) {
             id = (int)(Math.random() * 2.0D) + 1;
-            JRMCoreClient.mc.func_147118_V().func_147682_a(PositionedSoundRecord.func_147674_a(new ResourceLocation("jinryuudragonbc:DBC4.block" + id), JRMCoreClient.mc.field_71439_g.field_70170_p.field_73012_v.nextFloat() * 0.4F + 0.8F));
+            JRMCoreClient.mc.func_147118_V().func_147682_a(PositionedSoundRecord.func_147674_a(new ResourceLocation("jinryuudragonbc:DBC4.block" + id), JRMCoreClient.mc.player.world.field_73012_v.nextFloat() * 0.4F + 0.8F));
          }
       }
 

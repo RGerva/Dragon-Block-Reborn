@@ -86,8 +86,8 @@ public class EntityAura extends Entity {
       this.state = s;
       this.state2 = s2;
       this.crel = cr;
-      this.lightVert = this.field_70146_Z.nextLong();
-      this.lightLivingTime = this.field_70146_Z.nextInt(4) + 0;
+      this.lightVert = this.rand.nextLong();
+      this.lightLivingTime = this.rand.nextInt(4) + 0;
    }
 
    public boolean shouldRenderInPass(int pass) {
@@ -191,43 +191,43 @@ public class EntityAura extends Entity {
       return this.mot;
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.mot.length() > 1) {
-         Entity other = this.field_70170_p.func_72924_a(this.mot);
+         Entity other = this.world.getPlayerEntityByName(this.mot);
          if (other != null) {
             if (this.rot) {
-               this.yaw = other.field_70177_z;
-               this.pitch = other.field_70125_A;
+               this.yaw = other.rotationYaw;
+               this.pitch = other.rotationPitch;
             }
 
-            this.func_70012_b(other.field_70165_t, other.field_70163_u + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.field_70161_v, other.field_70177_z, other.field_70125_A);
+            this.setLocationAndAngles(other.posX, other.posY + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.posZ, other.rotationYaw, other.rotationPitch);
             if (this.getAge() < this.getLightLivingTime() && this.getState() > 4.0F && this.getState() < 7.0F && this.getAge() == 2) {
                other.func_85030_a("jinryuudragonbc:1610.spark", 0.0375F, 0.85F + (float)this.lightLivingTime * 0.05F);
             }
          } else {
-            this.func_70106_y();
+            this.setDead();
          }
       }
 
       if (this.Age++ >= this.speed) {
-         this.func_70106_y();
+         this.setDead();
       }
 
    }
 
    public boolean getCanSpawnHere() {
-      return !this.field_70170_p.func_72855_b(this.field_70121_D);
+      return !this.world.checkNoEntityCollision(this.boundingBox);
    }
 
    public void onLivingUpdate() {
    }
 
-   protected void func_70037_a(NBTTagCompound var1) {
+   protected void readEntityFromNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70014_b(NBTTagCompound var1) {
+   protected void writeEntityToNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 }

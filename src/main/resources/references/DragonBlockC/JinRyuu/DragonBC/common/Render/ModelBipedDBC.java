@@ -619,205 +619,205 @@ public class ModelBipedDBC extends ModelBase {
       this.bipedHead.func_78792_a(this.strunk17);
    }
 
-   public void func_78088_a(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-      this.func_78087_a(par2, par3, par4, par5, par6, par7, par1Entity);
+   public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+      this.setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
       if (this.field_78091_s) {
          float var8 = 2.0F;
          GL11.glPushMatrix();
          GL11.glScalef(1.5F / var8, 1.5F / var8, 1.5F / var8);
          GL11.glTranslatef(0.0F, 16.0F * par7, 0.0F);
-         this.bipedHead.func_78785_a(par7);
+         this.bipedHead.render(par7);
          GL11.glPopMatrix();
          GL11.glPushMatrix();
          GL11.glScalef(1.0F / var8, 1.0F / var8, 1.0F / var8);
          GL11.glTranslatef(0.0F, 24.0F * par7, 0.0F);
-         this.bipedBody.func_78785_a(par7);
-         this.bipedRightArm.func_78785_a(par7);
-         this.bipedLeftArm.func_78785_a(par7);
-         this.bipedRightLeg.func_78785_a(par7);
-         this.bipedLeftLeg.func_78785_a(par7);
-         this.leftarmshoulder.func_78785_a(par7);
-         this.rightarmshoulder.func_78785_a(par7);
+         this.bipedBody.render(par7);
+         this.bipedRightArm.render(par7);
+         this.bipedLeftArm.render(par7);
+         this.bipedRightLeg.render(par7);
+         this.bipedLeftLeg.render(par7);
+         this.leftarmshoulder.render(par7);
+         this.rightarmshoulder.render(par7);
          GL11.glPopMatrix();
       } else {
-         this.bipedHead.func_78785_a(par7);
-         this.bipedBody.func_78785_a(par7);
-         this.bipedRightArm.func_78785_a(par7);
-         this.bipedLeftArm.func_78785_a(par7);
-         this.bipedRightLeg.func_78785_a(par7);
-         this.bipedLeftLeg.func_78785_a(par7);
-         this.leftarmshoulder.func_78785_a(par7);
-         this.rightarmshoulder.func_78785_a(par7);
+         this.bipedHead.render(par7);
+         this.bipedBody.render(par7);
+         this.bipedRightArm.render(par7);
+         this.bipedLeftArm.render(par7);
+         this.bipedRightLeg.render(par7);
+         this.bipedLeftLeg.render(par7);
+         this.leftarmshoulder.render(par7);
+         this.rightarmshoulder.render(par7);
       }
 
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-      this.bipedHead.field_78796_g = par4 / 57.295776F;
-      this.bipedHead.field_78795_f = par5 / 57.295776F;
-      this.bipedRightArm.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 2.0F * par2 * 0.5F;
-      this.bipedLeftArm.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
-      this.bipedRightArm.field_78808_h = 0.0F;
-      this.bipedLeftArm.field_78808_h = 0.0F;
-      this.bipedRightLeg.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F) * 1.4F * par2;
-      this.bipedLeftLeg.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.4F * par2;
-      this.bipedRightLeg.field_78796_g = 0.0F;
-      this.bipedLeftLeg.field_78796_g = 0.0F;
-      this.rightarmshoulder.field_78795_f = this.bipedRightArm.field_78795_f;
-      this.leftarmshoulder.field_78795_f = this.bipedLeftArm.field_78795_f;
-      this.rightarmshoulder.field_78808_h = this.bipedRightArm.field_78808_h;
-      this.leftarmshoulder.field_78808_h = this.bipedLeftArm.field_78808_h;
+   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+      this.bipedHead.rotateAngleY = par4 / 57.295776F;
+      this.bipedHead.rotateAngleX = par5 / 57.295776F;
+      this.bipedRightArm.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 2.0F * par2 * 0.5F;
+      this.bipedLeftArm.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
+      this.bipedRightArm.rotateAngleZ = 0.0F;
+      this.bipedLeftArm.rotateAngleZ = 0.0F;
+      this.bipedRightLeg.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F) * 1.4F * par2;
+      this.bipedLeftLeg.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.4F * par2;
+      this.bipedRightLeg.rotateAngleY = 0.0F;
+      this.bipedLeftLeg.rotateAngleY = 0.0F;
+      this.rightarmshoulder.rotateAngleX = this.bipedRightArm.rotateAngleX;
+      this.leftarmshoulder.rotateAngleX = this.bipedLeftArm.rotateAngleX;
+      this.rightarmshoulder.rotateAngleZ = this.bipedRightArm.rotateAngleZ;
+      this.leftarmshoulder.rotateAngleZ = this.bipedLeftArm.rotateAngleZ;
       ModelRenderer var10000;
       if (this.field_78093_q) {
          var10000 = this.bipedRightArm;
-         var10000.field_78795_f += -0.62831855F;
+         var10000.rotateAngleX += -0.62831855F;
          var10000 = this.bipedLeftArm;
-         var10000.field_78795_f += -0.62831855F;
-         this.bipedRightLeg.field_78795_f = -1.2566371F;
-         this.bipedLeftLeg.field_78795_f = -1.2566371F;
-         this.bipedRightLeg.field_78796_g = 0.31415927F;
-         this.bipedLeftLeg.field_78796_g = -0.31415927F;
-         this.rightarmshoulder.field_78795_f = this.bipedRightArm.field_78795_f;
-         this.leftarmshoulder.field_78795_f = this.bipedLeftArm.field_78795_f;
+         var10000.rotateAngleX += -0.62831855F;
+         this.bipedRightLeg.rotateAngleX = -1.2566371F;
+         this.bipedLeftLeg.rotateAngleX = -1.2566371F;
+         this.bipedRightLeg.rotateAngleY = 0.31415927F;
+         this.bipedLeftLeg.rotateAngleY = -0.31415927F;
+         this.rightarmshoulder.rotateAngleX = this.bipedRightArm.rotateAngleX;
+         this.leftarmshoulder.rotateAngleX = this.bipedLeftArm.rotateAngleX;
       }
 
       if (this.heldItemLeft != 0) {
-         this.bipedLeftArm.field_78795_f = this.bipedLeftArm.field_78795_f * 0.5F - 0.31415927F * (float)this.heldItemLeft;
+         this.bipedLeftArm.rotateAngleX = this.bipedLeftArm.rotateAngleX * 0.5F - 0.31415927F * (float)this.heldItemLeft;
       }
 
       if (this.heldItemRight != 0) {
-         this.bipedRightArm.field_78795_f = this.bipedRightArm.field_78795_f * 0.5F - 0.31415927F * (float)this.heldItemRight;
+         this.bipedRightArm.rotateAngleX = this.bipedRightArm.rotateAngleX * 0.5F - 0.31415927F * (float)this.heldItemRight;
       }
 
-      this.bipedRightArm.field_78796_g = 0.0F;
-      this.bipedLeftArm.field_78796_g = 0.0F;
-      this.rightarmshoulder.field_78796_g = this.bipedRightArm.field_78796_g;
-      this.leftarmshoulder.field_78796_g = this.bipedLeftArm.field_78796_g;
+      this.bipedRightArm.rotateAngleY = 0.0F;
+      this.bipedLeftArm.rotateAngleY = 0.0F;
+      this.rightarmshoulder.rotateAngleY = this.bipedRightArm.rotateAngleY;
+      this.leftarmshoulder.rotateAngleY = this.bipedLeftArm.rotateAngleY;
       float var8;
       float var9;
       if (this.field_78095_p > -9990.0F) {
          var8 = this.field_78095_p;
-         this.bipedBody.field_78796_g = MathHelper.func_76126_a(MathHelper.func_76129_c(var8) * 3.1415927F * 2.0F) * 0.2F;
-         this.bipedRightArm.field_78798_e = MathHelper.func_76126_a(this.bipedBody.field_78796_g) * 5.0F;
-         this.bipedRightArm.field_78800_c = -MathHelper.func_76134_b(this.bipedBody.field_78796_g) * 5.0F;
-         this.bipedLeftArm.field_78798_e = -MathHelper.func_76126_a(this.bipedBody.field_78796_g) * 5.0F;
-         this.bipedLeftArm.field_78800_c = MathHelper.func_76134_b(this.bipedBody.field_78796_g) * 5.0F;
+         this.bipedBody.rotateAngleY = MathHelper.func_76126_a(MathHelper.func_76129_c(var8) * 3.1415927F * 2.0F) * 0.2F;
+         this.bipedRightArm.field_78798_e = MathHelper.func_76126_a(this.bipedBody.rotateAngleY) * 5.0F;
+         this.bipedRightArm.field_78800_c = -MathHelper.func_76134_b(this.bipedBody.rotateAngleY) * 5.0F;
+         this.bipedLeftArm.field_78798_e = -MathHelper.func_76126_a(this.bipedBody.rotateAngleY) * 5.0F;
+         this.bipedLeftArm.field_78800_c = MathHelper.func_76134_b(this.bipedBody.rotateAngleY) * 5.0F;
          var10000 = this.bipedRightArm;
-         var10000.field_78796_g += this.bipedBody.field_78796_g;
+         var10000.rotateAngleY += this.bipedBody.rotateAngleY;
          var10000 = this.bipedLeftArm;
-         var10000.field_78796_g += this.bipedBody.field_78796_g;
+         var10000.rotateAngleY += this.bipedBody.rotateAngleY;
          var10000 = this.bipedLeftArm;
-         var10000.field_78795_f += this.bipedBody.field_78796_g;
-         this.rightarmshoulder.field_78798_e = MathHelper.func_76126_a(this.bipedBody.field_78796_g) * 5.0F;
-         this.rightarmshoulder.field_78800_c = -MathHelper.func_76134_b(this.bipedBody.field_78796_g) * 5.0F;
-         this.leftarmshoulder.field_78798_e = -MathHelper.func_76126_a(this.bipedBody.field_78796_g) * 5.0F;
-         this.leftarmshoulder.field_78800_c = MathHelper.func_76134_b(this.bipedBody.field_78796_g) * 5.0F;
+         var10000.rotateAngleX += this.bipedBody.rotateAngleY;
+         this.rightarmshoulder.field_78798_e = MathHelper.func_76126_a(this.bipedBody.rotateAngleY) * 5.0F;
+         this.rightarmshoulder.field_78800_c = -MathHelper.func_76134_b(this.bipedBody.rotateAngleY) * 5.0F;
+         this.leftarmshoulder.field_78798_e = -MathHelper.func_76126_a(this.bipedBody.rotateAngleY) * 5.0F;
+         this.leftarmshoulder.field_78800_c = MathHelper.func_76134_b(this.bipedBody.rotateAngleY) * 5.0F;
          var10000 = this.rightarmshoulder;
-         var10000.field_78796_g += this.bipedBody.field_78796_g;
+         var10000.rotateAngleY += this.bipedBody.rotateAngleY;
          var10000 = this.leftarmshoulder;
-         var10000.field_78796_g += this.bipedBody.field_78796_g;
+         var10000.rotateAngleY += this.bipedBody.rotateAngleY;
          var10000 = this.leftarmshoulder;
-         var10000.field_78795_f += this.bipedBody.field_78796_g;
+         var10000.rotateAngleX += this.bipedBody.rotateAngleY;
          var8 = 1.0F - this.field_78095_p;
          var8 *= var8;
          var8 *= var8;
          var8 = 1.0F - var8;
          var9 = MathHelper.func_76126_a(var8 * 3.1415927F);
-         float var10 = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -(this.bipedHead.field_78795_f - 0.7F) * 0.75F;
-         this.bipedRightArm.field_78795_f = (float)((double)this.bipedRightArm.field_78795_f - ((double)var9 * 1.2D + (double)var10));
+         float var10 = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
+         this.bipedRightArm.rotateAngleX = (float)((double)this.bipedRightArm.rotateAngleX - ((double)var9 * 1.2D + (double)var10));
          var10000 = this.bipedRightArm;
-         var10000.field_78796_g += this.bipedBody.field_78796_g * 2.0F;
-         this.bipedRightArm.field_78808_h = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
-         this.rightarmshoulder.field_78795_f = (float)((double)this.bipedRightArm.field_78795_f - ((double)var9 * 1.2D + (double)var10));
+         var10000.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
+         this.bipedRightArm.rotateAngleZ = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
+         this.rightarmshoulder.rotateAngleX = (float)((double)this.bipedRightArm.rotateAngleX - ((double)var9 * 1.2D + (double)var10));
          var10000 = this.rightarmshoulder;
-         var10000.field_78796_g += this.bipedBody.field_78796_g * 2.0F;
-         this.rightarmshoulder.field_78808_h = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
+         var10000.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
+         this.rightarmshoulder.rotateAngleZ = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
       }
 
       if (this.isSneak) {
-         this.bipedBody.field_78795_f = 0.5F;
+         this.bipedBody.rotateAngleX = 0.5F;
          var10000 = this.bipedRightArm;
-         var10000.field_78795_f += 0.4F;
+         var10000.rotateAngleX += 0.4F;
          var10000 = this.bipedLeftArm;
-         var10000.field_78795_f += 0.4F;
+         var10000.rotateAngleX += 0.4F;
          this.bipedRightLeg.field_78798_e = 4.0F;
          this.bipedLeftLeg.field_78798_e = 4.0F;
-         this.bipedRightLeg.field_78797_d = 9.0F;
-         this.bipedLeftLeg.field_78797_d = 9.0F;
-         this.bipedHead.field_78797_d = 1.0F;
-         this.rightarmshoulder.field_78795_f = this.bipedRightArm.field_78795_f;
-         this.leftarmshoulder.field_78795_f = this.bipedLeftArm.field_78795_f;
+         this.bipedRightLeg.rotationPointY = 9.0F;
+         this.bipedLeftLeg.rotationPointY = 9.0F;
+         this.bipedHead.rotationPointY = 1.0F;
+         this.rightarmshoulder.rotateAngleX = this.bipedRightArm.rotateAngleX;
+         this.leftarmshoulder.rotateAngleX = this.bipedLeftArm.rotateAngleX;
       } else {
-         this.bipedBody.field_78795_f = 0.0F;
+         this.bipedBody.rotateAngleX = 0.0F;
          this.bipedRightLeg.field_78798_e = 0.1F;
          this.bipedLeftLeg.field_78798_e = 0.1F;
-         this.bipedRightLeg.field_78797_d = 12.0F;
-         this.bipedLeftLeg.field_78797_d = 12.0F;
-         this.bipedHead.field_78797_d = 0.0F;
+         this.bipedRightLeg.rotationPointY = 12.0F;
+         this.bipedLeftLeg.rotationPointY = 12.0F;
+         this.bipedHead.rotationPointY = 0.0F;
       }
 
       var10000 = this.bipedRightArm;
-      var10000.field_78808_h += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+      var10000.rotateAngleZ += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
       var10000 = this.bipedLeftArm;
-      var10000.field_78808_h -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+      var10000.rotateAngleZ -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
       var10000 = this.bipedRightArm;
-      var10000.field_78795_f += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+      var10000.rotateAngleX += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
       var10000 = this.bipedLeftArm;
-      var10000.field_78795_f -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
-      this.rightarmshoulder.field_78808_h = this.bipedRightArm.field_78808_h;
-      this.leftarmshoulder.field_78808_h = this.bipedLeftArm.field_78808_h;
-      this.rightarmshoulder.field_78795_f = this.bipedRightArm.field_78795_f;
-      this.leftarmshoulder.field_78795_f = this.bipedLeftArm.field_78795_f;
+      var10000.rotateAngleX -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+      this.rightarmshoulder.rotateAngleZ = this.bipedRightArm.rotateAngleZ;
+      this.leftarmshoulder.rotateAngleZ = this.bipedLeftArm.rotateAngleZ;
+      this.rightarmshoulder.rotateAngleX = this.bipedRightArm.rotateAngleX;
+      this.leftarmshoulder.rotateAngleX = this.bipedLeftArm.rotateAngleX;
       if (this.aimedBow) {
          var8 = 0.0F;
          var9 = 0.0F;
-         this.bipedRightArm.field_78808_h = 0.0F;
-         this.bipedLeftArm.field_78808_h = 0.0F;
-         this.rightarmshoulder.field_78808_h = this.bipedRightArm.field_78808_h;
-         this.leftarmshoulder.field_78808_h = this.bipedLeftArm.field_78808_h;
-         this.bipedRightArm.field_78796_g = -(0.1F - var8 * 0.6F) + this.bipedHead.field_78796_g;
-         this.bipedLeftArm.field_78796_g = 0.1F - var8 * 0.6F + this.bipedHead.field_78796_g + 0.4F;
-         this.bipedRightArm.field_78795_f = -1.5707964F + this.bipedHead.field_78795_f;
-         this.bipedLeftArm.field_78795_f = -1.5707964F + this.bipedHead.field_78795_f;
+         this.bipedRightArm.rotateAngleZ = 0.0F;
+         this.bipedLeftArm.rotateAngleZ = 0.0F;
+         this.rightarmshoulder.rotateAngleZ = this.bipedRightArm.rotateAngleZ;
+         this.leftarmshoulder.rotateAngleZ = this.bipedLeftArm.rotateAngleZ;
+         this.bipedRightArm.rotateAngleY = -(0.1F - var8 * 0.6F) + this.bipedHead.rotateAngleY;
+         this.bipedLeftArm.rotateAngleY = 0.1F - var8 * 0.6F + this.bipedHead.rotateAngleY + 0.4F;
+         this.bipedRightArm.rotateAngleX = -1.5707964F + this.bipedHead.rotateAngleX;
+         this.bipedLeftArm.rotateAngleX = -1.5707964F + this.bipedHead.rotateAngleX;
          var10000 = this.bipedRightArm;
-         var10000.field_78795_f -= var8 * 1.2F - var9 * 0.4F;
+         var10000.rotateAngleX -= var8 * 1.2F - var9 * 0.4F;
          var10000 = this.bipedLeftArm;
-         var10000.field_78795_f -= var8 * 1.2F - var9 * 0.4F;
-         this.rightarmshoulder.field_78795_f = this.bipedRightArm.field_78795_f;
-         this.leftarmshoulder.field_78795_f = this.bipedLeftArm.field_78795_f;
+         var10000.rotateAngleX -= var8 * 1.2F - var9 * 0.4F;
+         this.rightarmshoulder.rotateAngleX = this.bipedRightArm.rotateAngleX;
+         this.leftarmshoulder.rotateAngleX = this.bipedLeftArm.rotateAngleX;
          var10000 = this.bipedRightArm;
-         var10000.field_78808_h += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+         var10000.rotateAngleZ += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
          var10000 = this.bipedLeftArm;
-         var10000.field_78808_h -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+         var10000.rotateAngleZ -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
          var10000 = this.bipedRightArm;
-         var10000.field_78795_f += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+         var10000.rotateAngleX += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
          var10000 = this.bipedLeftArm;
-         var10000.field_78795_f -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
-         this.rightarmshoulder.field_78796_g = this.bipedRightArm.field_78796_g;
-         this.leftarmshoulder.field_78796_g = this.bipedLeftArm.field_78796_g;
-         this.rightarmshoulder.field_78808_h = this.bipedRightArm.field_78808_h;
-         this.leftarmshoulder.field_78808_h = this.bipedLeftArm.field_78808_h;
-         this.rightarmshoulder.field_78795_f = this.bipedRightArm.field_78795_f;
-         this.leftarmshoulder.field_78795_f = this.bipedLeftArm.field_78795_f;
+         var10000.rotateAngleX -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+         this.rightarmshoulder.rotateAngleY = this.bipedRightArm.rotateAngleY;
+         this.leftarmshoulder.rotateAngleY = this.bipedLeftArm.rotateAngleY;
+         this.rightarmshoulder.rotateAngleZ = this.bipedRightArm.rotateAngleZ;
+         this.leftarmshoulder.rotateAngleZ = this.bipedLeftArm.rotateAngleZ;
+         this.rightarmshoulder.rotateAngleX = this.bipedRightArm.rotateAngleX;
+         this.leftarmshoulder.rotateAngleX = this.bipedLeftArm.rotateAngleX;
       }
 
    }
 
    public void renderEars(float par1) {
-      this.bipedEars.field_78796_g = this.bipedHead.field_78796_g;
-      this.bipedEars.field_78795_f = this.bipedHead.field_78795_f;
+      this.bipedEars.rotateAngleY = this.bipedHead.rotateAngleY;
+      this.bipedEars.rotateAngleX = this.bipedHead.rotateAngleX;
       this.bipedEars.field_78800_c = 0.0F;
-      this.bipedEars.field_78797_d = 0.0F;
-      this.bipedEars.func_78785_a(par1);
+      this.bipedEars.rotationPointY = 0.0F;
+      this.bipedEars.render(par1);
    }
 
    public void renderCloak(float par1) {
-      this.bipedCloak.func_78785_a(par1);
+      this.bipedCloak.render(par1);
    }
 }

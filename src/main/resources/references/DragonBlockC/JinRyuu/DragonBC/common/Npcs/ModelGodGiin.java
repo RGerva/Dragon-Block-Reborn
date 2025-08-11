@@ -83,46 +83,46 @@ public class ModelGodGiin extends ModelBase {
       this.Head.func_78792_a(this.EarR);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.LegL.func_78785_a(f5);
-      this.Head.func_78785_a(f5);
-      this.ArmL.func_78785_a(f5);
-      this.ArmR.func_78785_a(f5);
-      this.Body1.func_78785_a(f5);
-      this.LegR.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.LegL.render(f5);
+      this.Head.render(f5);
+      this.ArmL.render(f5);
+      this.ArmR.render(f5);
+      this.Body1.render(f5);
+      this.LegR.render(f5);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-      int calc = par7Entity.field_70173_aa;
+   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+      int calc = par7Entity.ticksExisted;
       if (calc > 100) {
          calc -= 100;
       }
 
       float r = 360.0F;
       float r2 = 180.0F;
-      this.Head.field_78796_g = par4 / (r2 / 3.1415927F);
-      this.Head.field_78795_f = par5 / (r2 / 3.1415927F);
-      float ex = (float)par7Entity.field_70173_aa;
+      this.Head.rotateAngleY = par4 / (r2 / 3.1415927F);
+      this.Head.rotateAngleX = par5 / (r2 / 3.1415927F);
+      float ex = (float)par7Entity.ticksExisted;
       float r3 = MathHelper.func_76134_b(ex * 0.14F) * 0.1F;
       float r4 = MathHelper.func_76134_b(ex / 8.0F) / 5.0F + 0.1F;
       r3 = MathHelper.func_76134_b(ex * 0.14F) * 0.1F;
       r4 = MathHelper.func_76134_b(ex / 8.0F) / 3.0F - 0.2F;
-      this.LegR.field_78795_f = -0.0F - MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
-      this.LegL.field_78795_f = -0.0F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
-      this.ArmR.field_78795_f = -0.0F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
-      this.ArmL.field_78795_f = -0.0F - MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
-      this.LegR.field_78796_g = 0.0F;
-      this.LegL.field_78796_g = 0.0F;
-      this.ArmR.field_78796_g = 0.0F;
-      this.ArmL.field_78796_g = 0.0F;
-      this.Cloth1.field_78795_f = -0.15F + this.LegR.field_78795_f * (float)(this.LegR.field_78795_f >= 0.0F ? -1 : 1) * 1.0F;
-      super.func_78087_a(par1, par2, par3, par4, par5, par6, par7Entity);
+      this.LegR.rotateAngleX = -0.0F - MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
+      this.LegL.rotateAngleX = -0.0F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
+      this.ArmR.rotateAngleX = -0.0F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
+      this.ArmL.rotateAngleX = -0.0F - MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
+      this.LegR.rotateAngleY = 0.0F;
+      this.LegL.rotateAngleY = 0.0F;
+      this.ArmR.rotateAngleY = 0.0F;
+      this.ArmL.rotateAngleY = 0.0F;
+      this.Cloth1.rotateAngleX = -0.15F + this.LegR.rotateAngleX * (float)(this.LegR.rotateAngleX >= 0.0F ? -1 : 1) * 1.0F;
+      super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
    }
 }

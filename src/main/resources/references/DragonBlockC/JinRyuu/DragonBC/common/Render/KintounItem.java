@@ -55,7 +55,7 @@ public class KintounItem extends Item {
             player.field_71071_by.field_70459_e = true;
             player.field_71071_by.field_70459_e = false;
             KintounEntity KintounEntity = new KintounEntity(world);
-            KintounEntity.func_70012_b((double)par4, (double)(par5 + 1), (double)par6, player.field_70177_z, 0.0F);
+            KintounEntity.setLocationAndAngles((double)par4, (double)(par5 + 1), (double)par6, player.rotationYaw, 0.0F);
             world.func_72838_d(KintounEntity);
          }
 
@@ -67,7 +67,7 @@ public class KintounItem extends Item {
       if (!world.field_72995_K) {
          Vec3 vec = player.func_70040_Z();
          KintounEntity KintounEntity = new KintounEntity(world);
-         KintounEntity.func_70012_b(player.field_70165_t + vec.field_72450_a * 1.5D, player.field_70163_u + 1.0D + vec.field_72448_b * 1.5D, player.field_70161_v + vec.field_72449_c * 1.5D, player.field_70177_z, 0.0F);
+         KintounEntity.setLocationAndAngles(player.posX + vec.field_72450_a * 1.5D, player.posY + 1.0D + vec.field_72448_b * 1.5D, player.posZ + vec.field_72449_c * 1.5D, player.rotationYaw, 0.0F);
          world.func_72838_d(KintounEntity);
          ItemStack[] inv = player.field_71071_by.field_70462_a;
          int id = 0;

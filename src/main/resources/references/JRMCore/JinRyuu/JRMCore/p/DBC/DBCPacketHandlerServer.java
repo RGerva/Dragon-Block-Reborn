@@ -191,7 +191,7 @@ public class DBCPacketHandlerServer {
 
                         userPower = attackUser + kiPowerUser + healthUser;
                         Entity technique = new EntityMajinAbsorption(pl, 0, state == 1 ? 12561588 : (state == 3 ? 16757199 : JRMCoreH.dnsBodyCM(dns)), userPower, attackUser + kiPowerUser, groupID);
-                        pl.field_70170_p.func_72838_d(technique);
+                        pl.world.func_72838_d(technique);
                      } else {
                         dns = "";
                         if (isOnCooldown) {
@@ -307,7 +307,7 @@ public class DBCPacketHandlerServer {
                                  }
                               }
 
-                              pl.field_70170_p.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(type, 1, density), type == 6 ? 0.2F : 1.0F, 1.0F);
+                              pl.world.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(type, 1, density), type == 6 ? 0.2F : 1.0F, 1.0F);
                               NBTTagCompound nbt = JRMCoreH.nbt(pl, "pres");
                               String StE = nbt.func_74779_i("jrmcStatusEff");
                               setGoDOn = JRMCoreH.StusEfcts(20, StE);
@@ -320,7 +320,7 @@ public class DBCPacketHandlerServer {
                                  JRMCoreH.addToFormMasteriesValue(pl, JGConfigDBCFormMastery.FM_GainKiFire, JGConfigDBCFormMastery.FM_GainKiFire, rc, state, state2, kk, mc, divine, creativeMode, 3);
                               }
 
-                              pl.field_70170_p.func_72838_d(var8);
+                              pl.world.func_72838_d(var8);
                               JRMCoreH.a1t3(pl);
                            }
                         }
@@ -339,7 +339,7 @@ public class DBCPacketHandlerServer {
                               }
 
                               Entity var8 = new EntityEnergyFM(pl);
-                              pl.field_70170_p.func_72838_d(var8);
+                              pl.world.func_72838_d(var8);
                            }
                         } else if (fusionParticipants2 != null && fusionParticipants2.length > 9) {
                            type = Byte.parseByte(fusionParticipants2[3]);
@@ -381,14 +381,14 @@ public class DBCPacketHandlerServer {
                            setGoDOn = costBo > 0;
                            if (JRMCoreConfig.dat5695[type] && (canAffordKiCost || setGoDOn)) {
                               if (sfire > 0) {
-                                 pl.field_70170_p.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(10, 1, (short)(sfire - 1)), 1.0F, 1.0F);
+                                 pl.world.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(10, 1, (short)(sfire - 1)), 1.0F, 1.0F);
                                  if (cast > 0) {
-                                    pl.field_70170_p.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(10, 3, (short)(cast - 1)), 1.0F, 1.0F);
+                                    pl.world.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(10, 3, (short)(cast - 1)), 1.0F, 1.0F);
                                  }
                               }
 
                               if (sincantation > 0) {
-                                 pl.field_70170_p.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(10, 3, (short)(sincantation - 1)), 1.0F, 1.0F);
+                                 pl.world.func_72956_a(pl, "jinryuudragonbc:" + JRMCoreH.techSnds(10, 3, (short)(sincantation - 1)), 1.0F, 1.0F);
                               }
 
                               if (!JRMCoreH.isInCreativeMode(pl)) {
@@ -408,7 +408,7 @@ public class DBCPacketHandlerServer {
                                  JRMCoreH.addToFormMasteriesValue(pl, JGConfigDBCFormMastery.FM_GainKiFire, JGConfigDBCFormMastery.FM_GainKiFire, rc, state, state2, kk, mc, divine, creativeMode, 3);
                               }
 
-                              pl.field_70170_p.func_72838_d(var8);
+                              pl.world.func_72838_d(var8);
                               JRMCoreH.a1t3(pl);
                            }
                         }
@@ -472,7 +472,7 @@ public class DBCPacketHandlerServer {
 
                         Entity technique = new EntityInstantTransmission(pl);
                         ((EntityInstantTransmission)technique).setData(p, skillLevel, shortTPMode, surroundMode);
-                        pl.field_70170_p.func_72838_d(technique);
+                        pl.world.func_72838_d(technique);
                      } else {
                         MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
                         groupID = JRMCoreH.getInt(pl, "JRMCGID");
@@ -530,8 +530,8 @@ public class DBCPacketHandlerServer {
                                     surroundPlayerLimit = JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_SURROUND_PLAYER_LIMIT_SKILL_LEVEL[modeID][skillLevel - 1];
                                     double r2 = JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_SURROUND_TARGET_FINDER_RANGE;
                                     double r2Y = 1.0D;
-                                    AxisAlignedBB aabb2 = AxisAlignedBB.func_72330_a(pl.field_70165_t - r2, pl.field_70163_u - 1.0D, pl.field_70161_v - r2, pl.field_70165_t + r2, pl.field_70163_u + 1.0D, pl.field_70161_v + r2);
-                                    List entityList2 = pl.field_70170_p.func_72839_b(pl, aabb2);
+                                    AxisAlignedBB aabb2 = AxisAlignedBB.func_72330_a(pl.posX - r2, pl.posY - 1.0D, pl.posZ - r2, pl.posX + r2, pl.posY + 1.0D, pl.posZ + r2);
+                                    List entityList2 = pl.world.func_72839_b(pl, aabb2);
 
                                     for(curEnergy = 0; curEnergy < entityList2.size(); ++curEnergy) {
                                        Entity nearbyEntity = (Entity)entityList2.get(curEnergy);
@@ -597,16 +597,16 @@ public class DBCPacketHandlerServer {
                                     JRMCoreH.setInt(remainingEnergy, pl, "jrmcEnrgy");
                                  }
 
-                                 pl.field_70170_p.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
-                                 double x = targetEntity.field_70165_t;
-                                 double y = targetEntity.field_70163_u;
-                                 double z = targetEntity.field_70161_v;
+                                 pl.world.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
+                                 double x = targetEntity.posX;
+                                 double y = targetEntity.posY;
+                                 double z = targetEntity.posZ;
                                  JRMCoreH.playerUsedInstantTransmission(pl);
 
                                  for(maxEnergy = teleportedEntities.size() - 1; maxEnergy >= 0; --maxEnergy) {
                                     entity = (EntityPlayer)teleportedEntities.get(maxEnergy);
-                                    double x2 = entity.field_70165_t - pl.field_70165_t;
-                                    double z2 = entity.field_70161_v - pl.field_70161_v;
+                                    double x2 = entity.posX - pl.posX;
+                                    double z2 = entity.posZ - pl.posZ;
                                     boolean dimensional = ((EntityPlayerMP)entity).field_71093_bK != targetEntity.field_71093_bK;
                                     boolean var10000;
                                     if (((EntityPlayerMP)entity).field_71093_bK == -1 && dimensional) {
@@ -637,7 +637,7 @@ public class DBCPacketHandlerServer {
                                        }
                                     }
 
-                                    ((EntityPlayerMP)entity).field_71135_a.func_147364_a(x3, y3, z3, entity.field_70177_z, entity.field_70125_A);
+                                    ((EntityPlayerMP)entity).field_71135_a.func_147364_a(x3, y3, z3, entity.rotationYaw, entity.rotationPitch);
                                     ((EntityPlayerMP)entity).func_70634_a(x3, y3, z3);
                                     entity.func_71023_q(1);
                                  }
@@ -649,15 +649,15 @@ public class DBCPacketHandlerServer {
                                     if (instantTransmissionTimers.length() > 0 && !instantTransmissionTimers.equals(" ")) {
                                        fusionParticipants = instantTransmissionTimers.split(",");
                                        if (fusionParticipants.length == 3) {
-                                          isController = fusionParticipants[0].equalsIgnoreCase(pl.func_70005_c_());
+                                          isController = fusionParticipants[0].equalsIgnoreCase(pl.getName());
                                           if (isController) {
-                                             EntityPlayer fusedPlayerPartner = pl.field_70170_p.func_72924_a(fusionParticipants[1]);
+                                             EntityPlayer fusedPlayerPartner = pl.world.getPlayerEntityByName(fusionParticipants[1]);
                                              if (fusedPlayerPartner != null) {
                                                 NBTTagCompound nbt2 = this.nbt(fusedPlayerPartner, "pres");
                                                 String fusionMembers2 = nbt2.func_74779_i("jrmcFuzion");
                                                 fusionParticipants2 = fusionMembers2.split(",");
                                                 if (fusionParticipants2.length == 3) {
-                                                   ((EntityPlayerMP)fusedPlayerPartner).field_71135_a.func_147364_a(x, y + 1.5D, z, fusedPlayerPartner.field_70177_z, fusedPlayerPartner.field_70125_A);
+                                                   ((EntityPlayerMP)fusedPlayerPartner).field_71135_a.func_147364_a(x, y + 1.5D, z, fusedPlayerPartner.rotationYaw, fusedPlayerPartner.rotationPitch);
                                                    ((EntityPlayerMP)fusedPlayerPartner).func_70634_a(x, y + 1.5D, z);
                                                    fusedPlayerPartner.func_71023_q(1);
                                                 }
@@ -669,7 +669,7 @@ public class DBCPacketHandlerServer {
 
                                  JRMCoreH.playerUsedInstantTransmission(pl);
                                  if (JGConfigDBCInstantTransmission.CONFIG_INSTANT_TRANSMISSION_NOTIFY_SERVER_ENABLED) {
-                                    mod_DragonBC.logger.info(pl.func_70005_c_() + " used Long Distance Teleportation to " + targetEntity.func_70005_c_() + " with " + (teleportedEntities.size() - 1) + " Surrounding Players to the DimensionID: " + targetEntity.field_71093_bK);
+                                    mod_DragonBC.logger.info(pl.getName() + " used Long Distance Teleportation to " + targetEntity.getName() + " with " + (teleportedEntities.size() - 1) + " Surrounding Players to the DimensionID: " + targetEntity.field_71093_bK);
                                  }
 
                                  if (nbt.func_74764_b("jrmcInstantTransmissionTimers")) {
@@ -683,7 +683,7 @@ public class DBCPacketHandlerServer {
                                     JRMCoreH.setString(instantTransmissionTimers, pl, "jrmcInstantTransmissionTimers");
                                  }
 
-                                 pl.field_70170_p.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
+                                 pl.world.func_72956_a(pl, divine ? "jinryuudragonbc:DBC4.blacktp" : "jinryuudragonbc:DBC5.instant_transmission", 0.25F, pl.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
                                  return;
                               }
 
@@ -721,7 +721,7 @@ public class DBCPacketHandlerServer {
          ChatStyle styl = (new ChatStyle()).func_150238_a(EnumChatFormatting.WHITE);
          if (JRMCoreConfig.DebugInfo) {
             String info = "DBC has found Potential hacking at ID:06 by player: %";
-            mod_DragonBC.logger.info(String.format(info, p.func_70005_c_()));
+            mod_DragonBC.logger.info(String.format(info, p.getName()));
          }
       }
 
@@ -745,7 +745,7 @@ public class DBCPacketHandlerServer {
             for(z = 0; z < server.field_71305_c.length; ++z) {
                d = server.field_71305_c[z].field_73011_w.field_76574_g;
                if (d == DBCConfig.otherWorld) {
-                  target = server.field_71305_c[z].func_72924_a(sa[1]);
+                  target = server.field_71305_c[z].getPlayerEntityByName(sa[1]);
                }
             }
          }
@@ -755,7 +755,7 @@ public class DBCPacketHandlerServer {
             d = JRMCoreH.getInt(p, "jrmcDrgn");
             ArrayList<String> wl = d == 0 ? DBCH.wishS : DBCH.wishP;
             if (z > 0) {
-               p.field_70170_p.func_72908_a(p.field_70165_t, p.field_70163_u, p.field_70161_v, "jinryuudragonbc:dragon.grant", 1.0F, 1.0F);
+               p.world.func_72908_a(p.posX, p.posY, p.posZ, "jinryuudragonbc:dragon.grant", 1.0F, 1.0F);
                int d;
                String t;
                if (((String)wl.get(wish)).contains(";+;")) {
@@ -784,10 +784,10 @@ public class DBCPacketHandlerServer {
                   } else if (((String)wl.get(wish)).equals("reviventp") && target != null) {
                      alive = JRMCoreH.getByte(target, "jrmcAlv");
                      if (alive == 1 && target != null && p.field_71093_bK != DBCConfig.otherWorld && target.field_71093_bK == DBCConfig.otherWorld) {
-                        JRMCoreH.setString(p.func_70005_c_() + ";" + p.field_71093_bK + ";" + (int)p.field_70165_t + ";" + (int)p.field_70163_u + ";" + (int)p.field_70161_v, target, "jrmcRevtpInit");
+                        JRMCoreH.setString(p.getName() + ";" + p.field_71093_bK + ";" + (int)p.posX + ";" + (int)p.posY + ";" + (int)p.posZ, target, "jrmcRevtpInit");
                         t = JRMCoreH.trlai("dbc", "reviveoffered");
                         styl = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
-                        target.func_145747_a((new ChatComponentTranslation(t, new Object[]{p.func_70005_c_(), new ChatComponentTranslation(JRMCoreH.trlai("dbc", (String)DBCH.plntNms.get(p.field_71093_bK)), new Object[0]), (int)p.field_70165_t + ", " + (int)p.field_70163_u + ", " + (int)p.field_70161_v})).func_150255_a(styl));
+                        target.func_145747_a((new ChatComponentTranslation(t, new Object[]{p.getName(), new ChatComponentTranslation(JRMCoreH.trlai("dbc", (String)DBCH.plntNms.get(p.field_71093_bK)), new Object[0]), (int)p.posX + ", " + (int)p.posY + ", " + (int)p.posZ})).func_150255_a(styl));
                      }
                   } else if (!((String)wl.get(wish)).equals("reviveall")) {
                      if (((String)wl.get(wish)).equals("young")) {
@@ -838,7 +838,7 @@ public class DBCPacketHandlerServer {
          if (wish == 100 && p.field_71093_bK == DBCConfig.otherWorld && p != null && p.field_70154_o == null && p.field_70153_n == null) {
             wish = JRMCoreH.getInt(p, "jrmcReviveTmer");
             if (wish <= 0) {
-               if (JRMCoreHDBC.DBCgetConfigDeadInv() && p.field_70170_p.func_82736_K().func_82766_b("keepInventory") && !p.field_71075_bZ.field_75098_d && JRMCoreHDBC.hasHalo(p)) {
+               if (JRMCoreHDBC.DBCgetConfigDeadInv() && p.world.func_82736_K().func_82766_b("keepInventory") && !p.field_71075_bZ.field_75098_d && JRMCoreHDBC.hasHalo(p)) {
                   JRMCoreH.nbt(p).func_74782_a("InventoryDead", p.field_71071_by.func_70442_a(new NBTTagList()));
                   p.field_71071_by.func_70443_b(JRMCoreH.nbt(p).func_150295_c("InventoryLiving", 10));
                   p.getEntityData().func_74782_a("Inventory", p.field_71071_by.func_70442_a(new NBTTagList()));
@@ -862,7 +862,7 @@ public class DBCPacketHandlerServer {
 
                ((EntityPlayerMP)p).field_71135_a.func_147364_a(d[0], d[1], d[2], (float)DBCConfig.RevAng[by][0], (float)DBCConfig.RevAng[by][1]);
                ((EntityPlayerMP)p).field_71135_a.func_147364_a(d[0], d[1] + 1.0D, d[2], (float)DBCConfig.RevAng[by][0], (float)DBCConfig.RevAng[by][1]);
-               mod_DragonBC.logger.info(p.func_70005_c_() + " revived!");
+               mod_DragonBC.logger.info(p.getName() + " revived!");
             }
          }
 
@@ -871,7 +871,7 @@ public class DBCPacketHandlerServer {
 
          if (wish == 101) {
             JRMCoreHDBC.reincarnate(p);
-            mod_DragonBC.logger.info(p.func_70005_c_() + " choose to Reincarnate!");
+            mod_DragonBC.logger.info(p.getName() + " choose to Reincarnate!");
          }
 
          if (wish == 199 && this.nbt(p, "pres").func_74762_e("DBCSenzu") == 0) {
@@ -919,7 +919,7 @@ public class DBCPacketHandlerServer {
                      if (target != null && target.field_71093_bK == DBCConfig.otherWorld) {
                         int alive = JRMCoreH.getByte(target, "jrmcAlv");
                         if (alive == 1) {
-                           list = list + ";" + target.func_70005_c_();
+                           list = list + ";" + target.getName();
                         }
                      }
                   }
@@ -932,11 +932,11 @@ public class DBCPacketHandlerServer {
             wish = Integer.parseInt(sa[0]);
             d = Integer.parseInt(sa[1]);
             z = Integer.parseInt(sa[2]);
-            TileEntity te = p.field_70170_p.func_147438_o(wish, d, z);
+            TileEntity te = p.world.func_147438_o(wish, d, z);
             float g = Float.parseFloat(sa[3]);
             if (te instanceof ArtGravDevTileEntity) {
                ((ArtGravDevTileEntity)te).setGravity(g);
-               p.field_70170_p.func_147471_g(wish, d, z);
+               p.world.func_147471_g(wish, d, z);
                te.func_70296_d();
             }
          } else if (id == 5) {
@@ -950,7 +950,7 @@ public class DBCPacketHandlerServer {
                   FMLCommonHandler.instance().getMinecraftServerInstance().func_71203_ab().transferPlayerToDimension((EntityPlayerMP)p, earth ? DBCConfig.planetEarth : DBCConfig.dimNullRealm, new WorldTeleporterDBCTelep(FMLCommonHandler.instance().getMinecraftServerInstance().func_71218_a(DBCConfig.planetEarth)));
                   ((EntityPlayerMP)p).field_71135_a.func_147364_a(d[0], d[1], d[2], 0.0F, 0.0F);
                   ((EntityPlayerMP)p).field_71135_a.func_147364_a(d[0], d[1] + 1.0D, d[2], 0.0F, 0.0F);
-                  mod_DragonBC.logger.info(p.func_70005_c_() + " was Teleported by Master Whis!");
+                  mod_DragonBC.logger.info(p.getName() + " was Teleported by Master Whis!");
                } else {
                   p.func_145747_a((new ChatComponentText("Unable to teleport while fused")).func_150255_a(styleRed));
                }
@@ -959,7 +959,7 @@ public class DBCPacketHandlerServer {
             double[] d = DBCConfig.WhisTeleportLocationNull;
             ((EntityPlayerMP)p).field_71135_a.func_147364_a(d[0], d[1], d[2], 0.0F, 0.0F);
             ((EntityPlayerMP)p).field_71135_a.func_147364_a(d[0], d[1] + 1.0D, d[2], 0.0F, 0.0F);
-            mod_DragonBC.logger.info(p.func_70005_c_() + " has fallen down in the Null Realm!");
+            mod_DragonBC.logger.info(p.getName() + " has fallen down in the Null Realm!");
          }
       }
 
@@ -1037,7 +1037,7 @@ public class DBCPacketHandlerServer {
          if (planetID == 1) {
             if (p.field_70154_o != null) {
                entity = p.field_70154_o;
-               entity.func_70106_y();
+               entity.setDead();
             }
 
             FMLCommonHandler.instance().getMinecraftServerInstance().func_71203_ab().transferPlayerToDimension((EntityPlayerMP)p, DBCConfig.planetNamek, new WorldTeleporterDBCSpacePod01(FMLCommonHandler.instance().getMinecraftServerInstance().func_71218_a(DBCConfig.planetNamek), entity));
@@ -1047,7 +1047,7 @@ public class DBCPacketHandlerServer {
          if (planetID == 2) {
             if (p.field_70154_o != null) {
                entity = p.field_70154_o;
-               entity.func_70106_y();
+               entity.setDead();
             }
 
             int plnt = DBCConfig.planetVegeta;
@@ -1062,7 +1062,7 @@ public class DBCPacketHandlerServer {
          if (planetID == 3) {
             if (p.field_70154_o != null) {
                entity = p.field_70154_o;
-               entity.func_70106_y();
+               entity.setDead();
             }
 
             FMLCommonHandler.instance().getMinecraftServerInstance().func_71203_ab().transferPlayerToDimension((EntityPlayerMP)p, DBCConfig.planetEarth, new WorldTeleporterDBCSpacePod01(FMLCommonHandler.instance().getMinecraftServerInstance().func_71218_a(DBCConfig.planetEarth), entity));
@@ -1198,12 +1198,12 @@ public class DBCPacketHandlerServer {
          boolean isInBaseForm;
          if (JRMCoreH.isRaceSaiyan(race)) {
             isNotFused = true;
-            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 200.0D, 200.0D, p.field_70161_v - 200.0D, p.field_70165_t + 200.0D, 255.0D, p.field_70161_v + 200.0D);
-            List l = p.field_70170_p.func_72872_a(EntityEnergyFM.class, aabb);
+            AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 200.0D, 200.0D, p.posZ - 200.0D, p.posX + 200.0D, 255.0D, p.posZ + 200.0D);
+            List l = p.world.func_72872_a(EntityEnergyFM.class, aabb);
             tryToUseUltraInstinct = !l.isEmpty();
             tailMode = JRMCoreH.tailHas(JRMCoreH.getByte(p, "jrmcTlmd"));
             boolean night = JRMCoreH.StusEfcts(8, StE) || tryToUseUltraInstinct;
-            isInBaseForm = p.field_70125_A <= -90.0F;
+            isInBaseForm = p.rotationPitch <= -90.0F;
             transformToOozaru = night && isInBaseForm && tailMode && st == 0;
          }
 
@@ -1322,12 +1322,12 @@ public class DBCPacketHandlerServer {
                      if (fusionMembers.equals(" ")) {
                         jgPlayer.setTransformationMeter(0);
                         n = true;
-                        AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 3.0D, p.field_70163_u - 3.0D, p.field_70161_v - 3.0D, p.field_70165_t + 3.0D, p.field_70163_u + 3.0D, p.field_70161_v + 3.0D);
-                        List entityList = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+                        AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 3.0D, p.posY - 3.0D, p.posZ - 3.0D, p.posX + 3.0D, p.posY + 3.0D, p.posZ + 3.0D);
+                        List entityList = p.world.func_72872_a(EntityPlayer.class, aabb);
                         if (!entityList.isEmpty()) {
                            for(strnAct = 0; strnAct < entityList.size(); ++strnAct) {
                               EntityPlayer pl2 = (EntityPlayer)entityList.get(strnAct);
-                              if (!pl2.func_70005_c_().equals(p.func_70005_c_())) {
+                              if (!pl2.getName().equals(p.getName())) {
                                  nbt2 = this.nbt(pl2, "pres");
                                  rc2 = nbt2.func_74771_c("jrmcRace");
                                  if (JRMCoreH.race_match(race, rc2)) {
@@ -1345,9 +1345,9 @@ public class DBCPacketHandlerServer {
                                           JRMCoreH.PlyrSettingsRem((NBTTagCompound)nbt2, 4);
                                           JRMCoreH.PlyrSettingsRem((NBTTagCompound)nbt, 4);
                                           fznn = JRMCoreH.trlai("dbc", "playersFuseFaild");
-                                          p.func_145747_a((new ChatComponentTranslation(fznn, new Object[]{p.func_70005_c_(), pl2.func_70005_c_()})).func_150255_a(styleYellow));
-                                          pl2.func_145747_a((new ChatComponentTranslation(fznn, new Object[]{p.func_70005_c_(), pl2.func_70005_c_()})).func_150255_a(styleYellow));
-                                          mod_DragonBC.logger.info(p.func_70005_c_() + " and " + pl2.func_70005_c_() + " fusion failed!");
+                                          p.func_145747_a((new ChatComponentTranslation(fznn, new Object[]{p.getName(), pl2.getName()})).func_150255_a(styleYellow));
+                                          pl2.func_145747_a((new ChatComponentTranslation(fznn, new Object[]{p.getName(), pl2.getName()})).func_150255_a(styleYellow));
+                                          mod_DragonBC.logger.info(p.getName() + " and " + pl2.getName() + " fusion failed!");
                                           nbt.func_74778_a("jrmcFuzion", "" + JRMCoreConfig.FznOverTime);
                                           nbt2.func_74778_a("jrmcFuzion", "" + JRMCoreConfig.FznOverTime);
                                           JRMCoreH.StusEfcts(10, (NBTTagCompound)nbt, false);
@@ -1362,14 +1362,14 @@ public class DBCPacketHandlerServer {
                                           JRMCoreH.PlyrSettingsRem((NBTTagCompound)nbt, 4);
                                           StE = JRMCoreH.StusEfcts(10, StE, (NBTTagCompound)nbt, true);
                                           StE2 = JRMCoreH.StusEfcts(11, StE2, (NBTTagCompound)nbt2, true);
-                                          fznn = JRMCoreHDBC.f_namgen(p.func_70005_c_(), pl2.func_70005_c_());
+                                          fznn = JRMCoreHDBC.f_namgen(p.getName(), pl2.getName());
                                           FznTime = JRMCoreConfig.FznTime - (JRMCoreH.isRaceArcosian(race) && st > 4 ? (st - 4) * 5 : (JRMCoreH.isRaceHumanOrNamekian(race) ? st * 5 : st * 2));
-                                          nbt2.func_74778_a("jrmcFuzion", p.func_70005_c_() + "," + pl2.func_70005_c_() + "," + FznTime);
-                                          nbt.func_74778_a("jrmcFuzion", p.func_70005_c_() + "," + pl2.func_70005_c_() + "," + FznTime);
-                                          mod_DragonBC.logger.info(p.func_70005_c_() + " and " + pl2.func_70005_c_() + " fused to " + fznn + "!");
+                                          nbt2.func_74778_a("jrmcFuzion", p.getName() + "," + pl2.getName() + "," + FznTime);
+                                          nbt.func_74778_a("jrmcFuzion", p.getName() + "," + pl2.getName() + "," + FznTime);
+                                          mod_DragonBC.logger.info(p.getName() + " and " + pl2.getName() + " fused to " + fznn + "!");
                                           String t = JRMCoreH.trlai("dbc", "playersFused");
-                                          p.func_145747_a((new ChatComponentTranslation(t, new Object[]{p.func_70005_c_(), pl2.func_70005_c_(), fznn})).func_150255_a(styleYellow));
-                                          pl2.func_145747_a((new ChatComponentTranslation(t, new Object[]{p.func_70005_c_(), pl2.func_70005_c_(), fznn})).func_150255_a(styleYellow));
+                                          p.func_145747_a((new ChatComponentTranslation(t, new Object[]{p.getName(), pl2.getName(), fznn})).func_150255_a(styleYellow));
+                                          pl2.func_145747_a((new ChatComponentTranslation(t, new Object[]{p.getName(), pl2.getName(), fznn})).func_150255_a(styleYellow));
                                           this.soundPowerUp(p, "jinryuudragonbc:DBC.fusefin");
                                           StE = JRMCoreH.StusEfcts(3, StE, (NBTTagCompound)nbt, false);
                                           StE = JRMCoreH.StusEfcts(5, StE, (NBTTagCompound)nbt, false);
@@ -1438,15 +1438,15 @@ public class DBCPacketHandlerServer {
                         s4ft = JRMCoreH.getInt(p, "jrmcAfGFtStFT");
                         ssgHelp = 0;
                         succeded = true;
-                        AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 3.0D, p.field_70163_u - 3.0D, p.field_70161_v - 3.0D, p.field_70165_t + 3.0D, p.field_70163_u + 3.0D, p.field_70161_v + 3.0D);
-                        List list = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+                        AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 3.0D, p.posY - 3.0D, p.posZ - 3.0D, p.posX + 3.0D, p.posY + 3.0D, p.posZ + 3.0D);
+                        List list = p.world.func_72872_a(EntityPlayer.class, aabb);
                         int gplvl;
                         byte s;
                         boolean state;
                         if (!list.isEmpty()) {
                            for(gplvl = 0; gplvl < list.size(); ++gplvl) {
                               EntityPlayer pl = (EntityPlayer)list.get(gplvl);
-                              if (!pl.func_70005_c_().equals(p.func_70005_c_())) {
+                              if (!pl.getName().equals(p.getName())) {
                                  String StE2 = JRMCoreH.getString(pl, "jrmcStatusEff");
                                  int align2 = JRMCoreH.getByte(pl, "jrmcAlign");
                                  a = JRMCoreH.StusEfcts(4, StE2);
@@ -1463,8 +1463,8 @@ public class DBCPacketHandlerServer {
 
                         int gp;
                         if (ssgHelp == 0) {
-                           aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 3.0D, p.field_70163_u - 3.0D, p.field_70161_v - 3.0D, p.field_70165_t + 3.0D, p.field_70163_u + 3.0D, p.field_70161_v + 3.0D);
-                           List listMasters = p.field_70170_p.func_72872_a(EntityDBCKami.class, aabb);
+                           aabb = AxisAlignedBB.func_72330_a(p.posX - 3.0D, p.posY - 3.0D, p.posZ - 3.0D, p.posX + 3.0D, p.posY + 3.0D, p.posZ + 3.0D);
+                           List listMasters = p.world.func_72872_a(EntityDBCKami.class, aabb);
                            if (!listMasters.isEmpty()) {
                               for(gp = 0; gp < listMasters.size(); ++gp) {
                                  EntityDBCKami entity = (EntityDBCKami)listMasters.get(gp);
@@ -1543,7 +1543,7 @@ public class DBCPacketHandlerServer {
                                  }
 
                                  EntityPlayer pl = (EntityPlayer)list.get(i);
-                                 if (!pl.func_70005_c_().equals(p.func_70005_c_())) {
+                                 if (!pl.getName().equals(p.getName())) {
                                     int align2 = JRMCoreH.getByte(pl, "jrmcAlign");
                                     sg = JRMCoreH.getInt(pl, "jrmcGodStrain");
                                     s = JRMCoreH.getByte(pl, "jrmcState");
@@ -2001,9 +2001,9 @@ public class DBCPacketHandlerServer {
          if (!fusionMembers.equals(" ") && !isKaiokenAvailable) {
             String[] fusionParticipants = fusionMembers.split(",");
             if (fusionParticipants.length == 3) {
-               boolean isParticipentCommandSender = fusionParticipants[0].equalsIgnoreCase(p.func_70005_c_());
+               boolean isParticipentCommandSender = fusionParticipants[0].equalsIgnoreCase(p.getName());
                if (isParticipentCommandSender) {
-                  EntityPlayer pl2 = p.field_70170_p.func_72924_a(fusionParticipants[1]);
+                  EntityPlayer pl2 = p.world.getPlayerEntityByName(fusionParticipants[1]);
                   succeded = pl2 == null;
                   curBody = Integer.parseInt(fusionParticipants[2]) - (JRMCoreH.isRaceArcosian(race) && stUp > 4 ? (stUp - 4) * 5 : (JRMCoreH.isRaceHumanOrNamekian(race) ? stUp * 5 : stUp * 2));
                   if (!succeded) {
@@ -2200,23 +2200,23 @@ public class DBCPacketHandlerServer {
 
       if (dbcjumpsound < 999 && dbcjumpsound >= 0) {
          int n = true;
-         AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 16.0D, p.field_70163_u - 16.0D, p.field_70161_v - 16.0D, p.field_70165_t + 16.0D, p.field_70163_u + 16.0D, p.field_70161_v + 16.0D);
-         List l = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+         AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 16.0D, p.posY - 16.0D, p.posZ - 16.0D, p.posX + 16.0D, p.posY + 16.0D, p.posZ + 16.0D);
+         List l = p.world.func_72872_a(EntityPlayer.class, aabb);
 
          for(int i = 0; i < l.size(); ++i) {
             EntityPlayer entity2 = (EntityPlayer)l.get(i);
             PD.sendTo(new DBCPduo(dbcjumpsound, dbcp), (EntityPlayerMP)entity2);
          }
-      } else if (dbcjumpsound == 1000 && p.field_70170_p.func_73045_a(dbcp) != null) {
-         p.field_70170_p.func_73045_a(dbcp).func_70106_y();
+      } else if (dbcjumpsound == 1000 && p.world.func_73045_a(dbcp) != null) {
+         p.world.func_73045_a(dbcp).setDead();
       }
 
    }
 
    public void handleDBCascendsound(int c, EntityPlayer p) {
       int n = true;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 16.0D, p.field_70163_u - 16.0D, p.field_70161_v - 16.0D, p.field_70165_t + 16.0D, p.field_70163_u + 16.0D, p.field_70161_v + 16.0D);
-      List l = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 16.0D, p.posY - 16.0D, p.posZ - 16.0D, p.posX + 16.0D, p.posY + 16.0D, p.posZ + 16.0D);
+      List l = p.world.func_72872_a(EntityPlayer.class, aabb);
 
       for(int i = 0; i < l.size(); ++i) {
          EntityPlayer entity2 = (EntityPlayer)l.get(i);
@@ -2227,8 +2227,8 @@ public class DBCPacketHandlerServer {
 
    public void handleDBCdescendsound(int c, EntityPlayer p) {
       int n = true;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 16.0D, p.field_70163_u - 16.0D, p.field_70161_v - 16.0D, p.field_70165_t + 16.0D, p.field_70163_u + 16.0D, p.field_70161_v + 16.0D);
-      List l = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 16.0D, p.posY - 16.0D, p.posZ - 16.0D, p.posX + 16.0D, p.posY + 16.0D, p.posZ + 16.0D);
+      List l = p.world.func_72872_a(EntityPlayer.class, aabb);
 
       for(int i = 0; i < l.size(); ++i) {
          EntityPlayer entity2 = (EntityPlayer)l.get(i);
@@ -2239,8 +2239,8 @@ public class DBCPacketHandlerServer {
 
    public void handleDBCscouter1(int c, EntityPlayer p) {
       int n = true;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 16.0D, p.field_70163_u - 16.0D, p.field_70161_v - 16.0D, p.field_70165_t + 16.0D, p.field_70163_u + 16.0D, p.field_70161_v + 16.0D);
-      List l = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 16.0D, p.posY - 16.0D, p.posZ - 16.0D, p.posX + 16.0D, p.posY + 16.0D, p.posZ + 16.0D);
+      List l = p.world.func_72872_a(EntityPlayer.class, aabb);
 
       for(int i = 0; i < l.size(); ++i) {
          EntityPlayer entity2 = (EntityPlayer)l.get(i);
@@ -2251,8 +2251,8 @@ public class DBCPacketHandlerServer {
 
    public void handleDBCscouter2(int c, EntityPlayer p) {
       int n = true;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 16.0D, p.field_70163_u - 16.0D, p.field_70161_v - 16.0D, p.field_70165_t + 16.0D, p.field_70163_u + 16.0D, p.field_70161_v + 16.0D);
-      List l = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 16.0D, p.posY - 16.0D, p.posZ - 16.0D, p.posX + 16.0D, p.posY + 16.0D, p.posZ + 16.0D);
+      List l = p.world.func_72872_a(EntityPlayer.class, aabb);
 
       for(int i = 0; i < l.size(); ++i) {
          EntityPlayer entity2 = (EntityPlayer)l.get(i);
@@ -2263,8 +2263,8 @@ public class DBCPacketHandlerServer {
 
    public void handleDBCscouter3(int c, EntityPlayer p) {
       int n = true;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 16.0D, p.field_70163_u - 16.0D, p.field_70161_v - 16.0D, p.field_70165_t + 16.0D, p.field_70163_u + 16.0D, p.field_70161_v + 16.0D);
-      List l = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 16.0D, p.posY - 16.0D, p.posZ - 16.0D, p.posX + 16.0D, p.posY + 16.0D, p.posZ + 16.0D);
+      List l = p.world.func_72872_a(EntityPlayer.class, aabb);
 
       for(int i = 0; i < l.size(); ++i) {
          EntityPlayer entity2 = (EntityPlayer)l.get(i);
@@ -2275,8 +2275,8 @@ public class DBCPacketHandlerServer {
 
    public void handleDBCscouter4(int c, EntityPlayer p) {
       int n = true;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - 16.0D, p.field_70163_u - 16.0D, p.field_70161_v - 16.0D, p.field_70165_t + 16.0D, p.field_70163_u + 16.0D, p.field_70161_v + 16.0D);
-      List l = p.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(p.posX - 16.0D, p.posY - 16.0D, p.posZ - 16.0D, p.posX + 16.0D, p.posY + 16.0D, p.posZ + 16.0D);
+      List l = p.world.func_72872_a(EntityPlayer.class, aabb);
 
       for(int i = 0; i < l.size(); ++i) {
          EntityPlayer entity2 = (EntityPlayer)l.get(i);
@@ -2286,7 +2286,7 @@ public class DBCPacketHandlerServer {
    }
 
    public void soundPowerUp(EntityPlayer var4, String var2) {
-      var4.field_70170_p.func_72956_a(var4, var2, 0.15F, 1.0F);
+      var4.world.func_72956_a(var4, var2, 0.15F, 1.0F);
    }
 
    public NBTTagCompound nbt(EntityPlayer p, String s) {

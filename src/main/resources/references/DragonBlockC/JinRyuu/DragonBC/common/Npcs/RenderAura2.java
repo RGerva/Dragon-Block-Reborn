@@ -45,7 +45,7 @@ public class RenderAura2 extends RenderDBC {
    public void renderAura(EntityAura2 par1Entity, double parX, double parY, double parZ, float par8, float par9) {
       float var13 = (float)par1Entity.getAge();
       boolean rot = par1Entity.getRot();
-      this.field_76989_e = 0.0F;
+      this.shadowSize = 0.0F;
       if (par1Entity.kettleMode != 1) {
          if (JGConfigClientSettings.CLIENT_DA20) {
             if (JGConfigClientSettings.CLIENT_DA14 && par1Entity.getBol6() == -1) {
@@ -109,14 +109,14 @@ public class RenderAura2 extends RenderDBC {
          this.au_i = 0;
       }
 
-      this.field_76989_e = 0.0F;
+      this.shadowSize = 0.0F;
       GL11.glPushMatrix();
       GL11.glTranslatef((float)parX + 0.0F, (float)parY + 3.0F, (float)parZ + 0.0F);
       boolean rot = par1Entity.getRot();
       if (rot) {
          GL11.glTranslatef(0.0F, -1.5F, 0.0F);
-         GL11.glRotatef(-par1Entity.field_70177_z, 0.0F, 1.0F, 0.0F);
-         GL11.glRotatef(par1Entity.field_70125_A - 90.0F, 1.0F, 0.0F, 0.0F);
+         GL11.glRotatef(-par1Entity.rotationYaw, 0.0F, 1.0F, 0.0F);
+         GL11.glRotatef(par1Entity.rotationPitch - 90.0F, 1.0F, 0.0F, 0.0F);
          GL11.glTranslatef(0.0F, 1.5F, 0.0F);
       }
 
@@ -150,8 +150,8 @@ public class RenderAura2 extends RenderDBC {
       GL11.glPopMatrix();
       GL11.glPushMatrix();
       GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
-      this.field_76990_c.field_78724_e.func_110577_a(txx);
-      boolean plyrSP = DBCClient.mc.field_71439_g.func_70005_c_().equals(par1Entity.getmot()) && DBCClient.mc.field_71474_y.field_74320_O == 0;
+      this.renderManager.renderEngine.bindTexture(txx);
+      boolean plyrSP = DBCClient.mc.player.getName().equals(par1Entity.getmot()) && DBCClient.mc.gameSettings.thirdPersonView == 0;
       float p = !plyrSP ? par1Entity.getAlp() * ((float)JGConfigClientSettings.CLIENT_DA21 / 10.0F) : (par1Entity.getInner() ? 0.025F * ((float)JGConfigClientSettings.CLIENT_DA21 / 10.0F) : 0.05F * ((float)JGConfigClientSettings.CLIENT_DA21 / 10.0F));
       glColor4f(c, p);
       GL11.glDepthMask(false);
@@ -176,7 +176,7 @@ public class RenderAura2 extends RenderDBC {
                }
 
                if (hasl2) {
-                  this.field_76990_c.field_78724_e.func_110577_a(txx2);
+                  this.renderManager.renderEngine.bindTexture(txx2);
                   glColor4f(cl2, p);
                   if (spawn) {
                      this.aModel.renderModel(par1Entity, 0.0625F, var13, (float)i2 * w, spd);
@@ -187,7 +187,7 @@ public class RenderAura2 extends RenderDBC {
             GL11.glPopMatrix();
             GL11.glPushMatrix();
             GL11.glRotatef((float)(i * 90 + 45), 0.0F, 1.0F, 0.0F);
-            this.field_76990_c.field_78724_e.func_110577_a(cl3b && i2 == 1 ? txx3 : txx);
+            this.renderManager.renderEngine.bindTexture(cl3b && i2 == 1 ? txx3 : txx);
             if (cl3b && i2 == 1) {
                cf(c, cl3, p);
             } else {
@@ -199,7 +199,7 @@ public class RenderAura2 extends RenderDBC {
             }
 
             if (hasl2) {
-               this.field_76990_c.field_78724_e.func_110577_a(txx2);
+               this.renderManager.renderEngine.bindTexture(txx2);
                glColor4f(cl2, p);
                if (spawn) {
                   this.aModel.renderModel(par1Entity, 0.0625F, var13 + 4.0F, (float)i2 * w, spd);
@@ -212,7 +212,7 @@ public class RenderAura2 extends RenderDBC {
                GL11.glScalef(0.7F, 0.7F, 0.7F);
                GL11.glTranslatef(0.0F, 0.95F, 0.0F);
                GL11.glRotatef((float)(i * 90 + 45), 0.0F, 1.0F, 0.0F);
-               this.field_76990_c.field_78724_e.func_110577_a(txx3);
+               this.renderManager.renderEngine.bindTexture(txx3);
                glColor4f(cl3, p);
                if (spawn) {
                   this.aModel.renderModel(par1Entity, 0.0625F, var13 + 4.0F, (float)i2 * w, spd);
@@ -239,7 +239,7 @@ public class RenderAura2 extends RenderDBC {
    private void lightning(EntityAura2 e, double par2, double par4, double par6, float par9, float var20, float var13, boolean rot) {
       if (var13 < (float)e.getLightLivingTime() && e.getState() > 4.0F && e.getState() < 7.0F && !rot) {
          GL11.glPushMatrix();
-         Tessellator tessellator2 = Tessellator.field_78398_a;
+         Tessellator tessellator2 = Tessellator.INSTANCE;
          GL11.glDisable(3553);
          GL11.glDisable(2896);
          GL11.glEnable(3042);
@@ -369,10 +369,10 @@ public class RenderAura2 extends RenderDBC {
    }
 
    protected float handleRotationFloat(Entity par1Entity, float par2) {
-      return (float)par1Entity.field_70173_aa + par2;
+      return (float)par1Entity.ticksExisted + par2;
    }
 
-   public void func_76986_a(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
       this.renderAura((EntityAura2)par1Entity, par2, par4, par6, par8, par9);
    }
 }

@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 
 public class JRMCoreHJYC {
    public static void openGui(int id, EntityPlayer pl) {
-      pl.openGui(mod_JYearsC.instance, id, pl.field_70170_p, (int)pl.field_70165_t, (int)pl.field_70163_u, (int)pl.field_70161_v);
+      pl.openGui(mod_JYearsC.instance, id, pl.world, (int)pl.posX, (int)pl.posY, (int)pl.posZ);
    }
 
    public static int JYCgetConfigcpgut() {
@@ -25,7 +25,7 @@ public class JRMCoreHJYC {
          for(int var5 = 0; var5 < var4; ++var5) {
             String n = var3[var5];
             String[] m = n.split(";");
-            if (plyr.func_70005_c_().equals(m[0])) {
+            if (plyr.getName().equals(m[0])) {
                yc = Float.parseFloat(m[1]);
             }
 
@@ -47,7 +47,7 @@ public class JRMCoreHJYC {
          for(pwr = 0; pwr < var3; ++pwr) {
             String n = state[pwr];
             String[] m = n.split(";");
-            if (plyr.func_70005_c_().equals(m[0])) {
+            if (plyr.getName().equals(m[0])) {
                float A = Float.parseFloat(m[1]);
                float gu = (float)JYearsCConfig.pgut;
                if (A <= 5.0F) {
@@ -67,8 +67,8 @@ public class JRMCoreHJYC {
          }
       }
 
-      state = JRMCoreH.data(plyr.func_70005_c_(), 2, "0;0").split(";");
-      String[] s = JRMCoreH.data(plyr.func_70005_c_(), 1, "0;0;0;0;0;0").split(";");
+      state = JRMCoreH.data(plyr.getName(), 2, "0;0").split(";");
+      String[] s = JRMCoreH.data(plyr.getName(), 1, "0;0;0;0;0;0").split(";");
       pwr = Integer.parseInt(s[2]);
       int race = Integer.parseInt(s[0]);
       int State = pwr != 2 && race != 0 ? Integer.parseInt(state[0]) : 0;

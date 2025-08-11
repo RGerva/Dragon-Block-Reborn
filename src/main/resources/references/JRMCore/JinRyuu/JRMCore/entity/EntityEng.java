@@ -90,9 +90,9 @@ public class EntityEng extends Entity {
    public EntityEng(World w, double poX, double poY, double poZ, String mot, int type, int color, float size, int partid) {
       super(w);
       this.func_70105_a(2.0F, 5.0F);
-      this.field_70165_t = poX;
-      this.field_70163_u = poY;
-      this.field_70161_v = poZ;
+      this.posX = poX;
+      this.posY = poY;
+      this.posZ = poZ;
       this.field_70159_w = 0.0D;
       this.field_70181_x = 0.0D;
       this.field_70179_y = 0.0D;
@@ -113,7 +113,7 @@ public class EntityEng extends Entity {
 
       this.partid = (byte)partid;
       this.mot = mot;
-      this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+      this.func_70107_b(this.posX, this.posY, this.posZ);
       this.moveToUser();
       if (JRMCoreConfig.KiAttackScalesWithUser) {
          this.size *= this.user == null ? 1.0F : this.user.field_70131_O / 1.8F;
@@ -125,13 +125,13 @@ public class EntityEng extends Entity {
 
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound nbt) {
+   protected void readEntityFromNBT(NBTTagCompound nbt) {
    }
 
-   protected void func_70014_b(NBTTagCompound nbt) {
+   protected void writeEntityToNBT(NBTTagCompound nbt) {
    }
 
    public boolean isWave() {
@@ -170,8 +170,8 @@ public class EntityEng extends Entity {
       return this.getType() == 8;
    }
 
-   public void func_70071_h_() {
-      if (this.field_70170_p.field_72995_K && !JRMCoreClient.mc.func_147113_T()) {
+   public void onUpdate() {
+      if (this.world.field_72995_K && !JRMCoreClient.mc.func_147113_T()) {
          if (this.user == null) {
             this.moveToUser();
          }
@@ -183,12 +183,12 @@ public class EntityEng extends Entity {
          if (this.user != null && !this.user.field_70128_L) {
             ExtendedPlayer props = ExtendedPlayer.get(this.user);
             if (props.getAnimKiShoot() != 0 && props.getAnimKiShootOn() != 0) {
-               this.func_70080_a(this.user.field_70165_t, this.user.field_70163_u + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.field_70161_v, 0.0F, 0.0F);
+               this.func_70080_a(this.user.posX, this.user.posY + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.posZ, 0.0F, 0.0F);
             } else {
-               this.func_70106_y();
+               this.setDead();
             }
          } else {
-            this.func_70106_y();
+            this.setDead();
          }
       }
 
@@ -196,21 +196,21 @@ public class EntityEng extends Entity {
 
    private void moveToUser() {
       if (this.mot.length() > 1) {
-         this.user = this.field_70170_p.func_72924_a(this.mot);
+         this.user = this.world.getPlayerEntityByName(this.mot);
          if (this.user != null) {
-            this.func_70080_a(this.user.field_70165_t, this.user.field_70163_u + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.field_70161_v, 0.0F, 0.0F);
+            this.func_70080_a(this.user.posX, this.user.posY + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.posZ, 0.0F, 0.0F);
          } else {
-            this.func_70106_y();
+            this.setDead();
          }
       } else {
-         this.func_70106_y();
+         this.setDead();
       }
 
    }
 
    private void createParticles() {
       int k;
-      if (this.user != null && this.user.field_70170_p.field_72995_K && (this.isWave() || this.isBlast() || this.isLargeBlast() || this.isLaser() || this.isSpiral())) {
+      if (this.user != null && this.user.world.field_72995_K && (this.isWave() || this.isBlast() || this.isLargeBlast() || this.isLaser() || this.isSpiral())) {
          k = JRMCoreH.techCol[this.getColor()];
          int coloring2 = JRMCoreH.techCol2[this.getColor()];
          this.generateParticles(this, this.user, k, coloring2);
@@ -235,7 +235,7 @@ public class EntityEng extends Entity {
                a = 1.0F;
                h1 = 2.0F;
                h1 = this.user.field_70131_O;
-               scale = (float)this.field_70173_aa * (this.size / 100.0F);
+               scale = (float)this.ticksExisted * (this.size / 100.0F);
                if (scale > this.size) {
                   scale = this.size;
                }
@@ -252,8 +252,8 @@ public class EntityEng extends Entity {
                rota = a * rota4;
                h2 = a * scalem;
                h3 = a * scales;
-               Entity entity7 = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.field_70170_p, 0.2F, 0.2F, this.user.field_70165_t, this.user.field_70163_u, this.user.field_70161_v, x, y, z, motx, 0.1D + Math.random() * 0.02500000037252903D, motz, 0.0F, (int)(Math.random() * 3.0D) + 56, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (27 + (int)pl_s) * ((int)(h1 / 3.0F) + 1), 0, 0.001F + (float)(Math.random() * 0.0020000000949949026D), 0.0F, 0.0F, 0, rota, h2, h3, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 0.0F, 0.0F, 0.0F, 0.0F, 0.05F, false, -1, true, this.user);
-               entity7.field_70170_p.func_72838_d(entity7);
+               Entity entity7 = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.world, 0.2F, 0.2F, this.user.posX, this.user.posY, this.user.posZ, x, y, z, motx, 0.1D + Math.random() * 0.02500000037252903D, motz, 0.0F, (int)(Math.random() * 3.0D) + 56, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (27 + (int)pl_s) * ((int)(h1 / 3.0F) + 1), 0, 0.001F + (float)(Math.random() * 0.0020000000949949026D), 0.0F, 0.0F, 0, rota, h2, h3, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 0.0F, 0.0F, 0.0F, 0.0F, 0.05F, false, -1, true, this.user);
+               entity7.world.func_72838_d(entity7);
             } else {
                int num;
                int i;
@@ -268,10 +268,10 @@ public class EntityEng extends Entity {
                float blue;
                if (this.getPartid() != 4) {
                   if (this.getPartid() == 2) {
-                     if (this.field_70173_aa % 5 == 0) {
+                     if (this.ticksExisted % 5 == 0) {
                         a = 1.0F;
                         h1 = 1.0F;
-                        scale = (float)this.field_70173_aa * (this.field_70131_O / 100.0F);
+                        scale = (float)this.ticksExisted * (this.field_70131_O / 100.0F);
                         pl_s = 1.0F;
                         x = 0.0D;
                         y = (double)(this.user.field_70131_O * 0.7F - 1.5F);
@@ -297,7 +297,7 @@ public class EntityEng extends Entity {
                            transp_sp = h1 * green;
                            transp_min = h1 * blue;
                            transp_max = h1 * h4;
-                           entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.field_70170_p, 2.0F, 2.0F, this.user.field_70165_t, this.user.field_70163_u + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, true, 0.0F, true, 0.0F, 1, "", 25, 0, 0.1F, scalem, scales, 0, transp_sp, transp_min, transp_max, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.95F, 0.98F, 0.2F, false, -1, true, this.user);
+                           entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.world, 2.0F, 2.0F, this.user.posX, this.user.posY + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, true, 0.0F, true, 0.0F, 1, "", 25, 0, 0.1F, scalem, scales, 0, transp_sp, transp_min, transp_max, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.95F, 0.98F, 0.2F, false, -1, true, this.user);
                            ((EntityCusPar)entity).setdata39((float)rota1);
                            ((EntityCusPar)entity).setdata40((float)rota2);
                            ((EntityCusPar)entity).setdata41((float)rota3);
@@ -305,10 +305,10 @@ public class EntityEng extends Entity {
                            ((EntityCusPar)entity).setdata45(1.5F);
                            ((EntityCusPar)entity).setRotate(rot);
                            ((EntityCusPar)entity).setRotation_Sp(red);
-                           entity.field_70170_p.func_72838_d(entity);
+                           entity.world.func_72838_d(entity);
                         }
                      }
-                  } else if (this.getPartid() == 3 && this.field_70173_aa % 2 == 0) {
+                  } else if (this.getPartid() == 3 && this.ticksExisted % 2 == 0) {
                      a = 0.8F * this.user.field_70131_O;
                      h1 = 1.0F + (this.user.field_70131_O > 2.1F ? this.user.field_70131_O / 2.0F : 0.0F) / 5.0F;
                      scale = this.user.field_70130_N * 3.0F;
@@ -321,15 +321,15 @@ public class EntityEng extends Entity {
                      scalem = 255.0F;
                      scales = 217.0F;
                      rota = 25.0F;
-                     Entity entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.user.field_70170_p, 0.2F, 0.2F, this.user.field_70165_t, this.user.field_70163_u + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.field_70161_v, x, y, z, motx, moty, motz, (float)(Math.random() * 0.009999999776482582D) - 0.005F, (int)(Math.random() * 3.0D) + 59, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * a * 1.6F), 2, ((float)(Math.random() * 0.009999999776482582D) + 0.01F) * a * h1, ((float)(Math.random() * 0.004999999888241291D) + 0.005F) * a * h1, 0.03F * a * h1, 0, scalem, scales, rota, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.3F, 0.35F, 0.02F, false, -1, false, (Entity)null);
-                     this.user.field_70170_p.func_72838_d(entity);
+                     Entity entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.user.world, 0.2F, 0.2F, this.user.posX, this.user.posY + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.posZ, x, y, z, motx, moty, motz, (float)(Math.random() * 0.009999999776482582D) - 0.005F, (int)(Math.random() * 3.0D) + 59, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * a * 1.6F), 2, ((float)(Math.random() * 0.009999999776482582D) + 0.01F) * a * h1, ((float)(Math.random() * 0.004999999888241291D) + 0.005F) * a * h1, 0.03F * a * h1, 0, scalem, scales, rota, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.3F, 0.35F, 0.02F, false, -1, false, (Entity)null);
+                     this.user.world.func_72838_d(entity);
                   }
                } else {
                   float h4;
-                  if (this.field_70173_aa % 2 == 0) {
+                  if (this.ticksExisted % 2 == 0) {
                      a = 1.0F;
                      h1 = 1.0F;
-                     scale = (float)this.field_70173_aa * (this.field_70131_O / 100.0F);
+                     scale = (float)this.ticksExisted * (this.field_70131_O / 100.0F);
                      pl_s = 1.0F;
                      x = 0.0D;
                      y = (double)(this.user.field_70131_O * 0.7F - 1.0F);
@@ -349,16 +349,16 @@ public class EntityEng extends Entity {
                         h4 = h1 * rota;
                         red = h1 * h2;
                         green = h1 * h3;
-                        Entity entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.field_70170_p, 2.0F, 2.0F, this.user.field_70165_t, this.user.field_70163_u + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, forg, rota, false, 0.0F, 1, "", 5, 1, 0.145F * pl_s, rota4, scalem, 0, h4, red, green, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.75F, 0.78F, 0.3F, false, -1, true, this.user);
+                        Entity entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.world, 2.0F, 2.0F, this.user.posX, this.user.posY + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, forg, rota, false, 0.0F, 1, "", 5, 1, 0.145F * pl_s, rota4, scalem, 0, h4, red, green, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.75F, 0.78F, 0.3F, false, -1, true, this.user);
                         ((EntityCusPar)entity).setdata39((float)((int)(Math.random() * 360.0D)));
-                        entity.field_70170_p.func_72838_d(entity);
+                        entity.world.func_72838_d(entity);
                      }
                   }
 
-                  if (this.field_70173_aa % 3 == 0) {
+                  if (this.ticksExisted % 3 == 0) {
                      a = 1.0F;
                      h1 = 1.0F;
-                     scale = (float)this.field_70173_aa * (this.field_70131_O / 100.0F);
+                     scale = (float)this.ticksExisted * (this.field_70131_O / 100.0F);
                      pl_s = 1.0F;
                      x = 0.0D;
                      y = (double)(this.user.field_70131_O * 0.7F - 1.0F);
@@ -384,18 +384,18 @@ public class EntityEng extends Entity {
                         transp_sp = 0.18F;
                         transp_min = 0.75F;
                         transp_max = 0.78F;
-                        entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.field_70170_p, 2.0F, 2.0F, this.user.field_70165_t, this.user.field_70163_u + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, forg, rot, false, 0.0F, 1, "", 30, 1, 0.12F * pl_s, scalem, scales, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.75F, 0.78F, 0.18F, false, -1, true, this.user);
+                        entity = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.world, 2.0F, 2.0F, this.user.posX, this.user.posY + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, forg, rot, false, 0.0F, 1, "", 30, 1, 0.12F * pl_s, scalem, scales, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.75F, 0.78F, 0.18F, false, -1, true, this.user);
                         ((EntityCusPar)entity).setdata39(rota);
-                        entity.field_70170_p.func_72838_d(entity);
+                        entity.world.func_72838_d(entity);
                         h2 = (float)(JRMCoreH.techCol2[this.color] >> 16 & 255) / 255.0F;
                         h3 = (float)(JRMCoreH.techCol2[this.color] >> 8 & 255) / 255.0F;
                         h4 = (float)(JRMCoreH.techCol2[this.color] & 255) / 255.0F;
                         red = h1 * h2;
                         green = h1 * h3;
                         blue = h1 * h4;
-                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.field_70170_p, 2.0F, 2.0F, this.user.field_70165_t, this.user.field_70163_u + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.field_70161_v, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, true, rot, false, 0.0F, 1, "", 30, 1, 0.096F * pl_s, scalem * 0.8F, scales * 0.8F, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.75F, 0.78F, 0.18F, false, -1, true, this.user);
+                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles_attack.png", this.world, 2.0F, 2.0F, this.user.posX, this.user.posY + (double)(this.user instanceof EntityPlayerSP ? -1.6F : 0.0F), this.user.posZ, x, y, z, 0.0D, 0.0D, 0.0D, 0.0F, id, 4, 4, 64, true, rot, false, 0.0F, 1, "", 30, 1, 0.096F * pl_s, scalem * 0.8F, scales * 0.8F, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.75F, 0.78F, 0.18F, false, -1, true, this.user);
                         ((EntityCusPar)entity2).setdata39(rota);
-                        entity2.field_70170_p.func_72838_d(entity2);
+                        entity2.world.func_72838_d(entity2);
                      }
                   }
                }
@@ -406,9 +406,9 @@ public class EntityEng extends Entity {
    }
 
    public void generateParticles(EntityEng entityBlast, Entity entity, int color, int color2) {
-      if (entityBlast != null && entity != null && entityBlast.field_70170_p.field_72995_K) {
+      if (entityBlast != null && entity != null && entityBlast.world.field_72995_K) {
          EntityPlayer user = entityBlast.user;
-         int ticksExisted = entityBlast.field_70173_aa;
+         int ticksExisted = entityBlast.ticksExisted;
          float scale = (float)ticksExisted * (entityBlast.getSize() / 100.0F);
          if (scale > entityBlast.getSize()) {
             scale = entityBlast.getSize();
@@ -442,9 +442,9 @@ public class EntityEng extends Entity {
                double x2 = 0.0D;
                double y2 = 0.0D;
                double z2 = 0.0D;
-               x2 = entity.field_70165_t;
-               y2 = entity.field_70163_u;
-               z2 = entity.field_70161_v;
+               x2 = entity.posX;
+               y2 = entity.posY;
+               z2 = entity.posZ;
                y2 += (double)(entity instanceof EntityPlayerSP ? -1.6F : 0.0F);
                double motionX = 0.0D;
                double motionZ = 0.0D;
@@ -503,10 +503,10 @@ public class EntityEng extends Entity {
                float scaleEnd = ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.2F;
                float scaleSpeed = 0.2F * life * 0.2F;
                int textureID = (int)(Math.random() * 3.0D) + 8;
-               Entity particle = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.field_70170_p, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart, scaleEnd, scaleStart, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F * alpha, 0.0F * alpha, 0.9F * alpha, 0.95F * alpha, 0.06F * alpha, false, -1, true, (Entity)null);
-               entity.field_70170_p.func_72838_d(particle);
-               Entity particle2 = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.field_70170_p, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart * 0.8F, scaleEnd * 0.8F, scaleStart * 0.8F, 0, red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F * alpha, 0.0F * alpha, 0.9F * alpha, 0.95F * alpha, 0.06F * alpha, false, -1, true, (Entity)null);
-               entity.field_70170_p.func_72838_d(particle2);
+               Entity particle = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.world, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart, scaleEnd, scaleStart, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F * alpha, 0.0F * alpha, 0.9F * alpha, 0.95F * alpha, 0.06F * alpha, false, -1, true, (Entity)null);
+               entity.world.func_72838_d(particle);
+               Entity particle2 = new EntityCusPar("jinryuumodscore:bens_particles.png", entity.world, 0.2F, 0.2F, x2, y2, z2, 0.0D, 0.0D, 0.0D, -motionX, -motionY, -motionZ, 0.0F, textureID, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, scaleStart * 0.8F, scaleEnd * 0.8F, scaleStart * 0.8F, 0, red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.6F * alpha, 0.0F * alpha, 0.9F * alpha, 0.95F * alpha, 0.06F * alpha, false, -1, true, (Entity)null);
+               entity.world.func_72838_d(particle2);
                if (!entityBlast.isWave() && !entityBlast.isBlast() && !entityBlast.isSpiral() && !entityBlast.isLaser() && !entityBlast.isDisk() && !entityBlast.isLargeBlast() && !entityBlast.isShield() && entityBlast.isExplosion()) {
                }
             }
@@ -523,7 +523,7 @@ public class EntityEng extends Entity {
       if (JGConfigClientSettings.renderdistanceMultiplierKiAttackCharge == 10000) {
          return true;
       } else {
-         double d1 = this.field_70121_D.func_72320_b();
+         double d1 = this.boundingBox.func_72320_b();
          d1 *= 64.0D * this.field_70155_l;
          return par1 < d1 * d1 * ((double)JGConfigClientSettings.renderdistanceMultiplierKiAttackCharge / 100.0D);
       }

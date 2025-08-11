@@ -42,7 +42,7 @@ public class ItemNamekChip extends Item {
       if (!event.isCanceled()) {
          var6 = event.charge;
          if (par3EntityPlayer.func_70055_a(Material.field_151567_E)) {
-            par2World.func_147443_d((int)par3EntityPlayer.field_70165_t, (int)par3EntityPlayer.field_70163_u, (int)par3EntityPlayer.field_70161_v, 1, 1);
+            par2World.func_147443_d((int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ, 1, 1);
             if (par3EntityPlayer instanceof EntityPlayerMP) {
                EntityPlayerMP playerMP = (EntityPlayerMP)par3EntityPlayer;
                if (playerMP.field_71093_bK == 0) {

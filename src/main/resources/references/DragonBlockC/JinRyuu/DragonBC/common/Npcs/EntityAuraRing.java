@@ -81,35 +81,35 @@ public class EntityAuraRing extends Entity {
       return alpha_curr;
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.mot.length() > 1) {
-         Entity other = this.field_70170_p.func_72924_a(this.mot);
+         Entity other = this.world.getPlayerEntityByName(this.mot);
          if (other != null) {
-            this.func_70012_b(other.field_70165_t, other.field_70163_u + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.field_70161_v, 0.0F, 0.0F);
+            this.setLocationAndAngles(other.posX, other.posY + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.posZ, 0.0F, 0.0F);
          } else {
-            this.func_70106_y();
+            this.setDead();
          }
       }
 
       if (this.Age++ >= this.MaxAge) {
-         this.func_70106_y();
+         this.setDead();
       }
 
    }
 
    public boolean getCanSpawnHere() {
-      return !this.field_70170_p.func_72855_b(this.field_70121_D);
+      return !this.world.checkNoEntityCollision(this.boundingBox);
    }
 
    public void onLivingUpdate() {
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound var1) {
+   protected void readEntityFromNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70014_b(NBTTagCompound var1) {
+   protected void writeEntityToNBT(NBTTagCompound var1) {
    }
 }

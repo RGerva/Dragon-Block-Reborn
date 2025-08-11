@@ -35,7 +35,7 @@ public class ComStrain extends CommandBase {
          String t = JRMCoreH.trlai("dbc", "StrainRemoved");
          ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
          entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(color));
-         this.notifyAdmins(par1ICommandSender, "%s's strain has been removed.", new Object[]{entityplayermp.func_70005_c_()});
+         this.notifyAdmins(par1ICommandSender, "%s's strain has been removed.", new Object[]{entityplayermp.getName()});
       }
    }
 

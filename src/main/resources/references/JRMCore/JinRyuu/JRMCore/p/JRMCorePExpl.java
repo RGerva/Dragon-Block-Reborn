@@ -84,7 +84,7 @@ public class JRMCorePExpl implements IMessage {
 
    public static class Handler extends BAmh<JRMCorePExpl> {
       public IMessage handleClientMessage(EntityPlayer p, JRMCorePExpl m, MessageContext ctx) {
-         m.origin = p.field_70170_p.func_73045_a(m.plID);
+         m.origin = p.world.func_73045_a(m.plID);
          JRMCoreClient.phc.handleExpl(m.explosionX, m.explosionY, m.explosionZ, m.explosionSize, m.expGriOff, m.expDam, m.origin, m.chunkPositionRecords, m.playerVelocityX, m.playerVelocityY, m.playerVelocityZ, p, m.type);
          return null;
       }

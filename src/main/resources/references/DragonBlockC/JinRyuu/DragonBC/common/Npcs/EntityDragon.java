@@ -35,9 +35,9 @@ public class EntityDragon extends EntityCreature {
       this.func_70105_a(2.0F, 25.0F);
       this.field_70130_N = 2.0F;
       this.field_70131_O = 25.0F;
-      this.field_70121_D.field_72336_d = this.field_70121_D.field_72340_a + (double)this.field_70130_N;
-      this.field_70121_D.field_72334_f = this.field_70121_D.field_72339_c + (double)this.field_70130_N;
-      this.field_70121_D.field_72337_e = this.field_70121_D.field_72338_b + (double)this.field_70131_O;
+      this.boundingBox.field_72336_d = this.boundingBox.field_72340_a + (double)this.field_70130_N;
+      this.boundingBox.field_72334_f = this.boundingBox.field_72339_c + (double)this.field_70130_N;
+      this.boundingBox.field_72337_e = this.boundingBox.field_72338_b + (double)this.field_70131_O;
       this.field_70714_bg.func_75776_a(0, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
       this.field_70714_bg.func_75776_a(1, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
       this.field_70714_bg.func_75776_a(2, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
@@ -55,7 +55,7 @@ public class EntityDragon extends EntityCreature {
       ItemStack var2 = par1EntityPlayer.field_71071_by.func_70448_g();
       boolean var3 = var2 != null;
       if (this.func_70089_S()) {
-         if (!this.field_70170_p.field_72995_K) {
+         if (!this.world.field_72995_K) {
             if (!this.granted) {
                this.granted = true;
                JRMCoreH.setInt(1, par1EntityPlayer, "jrmcWishes");
@@ -63,17 +63,17 @@ public class EntityDragon extends EntityCreature {
             }
          } else if (!this.granted) {
             this.granted = true;
-            par1EntityPlayer.openGui(mod_DragonBC.instance, 2, par1EntityPlayer.field_70170_p, (int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+            par1EntityPlayer.openGui(mod_DragonBC.instance, 2, par1EntityPlayer.world, (int)this.posX, (int)this.posY, (int)this.posZ);
          }
 
-         if (!par1EntityPlayer.field_70170_p.field_72995_K) {
-            EntityDragon2 Dragon2 = new EntityDragon2(par1EntityPlayer.field_70170_p);
-            Dragon2.func_70012_b((double)((int)this.field_70165_t), (double)((int)this.field_70163_u), (double)((int)this.field_70161_v), this.field_70177_z, 0.0F);
+         if (!par1EntityPlayer.world.field_72995_K) {
+            EntityDragon2 Dragon2 = new EntityDragon2(par1EntityPlayer.world);
+            Dragon2.setLocationAndAngles((double)((int)this.posX), (double)((int)this.posY), (double)((int)this.posZ), this.rotationYaw, 0.0F);
             Dragon2.timeBack = this.timeBack;
-            par1EntityPlayer.field_70170_p.func_72838_d(Dragon2);
+            par1EntityPlayer.world.func_72838_d(Dragon2);
          }
 
-         this.func_70106_y();
+         this.setDead();
          return true;
       } else {
          return super.func_70085_c(par1EntityPlayer);
@@ -84,15 +84,15 @@ public class EntityDragon extends EntityCreature {
    }
 
    public void shouldExecute() {
-      this.closestEntity = this.field_70170_p.func_72890_a(this, (double)this.maxDistanceForPlayer);
+      this.closestEntity = this.world.func_72890_a(this, (double)this.maxDistanceForPlayer);
       if (this.closestEntity != null) {
          this.watchedClass = EntityPlayer.class;
-         this.func_70671_ap().func_75650_a(this.closestEntity.field_70165_t, this.closestEntity.field_70163_u + 2.0D, this.closestEntity.field_70161_v, 10.0F, (float)this.func_70646_bf());
+         this.func_70671_ap().func_75650_a(this.closestEntity.posX, this.closestEntity.posY + 2.0D, this.closestEntity.posZ, 10.0F, (float)this.func_70646_bf());
       }
 
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0) {
       }
 
@@ -101,18 +101,18 @@ public class EntityDragon extends EntityCreature {
          mod_DragonBC.logger.info("Shenron is Summoned!");
       }
 
-      if (this.field_70170_p.field_72995_K) {
+      if (this.world.field_72995_K) {
          DBCH.dragonSum(this);
       }
 
       float r = 30.0F;
-      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.field_70165_t - (double)r, this.field_70163_u - (double)r, this.field_70161_v - (double)r, this.field_70165_t + (double)r, this.field_70163_u + (double)r, this.field_70161_v + (double)r);
-      List list = this.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(this.posX - (double)r, this.posY - (double)r, this.posZ - (double)r, this.posX + (double)r, this.posY + (double)r, this.posZ + (double)r);
+      List list = this.world.func_72872_a(EntityPlayer.class, aabb);
       if (list.size() == 0) {
-         this.func_70106_y();
+         this.setDead();
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
       this.shouldExecute();
    }
 
@@ -122,7 +122,7 @@ public class EntityDragon extends EntityCreature {
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
    public void func_70636_d() {
@@ -131,15 +131,15 @@ public class EntityDragon extends EntityCreature {
       }
 
       if (this.field_70716_bi > 0) {
-         double d0 = this.field_70165_t + (this.field_70709_bj - this.field_70165_t) / (double)this.field_70716_bi;
-         double d1 = this.field_70163_u + (this.field_70710_bk - this.field_70163_u) / (double)this.field_70716_bi;
-         double d2 = this.field_70161_v + (this.field_110152_bk - this.field_70161_v) / (double)this.field_70716_bi;
-         double d3 = MathHelper.func_76138_g(this.field_70712_bm - (double)this.field_70177_z);
-         this.field_70177_z = (float)((double)this.field_70177_z + d3 / (double)this.field_70716_bi);
-         this.field_70125_A = (float)((double)this.field_70125_A + (this.field_70705_bn - (double)this.field_70125_A) / (double)this.field_70716_bi);
+         double d0 = this.posX + (this.field_70709_bj - this.posX) / (double)this.field_70716_bi;
+         double d1 = this.posY + (this.field_70710_bk - this.posY) / (double)this.field_70716_bi;
+         double d2 = this.posZ + (this.field_110152_bk - this.posZ) / (double)this.field_70716_bi;
+         double d3 = MathHelper.func_76138_g(this.field_70712_bm - (double)this.rotationYaw);
+         this.rotationYaw = (float)((double)this.rotationYaw + d3 / (double)this.field_70716_bi);
+         this.rotationPitch = (float)((double)this.rotationPitch + (this.field_70705_bn - (double)this.rotationPitch) / (double)this.field_70716_bi);
          --this.field_70716_bi;
          this.func_70107_b(d0, d1, d2);
-         this.func_70101_b(this.field_70177_z, this.field_70125_A);
+         this.func_70101_b(this.rotationYaw, this.rotationPitch);
       } else if (!this.func_70613_aW()) {
          this.field_70159_w *= 0.98D;
          this.field_70181_x *= 0.98D;
@@ -158,7 +158,7 @@ public class EntityDragon extends EntityCreature {
          this.field_70179_y = 0.0D;
       }
 
-      this.field_70170_p.field_72984_F.func_76320_a("ai");
+      this.world.field_72984_F.func_76320_a("ai");
       if (this.func_70610_aX()) {
          this.field_70703_bu = false;
          this.field_70702_br = 0.0F;
@@ -166,18 +166,18 @@ public class EntityDragon extends EntityCreature {
          this.field_70704_bt = 0.0F;
       } else if (this.func_70613_aW()) {
          if (this.func_70650_aV()) {
-            this.field_70170_p.field_72984_F.func_76320_a("newAi");
+            this.world.field_72984_F.func_76320_a("newAi");
             this.func_70619_bc();
-            this.field_70170_p.field_72984_F.func_76319_b();
+            this.world.field_72984_F.func_76319_b();
          } else {
-            this.field_70170_p.field_72984_F.func_76320_a("oldAi");
-            this.field_70170_p.field_72984_F.func_76319_b();
-            this.field_70759_as = this.field_70177_z;
+            this.world.field_72984_F.func_76320_a("oldAi");
+            this.world.field_72984_F.func_76319_b();
+            this.field_70759_as = this.rotationYaw;
          }
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("jump");
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("jump");
       if (this.field_70703_bu) {
          if (!this.func_70090_H() && !this.func_70058_J()) {
             if (this.field_70122_E && this.jumpTicks == 0) {
@@ -191,29 +191,29 @@ public class EntityDragon extends EntityCreature {
          this.jumpTicks = 0;
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("travel");
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("travel");
       this.field_70702_br *= 0.98F;
       this.field_70701_bs *= 0.98F;
       this.field_70704_bt *= 0.9F;
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("push");
-      if (!this.field_70170_p.field_72995_K) {
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("push");
+      if (!this.world.field_72995_K) {
          this.func_85033_bc();
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
-      this.field_70170_p.field_72984_F.func_76320_a("looting");
-      if (!this.field_70170_p.field_72995_K && this.func_98052_bS() && !this.field_70729_aU && this.field_70170_p.func_82736_K().func_82766_b("mobGriefing")) {
+      this.world.field_72984_F.func_76319_b();
+      this.world.field_72984_F.func_76320_a("looting");
+      if (!this.world.field_72995_K && this.func_98052_bS() && !this.field_70729_aU && this.world.func_82736_K().func_82766_b("mobGriefing")) {
       }
 
-      this.field_70170_p.field_72984_F.func_76319_b();
-      EntityPlayer var2 = this.field_70170_p.func_72890_a(this, (double)this.var1);
+      this.world.field_72984_F.func_76319_b();
+      EntityPlayer var2 = this.world.func_72890_a(this, (double)this.var1);
       if (var2 != null) {
          this.closestEntity = var2;
-         this.field_70700_bx = 10 + this.field_70146_Z.nextInt(20);
+         this.field_70700_bx = 10 + this.rand.nextInt(20);
       } else {
-         this.field_70704_bt = (this.field_70146_Z.nextFloat() - 0.5F) * 20.0F;
+         this.field_70704_bt = (this.rand.nextFloat() - 0.5F) * 20.0F;
       }
 
       if (this.closestEntity != null) {

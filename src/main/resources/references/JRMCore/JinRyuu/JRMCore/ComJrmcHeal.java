@@ -34,7 +34,7 @@ public class ComJrmcHeal extends CommandBase {
          EntityPlayerMP entityplayermp;
          try {
             entityplayermp = func_71521_c(par1ICommandSender);
-            entitycommansender = entityplayermp.func_70005_c_();
+            entitycommansender = entityplayermp.getName();
          } catch (Exception var23) {
          }
 
@@ -88,9 +88,9 @@ public class ComJrmcHeal extends CommandBase {
                entityplayermp.func_71024_bL().func_75122_a(20, 0.9F);
             }
 
-            boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComHealNAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComHealNAS : JRMCoreConfig.ComHealNAO);
+            boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComHealNAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComHealNAS : JRMCoreConfig.ComHealNAO);
             if (n) {
-               this.notifyAdmins(par1ICommandSender, "%s was healed %s %s by %s", new Object[]{entityplayermp.func_70005_c_(), amount == 0 ? "max" : amount, par2ArrayOfStr[0], entitycommansender});
+               this.notifyAdmins(par1ICommandSender, "%s was healed %s %s by %s", new Object[]{entityplayermp.getName(), amount == 0 ? "max" : amount, par2ArrayOfStr[0], entitycommansender});
             }
 
          }

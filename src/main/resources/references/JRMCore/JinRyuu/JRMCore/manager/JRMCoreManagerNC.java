@@ -13,7 +13,7 @@ public class JRMCoreManagerNC {
    }
 
    public static EntitySafeZone[] getMasters(EntityPlayerMP entityplayermp) {
-      EntitySafeZone[] entities = new EntitySafeZone[]{new EntityKonohaFugaku(entityplayermp.field_70170_p), new EntityKonohaHiashi(entityplayermp.field_70170_p), new EntityKonohaSarutobi(entityplayermp.field_70170_p)};
+      EntitySafeZone[] entities = new EntitySafeZone[]{new EntityKonohaFugaku(entityplayermp.world), new EntityKonohaHiashi(entityplayermp.world), new EntityKonohaSarutobi(entityplayermp.world)};
       return entities;
    }
 }

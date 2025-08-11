@@ -14,9 +14,7 @@
 
 package com.rgerva.dbr.entity.renderer;
 
-import com.rgerva.dbr.entity.AuraEntity;
-import com.rgerva.dbr.entity.AuraVariant;
-import com.rgerva.dbr.entity.ModEntities;
+import com.rgerva.dbr.entity.entity.AuraVariant;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 

@@ -126,15 +126,15 @@ public class ExplosionJRMC extends Explosion {
          Entity entity = (Entity)list.get(k2);
          double d7 = entity.func_70011_f(this.field_77284_b, this.field_77285_c, this.field_77282_d) / (double)this.field_77280_f;
          if (d7 <= 1.0D) {
-            d0 = entity.field_70165_t - this.field_77284_b;
-            d1 = entity.field_70163_u + (double)entity.func_70047_e() - this.field_77285_c;
-            d2 = entity.field_70161_v - this.field_77282_d;
+            d0 = entity.posX - this.field_77284_b;
+            d1 = entity.posY + (double)entity.func_70047_e() - this.field_77285_c;
+            d2 = entity.posZ - this.field_77282_d;
             double d8 = (double)MathHelper.func_76133_a(d0 * d0 + d1 * d1 + d2 * d2);
             if (d8 != 0.0D) {
                d0 /= d8;
                d1 /= d8;
                d2 /= d8;
-               double d9 = (double)this.worldObj.func_72842_a(vec3, entity.field_70121_D);
+               double d9 = (double)this.worldObj.func_72842_a(vec3, entity.boundingBox);
                double d10 = (1.0D - d7) * d9;
                int sdmg = (int)((1.0D - d7) * (this.damage / 1.25D));
                if (this.palyer instanceof EntityPlayer || entity instanceof EntityPlayer) {

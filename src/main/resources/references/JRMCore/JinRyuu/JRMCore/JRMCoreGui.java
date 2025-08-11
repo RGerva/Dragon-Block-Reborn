@@ -107,7 +107,7 @@ public class JRMCoreGui extends Gui {
       int height = true;
       this.field_73735_i = -90.0F;
       ResourceLocation tx2 = new ResourceLocation("jinryuumodscore:allw.png");
-      JRMCoreClient.mc.field_71446_o.func_110577_a(tx2);
+      JRMCoreClient.mc.field_71446_o.bindTexture(tx2);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       JRMCoreH.txt("Hover over and release " + Keyboard.getKeyName(JRMCoreKeyHandler.actionMenu.func_151463_i()), JRMCoreH.cldgy, 0, true, var51 - 50, var61 - 110, 180);
       boolean doAction = false;
@@ -199,11 +199,11 @@ public class JRMCoreGui extends Gui {
          }
       }
 
-      if (!JRMCoreClient.mc.field_71474_y.field_74312_F.func_151470_d()) {
+      if (!JRMCoreClient.mc.gameSettings.field_74312_F.func_151470_d()) {
          JRMCoreCliTicH.actionNBO = false;
       }
 
-      if (JRMCoreClient.mc.field_71474_y.field_74312_F.func_151470_d() && JRMCoreCliTicH.actionSelectID % 9 != 4) {
+      if (JRMCoreClient.mc.gameSettings.field_74312_F.func_151470_d() && JRMCoreCliTicH.actionSelectID % 9 != 4) {
          KeyBinding.func_74510_a(JRMCoreKeyHandler.actionMenu.func_151463_i(), false);
       }
 

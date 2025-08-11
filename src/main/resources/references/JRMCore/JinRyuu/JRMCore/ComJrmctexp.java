@@ -57,11 +57,11 @@ public class ComJrmctexp extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(par1ICommandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var13) {
          }
 
-         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComTPNAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComTPNAS : JRMCoreConfig.ComTPNAO);
+         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComTPNAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComTPNAS : JRMCoreConfig.ComTPNAO);
          NBTTagCompound nbt = JRMCoreH.nbt(entityplayermp, "pres");
          boolean fl = false;
          if (nbt.func_74771_c("jrmcPwrtyp") == 1) {
@@ -69,7 +69,7 @@ public class ComJrmctexp extends CommandBase {
             if (s2 != null && s2.length() > 3) {
                JRMCoreH.setString(JRMCoreH.tech_expgiv(s2, sa), entityplayermp, JRMCoreH.techNbt[sl]);
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "Tech Exp Giving %s success for %s", new Object[]{sa, entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(par1ICommandSender, "Tech Exp Giving %s success for %s", new Object[]{sa, entityplayermp.getName()});
                }
             } else {
                fl = true;
@@ -79,7 +79,7 @@ public class ComJrmctexp extends CommandBase {
          }
 
          if (fl && n) {
-            this.notifyAdmins(par1ICommandSender, "Tech Exp Giving failed for %s", new Object[]{entityplayermp.func_70005_c_()});
+            this.notifyAdmins(par1ICommandSender, "Tech Exp Giving failed for %s", new Object[]{entityplayermp.getName()});
          }
 
       }

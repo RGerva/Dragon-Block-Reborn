@@ -26,7 +26,7 @@ public class OpenGuiMessage implements IMessage {
 
    public static class Handler extends SAmh<OpenGuiMessage> {
       public IMessage handleServerMessage(EntityPlayer player, OpenGuiMessage message, MessageContext ctx) {
-         player.openGui(mod_JRMCore.instance, message.id, player.field_70170_p, (int)player.field_70165_t, (int)player.field_70163_u, (int)player.field_70161_v);
+         player.openGui(mod_JRMCore.instance, message.id, player.world, (int)player.posX, (int)player.posY, (int)player.posZ);
          return null;
       }
    }

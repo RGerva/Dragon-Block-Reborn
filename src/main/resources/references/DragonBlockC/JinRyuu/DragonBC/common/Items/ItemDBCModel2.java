@@ -63,13 +63,13 @@ public class ItemDBCModel2 extends ModelBase {
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 
    public void render() {
       float par1 = 0.0625F;
-      this.Handle.func_78785_a(par1);
+      this.Handle.render(par1);
    }
 }

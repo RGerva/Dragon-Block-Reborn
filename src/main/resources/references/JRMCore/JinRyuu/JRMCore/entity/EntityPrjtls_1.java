@@ -76,17 +76,17 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       this.wpnTyp = id;
       this.field_70250_c = shootingEntity;
       this.field_70251_a = 0;
-      this.field_70163_u = shootingEntity.field_70163_u + (double)shootingEntity.func_70047_e() - 0.10000000149011612D - 1.0D;
-      double var6 = target.field_70165_t - shootingEntity.field_70165_t;
-      double var8 = target.field_70163_u + (double)target.func_70047_e() - 0.699999988079071D - this.field_70163_u;
-      double var10 = target.field_70161_v - shootingEntity.field_70161_v;
+      this.posY = shootingEntity.posY + (double)shootingEntity.func_70047_e() - 0.10000000149011612D - 1.0D;
+      double var6 = target.posX - shootingEntity.posX;
+      double var8 = target.posY + (double)target.func_70047_e() - 0.699999988079071D - this.posY;
+      double var10 = target.posZ - shootingEntity.posZ;
       double var12 = (double)MathHelper.func_76133_a(var6 * var6 + var10 * var10) * (shootingEntity instanceof EntityRRMecha ? 1.0D : 2.0D);
       if (var12 >= 1.0E-7D) {
          float var14 = (float)(Math.atan2(var10, var6) * 180.0D / 3.141592653589793D) - 90.0F;
          float var15 = (float)(-(Math.atan2(var8, var12) * 180.0D / 3.141592653589793D));
          double var16 = var6 / var12;
          double var18 = var10 / var12;
-         this.func_70012_b(shootingEntity.field_70165_t + var16, this.field_70163_u, shootingEntity.field_70161_v + var18, var14, var15);
+         this.setLocationAndAngles(shootingEntity.posX + var16, this.posY, shootingEntity.posZ + var18, var14, var15);
          this.field_70129_M = 0.0F;
          float var20 = (float)var12 * 0.2F;
          this.func_70186_c(var6, var8, var10, par4, par5);
@@ -103,17 +103,17 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       super(world);
       this.field_70250_c = shootingEntity;
       this.field_70251_a = 0;
-      this.field_70163_u = shootingEntity.field_70163_u + (double)shootingEntity.func_70047_e() - 0.10000000149011612D;
-      double var6 = target.field_70165_t - shootingEntity.field_70165_t;
-      double var8 = target.field_70163_u + (double)target.func_70047_e() - 0.699999988079071D - this.field_70163_u;
-      double var10 = target.field_70161_v - shootingEntity.field_70161_v;
+      this.posY = shootingEntity.posY + (double)shootingEntity.func_70047_e() - 0.10000000149011612D;
+      double var6 = target.posX - shootingEntity.posX;
+      double var8 = target.posY + (double)target.func_70047_e() - 0.699999988079071D - this.posY;
+      double var10 = target.posZ - shootingEntity.posZ;
       double var12 = (double)MathHelper.func_76133_a(var6 * var6 + var10 * var10);
       if (var12 >= 1.0E-7D) {
          float var14 = (float)(Math.atan2(var10, var6) * 180.0D / 3.141592653589793D) - 90.0F;
          float var15 = (float)(-(Math.atan2(var8, var12) * 180.0D / 3.141592653589793D));
          double var16 = var6 / var12;
          double var18 = var10 / var12;
-         this.func_70012_b(shootingEntity.field_70165_t + var16, this.field_70163_u, shootingEntity.field_70161_v + var18, var14, var15);
+         this.setLocationAndAngles(shootingEntity.posX + var16, this.posY, shootingEntity.posZ + var18, var14, var15);
          this.field_70129_M = 0.0F;
          float var20 = (float)var12 * 0.2F;
          this.func_70186_c(var6, var8 + (double)var20, var10, par4, par5);
@@ -121,7 +121,7 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
 
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
       this.field_70180_af.func_75682_a(16, (byte)0);
    }
 
@@ -130,9 +130,9 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       par1 /= (double)var9;
       par3 /= (double)var9;
       par5 /= (double)var9;
-      par1 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par3 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
-      par5 += this.field_70146_Z.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par1 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par3 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
+      par5 += this.rand.nextGaussian() * 0.007499999832361937D * (double)par8;
       par1 *= (double)par7;
       par3 *= (double)par7;
       par5 *= (double)par7;
@@ -140,8 +140,8 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       this.field_70181_x = par3;
       this.field_70179_y = par5;
       float var10 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-      this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-      this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
+      this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+      this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var10) * 180.0D / 3.141592653589793D);
       this.ticksInGround = 0;
    }
 
@@ -158,29 +158,29 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       this.field_70179_y = par5;
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          float var7 = MathHelper.func_76133_a(par1 * par1 + par5 * par5);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A;
-         this.field_70126_B = this.field_70177_z;
-         this.func_70012_b(this.field_70165_t, this.field_70163_u, this.field_70161_v, this.field_70177_z, this.field_70125_A);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(par3, (double)var7) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch;
+         this.field_70126_B = this.rotationYaw;
+         this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
          this.ticksInGround = 0;
       }
 
    }
 
-   public void func_70071_h_() {
-      if (this.field_70173_aa >= 400) {
-         this.func_70106_y();
+   public void onUpdate() {
+      if (this.ticksExisted >= 400) {
+         this.setDead();
       }
 
       boolean isRocket = this.wpnTyp != 3 && this.wpnTyp != 4 && this.wpnTyp != 6;
-      if (isRocket && !this.field_70170_p.field_72995_K && (this.field_70173_aa == 1 || this.field_70173_aa % 5 == 0)) {
-         this.field_70170_p.func_72956_a(this, "jinryuudragonbc:DBC4.rocket_travel", 0.3F, this.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
+      if (isRocket && !this.world.field_72995_K && (this.ticksExisted == 1 || this.ticksExisted % 5 == 0)) {
+         this.world.func_72956_a(this, "jinryuudragonbc:DBC4.rocket_travel", 0.3F, this.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
       }
 
       float sizeMulti;
       int var19;
-      if (this.field_70170_p.field_72995_K) {
+      if (this.world.field_72995_K) {
          sizeMulti = isRocket ? 1.0F : 0.5F;
 
          for(var19 = 0; var19 < (isRocket ? 5 : 2); ++var19) {
@@ -191,52 +191,52 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       this.func_70030_z();
       if (this.field_70127_C == 0.0F && this.field_70126_B == 0.0F) {
          sizeMulti = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
-         this.field_70126_B = this.field_70177_z = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
-         this.field_70127_C = this.field_70125_A = (float)(Math.atan2(this.field_70181_x, (double)sizeMulti) * 180.0D / 3.141592653589793D);
+         this.field_70126_B = this.rotationYaw = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
+         this.field_70127_C = this.rotationPitch = (float)(Math.atan2(this.field_70181_x, (double)sizeMulti) * 180.0D / 3.141592653589793D);
       }
 
-      Block block = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
+      Block block = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
       if (block.func_149688_o() != Material.field_151579_a) {
-         block.func_149719_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         AxisAlignedBB axisalignedbb = block.func_149668_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v))) {
+         block.func_149719_a(this.world, this.xTile, this.yTile, this.zTile);
+         AxisAlignedBB axisalignedbb = block.func_149668_a(this.world, this.xTile, this.yTile, this.zTile);
+         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.posX, this.posY, this.posZ))) {
             this.inGround = true;
          }
       }
 
       if (this.inGround) {
          if (isRocket) {
-            JRMCoreH.newExpl(this.field_70170_p, this, this.field_70165_t, this.field_70163_u, this.field_70161_v, this.explevel, false, this.field_70255_ao, this.field_70250_c, (byte)5);
+            JRMCoreH.newExpl(this.world, this, this.posX, this.posY, this.posZ, this.explevel, false, this.field_70255_ao, this.field_70250_c, (byte)5);
          }
 
-         this.func_70106_y();
-         var19 = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
+         this.setDead();
+         var19 = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
          if (block == this.inTile && var19 == this.inData) {
             ++this.ticksInGround;
          } else {
             this.inGround = false;
-            this.field_70159_w *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-            this.field_70181_x *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
-            this.field_70179_y *= (double)(this.field_70146_Z.nextFloat() * 0.2F);
+            this.field_70159_w *= (double)(this.rand.nextFloat() * 0.2F);
+            this.field_70181_x *= (double)(this.rand.nextFloat() * 0.2F);
+            this.field_70179_y *= (double)(this.rand.nextFloat() * 0.2F);
             this.ticksInGround = 0;
             this.ticksInAir = 0;
          }
       } else {
          ++this.ticksInAir;
-         Vec3 var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         Vec3 var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-         MovingObjectPosition var4 = this.field_70170_p.func_147447_a(var17, var3, false, true, false);
-         var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-         var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
+         Vec3 var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         Vec3 var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+         MovingObjectPosition var4 = this.world.func_147447_a(var17, var3, false, true, false);
+         var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+         var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
          if (var4 != null) {
             var3 = Vec3.func_72443_a(var4.field_72307_f.field_72450_a, var4.field_72307_f.field_72448_b, var4.field_72307_f.field_72449_c);
          }
 
          int var9;
          float var11;
-         if (!this.field_70170_p.field_72995_K) {
+         if (!this.world.field_72995_K) {
             Entity var5 = null;
-            List var6 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(1.0D, 1.0D, 1.0D));
+            List var6 = this.world.func_72839_b(this, this.boundingBox.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(1.0D, 1.0D, 1.0D));
             double var7 = 0.0D;
             var9 = 0;
 
@@ -251,7 +251,7 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
                Entity var10 = (Entity)var6.get(var9);
                if (var10.func_70067_L() && (var10 != this.field_70250_c || this.ticksInAir >= 5)) {
                   var11 = 0.3F;
-                  AxisAlignedBB var12 = var10.field_70121_D.func_72314_b((double)var11, (double)var11, (double)var11);
+                  AxisAlignedBB var12 = var10.boundingBox.func_72314_b((double)var11, (double)var11, (double)var11);
                   MovingObjectPosition var13 = var12.func_72327_a(var17, var3);
                   if (var13 != null && this.isNotRedRibbon(var10)) {
                      double var14 = var17.func_72438_d(var13.field_72307_f);
@@ -273,7 +273,7 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
                var20 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70181_x * this.field_70181_x + this.field_70179_y * this.field_70179_y);
                int var23 = MathHelper.func_76143_f((double)var20 * this.field_70255_ao);
                if (this.func_70241_g()) {
-                  var23 += this.field_70146_Z.nextInt(var23 / 2 + 2);
+                  var23 += this.rand.nextInt(var23 / 2 + 2);
                }
 
                DamageSource damagesource = null;
@@ -296,73 +296,73 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
                   }
 
                   if (isRocket) {
-                     JRMCoreH.newExpl(this.field_70170_p, this, this.field_70165_t, this.field_70163_u, this.field_70161_v, this.explevel, false, this.field_70255_ao, this.field_70250_c, (byte)5);
+                     JRMCoreH.newExpl(this.world, this, this.posX, this.posY, this.posZ, this.explevel, false, this.field_70255_ao, this.field_70250_c, (byte)5);
                   }
 
-                  this.func_70106_y();
+                  this.setDead();
                }
             } else {
                this.xTile = var4.field_72311_b;
                this.yTile = var4.field_72312_c;
                this.zTile = var4.field_72309_d;
-               this.inTile = this.field_70170_p.func_147439_a(this.xTile, this.yTile, this.zTile);
-               this.inData = this.field_70170_p.func_72805_g(this.xTile, this.yTile, this.zTile);
-               this.field_70159_w = (double)((float)(var4.field_72307_f.field_72450_a - this.field_70165_t));
-               this.field_70181_x = (double)((float)(var4.field_72307_f.field_72448_b - this.field_70163_u));
-               this.field_70179_y = (double)((float)(var4.field_72307_f.field_72449_c - this.field_70161_v));
+               this.inTile = this.world.func_147439_a(this.xTile, this.yTile, this.zTile);
+               this.inData = this.world.func_72805_g(this.xTile, this.yTile, this.zTile);
+               this.field_70159_w = (double)((float)(var4.field_72307_f.field_72450_a - this.posX));
+               this.field_70181_x = (double)((float)(var4.field_72307_f.field_72448_b - this.posY));
+               this.field_70179_y = (double)((float)(var4.field_72307_f.field_72449_c - this.posZ));
                var20 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70181_x * this.field_70181_x + this.field_70179_y * this.field_70179_y);
-               this.field_70165_t -= this.field_70159_w / (double)var20 * 0.05000000074505806D;
-               this.field_70163_u -= this.field_70181_x / (double)var20 * 0.05000000074505806D;
-               this.field_70161_v -= this.field_70179_y / (double)var20 * 0.05000000074505806D;
+               this.posX -= this.field_70159_w / (double)var20 * 0.05000000074505806D;
+               this.posY -= this.field_70181_x / (double)var20 * 0.05000000074505806D;
+               this.posZ -= this.field_70179_y / (double)var20 * 0.05000000074505806D;
                this.inGround = true;
                this.func_70243_d(false);
                if (this.inTile.func_149688_o() != Material.field_151579_a) {
-                  this.inTile.func_149670_a(this.field_70170_p, this.xTile, this.yTile, this.zTile, this);
+                  this.inTile.func_149670_a(this.world, this.xTile, this.yTile, this.zTile, this);
                }
             }
          }
 
          if (this.func_70241_g()) {
             for(var9 = 0; var9 < 4; ++var9) {
-               this.field_70170_p.func_72869_a("crit", this.field_70165_t + this.field_70159_w * (double)var9 / 4.0D, this.field_70163_u + this.field_70181_x * (double)var9 / 4.0D, this.field_70161_v + this.field_70179_y * (double)var9 / 4.0D, -this.field_70159_w, -this.field_70181_x + 0.2D, -this.field_70179_y);
+               this.world.func_72869_a("crit", this.posX + this.field_70159_w * (double)var9 / 4.0D, this.posY + this.field_70181_x * (double)var9 / 4.0D, this.posZ + this.field_70179_y * (double)var9 / 4.0D, -this.field_70159_w, -this.field_70181_x + 0.2D, -this.field_70179_y);
             }
          }
 
-         this.field_70165_t += this.field_70159_w;
-         this.field_70163_u += this.field_70181_x;
-         this.field_70161_v += this.field_70179_y;
+         this.posX += this.field_70159_w;
+         this.posY += this.field_70181_x;
+         this.posZ += this.field_70179_y;
          var20 = MathHelper.func_76133_a(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
-         this.field_70177_z = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
+         this.rotationYaw = (float)(Math.atan2(this.field_70159_w, this.field_70179_y) * 180.0D / 3.141592653589793D);
 
-         for(this.field_70125_A = (float)(Math.atan2(this.field_70181_x, (double)var20) * 180.0D / 3.141592653589793D); this.field_70125_A - this.field_70127_C < -180.0F; this.field_70127_C -= 360.0F) {
+         for(this.rotationPitch = (float)(Math.atan2(this.field_70181_x, (double)var20) * 180.0D / 3.141592653589793D); this.rotationPitch - this.field_70127_C < -180.0F; this.field_70127_C -= 360.0F) {
          }
 
-         while(this.field_70125_A - this.field_70127_C >= 180.0F) {
+         while(this.rotationPitch - this.field_70127_C >= 180.0F) {
             this.field_70127_C += 360.0F;
          }
 
-         while(this.field_70177_z - this.field_70126_B < -180.0F) {
+         while(this.rotationYaw - this.field_70126_B < -180.0F) {
             this.field_70126_B -= 360.0F;
          }
 
-         while(this.field_70177_z - this.field_70126_B >= 180.0F) {
+         while(this.rotationYaw - this.field_70126_B >= 180.0F) {
             this.field_70126_B += 360.0F;
          }
 
-         this.field_70125_A = this.field_70127_C + (this.field_70125_A - this.field_70127_C) * 0.2F;
-         this.field_70177_z = this.field_70126_B + (this.field_70177_z - this.field_70126_B) * 0.2F;
+         this.rotationPitch = this.field_70127_C + (this.rotationPitch - this.field_70127_C) * 0.2F;
+         this.rotationYaw = this.field_70126_B + (this.rotationYaw - this.field_70126_B) * 0.2F;
          float var22 = 0.99F;
          var11 = 0.05F;
          if (this.func_70090_H()) {
             for(int var26 = 0; var26 < 4; ++var26) {
                var25 = 0.25F;
-               this.field_70170_p.func_72869_a("bubble", this.field_70165_t - this.field_70159_w * (double)var25, this.field_70163_u - this.field_70181_x * (double)var25, this.field_70161_v - this.field_70179_y * (double)var25, this.field_70159_w, this.field_70181_x, this.field_70179_y);
+               this.world.func_72869_a("bubble", this.posX - this.field_70159_w * (double)var25, this.posY - this.field_70181_x * (double)var25, this.posZ - this.field_70179_y * (double)var25, this.field_70159_w, this.field_70181_x, this.field_70179_y);
             }
 
             var22 = 0.8F;
          }
 
-         this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+         this.func_70107_b(this.posX, this.posY, this.posZ);
          this.doBlockCollisions();
       }
 
@@ -376,7 +376,7 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       this.func_145775_I();
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
       par1NBTTagCompound.func_74777_a("xTile", (short)this.xTile);
       par1NBTTagCompound.func_74777_a("yTile", (short)this.yTile);
       par1NBTTagCompound.func_74777_a("zTile", (short)this.zTile);
@@ -387,7 +387,7 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
       par1NBTTagCompound.func_74768_a("wpnTyp", this.wpnTyp);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
       this.xTile = par1NBTTagCompound.func_74765_d("xTile");
       this.yTile = par1NBTTagCompound.func_74765_d("yTile");
       this.zTile = par1NBTTagCompound.func_74765_d("zTile");
@@ -409,14 +409,14 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
 
    public void readSpawnData(ByteBuf data) {
       int first = data.readInt();
-      this.field_70250_c = first == 0 ? this.field_70250_c : this.field_70170_p.func_73045_a(first);
+      this.field_70250_c = first == 0 ? this.field_70250_c : this.world.func_73045_a(first);
       this.field_70255_ao = data.readDouble();
       this.wpnTyp = data.readInt();
    }
 
    public void func_70100_b_(EntityPlayer par1EntityPlayer) {
-      if (!this.field_70170_p.field_72995_K && this.inGround) {
-         this.func_70106_y();
+      if (!this.world.field_72995_K && this.inGround) {
+         this.setDead();
       }
 
    }
@@ -463,7 +463,7 @@ public class EntityPrjtls_1 extends EntityArrow implements IEntityAdditionalSpaw
 
    private void explode() {
       float var1 = 2.0F;
-      this.field_70170_p.func_72876_a((Entity)null, this.field_70165_t, this.field_70163_u, this.field_70161_v, var1, this.inGround);
+      this.world.func_72876_a((Entity)null, this.posX, this.posY, this.posZ, var1, this.inGround);
    }
 
    protected void onImpact(MovingObjectPosition var4) {

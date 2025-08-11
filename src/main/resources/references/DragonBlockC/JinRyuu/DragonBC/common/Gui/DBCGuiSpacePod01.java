@@ -59,7 +59,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
 
    public DBCGuiSpacePod01(int x, int y, int z) {
       this.world = DBCClient.mc.field_71441_e;
-      this.player = DBCClient.mc.field_71439_g;
+      this.player = DBCClient.mc.player;
       this.field_146297_k = DBCClient.mc;
       this.planet20 = 0;
       this.xSizeOfTexture = 400;
@@ -74,7 +74,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
    }
 
    public void actionPerformed2(GuiButton button) {
-      EntityPlayer var4 = this.field_146297_k.field_71439_g;
+      EntityPlayer var4 = this.field_146297_k.player;
       World var3 = this.field_146297_k.field_71441_e;
       if (button.field_146127_k == 0) {
          if (spon == 0) {
@@ -86,17 +86,17 @@ public class DBCGuiSpacePod01 extends GuiScreen {
 
       if (button.field_146127_k == 1) {
          this.spResetCounters();
-         this.field_146297_k.field_71439_g.func_71053_j();
+         this.field_146297_k.player.func_71053_j();
       }
 
       if (button.field_146127_k == 2) {
          if (sp3 == 0 && sp2 == 0 && sp1 == 0) {
-            this.field_146297_k.field_71439_g.func_71053_j();
+            this.field_146297_k.player.func_71053_j();
             this.spResetCounters();
          }
 
          if (sp3 == 1 && sp2 == 0 && sp1 == 0) {
-            this.field_146297_k.field_71439_g.func_71053_j();
+            this.field_146297_k.player.func_71053_j();
             ToEarth = 1;
             ToNamek = 0;
             ToVegeta = 0;
@@ -104,7 +104,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
          }
 
          if (sp3 == 0 && sp2 == 1 && sp1 == 0) {
-            this.field_146297_k.field_71439_g.func_71053_j();
+            this.field_146297_k.player.func_71053_j();
             ToEarth = 0;
             ToNamek = 0;
             ToVegeta = 1;
@@ -112,7 +112,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
          }
 
          if (sp3 == 0 && sp2 == 0 && sp1 == 1) {
-            this.field_146297_k.field_71439_g.func_71053_j();
+            this.field_146297_k.player.func_71053_j();
             ToEarth = 0;
             ToNamek = 1;
             ToVegeta = 0;
@@ -190,7 +190,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
             sc = 0;
          } else {
             sc = -1;
-            this.field_146297_k.field_71439_g.func_71053_j();
+            this.field_146297_k.player.func_71053_j();
          }
       } else if (button.field_146127_k == 0) {
          if (sc == 2) {
@@ -232,8 +232,8 @@ public class DBCGuiSpacePod01 extends GuiScreen {
       String spacepod = "jinryuudragonbc:spacepodGUI01.png";
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation tx = new ResourceLocation(spacepod);
-      this.field_146297_k.field_71446_o.func_110577_a(tx);
-      Tessellator var3 = Tessellator.field_78398_a;
+      this.field_146297_k.field_71446_o.bindTexture(tx);
+      Tessellator var3 = Tessellator.INSTANCE;
       var3.func_78382_b();
       var3.func_78374_a(0.0D, (double)var7, -90.0D, 0.0D, 1.0D);
       var3.func_78374_a((double)var6, (double)var7, -90.0D, 1.0D, 1.0D);
@@ -248,7 +248,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
       int guiTop = (this.field_146295_m - ySize) / 2;
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       ResourceLocation guiLocation = Panel;
-      this.field_146297_k.field_71446_o.func_110577_a(guiLocation);
+      this.field_146297_k.field_71446_o.bindTexture(guiLocation);
       this.func_73729_b(posX - 90, posY - 44, 0, 0 + (sc == -1 ? 0 : 70), xSize, ySize);
       this.field_146292_n.add(0, new DBCGuiButtonsC(0, posX - 90, posY + 29, 50, 15, "", guigreen));
       this.field_146292_n.add(1, new DBCGuiButtonsC(1, posX - 35, posY + 29, 30, 15, "On", guired));
@@ -271,7 +271,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
          ((DBCGuiButtonsC)this.field_146292_n.get(0)).field_146126_j = JRMCoreH.trl("jrmc", "Select");
          ((DBCGuiButtonsC)this.field_146292_n.get(1)).field_146126_j = JRMCoreH.trl("jrmc", "Off");
          ((DBCGuiButtonsC)this.field_146292_n.get(2)).field_146126_j = JRMCoreH.trl("jrmc", "OK");
-         var8.func_78276_b(JRMCoreH.cllg + JRMCoreH.trl("jrmc", "Planet") + ": " + JRMCoreH.cly + JRMCoreH.trl("dbc", (String)DBCH.plntNms.get(DBCClient.mc.field_71439_g.field_71093_bK)), posX - 80, posY - 40, 0);
+         var8.func_78276_b(JRMCoreH.cllg + JRMCoreH.trl("jrmc", "Planet") + ": " + JRMCoreH.cly + JRMCoreH.trl("dbc", (String)DBCH.plntNms.get(DBCClient.mc.player.field_71093_bK)), posX - 80, posY - 40, 0);
          ssl = 0;
          var8.func_78276_b(JRMCoreH.cllg + "> " + JRMCoreH.trl("jrmc", "Destinations"), posX - 70, posY - 20, 0);
       } else if (sc == 2) {
@@ -286,7 +286,7 @@ public class DBCGuiSpacePod01 extends GuiScreen {
          int i = i + 1;
 
          for(int j = 0; j < dests.length; ++j) {
-            if (DBCClient.mc.field_71439_g.field_71093_bK != dests[j]) {
+            if (DBCClient.mc.player.field_71093_bK != dests[j]) {
                if (ss == i) {
                   ssD = destsTP[j];
                }

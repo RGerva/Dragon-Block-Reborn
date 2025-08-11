@@ -15,7 +15,7 @@ public class WorldGenSaibaiHatchlings extends WorldGenerator {
          if (par1World.func_147437_c(var7, var8, var9) && par1World.func_147439_a(var7, var8 - 1, var9) == BlocksDBC.BlockNamekDirt && BlocksDBC.SaibaiHatched.func_149742_c(par1World, var7, var8, var9)) {
             par1World.func_147465_d(var7, var8 - 1, var9, BlocksDBC.SaibaiHatched, 1, 4);
             EntitySaibaiman Saibaiman = new EntitySaibaiman(par1World);
-            Saibaiman.func_70012_b((double)var7, (double)var8, (double)var9, 0.0F, 0.0F);
+            Saibaiman.setLocationAndAngles((double)var7, (double)var8, (double)var9, 0.0F, 0.0F);
             par1World.func_72838_d(Saibaiman);
          }
       }

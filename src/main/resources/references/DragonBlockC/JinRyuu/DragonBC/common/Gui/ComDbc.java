@@ -120,8 +120,8 @@ public class ComDbc extends CommandBase {
                   entityplayermp.func_71023_q(1);
                   double[] d = new double[]{(double)x, (double)y, (double)z};
                   entityplayermp.field_71135_a.func_147364_a(d[0], d[1], d[2], 0.0F, 0.0F);
-                  mod_DragonBC.logger.info(entityplayermp.func_70005_c_() + " revived by " + wisherNam + "!");
-                  if (JRMCoreHDBC.DBCgetConfigDeadInv() && entityplayermp.field_70170_p.func_82736_K().func_82766_b("keepInventory") && !entityplayermp.field_71075_bZ.field_75098_d && JRMCoreH.getByte(entityplayermp, "jrmcAlv") == 1) {
+                  mod_DragonBC.logger.info(entityplayermp.getName() + " revived by " + wisherNam + "!");
+                  if (JRMCoreHDBC.DBCgetConfigDeadInv() && entityplayermp.world.func_82736_K().func_82766_b("keepInventory") && !entityplayermp.field_71075_bZ.field_75098_d && JRMCoreH.getByte(entityplayermp, "jrmcAlv") == 1) {
                      JRMCoreH.nbt(entityplayermp).func_74782_a("InventoryDead", entityplayermp.field_71071_by.func_70442_a(new NBTTagList()));
                      entityplayermp.field_71071_by.func_70443_b(JRMCoreH.nbt(entityplayermp).func_150295_c("InventoryLiving", 10));
                      entityplayermp.getEntityData().func_74782_a("Inventory", entityplayermp.field_71071_by.func_70442_a(new NBTTagList()));
@@ -131,7 +131,7 @@ public class ComDbc extends CommandBase {
                   if (target != null) {
                      String t = JRMCoreH.trlai("dbc", "reviveaccepted");
                      ChatStyle styl = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
-                     target.func_145747_a((new ChatComponentTranslation(t, new Object[]{entityplayermp.func_70005_c_(), JRMCoreH.trl("dbc", (String)DBCH.plntNms.get(reviveDim)), x + ", " + y + ", " + z})).func_150255_a(styl));
+                     target.func_145747_a((new ChatComponentTranslation(t, new Object[]{entityplayermp.getName(), JRMCoreH.trl("dbc", (String)DBCH.plntNms.get(reviveDim)), x + ", " + y + ", " + z})).func_150255_a(styl));
                   }
                }
             }

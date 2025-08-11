@@ -119,8 +119,8 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
          this.setUIAnimID(0);
       }
 
-      if (!this.player.field_70170_p.field_72995_K) {
-         if (JRMCoreH.updateEveryXTick(this.player.field_70173_aa, 10)) {
+      if (!this.player.world.field_72995_K) {
+         if (JRMCoreH.updateEveryXTick(this.player.ticksExisted, 10)) {
             String ex = "";
             if (this.hairCheckDim != this.player.field_71093_bK) {
                this.hairCheckDim = this.player.field_71093_bK;
@@ -131,7 +131,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
             this.setHairCode(this.haircode);
          }
 
-         if (JRMCoreH.updateEveryXTick(this.player.field_70173_aa, JRMCoreConfig.plUpd)) {
+         if (JRMCoreH.updateEveryXTick(this.player.ticksExisted, JRMCoreConfig.plUpd)) {
             NBTTagCompound nbt = JRMCoreH.nbt(this.player, "pres");
             String msd = nbt.func_74779_i("JRMCmissionSync");
             String msdV = nbt.func_74779_i("JRMCmissionSyncVers");
@@ -205,19 +205,19 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
 
                                              player = (EntityPlayer)var38.next();
                                              p = player;
-                                             aabb = AxisAlignedBB.func_72330_a(player.field_70165_t - (double)n, 0.0D, player.field_70161_v - (double)n, player.field_70165_t + (double)n, 255.0D, player.field_70161_v + (double)n);
+                                             aabb = AxisAlignedBB.func_72330_a(player.posX - (double)n, 0.0D, player.posZ - (double)n, player.posX + (double)n, 255.0D, player.posZ + (double)n);
                                           } while(EntityList.field_75625_b.get(d1) == null);
 
-                                          List l = player.field_70170_p.func_72872_a((Class)EntityList.field_75625_b.get(d1), aabb);
+                                          List l = player.world.func_72872_a((Class)EntityList.field_75625_b.get(d1), aabb);
                                           boolean nokl = l.isEmpty();
                                           if (dt.length() > 1 && nokl) {
                                              String[] ar = JRMCoreM.getMCo_TranSplit(dt);
 
                                              for(int m = 0; m < ar.length; ++m) {
                                                 String[] aamt = ar[m].split("\\|");
-                                                aabb = AxisAlignedBB.func_72330_a(p.field_70165_t - (double)n, 0.0D, p.field_70161_v - (double)n, p.field_70165_t + (double)n, 255.0D, p.field_70161_v + (double)n);
+                                                aabb = AxisAlignedBB.func_72330_a(p.posX - (double)n, 0.0D, p.posZ - (double)n, p.posX + (double)n, 255.0D, p.posZ + (double)n);
                                                 if (EntityList.field_75625_b.get(aamt[0]) != null) {
-                                                   l = p.field_70170_p.func_72872_a((Class)EntityList.field_75625_b.get(aamt[0]), aabb);
+                                                   l = p.world.func_72872_a((Class)EntityList.field_75625_b.get(aamt[0]), aabb);
                                                    nokl = l.isEmpty();
                                                    if (!nokl) {
                                                       break;
@@ -271,7 +271,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
 
                                              while(var38.hasNext()) {
                                                 player = (EntityPlayer)var38.next();
-                                                b = player.field_70170_p.field_73011_w.func_80007_l().equalsIgnoreCase(d1) || NumberUtils.isNumber(d1) && player.field_71093_bK == Integer.parseInt(d1);
+                                                b = player.world.field_73011_w.func_80007_l().equalsIgnoreCase(d1) || NumberUtils.isNumber(d1) && player.field_71093_bK == Integer.parseInt(d1);
                                                 if (!b) {
                                                    break;
                                                 }
@@ -285,7 +285,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
 
                                           while(var38.hasNext()) {
                                              player = (EntityPlayer)var38.next();
-                                             b = player.field_70170_p.func_72807_a((int)player.field_70165_t, (int)player.field_70161_v).field_76791_y.equalsIgnoreCase(d1);
+                                             b = player.world.func_72807_a((int)player.posX, (int)player.posZ).field_76791_y.equalsIgnoreCase(d1);
                                              if (!b) {
                                                 break;
                                              }
@@ -345,7 +345,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
                }
             }
 
-            if (this.player.field_70170_p.func_147439_a((int)this.player.field_70165_t, (int)this.player.field_70163_u, (int)this.player.field_70161_v) == JRMCoreHDBC.getMedBlock() && JRMCoreH.updateEveryXTick(this.player.field_70173_aa, JRMCoreHDBC.DBCgetConfighPodUpd())) {
+            if (this.player.world.func_147439_a((int)this.player.posX, (int)this.player.posY, (int)this.player.posZ) == JRMCoreHDBC.getMedBlock() && JRMCoreH.updateEveryXTick(this.player.ticksExisted, JRMCoreHDBC.DBCgetConfighPodUpd())) {
                int[] PlyrAttrbts = JRMCoreH.PlyrAttrbts(this.player);
                this.player.func_70050_g(300);
                byte pwr = JRMCoreH.getByte(this.player, "jrmcPwrtyp");
@@ -406,7 +406,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
                JRMCoreHDBC.DBSpawn(this.player, worldTime);
             }
 
-            if (JRMCoreH.updateEveryXTick(this.player.field_70173_aa, JRMCoreConfig.plUpd) && this.player.field_71093_bK == 0 && this.player.field_70170_p.func_147439_a((int)this.player.field_70165_t, (int)this.player.field_70163_u, (int)this.player.field_70161_v) != JRMCoreHDBC.DBCgetBlockTCPort()) {
+            if (JRMCoreH.updateEveryXTick(this.player.ticksExisted, JRMCoreConfig.plUpd) && this.player.field_71093_bK == 0 && this.player.world.func_147439_a((int)this.player.posX, (int)this.player.posY, (int)this.player.posZ) != JRMCoreHDBC.DBCgetBlockTCPort()) {
                short s1 = (short)JRMCoreH.getByte(this.player, "jrmcMsg");
                if (s1 != 0) {
                   JRMCoreH.setByte((int)0, this.player, "jrmcMsg");
@@ -427,9 +427,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
                }
 
                if (spawn) {
-                  EntityEng kiCharge = new EntityEng(this.player.field_70170_p, this.player.field_70165_t, this.player.field_70163_u, this.player.field_70161_v, this.player.func_70005_c_(), this.getAnimKiShoot(), this.getKiShotCol(), this.getKiShotSiz(), this.getKiShotPart());
+                  EntityEng kiCharge = new EntityEng(this.player.world, this.player.posX, this.player.posY, this.player.posZ, this.player.getName(), this.getAnimKiShoot(), this.getKiShotCol(), this.getKiShotSiz(), this.getKiShotPart());
                   kiCharge.destroyer = this.getGoDOn() == 1;
-                  this.player.field_70170_p.func_72838_d(kiCharge);
+                  this.player.world.func_72838_d(kiCharge);
                }
             }
 
@@ -446,8 +446,8 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
    }
 
    private List checkForEntitiesInside() {
-      AxisAlignedBB aabb = this.player.field_70121_D.func_72329_c();
-      List list = this.player.field_70170_p.func_72839_b(this.player, aabb);
+      AxisAlignedBB aabb = this.player.boundingBox.func_72329_c();
+      List list = this.player.world.func_72839_b(this.player, aabb);
       return list;
    }
 

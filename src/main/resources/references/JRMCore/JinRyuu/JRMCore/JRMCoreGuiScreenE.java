@@ -38,7 +38,7 @@ public class JRMCoreGuiScreenE extends GuiScreen {
             }
 
             Minecraft mc = JRMCoreClient.mc;
-            EntityPlayer player = mc.field_71439_g;
+            EntityPlayer player = mc.player;
             float reduction = 4.0F;
             int screenWidth = e.resolution.func_78326_a();
             int screenHeight = e.resolution.func_78328_b();
@@ -51,7 +51,7 @@ public class JRMCoreGuiScreenE extends GuiScreen {
             GL11.glTranslatef((float)(screenWidth / 2) - (float)(this.guiWidth / 2) * scale / reduction, (float)(screenHeight / 2) - (float)(this.guiHeight / 2) * scale / reduction, 0.0F);
             GL11.glScalef(scale / reduction, scale / reduction, scale / reduction);
             if (target != null) {
-               mc.field_71446_o.func_110577_a(new ResourceLocation(JRMCoreH.tjjrmc, "gui/lo/" + JGConfigClientSettings.get_hud_lockon() + ".png"));
+               mc.field_71446_o.bindTexture(new ResourceLocation(JRMCoreH.tjjrmc, "gui/lo/" + JGConfigClientSettings.get_hud_lockon() + ".png"));
                this.func_73729_b(0, 0, 0, 0, this.guiWidth, this.guiHeight);
             }
 

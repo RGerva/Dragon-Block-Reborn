@@ -29,22 +29,22 @@ public class EntityAuraRingPur extends Entity {
       return 0.0F;
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.mot != null) {
          this.field_70159_w = this.mot.field_70159_w;
          this.field_70181_x = this.mot.field_70181_x;
          this.field_70179_y = this.mot.field_70179_y;
       }
 
-      this.field_70169_q = this.field_70165_t;
-      this.field_70167_r = this.field_70163_u;
-      this.field_70166_s = this.field_70161_v;
+      this.field_70169_q = this.posX;
+      this.field_70167_r = this.posY;
+      this.field_70166_s = this.posZ;
       if (this.Age++ >= this.MaxAge) {
-         this.func_70106_y();
+         this.setDead();
       }
 
       this.field_70181_x += 0.0D;
-      if (this.field_70163_u == this.field_70167_r) {
+      if (this.posY == this.field_70167_r) {
          this.field_70159_w *= 1.0D;
          this.field_70179_y *= 1.0D;
       }
@@ -59,18 +59,18 @@ public class EntityAuraRingPur extends Entity {
    }
 
    public boolean getCanSpawnHere() {
-      return !this.field_70170_p.func_72855_b(this.field_70121_D);
+      return !this.world.checkNoEntityCollision(this.boundingBox);
    }
 
    public void onLivingUpdate() {
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound var1) {
+   protected void readEntityFromNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70014_b(NBTTagCompound var1) {
+   protected void writeEntityToNBT(NBTTagCompound var1) {
    }
 }

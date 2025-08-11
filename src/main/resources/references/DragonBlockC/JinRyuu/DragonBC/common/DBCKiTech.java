@@ -141,7 +141,7 @@ public class DBCKiTech {
    }
 
    public static void JumpKi(KeyBinding keyBindJump) {
-      EntityPlayer var4 = DBCClient.mc.field_71439_g;
+      EntityPlayer var4 = DBCClient.mc.player;
       float t = turbo ? 1.0F : 0.8F;
       float n = (float)JRMCoreH.SklLvl(1, (byte)1);
       float max = 0.22F;
@@ -157,8 +157,8 @@ public class DBCKiTech {
       boolean relStp = JRMCoreConfig.releaseStop ? !releasing : true;
       if (isPressed(keyBindJump) && !relStp) {
          KeyBinding.func_74510_a(keyBindJump.func_151463_i(), false);
-         if (JRMCoreClient.mc.field_71439_g.field_70181_x > 0.0D) {
-            JRMCoreClient.mc.field_71439_g.field_70181_x = 0.0D;
+         if (JRMCoreClient.mc.player.field_70181_x > 0.0D) {
+            JRMCoreClient.mc.player.field_70181_x = 0.0D;
          }
       }
 
@@ -173,7 +173,7 @@ public class DBCKiTech {
          }
 
          if (jumping) {
-            EntityClientPlayerMP var10000 = DBCClient.mc.field_71439_g;
+            EntityClientPlayerMP var10000 = DBCClient.mc.player;
             var10000.field_70181_x += 0.05D + (double)add;
          }
       } else {
@@ -203,23 +203,23 @@ public class DBCKiTech {
    }
 
    public static void FloatKi(KeyBinding kiFlight, KeyBinding keyBindJump, KeyBinding keyBindSneak) {
-      EntityPlayer p = DBCClient.mc.field_71439_g;
+      EntityPlayer p = DBCClient.mc.player;
       int n = JRMCoreH.SklLvl(3, (byte)1);
       int st = JRMCoreH.StusEfctsMe(13) ? (JRMCoreH.rc_sai(JRMCoreH.Race) ? JRMCoreH.mstc_sai(JRMCoreH.SklLvlX(1, JRMCoreH.PlyrSkillX) - 1) : (JRMCoreH.rc_arc(JRMCoreH.Race) ? JRMCoreH.mstc_arc() : (JRMCoreH.rc_humNam(JRMCoreH.Race) ? JRMCoreH.mstc_humnam() : 1))) : JRMCoreH.State;
       float inc = JRMCoreH.statInc(JRMCoreH.Pwrtyp, 11, 100, JRMCoreH.Race, JRMCoreH.Class, 0.0F) * 0.01F;
       float add = JRMCoreH.spdFrm(JRMCoreH.PlyrAttrbts((EntityPlayer)null)[4], n, (float)JRMCoreH.curRelease, turbo, true, st, JRMCoreH.State2, inc);
-      boolean pressingRightClick = isPressed(JRMCoreClient.mc.field_71474_y.field_74313_G);
-      boolean pressingForward = isPressed(JRMCoreClient.mc.field_71474_y.field_74351_w);
-      boolean pressingLeft = isPressed(JRMCoreClient.mc.field_71474_y.field_74370_x);
-      boolean pressingBack = isPressed(JRMCoreClient.mc.field_71474_y.field_74368_y);
-      boolean pressingRight = isPressed(JRMCoreClient.mc.field_71474_y.field_74366_z);
+      boolean pressingRightClick = isPressed(JRMCoreClient.mc.gameSettings.field_74313_G);
+      boolean pressingForward = isPressed(JRMCoreClient.mc.gameSettings.field_74351_w);
+      boolean pressingLeft = isPressed(JRMCoreClient.mc.gameSettings.field_74370_x);
+      boolean pressingBack = isPressed(JRMCoreClient.mc.gameSettings.field_74368_y);
+      boolean pressingRight = isPressed(JRMCoreClient.mc.gameSettings.field_74366_z);
       boolean isAnyDirectionKeyPressing = !JRMCoreH.StusEfctsMe(4) && !pressingRightClick && (pressingForward || pressingLeft || pressingBack || pressingRight);
       boolean forw = isAnyDirectionKeyPressing && isPressed(JRMCoreKeyHandler.Fn);
-      if (dodge_forwSwTm == 0 && isPressed(JRMCoreKeyHandler.Fn) && !isPressed(JRMCoreClient.mc.field_71474_y.field_74313_G) && !isPressed(JRMCoreKeyHandler.KiCharge) && !isPressed(JRMCoreKeyHandler.KiAscend)) {
+      if (dodge_forwSwTm == 0 && isPressed(JRMCoreKeyHandler.Fn) && !isPressed(JRMCoreClient.mc.gameSettings.field_74313_G) && !isPressed(JRMCoreKeyHandler.KiCharge) && !isPressed(JRMCoreKeyHandler.KiAscend)) {
          dodge_forwSwTm = forw ? 1 : 0;
       }
 
-      if (dodge_forwSwTm > 0 && isAnyDirectionKeyPressing && !JRMCoreClient.mc.field_71439_g.field_70122_E) {
+      if (dodge_forwSwTm > 0 && isAnyDirectionKeyPressing && !JRMCoreClient.mc.player.field_70122_E) {
          dodge_forwHold = true;
          ++dodge_forwSwTm;
       } else {
@@ -254,8 +254,8 @@ public class DBCKiTech {
             double motionX = 0.0D;
             double motionY = 0.0D;
             double motionZ = 0.0D;
-            float yaw = p.field_70177_z;
-            float pitch = p.field_70125_A;
+            float yaw = p.rotationYaw;
+            float pitch = p.rotationPitch;
             if (pressingLeft) {
                yaw -= 90.0F / (!pressingForward && !pressingBack ? 1.0F : 2.0F) * (pressingBack ? -1.0F : 1.0F);
                pitch = 0.0F;
@@ -265,10 +265,10 @@ public class DBCKiTech {
             }
 
             if (pressingForward) {
-               pitch = p.field_70125_A;
+               pitch = p.rotationPitch;
             } else if (pressingBack) {
                yaw -= 180.0F;
-               pitch = p.field_70125_A * -1.0F;
+               pitch = p.rotationPitch * -1.0F;
             }
 
             motionX = (double)(-MathHelper.func_76126_a(yaw / 180.0F * 3.1415927F) * MathHelper.func_76134_b(pitch / 180.0F * 3.1415927F));
@@ -343,15 +343,15 @@ public class DBCKiTech {
             }
 
             if (isPressed(JRMCoreKeyHandler.Fn)) {
-               var10000 = DBCClient.mc.field_71439_g;
+               var10000 = DBCClient.mc.player;
                var10000.field_70181_x /= 15.15D;
             } else {
-               DBCClient.mc.field_71439_g.field_70181_x = (double)(0.6F * add * (float)JRMCoreConfig.Flngspd);
+               DBCClient.mc.player.field_70181_x = (double)(0.6F * add * (float)JRMCoreConfig.Flngspd);
             }
 
             par1 = p.field_70702_br;
             par2 = p.field_70701_bs;
-            if (!isPressed(DBCClient.mc.field_71474_y.field_74351_w) && !isPressed(DBCClient.mc.field_71474_y.field_74368_y) && !isPressed(DBCClient.mc.field_71474_y.field_74370_x) && !isPressed(DBCClient.mc.field_71474_y.field_74366_z)) {
+            if (!isPressed(DBCClient.mc.gameSettings.field_74351_w) && !isPressed(DBCClient.mc.gameSettings.field_74368_y) && !isPressed(DBCClient.mc.gameSettings.field_74370_x) && !isPressed(DBCClient.mc.gameSettings.field_74366_z)) {
                p.field_70159_w = 0.0D;
                p.field_70179_y = 0.0D;
                floatMultAdded = false;
@@ -366,7 +366,7 @@ public class DBCKiTech {
             if (able) {
                if (!floating) {
                   if (p.field_70122_E) {
-                     DBCClient.mc.field_71439_g.field_70181_x = 0.5D;
+                     DBCClient.mc.player.field_70181_x = 0.5D;
                      jumpToFly = true;
                   }
                } else {
@@ -386,32 +386,32 @@ public class DBCKiTech {
 
             if (isPressed(keyBindJump)) {
                jumpRel = true;
-               DBCClient.mc.field_71439_g.field_70181_x = (double)(0.25F * add * (float)JRMCoreConfig.Flngspd);
+               DBCClient.mc.player.field_70181_x = (double)(0.25F * add * (float)JRMCoreConfig.Flngspd);
             } else if (isPressed(keyBindSneak)) {
-               if (DBCClient.mc.field_71439_g.field_70181_x > (double)(-(0.25F * add))) {
-                  DBCClient.mc.field_71439_g.field_70181_x = (double)(-(0.25F * add) * (float)JRMCoreConfig.Flngspd);
+               if (DBCClient.mc.player.field_70181_x > (double)(-(0.25F * add))) {
+                  DBCClient.mc.player.field_70181_x = (double)(-(0.25F * add) * (float)JRMCoreConfig.Flngspd);
                }
             } else if (p.field_70181_x < 0.0D) {
-               var10000 = DBCClient.mc.field_71439_g;
+               var10000 = DBCClient.mc.player;
                var10000.field_70181_x /= !JRMCoreH.isShtng && JRMCoreConfig.PlayerFlyingDragDownOn ? 15.15D : 150.15D;
             }
 
             par1 = p.field_70702_br;
             par2 = p.field_70701_bs;
-            if (!isPressed(DBCClient.mc.field_71474_y.field_74351_w) && !isPressed(DBCClient.mc.field_71474_y.field_74368_y) && !isPressed(DBCClient.mc.field_71474_y.field_74370_x) && !isPressed(DBCClient.mc.field_71474_y.field_74366_z)) {
+            if (!isPressed(DBCClient.mc.gameSettings.field_74351_w) && !isPressed(DBCClient.mc.gameSettings.field_74368_y) && !isPressed(DBCClient.mc.gameSettings.field_74370_x) && !isPressed(DBCClient.mc.gameSettings.field_74366_z)) {
                p.field_70159_w = 0.0D;
                p.field_70179_y = 0.0D;
                floatMultAdded = false;
             } else {
-               if (JRMCoreH.StusEfctsMe(9) && !JRMCoreH.StusEfctsMe(4) && !isPressed(DBCClient.mc.field_71474_y.field_74368_y) && !isPressed(DBCClient.mc.field_71474_y.field_74370_x) && !isPressed(DBCClient.mc.field_71474_y.field_74366_z)) {
+               if (JRMCoreH.StusEfctsMe(9) && !JRMCoreH.StusEfctsMe(4) && !isPressed(DBCClient.mc.gameSettings.field_74368_y) && !isPressed(DBCClient.mc.gameSettings.field_74370_x) && !isPressed(DBCClient.mc.gameSettings.field_74366_z)) {
                   float wei = JRMCoreH.weightPerc(1);
                   float s = add * wei;
                   int back = 0;
                   int right = 0;
                   int left = 0;
-                  double motionX = (double)(-MathHelper.func_76126_a((p.field_70177_z + (float)back + (float)left + (float)right) / 180.0F * 3.1415927F) * MathHelper.func_76134_b(p.field_70125_A / 180.0F * 3.1415927F));
-                  double motionZ = (double)(MathHelper.func_76134_b((p.field_70177_z + (float)back + (float)left + (float)right) / 180.0F * 3.1415927F) * MathHelper.func_76134_b(p.field_70125_A / 180.0F * 3.1415927F));
-                  double motionY = (double)(-MathHelper.func_76126_a((p.field_70125_A + (float)back) / 180.0F * 3.1415927F));
+                  double motionX = (double)(-MathHelper.func_76126_a((p.rotationYaw + (float)back + (float)left + (float)right) / 180.0F * 3.1415927F) * MathHelper.func_76134_b(p.rotationPitch / 180.0F * 3.1415927F));
+                  double motionZ = (double)(MathHelper.func_76134_b((p.rotationYaw + (float)back + (float)left + (float)right) / 180.0F * 3.1415927F) * MathHelper.func_76134_b(p.rotationPitch / 180.0F * 3.1415927F));
+                  double motionY = (double)(-MathHelper.func_76126_a((p.rotationPitch + (float)back) / 180.0F * 3.1415927F));
                   setThrowableHeading(p, motionX, motionY, motionZ, s * (float)JRMCoreConfig.Flngspd, 0.0F);
                } else {
                   mv(par1, par2, p, add * (float)JRMCoreConfig.Flngspd);
@@ -442,9 +442,9 @@ public class DBCKiTech {
          }
 
          f3 = add / f3;
-         float f4 = MathHelper.func_76126_a(var4.field_70177_z * 3.1415927F / 180.0F);
-         float f5 = MathHelper.func_76134_b(var4.field_70177_z * 3.1415927F / 180.0F);
-         float pitch = MathHelper.func_76126_a(var4.field_70125_A * 3.1415927F / 180.0F);
+         float f4 = MathHelper.func_76126_a(var4.rotationYaw * 3.1415927F / 180.0F);
+         float f5 = MathHelper.func_76134_b(var4.rotationYaw * 3.1415927F / 180.0F);
+         float pitch = MathHelper.func_76126_a(var4.rotationPitch * 3.1415927F / 180.0F);
          float speedY = 1.0F - (pitch < 0.0F ? -pitch : pitch);
          strafe *= f3;
          frward *= f3;
@@ -456,7 +456,7 @@ public class DBCKiTech {
    }
 
    public static void DashKi(boolean sprint) {
-      EntityPlayer var4 = DBCClient.mc.field_71439_g;
+      EntityPlayer var4 = DBCClient.mc.player;
       World var3 = DBCClient.mc.field_71441_e;
       int n = JRMCoreH.SklLvl(2, (byte)1);
       int st = JRMCoreH.StusEfctsMe(13) ? (JRMCoreH.rc_sai(JRMCoreH.Race) ? JRMCoreH.mstc_sai(JRMCoreH.SklLvlX(1, JRMCoreH.PlyrSkillX) - 1) : (JRMCoreH.rc_arc(JRMCoreH.Race) ? JRMCoreH.mstc_arc() : (JRMCoreH.rc_humNam(JRMCoreH.Race) ? JRMCoreH.mstc_humnam() : 1))) : JRMCoreH.State;
@@ -470,12 +470,12 @@ public class DBCKiTech {
       int maxStam = JRMCoreH.stat(var4, 2, pwr, 3, PlyrAttrbts[2], rce, cls, 0.0F);
       int ce = JRMCoreH.curStamina;
       int cst = (int)((float)maxStam * 0.2F - (float)n * 0.01F);
-      boolean left = JRMCoreClient.mc.field_71474_y.field_74370_x.func_151468_f();
-      boolean right = JRMCoreClient.mc.field_71474_y.field_74366_z.func_151468_f();
-      boolean back = JRMCoreClient.mc.field_71474_y.field_74368_y.func_151468_f();
+      boolean left = JRMCoreClient.mc.gameSettings.field_74370_x.func_151468_f();
+      boolean right = JRMCoreClient.mc.gameSettings.field_74366_z.func_151468_f();
+      boolean back = JRMCoreClient.mc.gameSettings.field_74368_y.func_151468_f();
       boolean dodge = !JRMCoreH.PlyrSettingsB(2);
       long ctm = System.currentTimeMillis() / 1000L;
-      if (dodge_per == 0 && dodge_recently != ctm && isPressed(JRMCoreKeyHandler.Fn) && !isPressed(JRMCoreClient.mc.field_71474_y.field_74313_G) && !isPressed(JRMCoreKeyHandler.KiCharge) && !isPressed(JRMCoreKeyHandler.KiAscend)) {
+      if (dodge_per == 0 && dodge_recently != ctm && isPressed(JRMCoreKeyHandler.Fn) && !isPressed(JRMCoreClient.mc.gameSettings.field_74313_G) && !isPressed(JRMCoreKeyHandler.KiCharge) && !isPressed(JRMCoreKeyHandler.KiAscend)) {
          dodge_per = !left && !right && !back ? 0 : 1;
       } else if (dodge_recently == ctm) {
          dodge_per = 0;
@@ -484,31 +484,31 @@ public class DBCKiTech {
       double par12;
       double par22;
       if (dodge_per > 0 && dodge_recently != ctm && ce > cst && n > 0 && dodge && JRMCoreH.curRelease > 0) {
-         int y = JRMCoreClient.mc.field_71439_g.field_70122_E ? 2 : 1;
+         int y = JRMCoreClient.mc.player.field_70122_E ? 2 : 1;
          if (left) {
             dodge_recently = ctm;
-            par12 = Math.cos((double)(JRMCoreClient.mc.field_71439_g.field_70177_z - 90.0F) * 3.141592653589793D / 180.0D) * 1.5D * (double)y;
-            par22 = Math.sin((double)(JRMCoreClient.mc.field_71439_g.field_70177_z - 90.0F) * 3.141592653589793D / 180.0D) * -1.5D * (double)y;
-            JRMCoreClient.mc.field_71439_g.field_70179_y = par12;
-            JRMCoreClient.mc.field_71439_g.field_70159_w = par22;
+            par12 = Math.cos((double)(JRMCoreClient.mc.player.rotationYaw - 90.0F) * 3.141592653589793D / 180.0D) * 1.5D * (double)y;
+            par22 = Math.sin((double)(JRMCoreClient.mc.player.rotationYaw - 90.0F) * 3.141592653589793D / 180.0D) * -1.5D * (double)y;
+            JRMCoreClient.mc.player.field_70179_y = par12;
+            JRMCoreClient.mc.player.field_70159_w = par22;
             triForce(4, 0, 0);
          }
 
          if (right) {
             dodge_recently = ctm;
-            par12 = Math.cos((double)(JRMCoreClient.mc.field_71439_g.field_70177_z + 90.0F) * 3.141592653589793D / 180.0D) * 1.5D * (double)y;
-            par22 = Math.sin((double)(JRMCoreClient.mc.field_71439_g.field_70177_z + 90.0F) * 3.141592653589793D / 180.0D) * -1.5D * (double)y;
-            JRMCoreClient.mc.field_71439_g.field_70179_y = par12;
-            JRMCoreClient.mc.field_71439_g.field_70159_w = par22;
+            par12 = Math.cos((double)(JRMCoreClient.mc.player.rotationYaw + 90.0F) * 3.141592653589793D / 180.0D) * 1.5D * (double)y;
+            par22 = Math.sin((double)(JRMCoreClient.mc.player.rotationYaw + 90.0F) * 3.141592653589793D / 180.0D) * -1.5D * (double)y;
+            JRMCoreClient.mc.player.field_70179_y = par12;
+            JRMCoreClient.mc.player.field_70159_w = par22;
             triForce(4, 0, 1);
          }
 
          if (back) {
             dodge_recently = ctm;
-            par12 = Math.cos((double)JRMCoreClient.mc.field_71439_g.field_70177_z * 3.141592653589793D / 180.0D) * -1.0D * (double)y;
-            par22 = Math.sin((double)JRMCoreClient.mc.field_71439_g.field_70177_z * 3.141592653589793D / 180.0D) * 1.0D * (double)y;
-            JRMCoreClient.mc.field_71439_g.field_70179_y = par12;
-            JRMCoreClient.mc.field_71439_g.field_70159_w = par22;
+            par12 = Math.cos((double)JRMCoreClient.mc.player.rotationYaw * 3.141592653589793D / 180.0D) * -1.0D * (double)y;
+            par22 = Math.sin((double)JRMCoreClient.mc.player.rotationYaw * 3.141592653589793D / 180.0D) * 1.0D * (double)y;
+            JRMCoreClient.mc.player.field_70179_y = par12;
+            JRMCoreClient.mc.player.field_70159_w = par22;
             triForce(4, 0, 3);
          }
 
@@ -528,13 +528,13 @@ public class DBCKiTech {
             dash = 0;
          }
 
-         par12 = var4.field_70165_t;
-         par22 = var4.field_70163_u;
-         double par32 = var4.field_70161_v;
+         par12 = var4.posX;
+         par22 = var4.posY;
+         double par32 = var4.posZ;
          if (var3.func_147439_a((int)par12, (int)par22 - 2, (int)par32) != Blocks.field_150432_aD) {
             float par1 = var4.field_70702_br;
             float par2 = var4.field_70701_bs;
-            if (!isPressed(DBCClient.mc.field_71474_y.field_74351_w) && !isPressed(DBCClient.mc.field_71474_y.field_74368_y) && !isPressed(DBCClient.mc.field_71474_y.field_74370_x) && !isPressed(DBCClient.mc.field_71474_y.field_74366_z)) {
+            if (!isPressed(DBCClient.mc.gameSettings.field_74351_w) && !isPressed(DBCClient.mc.gameSettings.field_74368_y) && !isPressed(DBCClient.mc.gameSettings.field_74370_x) && !isPressed(DBCClient.mc.gameSettings.field_74366_z)) {
                var4.field_70159_w = 0.0D;
                var4.field_70179_y = 0.0D;
                floatMultAdded = false;
@@ -548,7 +548,7 @@ public class DBCKiTech {
    }
 
    public static void setThrowableHeading(Entity e, double par1, double par3, double par5, float par7, float par8) {
-      Random rand = e.field_70170_p.field_73012_v;
+      Random rand = e.world.field_73012_v;
       par1 *= (double)par7;
       par3 *= (double)par7;
       par5 *= (double)par7;
@@ -559,7 +559,7 @@ public class DBCKiTech {
    }
 
    public static void TurboMode(KeyBinding key) {
-      EntityPlayer var4 = DBCClient.mc.field_71439_g;
+      EntityPlayer var4 = DBCClient.mc.player;
       if (isPressed(key)) {
          KeyBinding.func_74510_a(key.func_151463_i(), false);
          if (!turbo) {
@@ -619,8 +619,8 @@ public class DBCKiTech {
          }
 
          DBCClientTickHandler.nuller();
-         KeyBinding var10000 = DBCClient.mc.field_71474_y.field_74313_G;
-         KeyBinding.func_74510_a(DBCClient.mc.field_71474_y.field_74313_G.func_151463_i(), false);
+         KeyBinding var10000 = DBCClient.mc.gameSettings.field_74313_G;
+         KeyBinding.func_74510_a(DBCClient.mc.gameSettings.field_74313_G.func_151463_i(), false);
       }
 
       return false;
@@ -632,7 +632,7 @@ public class DBCKiTech {
 
    public static void Ascend(KeyBinding k) {
       boolean useOozaru = false;
-      boolean rotPit = DBCClient.mc.field_71439_g.field_70125_A <= -90.0F;
+      boolean rotPit = DBCClient.mc.player.rotationPitch <= -90.0F;
       boolean canUseQuickTransform = false;
       if (!isPressed(k)) {
          wasTransformPressed = false;
@@ -645,17 +645,17 @@ public class DBCKiTech {
       int godSkillLevel;
       if (rotPit) {
          int n = 200;
-         EntityPlayer pl = DBCClient.mc.field_71439_g;
-         AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(pl.field_70165_t - (double)n, 200.0D, pl.field_70161_v - (double)n, pl.field_70165_t + (double)n, 255.0D, pl.field_70161_v + (double)n);
-         List l = pl.field_70170_p.func_72872_a(EntityEnergyFM.class, aabb);
+         EntityPlayer pl = DBCClient.mc.player;
+         AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(pl.posX - (double)n, 200.0D, pl.posZ - (double)n, pl.posX + (double)n, 255.0D, pl.posZ + (double)n);
+         List l = pl.world.func_72872_a(EntityEnergyFM.class, aabb);
          useGodOfDestruction = !l.isEmpty();
          playerSettingsBlueOn = JRMCoreH.StusEfctsMe(8) || useGodOfDestruction;
          playerSettingsBlueOnInBlue = JRMCoreH.tailHas(JRMCoreH.TlMd);
          playerSettingsGodOn = false;
 
-         for(godSkillLevel = (int)pl.field_70163_u; godSkillLevel < 256; ++godSkillLevel) {
-            int x = (int)pl.field_70165_t;
-            int z = (int)pl.field_70161_v;
+         for(godSkillLevel = (int)pl.posY; godSkillLevel < 256; ++godSkillLevel) {
+            int x = (int)pl.posX;
+            int z = (int)pl.posZ;
             playerSettingsGodOn = DBCClient.mc.field_71441_e.func_147437_c(x < 0 ? x - 1 : x, godSkillLevel, z < 0 ? z - 1 : z);
             if (!playerSettingsGodOn) {
                break;
@@ -1512,12 +1512,12 @@ public class DBCKiTech {
    }
 
    public static void soundAsc(String s) {
-      int e = DBCClient.mc.field_71439_g.func_145782_y();
+      int e = DBCClient.mc.player.func_145782_y();
       PD.sendToServer(new DBCPchargesound(e, s));
    }
 
    public static void soundAsc(int i) {
-      int dbcascendsound = DBCClient.mc.field_71439_g.func_145782_y();
+      int dbcascendsound = DBCClient.mc.player.func_145782_y();
       Object d;
       switch(i) {
       case 1:
@@ -1541,7 +1541,7 @@ public class DBCKiTech {
 
    public static void chargePart(boolean b) {
       if (!JRMCoreClient.mc.func_147113_T()) {
-         World w = DBCClient.mc.field_71439_g.field_70170_p;
+         World w = DBCClient.mc.player.world;
 
          for(int pl = 0; pl < JRMCoreH.plyrs.length; ++pl) {
             if (JRMCoreH.dnn(19) && JRMCoreH.dnn(2) && JRMCoreH.dnn(1) && JRMCoreH.dnn(5)) {
@@ -1549,7 +1549,7 @@ public class DBCKiTech {
                String[] st = JRMCoreH.data2[pl].split(";");
                int k = Integer.parseInt(st[1]);
                if (s.contains(JRMCoreH.StusEfcts[4]) || s.contains(JRMCoreH.StusEfcts[1]) || s.contains(JRMCoreH.StusEfcts[3]) || s.contains(JRMCoreH.StusEfcts[5]) || s.contains(JRMCoreH.StusEfcts[7])) {
-                  Entity e = w.func_72924_a(JRMCoreH.plyrs[pl]);
+                  Entity e = w.getPlayerEntityByName(JRMCoreH.plyrs[pl]);
                   if (e instanceof EntityPlayer) {
                      String[] a = JRMCoreH.data1[pl].split(";");
                      int r = Integer.parseInt(a[0]);
@@ -1639,9 +1639,9 @@ public class DBCKiTech {
       }
 
       if (dbcchargepart > 0) {
-         dbcCharger = p.func_70005_c_();
-         double dbcChargerY = p.field_70163_u;
-         Entity other = p.field_70170_p.func_72924_a(dbcCharger);
+         dbcCharger = p.getName();
+         double dbcChargerY = p.posY;
+         Entity other = p.world.getPlayerEntityByName(dbcCharger);
          Random rand = new Random();
          Entity aura = null;
          Entity aura2 = null;
@@ -1673,19 +1673,19 @@ public class DBCKiTech {
          boolean oozar = JRMCoreH.rc_sai(r) && (state == 7.0F || state == 8.0F);
          state = oozar ? state * 3.0F : state;
          state = JRMCoreH.rc_nam(r) && state == 2.0F ? 22.0F : state;
-         boolean plyrSP = DBCClient.mc.field_71439_g.func_70005_c_().equals(dbcCharger) && DBCClient.mc.field_71474_y.field_74320_O == 0;
+         boolean plyrSP = DBCClient.mc.player.getName().equals(dbcCharger) && DBCClient.mc.gameSettings.thirdPersonView == 0;
          if (dbcchargepart >= 1 && dbcchargepart <= 4) {
-            aura = new EntityAura2(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : sacol, state, state2, cr, w);
+            aura = new EntityAura2(p.world, dbcCharger, state2 > 0.0F ? 16646144 : sacol, state, state2, cr, w);
          }
 
          if (dbcchargepart >= 5 && dbcchargepart <= 8 && !ui && !gd) {
-            aura = new EntityAuraRing(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : sacol, state, state2, cr);
+            aura = new EntityAuraRing(p.world, dbcCharger, state2 > 0.0F ? 16646144 : sacol, state, state2, cr);
          }
 
          if (dbcchargepart == 9) {
-            aura = new EntityAura2(p.field_70170_p, dbcCharger, sacol, 0.0F, 0.0F, cr, w);
+            aura = new EntityAura2(p.world, dbcCharger, sacol, 0.0F, 0.0F, cr, w);
             if (state2 > 0.0F) {
-               aura2 = new EntityAura2(p.field_70170_p, dbcCharger, 16646144, 2.0F + state, state2 * 1.5F, cr, w);
+               aura2 = new EntityAura2(p.world, dbcCharger, 16646144, 2.0F + state, state2 * 1.5F, cr, w);
             }
          }
 
@@ -1760,7 +1760,7 @@ public class DBCKiTech {
                ((EntityAura2)aura).kettleMode = (byte)(JRMCoreH.isRaceMajin(r) && (auraOn || auraTransformOn) && !swoop ? (!turbo && !auraTransformOn && !kk ? 1 : 2) : 0);
             }
 
-            p.field_70170_p.func_72838_d((Entity)aura);
+            p.world.func_72838_d((Entity)aura);
          }
 
          if (aura2 != null && other != null) {
@@ -1772,8 +1772,8 @@ public class DBCKiTech {
                ((EntityAura2)aura2).setRendPass(0);
             }
 
-            aura2.func_70012_b(other.field_70165_t - 0.0D, other.field_70163_u - 2.0D + (double)rand.nextInt(5) * 0.03D, other.field_70161_v - 0.0D, rand.nextFloat(), 0.0F);
-            p.field_70170_p.func_72838_d(aura2);
+            aura2.setLocationAndAngles(other.posX - 0.0D, other.posY - 2.0D + (double)rand.nextInt(5) * 0.03D, other.posZ - 0.0D, rand.nextFloat(), 0.0F);
+            p.world.func_72838_d(aura2);
          }
       }
 
@@ -1793,9 +1793,9 @@ public class DBCKiTech {
 
    private static boolean isClientMoving() {
       if (holdingForTransform) {
-         return DBCConfig.MoveWhileTransforming ? false : !JGMathHelper.isMotionSmallerThanN(DBCClient.mc.field_71439_g, 0.05D, true, false, true, true);
+         return DBCConfig.MoveWhileTransforming ? false : !JGMathHelper.isMotionSmallerThanN(DBCClient.mc.player, 0.05D, true, false, true, true);
       } else {
-         return DBCConfig.MoveWhileInstantTransforming ? false : !JGMathHelper.isMotionSmallerThanN(DBCClient.mc.field_71439_g, 0.05D, true, false, true, true);
+         return DBCConfig.MoveWhileInstantTransforming ? false : !JGMathHelper.isMotionSmallerThanN(DBCClient.mc.player, 0.05D, true, false, true, true);
       }
    }
 }

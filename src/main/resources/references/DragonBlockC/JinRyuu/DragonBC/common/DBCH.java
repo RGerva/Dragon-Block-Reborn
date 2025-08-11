@@ -176,8 +176,8 @@ public class DBCH {
    }
 
    public static boolean mvng() {
-      float p = DBCClient.mc.field_71439_g.field_70125_A < 0.0F ? (float)((int)DBCClient.mc.field_71439_g.field_70125_A * -1) : (float)((int)DBCClient.mc.field_71439_g.field_70125_A);
-      float y = DBCClient.mc.field_71439_g.field_70177_z < 0.0F ? (float)((int)DBCClient.mc.field_71439_g.field_70177_z * -1) : (float)((int)DBCClient.mc.field_71439_g.field_70177_z);
+      float p = DBCClient.mc.player.rotationPitch < 0.0F ? (float)((int)DBCClient.mc.player.rotationPitch * -1) : (float)((int)DBCClient.mc.player.rotationPitch);
+      float y = DBCClient.mc.player.rotationYaw < 0.0F ? (float)((int)DBCClient.mc.player.rotationYaw * -1) : (float)((int)DBCClient.mc.player.rotationYaw);
       boolean var10000;
       if (p > RotPic && p > RotPic + 0.1F || p < RotPic && p < RotPic - 0.1F || y > RotYaw && y > RotYaw + 0.1F || y < RotYaw && y < RotYaw - 0.1F) {
          var10000 = true;
@@ -185,12 +185,12 @@ public class DBCH {
          var10000 = false;
       }
 
-      return DBCClient.mc.field_71439_g.field_70159_w > 0.005D || DBCClient.mc.field_71439_g.field_70179_y > 0.005D || DBCClient.mc.field_71439_g.field_70159_w < -0.005D || DBCClient.mc.field_71439_g.field_70179_y < -0.005D || DBCClient.mc.field_71439_g.field_70181_x > 0.005D;
+      return DBCClient.mc.player.field_70159_w > 0.005D || DBCClient.mc.player.field_70179_y > 0.005D || DBCClient.mc.player.field_70159_w < -0.005D || DBCClient.mc.player.field_70179_y < -0.005D || DBCClient.mc.player.field_70181_x > 0.005D;
    }
 
    public static boolean lkng() {
-      float p = DBCClient.mc.field_71439_g.field_70125_A < 0.0F ? (float)((int)DBCClient.mc.field_71439_g.field_70125_A * -1) : (float)((int)DBCClient.mc.field_71439_g.field_70125_A);
-      float y = DBCClient.mc.field_71439_g.field_70177_z < 0.0F ? (float)((int)DBCClient.mc.field_71439_g.field_70177_z * -1) : (float)((int)DBCClient.mc.field_71439_g.field_70177_z);
+      float p = DBCClient.mc.player.rotationPitch < 0.0F ? (float)((int)DBCClient.mc.player.rotationPitch * -1) : (float)((int)DBCClient.mc.player.rotationPitch);
+      float y = DBCClient.mc.player.rotationYaw < 0.0F ? (float)((int)DBCClient.mc.player.rotationYaw * -1) : (float)((int)DBCClient.mc.player.rotationYaw);
       boolean rotat = p > RotPic && p > RotPic + 0.1F || p < RotPic && p < RotPic - 0.1F || y > RotYaw && y > RotYaw + 0.1F || y < RotYaw && y < RotYaw - 0.1F;
       return rotat;
    }
@@ -211,7 +211,7 @@ public class DBCH {
 
       if (Player != null) {
          JRMCoreH.setInt(0, Player, "jrmcAlCntr");
-         mod_DragonBC.logger.info(Player.func_70005_c_() + " has died");
+         mod_DragonBC.logger.info(Player.getName() + " has died");
          d = JRMCoreH.getByte(Player, "jrmcDiff");
          byte pwr = JRMCoreH.getByte(Player, "jrmcPwrtyp");
          byte rc = JRMCoreH.getByte(Player, "jrmcRace");
@@ -243,7 +243,7 @@ public class DBCH {
                      atrs = JRMCoreH.getInt(Player, JRMCoreH.AttrbtNbtI[atr]);
                      int atrs = JRMCoreH.attributeStart(pwr, atr, rc, cl);
                      if (atrs > atrs) {
-                        mod_DragonBC.logger.info("Because of death, " + Player.func_70005_c_() + " also lost a " + JRMCoreH.attrNms(pwr, atr) + " point.");
+                        mod_DragonBC.logger.info("Because of death, " + Player.getName() + " also lost a " + JRMCoreH.attrNms(pwr, atr) + " point.");
                         break;
                      }
                   }
@@ -266,12 +266,12 @@ public class DBCH {
    }
 
    public static void dragonSum(Entity e) {
-      double x = e.field_70165_t;
-      double y = e.field_70163_u;
-      double z = e.field_70161_v;
+      double x = e.posX;
+      double y = e.posY;
+      double z = e.posZ;
       int r = 100;
       AxisAlignedBB aabb = AxisAlignedBB.func_72330_a(x - (double)r, y - (double)r, z - (double)r, x + (double)r, y + (double)r, z + (double)r);
-      List lst = e.field_70170_p.func_72872_a(EntityPlayer.class, aabb);
+      List lst = e.world.func_72872_a(EntityPlayer.class, aabb);
       if (!lst.isEmpty()) {
          JRMCoreHDBC.dragonSum = 100;
       }
@@ -316,8 +316,8 @@ public class DBCH {
                Block db = did == DBCConfig.planetEarth ? BlocksDBC.BlockDragonBall : (did == DBCConfig.planetNamek ? BlocksDBC.BlockNamekDragonBall : null);
                Block blockID = null;
                int dbnum = 0;
-               int l1 = MathHelper.func_76128_c(player.field_70165_t);
-               int i11 = MathHelper.func_76128_c(player.field_70161_v);
+               int l1 = MathHelper.func_76128_c(player.posX);
+               int i11 = MathHelper.func_76128_c(player.posZ);
 
                int i;
                int k;
@@ -325,25 +325,25 @@ public class DBCH {
                for(i = l1 - m; i <= l1 + m; ++i) {
                   for(k = i11 - m; k <= i11 + m; ++k) {
                      for(j = 109; j >= 64; --j) {
-                        if (player.field_70170_p.func_147439_a(i, j, k) == db) {
+                        if (player.world.func_147439_a(i, j, k) == db) {
                            ++dbnum;
                         }
 
-                        if (player.field_70170_p.func_147439_a(i, j, k) == dbs) {
+                        if (player.world.func_147439_a(i, j, k) == dbs) {
                            ++dbnum;
                         }
                      }
                   }
                }
 
-               i = MathHelper.func_76128_c(player.field_70165_t + (double)player.field_70170_p.field_73012_v.nextInt(m) + (double)(player.field_70170_p.field_73012_v.nextInt(m) * -1));
-               k = MathHelper.func_76128_c(player.field_70161_v + (double)player.field_70170_p.field_73012_v.nextInt(m) + (double)(player.field_70170_p.field_73012_v.nextInt(m) * -1));
+               i = MathHelper.func_76128_c(player.posX + (double)player.world.field_73012_v.nextInt(m) + (double)(player.world.field_73012_v.nextInt(m) * -1));
+               k = MathHelper.func_76128_c(player.posZ + (double)player.world.field_73012_v.nextInt(m) + (double)(player.world.field_73012_v.nextInt(m) * -1));
 
                for(j = 109; j >= 64; --j) {
-                  if (!player.field_70170_p.func_147437_c(i, j, k) && player.field_70170_p.func_147439_a(i, j, k) != dbs && player.field_70170_p.func_147439_a(i, j, k) != db && (player.field_70170_p.func_147439_a(i, j, k) == Blocks.field_150349_c || player.field_70170_p.func_147439_a(i, j, k) == Blocks.field_150354_m || player.field_70170_p.func_147439_a(i, j, k) == BlocksDBC.BlockNamekGrass)) {
+                  if (!player.world.func_147437_c(i, j, k) && player.world.func_147439_a(i, j, k) != dbs && player.world.func_147439_a(i, j, k) != db && (player.world.func_147439_a(i, j, k) == Blocks.field_150349_c || player.world.func_147439_a(i, j, k) == Blocks.field_150354_m || player.world.func_147439_a(i, j, k) == BlocksDBC.BlockNamekGrass)) {
                      mod_DragonBC var10001 = mod_DragonBC.instance;
                      if (dbnum < mod_DragonBC.DBSpawnChance) {
-                        player.field_70170_p.func_147465_d(i, j + 1, k, dbs, 0, 3);
+                        player.world.func_147465_d(i, j + 1, k, dbs, 0, 3);
                         break;
                      }
                   }
@@ -414,11 +414,11 @@ public class DBCH {
 
    public static void toDrop(int o, LivingDropsEvent e) {
       Entity mob = e.entityLiving;
-      int r = e.entityLiving.field_70170_p.field_73012_v.nextInt(100);
+      int r = e.entityLiving.world.field_73012_v.nextInt(100);
       Item[] i = r < 5 ? ItemsDBC.ItemsOutfit1 : (r < 10 ? ItemsDBC.ItemsOutfit2 : (r < 15 ? ItemsDBC.ItemsOutfit3 : ItemsDBC.ItemsOutfit0));
       ItemStack stack = new ItemStack(i[o], 1, 1);
       if (r < 20 && stack != null && stack.field_77994_a != 0 && stack.func_77973_b() != null) {
-         EntityItem entityitem = new EntityItem(mob.field_70170_p, mob.field_70165_t, mob.field_70163_u, mob.field_70161_v, stack);
+         EntityItem entityitem = new EntityItem(mob.world, mob.posX, mob.posY, mob.posZ, stack);
          entityitem.field_145804_b = 10;
          e.drops.add(entityitem);
       }

@@ -40,7 +40,7 @@ public class ComJrmcCheck extends CommandBase {
          EntityPlayerMP entitycommansender;
          try {
             entitycommansender = func_71521_c(par1ICommandSender);
-            entitycommansenderName = entitycommansender.func_70005_c_();
+            entitycommansenderName = entitycommansender.getName();
          } catch (Exception var24) {
          }
 
@@ -104,7 +104,7 @@ public class ComJrmcCheck extends CommandBase {
                   }
                }
 
-               this.notifyAdmins(par1ICommandSender, "%s checked char sheet of %s ", new Object[]{func_71521_c(par1ICommandSender).getDisplayName(), entityplayermp.func_70005_c_()});
+               this.notifyAdmins(par1ICommandSender, "%s checked char sheet of %s ", new Object[]{func_71521_c(par1ICommandSender).getDisplayName(), entityplayermp.getName()});
             }
 
          }

@@ -100,7 +100,7 @@ public class DragonBlock01Block extends BlockContainer {
                if (par1World.func_147439_a(par2 + 1, par3, par4 + 1) == this && par1World.func_147439_a(par2 + 1, par3, par4 - 1) == this && par1World.func_147439_a(par2 - 1, par3, par4) == this && par1World.func_147439_a(par2 - 1, par3, par4 - 1) == this && par1World.func_147439_a(par2 - 1, par3, par4 + 1) == this) {
                   if (!par1World.field_72995_K) {
                      Dragon = new EntityDragon(par1World);
-                     Dragon.func_70012_b((double)par2, (double)par3, (double)par4, f, 0.0F);
+                     Dragon.setLocationAndAngles((double)par2, (double)par3, (double)par4, f, 0.0F);
                      par1World.func_72838_d(Dragon);
                      par1World.func_72908_a((double)par2, (double)par3, (double)par4, "jinryuudragonbc:dragon.makeone", 1.0F, 1.0F);
                   }
@@ -116,7 +116,7 @@ public class DragonBlock01Block extends BlockContainer {
             } else if (par1World.func_147439_a(par2, par3, par4 + 1) == this && par1World.func_147439_a(par2 + 1, par3, par4 + 1) == this && par1World.func_147439_a(par2 + 1, par3, par4 - 1) == this && par1World.func_147439_a(par2, par3, par4 - 1) == this && par1World.func_147439_a(par2 - 1, par3, par4 - 1) == this && par1World.func_147439_a(par2 - 1, par3, par4 + 1) == this) {
                if (!par1World.field_72995_K) {
                   Dragon = new EntityDragon(par1World);
-                  Dragon.func_70012_b((double)par2, (double)par3, (double)par4, f, 0.0F);
+                  Dragon.setLocationAndAngles((double)par2, (double)par3, (double)par4, f, 0.0F);
                   par1World.func_72838_d(Dragon);
                   par1World.func_72908_a((double)par2, (double)par3, (double)par4, "jinryuudragonbc:dragon.makeone", 1.0F, 1.0F);
                }

@@ -130,33 +130,33 @@ public class ModelFrog extends ModelBase {
       this.LegR1.func_78792_a(this.LegR2);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       if (entity.field_70122_E && entity.field_70181_x < 0.2D) {
-         this.LegL1.field_78795_f = MathHelper.func_76134_b(f * 0.6662F) * 1.2F * f1;
-         this.LegR1.field_78795_f = MathHelper.func_76134_b(f * 0.6662F) * 1.2F * f1;
+         this.LegL1.rotateAngleX = MathHelper.func_76134_b(f * 0.6662F) * 1.2F * f1;
+         this.LegR1.rotateAngleX = MathHelper.func_76134_b(f * 0.6662F) * 1.2F * f1;
          this.setRotateAngle(this.LegL2, -0.59166664F, 0.0F, 0.0F);
          this.setRotateAngle(this.LegR2, -0.59166664F, 0.0F, 0.0F);
       } else {
-         this.LegL1.field_78795_f = 2.3F;
-         this.LegR1.field_78795_f = 2.3F;
-         this.LegL2.field_78795_f = -3.0F;
-         this.LegR2.field_78795_f = -3.0F;
+         this.LegL1.rotateAngleX = 2.3F;
+         this.LegR1.rotateAngleX = 2.3F;
+         this.LegL2.rotateAngleX = -3.0F;
+         this.LegR2.rotateAngleX = -3.0F;
       }
 
       GL11.glPushMatrix();
       GL11.glScalef(0.5F, 0.5F, 0.5F);
       GL11.glTranslatef(0.0F, 1.4F, 0.0F);
-      this.ArmR.func_78785_a(f5);
-      this.Body1.func_78785_a(f5);
-      this.LegR1.func_78785_a(f5);
-      this.ArmL.func_78785_a(f5);
-      this.LegL1.func_78785_a(f5);
+      this.ArmR.render(f5);
+      this.Body1.render(f5);
+      this.LegR1.render(f5);
+      this.ArmL.render(f5);
+      this.LegL1.render(f5);
       GL11.glPopMatrix();
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 }

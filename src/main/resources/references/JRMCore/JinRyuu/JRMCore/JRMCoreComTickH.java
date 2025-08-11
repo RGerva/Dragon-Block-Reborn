@@ -305,7 +305,7 @@ public class JRMCoreComTickH {
                if (isLegendaryOn) {
                   if (release > 0) {
                      if (kiFistLevel > 0 && lastAttackedTimer > 0) {
-                        player.field_70170_p.func_72956_a(player, "jinryuudragonbc:DBC4.kiblade", 0.65F, 1.0F);
+                        player.world.func_72956_a(player, "jinryuudragonbc:DBC4.kiblade", 0.65F, 1.0F);
                      } else {
                         JRMCoreH.PlyrSettingsSet((EntityPlayer)player, 13, -1);
                      }
@@ -329,7 +329,7 @@ public class JRMCoreComTickH {
                   statusEffects = JRMCoreH.StusEfcts(15, statusEffects, (NBTTagCompound)nbt, false);
                }
 
-               if (JRMCoreH.rc_sai(race) && player.field_71093_bK == 0 && player.field_70170_p.func_130001_d() == 1.0F && player.field_70170_p.func_72820_D() % 24000L > 12000L) {
+               if (JRMCoreH.rc_sai(race) && player.field_71093_bK == 0 && player.world.func_130001_d() == 1.0F && player.world.func_72820_D() % 24000L > 12000L) {
                   statusEffects = JRMCoreH.StusEfcts(8, statusEffects, (NBTTagCompound)nbt, true);
                } else {
                   statusEffects = JRMCoreH.StusEfcts(8, statusEffects, (NBTTagCompound)nbt, false);
@@ -1397,9 +1397,9 @@ public class JRMCoreComTickH {
          f2 = p.field_70130_N;
          p.field_70130_N = par1;
          p.field_70131_O = par2;
-         p.field_70121_D.field_72336_d = p.field_70121_D.field_72340_a + (double)p.field_70130_N;
-         p.field_70121_D.field_72334_f = p.field_70121_D.field_72339_c + (double)p.field_70130_N;
-         p.field_70121_D.field_72337_e = p.field_70121_D.field_72338_b + (double)p.field_70131_O;
+         p.boundingBox.field_72336_d = p.boundingBox.field_72340_a + (double)p.field_70130_N;
+         p.boundingBox.field_72334_f = p.boundingBox.field_72339_c + (double)p.field_70130_N;
+         p.boundingBox.field_72337_e = p.boundingBox.field_72338_b + (double)p.field_70131_O;
       }
 
       f2 = par1 % 2.0F;
@@ -1716,7 +1716,7 @@ public class JRMCoreComTickH {
                if (((Integer)playerSagaIDs.get(player)).equals(playerSagaIDs.get(player1))) {
                   if (id > 10) {
                      String n = JRMCoreH.getString(player1, "JRMCGLIDs");
-                     if (!n.equalsIgnoreCase(player1.func_70005_c_())) {
+                     if (!n.equalsIgnoreCase(player1.getName())) {
                         JRMCoreH.setString(" ", player1, "JRMCGLIDs");
                         JRMCoreH.setInt((int)0, player1, "JRMCGID");
                      } else if (previousMember != null) {
@@ -1815,13 +1815,13 @@ public class JRMCoreComTickH {
       if (!fusionMembers.equals(" ")) {
          String[] fusionParticipants = fusionMembers.split(",");
          if (fusionParticipants.length == 3) {
-            boolean isController = fusionParticipants[0].equalsIgnoreCase(player.func_70005_c_());
-            boolean isSpectator = fusionParticipants[1].equalsIgnoreCase(player.func_70005_c_());
+            boolean isController = fusionParticipants[0].equalsIgnoreCase(player.getName());
+            boolean isSpectator = fusionParticipants[1].equalsIgnoreCase(player.getName());
             if (isController || isSpectator) {
-               EntityPlayer fusedPlayer = player.field_70170_p.func_72924_a(fusionParticipants[isController ? 0 : 1]);
+               EntityPlayer fusedPlayer = player.world.getPlayerEntityByName(fusionParticipants[isController ? 0 : 1]);
                boolean isFusedPlayerNotNull = fusedPlayer != null;
                if (isFusedPlayerNotNull) {
-                  EntityPlayer otherFusedPlayer = player.field_70170_p.func_72924_a(fusionParticipants[isController ? 1 : 0]);
+                  EntityPlayer otherFusedPlayer = player.world.getPlayerEntityByName(fusionParticipants[isController ? 1 : 0]);
                   boolean isOtherFusedPlayerNotNull = otherFusedPlayer != null;
                   int fusionTime = Integer.parseInt(fusionParticipants[2]) - 1;
                   boolean fused = true;
@@ -1831,7 +1831,7 @@ public class JRMCoreComTickH {
                      String[] fusionParticipants2 = fusionMembers2.split(",");
                      if (fusionParticipants2.length == 3) {
                         if (isSpectator && fusionTime > 0 && player.func_70032_d(otherFusedPlayer) > 5.0F) {
-                           player.func_70107_b(otherFusedPlayer.field_70165_t, otherFusedPlayer.field_70163_u, otherFusedPlayer.field_70161_v);
+                           player.func_70107_b(otherFusedPlayer.posX, otherFusedPlayer.posY, otherFusedPlayer.posZ);
                         }
                      } else if (fusionParticipants2.length == 1) {
                         fused = false;
@@ -1984,7 +1984,7 @@ public class JRMCoreComTickH {
          JRMCoreHDBC.WorldTper(server, player, JRMCoreHDBC.otherworld());
          player.func_70634_a(DBCConfig.DeathDim[alignmentID][0], DBCConfig.DeathDim[alignmentID][1], DBCConfig.DeathDim[alignmentID][2]);
          player.func_71023_q(1);
-         mod_JRMCore.logger.info(player.func_70005_c_() + " Has died and gone to Otherworld.");
+         mod_JRMCore.logger.info(player.getName() + " Has died and gone to Otherworld.");
       }
 
       if (!player.field_71075_bZ.field_75098_d && (this.dbc || this.nc || this.sao) && powerType > 0 && nbt.func_74762_e("jrmcBdy") <= 0) {
@@ -2050,7 +2050,7 @@ public class JRMCoreComTickH {
             if (Fzn.contains(",")) {
                String[] FznA = Fzn.split(",");
                if (FznA.length == 3) {
-                  boolean isp2 = FznA[1].equalsIgnoreCase(player.func_70005_c_());
+                  boolean isp2 = FznA[1].equalsIgnoreCase(player.getName());
                   if (isp2) {
                      f1 = 0.0F;
                   }
@@ -2100,7 +2100,7 @@ public class JRMCoreComTickH {
       String k;
       if (nbt.func_74781_a("jrmcSSlts") == null || nbt.func_74781_a(JRMCoreH.SkillsNbt[0]) != null) {
          k = "";
-         mod_JRMCore.logger.info("The player " + player.func_70005_c_() + " has been converted to the new skill list!");
+         mod_JRMCore.logger.info("The player " + player.getName() + " has been converted to the new skill list!");
          mod_JRMCore.logger.info("Old Skill list content");
 
          for(i = 0; i < JRMCoreH.SkillsNbt.length; ++i) {
@@ -2316,7 +2316,7 @@ public class JRMCoreComTickH {
          }
       }
 
-      names[playerID] = "" + player.func_70005_c_();
+      names[playerID] = "" + player.getName();
       data0[playerID] = "" + ac + ";" + gp;
       data1[playerID] = race + ";" + dns + ";" + nbt.func_74771_c("jrmcPwrtyp") + ";" + nbt.func_74771_c("jrmcClass") + ";" + nbt.func_74771_c("jrmcAccept") + ";" + w + ";" + (this.dbc && stackbody != null ? Item.func_150891_b(stackbody.func_77973_b()) + "," + ((ItemBodysuit)stackbody.func_77973_b()).getColor(stackbody) : -1) + ";" + (this.dbc && stackhead != null ? Item.func_150891_b(stackhead.func_77973_b()) : -1) + ";" + stack_van + (this.jyc && hasWatch ? 1 : -1) + ";" + kiWeaponID + "; ";
       data3[playerID] = "" + nbt.func_74771_c("jrmcStnd");

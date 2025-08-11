@@ -86,7 +86,7 @@ public abstract class DBCSpawn {
                double d3 = (double)(this.getSpawnerY() + this.getSpawnerWorld().field_73012_v.nextInt(3) - 1);
                double d4 = (double)this.getSpawnerZ() + (this.getSpawnerWorld().field_73012_v.nextDouble() - this.getSpawnerWorld().field_73012_v.nextDouble()) * (double)this.spawnRange;
                EntityLiving entityliving = entity instanceof EntityLiving ? (EntityLiving)entity : null;
-               entity.func_70012_b(d0, d3, d4, this.getSpawnerWorld().field_73012_v.nextFloat() * 360.0F, 0.0F);
+               entity.setLocationAndAngles(d0, d3, d4, this.getSpawnerWorld().field_73012_v.nextFloat() * 360.0F, 0.0F);
                if (entityliving == null || entityliving.func_70601_bi()) {
                   this.func_98265_a(entity);
                   this.getSpawnerWorld().func_72926_e(2004, this.getSpawnerX(), this.getSpawnerY(), this.getSpawnerZ(), 0);
@@ -105,7 +105,7 @@ public abstract class DBCSpawn {
    }
 
    public Entity func_98265_a(Entity par1Entity) {
-      if (par1Entity instanceof EntityLiving && par1Entity.field_70170_p != null) {
+      if (par1Entity instanceof EntityLiving && par1Entity.world != null) {
          this.getSpawnerWorld().func_72838_d(par1Entity);
       }
 

@@ -23,7 +23,7 @@ public class AIFollowOwner extends EntityAIBase {
 
    public AIFollowOwner(JinRyuu.FamilyC.EntityNPC par1EntityTameable, double par2, float par4, float par5) {
       this.thePet = par1EntityTameable;
-      this.theWorld = par1EntityTameable.field_70170_p;
+      this.theWorld = par1EntityTameable.world;
       this.field_75336_f = par2;
       this.petPathfinder = par1EntityTameable.func_70661_as();
       this.minDist = par4;
@@ -32,9 +32,9 @@ public class AIFollowOwner extends EntityAIBase {
    }
 
    public boolean func_75250_a() {
-      EntityLivingBase entitylivingbase = this.thePet.field_70170_p.func_72924_a(this.thePet.getDad());
-      EntityLivingBase mom = this.thePet.field_70170_p.func_72924_a(this.thePet.getMom());
-      Entity flwtrgt = this.thePet.field_70170_p.func_73045_a(this.thePet.getFollowTarget());
+      EntityLivingBase entitylivingbase = this.thePet.world.getPlayerEntityByName(this.thePet.getDad());
+      EntityLivingBase mom = this.thePet.world.getPlayerEntityByName(this.thePet.getMom());
+      Entity flwtrgt = this.thePet.world.func_73045_a(this.thePet.getFollowTarget());
       int flw = this.thePet.getFollow();
       if (flw == 2 && mom != null) {
          entitylivingbase = mom;
@@ -78,16 +78,16 @@ public class AIFollowOwner extends EntityAIBase {
       if (!this.thePet.stopMoving() && --this.field_75343_h <= 0) {
          this.field_75343_h = 10;
          if (!this.petPathfinder.func_75497_a(this.theOwner, this.field_75336_f) && !this.thePet.func_110167_bD() && this.thePet.func_70068_e(this.theOwner) >= 144.0D) {
-            int i = MathHelper.func_76128_c(this.theOwner.field_70165_t) - 2;
-            int j = MathHelper.func_76128_c(this.theOwner.field_70161_v) - 2;
-            int k = MathHelper.func_76128_c(this.theOwner.field_70121_D.field_72338_b);
+            int i = MathHelper.func_76128_c(this.theOwner.posX) - 2;
+            int j = MathHelper.func_76128_c(this.theOwner.posZ) - 2;
+            int k = MathHelper.func_76128_c(this.theOwner.boundingBox.field_72338_b);
 
             for(int l = 0; l <= 4; ++l) {
                for(int i1 = 0; i1 <= 4; ++i1) {
                   if (l < 1 || i1 < 1 || l > 3 || i1 > 3) {
                      World var10000 = this.theWorld;
                      if (World.func_147466_a(this.theWorld, i + l, k - 1, j + i1) && !this.theWorld.func_147445_c(i + l, k, j + i1, false) && !this.theWorld.func_147445_c(i + l, k + 1, j + i1, false)) {
-                        this.thePet.func_70012_b((double)((float)(i + l) + 0.5F), (double)k, (double)((float)(j + i1) + 0.5F), this.thePet.field_70177_z, this.thePet.field_70125_A);
+                        this.thePet.setLocationAndAngles((double)((float)(i + l) + 0.5F), (double)k, (double)((float)(j + i1) + 0.5F), this.thePet.rotationYaw, this.thePet.rotationPitch);
                         this.petPathfinder.func_75499_g();
                         return;
                      }

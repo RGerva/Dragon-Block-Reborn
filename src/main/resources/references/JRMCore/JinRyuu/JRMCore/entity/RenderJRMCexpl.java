@@ -22,7 +22,7 @@ public class RenderJRMCexpl extends RenderJRMC {
    }
 
    public void renderJRMCexpl(EntityJRMCexpl par1Entity, double par2, double par4, double par6, float par8, float par9) {
-      this.field_76989_e = 0.0F;
+      this.shadowSize = 0.0F;
       if (par1Entity.type != 10 && par1Entity.type < 3 && JGConfigClientSettings.CLIENT_DA7 && par1Entity.type != 0) {
          boolean ext = JGConfigClientSettings.CLIENT_DA5;
          GL11.glPushMatrix();
@@ -31,16 +31,16 @@ public class RenderJRMCexpl extends RenderJRMC {
          Random rand = new Random();
          float randfloat = (float)((double)rand.nextInt(5) * 0.1D);
          GL11.glTranslatef((float)par2 + 0.0F, (float)par4 + 0.0F, (float)par6 + 0.0F);
-         GL11.glRotatef(par1Entity.field_70126_B + (par1Entity.field_70177_z - par1Entity.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
-         GL11.glRotatef(par1Entity.field_70127_C + (par1Entity.field_70125_A - par1Entity.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
+         GL11.glRotatef(par1Entity.field_70126_B + (par1Entity.rotationYaw - par1Entity.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
+         GL11.glRotatef(par1Entity.field_70127_C + (par1Entity.rotationPitch - par1Entity.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
          GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
          ResourceLocation txx;
          if (!ext) {
             txx = new ResourceLocation(JRMCoreH.tjjrmc + ":en.png");
-            this.field_76990_c.field_78724_e.func_110577_a(txx);
+            this.renderManager.renderEngine.bindTexture(txx);
          } else if (ext) {
             txx = new ResourceLocation(JRMCoreH.tjjrmc + ":en2.png");
-            this.field_76990_c.field_78724_e.func_110577_a(txx);
+            this.renderManager.renderEngine.bindTexture(txx);
          }
 
          JRMCoreClient.mc.field_71460_t.func_78483_a(0.0D);
@@ -52,7 +52,7 @@ public class RenderJRMCexpl extends RenderJRMC {
             GL11.glDepthMask(false);
          }
 
-         float t = (float)par1Entity.field_70173_aa;
+         float t = (float)par1Entity.ticksExisted;
          float sp = t * par1Entity.explsiz / 5.0F;
          GL11.glPushMatrix();
          if (!ext) {
@@ -79,14 +79,14 @@ public class RenderJRMCexpl extends RenderJRMC {
    }
 
    protected float handleRotationFloat(Entity par1Entity, float par2) {
-      return (float)par1Entity.field_70173_aa + par2;
+      return (float)par1Entity.ticksExisted + par2;
    }
 
    protected float handleSizeFloat(EntityJRMCexpl par1Entity, float par2) {
       float size = par1Entity.explsiz;
       float f = (float)par1Entity.MaxAge * 0.2F;
       float f2 = (float)par1Entity.MaxAge - f;
-      float ticksExsisted = (float)par1Entity.field_70173_aa;
+      float ticksExsisted = (float)par1Entity.ticksExisted;
       if (ticksExsisted < f) {
          ticksExsisted = ticksExsisted / f * size;
       } else if (ticksExsisted > f2) {
@@ -98,7 +98,7 @@ public class RenderJRMCexpl extends RenderJRMC {
       return ticksExsisted;
    }
 
-   public void func_76986_a(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
       this.renderJRMCexpl((EntityJRMCexpl)par1Entity, par2, par4, par6, par8, par9);
    }
 }

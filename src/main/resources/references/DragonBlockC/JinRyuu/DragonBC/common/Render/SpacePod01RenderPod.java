@@ -11,7 +11,7 @@ public class SpacePod01RenderPod extends Render {
    private static final ResourceLocation shearedSheepTextures = new ResourceLocation("jinryuudragonbc:SpacePodBlock.png");
 
    public SpacePod01RenderPod() {
-      this.field_76989_e = 0.5F;
+      this.shadowSize = 0.5F;
    }
 
    public void renderAModelAt(SpacePod01Entity entity, double d, double d1, double d2, float f, float par9) {
@@ -19,21 +19,21 @@ public class SpacePod01RenderPod extends Render {
       GL11.glTranslatef((float)d, (float)d1 + 1.0F, (float)d2);
       GL11.glRotatef(180.0F - f, 0.0F, 1.0F, 0.0F);
       ResourceLocation tx = new ResourceLocation("jinryuudragonbc:SpacePodBlock.png");
-      this.field_76990_c.field_78724_e.func_110577_a(tx);
+      this.renderManager.renderEngine.bindTexture(tx);
       GL11.glEnable(2977);
       GL11.glEnable(3042);
       GL11.glBlendFunc(770, 771);
       GL11.glScalef(-1.0F, -1.0F, 1.0F);
-      this.aModel.func_78088_a(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+      this.aModel.render(entity, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
       GL11.glDisable(3042);
       GL11.glPopMatrix();
    }
 
-   public void func_76986_a(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
       this.renderAModelAt((SpacePod01Entity)par1Entity, par2, par4, par6, par8, par9);
    }
 
-   protected ResourceLocation func_110775_a(Entity entity) {
+   protected ResourceLocation getEntityTexture(Entity entity) {
       return shearedSheepTextures;
    }
 }

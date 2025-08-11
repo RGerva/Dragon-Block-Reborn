@@ -249,7 +249,7 @@ public class MiniGameConcentration extends MiniGame {
             --this.lives;
          }
 
-         scale = JRMCoreClient.mc.field_71439_g.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F;
+         scale = JRMCoreClient.mc.player.world.field_73012_v.nextFloat() * 0.1F + 0.9F;
          if (type != 1) {
             scale /= (float)(type == 0 ? 2 : (type == 2 ? 3 : 1));
             JRMCoreClient.mc.func_147118_V().func_147682_a(PositionedSoundRecord.func_147674_a(new ResourceLocation("jinryuumodscore:MINIGAME.blast_bad"), scale));

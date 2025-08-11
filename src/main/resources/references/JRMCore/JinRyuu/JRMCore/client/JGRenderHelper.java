@@ -112,7 +112,7 @@ public class JGRenderHelper {
    public static void drawTexturedModalRect(float x, float y, int u, int v, float width, float height, float z) {
       float f = 0.00390625F;
       float f1 = 0.00390625F;
-      Tessellator tessellator = Tessellator.field_78398_a;
+      Tessellator tessellator = Tessellator.INSTANCE;
       tessellator.func_78382_b();
       tessellator.func_78374_a((double)x, (double)(y + 0.0F), (double)z, (double)((float)(u + 0) * f), (double)((float)(v + 0) * f1));
       tessellator.func_78374_a((double)x, (double)(y + height), (double)z, (double)((float)(u + 0) * f), (double)(((float)v + height) * f1));
@@ -153,7 +153,7 @@ public class JGRenderHelper {
       float h4 = (float)(col & 255) / 255.0F;
       GL11.glColor4f(h2, h3, h4, 1.0F);
       ResourceLocation txx = new ResourceLocation("jinryuumodscore:allw.png");
-      renderManager.field_78724_e.func_110577_a(txx);
+      renderManager.renderEngine.bindTexture(txx);
    }
 
    public static void tex(RenderManager renderManager, int col, float v) {
@@ -162,7 +162,7 @@ public class JGRenderHelper {
       float h4 = (float)(col & 255) / 255.0F;
       GL11.glColor4f(h2, h3, h4, v);
       ResourceLocation txx = new ResourceLocation("jinryuumodscore:allw.png");
-      renderManager.field_78724_e.func_110577_a(txx);
+      renderManager.renderEngine.bindTexture(txx);
    }
 
    public static boolean isClientPlayer(Entity entity) {

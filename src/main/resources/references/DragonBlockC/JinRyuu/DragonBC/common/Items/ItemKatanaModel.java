@@ -72,19 +72,19 @@ public class ItemKatanaModel extends ModelBase {
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
    public void render(String s) {
       float par1 = 0.0625F;
       if (s.contains("S") || s.contains("Z")) {
-         this.sw.func_78785_a(par1);
+         this.sw.render(par1);
       }
 
       if (s.contains("K")) {
-         this.kat.func_78785_a(par1);
+         this.kat.render(par1);
       }
 
    }

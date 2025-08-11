@@ -131,29 +131,29 @@ public class EntityAura2 extends Entity {
       this.state = s;
       this.state2 = s2;
       this.crel = cr;
-      this.rm = this.field_70146_Z.nextInt(10);
+      this.rm = this.rand.nextInt(10);
       int i = 0;
 
       while(true) {
          this.getClass();
          if (i >= 10) {
-            this.lightLivingTime = this.field_70146_Z.nextInt(4) + 0;
+            this.lightLivingTime = this.rand.nextInt(4) + 0;
             if (this.mot.length() > 1) {
-               Entity other = this.field_70170_p.func_72924_a(this.mot);
+               Entity other = this.world.getPlayerEntityByName(this.mot);
                if (other != null) {
                   if (this.rot) {
-                     this.yaw = other.field_70177_z;
-                     this.pitch = other.field_70125_A;
+                     this.yaw = other.rotationYaw;
+                     this.pitch = other.rotationPitch;
                   }
 
-                  this.func_70080_a(other.field_70165_t, other.field_70163_u + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.field_70161_v, other.field_70177_z, other.field_70125_A);
+                  this.func_70080_a(other.posX, other.posY + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.posZ, other.rotationYaw, other.rotationPitch);
                }
             }
 
             return;
          }
 
-         this.lightVert[i] = this.field_70146_Z.nextLong();
+         this.lightVert[i] = this.rand.nextLong();
          ++i;
       }
    }
@@ -331,11 +331,11 @@ public class EntityAura2 extends Entity {
       return this.bol7;
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       boolean aura_type = JGConfigClientSettings.CLIENT_DA13;
       boolean aura_type2 = JGConfigClientSettings.CLIENT_DA20;
       if (this.mot.length() > 1) {
-         Entity other = this.field_70170_p.func_72924_a(this.mot);
+         Entity other = this.world.getPlayerEntityByName(this.mot);
          if (other != null) {
             int sneak = other.func_70093_af() ? 0 : 1;
             int k;
@@ -355,10 +355,10 @@ public class EntityAura2 extends Entity {
             EntityCusPar entity2;
             if (this.kettleMode > 0) {
                for(k = 0; k < JGConfigClientSettings.get_da1(); ++k) {
-                  if (this.field_70173_aa < 15) {
-                     double posXOth = other.field_70165_t;
-                     x = other.field_70163_u + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F);
-                     y = other.field_70161_v;
+                  if (this.ticksExisted < 15) {
+                     double posXOth = other.posX;
+                     x = other.posY + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F);
+                     y = other.posZ;
                      float red = 250.0F;
                      red = 250.0F;
                      green = 250.0F;
@@ -373,8 +373,8 @@ public class EntityAura2 extends Entity {
                      y = (double)(other.field_70131_O * 0.8F);
                      x = Math.random() * (double)green - (double)(green / 2.0F);
                      z = Math.random() * (double)green - (double)(green / 2.0F);
-                     entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, x, y, x, y, z, Math.random() * 0.30000001192092896D - 0.15000000596046448D, 0.25D + Math.random() * 0.125D * (double)blue3, Math.random() * 0.30000001192092896D - 0.15000000596046448D, -0.02F * blue3, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, 0.05F + ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red2 * 1.2F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red2 * 1.2F / 2.0F, 0.3F * red2 * 1.2F, 0, red, red, green, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.1F, 0.0F, 0.4F * blue, 0.45F * blue, 0.02F * blue, false, -1, false, (Entity)null);
-                     entity2.field_70170_p.func_72838_d(entity2);
+                     entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, x, y, x, y, z, Math.random() * 0.30000001192092896D - 0.15000000596046448D, 0.25D + Math.random() * 0.125D * (double)blue3, Math.random() * 0.30000001192092896D - 0.15000000596046448D, -0.02F * blue3, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, 0.05F + ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red2 * 1.2F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red2 * 1.2F / 2.0F, 0.3F * red2 * 1.2F, 0, red, red, green, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.1F, 0.0F, 0.4F * blue, 0.45F * blue, 0.02F * blue, false, -1, false, (Entity)null);
+                     entity2.world.func_72838_d(entity2);
                   }
                }
             }
@@ -386,11 +386,11 @@ public class EntityAura2 extends Entity {
             if (this.kettleMode != 1 && aura_type) {
                for(k = 0; k < JGConfigClientSettings.get_da1(); ++k) {
                   for(int i = 0; (float)i < (float)((int)other.field_70131_O) / 2.0F + 1.0F; ++i) {
-                     if (this.field_70173_aa < 5) {
+                     if (this.ticksExisted < 5) {
                         Entity pl = other;
-                        posXOth = other.field_70165_t;
-                        posYOth = other.field_70163_u + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F);
-                        posZOth = other.field_70161_v;
+                        posXOth = other.posX;
+                        posYOth = other.posY + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F);
+                        posZOth = other.posZ;
                         double x;
                         double y;
                         double z;
@@ -440,8 +440,8 @@ public class EntityAura2 extends Entity {
                               y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                               x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                               z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                              entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 150.0F, 186.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.3F * alpha, 0.35F * alpha, 0.01F * alpha, false, -1, true, pl);
-                              entity2.field_70170_p.func_72838_d(entity2);
+                              entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 150.0F, 186.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.3F * alpha, 0.35F * alpha, 0.01F * alpha, false, -1, true, pl);
+                              entity2.world.func_72838_d(entity2);
                            }
 
                            for(repeat2 = 0; repeat2 < 4; ++repeat2) {
@@ -449,17 +449,17 @@ public class EntityAura2 extends Entity {
                               y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                               x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                               z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                              entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.3F * alpha, 0.35F * alpha, 0.01F * alpha, false, -1, true, pl);
-                              entity2.field_70170_p.func_72838_d(entity2);
+                              entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.3F * alpha, 0.35F * alpha, 0.01F * alpha, false, -1, true, pl);
+                              entity2.world.func_72838_d(entity2);
                            }
 
                            EntityCusPar entity2;
-                           if (this.field_70173_aa % 4 == 0) {
+                           if (this.ticksExisted % 4 == 0) {
                               x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                               y = Math.random() * (double)other.field_70131_O - 0.5D;
                               z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                              entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
-                              entity2.field_70170_p.func_72838_d(entity2);
+                              entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
+                              entity2.world.func_72838_d(entity2);
                            }
 
                            EntityCusPar entity3;
@@ -470,8 +470,8 @@ public class EntityAura2 extends Entity {
                                  y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                  x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                                  z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                                 entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red2, green2, red, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
-                                 entity2.field_70170_p.func_72838_d(entity2);
+                                 entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red2, green2, red, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
+                                 entity2.world.func_72838_d(entity2);
 
                                  for(repeat2 = 0; repeat2 < 1 + (this.bol4a ? 1 : 0); ++repeat2) {
                                     y = Math.random() * (double)(targetsizeMax - targetsizeMin) + (double)targetsizeMin;
@@ -479,17 +479,17 @@ public class EntityAura2 extends Entity {
                                     outNew = 1.9499999F;
                                     x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                                     z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                                    entity3 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red2, green2, red, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
-                                    entity3.field_70170_p.func_72838_d(entity3);
+                                    entity3 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red2, green2, red, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
+                                    entity3.world.func_72838_d(entity3);
                                  }
                               }
 
-                              if (this.field_70173_aa % (this.bol4a ? 1 : 4) == 0) {
+                              if (this.ticksExisted % (this.bol4a ? 1 : 4) == 0) {
                                  x = Math.random() * 1.5D - 0.75D;
                                  y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                  z = Math.random() * 1.5D - 0.75D;
-                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, red2, green2, red, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * (this.bol4a ? 1.2F : 1.0F) * alpha, 0.45F * (this.bol4a ? 1.2F : 1.0F) * alpha, 0.015F * (this.bol4a ? 1.2F : 1.0F) * alpha, false, -1, true, pl);
-                                 entity2.field_70170_p.func_72838_d(entity2);
+                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, red2, green2, red, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * (this.bol4a ? 1.2F : 1.0F) * alpha, 0.45F * (this.bol4a ? 1.2F : 1.0F) * alpha, 0.015F * (this.bol4a ? 1.2F : 1.0F) * alpha, false, -1, true, pl);
+                                 entity2.world.func_72838_d(entity2);
                               }
                            }
 
@@ -500,8 +500,8 @@ public class EntityAura2 extends Entity {
                               x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                               y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D * 0.6000000238418579D - 0.30000001192092896D;
                               z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                              entity3 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.03999999910593033D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 243.0F, 247.0F, 250.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.2F * alpha, 0.25F * alpha, 0.005F * alpha, false, -1, true, pl);
-                              entity3.field_70170_p.func_72838_d(entity3);
+                              entity3 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.03999999910593033D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 243.0F, 247.0F, 250.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.2F * alpha, 0.25F * alpha, 0.005F * alpha, false, -1, true, pl);
+                              entity3.world.func_72838_d(entity3);
 
                               for(int repeat2 = 0; repeat2 < 2; ++repeat2) {
                                  y = Math.random() * (double)(targetsizeMax - targetsizeMin) + (double)targetsizeMin;
@@ -509,24 +509,24 @@ public class EntityAura2 extends Entity {
                                  outNew = 1.26F;
                                  x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                                  z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                                 Entity entity1 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.03999999910593033D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 32, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, green, blue, blue3, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.3F * alpha, 0.35F * alpha, 0.02F * alpha, false, -1, true, pl);
-                                 entity1.field_70170_p.func_72838_d(entity1);
+                                 Entity entity1 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.03999999910593033D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 32, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, green, blue, blue3, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.3F * alpha, 0.35F * alpha, 0.02F * alpha, false, -1, true, pl);
+                                 entity1.world.func_72838_d(entity1);
                               }
                            }
 
-                           if (this.field_70173_aa % 4 == 0) {
+                           if (this.ticksExisted % 4 == 0) {
                               x = Math.random() * 0.6000000238418579D - 0.30000001192092896D;
                               y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                               z = Math.random() * 0.6000000238418579D - 0.30000001192092896D;
-                              entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.029999999329447746D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, green, blue, blue3, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
-                              entity2.field_70170_p.func_72838_d(entity2);
+                              entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.029999999329447746D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, green, blue, blue3, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
+                              entity2.world.func_72838_d(entity2);
                               y = Math.random() * (double)(targetsizeMax - targetsizeMin) + (double)targetsizeMin;
                               y -= 0.30000001192092896D;
                               outNew = 1.26F;
                               x = Math.random() * (double)outNew - (double)(outNew / 2.0F);
                               z = Math.random() * (double)outNew - (double)(outNew / 2.0F);
-                              entity3 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.029999999329447746D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, green, blue, blue3, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
-                              entity3.field_70170_p.func_72838_d(entity3);
+                              entity3 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.029999999329447746D + 0.01D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.019999999552965164D) + 0.02F) * life * 0.5F * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F * 0.5F, 0.2F * life * 0.5F * 0.5F, 0, green, blue, blue3, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F * alpha, 0.45F * alpha, 0.015F * alpha, false, -1, true, pl);
+                              entity3.world.func_72838_d(entity3);
                            }
                         } else {
                            int gh;
@@ -561,10 +561,10 @@ public class EntityAura2 extends Entity {
                                  double motx = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
                                  double moty = (Math.random() * 0.8999999761581421D + 0.8999999761581421D) * (double)(life * extra_scale) * 0.07D;
                                  double motz = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
-                                 Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 3.0D) + 32, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 0.5F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.2F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
-                                 pl.field_70170_p.func_72838_d(entity);
-                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 0.5F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
-                                 pl.field_70170_p.func_72838_d(entity);
+                                 Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 3.0D) + 32, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 0.5F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.2F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                                 pl.world.func_72838_d(entity);
+                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 0.5F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                                 pl.world.func_72838_d(entity);
                                  if (this.getColL3() > 0) {
                                     life *= 0.8F;
                                     life *= 0.8F;
@@ -591,10 +591,10 @@ public class EntityAura2 extends Entity {
 
                                     life *= 0.95F;
                                     moty = (Math.random() * 0.10000000149011612D + 0.10000000149011612D) * (double)life * 0.57D;
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 3.0D) + 32, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 1.6F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.3F, 0.35F, 0.02F, false, -1, true, pl);
-                                    pl.field_70170_p.func_72838_d(entity);
-                                    entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 1.6F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.3F, 0.35F, 0.02F, false, -1, true, pl);
-                                    pl.field_70170_p.func_72838_d(entity);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 3.0D) + 32, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 1.6F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.3F, 0.35F, 0.02F, false, -1, true, pl);
+                                    pl.world.func_72838_d(entity);
+                                    entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, motx, moty, motz, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int)(30.0F * life * 1.6F), 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.3F, 0.35F, 0.02F, false, -1, true, pl);
+                                    pl.world.func_72838_d(entity);
                                  }
                               }
                            } else if (this.bol6 == 6) {
@@ -604,13 +604,13 @@ public class EntityAura2 extends Entity {
                                  x = Math.random() * 1.25D - 0.625D;
                                  y = Math.random() * (double)this.field_70131_O - 0.5D;
                                  z = Math.random() * 1.25D - 0.625D;
-                                 entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, true, pl);
-                                 entity.field_70170_p.func_72838_d(entity);
+                                 entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, true, pl);
+                                 entity.world.func_72838_d(entity);
                                  x = Math.random() * 1.0D - 0.5D;
                                  y = Math.random() * (double)this.field_70131_O - 0.5D;
                                  z = Math.random() * 1.0D - 0.5D;
-                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, true, pl);
-                                 entity.field_70170_p.func_72838_d(entity);
+                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 30, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 168.0F, 50.0F, 214.0F, 0.0F, 0.0F, 0.0F, 175.0F, 55.0F, 228.0F, 3, 0.5F, 0.0F, 0.0F, 0.0F, -0.1F, false, -1, true, pl);
+                                 entity.world.func_72838_d(entity);
                               }
                            } else {
                               boolean dea;
@@ -631,23 +631,23 @@ public class EntityAura2 extends Entity {
                                  x = Math.random() * 1.600000023841858D - 0.800000011920929D;
                                  y = Math.random() * (double)other.field_70131_O - 0.5D;
                                  z = Math.random() * 1.600000023841858D - 0.800000011920929D;
-                                 entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 107.0F, 61.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                 entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 107.0F, 61.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
                                  x = Math.random() * 1.600000023841858D - 0.800000011920929D;
                                  y = Math.random() * (double)other.field_70131_O - 0.5D;
                                  z = Math.random() * 1.600000023841858D - 0.800000011920929D;
-                                 entity.field_70170_p.func_72838_d(entity);
-                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 107.0F, 61.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
-                                 entity.field_70170_p.func_72838_d(entity2);
+                                 entity.world.func_72838_d(entity);
+                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 107.0F, 61.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                 entity.world.func_72838_d(entity2);
                                  x = Math.random() * 1.5D - 0.75D;
                                  y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                  z = Math.random() * 1.5D - 0.75D;
-                                 entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 218.0F, 209.0F, 71.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                 entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 218.0F, 209.0F, 71.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
                                  x = Math.random() * 1.5D - 0.75D;
                                  y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                  z = Math.random() * 1.5D - 0.75D;
-                                 entity.field_70170_p.func_72838_d(entity);
-                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 218.0F, 209.0F, 71.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
-                                 entity.field_70170_p.func_72838_d(entity2);
+                                 entity.world.func_72838_d(entity);
+                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 218.0F, 209.0F, 71.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                 entity.world.func_72838_d(entity2);
                               } else if (this.bol6 == 1) {
                                  red = 48.0F;
                                  green = 208.0F;
@@ -662,25 +662,25 @@ public class EntityAura2 extends Entity {
                                     x = Math.random() * 1.600000023841858D - 0.800000011920929D;
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * 1.600000023841858D - 0.800000011920929D;
-                                    entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 48.0F, 208.0F, 232.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 48.0F, 208.0F, 232.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * 1.600000023841858D - 0.800000011920929D;
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * 1.600000023841858D - 0.800000011920929D;
-                                    entity2.field_70170_p.func_72838_d(entity2);
-                                    Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 48.0F, 208.0F, 232.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity2.field_70170_p.func_72838_d(entity2);
+                                    entity2.world.func_72838_d(entity2);
+                                    Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 48.0F, 208.0F, 232.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity2.world.func_72838_d(entity2);
                                  }
 
                                  x = Math.random() * 1.0D - 0.5D;
                                  y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                  z = Math.random() * 1.0D - 0.5D;
-                                 Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                 Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                  x = Math.random() * 1.0D - 0.5D;
                                  y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                  z = Math.random() * 1.0D - 0.5D;
-                                 entity.field_70170_p.func_72838_d(entity);
-                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                 entity.field_70170_p.func_72838_d(entity2);
+                                 entity.world.func_72838_d(entity);
+                                 entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * red * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * red * 0.5F, 0.2F * red * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                 entity.world.func_72838_d(entity2);
                               } else {
                                  EntityCusPar entity2;
                                  int gh;
@@ -701,37 +701,37 @@ public class EntityAura2 extends Entity {
                                        x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                        y = Math.random() * (double)other.field_70131_O - 0.5D;
                                        z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                       entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 80.0F, 179.0F, 215.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                       entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 80.0F, 179.0F, 215.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                        x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                        y = Math.random() * (double)other.field_70131_O - 0.5D;
                                        z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                       entity2.field_70170_p.func_72838_d(entity2);
-                                       entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 80.0F, 179.0F, 215.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                       entity2.field_70170_p.func_72838_d(entity2);
+                                       entity2.world.func_72838_d(entity2);
+                                       entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 80.0F, 179.0F, 215.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                       entity2.world.func_72838_d(entity2);
                                     }
 
                                     blue *= 1.4F;
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 46.0F, 46.0F, 211.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 46.0F, 46.0F, 211.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 46.0F, 46.0F, 211.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 46.0F, 46.0F, 211.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
                                     x = Math.random() * 1.0D - 0.5D;
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * 1.0D - 0.5D;
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * 1.0D - 0.5D;
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * 1.0D - 0.5D;
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
-                                 } else if (this.bol6 == 3 && this.field_70173_aa < 3) {
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 160.0F, 220.0F, 255.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
+                                 } else if (this.bol6 == 3 && this.ticksExisted < 3) {
                                     red = 186.0F;
                                     green = 37.0F;
                                     blue = 197.0F;
@@ -748,48 +748,48 @@ public class EntityAura2 extends Entity {
                                        x = Math.random() * (double)green - (double)(green / 2.0F);
                                        y = Math.random() * (double)other.field_70131_O - 0.5D;
                                        z = Math.random() * (double)green - (double)(green / 2.0F);
-                                       entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 186.0F, 37.0F, 197.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                       entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 186.0F, 37.0F, 197.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                        x = Math.random() * (double)green - (double)(green / 2.0F);
                                        y = Math.random() * (double)other.field_70131_O - 0.5D;
                                        z = Math.random() * (double)green - (double)(green / 2.0F);
-                                       entity2.field_70170_p.func_72838_d(entity2);
-                                       entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 186.0F, 37.0F, 197.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                       entity2.field_70170_p.func_72838_d(entity2);
+                                       entity2.world.func_72838_d(entity2);
+                                       entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 186.0F, 37.0F, 197.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                       entity2.world.func_72838_d(entity2);
                                     }
 
                                     green *= 1.4F;
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 140.0F, 8.0F, 62.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 140.0F, 8.0F, 62.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 140.0F, 8.0F, 62.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 140.0F, 8.0F, 62.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 184.0F, 147.0F, 241.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 184.0F, 147.0F, 241.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 184.0F, 147.0F, 241.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 184.0F, 147.0F, 241.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
                                     blue *= 1.2F;
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 93.0F, 3.0F, 177.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 93.0F, 3.0F, 177.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 93.0F, 3.0F, 177.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
-                                 } else if (this.bol6 == 5 && this.field_70173_aa < 3) {
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 93.0F, 3.0F, 177.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
+                                 } else if (this.bol6 == 5 && this.ticksExisted < 3) {
                                     red = 191.0F;
                                     green = 5.0F;
                                     blue = 184.0F;
@@ -806,47 +806,47 @@ public class EntityAura2 extends Entity {
                                        x = Math.random() * (double)green - (double)(green / 2.0F);
                                        y = Math.random() * (double)other.field_70131_O - 0.5D;
                                        z = Math.random() * (double)green - (double)(green / 2.0F);
-                                       entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 191.0F, 5.0F, 184.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                       entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 191.0F, 5.0F, 184.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                        x = Math.random() * (double)green - (double)(green / 2.0F);
                                        y = Math.random() * (double)other.field_70131_O - 0.5D;
                                        z = Math.random() * (double)green - (double)(green / 2.0F);
-                                       entity2.field_70170_p.func_72838_d(entity2);
-                                       entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 191.0F, 5.0F, 184.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                       entity2.field_70170_p.func_72838_d(entity2);
+                                       entity2.world.func_72838_d(entity2);
+                                       entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 191.0F, 5.0F, 184.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                       entity2.world.func_72838_d(entity2);
                                     }
 
                                     green *= 1.4F;
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 90.0F, 19.0F, 2.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 90.0F, 19.0F, 2.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 90.0F, 19.0F, 2.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 90.0F, 19.0F, 2.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 154.0F, 251.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 154.0F, 251.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 154.0F, 251.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 215.0F, 154.0F, 251.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
                                     blue *= 1.2F;
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 158.0F, 0.0F, 216.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 158.0F, 0.0F, 216.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
                                     x = Math.random() * (double)blue - (double)(blue / 2.0F);
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * (double)blue - (double)(blue / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 158.0F, 0.0F, 216.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 158.0F, 0.0F, 216.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, pl);
+                                    entity.world.func_72838_d(entity2);
                                  } else if (this.bol6 == 4) {
                                     red = 249.0F;
                                     green = 212.0F;
@@ -862,34 +862,34 @@ public class EntityAura2 extends Entity {
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 249.0F, 212.0F, 33.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                    entity.world.func_72838_d(entity2);
                                     green *= 1.3F;
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
                                     x = Math.random() * (double)green - (double)(green / 2.0F);
                                     y = Math.random() * (double)other.field_70131_O - 0.5D;
                                     z = Math.random() * (double)green - (double)(green / 2.0F);
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 234.0F, 134.0F, 34.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                    entity.world.func_72838_d(entity2);
                                     x = Math.random() * 1.0D - 0.5D;
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * 1.0D - 0.5D;
-                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
                                     x = Math.random() * 1.0D - 0.5D;
                                     y = (Math.random() * (double)other.field_70131_O - 0.5D) * 0.800000011920929D;
                                     z = Math.random() * 1.0D - 0.5D;
-                                    entity.field_70170_p.func_72838_d(entity);
-                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
-                                    entity.field_70170_p.func_72838_d(entity2);
+                                    entity.world.func_72838_d(entity);
+                                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, posXOth, posYOth, posZOth, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * blue3 * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * blue3 * 0.5F, 0.2F * blue3 * 0.5F, 0, 255.0F, 255.0F, 208.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, true, other);
+                                    entity.world.func_72838_d(entity2);
                                  }
                               }
                            }
@@ -913,7 +913,7 @@ public class EntityAura2 extends Entity {
                      float blue;
                      double z;
                      if (!this.bol4) {
-                        if (this.field_70173_aa % 2 == 0) {
+                        if (this.ticksExisted % 2 == 0) {
                            h1 = this.alpha;
                            h2 = 1.0F;
                            spe2 = 1.3F;
@@ -938,10 +938,10 @@ public class EntityAura2 extends Entity {
                            posYOth = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
                            posZOth = -0.30000001192092896D;
                            z = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
-                           entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, posYOth, posZOth, z, 0.0D, 0.05D + Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 48, 48, 8, 32, false, 0.0F, false, 0.0F, 1, "", 35, 0, 0.003F + (float)(Math.random() * 0.006000000052154064D), 0.0F, 0.0F, 0, spe2, spe, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.8F, 0.0F, 0.9F, 0.95F, 0.018F, false, -1, true, other);
-                           entity.field_70170_p.func_72838_d(entity);
+                           entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, posYOth, posZOth, z, 0.0D, 0.05D + Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 48, 48, 8, 32, false, 0.0F, false, 0.0F, 1, "", 35, 0, 0.003F + (float)(Math.random() * 0.006000000052154064D), 0.0F, 0.0F, 0, spe2, spe, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.8F, 0.0F, 0.9F, 0.95F, 0.018F, false, -1, true, other);
+                           entity.world.func_72838_d(entity);
                         }
-                     } else if (this.field_70173_aa % 10 == 0) {
+                     } else if (this.ticksExisted % 10 == 0) {
                         h1 = this.alpha;
                         h2 = 1.0F;
                         spe2 = 1.3F;
@@ -966,8 +966,8 @@ public class EntityAura2 extends Entity {
                         posYOth = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
                         posZOth = -0.30000001192092896D;
                         z = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
-                        entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, super.field_70165_t, super.field_70163_u, super.field_70161_v, posYOth, posZOth, z, 0.0D, 0.05D + Math.random() * 0.10000000149011612D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 48, 48, 8, 32, false, 0.0F, false, 0.0F, 1, "", 20, 0, 0.003F + (float)(Math.random() * 0.006000000052154064D), 0.0F, 0.0F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.8F, 0.0F, 0.9F, 0.95F, 0.05F, false, -1, true, other);
-                        entity.field_70170_p.func_72838_d(entity);
+                        entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, super.posX, super.posY, super.posZ, posYOth, posZOth, z, 0.0D, 0.05D + Math.random() * 0.10000000149011612D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 48, 48, 8, 32, false, 0.0F, false, 0.0F, 1, "", 20, 0, 0.003F + (float)(Math.random() * 0.006000000052154064D), 0.0F, 0.0F, 0, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.8F, 0.0F, 0.9F, 0.95F, 0.05F, false, -1, true, other);
+                        entity.world.func_72838_d(entity);
                      }
                   }
                }
@@ -977,12 +977,12 @@ public class EntityAura2 extends Entity {
             EntityCusPar entity2;
             if (this.kettleMode != 1 && JGConfigClientSettings.CLIENT_GR7) {
                for(k = 0; k < JGConfigClientSettings.get_da1(); ++k) {
-                  if ((this.texl2.equals("aurai2") || this.texl3.equals("auragb")) && this.bol4 && this.field_70173_aa % 10 == 0) {
+                  if ((this.texl2.equals("aurai2") || this.texl3.equals("auragb")) && this.bol4 && this.ticksExisted % 10 == 0) {
                      x = Math.random() * 1.0D - 0.5D;
                      y = Math.random() * (double)other.field_70131_O - 0.5D;
                      z = Math.random() * 1.0D - 0.5D;
-                     Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, other.field_70165_t, other.field_70163_u, other.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, (float)(Math.random() * 0.05000000074505806D), (float)(Math.random() * 0.07999999821186066D) + 0.1F, 0.1F, 2, 105.0F, 40.0F, 148.0F, 0.0F, 0.0F, 0.0F, 105.0F, 40.0F, 148.0F, 1, 0.5F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
-                     entity.field_70170_p.func_72838_d(entity);
+                     Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, other.posX, other.posY, other.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, (float)(Math.random() * 0.05000000074505806D), (float)(Math.random() * 0.07999999821186066D) + 0.1F, 0.1F, 2, 105.0F, 40.0F, 148.0F, 0.0F, 0.0F, 0.0F, 105.0F, 40.0F, 148.0F, 1, 0.5F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
+                     entity.world.func_72838_d(entity);
                      x = Math.random() * 1.0D - 0.5D;
                      y = Math.random() * (double)other.field_70131_O - 0.5D;
                      z = Math.random() * 1.0D - 0.5D;
@@ -990,20 +990,20 @@ public class EntityAura2 extends Entity {
                      int image = (int)(Math.random() * 8.0D) + 32;
                      float sizem = (float)(Math.random() * 0.029999999329447746D);
                      float sizemm = (float)(Math.random() * 0.029999999329447746D) + 0.05F;
-                     Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, other.field_70165_t, other.field_70163_u, other.field_70161_v, x, y, z, 0.0D, posXOth, 0.0D, 0.0F, image, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, sizem, sizemm, 0.1F, 0, 80.0F, 156.0F, 186.0F, 0.0F, 0.0F, 0.0F, 80.0F, 156.0F, 186.0F, 1, 0.8F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
-                     entity2.field_70170_p.func_72838_d(entity2);
-                     entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, other.field_70165_t, other.field_70163_u, other.field_70161_v, x, y, z, 0.0D, posXOth, 0.0D, 0.0F, image, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, sizem * 0.9F, sizemm * 0.9F, 0.1F, 1, 1.0F, 1.0F, 1.0F, -0.03F, -0.02F, -0.01F, 80.0F, 156.0F, 186.0F, 1, 0.65F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
-                     entity2.field_70170_p.func_72838_d(entity2);
+                     Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, other.posX, other.posY, other.posZ, x, y, z, 0.0D, posXOth, 0.0D, 0.0F, image, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, sizem, sizemm, 0.1F, 0, 80.0F, 156.0F, 186.0F, 0.0F, 0.0F, 0.0F, 80.0F, 156.0F, 186.0F, 1, 0.8F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
+                     entity2.world.func_72838_d(entity2);
+                     entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, other.posX, other.posY, other.posZ, x, y, z, 0.0D, posXOth, 0.0D, 0.0F, image, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, sizem * 0.9F, sizemm * 0.9F, 0.1F, 1, 1.0F, 1.0F, 1.0F, -0.03F, -0.02F, -0.01F, 80.0F, 156.0F, 186.0F, 1, 0.65F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
+                     entity2.world.func_72838_d(entity2);
                      x = Math.random() * 1.0D - 0.5D;
                      y = Math.random() * (double)other.field_70131_O - 0.20000000298023224D;
                      z = Math.random() * 1.0D - 0.5D;
-                     entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, other.field_70165_t, other.field_70163_u, other.field_70161_v, x, y, z, 0.0D, Math.random() * 0.004999999888241291D, 0.0D, 0.0F, 8, 8, 1, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, (float)(Math.random() * 0.10000000149011612D), (float)(Math.random() * 0.20000000298023224D) + 0.5F, 0.1F, 2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1, 0.4F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
-                     entity.field_70170_p.func_72838_d(entity);
+                     entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 0.2F, 0.2F, other.posX, other.posY, other.posZ, x, y, z, 0.0D, Math.random() * 0.004999999888241291D, 0.0D, 0.0F, 8, 8, 1, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, (float)(Math.random() * 0.10000000149011612D), (float)(Math.random() * 0.20000000298023224D) + 0.5F, 0.1F, 2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1, 0.4F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
+                     entity.world.func_72838_d(entity);
                      x = Math.random() * 1.0D - 0.5D;
                      y = Math.random() * (double)other.field_70131_O - 0.5D;
                      z = Math.random() * 1.0D - 0.5D;
-                     entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 0.2F, 0.2F, other.field_70165_t, other.field_70163_u, other.field_70161_v, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 189.0F, 138.0F, 227.0F, 0.0F, 0.0F, 0.0F, 189.0F, 138.0F, 227.0F, 1, 0.7F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
-                     entity2.field_70170_p.func_72838_d(entity2);
+                     entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 0.2F, 0.2F, other.posX, other.posY, other.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 100, 2, (float)(Math.random() * 0.029999999329447746D), (float)(Math.random() * 0.029999999329447746D) + 0.05F, 0.1F, 2, 189.0F, 138.0F, 227.0F, 0.0F, 0.0F, 0.0F, 189.0F, 138.0F, 227.0F, 1, 0.7F, 0.0F, 0.0F, 0.0F, -0.01F, false, -1, true, other);
+                     entity2.world.func_72838_d(entity2);
                   }
                }
             }
@@ -1018,13 +1018,13 @@ public class EntityAura2 extends Entity {
 
                   int j;
                   for(int j = 0; j < 5; ++j) {
-                     if (!b1 && this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u - (sneak + j), (int)this.field_70161_v).func_149739_a().toLowerCase().contains("grass")) {
+                     if (!b1 && this.world.func_147439_a((int)this.posX, (int)this.posY - (sneak + j), (int)this.posZ).func_149739_a().toLowerCase().contains("grass")) {
                         b1 = true;
                         tav = tavolsagok[j];
                      }
 
                      for(j = 0; j < s.length; ++j) {
-                        if (!b1 && this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u - (sneak + j), (int)this.field_70161_v).func_149739_a().toLowerCase().contains(s[j])) {
+                        if (!b1 && this.world.func_147439_a((int)this.posX, (int)this.posY - (sneak + j), (int)this.posZ).func_149739_a().toLowerCase().contains(s[j])) {
                            b1 = true;
                            tav = tavolsagok[j];
                         }
@@ -1033,7 +1033,7 @@ public class EntityAura2 extends Entity {
 
                   int j;
                   boolean b1;
-                  if (this.field_70173_aa == 1) {
+                  if (this.ticksExisted == 1) {
                      int spwnd = 0;
                      b1 = false;
                      b1 = false;
@@ -1050,15 +1050,15 @@ public class EntityAura2 extends Entity {
                                  x = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
                                  y = (double)(-0.2F - (float)spwnd);
                                  z = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
-                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 1.0F, 1.0F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + Math.random() * 0.20000000298023224D, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, (float)(Math.random() * 0.0010000000474974513D) - 5.0E-4F, (int)(Math.random() * 8.0D) + 16, 16, 8, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.009999999776482582D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, false, -1, false, (Entity)null);
+                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 1.0F, 1.0F, super.posX, super.posY, super.posZ, x, y, z, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + Math.random() * 0.20000000298023224D, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, (float)(Math.random() * 0.0010000000474974513D) - 5.0E-4F, (int)(Math.random() * 8.0D) + 16, 16, 8, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.009999999776482582D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, false, -1, false, (Entity)null);
                               } else {
                                  x = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
                                  y = (double)(-0.2F - (float)spwnd);
                                  z = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
-                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 1.0F, 1.0F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + Math.random() * 0.20000000298023224D, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, (float)(Math.random() * 0.0010000000474974513D) - 5.0E-4F, (int)(Math.random() * 8.0D) + 16, 16, 8, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.009999999776482582D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, true, 0, false, (Entity)null);
+                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 1.0F, 1.0F, super.posX, super.posY, super.posZ, x, y, z, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + Math.random() * 0.20000000298023224D, 0.01D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, (float)(Math.random() * 0.0010000000474974513D) - 5.0E-4F, (int)(Math.random() * 8.0D) + 16, 16, 8, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.009999999776482582D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, true, 0, false, (Entity)null);
                               }
 
-                              entity.field_70170_p.func_72838_d(entity);
+                              entity.world.func_72838_d(entity);
                            }
 
                            if (JGConfigClientSettings.CLIENT_GR1 && b1) {
@@ -1067,26 +1067,26 @@ public class EntityAura2 extends Entity {
                                  x = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
                                  y = (double)(-0.2F - (float)spwnd);
                                  z = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
-                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 1.0F, 1.0F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + (double)((float)(Math.random() * 0.20000000298023224D)), 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.0F, (int)(Math.random() * 13.0D), 0, 13, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.019999999552965164D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, false, -1, false, (Entity)null);
-                                 entity.field_70170_p.func_72838_d(entity);
+                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 1.0F, 1.0F, super.posX, super.posY, super.posZ, x, y, z, 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + (double)((float)(Math.random() * 0.20000000298023224D)), 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.0F, (int)(Math.random() * 13.0D), 0, 13, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.019999999552965164D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, false, -1, false, (Entity)null);
+                                 entity.world.func_72838_d(entity);
                               } else {
                                  x = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
                                  y = (double)(-0.2F - (float)spwnd);
                                  z = Math.random() * (double)spe2 - (double)(spe2 / 2.0F);
-                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.field_70170_p, 1.0F, 1.0F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, y, z, 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + (double)((float)(Math.random() * 0.20000000298023224D)), 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.0F, (int)(Math.random() * 13.0D), 0, 13, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.019999999552965164D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, true, 1, false, (Entity)null);
-                                 entity.field_70170_p.func_72838_d(entity);
+                                 entity = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.world, 1.0F, 1.0F, super.posX, super.posY, super.posZ, x, y, z, 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.05D + (double)((float)(Math.random() * 0.20000000298023224D)), 0.0D + Math.random() * 0.10000000149011612D - 0.05000000074505806D, 0.0F, (int)(Math.random() * 13.0D), 0, 13, 32, true, 0.5F, false, 0.0F, 1, "", 160, 0, 0.005F + (float)(Math.random() * 0.019999999552965164D), 0.0F, 0.0F, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.7F, 0.0F, 0.95F, 1.0F, 0.01F, true, 1, false, (Entity)null);
+                                 entity.world.func_72838_d(entity);
                               }
                            }
                            break;
                         }
 
-                        if (!b1 && (this.bol2 || this.bol) && this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u - (sneak + j), (int)this.field_70161_v).func_149739_a().toLowerCase().contains("grass")) {
+                        if (!b1 && (this.bol2 || this.bol) && this.world.func_147439_a((int)this.posX, (int)this.posY - (sneak + j), (int)this.posZ).func_149739_a().toLowerCase().contains("grass")) {
                            b1 = true;
                            spwnd = j;
                         }
 
                         for(j = 0; j < s.length; ++j) {
-                           if (!b1 && (this.bol2 || this.bol) && this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u - (sneak + j), (int)this.field_70161_v).func_149739_a().toLowerCase().contains(s[j])) {
+                           if (!b1 && (this.bol2 || this.bol) && this.world.func_147439_a((int)this.posX, (int)this.posY - (sneak + j), (int)this.posZ).func_149739_a().toLowerCase().contains(s[j])) {
                               b1 = true;
                               spwnd = j;
                            }
@@ -1101,20 +1101,20 @@ public class EntityAura2 extends Entity {
                      b1 = (int)(Math.random() * 3.0D) == 0;
                   }
 
-                  if (b1 && this.field_70173_aa % tav == 0) {
+                  if (b1 && this.ticksExisted % tav == 0) {
                      int spwnd = 0;
                      b1 = false;
                      boolean b2 = false;
                      String[] s = new String[]{"dirt", "grass", "rock", "stone"};
 
                      for(j = 0; j < 5; ++j) {
-                        if (!b2 && (this.bol2 || this.bol) && this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u - (sneak + j), (int)this.field_70161_v).func_149739_a().toLowerCase().contains("grass")) {
+                        if (!b2 && (this.bol2 || this.bol) && this.world.func_147439_a((int)this.posX, (int)this.posY - (sneak + j), (int)this.posZ).func_149739_a().toLowerCase().contains("grass")) {
                            b2 = true;
                            spwnd = j;
                         }
 
                         for(int i = 0; i < s.length; ++i) {
-                           if (!b1 && (this.bol3 || this.bol2 || this.bol) && this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u - (sneak + j), (int)this.field_70161_v).func_149739_a().toLowerCase().contains(s[i])) {
+                           if (!b1 && (this.bol3 || this.bol2 || this.bol) && this.world.func_147439_a((int)this.posX, (int)this.posY - (sneak + j), (int)this.posZ).func_149739_a().toLowerCase().contains(s[i])) {
                               b1 = true;
                               spwnd = j;
                            }
@@ -1129,7 +1129,7 @@ public class EntityAura2 extends Entity {
                }
             }
 
-            if (this.kettleMode != 1 && JGConfigClientSettings.CLIENT_DA11 && !other.field_70122_E && (other.field_70142_S != other.field_70165_t || other.field_70136_U != other.field_70161_v)) {
+            if (this.kettleMode != 1 && JGConfigClientSettings.CLIENT_DA11 && !other.field_70122_E && (other.field_70142_S != other.posX || other.field_70136_U != other.posZ)) {
                float a = this.alpha;
                h1 = 1.0F;
                if (this.bol4) {
@@ -1149,8 +1149,8 @@ public class EntityAura2 extends Entity {
                posXOth = -other.field_70159_w * 2.5D + (double)(other.field_70159_w > 0.0D ? -0.2F : 0.2F);
                posYOth = (double)(other.field_70131_O * 0.25F + (other instanceof EntityPlayerSP ? -1.6F : 0.0F)) - other.field_70181_x * 2.5D + (double)(other.field_70181_x > 0.0D ? -0.1F : 0.1F);
                posZOth = -other.field_70179_y * 2.5D + (double)(other.field_70179_y > 0.0D ? -0.2F : 0.2F);
-               entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 1.0F, 1.0F, other.field_70165_t, other.field_70163_u, other.field_70161_v, posXOth, posYOth, posZOth, 0.0D, -0.02D, 0.0D, 0.0F, 8, 11, 1, 32, false, 0.0F, false, 0.0F, 1, "", 15, 1, 0.09F, 0.001F, -0.0045F, 0, red, green, spe2, 0.0F, 0.0F, 0.0F, red, green, spe2, 1, 0.2F, 0.0F, 0.0F, 0.0F, -0.001F, false, -1, true, (Entity)null);
-               entity.field_70170_p.func_72838_d(entity);
+               entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 1.0F, 1.0F, other.posX, other.posY, other.posZ, posXOth, posYOth, posZOth, 0.0D, -0.02D, 0.0D, 0.0F, 8, 11, 1, 32, false, 0.0F, false, 0.0F, 1, "", 15, 1, 0.09F, 0.001F, -0.0045F, 0, red, green, spe2, 0.0F, 0.0F, 0.0F, red, green, spe2, 1, 0.2F, 0.0F, 0.0F, 0.0F, -0.001F, false, -1, true, (Entity)null);
+               entity.world.func_72838_d(entity);
                if (this.bol4) {
                   red = 141.0F;
                   green = 158.0F;
@@ -1167,51 +1167,51 @@ public class EntityAura2 extends Entity {
                posXOth = -other.field_70159_w * 2.5D + (double)(other.field_70159_w > 0.0D ? -0.2F : 0.2F);
                posYOth = (double)(other.field_70131_O * 0.25F + (other instanceof EntityPlayerSP ? -1.6F : 0.0F)) - other.field_70181_x * 2.5D + (double)(other.field_70181_x > 0.0D ? -0.1F : 0.1F);
                posZOth = -other.field_70179_y * 2.5D + (double)(other.field_70179_y > 0.0D ? -0.2F : 0.2F);
-               entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 1.0F, 1.0F, other.field_70165_t, other.field_70163_u, other.field_70161_v, posXOth, posYOth, posZOth, 0.0D, -0.02D, 0.0D, 0.0F, 8, 11, 1, 32, false, 0.0F, false, 0.0F, 1, "", 15, 1, 0.06F, 0.001F, -0.003F, 0, red, green, spe2, 0.0F, 0.0F, 0.0F, red, green, spe2, 1, 0.1F, 0.0F, 0.0F, 0.0F, -0.001F, false, -1, true, (Entity)null);
-               entity.field_70170_p.func_72838_d(entity2);
+               entity2 = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 1.0F, 1.0F, other.posX, other.posY, other.posZ, posXOth, posYOth, posZOth, 0.0D, -0.02D, 0.0D, 0.0F, 8, 11, 1, 32, false, 0.0F, false, 0.0F, 1, "", 15, 1, 0.06F, 0.001F, -0.003F, 0, red, green, spe2, 0.0F, 0.0F, 0.0F, red, green, spe2, 1, 0.1F, 0.0F, 0.0F, 0.0F, -0.001F, false, -1, true, (Entity)null);
+               entity.world.func_72838_d(entity2);
             }
 
             if (this.rot) {
-               this.yaw = other.field_70177_z;
-               this.pitch = other.field_70125_A;
+               this.yaw = other.rotationYaw;
+               this.pitch = other.rotationPitch;
             }
 
-            this.func_70080_a(other.field_70165_t, other.field_70163_u + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.field_70161_v, other.field_70177_z, other.field_70125_A);
+            this.func_70080_a(other.posX, other.posY + (double)(other instanceof EntityPlayerSP ? -1.6F : 0.0F), other.posZ, other.rotationYaw, other.rotationPitch);
             if (this.getAge() < this.getLightLivingTime() && this.getState() > 4.0F && this.getState() < 7.0F && this.getAge() == 2) {
                other.func_85030_a("jinryuudragonbc:1610.spark", 0.0375F, 0.85F + (float)this.lightLivingTime * 0.05F);
             }
          } else {
-            this.func_70106_y();
+            this.setDead();
          }
       }
 
       if (this.Age++ >= this.speed) {
-         this.func_70106_y();
+         this.setDead();
       }
 
    }
 
    public boolean getCanSpawnHere() {
-      return !this.field_70170_p.func_72855_b(this.field_70121_D);
+      return !this.world.checkNoEntityCollision(this.boundingBox);
    }
 
    public void onLivingUpdate() {
    }
 
-   protected void func_70037_a(NBTTagCompound var1) {
+   protected void readEntityFromNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70014_b(NBTTagCompound var1) {
+   protected void writeEntityToNBT(NBTTagCompound var1) {
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
    public boolean func_70112_a(double par1) {
       if (JGConfigClientSettings.renderdistanceMultiplierAuras == 10000) {
          return true;
       } else {
-         double d1 = this.field_70121_D.func_72320_b();
+         double d1 = this.boundingBox.func_72320_b();
          d1 *= 64.0D * this.field_70155_l;
          return par1 < d1 * d1 * ((double)JGConfigClientSettings.renderdistanceMultiplierAuras / 100.0D);
       }

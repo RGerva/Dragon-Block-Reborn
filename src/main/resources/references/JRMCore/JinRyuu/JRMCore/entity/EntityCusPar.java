@@ -318,14 +318,14 @@ public class EntityCusPar extends Entity {
       this.data17 = start_poX;
       this.data18 = start_poY;
       this.data19 = start_poZ;
-      this.field_70165_t = poX + this.data17;
+      this.posX = poX + this.data17;
       if (this.hasEnt()) {
-         this.field_70163_u = poY + this.data18;
+         this.posY = poY + this.data18;
       } else {
-         this.field_70163_u = poY + this.data18;
+         this.posY = poY + this.data18;
       }
 
-      this.field_70161_v = poZ + this.data19;
+      this.posZ = poZ + this.data19;
       this.data36 = 0.0D;
       this.data37 = 0.0D;
       this.data38 = 0.0D;
@@ -335,7 +335,7 @@ public class EntityCusPar extends Entity {
       this.data29 = data29;
       this.data30 = 1.0F;
       this.field_70133_I = true;
-      this.func_70080_a(this.field_70165_t, this.field_70163_u, this.field_70161_v, 0.0F, 0.0F);
+      this.func_70080_a(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
       this.id = (byte)id;
       this.id_min = (byte)id_min;
       this.id_max = (byte)id_max;
@@ -428,9 +428,9 @@ public class EntityCusPar extends Entity {
    public EntityCusPar(String data3, float box1, float box2, int id_min, int id_max, int data32, boolean rotate, float max_rotation_sp, int data1, String rr, int data2, int data4, float data5, float data6, float data7, int data31, float data8, float data9, float data10, float data11, float data12, float data13, float data14, float data15, float data16, int data20, float data21, float data22, float data23, float data24, float data25) {
       super((World)null);
       this.func_70105_a(box1, box2);
-      this.field_70165_t = 0.0D;
-      this.field_70163_u = 0.0D;
-      this.field_70161_v = 0.0D;
+      this.posX = 0.0D;
+      this.posY = 0.0D;
+      this.posZ = 0.0D;
       this.data17 = 0.0D;
       this.data18 = 0.0D;
       this.data19 = 0.0D;
@@ -442,7 +442,7 @@ public class EntityCusPar extends Entity {
       this.field_70179_y = 0.0D;
       this.data29 = 0.0F;
       this.data30 = 1.0F;
-      this.func_70080_a(this.field_70165_t, this.field_70163_u, this.field_70161_v, 0.0F, 0.0F);
+      this.func_70080_a(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
       this.id = 0;
       this.id_min = (byte)id_min;
       this.id_max = (byte)id_max;
@@ -501,13 +501,13 @@ public class EntityCusPar extends Entity {
       this.data35 = false;
    }
 
-   public void func_70071_h_() {
-      if (this.field_70170_p.field_72995_K) {
+   public void onUpdate() {
+      if (this.world.field_72995_K) {
          if (!JRMCoreClient.mc.func_147113_T() && !this.ended) {
             this.part_atlatszosag();
-            if (this.field_70173_aa > 60 && this.data28 == 0.0F) {
+            if (this.ticksExisted > 60 && this.data28 == 0.0F) {
                this.ended = true;
-               this.func_70106_y();
+               this.setDead();
             }
 
             if (this.data29 != 0.0F) {
@@ -517,27 +517,27 @@ public class EntityCusPar extends Entity {
                this.field_70179_y *= (double)this.data30;
             }
 
-            this.field_70165_t += this.field_70159_w * (double)JGConfigClientSettings.get_da2();
-            this.field_70163_u += this.field_70181_x * (double)JGConfigClientSettings.get_da2();
-            this.field_70161_v += this.field_70179_y * (double)JGConfigClientSettings.get_da2();
+            this.posX += this.field_70159_w * (double)JGConfigClientSettings.get_da2();
+            this.posY += this.field_70181_x * (double)JGConfigClientSettings.get_da2();
+            this.posZ += this.field_70179_y * (double)JGConfigClientSettings.get_da2();
             this.data36 += this.field_70159_w * (double)JGConfigClientSettings.get_da2();
             this.data37 += this.field_70181_x * (double)JGConfigClientSettings.get_da2();
             this.data38 += this.field_70179_y * (double)JGConfigClientSettings.get_da2();
          }
 
          if (this.hasEnt()) {
-            this.func_70107_b(this.ent.field_70165_t + this.data17 + this.data36, this.ent.field_70163_u + this.data18 + this.data37 + (double)(this.ent instanceof EntityPlayerSP ? -1.6F : 0.0F), this.ent.field_70161_v + this.data19 + this.data38);
+            this.func_70107_b(this.ent.posX + this.data17 + this.data36, this.ent.posY + this.data18 + this.data37 + (double)(this.ent instanceof EntityPlayerSP ? -1.6F : 0.0F), this.ent.posZ + this.data19 + this.data38);
          } else {
-            this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+            this.func_70107_b(this.posX, this.posY, this.posZ);
          }
 
          if (this.data1 == 0) {
-            if (this.hasEnded() || this.field_70173_aa > 10000) {
-               this.func_70106_y();
+            if (this.hasEnded() || this.ticksExisted > 10000) {
+               this.setDead();
             }
-         } else if (this.data2 <= this.field_70173_aa) {
+         } else if (this.data2 <= this.ticksExisted) {
             this.ended = true;
-            this.func_70106_y();
+            this.setDead();
          }
       }
 
@@ -600,7 +600,7 @@ public class EntityCusPar extends Entity {
          } else if (this.data20 == 3) {
             float szaz = (float)this.data2;
             float egy = szaz / 100.0F;
-            float calc = (float)this.field_70173_aa / egy / 100.0F;
+            float calc = (float)this.ticksExisted / egy / 100.0F;
             if (this.data25 > 0.0F) {
                this.data21 = calc;
                this.data28 = calc;
@@ -633,13 +633,13 @@ public class EntityCusPar extends Entity {
 
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   protected void func_70037_a(NBTTagCompound p_70037_1_) {
+   protected void readEntityFromNBT(NBTTagCompound p_70037_1_) {
    }
 
-   protected void func_70014_b(NBTTagCompound p_70014_1_) {
+   protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {
    }
 
    @SideOnly(Side.CLIENT)
@@ -651,7 +651,7 @@ public class EntityCusPar extends Entity {
       if (JGConfigClientSettings.renderdistanceMultiplierParticles == 10000) {
          return true;
       } else {
-         double d1 = this.field_70121_D.func_72320_b();
+         double d1 = this.boundingBox.func_72320_b();
          d1 *= 64.0D * this.field_70155_l;
          return par1 < d1 * d1 * ((double)JGConfigClientSettings.renderdistanceMultiplierParticles / 100.0D);
       }

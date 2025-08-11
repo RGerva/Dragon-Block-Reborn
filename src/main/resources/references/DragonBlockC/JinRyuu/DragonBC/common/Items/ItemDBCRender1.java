@@ -40,7 +40,7 @@ public class ItemDBCRender1 implements IItemRenderer {
          GL11.glPushMatrix();
          GL11.glEnable(3042);
          GL11.glBlendFunc(770, 771);
-         JRMCoreClient.mc.field_71446_o.func_110577_a(new ResourceLocation(JRMCoreH.tjdbcAssts + ":textures/blades/D.png"));
+         JRMCoreClient.mc.field_71446_o.bindTexture(new ResourceLocation(JRMCoreH.tjdbcAssts + ":textures/blades/D.png"));
          h1 = 1.0F;
          scale = 0.3F;
          GL11.glScalef(scale, scale, scale);
@@ -61,7 +61,7 @@ public class ItemDBCRender1 implements IItemRenderer {
          GL11.glColor3f(h1, h1, h1);
          GL11.glRotatef(45.0F, 0.0F, 0.0F, 1.0F);
          GL11.glTranslatef(4.5F, 2.2F, 0.0F);
-         JRMCoreClient.mc.field_71446_o.func_110577_a(new ResourceLocation(JRMCoreH.tjdbcAssts + ":textures/blades/D.png"));
+         JRMCoreClient.mc.field_71446_o.bindTexture(new ResourceLocation(JRMCoreH.tjdbcAssts + ":textures/blades/D.png"));
          this.model.render();
          GL11.glDisable(3042);
          GL11.glPopMatrix();
@@ -70,7 +70,7 @@ public class ItemDBCRender1 implements IItemRenderer {
          GL11.glPushMatrix();
          GL11.glEnable(3042);
          GL11.glBlendFunc(770, 771);
-         JRMCoreClient.mc.field_71446_o.func_110577_a(new ResourceLocation(JRMCoreH.tjdbcAssts + ":textures/blades/D.png"));
+         JRMCoreClient.mc.field_71446_o.bindTexture(new ResourceLocation(JRMCoreH.tjdbcAssts + ":textures/blades/D.png"));
          h1 = 1.0F;
          scale = 0.2F;
          GL11.glScalef(scale, scale, scale);

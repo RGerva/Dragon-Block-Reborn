@@ -45,11 +45,11 @@ public class ComJrmcStatusEffect extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(par1ICommandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var11) {
          }
 
-         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComSENAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComSENAS : JRMCoreConfig.ComSENAO);
+         boolean n = entitycommansender.equals("Console") ? JRMCoreConfig.ComSENAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComSENAS : JRMCoreConfig.ComSENAO);
          String s = stringArray[0];
          boolean set = s.toLowerCase().contentEquals("set");
          s = stringArray[2];
@@ -70,28 +70,28 @@ public class ComJrmcStatusEffect extends CommandBase {
                t = "Status Effect " + this.STATUS[id] + " has been " + (value == 0.0F ? "removed" : "added") + ".";
                entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.func_70005_c_(), this.STATUS[id], value});
+                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.getName(), this.STATUS[id], value});
                }
             } else if (id == 4) {
                JRMCoreH.StusEfcts(12, (EntityPlayer)entityplayermp, value != 0.0F);
                t = "Status Effect " + this.STATUS[id] + " has been " + (value == 0.0F ? "removed" : "added") + ".";
                entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.func_70005_c_(), this.STATUS[id], value});
+                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.getName(), this.STATUS[id], value});
                }
             } else if (id == 6) {
                JRMCoreH.StusEfcts(17, (EntityPlayer)entityplayermp, value != 0.0F);
                t = "Status Effect " + this.STATUS[id] + " has been " + (value == 0.0F ? "removed" : "added") + ".";
                entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.func_70005_c_(), this.STATUS[id], value});
+                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.getName(), this.STATUS[id], value});
                }
             } else if (id == 10) {
                JRMCoreH.StusEfcts(20, (EntityPlayer)entityplayermp, value != 0.0F);
                t = "Status Effect " + this.STATUS[id] + " has been " + (value == 0.0F ? "removed" : "added") + ".";
                entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.func_70005_c_(), this.STATUS[id], value});
+                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been " + (value == 0.0F ? "removed" : "added") + ".", new Object[]{entityplayermp.getName(), this.STATUS[id], value});
                }
             } else if (id >= 0) {
                if (id == 3) {
@@ -118,7 +118,7 @@ public class ComJrmcStatusEffect extends CommandBase {
                t = "Status Effect " + this.STATUS[id] + " has been set to " + value + " mins.";
                entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[0])).func_150255_a(JRMCoreH2.styl_ylw));
                if (n) {
-                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been set to %s mins.", new Object[]{entityplayermp.func_70005_c_(), this.STATUS[id], value});
+                  this.notifyAdmins(par1ICommandSender, "%s's Status Effect %s has been set to %s mins.", new Object[]{entityplayermp.getName(), this.STATUS[id], value});
                }
             }
          }

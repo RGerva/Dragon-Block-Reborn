@@ -81,8 +81,8 @@ public class RenderEnergyAttack<E extends Entity> extends RenderJRMC {
       super(new mEnergy(), 0.5F);
    }
 
-   public void func_76986_a(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-      this.field_76989_e = 0.0F;
+   public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
+      this.shadowSize = 0.0F;
       this.renderEnergy(entity, par2, par4, par6, par8, par9);
    }
 
@@ -107,7 +107,7 @@ public class RenderEnergyAttack<E extends Entity> extends RenderJRMC {
    }
 
    protected float handleRotationFloat(Entity entity, float par2) {
-      return (float)entity.field_70173_aa + par2;
+      return (float)entity.ticksExisted + par2;
    }
 
    public void setColors(int color, float alpha) {
@@ -130,8 +130,8 @@ public class RenderEnergyAttack<E extends Entity> extends RenderJRMC {
 
    public void glRotate(E entity, double par2, double par4, double par6, float par9) {
       GL11.glTranslatef((float)par2, (float)par4, (float)par6);
-      GL11.glRotatef(entity.field_70126_B + (entity.field_70177_z - entity.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
-      GL11.glRotatef(entity.field_70127_C + (entity.field_70125_A - entity.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
+      GL11.glRotatef(entity.field_70126_B + (entity.rotationYaw - entity.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
+      GL11.glRotatef(entity.field_70127_C + (entity.rotationPitch - entity.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
       GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
    }
 

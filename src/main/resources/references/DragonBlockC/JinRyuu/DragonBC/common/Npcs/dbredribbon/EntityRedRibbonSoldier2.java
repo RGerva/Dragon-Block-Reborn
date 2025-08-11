@@ -22,12 +22,12 @@ public class EntityRedRibbonSoldier2 extends EntityRedRibbon2 {
       this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(20.0D);
    }
 
-   public void func_70071_h_() {
-      super.func_70071_h_();
-      if (!this.field_70170_p.field_72995_K && !this.field_70128_L && this.field_70789_a != null && this.field_70789_a.func_70089_S() && this.field_70789_a.func_70032_d(this) < 25.0F && this.field_70173_aa % 50 < 12 && this.field_70173_aa % 4 == 0) {
-         EntityPrjtls_1 var8 = new EntityPrjtls_1(this.field_70170_p, this, this.field_70789_a, 1.8F, 1.0F, 4);
-         this.field_70170_p.func_72956_a(this, "jinryuudragonbc:DBC5.gun_shot_single", 0.2F, this.field_70170_p.field_73012_v.nextFloat() * 0.1F + 0.9F);
-         this.field_70170_p.func_72838_d(var8);
+   public void onUpdate() {
+      super.onUpdate();
+      if (!this.world.field_72995_K && !this.field_70128_L && this.field_70789_a != null && this.field_70789_a.func_70089_S() && this.field_70789_a.func_70032_d(this) < 25.0F && this.ticksExisted % 50 < 12 && this.ticksExisted % 4 == 0) {
+         EntityPrjtls_1 var8 = new EntityPrjtls_1(this.world, this, this.field_70789_a, 1.8F, 1.0F, 4);
+         this.world.func_72956_a(this, "jinryuudragonbc:DBC5.gun_shot_single", 0.2F, this.world.field_73012_v.nextFloat() * 0.1F + 0.9F);
+         this.world.func_72838_d(var8);
       }
 
    }

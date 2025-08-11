@@ -197,8 +197,8 @@ public class NCPacketHandlerServer {
 
                         byte P = JRMCoreH.getByte(Player, "jrmcPtch");
                         float ptch = P == 0 ? 1.0F : 0.8F + (float)P * 0.006F;
-                        Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:NC2." + snd, 1.0F, ptch);
-                        Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:NC2." + snd2, 1.0F, ptch);
+                        Player.world.func_72956_a(Player, "jinryuunarutoc:NC2." + snd, 1.0F, ptch);
+                        Player.world.func_72956_a(Player, "jinryuunarutoc:NC2." + snd2, 1.0F, ptch);
                         if (density == 1) {
                            if (ni > 0) {
                               double d = (double)dmg1 / 50.0D;
@@ -206,7 +206,7 @@ public class NCPacketHandlerServer {
                               dmg = dmg < 1 ? 1 : dmg;
                               Entity var8 = new EntityEnergyAttJ(Player, type, (float)speed, dmg, effect, color, density, sincantation, sfire, smove, (byte)-1, dmg1, cst, cost);
                               ((EntityEnergyAttJ)var8).setJutsuName(name);
-                              Player.field_70170_p.func_72838_d(var8);
+                              Player.world.func_72838_d(var8);
                            } else {
                               Player.func_145747_a(new ChatComponentText(JRMCoreH.cly + "You need to learn the " + JRMCoreH.clgd + JRMCoreH.trl("nc", JRMCoreH.NCSkillNames[1]) + JRMCoreH.cly + " Skill!"));
                            }
@@ -223,7 +223,7 @@ public class NCPacketHandlerServer {
                if ((d1 < 4 || d1 >= 8 || s == null || s.length() <= 0) && (d1 != 100 || s == null || s.split(";").length != 16)) {
                   if (d1 == 8) {
                      MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-                     String gi = NCJutsus.rgi(server, Player.func_70005_c_());
+                     String gi = NCJutsus.rgi(server, Player.getName());
                      if (gi.contains(";")) {
                         tech = gi.split(";");
                         String m = tech[0];
@@ -245,8 +245,8 @@ public class NCPacketHandlerServer {
                         if (curEn >= cst && ge > 0) {
                            byte P = JRMCoreH.getByte(Player, "jrmcPtch");
                            float ptch = P == 0 ? 1.0F : 0.8F + (float)P * 0.006F;
-                           Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:NC2." + JRMCoreH.techNCSndIncSpec[0], 1.0F, ptch);
-                           NCJutsus.wgi(server, " ", Player.func_70005_c_(), true);
+                           Player.world.func_72956_a(Player, "jinryuunarutoc:NC2." + JRMCoreH.techNCSndIncSpec[0], 1.0F, ptch);
+                           NCJutsus.wgi(server, " ", Player.getName(), true);
                            if (!JRMCoreH.isInCreativeMode(Player)) {
                               JRMCoreH.setInt(curEn - cst, Player, "jrmcEnrgy");
                            }
@@ -363,25 +363,25 @@ public class NCPacketHandlerServer {
                               }
                            } else if (density == 4) {
                               if (ni > 0) {
-                                 Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndFirePM[sincantation], 0.25F, 1.0F);
+                                 Player.world.func_72956_a(Player, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndFirePM[sincantation], 0.25F, 1.0F);
                                  d = (double)dmg1 / 50.0D;
                                  dmg = (int)(d * 20.0D + d * ((double)ni * 2.0D + (double)af));
                                  dmg = (int)((double)dmg * (effect == 7 ? 1.0D : 0.5D));
                                  dmg = dmg < 1 ? 1 : dmg;
-                                 var8 = new EntityNCjutsuBunshin(Player.field_70170_p, Player, tn + "", dmg, (EntityLivingBase)null);
-                                 ((Entity)var8).func_70012_b(Player.field_70165_t - 0.0D, Player.field_70163_u + 1.5D, Player.field_70161_v - 0.0D, Player.field_70177_z, Player.field_70125_A);
+                                 var8 = new EntityNCjutsuBunshin(Player.world, Player, tn + "", dmg, (EntityLivingBase)null);
+                                 ((Entity)var8).setLocationAndAngles(Player.posX - 0.0D, Player.posY + 1.5D, Player.posZ - 0.0D, Player.rotationYaw, Player.rotationPitch);
                               } else {
                                  Player.func_145747_a(new ChatComponentText(JRMCoreH.cly + "You need to learn the " + JRMCoreH.clgd + JRMCoreH.trl("nc", JRMCoreH.NCSkillNames[1]) + JRMCoreH.cly + " Skill!"));
                               }
                            } else if (density == 5) {
                               if (cc > 0 && md > 0) {
-                                 Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndFirePM[sincantation], 0.25F, 1.0F);
+                                 Player.world.func_72956_a(Player, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndFirePM[sincantation], 0.25F, 1.0F);
                                  d = (double)((float)dmg1 / 50.0F);
                                  dmg = (int)(d * 20.0D + d * ((double)md * 2.0D + (double)cc));
                                  dmg = dmg < 1 ? 1 : dmg;
                                  dat = 2;
-                                 AxisAlignedBB ab = AxisAlignedBB.func_72330_a(Player.field_70165_t - (double)dat, Player.field_70163_u - (double)dat, Player.field_70161_v - (double)dat, Player.field_70165_t + (double)dat, Player.field_70163_u + (double)dat, Player.field_70161_v + (double)dat);
-                                 List list = Player.field_70170_p.func_72872_a(EntityPlayer.class, ab);
+                                 AxisAlignedBB ab = AxisAlignedBB.func_72330_a(Player.posX - (double)dat, Player.posY - (double)dat, Player.posZ - (double)dat, Player.posX + (double)dat, Player.posY + (double)dat, Player.posZ + (double)dat);
+                                 List list = Player.world.func_72872_a(EntityPlayer.class, ab);
                                  int i;
                                  if (list.size() == 1) {
                                     i = JRMCoreH.stat(Player, 2, pwr, 2, PlyrAttrbts[2], rc, cls, 0.0F);
@@ -418,7 +418,7 @@ public class NCPacketHandlerServer {
                                     nbt.func_74768_a("nccdt", (int)(System.currentTimeMillis() / 1000L));
                                     StE = nbt.func_74779_i("jrmcStatusEff");
                                     JRMCoreH.StusEfcts(16, StE, (NBTTagCompound)nbt, true);
-                                    Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndFirePM[sincantation], 0.25F, 1.0F);
+                                    Player.world.func_72956_a(Player, "jinryuunarutoc:NC1." + JRMCoreH.techNCSndFirePM[sincantation], 0.25F, 1.0F);
                                  } else if (cls != 2) {
                                     Player.func_145747_a((new ChatComponentText("You need to be from Clan " + JRMCoreH.clgd + JRMCoreH.trl("jrmc", JRMCoreH.cl(pwr)[2]) + " to use this Jutsu!")).func_150255_a(JRMCoreH.CHAT_STYLE_YELLOW));
                                  } else if (tj == 0) {
@@ -435,7 +435,7 @@ public class NCPacketHandlerServer {
                                     nbt.func_74768_a("nccdt", (int)(System.currentTimeMillis() / 1000L));
                                     double d = (double)((float)dmg1 / 50.0F);
                                     dmg = (int)(d * 20.0D + d * ((double)ni * 2.0D + (double)af));
-                                    var8 = new hgTaiKaiEntity(Player.field_70170_p, Player.func_70005_c_(), 56573, 0.0F, 0.0F, 100, false, 0.9F, dmg);
+                                    var8 = new hgTaiKaiEntity(Player.world, Player.getName(), 56573, 0.0F, 0.0F, 100, false, 0.9F, dmg);
                                  } else if (cls != 1) {
                                     Player.func_145747_a((new ChatComponentText("You need to be from Clan " + JRMCoreH.clgd + JRMCoreH.trl("jrmc", JRMCoreH.cl(pwr)[1]) + " to use this Jutsu!")).func_150255_a(JRMCoreH.CHAT_STYLE_YELLOW));
                                  } else if (tj == 0) {
@@ -482,14 +482,14 @@ public class NCPacketHandlerServer {
                               double d8 = (double)(Player.field_70130_N + 1.0F);
                               double d9 = (double)Player.field_70131_O;
                               Vec3 vec3 = Player.func_70676_i(1.0F);
-                              double x = Player.field_70165_t + vec3.field_72450_a * d8;
-                              double y = Player.field_70163_u + vec3.field_72448_b * d8 + (double)(Player.field_70131_O * 0.55F);
-                              double z = Player.field_70161_v + vec3.field_72449_c * d8;
+                              double x = Player.posX + vec3.field_72450_a * d8;
+                              double y = Player.posY + vec3.field_72448_b * d8 + (double)(Player.field_70131_O * 0.55F);
+                              double z = Player.posZ + vec3.field_72449_c * d8;
                               int spot = -1;
                               int checked = 0;
 
                               for(int i = (int)y; spot == -1 && checked < 3; --i) {
-                                 if (!Player.field_70170_p.func_147439_a((int)x, i, (int)z).func_149739_a().toLowerCase().contains("air")) {
+                                 if (!Player.world.func_147439_a((int)x, i, (int)z).func_149739_a().toLowerCase().contains("air")) {
                                     spot = i + 1;
                                     y = (double)spot;
                                     break;
@@ -512,15 +512,15 @@ public class NCPacketHandlerServer {
                         if (wcbu) {
                            P = JRMCoreH.getByte(Player, "jrmcPtch");
                            float ptch = P == 0 ? 1.0F : 0.8F + (float)P * 0.006F;
-                           Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:" + snd, 1.0F, density == 1 ? 1.0F : ptch);
-                           Player.field_70170_p.func_72956_a(Player, "jinryuunarutoc:" + snd2, 1.0F, ptch);
+                           Player.world.func_72956_a(Player, "jinryuunarutoc:" + snd, 1.0F, density == 1 ? 1.0F : ptch);
+                           Player.world.func_72956_a(Player, "jinryuunarutoc:" + snd2, 1.0F, ptch);
                            if (!JRMCoreH.isInCreativeMode(Player)) {
                               JRMCoreH.setInt(curEn - cst, Player, "jrmcEnrgy");
                            }
                         }
 
                         if (var8 != null) {
-                           Player.field_70170_p.func_72838_d((Entity)var8);
+                           Player.world.func_72838_d((Entity)var8);
                         }
                      } else if (cst > curEn) {
                         Player.func_145747_a((new ChatComponentText(" Not Enough Chakra!")).func_150255_a(JRMCoreH.CHAT_STYLE_YELLOW));
@@ -565,7 +565,7 @@ public class NCPacketHandlerServer {
             int clanSkillLvl = Integer.parseInt(s2.replaceAll(doujutsu, ""));
             if (st == 0 && b == 1) {
                if (JRMCoreH.NCRacialSkillAbilityNames[cl].length() > 0) {
-                  p.field_70170_p.func_72956_a(p, "jinryuunarutoc:NC2." + JRMCoreH.NCRacialSkillAbilityNames[cl].toLowerCase(), 0.5F, 1.0F);
+                  p.world.func_72956_a(p, "jinryuunarutoc:NC2." + JRMCoreH.NCRacialSkillAbilityNames[cl].toLowerCase(), 0.5F, 1.0F);
                }
 
                nbt.func_74774_a("jrmcState", (byte)(clanSkillLvl + 1));
@@ -626,7 +626,7 @@ public class NCPacketHandlerServer {
    }
 
    public void soundPowerUp(EntityPlayer var4, String var2) {
-      var4.field_70170_p.func_72956_a(var4, var2, 0.5F, 1.0F);
+      var4.world.func_72956_a(var4, var2, 0.5F, 1.0F);
    }
 
    public NBTTagCompound nbt(EntityPlayer p, String s) {

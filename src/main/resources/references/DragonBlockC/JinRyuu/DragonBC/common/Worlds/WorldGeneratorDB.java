@@ -169,7 +169,7 @@ public class WorldGeneratorDB implements IWorldGenerator {
             List enma = world.func_72872_a(EntityMasterKami.class, par2AxisAlignedBB);
             if (enma.isEmpty()) {
                EntityMasterKami namekian03 = new EntityMasterKami(world);
-               namekian03.func_70012_b(86.0D, 217.0D, 50.0D, 0.0F, 0.0F);
+               namekian03.setLocationAndAngles(86.0D, 217.0D, 50.0D, 0.0F, 0.0F);
                world.func_72838_d(namekian03);
             }
 
@@ -177,7 +177,7 @@ public class WorldGeneratorDB implements IWorldGenerator {
             enma = world.func_72872_a(EntityMasterPiccolo.class, par2AxisAlignedBB);
             if (enma.isEmpty()) {
                EntityMasterPiccolo namekian03 = new EntityMasterPiccolo(world);
-               namekian03.func_70012_b(87.0D, 217.0D, 93.0D, 0.0F, 0.0F);
+               namekian03.setLocationAndAngles(87.0D, 217.0D, 93.0D, 0.0F, 0.0F);
                world.func_72838_d(namekian03);
             }
 
@@ -185,7 +185,7 @@ public class WorldGeneratorDB implements IWorldGenerator {
             enma = world.func_72872_a(EntityMasterVegeta.class, par2AxisAlignedBB);
             if (enma.isEmpty()) {
                EntityMasterVegeta namekian03 = new EntityMasterVegeta(world);
-               namekian03.func_70012_b(73.0D, 217.0D, 10.0D, 0.0F, 0.0F);
+               namekian03.setLocationAndAngles(73.0D, 217.0D, 10.0D, 0.0F, 0.0F);
                world.func_72838_d(namekian03);
             }
 
@@ -193,7 +193,7 @@ public class WorldGeneratorDB implements IWorldGenerator {
             List kn = world.func_72872_a(EntityMasterKarin.class, knaabb);
             if (kn.isEmpty()) {
                EntityMasterKarin k = new EntityMasterKarin(world);
-               k.func_70012_b(80.0D, 133.0D, 40.0D, 0.0F, 0.0F);
+               k.setLocationAndAngles(80.0D, 133.0D, 40.0D, 0.0F, 0.0F);
                world.func_72838_d(k);
             }
          }
@@ -571,7 +571,7 @@ public class WorldGeneratorDB implements IWorldGenerator {
             List enma = w.func_72872_a(EntityMasterEnma.class, par2AxisAlignedBB);
             if (enma.isEmpty()) {
                EntityMasterEnma namekian03 = new EntityMasterEnma(w);
-               namekian03.func_70012_b(75.0D, 91.0D, 53.0D, 0.0F, 0.0F);
+               namekian03.setLocationAndAngles(75.0D, 91.0D, 53.0D, 0.0F, 0.0F);
                w.func_72838_d(namekian03);
             }
 
@@ -579,7 +579,7 @@ public class WorldGeneratorDB implements IWorldGenerator {
             List kaio = w.func_72872_a(EntityMasterKaio.class, aabbkaio);
             if (kaio.isEmpty()) {
                EntityMasterKaio namekian03 = new EntityMasterKaio(w);
-               namekian03.func_70012_b(107.0D, 116.0D, -3719.0D, 0.0F, 0.0F);
+               namekian03.setLocationAndAngles(107.0D, 116.0D, -3719.0D, 0.0F, 0.0F);
                w.func_72838_d(namekian03);
             }
 
@@ -587,7 +587,7 @@ public class WorldGeneratorDB implements IWorldGenerator {
             List jin = w.func_72872_a(EntityMasterJin.class, aabbjin);
             if (jin.isEmpty()) {
                EntityMasterJin namekian03 = new EntityMasterJin(w);
-               namekian03.func_70012_b(107.0D, 116.0D, -3722.0D, 0.0F, 0.0F);
+               namekian03.setLocationAndAngles(107.0D, 116.0D, -3722.0D, 0.0F, 0.0F);
                w.func_72838_d(namekian03);
             }
          }

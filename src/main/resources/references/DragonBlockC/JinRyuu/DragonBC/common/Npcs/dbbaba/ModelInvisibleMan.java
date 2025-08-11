@@ -9,6 +9,6 @@ public class ModelInvisibleMan extends ModelBase {
       this.field_78089_u = 64;
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
    }
 }

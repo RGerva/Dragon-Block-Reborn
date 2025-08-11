@@ -67,18 +67,18 @@ public class ItemKatanaModel2 extends ModelBase {
       this.Guard1.func_78792_a(this.GuardSide1);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.Hilt.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.Hilt.render(f5);
    }
 
    public void render() {
       float par1 = 0.0625F;
-      this.Hilt.func_78785_a(par1);
+      this.Hilt.render(par1);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 }

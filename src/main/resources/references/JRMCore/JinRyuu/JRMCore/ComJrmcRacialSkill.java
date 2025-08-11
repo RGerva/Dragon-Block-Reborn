@@ -64,11 +64,11 @@ public class ComJrmcRacialSkill extends CommandBase {
 
          try {
             EntityPlayerMP commansender = func_71521_c(par1ICommandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var27) {
          }
 
-         boolean boo = entitycommansender.equals("Console") ? JRMCoreConfig.ComRSNAC : (entitycommansender.equals(entityplayermp.func_70005_c_()) ? JRMCoreConfig.ComRSNAS : JRMCoreConfig.ComRSNAO);
+         boolean boo = entitycommansender.equals("Console") ? JRMCoreConfig.ComRSNAC : (entitycommansender.equals(entityplayermp.getName()) ? JRMCoreConfig.ComRSNAS : JRMCoreConfig.ComRSNAO);
          NBTTagCompound nbt = JRMCoreH.nbt(entityplayermp, "pres");
          String str = commandTags[0].toLowerCase();
          byte tpMode = str.equals("add") ? 1 : (str.equals("set") ? 0 : -1);
@@ -118,7 +118,7 @@ public class ComJrmcRacialSkill extends CommandBase {
                if (boo && this.result != -1) {
                   String resultS = this.result == 0 ? "was set" : (this.result == 1 ? "lost " + i + " level(s)" : "received " + i + " level(s)") + " (" + (this.doit ? "Success" : "Fail") + ")";
                   currentLevel = Byte.parseByte(nbt.func_74779_i(key).substring(2));
-                  this.notifyAdmins(par1ICommandSender, "Racial Skill " + resultS + " from: %s to: %s for %s", new Object[]{Integer.valueOf(startLevel), Integer.valueOf(currentLevel), entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(par1ICommandSender, "Racial Skill " + resultS + " from: %s to: %s for %s", new Object[]{Integer.valueOf(startLevel), Integer.valueOf(currentLevel), entityplayermp.getName()});
                }
             }
          }

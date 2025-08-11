@@ -104,19 +104,19 @@ public class ComJrmcSafeZone extends CommandBase {
             if (x != null && x.length() > 0 && !x.equals("~")) {
                xPos = Double.parseDouble(x);
             } else {
-               xPos = entityplayermp.field_70165_t;
+               xPos = entityplayermp.posX;
             }
 
             if (y != null && y.length() > 0 && !y.equals("~")) {
                yPos = Double.parseDouble(y);
             } else {
-               yPos = entityplayermp.field_70163_u;
+               yPos = entityplayermp.posY;
             }
 
             if (z != null && z.length() > 0 && !z.equals("~")) {
                zPos = Double.parseDouble(z);
             } else {
-               zPos = entityplayermp.field_70161_v;
+               zPos = entityplayermp.posZ;
             }
 
             boolean sendMessage = true;
@@ -176,7 +176,7 @@ public class ComJrmcSafeZone extends CommandBase {
                master.func_70107_b(xPos, yPos, zPos);
                world.func_72838_d(master);
                if (sendMessage) {
-                  this.notifyAdmins(commandSender, "Safe Zone Created: %s by %s", new Object[]{masterID, entityplayermp.func_70005_c_()});
+                  this.notifyAdmins(commandSender, "Safe Zone Created: %s by %s", new Object[]{masterID, entityplayermp.getName()});
                }
 
             } else {
@@ -189,14 +189,14 @@ public class ComJrmcSafeZone extends CommandBase {
                   if (entity.getClass().equals(master.getClass())) {
                      if (remove) {
                         if (sendMessage) {
-                           this.notifyAdmins(commandSender, "Safe Zone Removed: %s by %s", new Object[]{masterID, entityplayermp.func_70005_c_()});
+                           this.notifyAdmins(commandSender, "Safe Zone Removed: %s by %s", new Object[]{masterID, entityplayermp.getName()});
                         }
 
                         entity.removeAllPlayers();
-                        entity.func_70106_y();
+                        entity.setDead();
                      } else {
                         if (sendMessage) {
-                           this.notifyAdmins(commandSender, "Safe Zone Changed: %s by %s", new Object[]{masterID, entityplayermp.func_70005_c_()});
+                           this.notifyAdmins(commandSender, "Safe Zone Changed: %s by %s", new Object[]{masterID, entityplayermp.getName()});
                         }
 
                         entity.removeAllPlayers();
@@ -261,7 +261,7 @@ public class ComJrmcSafeZone extends CommandBase {
 
    private EntitySafeZone[] getEntityList(EntityPlayerMP entityplayermp) {
       ArrayList<EntitySafeZone> entityNames = new ArrayList();
-      entityNames.add(new EntitySafeZone(entityplayermp.field_70170_p));
+      entityNames.add(new EntitySafeZone(entityplayermp.world));
       if (JRMCoreH.DBC()) {
          entityNames.addAll(Arrays.asList(JRMCoreManagerDBC.getMasters(entityplayermp)));
       }

@@ -18,9 +18,9 @@ public class WorldGenFreezaSoldiers extends WorldGenerator {
             EntityFreezaSoldier1 Soldier1 = new EntityFreezaSoldier1(par1World);
             EntityFreezaSoldier2 Soldier2 = new EntityFreezaSoldier2(par1World);
             EntityFreezaSoldier3 Soldier3 = new EntityFreezaSoldier3(par1World);
-            Soldier1.func_70012_b((double)var7, (double)var8 + 3.0D, (double)var9, 0.0F, 0.0F);
-            Soldier2.func_70012_b((double)var7, (double)var8 + 3.0D, (double)var9 + 1.0D, 0.0F, 0.0F);
-            Soldier3.func_70012_b((double)var7 + 1.0D, (double)var8 + 3.0D, (double)var9, 0.0F, 0.0F);
+            Soldier1.setLocationAndAngles((double)var7, (double)var8 + 3.0D, (double)var9, 0.0F, 0.0F);
+            Soldier2.setLocationAndAngles((double)var7, (double)var8 + 3.0D, (double)var9 + 1.0D, 0.0F, 0.0F);
+            Soldier3.setLocationAndAngles((double)var7 + 1.0D, (double)var8 + 3.0D, (double)var9, 0.0F, 0.0F);
             Soldier1.setSpwner(Soldier1);
             Soldier2.setSpwner(Soldier2);
             Soldier3.setSpwner(Soldier3);

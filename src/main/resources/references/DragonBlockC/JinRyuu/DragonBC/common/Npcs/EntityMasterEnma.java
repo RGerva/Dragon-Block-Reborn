@@ -29,7 +29,7 @@ public class EntityMasterEnma extends EntityDBCKami {
       ItemStack var2 = par1EntityPlayer.field_71071_by.func_70448_g();
       boolean var3 = var2 != null;
       if (this.func_70089_S()) {
-         par1EntityPlayer.openGui(mod_DragonBC.instance, 10, par1EntityPlayer.field_70170_p, (int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+         par1EntityPlayer.openGui(mod_DragonBC.instance, 10, par1EntityPlayer.world, (int)this.posX, (int)this.posY, (int)this.posZ);
          return true;
       } else {
          return super.func_70085_c(par1EntityPlayer);

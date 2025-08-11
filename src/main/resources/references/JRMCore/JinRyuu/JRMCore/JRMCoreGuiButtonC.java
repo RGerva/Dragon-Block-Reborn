@@ -34,7 +34,7 @@ public class JRMCoreGuiButtonC extends GuiButton {
       if (this.field_146125_m) {
          FontRenderer var4 = par1Minecraft.field_71466_p;
          ResourceLocation txx = new ResourceLocation(JRMCoreGuiScreen.button1);
-         par1Minecraft.func_110434_K().func_110577_a(txx);
+         par1Minecraft.func_110434_K().bindTexture(txx);
          int col = this.defCol == 0 ? this.bgCol : this.defCol;
          float h2 = (float)(col >> 16 & 255) / 255.0F;
          float h3 = (float)(col >> 8 & 255) / 255.0F;

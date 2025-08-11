@@ -254,41 +254,41 @@ public class ModelPanchia extends ModelBase {
       this.Body2.func_78792_a(this.Side2L);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.Head.func_78785_a(f5);
-      this.Arm1R.func_78785_a(f5);
-      this.Leg1R.func_78785_a(f5);
-      this.Arm1L.func_78785_a(f5);
-      this.Body1.func_78785_a(f5);
-      this.Leg1L.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.Head.render(f5);
+      this.Arm1R.render(f5);
+      this.Leg1R.render(f5);
+      this.Arm1L.render(f5);
+      this.Body1.render(f5);
+      this.Leg1L.render(f5);
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-      int calc = par7Entity.field_70173_aa;
+   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+      int calc = par7Entity.ticksExisted;
       if (calc > 100) {
          calc -= 100;
       }
 
       float r = 360.0F;
       float r2 = 180.0F;
-      float ex = (float)par7Entity.field_70173_aa;
+      float ex = (float)par7Entity.ticksExisted;
       float r3 = MathHelper.func_76134_b(ex * 0.14F) * 0.1F;
       float r4 = MathHelper.func_76134_b(ex / 8.0F) / 5.0F + 0.1F;
       r3 = MathHelper.func_76134_b(ex * 0.14F) * 0.1F;
       r4 = MathHelper.func_76134_b(ex / 8.0F) / 3.0F - 0.2F;
-      this.Leg1R.field_78795_f = -0.0F - MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
-      this.Leg1L.field_78795_f = -0.0F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
-      this.Leg1R.field_78796_g = 0.0F;
-      this.Leg1L.field_78796_g = 0.0F;
-      this.Arm1R.field_78796_g = 0.0F;
-      this.Arm1L.field_78796_g = 0.0F;
-      super.func_78087_a(par1, par2, par3, par4, par5, par6, par7Entity);
+      this.Leg1R.rotateAngleX = -0.0F - MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
+      this.Leg1L.rotateAngleX = -0.0F + MathHelper.func_76134_b(par1 * 0.6662F) * 1.2F * par2;
+      this.Leg1R.rotateAngleY = 0.0F;
+      this.Leg1L.rotateAngleY = 0.0F;
+      this.Arm1R.rotateAngleY = 0.0F;
+      this.Arm1L.rotateAngleY = 0.0F;
+      super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
    }
 }

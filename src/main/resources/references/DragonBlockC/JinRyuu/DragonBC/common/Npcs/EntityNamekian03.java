@@ -102,7 +102,7 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
       } else {
          Entity var3 = par1DamageSource.func_76346_g();
          if (var3 instanceof EntityPlayer) {
-            List var4 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+            List var4 = this.world.func_72839_b(this, this.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
 
             for(int var5 = 0; var5 < var4.size(); ++var5) {
                Entity var6 = (Entity)var4.get(var5);
@@ -123,9 +123,9 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
 
    protected void func_70629_bd() {
       if (--this.randomTickDivider <= 0) {
-         this.field_70170_p.field_72982_D.func_75551_a(MathHelper.func_76128_c(this.field_70165_t), MathHelper.func_76128_c(this.field_70163_u), MathHelper.func_76128_c(this.field_70161_v));
-         this.randomTickDivider = 70 + this.field_70146_Z.nextInt(50);
-         this.field_70954_d = this.field_70170_p.field_72982_D.func_75550_a(MathHelper.func_76128_c(this.field_70165_t), MathHelper.func_76128_c(this.field_70163_u), MathHelper.func_76128_c(this.field_70161_v), 32);
+         this.world.field_72982_D.func_75551_a(MathHelper.func_76128_c(this.posX), MathHelper.func_76128_c(this.posY), MathHelper.func_76128_c(this.posZ));
+         this.randomTickDivider = 70 + this.rand.nextInt(50);
+         this.field_70954_d = this.world.field_72982_D.func_75550_a(MathHelper.func_76128_c(this.posX), MathHelper.func_76128_c(this.posY), MathHelper.func_76128_c(this.posZ), 32);
          if (this.field_70954_d != null) {
             ChunkCoordinates var1 = this.field_70954_d.func_75577_a();
             if (this.field_82190_bM) {
@@ -147,7 +147,7 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
                this.addDefaultEquipmentAndRecipies(1);
                this.needsInitilization = false;
                if (this.field_70954_d != null && this.lastBuyingPlayer != null) {
-                  this.field_70170_p.func_72960_a(this, (byte)14);
+                  this.world.func_72960_a(this, (byte)14);
                   this.field_70954_d.func_82688_a(this.lastBuyingPlayer, 1);
                }
             }
@@ -163,8 +163,8 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
       return true;
    }
 
-   protected void func_70088_a() {
-      super.func_70088_a();
+   protected void entityInit() {
+      super.entityInit();
       this.field_70180_af.func_75682_a(20, 0);
    }
 
@@ -173,8 +173,8 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
       this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(300.0D);
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
-      super.func_70014_b(par1NBTTagCompound);
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+      super.writeEntityToNBT(par1NBTTagCompound);
       par1NBTTagCompound.func_74768_a("Profession", this.func_70946_n());
       par1NBTTagCompound.func_74768_a("Riches", this.wealth);
       if (this.buyingList != null) {
@@ -183,8 +183,8 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
 
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
-      super.func_70037_a(par1NBTTagCompound);
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readEntityFromNBT(par1NBTTagCompound);
       this.func_70938_b(par1NBTTagCompound.func_74762_e("Profession"));
       this.wealth = par1NBTTagCompound.func_74762_e("Riches");
       if (par1NBTTagCompound.func_74764_b("Offers")) {
@@ -239,12 +239,12 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
                int kr = JRMCoreH.getInt((EntityPlayer)var2, "jrmcKarma");
                JRMCoreH.setInt(kr + 1, (EntityPlayer)var2, "jrmcKarma");
                ((EntityPlayer)var2).func_145747_a((new ChatComponentTranslation(JRMCoreH.trlai("dbc.moreevil.line1"), new Object[0])).func_150255_a(JRMCoreH2.styl_wht));
-               this.field_70954_d.func_82688_a(((EntityPlayer)var2).func_70005_c_(), -2);
+               this.field_70954_d.func_82688_a(((EntityPlayer)var2).getName(), -2);
             } else if (var2 instanceof IMob) {
                this.field_70954_d.func_82692_h();
             }
          } else if (var2 == null) {
-            EntityPlayer var3 = this.field_70170_p.func_72890_a(this, 16.0D);
+            EntityPlayer var3 = this.world.func_72890_a(this, 16.0D);
             if (var3 != null) {
                this.field_70954_d.func_82692_h();
             }
@@ -272,7 +272,7 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
          this.timeUntilReset = 40;
          this.needsInitilization = true;
          if (this.buyingPlayer != null) {
-            this.lastBuyingPlayer = this.buyingPlayer.func_70005_c_();
+            this.lastBuyingPlayer = this.buyingPlayer.getName();
          } else {
             this.lastBuyingPlayer = null;
          }
@@ -301,7 +301,7 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
       }
 
       MerchantRecipeList var2 = new MerchantRecipeList();
-      VillagerRegistry.manageVillagerTrades(var2, this, this.func_70946_n(), this.field_70146_Z);
+      VillagerRegistry.manageVillagerTrades(var2, this, this.func_70946_n(), this.rand);
       if (var2.isEmpty()) {
       }
 
@@ -343,16 +343,16 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
    @SideOnly(Side.CLIENT)
    private void generateRandomParticles(String par1Str) {
       for(int var2 = 0; var2 < 5; ++var2) {
-         double var3 = this.field_70146_Z.nextGaussian() * 0.02D;
-         double var5 = this.field_70146_Z.nextGaussian() * 0.02D;
-         double var7 = this.field_70146_Z.nextGaussian() * 0.02D;
-         this.field_70170_p.func_72869_a(par1Str, this.field_70165_t + (double)(this.field_70146_Z.nextFloat() * this.field_70130_N * 2.0F) - (double)this.field_70130_N, this.field_70163_u + 1.0D + (double)(this.field_70146_Z.nextFloat() * this.field_70131_O), this.field_70161_v + (double)(this.field_70146_Z.nextFloat() * this.field_70130_N * 2.0F) - (double)this.field_70130_N, var3, var5, var7);
+         double var3 = this.rand.nextGaussian() * 0.02D;
+         double var5 = this.rand.nextGaussian() * 0.02D;
+         double var7 = this.rand.nextGaussian() * 0.02D;
+         this.world.func_72869_a(par1Str, this.posX + (double)(this.rand.nextFloat() * this.field_70130_N * 2.0F) - (double)this.field_70130_N, this.posY + 1.0D + (double)(this.rand.nextFloat() * this.field_70131_O), this.posZ + (double)(this.rand.nextFloat() * this.field_70130_N * 2.0F) - (double)this.field_70130_N, var3, var5, var7);
       }
 
    }
 
    public void initCreature() {
-      VillagerRegistry.applyRandomTrade(this, this.field_70170_p.field_73012_v);
+      VillagerRegistry.applyRandomTrade(this, this.world.field_73012_v);
    }
 
    public void func_82187_q() {
@@ -360,7 +360,7 @@ public class EntityNamekian03 extends EntityVillager implements INpc, IMerchant 
    }
 
    public EntityVillager func_90012_b(EntityAgeable par1EntityAgeable) {
-      EntityVillager var2 = new EntityVillager(this.field_70170_p);
+      EntityVillager var2 = new EntityVillager(this.world);
       return var2;
    }
 }

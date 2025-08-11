@@ -32,7 +32,7 @@ public class EntitySaibaiman extends EntityDBCEvil implements IMob {
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
    public void func_70636_d() {
@@ -41,7 +41,7 @@ public class EntitySaibaiman extends EntityDBCEvil implements IMob {
    }
 
    protected void func_70628_a(boolean par1, int par2) {
-      int ran = this.field_70146_Z.nextInt(5);
+      int ran = this.rand.nextInt(5);
       if (ran == 0) {
          this.func_145779_a(ItemsDBC.ItemSaibaiSeed, 1);
       }

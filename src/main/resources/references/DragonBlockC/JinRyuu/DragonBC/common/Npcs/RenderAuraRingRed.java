@@ -16,7 +16,7 @@ public class RenderAuraRingRed extends RenderDBC {
    }
 
    public void renderAuraRingRed(EntityAuraRingRed par1Entity, double par2, double par4, double par6, float par8, float par9) {
-      this.field_76989_e = 0.0F;
+      this.shadowSize = 0.0F;
       GL11.glPushMatrix();
       GL11.glPushMatrix();
       float var13 = this.handleRotationFloat(par1Entity, par9);
@@ -26,7 +26,7 @@ public class RenderAuraRingRed extends RenderDBC {
       GL11.glTranslatef((float)par2 + 0.0F, (float)par4 + 1.6F, (float)par6 + 0.0F);
       GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
       ResourceLocation txx = new ResourceLocation("jinryuudragonbc:auraringr.png");
-      this.field_76990_c.field_78724_e.func_110577_a(txx);
+      this.renderManager.renderEngine.bindTexture(txx);
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.15F);
       GL11.glDepthMask(false);
       GL11.glEnable(3042);
@@ -42,15 +42,15 @@ public class RenderAuraRingRed extends RenderDBC {
    }
 
    protected float handleRotationFloat(Entity par1Entity, float par2) {
-      return (float)par1Entity.field_70173_aa + par2;
+      return (float)par1Entity.ticksExisted + par2;
    }
 
    protected float handleSizeFloat(Entity par1Entity, float par2) {
-      float ticksExsisted = ((float)par1Entity.field_70173_aa + par2) / 2.0F;
+      float ticksExsisted = ((float)par1Entity.ticksExisted + par2) / 2.0F;
       return ticksExsisted;
    }
 
-   public void func_76986_a(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
       this.renderAuraRingRed((EntityAuraRingRed)par1Entity, par2, par4, par6, par8, par9);
    }
 }

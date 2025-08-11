@@ -29,23 +29,23 @@ public class RenderEnergyAttJ4 extends RenderJRMC {
 
    public void renderEnergy(EntityEnergyAttJ4 e, double par2, double par4, double par6, float par8, float par9) {
       byte type = e.getType();
-      double x = e.field_70165_t;
-      double y = e.field_70163_u;
-      double z = e.field_70161_v;
+      double x = e.posX;
+      double y = e.posY;
+      double z = e.posZ;
       GL11.glPushMatrix();
       GL11.glEnable(2977);
       GL11.glEnable(3042);
       GL11.glBlendFunc(770, 771);
       GL11.glDepthMask(false);
       GL11.glTranslatef((float)par2, (float)par4, (float)par6);
-      GL11.glRotatef(e.field_70126_B + (e.field_70177_z - e.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
-      GL11.glRotatef(e.field_70127_C + (e.field_70125_A - e.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
+      GL11.glRotatef(e.field_70126_B + (e.rotationYaw - e.field_70126_B) * par9 - 180.0F, 0.0F, 1.0F, 0.0F);
+      GL11.glRotatef(e.field_70127_C + (e.rotationPitch - e.field_70127_C) * par9, 1.0F, 0.0F, 0.0F);
       GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
       this.tex(5220343);
       float seb_szaz = 5.0F;
       float seb_one = seb_szaz / 100.0F;
       float max = 1.0F;
-      float ti = (float)e.field_70173_aa;
+      float ti = (float)e.ticksExisted;
       float curr = ti * seb_one;
       curr = curr >= max ? max : curr;
       GL11.glScalef(curr, curr, curr);
@@ -62,7 +62,7 @@ public class RenderEnergyAttJ4 extends RenderJRMC {
 
    private void lightning(EntityEnergyAttJ4 e, double par2, double par4, double par6, float par9, float var20, int col) {
       GL11.glPushMatrix();
-      Tessellator tessellator2 = Tessellator.field_78398_a;
+      Tessellator tessellator2 = Tessellator.INSTANCE;
       GL11.glDisable(3553);
       GL11.glDisable(2896);
       GL11.glEnable(3042);
@@ -72,10 +72,10 @@ public class RenderEnergyAttJ4 extends RenderJRMC {
       double d3 = 0.0D;
       double d4 = 0.0D;
       GL11.glTranslatef((float)par2, (float)par4, (float)par6);
-      float t = (float)e.field_70173_aa;
+      float t = (float)e.ticksExisted;
       float scale = 0.03F * t;
       GL11.glScalef(scale, scale, scale);
-      GL11.glRotatef((float)e.field_70173_aa * 45.0F, 1.0F, 1.0F, 1.0F);
+      GL11.glRotatef((float)e.ticksExisted * 45.0F, 1.0F, 1.0F, 1.0F);
       int k1 = 0;
       float sc = e.getSize() / 2.0F;
       int i = 0;
@@ -123,7 +123,7 @@ public class RenderEnergyAttJ4 extends RenderJRMC {
                d6 += (double)(random1.nextInt(31) - 15) * 0.07000000029802322D;
                tessellator2.func_78371_b(5);
                float f2 = 0.5F;
-               tessellator2.func_78369_a(0.9F * f2, 0.9F * f2, 1.0F * f2, 0.3F - (float)e.field_70173_aa * 0.013F);
+               tessellator2.func_78369_a(0.9F * f2, 0.9F * f2, 1.0F * f2, 0.3F - (float)e.ticksExisted * 0.013F);
                double d9 = 0.1D + (double)k1 * 0.2D;
                double d10 = 0.1D + (double)k1 * 0.2D;
 
@@ -172,16 +172,16 @@ public class RenderEnergyAttJ4 extends RenderJRMC {
       GL11.glTranslatef((float)par2, (float)par4, (float)par6);
       this.tex(col);
       GL11.glScalef(var20 / 2.0F, var20 / 2.0F, var20 / 2.0F);
-      float t = (float)e.field_70173_aa;
+      float t = (float)e.ticksExisted;
       float scale = 0.3F * t;
       GL11.glScalef(scale, scale, scale);
-      GL11.glRotatef((float)e.field_70173_aa * 45.0F, 1.0F, 1.0F, 1.0F);
+      GL11.glRotatef((float)e.ticksExisted * 45.0F, 1.0F, 1.0F, 1.0F);
       float sc2 = 2.6F;
-      GL11.glColor4f(0.7F, 0.9F, 1.0F, 0.6F - (float)e.field_70173_aa * 0.03F);
+      GL11.glColor4f(0.7F, 0.9F, 1.0F, 0.6F - (float)e.ticksExisted * 0.03F);
       this.ener.render();
       sc2 = 2.6F;
       GL11.glScalef(sc2, sc2, sc2);
-      GL11.glColor4f(0.7F, 0.9F, 1.0F, 0.3F - (float)e.field_70173_aa * 0.015F);
+      GL11.glColor4f(0.7F, 0.9F, 1.0F, 0.3F - (float)e.ticksExisted * 0.015F);
       this.ener.render();
       GL11.glDisable(3042);
       GL11.glDisable(2977);
@@ -195,14 +195,14 @@ public class RenderEnergyAttJ4 extends RenderJRMC {
       float h4 = (float)(col & 255) / 255.0F;
       GL11.glColor4f(h2, h3, h4, 0.5F);
       ResourceLocation txx = new ResourceLocation("jinryuumodscore:allw.png");
-      this.field_76990_c.field_78724_e.func_110577_a(txx);
+      this.renderManager.renderEngine.bindTexture(txx);
    }
 
    protected float handleRotationFloat(Entity par1Entity, float par2) {
-      return (float)par1Entity.field_70173_aa + par2;
+      return (float)par1Entity.ticksExisted + par2;
    }
 
-   public void func_76986_a(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+   public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
       this.renderEnergy((EntityEnergyAttJ4)par1Entity, par2, par4, par6, par8, par9);
    }
 }

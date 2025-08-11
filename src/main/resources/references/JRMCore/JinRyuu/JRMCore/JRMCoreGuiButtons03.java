@@ -42,7 +42,7 @@ public class JRMCoreGuiButtons03 extends GuiButton {
 
          FontRenderer var4 = par1Minecraft.field_71466_p;
          ResourceLocation txx = new ResourceLocation(icons);
-         par1Minecraft.func_110434_K().func_110577_a(txx);
+         par1Minecraft.func_110434_K().bindTexture(txx);
          GL11.glColor4f(0.7F, 0.7F, 0.7F, 1.0F);
          this.field_146123_n = par2 >= this.field_146128_h && par3 >= this.field_146129_i && par2 < this.field_146128_h + this.field_146120_f && par3 < this.field_146129_i + this.field_146121_g;
          int var5 = this.func_146114_a(this.field_146123_n);
@@ -103,7 +103,7 @@ public class JRMCoreGuiButtons03 extends GuiButton {
          }
 
          txx = new ResourceLocation(icons);
-         par1Minecraft.func_110434_K().func_110577_a(txx);
+         par1Minecraft.func_110434_K().bindTexture(txx);
          GL11.glPushMatrix();
          GL11.glTranslatef((float)(this.field_146128_h + 2), (float)(this.field_146129_i + 2), 0.0F);
          boolean isNotification = this.resourceID == 10;
@@ -126,13 +126,13 @@ public class JRMCoreGuiButtons03 extends GuiButton {
             int state = hasNewContent ? 1 : 2;
             bonusY = (int)rotation;
             if (state == 1) {
-               if (JRMCoreClient.mc.field_71439_g.field_70173_aa != noticiationAnimationLast) {
+               if (JRMCoreClient.mc.player.ticksExisted != noticiationAnimationLast) {
                   ++noticiationAnimation;
                   if (noticiationAnimation > 3) {
                      noticiationAnimation = 0;
                   }
 
-                  noticiationAnimationLast = JRMCoreClient.mc.field_71439_g.field_70173_aa;
+                  noticiationAnimationLast = JRMCoreClient.mc.player.ticksExisted;
                }
             } else if (bonusY != 0) {
                bonusY = 0;

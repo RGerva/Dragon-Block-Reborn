@@ -67,27 +67,27 @@ public class ModelNPCTraining extends JGModel {
       this.body.func_78792_a(this.rightleg);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      super.func_78088_a(entity, f, f1, f2, f3, f4, f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      super.render(entity, f, f1, f2, f3, f4, f5);
       this.updateJump();
       GL11.glPushMatrix();
-      float legL = this.leftleg.field_78795_f;
+      float legL = this.leftleg.rotateAngleX;
       if (legL > 0.75F) {
          legL = 0.75F;
       }
 
-      float legL2 = this.leftleg2.field_78795_f;
-      float legR = this.rightleg.field_78795_f;
+      float legL2 = this.leftleg2.rotateAngleX;
+      float legR = this.rightleg.rotateAngleX;
       if (legR > 0.75F) {
          legR = 0.75F;
       }
 
-      float legR2 = this.rightleg.field_78795_f;
+      float legR2 = this.rightleg.rotateAngleX;
       float leg = legL < legR ? legL : legR;
       float leg2 = legL < legR ? legL2 : legR2;
       float F1 = leg * -0.25F + leg2 * (leg2 > 1.0F ? 0.01F : -0.08F);
       GL11.glTranslatef(0.0F, F1 - (this.jumping && this.jumpPos != null ? this.jumpPos.lastValue : 0.0F), 0.0F);
-      this.body.func_78785_a(f5);
+      this.body.render(f5);
       GL11.glPopMatrix();
    }
 

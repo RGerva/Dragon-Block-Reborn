@@ -76,7 +76,7 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
    }
 
    public EntityEnergyAttJ3(byte jtsre, EntityLivingBase entity, byte type, int dam, byte perc, int dam1, int cost, int costPerc) {
-      super(entity.field_70170_p);
+      super(entity.world);
       this.jtsre = jtsre;
       this.type = type;
       this.dam = dam;
@@ -101,14 +101,14 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
       double d8 = (double)(entity.field_70130_N + 1.0F);
       double d9 = (double)entity.field_70131_O;
       Vec3 vec3 = entity.func_70676_i(1.0F);
-      double x = entity.field_70165_t + vec3.field_72450_a * d8;
-      double y = entity.field_70163_u + vec3.field_72448_b * d8 + (double)(entity.field_70131_O * 0.55F);
-      double z = entity.field_70161_v + vec3.field_72449_c * d8;
+      double x = entity.posX + vec3.field_72450_a * d8;
+      double y = entity.posY + vec3.field_72448_b * d8 + (double)(entity.field_70131_O * 0.55F);
+      double z = entity.posZ + vec3.field_72449_c * d8;
       int spot = -1;
       int checked = 0;
 
       for(int i = (int)y; spot == -1 && checked < 3; --i) {
-         if (!entity.field_70170_p.func_147439_a((int)x, i, (int)z).func_149739_a().toLowerCase().contains("air")) {
+         if (!entity.world.func_147439_a((int)x, i, (int)z).func_149739_a().toLowerCase().contains("air")) {
             int spot = i + 1;
             y = (double)spot;
             break;
@@ -117,11 +117,11 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
          ++checked;
       }
 
-      this.func_70012_b(x, y, z, entity.field_70177_z, entity.field_70125_A);
-      this.rota = entity.field_70177_z;
+      this.setLocationAndAngles(x, y, z, entity.rotationYaw, entity.rotationPitch);
+      this.rota = entity.rotationYaw;
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
       this.field_70180_af.func_75682_a(16, (byte)0);
    }
 
@@ -138,38 +138,38 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
    public void func_70016_h(double par1, double par3, double par5) {
    }
 
-   public void func_70071_h_() {
-      if (!this.field_70170_p.field_72995_K && this.shootingEntity == null) {
-         this.func_70106_y();
+   public void onUpdate() {
+      if (!this.world.field_72995_K && this.shootingEntity == null) {
+         this.setDead();
       }
 
-      if (this.field_70173_aa == 1) {
+      if (this.ticksExisted == 1) {
          this.func_70105_a(this.size, this.size);
       }
 
-      if (this.field_70173_aa > 500) {
-         this.func_70106_y();
+      if (this.ticksExisted > 500) {
+         this.setDead();
       }
 
-      super.func_70071_h_();
-      if (!this.field_70170_p.field_72995_K && this.getDamage() <= 0.0D) {
-         this.func_70106_y();
+      super.onUpdate();
+      if (!this.world.field_72995_K && this.getDamage() <= 0.0D) {
+         this.setDead();
       }
 
-      Block block = this.field_70170_p.func_147439_a((int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+      Block block = this.world.func_147439_a((int)this.posX, (int)this.posY, (int)this.posZ);
       if (block.func_149688_o() != Material.field_151579_a) {
-         block.func_149719_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         AxisAlignedBB axisalignedbb = block.func_149668_a(this.field_70170_p, this.xTile, this.yTile, this.zTile);
-         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v))) {
+         block.func_149719_a(this.world, this.xTile, this.yTile, this.zTile);
+         AxisAlignedBB axisalignedbb = block.func_149668_a(this.world, this.xTile, this.yTile, this.zTile);
+         if (axisalignedbb != null && axisalignedbb.func_72318_a(Vec3.func_72443_a(this.posX, this.posY, this.posZ))) {
             this.inGround = true;
          }
       }
 
       if (this.inGround) {
-         int var19 = this.field_70170_p.func_72805_g((int)this.field_70165_t, (int)this.field_70163_u, (int)this.field_70161_v);
+         int var19 = this.world.func_72805_g((int)this.posX, (int)this.posY, (int)this.posZ);
          if (block.func_149688_o() != Material.field_151579_a && !block.func_149739_a().toLowerCase().contains("air")) {
             ++this.ticksInGround;
-            this.field_70163_u += 0.10000000149011612D;
+            this.posY += 0.10000000149011612D;
          } else {
             this.inGround = false;
             this.ticksInGround = 0;
@@ -178,7 +178,7 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
          this.func_chins();
       } else {
          this.func_chins();
-         this.func_70107_b(this.field_70165_t, this.field_70163_u, this.field_70161_v);
+         this.func_70107_b(this.posX, this.posY, this.posZ);
          this.doBlockCollisions();
       }
 
@@ -192,7 +192,7 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
       this.func_145775_I();
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
       par1NBTTagCompound.func_74777_a("xTile", (short)this.xTile);
       par1NBTTagCompound.func_74777_a("yTile", (short)this.yTile);
       par1NBTTagCompound.func_74777_a("zTile", (short)this.zTile);
@@ -202,7 +202,7 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
       par1NBTTagCompound.func_74780_a("damage", this.damage);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
       this.xTile = par1NBTTagCompound.func_74765_d("xTile");
       this.yTile = par1NBTTagCompound.func_74765_d("yTile");
       this.zTile = par1NBTTagCompound.func_74765_d("zTile");
@@ -254,7 +254,7 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
 
    public void readSpawnData(ByteBuf data) {
       int first = data.readInt();
-      this.shootingEntity = first == 0 ? this.shootingEntity : this.field_70170_p.func_73045_a(first);
+      this.shootingEntity = first == 0 ? this.shootingEntity : this.world.func_73045_a(first);
       this.perc = data.readByte();
       this.type = data.readByte();
       this.jtsre = data.readByte();
@@ -301,31 +301,31 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
    }
 
    public AxisAlignedBB func_70046_E() {
-      return this.field_70121_D;
+      return this.boundingBox;
    }
 
    private void func_chins() {
-      Vec3 var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-      Vec3 var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
-      MovingObjectPosition var4 = this.field_70170_p.func_147447_a(var17, var3, false, true, false);
-      var17 = Vec3.func_72443_a(this.field_70165_t, this.field_70163_u, this.field_70161_v);
-      var3 = Vec3.func_72443_a(this.field_70165_t + this.field_70159_w, this.field_70163_u + this.field_70181_x, this.field_70161_v + this.field_70179_y);
+      Vec3 var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+      Vec3 var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
+      MovingObjectPosition var4 = this.world.func_147447_a(var17, var3, false, true, false);
+      var17 = Vec3.func_72443_a(this.posX, this.posY, this.posZ);
+      var3 = Vec3.func_72443_a(this.posX + this.field_70159_w, this.posY + this.field_70181_x, this.posZ + this.field_70179_y);
       if (var4 != null) {
          var3 = Vec3.func_72443_a(var4.field_72307_f.field_72450_a, var4.field_72307_f.field_72448_b, var4.field_72307_f.field_72449_c);
       }
 
       List entityList;
       double targetDamage;
-      if (!this.field_70170_p.field_72995_K) {
+      if (!this.world.field_72995_K) {
          Entity var5 = null;
-         entityList = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
+         entityList = this.world.func_72839_b(this, this.boundingBox.func_72321_a(this.field_70159_w, this.field_70181_x, this.field_70179_y).func_72314_b(0.5D, 0.5D, 0.5D));
          double var7 = 0.0D;
 
          for(int n = 0; n < entityList.size(); ++n) {
             Entity entity = (Entity)entityList.get(n);
             if (entity.func_70067_L() && entity != this.shootingEntity) {
                float var11 = 0.0F;
-               AxisAlignedBB var12 = entity.field_70121_D.func_72314_b((double)var11, (double)var11, (double)var11);
+               AxisAlignedBB var12 = entity.boundingBox.func_72314_b((double)var11, (double)var11, (double)var11);
                MovingObjectPosition var13 = var12.func_72327_a(var17, var3);
                if (var13 != null) {
                   targetDamage = var17.func_72438_d(var13.field_72307_f);
@@ -342,9 +342,9 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
          }
       }
 
-      if (!this.field_70170_p.field_72995_K) {
-         AxisAlignedBB aabb = this.field_70121_D.func_72329_c();
-         entityList = this.field_70170_p.func_72839_b(this, aabb);
+      if (!this.world.field_72995_K) {
+         AxisAlignedBB aabb = this.boundingBox.func_72329_c();
+         entityList = this.world.func_72839_b(this, aabb);
 
          for(int n = 0; n < entityList.size(); ++n) {
             Entity entity = (Entity)entityList.get(n);
@@ -367,13 +367,13 @@ public class EntityEnergyAttJ3 extends EntityEnAttacks implements IThrowableEnti
                      ((EntityEnergyAttJ2)entity).setDamage((double)((float)targetDamage - (float)this.getDamage()));
                   }
 
-                  this.func_70106_y();
+                  this.setDead();
                } else if (targetPower < shieldPower) {
                   this.setDamage((double)((float)this.getDamage() - (float)targetDamage));
-                  entity.func_70106_y();
+                  entity.setDead();
                } else {
-                  entity.func_70106_y();
-                  this.func_70106_y();
+                  entity.setDead();
+                  this.setDead();
                }
 
                this.field_70159_w = 0.0D;

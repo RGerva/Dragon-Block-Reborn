@@ -459,21 +459,21 @@ public class ModelEarthDragon extends ModelBiped {
       this.head.func_78792_a(this.dragon12);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
-      this.head.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+      this.head.render(f5);
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
+   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
    }
 
    public void renderModel(Entity entity, float f) {
-      this.func_78088_a(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
+      this.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f);
    }
 }

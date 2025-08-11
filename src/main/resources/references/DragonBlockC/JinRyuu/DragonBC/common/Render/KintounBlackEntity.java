@@ -54,18 +54,18 @@ public class KintounBlackEntity extends KintounBaseEntity {
       return false;
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
       this.field_70180_af.func_75682_a(17, new Integer(0));
       this.field_70180_af.func_75682_a(18, new Integer(1));
       this.field_70180_af.func_75682_a(19, new Float(0.0F));
    }
 
    public AxisAlignedBB func_70114_g(Entity par1Entity) {
-      return par1Entity.field_70121_D;
+      return par1Entity.boundingBox;
    }
 
    public AxisAlignedBB func_70046_E() {
-      return this.field_70121_D;
+      return this.boundingBox;
    }
 
    public boolean func_70104_M() {
@@ -90,7 +90,7 @@ public class KintounBlackEntity extends KintounBaseEntity {
    public boolean func_70097_a(DamageSource par1DamageSource, float par2) {
       if (this.func_85032_ar()) {
          return false;
-      } else if (!this.field_70170_p.field_72995_K && !this.field_70128_L) {
+      } else if (!this.world.field_72995_K && !this.field_70128_L) {
          this.setTimeSinceHit(10);
          this.setDamageTaken(this.getDamageTaken() + par2 * 10.0F);
          this.func_70018_K();
@@ -104,7 +104,7 @@ public class KintounBlackEntity extends KintounBaseEntity {
             if (!flag) {
             }
 
-            this.func_70106_y();
+            this.setDead();
          }
 
          return true;
@@ -128,9 +128,9 @@ public class KintounBlackEntity extends KintounBaseEntity {
       if (this.field_70279_a) {
          this.boatPosRotationIncrements = par9 + 5;
       } else {
-         double d3 = par1 - this.field_70165_t;
-         double d4 = par3 - this.field_70163_u;
-         double d5 = par5 - this.field_70161_v;
+         double d3 = par1 - this.posX;
+         double d4 = par3 - this.posY;
+         double d5 = par5 - this.posZ;
          double d6 = d3 * d3 + d4 * d4 + d5 * d5;
          if (d6 <= 1.0D) {
             return;
@@ -156,18 +156,18 @@ public class KintounBlackEntity extends KintounBaseEntity {
       this.velocityZ = this.field_70179_y = par5;
    }
 
-   public void func_70071_h_() {
-      super.func_70071_h_();
+   public void onUpdate() {
+      super.onUpdate();
       double d1;
       double d2;
-      if (this.field_70170_p.field_72995_K && JGConfigClientSettings.CLIENT_DA11) {
+      if (this.world.field_72995_K && JGConfigClientSettings.CLIENT_DA11) {
          for(int k = 0; k < JGConfigClientSettings.get_da1(); ++k) {
             if (this.field_70159_w != 0.0D || this.field_70179_y != 0.0D) {
                double x = 0.0D;
                d1 = -1.2000000476837158D;
                d2 = 0.0D;
-               Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.field_70170_p, 1.0F, 1.0F, super.field_70165_t, super.field_70163_u, super.field_70161_v, x, d1, d2, 0.0D, 0.0D, 0.0D, 0.0F, 10, 11, 1, 32, false, 0.0F, false, 0.0F, 1, "", 15, 2, 0.05F, 0.001F, -0.0045F, 0, 27.0F, 66.0F, 142.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.001F, false, -1, false, (Entity)null);
-               entity.field_70170_p.func_72838_d(entity);
+               Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.world, 1.0F, 1.0F, super.posX, super.posY, super.posZ, x, d1, d2, 0.0D, 0.0D, 0.0D, 0.0F, 10, 11, 1, 32, false, 0.0F, false, 0.0F, 1, "", 15, 2, 0.05F, 0.001F, -0.0045F, 0, 27.0F, 66.0F, 142.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 3, 1.0F, 0.0F, 0.0F, 0.0F, -0.001F, false, -1, false, (Entity)null);
+               entity.world.func_72838_d(entity);
             }
          }
       }
@@ -180,48 +180,48 @@ public class KintounBlackEntity extends KintounBaseEntity {
          this.setDamageTaken(this.getDamageTaken() - 1.0F);
       }
 
-      this.field_70169_q = this.field_70165_t;
-      this.field_70167_r = this.field_70163_u;
-      this.field_70166_s = this.field_70161_v;
+      this.field_70169_q = this.posX;
+      this.field_70167_r = this.posY;
+      this.field_70166_s = this.posZ;
       byte b0 = 5;
       double d0 = 0.0D;
 
       for(int i = 0; i < b0; ++i) {
-         d1 = this.field_70121_D.field_72338_b + (this.field_70121_D.field_72337_e - this.field_70121_D.field_72338_b) * (double)(i + 0) / (double)b0 - 0.125D;
-         d2 = this.field_70121_D.field_72338_b + (this.field_70121_D.field_72337_e - this.field_70121_D.field_72338_b) * (double)(i + 1) / (double)b0 - 0.125D;
-         AxisAlignedBB.func_72330_a(this.field_70121_D.field_72340_a, d1, this.field_70121_D.field_72339_c, this.field_70121_D.field_72336_d, d2, this.field_70121_D.field_72334_f);
+         d1 = this.boundingBox.field_72338_b + (this.boundingBox.field_72337_e - this.boundingBox.field_72338_b) * (double)(i + 0) / (double)b0 - 0.125D;
+         d2 = this.boundingBox.field_72338_b + (this.boundingBox.field_72337_e - this.boundingBox.field_72338_b) * (double)(i + 1) / (double)b0 - 0.125D;
+         AxisAlignedBB.func_72330_a(this.boundingBox.field_72340_a, d1, this.boundingBox.field_72339_c, this.boundingBox.field_72336_d, d2, this.boundingBox.field_72334_f);
       }
 
       double d3 = Math.sqrt(this.field_70159_w * this.field_70159_w + this.field_70179_y * this.field_70179_y);
       double d4;
       double d5;
       if (d3 > 0.26249999999999996D) {
-         d4 = Math.cos((double)this.field_70177_z * 3.141592653589793D / 180.0D);
-         d5 = Math.sin((double)this.field_70177_z * 3.141592653589793D / 180.0D);
+         d4 = Math.cos((double)this.rotationYaw * 3.141592653589793D / 180.0D);
+         d5 = Math.sin((double)this.rotationYaw * 3.141592653589793D / 180.0D);
 
          for(int j = 0; (double)j < 1.0D + d3 * 60.0D; ++j) {
-            double d6 = (double)(this.field_70146_Z.nextFloat() * 2.0F - 1.0F);
-            double var13 = (double)(this.field_70146_Z.nextInt(2) * 2 - 1) * 0.7D;
+            double d6 = (double)(this.rand.nextFloat() * 2.0F - 1.0F);
+            double var13 = (double)(this.rand.nextInt(2) * 2 - 1) * 0.7D;
          }
       }
 
       double d11;
       double d10;
-      if (this.field_70170_p.field_72995_K && this.field_70279_a) {
+      if (this.world.field_72995_K && this.field_70279_a) {
          if (this.boatPosRotationIncrements > 0) {
-            d4 = this.field_70165_t + (this.boatX - this.field_70165_t) / (double)this.boatPosRotationIncrements;
-            d5 = this.field_70163_u + (this.boatY - this.field_70163_u) / (double)this.boatPosRotationIncrements;
-            d11 = this.field_70161_v + (this.boatZ - this.field_70161_v) / (double)this.boatPosRotationIncrements;
-            d10 = MathHelper.func_76138_g(this.boatYaw - (double)this.field_70177_z);
-            this.field_70177_z = (float)((double)this.field_70177_z + d10 / (double)this.boatPosRotationIncrements);
-            this.field_70125_A = (float)((double)this.field_70125_A + (this.boatPitch - (double)this.field_70125_A) / (double)this.boatPosRotationIncrements);
+            d4 = this.posX + (this.boatX - this.posX) / (double)this.boatPosRotationIncrements;
+            d5 = this.posY + (this.boatY - this.posY) / (double)this.boatPosRotationIncrements;
+            d11 = this.posZ + (this.boatZ - this.posZ) / (double)this.boatPosRotationIncrements;
+            d10 = MathHelper.func_76138_g(this.boatYaw - (double)this.rotationYaw);
+            this.rotationYaw = (float)((double)this.rotationYaw + d10 / (double)this.boatPosRotationIncrements);
+            this.rotationPitch = (float)((double)this.rotationPitch + (this.boatPitch - (double)this.rotationPitch) / (double)this.boatPosRotationIncrements);
             --this.boatPosRotationIncrements;
             this.func_70107_b(d4, d5, d11);
-            this.func_70101_b(this.field_70177_z, this.field_70125_A);
+            this.func_70101_b(this.rotationYaw, this.rotationPitch);
          } else {
-            d4 = this.field_70165_t + this.field_70159_w;
-            d5 = this.field_70163_u + this.field_70181_x;
-            d11 = this.field_70161_v + this.field_70179_y;
+            d4 = this.posX + this.field_70159_w;
+            d5 = this.posY + this.field_70181_x;
+            d11 = this.posZ + this.field_70179_y;
             this.func_70107_b(d4, d5, d11);
             this.field_70159_w *= 0.9900000095367432D;
             this.field_70181_x *= 0.949999988079071D;
@@ -254,7 +254,7 @@ public class KintounBlackEntity extends KintounBaseEntity {
 
                   tag.func_74768_a("DBCdriY", 0);
                } else if (tag.func_74762_e("DBCdriY") == 4) {
-                  if (this.field_70170_p.func_147439_a((int)this.field_70165_t + 0, (int)this.field_70163_u - 2, (int)this.field_70161_v + 0).func_149688_o() == Material.field_151579_a) {
+                  if (this.world.func_147439_a((int)this.posX + 0, (int)this.posY - 2, (int)this.posZ + 0).func_149688_o() == Material.field_151579_a) {
                      this.field_70181_x -= 0.5D;
                      if (this.field_70181_x < -0.5D) {
                         this.field_70181_x = -0.5D;
@@ -268,10 +268,10 @@ public class KintounBlackEntity extends KintounBaseEntity {
                }
 
                if (tag.func_74762_e("DBCdriS") == 5) {
-                  this.field_70177_z -= 4.0F;
+                  this.rotationYaw -= 4.0F;
                   tag.func_74768_a("DBCdriS", 0);
                } else if (tag.func_74762_e("DBCdriS") == 6) {
-                  this.field_70177_z += 4.0F;
+                  this.rotationYaw += 4.0F;
                   tag.func_74768_a("DBCdriS", 0);
                } else {
                   tag.func_74768_a("DBCdriS", 0);
@@ -286,8 +286,8 @@ public class KintounBlackEntity extends KintounBaseEntity {
                this.dS = -0.5F;
             }
 
-            d12 = Math.cos((double)this.field_70177_z * 3.141592653589793D / 180.0D) * S;
-            double r = Math.sin((double)this.field_70177_z * 3.141592653589793D / 180.0D) * -S;
+            d12 = Math.cos((double)this.rotationYaw * 3.141592653589793D / 180.0D) * S;
+            double r = Math.sin((double)this.rotationYaw * 3.141592653589793D / 180.0D) * -S;
             this.field_70179_y = d12;
             this.field_70159_w = r;
             this.dropcounter = 0;
@@ -309,7 +309,7 @@ public class KintounBlackEntity extends KintounBaseEntity {
             if (this.dropcounter == 100) {
                this.dropcounter = 0;
                this.func_145778_a(ItemsDBC.KintounBlackItem, 1, 0.0F);
-               this.func_70106_y();
+               this.setDead();
             }
 
             S = 0.0D;
@@ -324,8 +324,8 @@ public class KintounBlackEntity extends KintounBaseEntity {
 
          this.func_70091_d(this.field_70159_w * DBCConfig.cnfFlnmb, this.field_70181_x * DBCConfig.cnfFlnmb, this.field_70179_y * DBCConfig.cnfFlnmb);
          if (this.field_70123_F && d3 > 0.2D) {
-            if (!this.field_70170_p.field_72995_K && !this.field_70128_L) {
-               this.func_70106_y();
+            if (!this.world.field_72995_K && !this.field_70128_L) {
+               this.setDead();
                this.func_145778_a(ItemsDBC.KintounBlackItem, 1, 0.0F);
             }
          } else if (this.field_70153_n != null) {
@@ -334,15 +334,15 @@ public class KintounBlackEntity extends KintounBaseEntity {
             this.field_70179_y *= 0.3900000095367432D;
          }
 
-         this.field_70125_A = 0.0F;
-         d5 = (double)this.field_70177_z;
-         d11 = this.field_70169_q - this.field_70165_t;
-         d10 = this.field_70166_s - this.field_70161_v;
+         this.rotationPitch = 0.0F;
+         d5 = (double)this.rotationYaw;
+         d11 = this.field_70169_q - this.posX;
+         d10 = this.field_70166_s - this.posZ;
          if (d11 * d11 + d10 * d10 > 0.001D) {
             d5 = (double)((float)(Math.atan2(d10, d11) * 180.0D / 3.141592653589793D));
          }
 
-         d12 = MathHelper.func_76138_g(d5 - (double)this.field_70177_z);
+         d12 = MathHelper.func_76138_g(d5 - (double)this.rotationYaw);
          if (d12 > 20.0D) {
             d12 = 20.0D;
          }
@@ -351,9 +351,9 @@ public class KintounBlackEntity extends KintounBaseEntity {
             d12 = -20.0D;
          }
 
-         this.func_70101_b(this.field_70177_z, this.field_70125_A);
-         if (!this.field_70170_p.field_72995_K) {
-            List list = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72314_b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
+         this.func_70101_b(this.rotationYaw, this.rotationPitch);
+         if (!this.world.field_72995_K) {
+            List list = this.world.func_72839_b(this, this.boundingBox.func_72314_b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
             int l;
             if (list != null && !list.isEmpty()) {
                for(l = 0; l < list.size(); ++l) {
@@ -367,16 +367,16 @@ public class KintounBlackEntity extends KintounBaseEntity {
             }
 
             for(l = 0; l < 4; ++l) {
-               int i1 = MathHelper.func_76128_c(this.field_70165_t + ((double)(l % 2) - 0.5D) * 0.8D);
-               int j1 = MathHelper.func_76128_c(this.field_70161_v + ((double)(l / 2) - 0.5D) * 0.8D);
+               int i1 = MathHelper.func_76128_c(this.posX + ((double)(l % 2) - 0.5D) * 0.8D);
+               int j1 = MathHelper.func_76128_c(this.posZ + ((double)(l / 2) - 0.5D) * 0.8D);
 
                for(int k1 = 0; k1 < 2; ++k1) {
-                  int l1 = MathHelper.func_76128_c(this.field_70163_u) + k1;
-                  Block i2 = this.field_70170_p.func_147439_a(i1, l1, j1);
+                  int l1 = MathHelper.func_76128_c(this.posY) + k1;
+                  Block i2 = this.world.func_147439_a(i1, l1, j1);
                   if (i2 == Blocks.field_150433_aE) {
-                     this.field_70170_p.func_147468_f(i1, l1, j1);
+                     this.world.func_147468_f(i1, l1, j1);
                   } else if (i2 == Blocks.field_150392_bi) {
-                     this.field_70170_p.func_147443_d(i1, l1, j1, 0, 0);
+                     this.world.func_147443_d(i1, l1, j1, 0, 0);
                   }
                }
             }
@@ -391,17 +391,17 @@ public class KintounBlackEntity extends KintounBaseEntity {
 
    public void func_70043_V() {
       if (this.field_70153_n != null) {
-         double d0 = Math.cos((double)this.field_70177_z * 3.141592653589793D / 180.0D) * 0.4D;
-         double d1 = Math.sin((double)this.field_70177_z * 3.141592653589793D / 180.0D) * 0.4D;
-         this.field_70153_n.func_70107_b(this.field_70165_t + d0, this.field_70163_u + this.func_70042_X() + this.field_70153_n.func_70033_W(), this.field_70161_v + d1);
+         double d0 = Math.cos((double)this.rotationYaw * 3.141592653589793D / 180.0D) * 0.4D;
+         double d1 = Math.sin((double)this.rotationYaw * 3.141592653589793D / 180.0D) * 0.4D;
+         this.field_70153_n.func_70107_b(this.posX + d0, this.posY + this.func_70042_X() + this.field_70153_n.func_70033_W(), this.posZ + d1);
       }
 
    }
 
-   protected void func_70014_b(NBTTagCompound par1NBTTagCompound) {
+   protected void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
    }
 
-   protected void func_70037_a(NBTTagCompound par1NBTTagCompound) {
+   protected void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
    }
 
    @SideOnly(Side.CLIENT)
@@ -417,7 +417,7 @@ public class KintounBlackEntity extends KintounBaseEntity {
       if (this.field_70153_n != null && this.field_70153_n instanceof EntityPlayer && this.field_70153_n != par1EntityPlayer) {
          return true;
       } else {
-         if (!this.field_70170_p.field_72995_K) {
+         if (!this.world.field_72995_K) {
             par1EntityPlayer.func_70078_a(this);
          }
 

@@ -28,11 +28,11 @@ public class EntitySaiyanVegeta extends EntityDBCEvil {
       this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(40.0D);
    }
 
-   public void func_70071_h_() {
+   public void onUpdate() {
       if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0) {
       }
 
-      super.func_70071_h_();
+      super.onUpdate();
    }
 
    @SideOnly(Side.CLIENT)
@@ -41,16 +41,16 @@ public class EntitySaiyanVegeta extends EntityDBCEvil {
    }
 
    public boolean func_70601_bi() {
-      return this.field_70170_p.func_72855_b(this.field_70121_D) && this.field_70170_p.func_72945_a(this, this.field_70121_D).isEmpty() && !this.field_70170_p.func_72953_d(this.field_70121_D);
+      return this.world.checkNoEntityCollision(this.boundingBox) && this.world.func_72945_a(this, this.boundingBox).isEmpty() && !this.world.func_72953_d(this.boundingBox);
    }
 
-   public void func_70014_b(NBTTagCompound par1NBTTagCompound) {
-      super.func_70014_b(par1NBTTagCompound);
+   public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+      super.writeEntityToNBT(par1NBTTagCompound);
       par1NBTTagCompound.func_74777_a("Anger", (short)this.angerLevel);
    }
 
-   public void func_70037_a(NBTTagCompound par1NBTTagCompound) {
-      super.func_70037_a(par1NBTTagCompound);
+   public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readEntityFromNBT(par1NBTTagCompound);
       this.angerLevel = par1NBTTagCompound.func_74765_d("Anger");
    }
 
@@ -73,11 +73,11 @@ public class EntitySaiyanVegeta extends EntityDBCEvil {
          }
       }
 
-      if (this.field_70170_p.func_72826_c(1200.0F) == 1200.0F) {
-         EntityNamekian01 c = new EntityNamekian01(this.field_70170_p);
-         c.func_70012_b(this.field_70165_t, this.field_70163_u, this.field_70161_v, 0.0F, 0.0F);
-         this.field_70170_p.func_72838_d(c);
-         this.func_70106_y();
+      if (this.world.func_72826_c(1200.0F) == 1200.0F) {
+         EntityNamekian01 c = new EntityNamekian01(this.world);
+         c.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
+         this.world.func_72838_d(c);
+         this.setDead();
       }
 
       super.func_70636_d();
@@ -89,7 +89,7 @@ public class EntitySaiyanVegeta extends EntityDBCEvil {
       } else {
          Entity var3 = par1DamageSource.func_76346_g();
          if (var3 instanceof EntityPlayer) {
-            List var4 = this.field_70170_p.func_72839_b(this, this.field_70121_D.func_72314_b(32.0D, 32.0D, 32.0D));
+            List var4 = this.world.func_72839_b(this, this.boundingBox.func_72314_b(32.0D, 32.0D, 32.0D));
 
             for(int var5 = 0; var5 < var4.size(); ++var5) {
                Entity var6 = (Entity)var4.get(var5);
@@ -108,19 +108,19 @@ public class EntitySaiyanVegeta extends EntityDBCEvil {
 
    void becomeAngryAt(Entity par1Entity) {
       this.field_70789_a = par1Entity;
-      this.angerLevel = 400 + this.field_70146_Z.nextInt(400);
-      this.randomSoundDelay = this.field_70146_Z.nextInt(40);
+      this.angerLevel = 400 + this.rand.nextInt(400);
+      this.randomSoundDelay = this.rand.nextInt(40);
    }
 
    protected void func_70628_a(boolean par1, int par2) {
-      int var3 = this.field_70146_Z.nextInt(1 + par2);
+      int var3 = this.rand.nextInt(1 + par2);
 
       int var4;
       for(var4 = 0; var4 < var3; ++var4) {
          this.func_145779_a(ItemsDBC.BattleArmorHelmet01, 1);
       }
 
-      var3 = this.field_70146_Z.nextInt(2 + par2);
+      var3 = this.rand.nextInt(2 + par2);
 
       for(var4 = 0; var4 < var3; ++var4) {
       }

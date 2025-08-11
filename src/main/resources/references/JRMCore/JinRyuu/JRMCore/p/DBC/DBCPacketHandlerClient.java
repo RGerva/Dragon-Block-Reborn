@@ -74,7 +74,7 @@ public class DBCPacketHandlerClient {
    }
 
    public void handleDBCchargepart(byte dbcchargepart, String dbcCharger, EntityPlayer p) {
-      Entity other = p.field_70170_p.func_72924_a(dbcCharger);
+      Entity other = p.world.getPlayerEntityByName(dbcCharger);
       Random rand = new Random();
       Entity aura = null;
       float state = 0.0F;
@@ -92,44 +92,44 @@ public class DBCPacketHandlerClient {
       }
 
       if (dbcchargepart == 1) {
-         aura = new EntityAura(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 11075583, state, state2, cr);
+         aura = new EntityAura(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 11075583, state, state2, cr);
       }
 
       if (dbcchargepart == 2) {
-         aura = new EntityAura(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 16701952, state, state2, cr);
+         aura = new EntityAura(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 16701952, state, state2, cr);
       }
 
       if (dbcchargepart == 3) {
-         aura = new EntityAura(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 14526719, state, state2, cr);
+         aura = new EntityAura(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 14526719, state, state2, cr);
       }
 
       if (dbcchargepart == 4) {
-         aura = new EntityAura(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 16646144, state, state2, cr);
+         aura = new EntityAura(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 16646144, state, state2, cr);
       }
 
       if (dbcchargepart == 5) {
-         aura = new EntityAuraRing(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 11075583, state, state2, cr);
+         aura = new EntityAuraRing(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 11075583, state, state2, cr);
       }
 
       if (dbcchargepart == 6) {
-         aura = new EntityAuraRing(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 16701952, state, state2, cr);
+         aura = new EntityAuraRing(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 16701952, state, state2, cr);
       }
 
       if (dbcchargepart == 7) {
-         aura = new EntityAuraRing(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 14526719, state, state2, cr);
+         aura = new EntityAuraRing(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 14526719, state, state2, cr);
       }
 
       if (dbcchargepart == 8) {
-         aura = new EntityAuraRing(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 16646144, state, state2, cr);
+         aura = new EntityAuraRing(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 16646144, state, state2, cr);
       }
 
       if (dbcchargepart == 9) {
-         aura = new EntityAura(p.field_70170_p, dbcCharger, state2 > 0.0F ? 16646144 : 11075583, state, state2, cr);
+         aura = new EntityAura(p.world, dbcCharger, state2 > 0.0F ? 16646144 : 11075583, state, state2, cr);
       }
 
       if (aura != null && other != null) {
-         ((Entity)aura).func_70012_b(other.field_70165_t - 0.0D, other.field_70163_u - 1.6D + (double)rand.nextInt(5) * 0.03D, other.field_70161_v - 0.0D, rand.nextFloat(), 0.0F);
-         p.field_70170_p.func_72838_d((Entity)aura);
+         ((Entity)aura).setLocationAndAngles(other.posX - 0.0D, other.posY - 1.6D + (double)rand.nextInt(5) * 0.03D, other.posZ - 0.0D, rand.nextFloat(), 0.0F);
+         p.world.func_72838_d((Entity)aura);
       }
 
    }
@@ -141,7 +141,7 @@ public class DBCPacketHandlerClient {
    }
 
    public void handleDBCchargesound(int c, String s, EntityPlayer p) {
-      this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(c), s);
+      this.soundPowerUp((EntityPlayer)p.world.func_73045_a(c), s);
    }
 
    public void handleDBCjumpsound(int dbcjumpsound, int dbcp, EntityPlayer p) {
@@ -151,133 +151,133 @@ public class DBCPacketHandlerClient {
          JRMCoreH.revTmr = dbcp * 5;
       }
 
-      if (p.field_70170_p.func_73045_a(dbcp) instanceof EntityPlayer) {
+      if (p.world.func_73045_a(dbcp) instanceof EntityPlayer) {
          switch(dbcjumpsound) {
          case 1:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC.jump");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC.jump");
             break;
          case 2:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cbigbang");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cbigbang");
             break;
          case 3:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "");
             break;
          case 4:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cburning");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cburning");
             break;
          case 5:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "");
             break;
          case 6:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "");
             break;
          case 7:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.ckidisc");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.ckidisc");
             break;
          case 8:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.finalflash_charge");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.finalflash_charge");
             break;
          case 9:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "");
             break;
          case 10:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cgallitgun");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cgallitgun");
             break;
          case 11:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC.hame");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC.hame");
             break;
          case 12:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC.hame");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC.hame");
             break;
          case 13:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cspecialbeamcannon");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cspecialbeamcannon");
             break;
          case 14:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cmasenko");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cmasenko");
             break;
          case 15:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.deathball_charge");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.deathball_charge");
             break;
          case 16:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cspiritbomb");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.cspiritbomb");
             break;
          case 102:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.bigbang_fire");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.bigbang_fire");
             break;
          case 103:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.blast");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.blast");
             break;
          case 104:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fburning");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fburning");
             break;
          case 105:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.basicbeam_fire");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.basicbeam_fire");
             break;
          case 106:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.kiball_release");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.kiball_release");
             break;
          case 107:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.disc_fire");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.disc_fire");
             break;
          case 108:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.ffinalflash");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.ffinalflash");
             break;
          case 109:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fingerleser");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fingerleser");
             break;
          case 110:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fgallitgun");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fgallitgun");
             break;
          case 111:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC.ha");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC.ha");
             break;
          case 112:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC.ha10x");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC.ha10x");
             break;
          case 113:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fspecialbeamcannon");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fspecialbeamcannon");
             break;
          case 114:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fmasenko");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fmasenko");
             break;
          case 115:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.deathball_fire");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.deathball_fire");
             break;
          case 116:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fspiritbomb");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.fspiritbomb");
             break;
          case 300:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC3.force");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC3.force");
             break;
          case 1000:
-            this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(dbcp), "jinryuudragonbc:DBC2.tp");
+            this.soundPowerUp((EntityPlayer)p.world.func_73045_a(dbcp), "jinryuudragonbc:DBC2.tp");
          }
       }
 
    }
 
    public void handleDBCascendsound(int c, EntityPlayer p) {
-      this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(c), "jinryuudragonbc:DBC.ascend");
+      this.soundPowerUp((EntityPlayer)p.world.func_73045_a(c), "jinryuudragonbc:DBC.ascend");
    }
 
    public void handleDBCdescendsound(int c, EntityPlayer p) {
-      this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(c), "jinryuudragonbc:DBC.descend");
+      this.soundPowerUp((EntityPlayer)p.world.func_73045_a(c), "jinryuudragonbc:DBC.descend");
    }
 
    public void handleDBCscouter1(int c, EntityPlayer p) {
-      this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(c), "jinryuudragonbc:scouter.scouteron");
+      this.soundPowerUp((EntityPlayer)p.world.func_73045_a(c), "jinryuudragonbc:scouter.scouteron");
    }
 
    public void handleDBCscouter2(int c, EntityPlayer p) {
-      this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(c), "jinryuudragonbc:scouter.count");
+      this.soundPowerUp((EntityPlayer)p.world.func_73045_a(c), "jinryuudragonbc:scouter.count");
    }
 
    public void handleDBCscouter3(int c, EntityPlayer p) {
-      this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(c), "jinryuudragonbc:scouter.warn");
+      this.soundPowerUp((EntityPlayer)p.world.func_73045_a(c), "jinryuudragonbc:scouter.warn");
    }
 
    public void handleDBCscouter4(int c, EntityPlayer p) {
-      this.soundPowerUp((EntityPlayer)p.field_70170_p.func_73045_a(c), "jinryuudragonbc:scouter.startcount");
+      this.soundPowerUp((EntityPlayer)p.world.func_73045_a(c), "jinryuudragonbc:scouter.startcount");
    }
 
    public void soundPowerUp(EntityPlayer var4, String var2) {

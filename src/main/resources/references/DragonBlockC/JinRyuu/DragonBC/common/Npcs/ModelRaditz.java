@@ -410,13 +410,13 @@ public class ModelRaditz extends ModelBiped {
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
       GL11.glPushMatrix();
       GL11.glScalef(this.F, this.F, this.F);
       if (!this.Y2) {
@@ -431,107 +431,107 @@ public class ModelRaditz extends ModelBiped {
          GL11.glTranslatef(0.0F, (this.F - 1.0F) * diff, 0.0F);
       }
 
-      this.head.func_78785_a(f5);
+      this.head.render(f5);
       if (this.Y) {
          GL11.glScalef(this.F, this.F, this.F);
       }
 
-      this.body.func_78785_a(f5);
-      this.rightarm.func_78785_a(f5);
-      this.leftarm.func_78785_a(f5);
-      this.rightleg.func_78785_a(f5);
-      this.leftleg.func_78785_a(f5);
-      this.headhair.func_78785_a(f5);
-      this.leftarmshoulder.func_78785_a(f5);
-      this.rightarmshoulder.func_78785_a(f5);
+      this.body.render(f5);
+      this.rightarm.render(f5);
+      this.leftarm.render(f5);
+      this.rightleg.render(f5);
+      this.leftleg.render(f5);
+      this.headhair.render(f5);
+      this.leftarmshoulder.render(f5);
+      this.rightarmshoulder.render(f5);
       GL11.glPopMatrix();
    }
 
-   public void func_78087_a(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-      this.head.field_78796_g = par4 / 57.295776F;
-      this.head.field_78795_f = par5 / 57.295776F;
-      this.headhair.field_78796_g = this.head.field_78796_g;
-      this.headhair.field_78795_f = this.head.field_78795_f;
-      this.rightarm.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 2.0F * par2 * 0.5F;
-      this.rightarmshoulder.field_78795_f = this.rightarm.field_78795_f;
-      this.leftarm.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
-      this.leftarmshoulder.field_78795_f = this.leftarm.field_78795_f;
-      this.rightarm.field_78808_h = 0.0F;
-      this.rightarmshoulder.field_78808_h = this.rightarm.field_78808_h;
-      this.leftarm.field_78808_h = 0.0F;
-      this.leftarmshoulder.field_78808_h = this.leftarm.field_78808_h;
-      this.rightleg.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F) * 1.4F * par2;
-      this.leftleg.field_78795_f = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.4F * par2;
-      this.rightleg.field_78796_g = 0.0F;
-      this.leftleg.field_78796_g = 0.0F;
+   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+      this.head.rotateAngleY = par4 / 57.295776F;
+      this.head.rotateAngleX = par5 / 57.295776F;
+      this.headhair.rotateAngleY = this.head.rotateAngleY;
+      this.headhair.rotateAngleX = this.head.rotateAngleX;
+      this.rightarm.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 2.0F * par2 * 0.5F;
+      this.rightarmshoulder.rotateAngleX = this.rightarm.rotateAngleX;
+      this.leftarm.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
+      this.leftarmshoulder.rotateAngleX = this.leftarm.rotateAngleX;
+      this.rightarm.rotateAngleZ = 0.0F;
+      this.rightarmshoulder.rotateAngleZ = this.rightarm.rotateAngleZ;
+      this.leftarm.rotateAngleZ = 0.0F;
+      this.leftarmshoulder.rotateAngleZ = this.leftarm.rotateAngleZ;
+      this.rightleg.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F) * 1.4F * par2;
+      this.leftleg.rotateAngleX = MathHelper.func_76134_b(par1 * 0.6662F + 3.1415927F) * 1.4F * par2;
+      this.rightleg.rotateAngleY = 0.0F;
+      this.leftleg.rotateAngleY = 0.0F;
       ModelRenderer var10000;
       if (this.field_78093_q) {
          var10000 = this.rightarm;
-         var10000.field_78795_f += -0.62831855F;
-         this.rightarmshoulder.field_78795_f = this.rightarm.field_78795_f;
+         var10000.rotateAngleX += -0.62831855F;
+         this.rightarmshoulder.rotateAngleX = this.rightarm.rotateAngleX;
          var10000 = this.leftarm;
-         var10000.field_78795_f += -0.62831855F;
-         this.leftarmshoulder.field_78795_f = this.leftarm.field_78795_f;
-         this.rightleg.field_78795_f = -1.2566371F;
-         this.leftleg.field_78795_f = -1.2566371F;
-         this.rightleg.field_78796_g = 0.31415927F;
-         this.leftleg.field_78796_g = -0.31415927F;
+         var10000.rotateAngleX += -0.62831855F;
+         this.leftarmshoulder.rotateAngleX = this.leftarm.rotateAngleX;
+         this.rightleg.rotateAngleX = -1.2566371F;
+         this.leftleg.rotateAngleX = -1.2566371F;
+         this.rightleg.rotateAngleY = 0.31415927F;
+         this.leftleg.rotateAngleY = -0.31415927F;
       }
 
-      this.rightarm.field_78796_g = 0.0F;
-      this.rightarmshoulder.field_78796_g = this.rightarm.field_78796_g;
-      this.leftarm.field_78796_g = 0.0F;
-      this.leftarmshoulder.field_78796_g = this.leftarm.field_78796_g;
+      this.rightarm.rotateAngleY = 0.0F;
+      this.rightarmshoulder.rotateAngleY = this.rightarm.rotateAngleY;
+      this.leftarm.rotateAngleY = 0.0F;
+      this.leftarmshoulder.rotateAngleY = this.leftarm.rotateAngleY;
       if (this.field_78095_p > -9990.0F) {
          float var8 = this.field_78095_p;
-         this.body.field_78796_g = MathHelper.func_76126_a(MathHelper.func_76129_c(var8) * 3.1415927F * 2.0F) * 0.2F;
-         this.rightarm.field_78798_e = MathHelper.func_76126_a(this.body.field_78796_g) * 5.0F;
-         this.rightarm.field_78800_c = -MathHelper.func_76134_b(this.body.field_78796_g) * 5.0F;
-         this.leftarm.field_78798_e = -MathHelper.func_76126_a(this.body.field_78796_g) * 5.0F;
-         this.leftarm.field_78800_c = MathHelper.func_76134_b(this.body.field_78796_g) * 5.0F;
+         this.body.rotateAngleY = MathHelper.func_76126_a(MathHelper.func_76129_c(var8) * 3.1415927F * 2.0F) * 0.2F;
+         this.rightarm.field_78798_e = MathHelper.func_76126_a(this.body.rotateAngleY) * 5.0F;
+         this.rightarm.field_78800_c = -MathHelper.func_76134_b(this.body.rotateAngleY) * 5.0F;
+         this.leftarm.field_78798_e = -MathHelper.func_76126_a(this.body.rotateAngleY) * 5.0F;
+         this.leftarm.field_78800_c = MathHelper.func_76134_b(this.body.rotateAngleY) * 5.0F;
          var10000 = this.rightarm;
-         var10000.field_78796_g += this.body.field_78796_g;
+         var10000.rotateAngleY += this.body.rotateAngleY;
          var10000 = this.leftarm;
-         var10000.field_78796_g += this.body.field_78796_g;
+         var10000.rotateAngleY += this.body.rotateAngleY;
          var10000 = this.leftarm;
-         var10000.field_78795_f += this.body.field_78796_g;
-         this.rightarmshoulder.field_78798_e = MathHelper.func_76126_a(this.body.field_78796_g) * 5.0F;
-         this.rightarmshoulder.field_78800_c = -MathHelper.func_76134_b(this.body.field_78796_g) * 5.0F;
-         this.leftarmshoulder.field_78798_e = -MathHelper.func_76126_a(this.body.field_78796_g) * 5.0F;
-         this.leftarmshoulder.field_78800_c = MathHelper.func_76134_b(this.body.field_78796_g) * 5.0F;
+         var10000.rotateAngleX += this.body.rotateAngleY;
+         this.rightarmshoulder.field_78798_e = MathHelper.func_76126_a(this.body.rotateAngleY) * 5.0F;
+         this.rightarmshoulder.field_78800_c = -MathHelper.func_76134_b(this.body.rotateAngleY) * 5.0F;
+         this.leftarmshoulder.field_78798_e = -MathHelper.func_76126_a(this.body.rotateAngleY) * 5.0F;
+         this.leftarmshoulder.field_78800_c = MathHelper.func_76134_b(this.body.rotateAngleY) * 5.0F;
          var10000 = this.rightarmshoulder;
-         var10000.field_78796_g += this.body.field_78796_g;
+         var10000.rotateAngleY += this.body.rotateAngleY;
          var10000 = this.leftarmshoulder;
-         var10000.field_78796_g += this.body.field_78796_g;
+         var10000.rotateAngleY += this.body.rotateAngleY;
          var10000 = this.leftarmshoulder;
-         var10000.field_78795_f += this.body.field_78796_g;
+         var10000.rotateAngleX += this.body.rotateAngleY;
          var8 = 1.0F - this.field_78095_p;
          var8 *= var8;
          var8 *= var8;
          var8 = 1.0F - var8;
          float var9 = MathHelper.func_76126_a(var8 * 3.1415927F);
-         float var10 = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -(this.head.field_78795_f - 0.7F) * 0.75F;
-         this.rightarm.field_78795_f = (float)((double)this.rightarm.field_78795_f - ((double)var9 * 1.2D + (double)var10));
+         float var10 = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+         this.rightarm.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)var9 * 1.2D + (double)var10));
          var10000 = this.rightarm;
-         var10000.field_78796_g += this.body.field_78796_g * 2.0F;
-         this.rightarm.field_78808_h = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
-         this.rightarmshoulder.field_78795_f = (float)((double)this.rightarm.field_78795_f - ((double)var9 * 1.2D + (double)var10));
+         var10000.rotateAngleY += this.body.rotateAngleY * 2.0F;
+         this.rightarm.rotateAngleZ = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
+         this.rightarmshoulder.rotateAngleX = (float)((double)this.rightarm.rotateAngleX - ((double)var9 * 1.2D + (double)var10));
          var10000 = this.rightarmshoulder;
-         var10000.field_78796_g += this.body.field_78796_g * 2.0F;
-         this.rightarmshoulder.field_78808_h = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
+         var10000.rotateAngleY += this.body.rotateAngleY * 2.0F;
+         this.rightarmshoulder.rotateAngleZ = MathHelper.func_76126_a(this.field_78095_p * 3.1415927F) * -0.4F;
       }
 
       var10000 = this.rightarm;
-      var10000.field_78808_h += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
-      this.rightarmshoulder.field_78808_h = this.rightarm.field_78808_h;
+      var10000.rotateAngleZ += MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+      this.rightarmshoulder.rotateAngleZ = this.rightarm.rotateAngleZ;
       var10000 = this.leftarm;
-      var10000.field_78808_h -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
-      this.leftarmshoulder.field_78808_h = this.leftarm.field_78808_h;
+      var10000.rotateAngleZ -= MathHelper.func_76134_b(par3 * 0.09F) * 0.05F + 0.05F;
+      this.leftarmshoulder.rotateAngleZ = this.leftarm.rotateAngleZ;
       var10000 = this.rightarm;
-      var10000.field_78795_f += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
-      this.rightarmshoulder.field_78795_f = this.rightarm.field_78795_f;
+      var10000.rotateAngleX += MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+      this.rightarmshoulder.rotateAngleX = this.rightarm.rotateAngleX;
       var10000 = this.leftarm;
-      var10000.field_78795_f -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
-      this.leftarmshoulder.field_78795_f = this.leftarm.field_78795_f;
+      var10000.rotateAngleX -= MathHelper.func_76126_a(par3 * 0.067F) * 0.05F;
+      this.leftarmshoulder.rotateAngleX = this.leftarm.rotateAngleX;
    }
 }

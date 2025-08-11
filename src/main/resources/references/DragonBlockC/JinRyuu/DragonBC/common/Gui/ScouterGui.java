@@ -175,7 +175,7 @@ public class ScouterGui extends Gui {
       int var7 = var5.func_78328_b();
       FontRenderer var8 = this.mc.field_71466_p;
       this.mc.field_71460_t.func_78478_c();
-      ItemStack stackhead = ExtendedPlayer.get(this.mc.field_71439_g).inventory.func_70301_a(2);
+      ItemStack stackhead = ExtendedPlayer.get(this.mc.player).inventory.func_70301_a(2);
       if (stackhead != null) {
          Item var9 = stackhead.func_77973_b();
          int Tier = 0;
@@ -270,11 +270,11 @@ public class ScouterGui extends Gui {
       double Y4 = 2.0D * (double)Tier;
       double AXZ = 32.0D * (double)Tier;
       double AY = 16.0D * (double)Tier;
-      double par12 = this.mc.field_71439_g.field_70165_t;
-      double par22 = this.mc.field_71439_g.field_70163_u;
-      double par32 = this.mc.field_71439_g.field_70161_v;
-      double par42 = (double)this.mc.field_71439_g.field_70177_z;
-      float par52 = this.mc.field_71439_g.field_70125_A;
+      double par12 = this.mc.player.posX;
+      double par22 = this.mc.player.posY;
+      double par32 = this.mc.player.posZ;
+      double par42 = (double)this.mc.player.rotationYaw;
+      float par52 = this.mc.player.rotationPitch;
       AxisAlignedBB AABB = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBAll = AxisAlignedBB.func_72330_a(par12 - AXZ, par22 - AY, par32 - AXZ, par12 + AXZ, par22 + AY, par32 + AXZ);
       AxisAlignedBB AABBfent = AxisAlignedBB.func_72330_a(par12 - XZ4, par22 - Y4, par32 - XZ4, par12 + XZ4, par22 + Y1, par32 + XZ4);
@@ -295,39 +295,39 @@ public class ScouterGui extends Gui {
       Class<EntityPlayerMP> j = EntityPlayerMP.class;
       Class<EntityWitch> w = EntityWitch.class;
       Class<EntityEnderman> h = EntityEnderman.class;
-      this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AxisAlignedBB.func_72330_a(par12 - XZ1, par22 - Y4, par32 - XZ1, par12 + XZ1, par22 + Y4, par32 + XZ1));
-      this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBfent);
-      this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBlent);
-      List sarok = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AxisAlignedBB.func_72330_a(par12 - XZ2, par22 - Y2, par32 - XZ2, par12 + XZ2, par22 + Y2, par32 + XZ2));
-      List blaz = this.mc.field_71439_g.field_70170_p.func_72872_a(b, AABB);
-      List cavs = this.mc.field_71439_g.field_70170_p.func_72872_a(c, AABB);
-      List cree = this.mc.field_71439_g.field_70170_p.func_72872_a(a, AABB);
-      List zomb = this.mc.field_71439_g.field_70170_p.func_72872_a(z, AABB);
-      List zomv = this.mc.field_71439_g.field_70170_p.func_72872_a(z2, AABB);
-      List zomp = this.mc.field_71439_g.field_70170_p.func_72872_a(z3, AABB);
-      List ghas = this.mc.field_71439_g.field_70170_p.func_72872_a(g, AxisAlignedBB.func_72330_a(par12 - M2XZ, par22 - M2Y, par32 - M2XZ, par12 + M2XZ, par22 + M2Y, par32 + M2XZ));
-      List magm = this.mc.field_71439_g.field_70170_p.func_72872_a(m, AABB);
-      List silv = this.mc.field_71439_g.field_70170_p.func_72872_a(i, AABB);
-      List skel = this.mc.field_71439_g.field_70170_p.func_72872_a(k, AABB);
-      List slim = this.mc.field_71439_g.field_70170_p.func_72872_a(l, AABB);
-      List spid = this.mc.field_71439_g.field_70170_p.func_72872_a(p, AABB);
-      List play = this.mc.field_71439_g.field_70170_p.func_72872_a(j, AABB);
-      List witc = this.mc.field_71439_g.field_70170_p.func_72872_a(w, AABB);
-      List ende = this.mc.field_71439_g.field_70170_p.func_72872_a(h, AABB);
+      this.mc.player.world.func_72872_a(mobok, AxisAlignedBB.func_72330_a(par12 - XZ1, par22 - Y4, par32 - XZ1, par12 + XZ1, par22 + Y4, par32 + XZ1));
+      this.mc.player.world.func_72872_a(mobok, AABBfent);
+      this.mc.player.world.func_72872_a(mobok, AABBlent);
+      List sarok = this.mc.player.world.func_72872_a(mobok, AxisAlignedBB.func_72330_a(par12 - XZ2, par22 - Y2, par32 - XZ2, par12 + XZ2, par22 + Y2, par32 + XZ2));
+      List blaz = this.mc.player.world.func_72872_a(b, AABB);
+      List cavs = this.mc.player.world.func_72872_a(c, AABB);
+      List cree = this.mc.player.world.func_72872_a(a, AABB);
+      List zomb = this.mc.player.world.func_72872_a(z, AABB);
+      List zomv = this.mc.player.world.func_72872_a(z2, AABB);
+      List zomp = this.mc.player.world.func_72872_a(z3, AABB);
+      List ghas = this.mc.player.world.func_72872_a(g, AxisAlignedBB.func_72330_a(par12 - M2XZ, par22 - M2Y, par32 - M2XZ, par12 + M2XZ, par22 + M2Y, par32 + M2XZ));
+      List magm = this.mc.player.world.func_72872_a(m, AABB);
+      List silv = this.mc.player.world.func_72872_a(i, AABB);
+      List skel = this.mc.player.world.func_72872_a(k, AABB);
+      List slim = this.mc.player.world.func_72872_a(l, AABB);
+      List spid = this.mc.player.world.func_72872_a(p, AABB);
+      List play = this.mc.player.world.func_72872_a(j, AABB);
+      List witc = this.mc.player.world.func_72872_a(w, AABB);
+      List ende = this.mc.player.world.func_72872_a(h, AABB);
       if (!sarok.isEmpty()) {
          this.textureFile = "jinryuudragonbc:misc/scouterjelzo.png";
          this.ScouterRenderBlur(var6, var7);
          warn = 1;
          Class<? extends Entity> mobok1 = EntityCreature.class;
-         List mobListAll = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok1, AABBAll);
-         this.mc.field_71439_g.field_70170_p.func_72872_a(mobok1, AABBfent);
-         this.mc.field_71439_g.field_70170_p.func_72872_a(mobok1, AABBlent);
-         Entity mobAll = this.mc.field_71439_g.field_70170_p.func_72857_a(mobok1, AABBAll, this.mc.field_71439_g);
-         this.mc.field_71439_g.field_70170_p.func_72857_a(mobok1, AABBfent, this.mc.field_71439_g);
-         this.mc.field_71439_g.field_70170_p.func_72857_a(mobok1, AABBlent, this.mc.field_71439_g);
+         List mobListAll = this.mc.player.world.func_72872_a(mobok1, AABBAll);
+         this.mc.player.world.func_72872_a(mobok1, AABBfent);
+         this.mc.player.world.func_72872_a(mobok1, AABBlent);
+         Entity mobAll = this.mc.player.world.func_72857_a(mobok1, AABBAll, this.mc.player);
+         this.mc.player.world.func_72857_a(mobok1, AABBfent, this.mc.player);
+         this.mc.player.world.func_72857_a(mobok1, AABBlent, this.mc.player);
          if (!mobListAll.isEmpty()) {
-            double var28 = mobAll.field_70165_t - par12;
-            double var32 = mobAll.field_70161_v - par32;
+            double var28 = mobAll.posX - par12;
+            double var32 = mobAll.posZ - par32;
             double var27 = 0.0D;
             var27 = (par42 - 90.0D) * 3.141592653589793D / 180.0D - Math.atan2(var32, var28);
             double field_76866_j = 0.0D;
@@ -353,8 +353,8 @@ public class ScouterGui extends Gui {
             double field_76868_i = var27 + field_76866_j;
             var30 = Math.sin(field_76868_i);
             double var31 = Math.cos(field_76868_i);
-            double var421 = mobAll.field_70163_u - par22 + 1.0D;
-            double dist = (double)this.mc.field_71439_g.func_70032_d(mobAll);
+            double var421 = mobAll.posY - par22 + 1.0D;
+            double dist = (double)this.mc.player.func_70032_d(mobAll);
             double var271 = 0.0D;
             var271 = (double)par52 * 3.141592653589793D / 180.0D - Math.atan2(dist, var421);
             double field_76866_j1 = 0.0D;
@@ -502,10 +502,10 @@ public class ScouterGui extends Gui {
       double AY = 16.0D * (double)Tier;
       double GXZ = 32.0D * (double)Tier;
       double GY = 32.0D * (double)Tier;
-      double par12 = this.mc.field_71439_g.field_70165_t;
-      double par22 = this.mc.field_71439_g.field_70163_u;
-      double par32 = this.mc.field_71439_g.field_70161_v;
-      double par42 = (double)this.mc.field_71439_g.field_70177_z;
+      double par12 = this.mc.player.posX;
+      double par22 = this.mc.player.posY;
+      double par32 = this.mc.player.posZ;
+      double par42 = (double)this.mc.player.rotationYaw;
       AxisAlignedBB AABBAll = AxisAlignedBB.func_72330_a(par12 - AXZ, par22 - AY, par32 - AXZ, par12 + AXZ, par22 + AY, par32 + AXZ);
       AxisAlignedBB AABB = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBNear = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - M2Y, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + MXZ);
@@ -517,8 +517,8 @@ public class ScouterGui extends Gui {
       Class<? extends Entity> he02 = EntityHell02.class;
       Class<? extends Entity> enm = EntityMasterEnma.class;
       Class<? extends Entity> mobok = EntityCreature.class;
-      List mobListAll = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBAll);
-      Entity mobAll = this.mc.field_71439_g.field_70170_p.func_72857_a(mobok, AABBAll, this.mc.field_71439_g);
+      List mobListAll = this.mc.player.world.func_72872_a(mobok, AABBAll);
+      Entity mobAll = this.mc.player.world.func_72857_a(mobok, AABBAll, this.mc.player);
       Class EntityClass;
       if (!mobListAll.isEmpty()) {
          EntityClass = mobAll.getClass();
@@ -550,7 +550,7 @@ public class ScouterGui extends Gui {
       if (!mobListAll.isEmpty()) {
          EntityClass = mobAll.getClass();
          soundFunc2 = 1;
-         double entiNam = this.mc.field_71439_g.func_70068_e(mobAll);
+         double entiNam = this.mc.player.func_70068_e(mobAll);
          int entiNamInt = (int)entiNam;
          this.toString();
          String entiNamStr = String.valueOf(entiNamInt);
@@ -563,15 +563,15 @@ public class ScouterGui extends Gui {
    }
 
    public void ScouterFunc3(int var6, int var7, int Tier) {
-      Vec3 look = this.mc.field_71439_g.func_70040_Z();
+      Vec3 look = this.mc.player.func_70040_Z();
       double MXZ = 16.0D * (double)Tier;
       double MY = 2.0D * (double)Tier;
       double M2XZ = 2.0D * (double)Tier;
       double M2Y = 16.0D * (double)Tier;
-      double par12 = this.mc.field_71439_g.field_70165_t;
-      double par22 = this.mc.field_71439_g.field_70163_u;
-      double par32 = this.mc.field_71439_g.field_70161_v;
-      double par42 = (double)this.mc.field_71439_g.field_70177_z;
+      double par12 = this.mc.player.posX;
+      double par22 = this.mc.player.posY;
+      double par32 = this.mc.player.posZ;
+      double par42 = (double)this.mc.player.rotationYaw;
       AxisAlignedBB AABBX0 = AxisAlignedBB.func_72330_a(par12 - M2XZ, par22 - MY, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBX1 = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - MXZ, par12 + M2XZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBZ0 = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - M2XZ, par12 + MXZ, par22 + MY, par32 + MXZ);
@@ -597,8 +597,8 @@ public class ScouterGui extends Gui {
       Class<? extends Entity> n = EntityMob.class;
       Class<? extends Entity> n2 = EntityMob.class;
       Class<EntityCreature> mobok = EntityCreature.class;
-      List mobNear = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBNear);
-      Entity entMobok = this.mc.field_71439_g.field_70170_p.func_72857_a(mobok, AABBNear, this.mc.field_71439_g);
+      List mobNear = this.mc.player.world.func_72872_a(mobok, AABBNear);
+      Entity entMobok = this.mc.player.world.func_72857_a(mobok, AABBNear, this.mc.player);
       if (!mobNear.isEmpty()) {
          Class<? extends Entity> EntityClass = entMobok.getClass();
          if (EntityClass == b) {
@@ -662,23 +662,23 @@ public class ScouterGui extends Gui {
          }
       }
 
-      this.mc.field_71439_g.field_70170_p.func_72872_a(n, AABBX0);
-      this.mc.field_71439_g.field_70170_p.func_72872_a(n, AABBX1);
-      this.mc.field_71439_g.field_70170_p.func_72872_a(n, AABBZ0);
-      this.mc.field_71439_g.field_70170_p.func_72872_a(n, AABBZ1);
-      this.mc.field_71439_g.field_70170_p.func_72872_a(n, AABBY0);
-      this.mc.field_71439_g.field_70170_p.func_72872_a(n, AABBY1);
-      this.mc.field_71439_g.field_70170_p.func_72857_a(n, AABBNear, this.mc.field_71439_g);
+      this.mc.player.world.func_72872_a(n, AABBX0);
+      this.mc.player.world.func_72872_a(n, AABBX1);
+      this.mc.player.world.func_72872_a(n, AABBZ0);
+      this.mc.player.world.func_72872_a(n, AABBZ1);
+      this.mc.player.world.func_72872_a(n, AABBY0);
+      this.mc.player.world.func_72872_a(n, AABBY1);
+      this.mc.player.world.func_72857_a(n, AABBNear, this.mc.player);
       if (!mobNear.isEmpty()) {
-         List mobListAll = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBNear);
-         List mobListfent = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBY1);
-         List mobListlent = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBY0);
-         Entity mobAll = this.mc.field_71439_g.field_70170_p.func_72857_a(mobok, AABBNear, this.mc.field_71439_g);
-         this.mc.field_71439_g.field_70170_p.func_72857_a(mobok, AABBY1, this.mc.field_71439_g);
-         this.mc.field_71439_g.field_70170_p.func_72857_a(mobok, AABBY0, this.mc.field_71439_g);
+         List mobListAll = this.mc.player.world.func_72872_a(mobok, AABBNear);
+         List mobListfent = this.mc.player.world.func_72872_a(mobok, AABBY1);
+         List mobListlent = this.mc.player.world.func_72872_a(mobok, AABBY0);
+         Entity mobAll = this.mc.player.world.func_72857_a(mobok, AABBNear, this.mc.player);
+         this.mc.player.world.func_72857_a(mobok, AABBY1, this.mc.player);
+         this.mc.player.world.func_72857_a(mobok, AABBY0, this.mc.player);
          if (!mobListAll.isEmpty()) {
-            double var28 = mobAll.field_70165_t - par12;
-            double var32 = mobAll.field_70161_v - par32;
+            double var28 = mobAll.posX - par12;
+            double var32 = mobAll.posZ - par32;
             double var27 = 0.0D;
             var27 = (par42 - 90.0D) * 3.141592653589793D / 180.0D - Math.atan2(var32, var28);
             double field_76866_j = 0.0D;
@@ -761,7 +761,7 @@ public class ScouterGui extends Gui {
             entiNam = "" + JRMCoreH.bpc(entMobok);
          }
 
-         Entity dbc = this.mc.field_71439_g.field_70170_p.func_72857_a(EntityDBC.class, AABBNear, this.mc.field_71439_g);
+         Entity dbc = this.mc.player.world.func_72857_a(EntityDBC.class, AABBNear, this.mc.player);
          if (dbc instanceof EntityDBC) {
             entiNam = "" + JRMCoreH.bpc(dbc);
             warn = 1;
@@ -775,7 +775,7 @@ public class ScouterGui extends Gui {
          (new StringBuilder()).append("").append(bc).toString();
          if (Tier == 1 && s > 10000L || Tier == 2 && s > 1000000L) {
             DBCKiAttacks.dbctick(-2);
-            DBCKiAttacks.scouterRem(this.mc.field_71439_g);
+            DBCKiAttacks.scouterRem(this.mc.player);
          }
 
          this.entiBP = bc;
@@ -801,23 +801,23 @@ public class ScouterGui extends Gui {
       double AY = 16.0D * (double)Tier;
       double GXZ = 32.0D * (double)Tier;
       double GY = 32.0D * (double)Tier;
-      double par12 = this.mc.field_71439_g.field_70165_t;
-      double par22 = this.mc.field_71439_g.field_70163_u;
-      double par32 = this.mc.field_71439_g.field_70161_v;
+      double par12 = this.mc.player.posX;
+      double par22 = this.mc.player.posY;
+      double par32 = this.mc.player.posZ;
       AxisAlignedBB AABBAll = AxisAlignedBB.func_72330_a(par12 - AXZ, par22 - AY, par32 - AXZ, par12 + AXZ, par22 + AY, par32 + AXZ);
       AxisAlignedBB AABB = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBNear = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - M2Y, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + MXZ);
       Class<? extends Entity> mobok = EntityPlayer.class;
-      List mobListAll = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBAll);
-      Entity mobAll = this.mc.field_71439_g.field_70170_p.func_72857_a(mobok, AABBAll, this.mc.field_71439_g);
+      List mobListAll = this.mc.player.world.func_72872_a(mobok, AABBAll);
+      Entity mobAll = this.mc.player.world.func_72857_a(mobok, AABBAll, this.mc.player);
       if (!mobListAll.isEmpty() && mobAll != null) {
          Class<? extends Entity> EntityClass = mobAll.getClass();
-         if (mobAll == this.mc.field_71439_g) {
+         if (mobAll == this.mc.player) {
             return;
          }
 
          soundFunc2 = 1;
-         double entiNam = this.mc.field_71439_g.func_70068_e(mobAll);
+         double entiNam = this.mc.player.func_70068_e(mobAll);
          int entiNamInt = (int)entiNam;
          this.toString();
          String entiNamStr = String.valueOf(entiNamInt);
@@ -832,22 +832,22 @@ public class ScouterGui extends Gui {
    public void ScouterFunc3MP(int var6, int var7, int Tier) {
       double MXZ = 16.0D * (double)Tier;
       double M2Y = 16.0D * (double)Tier;
-      double par12 = this.mc.field_71439_g.field_70165_t;
-      double par22 = this.mc.field_71439_g.field_70163_u;
-      double par32 = this.mc.field_71439_g.field_70161_v;
+      double par12 = this.mc.player.posX;
+      double par22 = this.mc.player.posY;
+      double par32 = this.mc.player.posZ;
       AxisAlignedBB AABBNear = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - M2Y, par32 - MXZ, par12 + MXZ, par22 + M2Y, par32 + MXZ);
       Class<EntityPlayer> mobok = EntityPlayer.class;
-      List mobNear = this.mc.field_71439_g.field_70170_p.func_72872_a(mobok, AABBNear);
-      Entity entMobok = this.mc.field_71439_g.field_70170_p.func_72857_a(mobok, AABBNear, this.mc.field_71439_g);
-      if (!mobNear.isEmpty() && entMobok != null && entMobok != this.mc.field_71439_g) {
+      List mobNear = this.mc.player.world.func_72872_a(mobok, AABBNear);
+      Entity entMobok = this.mc.player.world.func_72857_a(mobok, AABBNear, this.mc.player);
+      if (!mobNear.isEmpty() && entMobok != null && entMobok != this.mc.player) {
          soundFunc3 = 1;
-         String m = ((EntityPlayer)entMobok).func_70005_c_();
+         String m = ((EntityPlayer)entMobok).getName();
          long s = JRMCoreH.bpc((EntityPlayer)entMobok, m, JRMCoreH.Pwrtyp);
          s = JRMCoreH.gkap(s, m);
          String bc = "" + JRMCoreH.numSepShort(s);
          if (Tier == 1 && s > 100000L || Tier == 2 && s > 1000000L) {
             DBCKiAttacks.dbctick(-2);
-            DBCKiAttacks.scouterRem(this.mc.field_71439_g);
+            DBCKiAttacks.scouterRem(this.mc.player);
          }
 
          this.entiBP = bc;
@@ -868,7 +868,7 @@ public class ScouterGui extends Gui {
       this.initGui();
       Minecraft minecraft = this.mc;
       World world = minecraft.field_71441_e;
-      EntityPlayerSP entityplayersp = minecraft.field_71439_g;
+      EntityPlayerSP entityplayersp = minecraft.player;
       ScaledResolution scaledresolution = new ScaledResolution(minecraft, minecraft.field_71443_c, minecraft.field_71440_d);
       int width = scaledresolution.func_78326_a();
       int height = scaledresolution.func_78328_b();
@@ -882,7 +882,7 @@ public class ScouterGui extends Gui {
 
    public void Func2TAV() {
       this.initGui();
-      EntityPlayerSP entityplayersp = this.mc.field_71439_g;
+      EntityPlayerSP entityplayersp = this.mc.player;
       ScaledResolution scaledresolution = new ScaledResolution(this.mc, this.mc.field_71443_c, this.mc.field_71440_d);
       int width = scaledresolution.func_78326_a();
       int height = scaledresolution.func_78328_b();
@@ -899,17 +899,17 @@ public class ScouterGui extends Gui {
       double MXZ = 32.0D;
       double MY = 8.0D;
       double M2XZ = 8.0D;
-      double par12 = this.mc.field_71439_g.field_70165_t;
-      double par22 = this.mc.field_71439_g.field_70163_u;
-      double par32 = this.mc.field_71439_g.field_70161_v;
+      double par12 = this.mc.player.posX;
+      double par22 = this.mc.player.posY;
+      double par32 = this.mc.player.posZ;
       AxisAlignedBB AABBX0 = AxisAlignedBB.func_72330_a(par12 - M2XZ, par22 - MY, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBX1 = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - MXZ, par12 + M2XZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBZ0 = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - M2XZ, par12 + MXZ, par22 + MY, par32 + MXZ);
       AxisAlignedBB AABBZ1 = AxisAlignedBB.func_72330_a(par12 - MXZ, par22 - MY, par32 - MXZ, par12 + MXZ, par22 + MY, par32 + M2XZ);
-      this.mc.field_71439_g.field_70170_p.func_72830_b(AABBX0, DBCMaterial.dragonblock);
-      this.mc.field_71439_g.field_70170_p.func_72830_b(AABBX1, DBCMaterial.dragonblock);
-      this.mc.field_71439_g.field_70170_p.func_72830_b(AABBZ0, DBCMaterial.dragonblock);
-      this.mc.field_71439_g.field_70170_p.func_72830_b(AABBZ1, DBCMaterial.dragonblock);
+      this.mc.player.world.func_72830_b(AABBX0, DBCMaterial.dragonblock);
+      this.mc.player.world.func_72830_b(AABBX1, DBCMaterial.dragonblock);
+      this.mc.player.world.func_72830_b(AABBZ0, DBCMaterial.dragonblock);
+      this.mc.player.world.func_72830_b(AABBZ1, DBCMaterial.dragonblock);
       boolean DBX0 = true;
       if (true) {
          this.textureFile = "jinryuudragonbc:misc/TAVjobb.png";
@@ -947,8 +947,8 @@ public class ScouterGui extends Gui {
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
       this.field_73735_i = -600.0F;
       ResourceLocation tx = new ResourceLocation(this.textureFile);
-      this.mc.field_71446_o.func_110577_a(tx);
-      Tessellator var3 = Tessellator.field_78398_a;
+      this.mc.field_71446_o.bindTexture(tx);
+      Tessellator var3 = Tessellator.INSTANCE;
       var3.func_78382_b();
       var3.func_78374_a(0.0D, (double)par2, (double)this.field_73735_i, 0.0D, 1.0D);
       var3.func_78374_a((double)par1, (double)par2, (double)this.field_73735_i, 1.0D, 1.0D);

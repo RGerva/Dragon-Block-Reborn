@@ -23,7 +23,7 @@ public class EntityKatopesla3 extends EntityDBCBasicEvil {
    public long BattlePowerOld() {
       int BP = 165425152;
       int exp = this.field_70728_aV * 100;
-      long BattlePower = (long)(BP + this.field_70146_Z.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
+      long BattlePower = (long)(BP + this.rand.nextInt((int)Math.pow(10.0D, (double)((BP + "").length() - 2))));
       return BattlePower;
    }
 }

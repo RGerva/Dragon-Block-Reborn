@@ -251,32 +251,32 @@ public class ModelDragon extends ModelBase {
       this.body1[11].func_78792_a(this.ArmR);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       GL11.glScaled(2.0D, 2.0D, 2.0D);
-      this.bodyM.func_78785_a(f5);
-      this.func_78087_a(f, f1, f2, f3, f4, f5, entity);
+      this.bodyM.render(f5);
+      this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
    }
 
    public void setRotate(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
-      modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleX = x;
+      modelRenderer.rotateAngleY = y;
+      modelRenderer.rotateAngleZ = z;
    }
 
-   public void func_78087_a(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-      this.HeadM.field_78796_g = par4 / 57.295776F;
-      this.HeadM.field_78795_f = par5 / 57.295776F * 1.2F;
+   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+      this.HeadM.rotateAngleY = par4 / 57.295776F;
+      this.HeadM.rotateAngleX = par5 / 57.295776F * 1.2F;
       float r = MathHelper.func_76126_a(par3 * 0.02F) * 0.1F;
       float r2 = MathHelper.func_76134_b(par3 * 0.02F) * 0.1F;
       float r3 = MathHelper.func_76134_b(par3 * 0.14F) * 0.1F;
-      this.ArmL.field_78796_g = 0.3F + r2 * 2.0F;
-      this.ArmR.field_78796_g = -0.3F - r2 * 2.0F;
-      this.ArmL1.field_78796_g = 0.6F + r2 * 2.0F;
-      this.ArmR1.field_78796_g = -0.6F - r2 * 2.0F;
-      this.body4.field_78796_g = 0.0F;
-      this.body4.field_78795_f = 0.0F;
-      this.body5.field_78796_g = 0.0F;
-      this.body5.field_78795_f = 0.0F;
+      this.ArmL.rotateAngleY = 0.3F + r2 * 2.0F;
+      this.ArmR.rotateAngleY = -0.3F - r2 * 2.0F;
+      this.ArmL1.rotateAngleY = 0.6F + r2 * 2.0F;
+      this.ArmR1.rotateAngleY = -0.6F - r2 * 2.0F;
+      this.body4.rotateAngleY = 0.0F;
+      this.body4.rotateAngleX = 0.0F;
+      this.body5.rotateAngleY = 0.0F;
+      this.body5.rotateAngleX = 0.0F;
 
       int i;
       ModelRenderer o;
@@ -287,24 +287,24 @@ public class ModelDragon extends ModelBase {
                if (i != 2 && i != 3) {
                   if (i != 4 && i != 5 && i != 6) {
                      if (i != 7 && i != 8) {
-                        o.field_78808_h = -0.0F;
-                        o.field_78795_f = -0.0F;
-                        o.field_78796_g = -0.0F;
+                        o.rotateAngleZ = -0.0F;
+                        o.rotateAngleX = -0.0F;
+                        o.rotateAngleY = -0.0F;
                      } else {
-                        o.field_78808_h = -0.75F - r * 1.05F;
-                        o.field_78795_f = -0.2F - r2 * 0.5F;
+                        o.rotateAngleZ = -0.75F - r * 1.05F;
+                        o.rotateAngleX = -0.2F - r2 * 0.5F;
                      }
                   } else {
-                     o.field_78808_h = 0.2F + 0.1F * (float)i - r * 1.05F;
-                     o.field_78795_f = -0.3F + 0.1F * (float)i - r * 0.5F;
+                     o.rotateAngleZ = 0.2F + 0.1F * (float)i - r * 1.05F;
+                     o.rotateAngleX = -0.3F + 0.1F * (float)i - r * 0.5F;
                   }
                } else {
-                  o.field_78808_h = -0.45F + r2 * 1.05F;
-                  o.field_78795_f = -0.3F + r * 0.5F;
+                  o.rotateAngleZ = -0.45F + r2 * 1.05F;
+                  o.rotateAngleX = -0.3F + r * 0.5F;
                }
             } else {
-               o.field_78808_h = 0.2F - r2 * 1.05F;
-               o.field_78795_f = -0.0F + r * 0.75F;
+               o.rotateAngleZ = 0.2F - r2 * 1.05F;
+               o.rotateAngleX = -0.0F + r * 0.75F;
             }
          }
       }
@@ -316,37 +316,37 @@ public class ModelDragon extends ModelBase {
                if (i != 2 && i != 3) {
                   if (i != 4 && i != 5 && i != 6) {
                      if (i != 7 && i != 8) {
-                        o.field_78808_h = -0.0F;
-                        o.field_78795_f = -0.0F;
-                        o.field_78796_g = -0.0F;
+                        o.rotateAngleZ = -0.0F;
+                        o.rotateAngleX = -0.0F;
+                        o.rotateAngleY = -0.0F;
                      } else {
-                        o.field_78808_h = 0.75F + r2 * 1.05F;
-                        o.field_78795_f = -0.2F - r * 0.75F;
+                        o.rotateAngleZ = 0.75F + r2 * 1.05F;
+                        o.rotateAngleX = -0.2F - r * 0.75F;
                      }
                   } else {
-                     o.field_78808_h = -0.2F - 0.1F * (float)i + r * 1.05F;
-                     o.field_78795_f = -0.3F + 0.1F * (float)i - r2 * 0.75F;
+                     o.rotateAngleZ = -0.2F - 0.1F * (float)i + r * 1.05F;
+                     o.rotateAngleX = -0.3F + 0.1F * (float)i - r2 * 0.75F;
                   }
                } else {
-                  o.field_78808_h = 0.45F - r * 1.05F;
-                  o.field_78795_f = -0.3F + r2 * 0.75F;
+                  o.rotateAngleZ = 0.45F - r * 1.05F;
+                  o.rotateAngleX = -0.3F + r2 * 0.75F;
                }
             } else {
-               o.field_78808_h = -0.2F - r2 * 1.05F;
-               o.field_78795_f = -0.0F + r * 0.75F;
+               o.rotateAngleZ = -0.2F - r2 * 1.05F;
+               o.rotateAngleX = -0.0F + r * 0.75F;
             }
          }
       }
 
-      this.Head1.field_78808_h = -0.0F;
-      this.Head1.field_78795_f = 0.15F + r2 * 0.5F;
-      this.bodyM.field_78797_d = -200.0F + r * 40.0F;
+      this.Head1.rotateAngleZ = -0.0F;
+      this.Head1.rotateAngleX = 0.15F + r2 * 0.5F;
+      this.bodyM.rotationPointY = -200.0F + r * 40.0F;
 
       for(i = 0; i < this.models.size(); ++i) {
          if (i == 0) {
             o = (ModelRenderer)this.models.get(i);
-            o.field_78808_h = 0.0F;
-            o.field_78795_f = 2.0F;
+            o.rotateAngleZ = 0.0F;
+            o.rotateAngleX = 2.0F;
          } else if (i != 1 && i != 2 && i != 3) {
             if (i != 4 && i != 5 && i != 6) {
                if (i != 7 && i != 8 && i != 9) {
@@ -357,53 +357,53 @@ public class ModelDragon extends ModelBase {
                               if (i != 22 && i != 23) {
                                  if (i != 24 && i != 25) {
                                     o = (ModelRenderer)this.models.get(i);
-                                    o.field_78808_h = -0.0F;
-                                    o.field_78795_f = -0.0F;
-                                    o.field_78796_g = -0.0F;
+                                    o.rotateAngleZ = -0.0F;
+                                    o.rotateAngleX = -0.0F;
+                                    o.rotateAngleY = -0.0F;
                                  } else {
                                     o = (ModelRenderer)this.models.get(i);
-                                    o.field_78808_h = -0.2F + r * 0.75F;
-                                    o.field_78795_f = 0.1F;
+                                    o.rotateAngleZ = -0.2F + r * 0.75F;
+                                    o.rotateAngleX = 0.1F;
                                  }
                               } else {
                                  o = (ModelRenderer)this.models.get(i);
-                                 o.field_78808_h = 1.0F - r * 0.75F;
-                                 o.field_78795_f = 0.5F;
+                                 o.rotateAngleZ = 1.0F - r * 0.75F;
+                                 o.rotateAngleX = 0.5F;
                               }
                            } else {
                               o = (ModelRenderer)this.models.get(i);
-                              o.field_78808_h = -0.5F + r * 0.75F;
-                              o.field_78795_f = -0.75F;
+                              o.rotateAngleZ = -0.5F + r * 0.75F;
+                              o.rotateAngleX = -0.75F;
                            }
                         } else {
                            o = (ModelRenderer)this.models.get(i);
-                           o.field_78808_h = 0.75F - r * 0.75F;
-                           o.field_78795_f = -0.5F;
+                           o.rotateAngleZ = 0.75F - r * 0.75F;
+                           o.rotateAngleX = -0.5F;
                         }
                      } else {
                         o = (ModelRenderer)this.models.get(i);
-                        o.field_78808_h = 0.5F + r * 0.75F;
-                        o.field_78795_f = 0.75F;
+                        o.rotateAngleZ = 0.5F + r * 0.75F;
+                        o.rotateAngleX = 0.75F;
                      }
                   } else {
                      o = (ModelRenderer)this.models.get(i);
-                     o.field_78808_h = -0.5F - r * 0.75F;
-                     o.field_78795_f = -0.25F;
+                     o.rotateAngleZ = -0.5F - r * 0.75F;
+                     o.rotateAngleX = -0.25F;
                   }
                } else {
                   o = (ModelRenderer)this.models.get(i);
-                  o.field_78808_h = -0.75F + r * 0.75F;
-                  o.field_78795_f = -0.3F;
+                  o.rotateAngleZ = -0.75F + r * 0.75F;
+                  o.rotateAngleX = -0.3F;
                }
             } else {
                o = (ModelRenderer)this.models.get(i);
-               o.field_78808_h = 0.9F - r * 0.75F;
-               o.field_78795_f = -0.7F;
+               o.rotateAngleZ = 0.9F - r * 0.75F;
+               o.rotateAngleX = -0.7F;
             }
          } else {
             o = (ModelRenderer)this.models.get(i);
-            o.field_78808_h = -0.9F + r * 0.75F;
-            o.field_78795_f = -0.5F;
+            o.rotateAngleZ = -0.9F + r * 0.75F;
+            o.rotateAngleX = -0.5F;
          }
       }
 

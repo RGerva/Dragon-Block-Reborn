@@ -71,7 +71,7 @@ public class ComJrmcFormMasteryCheck extends CommandBase {
 
          try {
             commansender = func_71521_c(commandSender);
-            entitycommansender = commansender.func_70005_c_();
+            entitycommansender = commansender.getName();
          } catch (Exception var19) {
          }
 

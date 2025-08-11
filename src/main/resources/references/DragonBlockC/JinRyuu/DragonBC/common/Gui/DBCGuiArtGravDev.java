@@ -45,7 +45,7 @@ public class DBCGuiArtGravDev extends GuiContainer {
 
          if (button.field_146127_k == 210) {
             PD.sendToServer(new DBCPwish(4, this.tileFurnace.field_145851_c + ";" + this.tileFurnace.field_145848_d + ";" + this.tileFurnace.field_145849_e + ";" + this.name));
-            this.field_146297_k.field_71439_g.func_71053_j();
+            this.field_146297_k.player.func_71053_j();
          }
       }
 
@@ -124,7 +124,7 @@ public class DBCGuiArtGravDev extends GuiContainer {
 
    protected void func_146976_a(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-      this.field_146297_k.func_110434_K().func_110577_a(furnaceGuiTextures);
+      this.field_146297_k.func_110434_K().bindTexture(furnaceGuiTextures);
       int k = (this.field_146294_l - this.field_146999_f) / 2;
       int l = (this.field_146295_m - this.field_147000_g) / 2;
       this.func_73729_b(k, l, 0, 0, this.field_146999_f, this.field_147000_g);

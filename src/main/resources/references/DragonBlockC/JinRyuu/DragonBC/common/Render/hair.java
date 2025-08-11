@@ -68,32 +68,32 @@ public class hair extends ModelBase {
       this.setRotation(this.Shape9, 0.2094395F, 0.296706F, 0.0F);
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-      super.func_78088_a(entity, f, f1, f2, f3, f4, f5);
-      this.Shape1.func_78785_a(f5);
-      this.Shape5.func_78785_a(f5);
-      this.Shape3.func_78785_a(f5);
-      this.Shape4.func_78785_a(f5);
-      this.Shape6.func_78785_a(f5);
-      this.Shape7.func_78785_a(f5);
-      this.Shape8.func_78785_a(f5);
-      this.Shape9.func_78785_a(f5);
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+      super.render(entity, f, f1, f2, f3, f4, f5);
+      this.Shape1.render(f5);
+      this.Shape5.render(f5);
+      this.Shape3.render(f5);
+      this.Shape4.render(f5);
+      this.Shape6.render(f5);
+      this.Shape7.render(f5);
+      this.Shape8.render(f5);
+      this.Shape9.render(f5);
    }
 
    public void renderModel(float f1) {
-      this.Shape1.func_78785_a(f1);
-      this.Shape3.func_78785_a(f1);
-      this.Shape4.func_78785_a(f1);
-      this.Shape5.func_78785_a(f1);
-      this.Shape6.func_78785_a(f1);
-      this.Shape7.func_78785_a(f1);
-      this.Shape8.func_78785_a(f1);
-      this.Shape9.func_78785_a(f1);
+      this.Shape1.render(f1);
+      this.Shape3.render(f1);
+      this.Shape4.render(f1);
+      this.Shape5.render(f1);
+      this.Shape6.render(f1);
+      this.Shape7.render(f1);
+      this.Shape8.render(f1);
+      this.Shape9.render(f1);
    }
 
    private void setRotation(ModelRenderer model, float x, float y, float z) {
-      model.field_78795_f = x;
-      model.field_78796_g = y;
-      model.field_78808_h = z;
+      model.rotateAngleX = x;
+      model.rotateAngleY = y;
+      model.rotateAngleZ = z;
    }
 }

@@ -116,51 +116,51 @@ public class ModelPG extends ModelBase {
 
    }
 
-   public void func_78088_a(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
       if (this.id == 0) {
-         this.shape1.func_78785_a(f5);
-         this.shape2.func_78785_a(f5);
-         this.shape3.func_78785_a(f5);
-         this.shape4.func_78785_a(f5);
+         this.shape1.render(f5);
+         this.shape2.render(f5);
+         this.shape3.render(f5);
+         this.shape4.render(f5);
       }
 
       if (this.id == 1) {
-         this.shape_1_1.func_78785_a(f5);
-         this.shape_1_2.func_78785_a(f5);
-         this.shape_1_3.func_78785_a(f5);
-         this.shape_1_4.func_78785_a(f5);
-         this.shape_1_5.func_78785_a(f5);
+         this.shape_1_1.render(f5);
+         this.shape_1_2.render(f5);
+         this.shape_1_3.render(f5);
+         this.shape_1_4.render(f5);
+         this.shape_1_5.render(f5);
       }
 
       if (this.id == 2) {
-         this.shape_2_1.func_78785_a(f5);
-         this.shape_2_2.func_78785_a(f5);
-         this.shape_2_3.func_78785_a(f5);
-         this.shape_2_4.func_78785_a(f5);
-         this.shape_2_5.func_78785_a(f5);
+         this.shape_2_1.render(f5);
+         this.shape_2_2.render(f5);
+         this.shape_2_3.render(f5);
+         this.shape_2_4.render(f5);
+         this.shape_2_5.render(f5);
       }
 
       if (this.id == 3) {
-         this.shape_3_1.func_78785_a(f5);
-         this.shape_3_2.func_78785_a(f5);
-         this.shape_3_3.func_78785_a(f5);
-         this.shape_3_4.func_78785_a(f5);
-         this.shape_3_5.func_78785_a(f5);
+         this.shape_3_1.render(f5);
+         this.shape_3_2.render(f5);
+         this.shape_3_3.render(f5);
+         this.shape_3_4.render(f5);
+         this.shape_3_5.render(f5);
       }
 
       if (this.id == 4) {
-         this.shape_4_1.func_78785_a(f5);
-         this.shape_4_2.func_78785_a(f5);
-         this.shape_4_3.func_78785_a(f5);
-         this.shape_4_4.func_78785_a(f5);
-         this.shape_4_5.func_78785_a(f5);
+         this.shape_4_1.render(f5);
+         this.shape_4_2.render(f5);
+         this.shape_4_3.render(f5);
+         this.shape_4_4.render(f5);
+         this.shape_4_5.render(f5);
       }
 
    }
 
    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-      modelRenderer.field_78795_f = x;
+      modelRenderer.rotateAngleX = x;
       modelRenderer.field_78796_g = y;
-      modelRenderer.field_78808_h = z;
+      modelRenderer.rotateAngleZ = z;
    }
 }

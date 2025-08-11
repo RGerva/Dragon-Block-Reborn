@@ -89,7 +89,7 @@ public class ComJrmcTech extends CommandBase {
                      s1 = "Skill " + t + " removed";
                      ChatStyle color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                      entityplayermp.func_145747_a((new ChatComponentText(s1)).func_150255_a(color));
-                     this.notifyAdmins(par1ICommandSender, "%s's tech %s has been removed!", new Object[]{entityplayermp.func_70005_c_(), t});
+                     this.notifyAdmins(par1ICommandSender, "%s's tech %s has been removed!", new Object[]{entityplayermp.getName(), t});
                      break;
                   }
                }
@@ -115,12 +115,12 @@ public class ComJrmcTech extends CommandBase {
                   t = JRMCoreH.trlai("jrmc", "techadded");
                   color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                   entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[]{PMA[id1][0]})).func_150255_a(color));
-                  this.notifyAdmins(par1ICommandSender, "%s has received tech %s", new Object[]{entityplayermp.func_70005_c_(), PMA[id1][0]});
+                  this.notifyAdmins(par1ICommandSender, "%s has received tech %s", new Object[]{entityplayermp.getName(), PMA[id1][0]});
                } else {
                   t = JRMCoreH.trlai("jrmc", "noslotleft");
                   color = (new ChatStyle()).func_150238_a(EnumChatFormatting.YELLOW);
                   entityplayermp.func_145747_a((new ChatComponentTranslation(t, new Object[]{PMA[id1][0]})).func_150255_a(color));
-                  this.notifyAdmins(par1ICommandSender, "%s has received skill %s", new Object[]{entityplayermp.func_70005_c_(), PMA[id1][0]});
+                  this.notifyAdmins(par1ICommandSender, "%s has received skill %s", new Object[]{entityplayermp.getName(), PMA[id1][0]});
                }
             }
          }
