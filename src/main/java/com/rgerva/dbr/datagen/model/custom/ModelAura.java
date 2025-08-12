@@ -52,14 +52,12 @@ public class ModelAura extends EntityModel<AuraState> {
 
 		@Override
 		public void setupAnim(AuraState state) {
-				// se quiser preservar comportamento anterior, você pode chamar o super
 				super.setupAnim(state);
 
-				// --- portar lógica antiga do setRotationAngles ---
-				// Aqui estou assumindo que o AuraState tem algo como: age, maxAge ou ticks
-				float maxAge = state.maxAge; // ou outro campo equivalente
-				float age    = state.age;    // idem
+				float age = state.age;
+				float maxAge = state.maxAge;
 
+				// Lógica original convertida
 				float par3 = age;
 				if (age > maxAge) {
 						par3 = age - maxAge;
@@ -69,14 +67,17 @@ public class ModelAura extends EntityModel<AuraState> {
 				float curperc = par3 * maxageperc;
 				par3 = curperc * 0.01F * 20.0F;
 
+				// Ajuste de posição vertical
 				this.aura.y = 55.0F + par3;
+
+				// Simulação de offsetZ do ModelRenderer antigo
 				this.aura.z = (par3 < 8.0F)
 								? 0.4F - par3 * 0.1F
 								: -0.3F + (par3 - 7.0F) * 0.053F;
 
+				// Rotação X (em radianos)
 				float ff = par3 * this.inc / 3.2F;
 				this.aura.xRot = 0.8726646F - curperc * 0.01F;
-
 		}
 
 		public void renderToBuffer(PoseStack poseStack, VertexConsumer vc, int packedLight, int packedOverlay,

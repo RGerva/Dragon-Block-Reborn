@@ -36,6 +36,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
@@ -103,7 +104,8 @@ public class ModBusEvents {
 			AuraEntity entity = new AuraEntity(AURA_ENTITY.get(), event.getEntity().level());
 			if(toggleAura.isDown()){
 //					entity.setActiveAndSync(true);
-					EntityAura.summonAura((ServerLevel) player.level(), 0,0,0);
+					EntityAura entityAura = new EntityAura(AURA.get(), event.getEntity().level());
+					entityAura.setActiveAndSync(player);
 			}else {
 //					entity.setActiveAndSync(false);
 			}

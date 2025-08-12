@@ -15,6 +15,7 @@
 package com.rgerva.dbr.network.packages.ServertToClient;
 
 import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.entity.EntityAura;
 import com.rgerva.dbr.entity.entity.AuraEntity;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -43,7 +44,7 @@ public record AuraSyncS2CPackage(boolean activate) implements CustomPacketPayloa
 
 		@Override
 		public Type<? extends CustomPacketPayload> type() {
-				return null;
+				return ID;
 		}
 
 		public static void handle(AuraSyncS2CPackage data, IPayloadContext context){
@@ -53,7 +54,8 @@ public record AuraSyncS2CPackage(boolean activate) implements CustomPacketPayloa
 														|| !(context.player() instanceof ServerPlayer player)) return;
 
 										if (data.activate) {
-												AuraEntity.spawnAura(level, player);
+//												AuraEntity.spawnAura(level, player);
+												EntityAura.summonAura(level, player);
 										}
 								}
 				);

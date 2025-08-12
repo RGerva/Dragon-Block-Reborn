@@ -81,7 +81,7 @@ public class AuraRenderer extends EntityRenderer<EntityAura, AuraState> {
     Player local = mc.player;
     boolean isLocalFirstPerson =
         local != null
-            && local.getGameProfile().getName().equals(entity.getmot())
+            && local.getGameProfile().getName().equals(entity.getMot())
             && mc.options.getCameraType().isFirstPerson();
 
     state.alpha = !isLocalFirstPerson ? entity.getAlp() : (state.inner ? 0.025F : 0.05F);

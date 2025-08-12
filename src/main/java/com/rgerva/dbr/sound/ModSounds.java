@@ -31,6 +31,8 @@ public class ModSounds {
   public static final Supplier<SoundEvent> DRAGON_GRANT = registerSoundEvent("dragon_grant");
   public static final Supplier<SoundEvent> DRAGON_MAKEONE = registerSoundEvent("dragon_makeone");
 
+  public static final Supplier<SoundEvent> SPARK = registerSoundEvent("spark");
+
   private static ResourceKey<JukeboxSong> createSong(String name) {
     return ResourceKey.create(
         Registries.JUKEBOX_SONG,

@@ -15,6 +15,7 @@
 package com.rgerva.dbr.network.packages.ClientToServer;
 
 import com.rgerva.dbr.DragonBlockReborn;
+import com.rgerva.dbr.entity.EntityAura;
 import com.rgerva.dbr.entity.entity.AuraEntity;
 import java.util.List;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -55,15 +56,24 @@ public record AuraSyncC2SPackage(boolean activate) implements CustomPacketPayloa
 
 
 										if (data.activate) {
-												AuraEntity.spawnAura(level, player);
+//												AuraEntity.spawnAura(level, player);
+												EntityAura.summonAura(level, player);
 										}else{
-												List<AuraEntity> nearbyAuras = level.getEntitiesOfClass(AuraEntity.class,
+//												List<AuraEntity> nearbyAuras = level.getEntitiesOfClass(AuraEntity.class,
+//																player.getBoundingBox().inflate(4.0),
+//																aura -> aura.isOwnedBy(player));
+//
+//												for (AuraEntity aura : nearbyAuras) {
+//														aura.setActive(false);
+//												}
+
+												List<EntityAura> nearbyAuras = level.getEntitiesOfClass(EntityAura.class,
 																player.getBoundingBox().inflate(4.0),
 																aura -> aura.isOwnedBy(player));
 
-												for (AuraEntity aura : nearbyAuras) {
-														aura.setActive(false);
-												}
+//												for (EntityAura aura : nearbyAuras) {
+//														aura.setActive(false);
+//												}
 										}
 								}
 				);

@@ -18,6 +18,7 @@ public class ModSoundProvider extends SoundDefinitionsProvider {
     add(ModSounds.DRAGON_GLOW, createSoundDefinition("dragon_glow"));
     add(ModSounds.DRAGON_GRANT, createSoundDefinition("dragon_grant"));
     add(ModSounds.DRAGON_MAKEONE, createSoundDefinition("dragon_makeone"));
+    add(ModSounds.SPARK, createSoundDefinition("spark"));
   }
 
   protected SoundDefinition createSoundDefinition(String name) {
