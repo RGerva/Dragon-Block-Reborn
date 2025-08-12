@@ -78,7 +78,9 @@ loadScripts(document, 'script');</script>
 <li><a href="#method-detail" tabindex="0">Method Details</a>
 <ol class="toc-list">
 <li><a href="#getLightLivingTime()" tabindex="0">getLightLivingTime()</a></li>
-<li><a href="#summonAura(net.minecraft.server.level.ServerLevel,double,double,double)" tabindex="0">summonAura(ServerLevel, double, double, double)</a></li>
+<li><a href="#setActiveAndSync(net.minecraft.world.entity.player.Player)" tabindex="0">setActiveAndSync(Player)</a></li>
+<li><a href="#summonAura(net.minecraft.world.level.Level,net.minecraft.world.entity.player.Player)" tabindex="0">summonAura(Level, Player)</a></li>
+<li><a href="#isOwnedBy(net.minecraft.world.entity.player.Player)" tabindex="0">isOwnedBy(Player)</a></li>
 <li><a href="#shouldRenderInPass(int)" tabindex="0">shouldRenderInPass(int)</a></li>
 <li><a href="#getRot()" tabindex="0">getRot()</a></li>
 <li><a href="#getYaw()" tabindex="0">getYaw()</a></li>
@@ -102,7 +104,6 @@ loadScripts(document, 'script');</script>
 <li><a href="#getInner()" tabindex="0">getInner()</a></li>
 <li><a href="#setInner(boolean)" tabindex="0">setInner(boolean)</a></li>
 <li><a href="#setRendPass(int)" tabindex="0">setRendPass(int)</a></li>
-<li><a href="#getmot()" tabindex="0">getmot()</a></li>
 <li><a href="#setOwner(net.minecraft.world.entity.LivingEntity)" tabindex="0">setOwner(LivingEntity)</a></li>
 <li><a href="#getOwner()" tabindex="0">getOwner()</a></li>
 <li><a href="#checkDespawn()" tabindex="0">checkDespawn()</a></li>
@@ -111,6 +112,9 @@ loadScripts(document, 'script');</script>
 <li><a href="#hurtServer(net.minecraft.server.level.ServerLevel,net.minecraft.world.damagesource.DamageSource,float)" tabindex="0">hurtServer(ServerLevel, DamageSource, float)</a></li>
 <li><a href="#readAdditionalSaveData(net.minecraft.world.level.storage.ValueInput)" tabindex="0">readAdditionalSaveData(ValueInput)</a></li>
 <li><a href="#addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput)" tabindex="0">addAdditionalSaveData(ValueOutput)</a></li>
+<li><a href="#setMot(java.lang.String)" tabindex="0">setMot(String)</a></li>
+<li><a href="#getMot()" tabindex="0">getMot()</a></li>
+<li><a href="#activateAura()" tabindex="0">activateAura()</a></li>
 </ol>
 </li>
 </ol>
@@ -131,11 +135,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code>net.minecraft.core.component.DataComponentGetter</code>, <code>net.minecraft.network.syncher.SyncedDataHolder</code>, <code>net.minecraft.world.level.entity.EntityAccess</code>, <code>net.minecraft.world.level.entity.UniquelyIdentifyable</code>, <code>net.minecraft.world.Nameable</code>, <code>net.minecraft.world.scores.ScoreHolder</code>, <code>net.neoforged.neoforge.attachment.IAttachmentHolder</code>, <code>net.neoforged.neoforge.common.extensions.IEntityExtension</code></dd>
+<dd><code><a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></code>, <code>net.minecraft.core.component.DataComponentGetter</code>, <code>net.minecraft.network.syncher.SyncedDataHolder</code>, <code>net.minecraft.world.level.entity.EntityAccess</code>, <code>net.minecraft.world.level.entity.UniquelyIdentifyable</code>, <code>net.minecraft.world.Nameable</code>, <code>net.minecraft.world.scores.ScoreHolder</code>, <code>net.neoforged.neoforge.attachment.IAttachmentHolder</code>, <code>net.neoforged.neoforge.common.extensions.IEntityExtension</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">EntityAura</span>
-<span class="extends-implements">extends net.minecraft.world.entity.Entity</span></div>
+<span class="extends-implements">extends net.minecraft.world.entity.Entity
+implements <a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></span></div>
 </div>
 </section>
 <section class="summary">
@@ -204,85 +209,97 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput)" class="member-name-link">addAdditionalSaveData</a><wbr>(net.minecraft.world.level.storage.ValueOutput&nbsp;valueOutput)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAura()" class="member-name-link">activateAura</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkDespawn()" class="member-name-link">checkDespawn</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput)" class="member-name-link">addAdditionalSaveData</a><wbr>(net.minecraft.world.level.storage.ValueOutput&nbsp;valueOutput)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder)" class="member-name-link">defineSynchedData</a><wbr>(net.minecraft.network.syncher.SynchedEntityData.Builder&nbsp;builder)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkDespawn()" class="member-name-link">checkDespawn</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAge()" class="member-name-link">getAge</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAlp()" class="member-name-link">getAlp</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCol()" class="member-name-link">getCol</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder)" class="member-name-link">defineSynchedData</a><wbr>(net.minecraft.network.syncher.SynchedEntityData.Builder&nbsp;builder)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getColL2()" class="member-name-link">getColL2</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAge()" class="member-name-link">getAge</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCRel()" class="member-name-link">getCRel</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAlp()" class="member-name-link">getAlp</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInner()" class="member-name-link">getInner</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCol()" class="member-name-link">getCol</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLightLivingTime()" class="member-name-link">getLightLivingTime</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getmot()" class="member-name-link">getmot</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>net.minecraft.world.entity.LivingEntity</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getOwner()" class="member-name-link">getOwner</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getColL2()" class="member-name-link">getColL2</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPitch()" class="member-name-link">getPitch</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCRel()" class="member-name-link">getCRel</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRot()" class="member-name-link">getRot</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInner()" class="member-name-link">getInner</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSpd()" class="member-name-link">getSpd</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getState()" class="member-name-link">getState</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getState2()" class="member-name-link">getState2</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLightLivingTime()" class="member-name-link">getLightLivingTime</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTex()" class="member-name-link">getTex</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMot()" class="member-name-link">getMot</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTexL2()" class="member-name-link">getTexL2</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>net.minecraft.world.entity.LivingEntity</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getOwner()" class="member-name-link">getOwner</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getYaw()" class="member-name-link">getYaw</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPitch()" class="member-name-link">getPitch</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hurtServer(net.minecraft.server.level.ServerLevel,net.minecraft.world.damagesource.DamageSource,float)" class="member-name-link">hurtServer</a><wbr>(net.minecraft.server.level.ServerLevel&nbsp;serverLevel,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRot()" class="member-name-link">getRot</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSpd()" class="member-name-link">getSpd</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getState()" class="member-name-link">getState</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getState2()" class="member-name-link">getState2</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTex()" class="member-name-link">getTex</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTexL2()" class="member-name-link">getTexL2</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>float</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getYaw()" class="member-name-link">getYaw</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hurtServer(net.minecraft.server.level.ServerLevel,net.minecraft.world.damagesource.DamageSource,float)" class="member-name-link">hurtServer</a><wbr>(net.minecraft.server.level.ServerLevel&nbsp;serverLevel,
  net.minecraft.world.damagesource.DamageSource&nbsp;damageSource,
  float&nbsp;v)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isOwnedBy(net.minecraft.world.entity.player.Player)" class="member-name-link">isOwnedBy</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#readAdditionalSaveData(net.minecraft.world.level.storage.ValueInput)" class="member-name-link">readAdditionalSaveData</a><wbr>(net.minecraft.world.level.storage.ValueInput&nbsp;valueInput)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAlp(float)" class="member-name-link">setAlp</a><wbr>(float&nbsp;f)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setActiveAndSync(net.minecraft.world.entity.player.Player)" class="member-name-link">setActiveAndSync</a><wbr>(net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setCol(int)" class="member-name-link">setCol</a><wbr>(int&nbsp;c)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAlp(float)" class="member-name-link">setAlp</a><wbr>(float&nbsp;f)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setColL2(int)" class="member-name-link">setColL2</a><wbr>(int&nbsp;c)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setCol(int)" class="member-name-link">setCol</a><wbr>(int&nbsp;c)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setInner(boolean)" class="member-name-link">setInner</a><wbr>(boolean&nbsp;s)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setColL2(int)" class="member-name-link">setColL2</a><wbr>(int&nbsp;c)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setInner(boolean)" class="member-name-link">setInner</a><wbr>(boolean&nbsp;s)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setMot(java.lang.String)" class="member-name-link">setMot</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setOwner(net.minecraft.world.entity.LivingEntity)" class="member-name-link">setOwner</a><wbr>(net.minecraft.world.entity.LivingEntity&nbsp;owner)</code></div>
@@ -303,10 +320,8 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shouldRenderInPass(int)" class="member-name-link">shouldRenderInPass</a><wbr>(int&nbsp;pass)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#summonAura(net.minecraft.server.level.ServerLevel,double,double,double)" class="member-name-link">summonAura</a><wbr>(net.minecraft.server.level.ServerLevel&nbsp;serverLevel,
- double&nbsp;x,
- double&nbsp;y,
- double&nbsp;z)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#summonAura(net.minecraft.world.level.Level,net.minecraft.world.entity.player.Player)" class="member-name-link">summonAura</a><wbr>(net.minecraft.world.level.Level&nbsp;level,
+ net.minecraft.world.entity.player.Player&nbsp;player)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tick()" class="member-name-link">tick</a>()</code></div>
@@ -332,6 +347,9 @@ loadScripts(document, 'script');</script>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.neoforged.neoforge.common.extensions.IEntityExtension">Methods inherited from interface&nbsp;net.neoforged.neoforge.common.extensions.IEntityExtension</h3>
 <code>canBeRiddenUnderFluidType, canFluidExtinguish, canHydrateInFluidType, canRiderInteract, canStartSwimming, canSwimInFluidType, copyAttachmentsFrom, getClassification, getFluidFallDistanceModifier, getFluidMotionScale, getParts, getSoundFromFluidType, hasCustomOutlineRendering, isEyeInFluidType, isInFluidType, isInFluidType, isInFluidType, isMultipartEntity, isPushedByFluid, sendPairingData, shouldRiderSit</code></div>
+<div class="inherited-list">
+<h3 id="methods-inherited-from-class-com.rgerva.dbr.network.interfaces.IModAuraSync">Methods inherited from interface&nbsp;com.rgerva.dbr.network.interfaces.<a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></h3>
+<code><a href="../network/interfaces/IModAuraSync.html#syncAuraToClient(net.minecraft.world.entity.player.Player)">syncAuraToClient</a>, <a href="../network/interfaces/IModAuraSync.html#syncAuraToServer()">syncAuraToServer</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-net.minecraft.world.scores.ScoreHolder">Methods inherited from interface&nbsp;net.minecraft.world.scores.ScoreHolder</h3>
 <code>getFeedbackDisplayName</code></div>
@@ -396,13 +414,27 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="summonAura(net.minecraft.server.level.ServerLevel,double,double,double)">
+<section class="detail" id="setActiveAndSync(net.minecraft.world.entity.player.Player)">
+<h3>setActiveAndSync</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setActiveAndSync</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="summonAura(net.minecraft.world.level.Level,net.minecraft.world.entity.player.Player)">
 <h3>summonAura</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">summonAura</span><wbr><span class="parameters">(net.minecraft.server.level.ServerLevel&nbsp;serverLevel,
- double&nbsp;x,
- double&nbsp;y,
- double&nbsp;z)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">summonAura</span><wbr><span class="parameters">(net.minecraft.world.level.Level&nbsp;level,
+ net.minecraft.world.entity.player.Player&nbsp;player)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isOwnedBy(net.minecraft.world.entity.player.Player)">
+<h3>isOwnedBy</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isOwnedBy</span><wbr><span class="parameters">(net.minecraft.world.entity.player.Player&nbsp;player)</span></div>
 </div>
 </section>
 </li>
@@ -591,14 +623,6 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getmot()">
-<h3>getmot</h3>
-<div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getmot</span>()</div>
-</div>
-</section>
-</li>
-<li>
 <section class="detail" id="setOwner(net.minecraft.world.entity.LivingEntity)">
 <h3>setOwner</h3>
 <div class="horizontal-scroll">
@@ -686,6 +710,34 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code>addAdditionalSaveData</code>&nbsp;in class&nbsp;<code>net.minecraft.world.entity.Entity</code></dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="setMot(java.lang.String)">
+<h3>setMot</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setMot</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getMot()">
+<h3>getMot</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getMot</span>()</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="activateAura()">
+<h3>activateAura</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">activateAura</span>()</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../network/interfaces/IModAuraSync.html#activateAura()">activateAura</a></code>&nbsp;in interface&nbsp;<code><a href="../network/interfaces/IModAuraSync.html" title="interface in com.rgerva.dbr.network.interfaces">IModAuraSync</a></code></dd>
 </dl>
 </div>
 </section>
