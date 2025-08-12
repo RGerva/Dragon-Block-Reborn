@@ -11,23 +11,18 @@
  */
 package com.rgerva.dbr.entity;
 
-import com.rgerva.dbr.sound.ModSounds;
-import net.minecraft.client.player.LocalPlayer;
+import javax.annotation.Nullable;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
-
-import javax.annotation.Nullable;
 
 public class EntityAura extends Entity {
 		@Nullable

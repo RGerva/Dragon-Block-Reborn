@@ -11,8 +11,6 @@
  */
 package com.rgerva.dbr.mechanics.types;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.chat.Component;
 
 public class ModTypes {

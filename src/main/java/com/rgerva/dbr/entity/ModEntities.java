@@ -13,6 +13,7 @@ package com.rgerva.dbr.entity;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.entity.entity.AuraEntity;
+import java.util.function.Supplier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -20,10 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
 
 public class ModEntities {
   public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =

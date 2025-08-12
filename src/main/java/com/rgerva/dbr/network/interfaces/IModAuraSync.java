@@ -15,11 +15,8 @@
 package com.rgerva.dbr.network.interfaces;
 
 import com.rgerva.dbr.network.ModNetwork;
-import com.rgerva.dbr.network.packages.ClientToServer.AttributesSyncC2SPacket;
 import com.rgerva.dbr.network.packages.ClientToServer.AuraSyncC2SPackage;
-import com.rgerva.dbr.network.packages.ServertToClient.AttributesSyncS2CPacket;
 import com.rgerva.dbr.network.packages.ServertToClient.AuraSyncS2CPackage;
-import com.rgerva.dbr.network.packages.ServertToClient.ChooseTypeScreenSyncS2CPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 

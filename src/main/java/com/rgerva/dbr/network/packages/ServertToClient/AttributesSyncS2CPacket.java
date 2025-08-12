@@ -14,10 +14,9 @@ package com.rgerva.dbr.network.packages.ServertToClient;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
+import com.rgerva.dbr.mechanics.level.ModLevel;
 import java.util.EnumMap;
 import java.util.Map;
-
-import com.rgerva.dbr.mechanics.level.ModLevel;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;

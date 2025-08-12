@@ -19,18 +19,14 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.entity.animations.AuraAnimations;
 import com.rgerva.dbr.entity.renderer.AuraEntityRenderState;
-import net.minecraft.client.animation.AnimationDefinition;
+import java.awt.*;
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.AnimationState;
-
-import java.awt.*;
 
 public class AuraModel extends EntityModel<AuraEntityRenderState> {
 

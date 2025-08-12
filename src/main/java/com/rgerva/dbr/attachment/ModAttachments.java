@@ -19,8 +19,6 @@ import com.rgerva.dbr.mechanics.types.ModTypes;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Supplier;
-
-import net.minecraft.world.entity.animal.Cod;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;

@@ -16,6 +16,7 @@ package com.rgerva.dbr.network.packages.ClientToServer;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.entity.entity.AuraEntity;
+import java.util.List;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -23,8 +24,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-
-import java.util.List;
 
 public record AuraSyncC2SPackage(boolean activate) implements CustomPacketPayload {
 

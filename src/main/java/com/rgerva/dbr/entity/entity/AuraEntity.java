@@ -17,6 +17,7 @@ package com.rgerva.dbr.entity.entity;
 import com.rgerva.dbr.entity.ModEntities;
 import com.rgerva.dbr.entity.renderer.AuraEntityRenderState;
 import com.rgerva.dbr.network.interfaces.IModAuraSync;
+import java.util.UUID;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -31,8 +32,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-
-import java.util.UUID;
 
 public class AuraEntity extends Entity implements IModAuraSync {
 		private final AuraEntityRenderState renderState = new AuraEntityRenderState();

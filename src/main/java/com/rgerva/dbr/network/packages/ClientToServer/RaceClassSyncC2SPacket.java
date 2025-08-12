@@ -13,7 +13,6 @@ package com.rgerva.dbr.network.packages.ClientToServer;
 
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
-import com.rgerva.dbr.mechanics.level.ModLevel;
 import com.rgerva.dbr.mechanics.types.ModTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;

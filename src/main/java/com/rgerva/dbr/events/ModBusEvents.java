@@ -11,26 +11,25 @@
  */
 package com.rgerva.dbr.events;
 
+import static com.rgerva.dbr.entity.ModEntities.AURA;
+import static com.rgerva.dbr.entity.ModEntities.AURA_ENTITY;
+
 import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.attachment.ModAttachments;
 import com.rgerva.dbr.block.entity.ModBlockEntities;
 import com.rgerva.dbr.block.entity.renderer.DragonBallEntityRenderer;
 import com.rgerva.dbr.command.ModCommands;
-import com.rgerva.dbr.datagen.model.custom.AuraModel;
 import com.rgerva.dbr.datagen.model.custom.DragonBallModel;
 import com.rgerva.dbr.datagen.model.custom.ModelAura;
 import com.rgerva.dbr.entity.AuraRenderer;
 import com.rgerva.dbr.entity.EntityAura;
 import com.rgerva.dbr.entity.entity.AuraEntity;
-import com.rgerva.dbr.entity.ModEntities;
-import com.rgerva.dbr.entity.renderer.AuraEntityRenderer;
 import com.rgerva.dbr.mechanics.attributes.ModAttributes;
 import com.rgerva.dbr.mechanics.data.ModPlayerData;
 import com.rgerva.dbr.mechanics.level.ModLevel;
 import com.rgerva.dbr.mechanics.stats.ModStats;
 import com.rgerva.dbr.mechanics.types.ModTypes;
 import java.util.Map;
-
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -55,9 +54,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 import org.lwjgl.glfw.GLFW;
-
-import static com.rgerva.dbr.entity.ModEntities.AURA;
-import static com.rgerva.dbr.entity.ModEntities.AURA_ENTITY;
 
 @EventBusSubscriber(modid = DragonBlockReborn.MOD_ID, value = Dist.CLIENT)
 public class ModBusEvents {

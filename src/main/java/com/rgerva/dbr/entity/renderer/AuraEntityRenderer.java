@@ -22,6 +22,7 @@ import com.rgerva.dbr.DragonBlockReborn;
 import com.rgerva.dbr.datagen.model.custom.AuraModel;
 import com.rgerva.dbr.entity.entity.AuraEntity;
 import com.rgerva.dbr.entity.entity.AuraVariant;
+import java.util.Map;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -30,8 +31,6 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-
-import java.util.Map;
 
 public class AuraEntityRenderer extends EntityRenderer<AuraEntity, AuraEntityRenderState> {
 

@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Generic Class: DragonBlockRebornTest <T>
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Created by: bb785
  * On: 2025/ago.
  * <p>
- * GitHub: https://github.com/RGerva
+ * GitHub: <a href="https://github.com/RGerva">...</a>
  * <p>
  * Copyright (c) 2025 @RGerva. All Rights Reserved.
  * <p>
