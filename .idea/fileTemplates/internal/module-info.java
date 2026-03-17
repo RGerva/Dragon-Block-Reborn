@@ -2,14 +2,14 @@
  *  Module: ${MODULE_NAME}
  *  Defines dependencies and visibility for ${MODULE_NAME}.
  *  
- *  Created by: ${USER}
- *  On: ${YEAR}/${MONTH_NAME_SHORT}
+ * <p>Created by: ${USER}
+ * <p>On: ${YEAR}/${MONTH_NAME_SHORT}
  *  
- *  GitHub: https://github.com/RGerva
+ * <p>GitHub: https://github.com/RGerva
  *  
- *  Copyright (c) ${YEAR} @RGerva. All Rights Reserved.
+ * <p>Copyright (c) ${YEAR} @RGerva. All Rights Reserved.
  *  
- *  Licensed under the Apache License, Version 2.0 (the "License");
+ * <p>Licensed under the GNU General Public License, Version 3.0.
  */
 
 #parse("File Header.java")
