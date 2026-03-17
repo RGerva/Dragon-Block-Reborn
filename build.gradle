@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'idea'
+    id 'jacoco'
     id 'net.neoforged.moddev' version '2.0.140'
     id 'com.diffplug.spotless' version '7.2.1'
 }
@@ -122,6 +123,16 @@ dependencies {
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
 
+    // Add JUnit for tests
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:6.0.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:6.0.3'
+
+    testImplementation 'org.junit.platform:junit-platform-launcher:6.0.3'
+    testRuntimeOnly 'org.junit.platform:junit-platform-engine:6.0.3'
+
+    // For unit tests
+    testImplementation 'org.mockito:mockito-core:5.23.0'
+
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
@@ -146,6 +157,68 @@ tasks.withType(ProcessResources).configureEach {
     filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties
     }
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+    }
+
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+jacocoTestReport {
+    group = 'other'
+    dependsOn tasks.test
+    reports {
+        html.required.set(true)
+        xml.required.set(true)
+        csv.required.set(false)
+    }
+
+    afterEvaluate {
+        classDirectories.setFrom(files([
+                fileTree(project.layout.buildDirectory.dir("classes/java/test").get().asFile) {
+                    includes = ["**/*.class"]
+                }
+        ]))
+    }
+}
+
+jacocoTestCoverageVerification {
+    group = 'other'
+    dependsOn tasks.test
+    violationRules {
+        rule {
+            enabled = true
+            element = 'BUNDLE'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.95
+            }
+        }
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files([
+                fileTree(project.layout.buildDirectory.dir("classes/java/test").get().asFile) {
+                    includes = ["**/*.class"]
+                }
+        ]))
+    }
+}
+
+spotless {
+    java {
+        importOrder()
+        removeUnusedImports()
+    }
+}
+
+javadoc {
+    destinationDir = file("${rootProject.projectDir}/docs/javadoc")
 }
 
 // Example configuration to allow publishing using the maven-publish plugin
